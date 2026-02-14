@@ -1,0 +1,536 @@
+# Game: New Game
+# Author: David Miller
+# Description: Player character script with Finite State Machine (FSM) for various actions,
+#              including movement, combat, healing, and temporary buffs.
+
+extends CharacterBody2D
+
+#region Export Variables
+# Movement
+@export var speed := 200 # Base horizontal movement speed
+@export var jump_velocity := -300 # Initial vertical velocity for jumps
+@export var gravity := 500.0 # Gravity applied to the player
+
+# Health & Damage
+@export var max_health := 100 # Player's maximum health
+@export var invincibility_duration := 0.5 # Duration of invincibility after being hit
+
+# Combat
+@export var attack_damage := 10 # Player's base attack damage
+
+# Abilities
+@export var heal_amount := 25 # Amount of health restored when healing
+@export var buff_duration := 5.0 # Duration of the buff in seconds
+@export var buff_attack_increase := 10 # How much attack damage increases during buff
+#endregion
+
+#region States Enum
+enum States {
+	IDLE,
+	WALK,
+	RUN,
+	DASH,
+	JUMP,
+	DOUBLE_JUMP,
+	FALLING,
+	HANGING,
+	CLIMBING,
+	CROUCH,
+	ATTACK_1,
+	ATTACK_2,
+	ATTACK_3,
+	CROUCH_ATTACK,
+	AIR_ATTACK_1,
+	AIR_ATTACK_2,
+	AIR_ATTACK_3,
+	HEAL,
+	BUFF,
+	HIT, # Consider if HURT is distinct from HIT or can be merged
+	DEAD
+}
+#endregion
+
+#region Member Variables
+var current_state = States.IDLE: # Current state of the FSM
+	set(new_state):
+		# Only transition if the state is actually changing
+		if current_state == new_state:
+			return
+		_exit_state(current_state) # Call exit logic for the old state
+		current_state = new_state
+		_enter_state(current_state) # Call enter logic for the new state
+
+var facing_left = false # True if sprite is facing left
+var has_double_jump = false # Tracks if double jump is available
+var current_health = max_health # Player's current health
+var can_take_damage = true # Flag for invincibility frames
+
+var original_attack_damage: int # Stores player's base attack damage for buff
+#endregion
+
+#region OnReady Node References
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var hurtbox = $Hurtbox # Player's hurtbox for receiving damage
+@onready var attack_hitbox = $AttackHitbox # Player's hitbox for dealing damage
+@onready var invincibility_timer = $InvincibilityTimer # Timer for invincibility frames
+@onready var health_bar = $Camera2D/PlayerUI/TextureProgressBar # Reference to UI health bar
+@onready var buff_timer = $BuffTimer # Timer for buff duration
+#endregion
+
+#region Godot Lifecycle Methods
+
+func _ready():
+	# Store original attack damage before any buffs
+	original_attack_damage = attack_damage
+
+	# Ensure initial state is set up when the node enters the scene tree
+	_enter_state(current_state)
+
+	# Initialize health and UI
+	current_health = max_health
+	update_health_ui()
+
+	# --- Node Reference Validation & Setup ---
+	_validate_onready_nodes() # Helper to check if @onready nodes are assigned
+
+	# Initial setup for hitboxes and timers
+	if attack_hitbox != null:
+		attack_hitbox.monitoring = false # Disable attack hitbox initially
+		attack_hitbox.monitorable = false
+	if invincibility_timer != null:
+		invincibility_timer.wait_time = invincibility_duration
+	if buff_timer != null:
+		buff_timer.wait_time = buff_duration
+		buff_timer.one_shot = true # Buff timer should run once
+		buff_timer.timeout.connect(_on_buff_timer_timeout) # Connect signal for buff end
+
+func _physics_process(delta):
+	# Apply gravity if not on floor
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	else:
+		velocity.y = 0 # Reset vertical velocity if grounded
+
+	handle_input()      # Process player input to determine desired state
+	apply_movement(delta) # Apply velocity based on the current state
+	update_facing_direction()
+	move_and_slide()    # Godot's built-in physics mover
+
+	 # Update sprite flip based on horizontal velocity
+#endregion
+
+#region Input Handling
+
+func handle_input():
+	# Block most input if in an animation-locked state (attack, hurt, dead, heal, buff)
+	if current_state in [
+		States.ATTACK_1, States.ATTACK_2, States.ATTACK_3,
+		States.CROUCH_ATTACK,
+		States.AIR_ATTACK_1, States.AIR_ATTACK_2, States.AIR_ATTACK_3,
+		States.HIT,  States.DEAD,
+		States.HEAL, States.BUFF # Added BUFF here
+	]:
+		return # Input blocked, exit early
+
+	var input_direction = get_direction()
+
+	# --- Grounded Actions (prioritized by importance/exclusivity) ---
+	if is_on_floor():
+		# HEAL Input (Requires "heal" action in Project Settings)
+		if Input.is_action_just_pressed("heal"):
+			if current_health < max_health: # Only allow healing if not at full health
+				current_state = States.HEAL
+				return # Input handled, exit early
+			else:
+				print("Player is already at full health. Cannot heal.") # Optional feedback
+
+		# BUFF Input (Requires "buff" action in Project Settings)
+		if Input.is_action_just_pressed("buff"):
+			current_state = States.BUFF
+			return # Input handled, exit early
+
+		# Jump
+		if Input.is_action_just_pressed("jump"):
+			velocity.y = jump_velocity
+			current_state = States.JUMP
+			has_double_jump = false # Reset double jump capability on a fresh jump
+			return
+
+		# Attack (Ground Combo Initiation)
+		if Input.is_action_just_pressed("attack_1"):
+			if Input.is_action_pressed("crouch"):
+				current_state = States.CROUCH_ATTACK
+			else:
+				current_state = States.ATTACK_1 # Start the ground combo
+			return
+
+		# Dash
+		if Input.is_action_pressed("dash") and input_direction != 0:
+			current_state = States.DASH
+			return
+
+		# Crouch
+		if Input.is_action_pressed("crouch"):
+			current_state = States.CROUCH
+			return
+
+		# Walk / Run
+		if input_direction != 0:
+			current_state = States.WALK # Consider adding a "run" input
+		else:
+			current_state = States.IDLE # No horizontal input, not crouching, etc.
+
+	# --- Air Actions ---
+	else: # Not on floor
+		# Double Jump
+		if Input.is_action_just_pressed("jump") and not has_double_jump:
+			velocity.y = jump_velocity # Apply jump velocity for double jump
+			current_state = States.DOUBLE_JUMP # Transition to double jump state
+			has_double_jump = true # Mark double jump as used
+			return
+
+		# Air Attack combo initiation
+		if Input.is_action_just_pressed("attack_1"):
+			current_state = States.AIR_ATTACK_1 # Always start with AIR_ATTACK_1 in air
+			return
+
+		# Automatic transition to FALLING if not in a specific air state
+		if current_state not in [
+			States.JUMP, States.DOUBLE_JUMP,
+			States.AIR_ATTACK_1, States.AIR_ATTACK_2, States.AIR_ATTACK_3
+		]:
+			current_state = States.FALLING
+#endregion
+
+#region State Machine Logic
+
+# Called when transitioning INTO a new state
+func _enter_state(new_state):
+	print("Entering state:", new_state)
+	match new_state:
+		States.IDLE:
+			animated_sprite.play("torch_idle")
+		States.WALK:
+			animated_sprite.play("torch_walk")
+		States.RUN:
+			animated_sprite.play("slow_run_loop") # Assuming 'slow_run_loop' is the run animation
+		States.DASH:
+			animated_sprite.play("slow_run_loop") # Or a dedicated dash animation
+
+		# --- Ground Combo Attack States ---
+		States.ATTACK_1:
+			animated_sprite.play("attack_1")
+			velocity.x = 0 # Stop movement while attacking
+			_enable_attack_hitbox()
+			await animated_sprite.animation_finished
+			if current_state == States.ATTACK_1: # Check if still in this state (not interrupted)
+				_disable_attack_hitbox()
+				if Input.is_action_pressed("attack_1"):
+					current_state = States.ATTACK_2
+				else:
+					current_state = States.IDLE
+		States.ATTACK_2:
+			animated_sprite.play("attack_2")
+			velocity.x = 0
+			_enable_attack_hitbox()
+			await animated_sprite.animation_finished
+			if current_state == States.ATTACK_2:
+				_disable_attack_hitbox()
+				if Input.is_action_pressed("attack_1"):
+					current_state = States.ATTACK_3
+				else:
+					current_state = States.IDLE
+		States.ATTACK_3:
+			animated_sprite.play("pierce_attack_end")
+			velocity.x = 0
+			_enable_attack_hitbox()
+			await animated_sprite.animation_finished
+			if current_state == States.ATTACK_3:
+				_disable_attack_hitbox()
+				current_state = States.IDLE # Last attack in combo, always return to idle
+
+		States.CROUCH:
+			animated_sprite.play("crouch_idle")
+		States.CROUCH_ATTACK:
+			animated_sprite.play("crouch_attack")
+			velocity.x = 0 # Prevent movement while crouch attacking
+			_enable_attack_hitbox()
+			await animated_sprite.animation_finished
+			if current_state == States.CROUCH_ATTACK:
+				_disable_attack_hitbox()
+				current_state = States.CROUCH # Ensures player stays crouched
+
+		States.JUMP:
+			animated_sprite.play("air_jump")
+		States.DOUBLE_JUMP:
+			animated_sprite.play("dash_loop") # Assuming 'dash_loop' is suitable for double jump
+		States.FALLING:
+			animated_sprite.play("air_fall")
+
+		# --- Air Combo Attack States ---
+		States.AIR_ATTACK_1:
+			animated_sprite.play("air_attack_1")
+			_enable_attack_hitbox()
+			# No velocity.x = 0 here, allow air control during air attacks
+			await animated_sprite.animation_finished
+			if current_state == States.AIR_ATTACK_1:
+				_disable_attack_hitbox()
+				if has_double_jump and Input.is_action_pressed("attack_1"):
+					current_state = States.AIR_ATTACK_2
+				else:
+					current_state = States.FALLING
+		States.AIR_ATTACK_2:
+			animated_sprite.play("air_attack_2")
+			_enable_attack_hitbox()
+			await animated_sprite.animation_finished
+			if current_state == States.AIR_ATTACK_2:
+				_disable_attack_hitbox()
+				if has_double_jump and Input.is_action_pressed("attack_1"):
+					current_state = States.AIR_ATTACK_3
+				else:
+					current_state = States.FALLING
+		States.AIR_ATTACK_3:
+			animated_sprite.play("air_attack_3")
+			_enable_attack_hitbox()
+			await animated_sprite.animation_finished
+			if current_state == States.AIR_ATTACK_3:
+				_disable_attack_hitbox()
+				current_state = States.FALLING # Last air attack, always fall
+
+		States.HEAL:
+			animated_sprite.play("drink_health_potion")
+			velocity.x = 0 # Stop movement while healing
+			_set_invincibility(true) # Player is invincible during healing animation
+			
+			await animated_sprite.animation_finished
+			
+			# Apply healing after animation finishes
+			if current_state == States.HEAL: # Only apply if state wasn't interrupted
+				current_health = min(current_health + heal_amount, max_health)
+				update_health_ui()
+				print("Player healed for ", heal_amount, ". Current health: ", current_health)
+				_set_invincibility(false) # End invincibility after heal
+
+				# Transition back to appropriate state
+				if is_on_floor():
+					current_state = States.IDLE
+				else:
+					current_state = States.FALLING
+
+		States.BUFF:
+			animated_sprite.play("heal_golden_apple") # Assuming this is your buff animation
+			velocity.x = 0 # Stop movement while performing buff action
+			_set_invincibility(true) # Player is invincible during buff animation
+			
+			# Apply the buff effect
+			attack_damage += buff_attack_increase
+			print("Player attack damage increased to: ", attack_damage, " for ", buff_duration, " seconds!")
+			
+			if buff_timer != null:
+				buff_timer.start() # Start the buff duration timer
+
+			await animated_sprite.animation_finished
+			
+			# After animation, if still in BUFF state, transition
+			if current_state == States.BUFF: # Only apply if state wasn't interrupted
+				_set_invincibility(false) # End invincibility after buff animation
+				if is_on_floor():
+					current_state = States.IDLE
+				else:
+					current_state = States.FALLING
+			
+		States.HIT:
+			animated_sprite.play("hit")
+			velocity.x = 0 # Stop movement when hit
+			_set_invincibility(true) # Start invincibility frames
+			# Optionally add a small knockback here (e.g., velocity.x = -sign(velocity.x) * 100)
+			
+			await animated_sprite.animation_finished
+			
+			if current_state == States.HIT:
+				_set_invincibility(false) # End invincibility after hit animation
+				if is_on_floor():
+					current_state = States.IDLE
+				else:
+					current_state = States.FALLING
+					
+		States.DEAD:
+			animated_sprite.play("death")
+			set_physics_process(false) # Stop physics processing
+			set_collision_mask_value(1, false) # Disable collision with enemies
+			set_collision_layer_value(1, false) # No longer interact with environment
+			if hurtbox != null: hurtbox.monitoring = false # Disable hurtbox when dead
+			if attack_hitbox != null: attack_hitbox.monitoring = false # Disable attackbox when dead
+			# Optionally queue_free() after a delay or fade out
+			# await get_tree().create_timer(2.0).timeout
+			# queue_free()
+
+		States.HANGING:
+			animated_sprite.play("ledge_grab_contact")
+		States.CLIMBING:
+			animated_sprite.play("climb")
+
+# Called when transitioning OUT OF an old state
+func _exit_state(old_state):
+	print("Exiting state:", old_state)
+	# Ensure attack hitboxes are always disabled when exiting an attack state
+	match old_state:
+		States.ATTACK_1, States.ATTACK_2, States.ATTACK_3, States.CROUCH_ATTACK, States.AIR_ATTACK_1, States.AIR_ATTACK_2, States.AIR_ATTACK_3:
+			_disable_attack_hitbox()
+		# If you made player invincible during buff/heal/hit and the state transition is _before_
+		# the timer runs out, you might need to handle invincibility reset here too.
+		# However, the current _enter_state logic should handle it fine for now.
+#endregion
+
+#region Movement Application
+
+func apply_movement(delta):
+	var direction = get_direction()
+
+	match current_state:
+		States.IDLE:
+			velocity.x = 0
+		States.WALK:
+			velocity.x = direction * speed
+		States.RUN:
+			velocity.x = direction * speed * 1.5 # Example run speed
+		States.DASH:
+			velocity.x = direction * speed * 2
+		States.CROUCH:
+			velocity.x = direction * (speed * 0.5) # Move at half speed while crouching
+			# Dynamically play crouch_walk or crouch_idle based on movement
+			if velocity.x != 0:
+				animated_sprite.play("crouch_walk")
+			else:
+				animated_sprite.play("crouch_idle")
+		# Air states where horizontal movement is maintained
+		States.JUMP, States.DOUBLE_JUMP, States.FALLING, States.AIR_ATTACK_1, States.AIR_ATTACK_2, States.AIR_ATTACK_3:
+			# Maintain horizontal velocity in air, allows for air control
+			velocity.x = direction * speed # Can adjust air control value
+		# For states where movement is fixed or handled by specific state logic
+		[States.ATTACK_1, States.ATTACK_2, States.ATTACK_3, States.CROUCH_ATTACK,
+		States.HIT, States.DEAD, 
+		States.HEAL, States.BUFF]: # Added BUFF here
+			pass # Velocity for these states is usually set in _enter_state or by external forces
+
+	# Universal landing detection: If on floor and in any air-related state, transition to idle.
+	# This handles landing from any air state and resets double jump capability.
+	if is_on_floor() and current_state in [States.JUMP, States.DOUBLE_JUMP, States.FALLING, 
+	States.AIR_ATTACK_1, States.AIR_ATTACK_2, States.AIR_ATTACK_3]:
+		current_state = States.IDLE
+		has_double_jump = false # Reset double jump capability on landing
+
+
+#region Health and Damage Functions
+
+func take_damage(amount: int):
+	if !can_take_damage || current_state == States.DEAD:
+		return # Cannot take damage if invincible or already dead
+
+	current_health -= amount
+	print("Player took ", amount, " damage. Current health: ", current_health)
+	update_health_ui() # Update health bar immediately
+
+	if current_health <= 0:
+		current_health = 0 # Ensure health doesn't go below zero
+		current_state = States.DEAD
+	else:
+		current_state = States.HIT # Transition to HIT state
+		
+func update_health_ui():
+	if health_bar != null:
+		health_bar.max_value = max_health
+		health_bar.value = current_health
+	else:
+		push_error("Health Bar node not found when trying to update UI. Check its path and unique name.")
+#endregion
+
+#region Helper Functions
+
+func _validate_onready_nodes():
+	# Centralized checks for @onready nodes
+	if animated_sprite == null:
+		push_error("ERROR: animated_sprite is null! Make sure AnimatedSprite2D is a child named 'AnimatedSprite2D'.")
+	if hurtbox == null:
+		push_error("ERROR: hurtbox is null! Make sure Area2D is a child named 'Hurtbox'.")
+	if attack_hitbox == null:
+		push_error("ERROR: attack_hitbox is null! Make sure Area2D is a child named 'AttackHitbox'.")
+	if invincibility_timer == null:
+		push_error("ERROR: invincibility_timer is null! Make sure Timer is a child named 'InvincibilityTimer'.")
+	if health_bar == null:
+		push_error("ERROR: health_bar is null! Make sure %PlayerUI/TextureProgressBar path is correct.")
+	if buff_timer == null:
+		push_error("ERROR: buff_timer is null! Make sure Timer is a child named 'BuffTimer'.")
+
+func get_direction():
+	var direction = 0
+	if Input.is_action_pressed("move_left"):
+		direction -= 1
+	if Input.is_action_pressed("move_right"):
+		direction += 1
+	return direction
+
+func update_facing_direction():
+	if velocity.x > 0:
+		facing_left = false
+	elif velocity.x < 0:
+		facing_left = true
+	animated_sprite.flip_h = facing_left
+
+func _enable_attack_hitbox():
+	if attack_hitbox != null:
+		attack_hitbox.monitoring = true
+		attack_hitbox.monitorable = true
+
+func _disable_attack_hitbox():
+	if attack_hitbox != null:
+		attack_hitbox.monitoring = false
+		attack_hitbox.monitorable = false
+
+func _set_invincibility(is_invincible: bool):
+	can_take_damage = !is_invincible
+	if invincibility_timer != null:
+		if is_invincible:
+			invincibility_timer.start()
+		else:
+			# Only stop if it's currently running (e.g., if buff/heal animation finishes early)
+			if invincibility_timer.time_left > 0:
+				invincibility_timer.stop()
+	print("Player invincibility: ", is_invincible)
+
+#endregion
+
+#region Signal Callbacks
+
+func _on_hurtbox_body_entered(body: Node2D):
+	# Check if the colliding body is on the "enemy_attacks" layer (Layer 5)
+	# and has a method to get its damage or a 'attack_damage' property.
+	if body.get_collision_layer_value(5):
+		var damage_amount = 0
+		if body.has_method("get_attack_damage"):
+			damage_amount = body.get_attack_damage()
+		elif "attack_damage" in body:
+			damage_amount = body.attack_damage
+		
+		if damage_amount > 0:
+			take_damage(damage_amount)
+		else:
+			print("Warning: Enemy attack has no damage value or 'get_attack_damage' method.")
+
+func _on_invincibility_timer_timeout():
+	_set_invincibility(false) # End invincibility
+
+func _on_attack_hitbox_body_entered(body: Node2D) -> void:
+	# Check if the colliding body is an enemy and has a 'take_damage' method
+	if body.is_in_group("enemies") and body.has_method("take_damage"):
+		body.take_damage(attack_damage) # Pass the player's current attack_damage to the enemy
+		print("Player hit enemy for ", attack_damage, " damage!")
+
+func _on_buff_timer_timeout():
+	attack_damage = original_attack_damage # Revert attack damage to original value
+	print("Player buff ended. Attack damage reset to: ", attack_damage)
+
+# _on_attack_hitbox_body_exited is not used, can be removed.
+# func _on_attack_hitbox_body_exited(body: Node2D) -> void:
+# 	pass
+#endregion

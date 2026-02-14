@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dnwy41vf8yi71"]
+
+[ext_resource type="Texture2D" uid="uid://cinbf2b1g7fl" path="res://assets/NDS Game Files/TopLobsta-Final.png" id="1_7a00j"]
+[ext_resource type="Script" uid="uid://b7qkv83n8e4kc" path="res://Scripts/PlayerBase.gd" id="1_c162e"]
+[ext_resource type="Script" uid="uid://dsysw4qgnrgn3" path="res://Scripts/PlayerStats.gd" id="2_swkvq"]
+[ext_resource type="Script" uid="uid://bbqdbg6ckyc4f" path="res://Scripts/AbilitySet.gd" id="3_xo6mk"]
+[ext_resource type="PackedScene" uid="uid://hke5iqiyg5l4" path="res://scenes/bullet.tscn" id="4_a8xfx"]
+
+[sub_resource type="Resource" id="Resource_dqxff"]
+script = ExtResource("2_swkvq")
+metadata/_custom_type_script = "uid://dsysw4qgnrgn3"
+
+[sub_resource type="Resource" id="Resource_50nh4"]
+script = ExtResource("3_xo6mk")
+metadata/_custom_type_script = "uid://bbqdbg6ckyc4f"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7a00j"]
+size = Vector2(388, 971)
+
+[node name="Toplobsta" type="CharacterBody2D" unique_id=737537431]
+scale = Vector2(0.04, 0.04)
+script = ExtResource("1_c162e")
+stats = SubResource("Resource_dqxff")
+abilities = SubResource("Resource_50nh4")
+bullet_scene = ExtResource("4_a8xfx")
+max_bullets_on_screen = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=435929958]
+position = Vector2(-33, 3.5)
+shape = SubResource("RectangleShape2D_7a00j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1230913563]
+texture = ExtResource("1_7a00j")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1633145011]
+position = Vector2(475, 150)

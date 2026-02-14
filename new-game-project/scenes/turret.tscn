@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://uy5jppbngwcm"]
+
+[ext_resource type="Script" uid="uid://ctnjdbsrcy4xl" path="res://Scripts/turret.gd" id="1_3oylf"]
+[ext_resource type="PackedScene" uid="uid://dfrsgq04nsxmi" path="res://scenes/enemy_missle.tscn" id="2_c5apd"]
+[ext_resource type="Texture2D" uid="uid://cw0vcaylf6n12" path="res://assets/NDS Game Files/Turretbase.png" id="3_pp6j5"]
+[ext_resource type="Texture2D" uid="uid://dipk4o0jwgwcc" path="res://assets/NDS Game Files/TurretTop.png" id="4_6fjxm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xk5y"]
+radius = 86.023254
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pp6j5"]
+radius = 8.0
+height = 36.0
+
+[node name="Turret" type="Node2D" unique_id=805439281 groups=["enemies"]]
+script = ExtResource("1_3oylf")
+fire_cooldown = 2.0
+missile_scene = ExtResource("2_c5apd")
+
+[node name="RangeArea" type="Area2D" parent="." unique_id=625933053]
+collision_mask = 38
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea" unique_id=460955964]
+visible = false
+position = Vector2(56, -24)
+shape = SubResource("CircleShape2D_8xk5y")
+
+[node name="FireTimer" type="Timer" parent="." unique_id=458282577]
+one_shot = true
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=2002189796]
+collision_layer = 8
+collision_mask = 38
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1713529406]
+visible = false
+position = Vector2(32, -16)
+shape = SubResource("CapsuleShape2D_pp6j5")
+debug_color = Color(0.8551941, 0.27472395, 0.624104, 0.41960785)
+
+[node name="Base" type="Node2D" parent="." unique_id=1573810015]
+
+[node name="Sprite2D" type="Sprite2D" parent="Base" unique_id=1551423329]
+position = Vector2(0, -24)
+rotation = 3.1415927
+scale = Vector2(0.5956632, -0.7844952)
+texture = ExtResource("3_pp6j5")
+offset = Vector2(0, -1)
+
+[node name="Barrel" type="Node2D" parent="." unique_id=737248358]
+
+[node name="Sprite2D" type="Sprite2D" parent="Barrel" unique_id=1306649295]
+position = Vector2(0, -40)
+texture = ExtResource("4_6fjxm")
+
+[node name="Muzzle" type="Marker2D" parent="Barrel" unique_id=292190285]
+position = Vector2(0, -44)

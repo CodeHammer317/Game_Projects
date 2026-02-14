@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://hke5iqiyg5l4"]
+
+[ext_resource type="Script" uid="uid://dbaqdf8v8xu4w" path="res://Scripts/bullet.gd" id="1_y25gk"]
+[ext_resource type="Texture2D" uid="uid://iro3dnjqext3" path="res://assets/NDS Game Files/shock.png" id="2_y25gk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l5glv"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
+atlas = ExtResource("2_y25gk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
+atlas = ExtResource("2_y25gk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qncy5"]
+atlas = ExtResource("2_y25gk")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
+atlas = ExtResource("2_y25gk")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26lx3"]
+atlas = ExtResource("2_y25gk")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cfmv"]
+atlas = ExtResource("2_y25gk")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k76ql"]
+atlas = ExtResource("2_y25gk")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in4mv"]
+atlas = ExtResource("2_y25gk")
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t4vbm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5glv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoqba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qncy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tamys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26lx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cfmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k76ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in4mv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
+
+[node name="Bullet" type="Area2D" unique_id=1272780790]
+scale = Vector2(0.2, 0.2)
+collision_layer = 32
+collision_mask = 201
+script = ExtResource("1_y25gk")
+lifetime = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1131123819]
+material = SubResource("CanvasItemMaterial_l5glv")
+position = Vector2(-5.000001, 0)
+sprite_frames = SubResource("SpriteFrames_t4vbm")
+autoplay = "default"
+frame_progress = 0.9156794
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1228282324]
+texture_filter = 1
+position = Vector2(10.000002, 1.862646e-09)
+rotation = 1.5753123
+shape = SubResource("CircleShape2D_y25gk")
+debug_color = Color(0, 0.6, 0.69803923, 0.827451)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=683432776]
+target_position = Vector2(0.49028397, 52.340553)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=830715852]
+position = Vector2(0.56007385, 1.1338115)

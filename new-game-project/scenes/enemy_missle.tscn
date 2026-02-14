@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dfrsgq04nsxmi"]
+
+[ext_resource type="Script" uid="uid://du0oejsrta4e5" path="res://Scripts/enemy_missile.gd" id="1_5gt1y"]
+[ext_resource type="Texture2D" uid="uid://nmuwm8ghxck6" path="res://assets/NDS Game Files/Sprite_Oil_Lamp32x32.png" id="2_up3oe"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_up3oe"]
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_va43f"]
+radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_up3oe"]
+offsets = PackedFloat32Array(0.03617571, 0.07751938, 0.25322998, 0.6976744, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.95748645, 0.07016479, 0.28493494, 0.651, 1.55391, 1.540369, 0.69010115, 0.98700005, 1.5366602, 1.523541, 0.699752, 0.9874049, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_va43f"]
+gradient = SubResource("Gradient_up3oe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_up3oe"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.25, 1.25, 1)
+emission_shape = 1
+emission_sphere_radius = 14.57
+spread = 119.791
+initial_velocity_max = 1.0
+gravity = Vector3(0, -1, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 3.9899976
+scale_min = 0.5
+scale_max = 1.1
+color = Color(1, 0.8854879, 0.20906562, 1)
+color_initial_ramp = SubResource("GradientTexture1D_va43f")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.009999977
+collision_use_scale = true
+
+[node name="EnemyMissle" type="Area2D" unique_id=1493675337]
+scale = Vector2(0.25, 0.25)
+collision_layer = 64
+collision_mask = 7
+script = ExtResource("1_5gt1y")
+speed = 200.0
+turn_rate_deg = 120.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=826385064]
+material = SubResource("CanvasItemMaterial_up3oe")
+texture = ExtResource("2_up3oe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=103337576 groups=["enemies"]]
+rotation = -1.5707964
+shape = SubResource("CircleShape2D_va43f")
+
+[node name="LifeTimer" type="Timer" parent="." unique_id=955401389]
+one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=664402552]
+amount = 100
+lifetime = 1.8
+trail_lifetime = 1.63
+process_material = SubResource("ParticleProcessMaterial_up3oe")

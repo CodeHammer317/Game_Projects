@@ -1,0 +1,53 @@
+
+extends Node2D
+
+signal collected(points: int)
+
+@export var points: int = 1  # How many points this coin adds
+
+@onready var area: Area2D = $Area2D
+@onready var sprite: Node = $Sprite2D # Or $AnimatedSprite2D if you're using that
+@onready var sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var fx: Particles2D = $Particles2D
+
+func _ready() -> void:
+    # Connect player detection
+    area.body_entered.connect(_on_body_entered)
+
+    # Optional: auto-connect to a scene-scoped GameManager via group
+    var gm := get_tree().get_first_node_in_group("GameManager")
+    if gm != null:
+        collected.connect(gm._on_coin_collected)
+
+func _on_body_entered(body: Node) -> void:
+    if body.is_in_group("Player"):
+        collected.emit(points)
+        _perform_pickup_and_free()
+
+func _perform_pickup_and_free() -> void:
+    # IMPORTANT: do not change physics flags directly in this signal.
+    # Use deferred calls to avoid 'Function blocked during in/out signal' errors.
+    if area:
+        area.set_deferred("monitoring", false)
+        # Optional: also prevent other areas/bodies from seeing this coin
+        area.set_deferred("monitorable", false)
+
+    # Visuals can be changed immediately (safe)
+    if sprite:
+        sprite.visible = false
+    if fx:
+        fx.emitting = true
+
+    if sfx and sfx.stream:
+        # Play sound and defer freeing until the sound completes
+        sfx.play()
+        # Connect finished once (if the AudioStream supports it)
+        if not sfx.finished.is_connected(_on_sfx_finished):
+            sfx.finished.connect(_on_sfx_finished)
+    else:
+        # No SFX: free safely using a deferred call
+        call_deferred("queue_free")
+
+func _on_sfx_finished() -> void:
+    # Free after SFX ends, using deferred call to be safe
+    call_deferred("queue_free")

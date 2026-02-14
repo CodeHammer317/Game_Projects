@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://c67a6mjvhl1p3"]
+
+[ext_resource type="Script" uid="uid://dhk5ckblsr876" path="res://Scripts/title_screen.gd" id="1_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://bhtx842v7801v" path="res://assets/NDS Game Files/GhostMatttHead.png" id="2_e54dn"]
+[ext_resource type="Texture2D" uid="uid://xa8u0e01uwoy" path="res://assets/NDS Game Files/HolyHandgrenadeOfAntioch.png" id="3_3yumr"]
+[ext_resource type="AudioStream" uid="uid://cue8hubqgpkga" path="res://audio/enemy_hit.ogg" id="4_e54dn"]
+[ext_resource type="AudioStream" uid="uid://bi2ffe1ifyuqa" path="res://audio/freepik-gamers-united.mp3" id="4_mgrm8"]
+[ext_resource type="AudioStream" uid="uid://brjxqhfxainxi" path="res://audio/levelup.ogg" id="5_3yumr"]
+
+[sub_resource type="SystemFont" id="SystemFont_sa3yf"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_s4lrb"]
+font = SubResource("SystemFont_sa3yf")
+font_size = 24
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[node name="TitleScreen" type="Control" unique_id=1622918224]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s4lrb")
+
+[node name="Background" type="ColorRect" parent="." unique_id=216196097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07970443, 0.30820757, 0.7861042, 1)
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1958353727]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 49.0
+offset_right = 1217.0
+offset_bottom = 1073.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_e54dn")
+
+[node name="Title" type="Label" parent="." unique_id=575261486]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 311.0
+offset_right = 544.0
+offset_bottom = 346.0
+text = "Nephilim Hunters: Rise of the Fallen"
+label_settings = SubResource("LabelSettings_s4lrb")
+
+[node name="FadeLayer" type="ColorRect" parent="." unique_id=1728477682]
+visible = false
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.023529412, 0, 0.96862745, 1)
+
+[node name="MenuContainer" type="VBoxContainer" parent="." unique_id=2005564726]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 363.0
+offset_right = 391.0
+offset_bottom = 440.0
+
+[node name="StartGame" type="Label" parent="MenuContainer" unique_id=126171971]
+layout_mode = 2
+text = ":Start Game"
+
+[node name="Options" type="Label" parent="MenuContainer" unique_id=261136163]
+layout_mode = 2
+text = ":Options"
+
+[node name="Exit" type="Label" parent="MenuContainer" unique_id=1365007432]
+layout_mode = 2
+text = ":Exit"
+
+[node name="Selector" type="Sprite2D" parent="MenuContainer" unique_id=145821751]
+position = Vector2(118.999985, 12.000002)
+texture = ExtResource("3_3yumr")
+
+[node name="SFX_Move" type="AudioStreamPlayer" parent="." unique_id=1608847781]
+stream = ExtResource("4_e54dn")
+volume_db = -14.563
+pitch_scale = 1.12
+
+[node name="SFX_Confirm" type="AudioStreamPlayer" parent="." unique_id=22562663]
+stream = ExtResource("5_3yumr")
+volume_db = 5.977
+pitch_scale = 1.12
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2043104009]
+stream = ExtResource("4_mgrm8")
+pitch_scale = 1.18
+autoplay = true

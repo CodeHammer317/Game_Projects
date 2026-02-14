@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bu83i7rrcwahr"]
+
+[node name="StartMenu" type="Control" unique_id=1998215710]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=1533153295]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuContainer" type="VBoxContainer" parent="." unique_id=100778622]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartGame" type="Label" parent="MenuContainer" unique_id=249681933]
+layout_mode = 2
+
+[node name="Options" type="Label" parent="MenuContainer" unique_id=140598612]
+layout_mode = 2
+
+[node name="Exit" type="Label" parent="MenuContainer" unique_id=1008776637]
+layout_mode = 2
+
+[node name="Selector" type="Sprite2D" parent="." unique_id=1614486106]
