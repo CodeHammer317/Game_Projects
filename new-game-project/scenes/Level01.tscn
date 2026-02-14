@@ -69,7 +69,7 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 254
 sources/0 = SubResource("TileSetAtlasSource_0idui")
 
-[node name="Level01" type="Node2D" unique_id=1606560892]
+[node name="Level01" type="Node2D" unique_id=1606560892 groups=["world"]]
 
 [node name="Tilesets" type="Node2D" parent="." unique_id=725275987]
 
@@ -79,11 +79,9 @@ tile_set = SubResource("TileSet_qnryt")
 
 [node name="Players" type="Node2D" parent="." unique_id=2037083641]
 
-[node name="Toplobsta" parent="Players" unique_id=737537431 instance=ExtResource("3_qnryt")]
-position = Vector2(155, 141)
-
 [node name="Raven" parent="Players" unique_id=1435544166 instance=ExtResource("3_3fcoi")]
-position = Vector2(189, 142)
+
+[node name="Toplobsta" parent="Players" unique_id=737537431 instance=ExtResource("3_qnryt")]
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1891995520]
 
@@ -92,6 +90,9 @@ position = Vector2(284, 160)
 
 [node name="CameraRig" type="Node2D" parent="." unique_id=81450785]
 script = ExtResource("4_q43x7")
+player1_path = NodePath("../Players/Toplobsta")
+player2_path = NodePath("../Players/Raven")
+tilemap_path = NodePath("../Tilesets/TileMapLayer")
 min_zoom = Vector2(2, 2)
 max_zoom = Vector2(1.5, 1.5)
 separation_for_max_zoom = 400.0

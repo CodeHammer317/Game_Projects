@@ -8,7 +8,7 @@ func _ready() -> void:
 	_assign_devices_and_bind()
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 
-func _on_joy_connection_changed(device: int, connected: bool) -> void:
+func _on_joy_connection_changed(_device: int, _connected: bool) -> void:
 	# Re-evaluate on any change
 	_assign_devices_and_bind()
 

@@ -38,6 +38,7 @@ extends Node2D
 var _p1: Node2D
 var _p2: Node2D
 var _level_bounds: Rect2
+
 var _target_pos: Vector2
 var _target_zoom: Vector2
 

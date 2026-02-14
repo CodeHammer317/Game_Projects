@@ -18,11 +18,11 @@ fire_cooldown = 2.0
 missile_scene = ExtResource("2_c5apd")
 
 [node name="RangeArea" type="Area2D" parent="." unique_id=625933053]
+position = Vector2(-56, 0)
 collision_mask = 38
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea" unique_id=460955964]
-visible = false
 position = Vector2(56, -24)
 shape = SubResource("CircleShape2D_8xk5y")
 
@@ -34,8 +34,7 @@ collision_layer = 8
 collision_mask = 38
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1713529406]
-visible = false
-position = Vector2(32, -16)
+position = Vector2(0, -17)
 shape = SubResource("CapsuleShape2D_pp6j5")
 debug_color = Color(0.8551941, 0.27472395, 0.624104, 0.41960785)
 
@@ -51,7 +50,7 @@ offset = Vector2(0, -1)
 [node name="Barrel" type="Node2D" parent="." unique_id=737248358]
 
 [node name="Sprite2D" type="Sprite2D" parent="Barrel" unique_id=1306649295]
-position = Vector2(0, -40)
+position = Vector2(0, -39)
 texture = ExtResource("4_6fjxm")
 
 [node name="Muzzle" type="Marker2D" parent="Barrel" unique_id=292190285]

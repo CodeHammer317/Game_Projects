@@ -34,5 +34,7 @@ shape = SubResource("RectangleShape2D_mc8m7")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=841402550]
 texture = ExtResource("1_ywkf3")
 
-[node name="Muzzle" type="Marker2D" parent="." unique_id=630204039]
+[node name="Sockets" type="Node2D" parent="." unique_id=302973653]
+
+[node name="Muzzle" type="Marker2D" parent="Sockets" unique_id=630204039]
 position = Vector2(349, 124)

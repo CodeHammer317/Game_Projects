@@ -31,8 +31,10 @@ max_bullets_on_screen = 6
 position = Vector2(-33, 3.5)
 shape = SubResource("RectangleShape2D_7a00j")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1230913563]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1230913563 groups=["player"]]
 texture = ExtResource("1_7a00j")
 
-[node name="Muzzle" type="Marker2D" parent="." unique_id=1633145011]
+[node name="Sockets" type="Node2D" parent="." unique_id=738888009]
+
+[node name="Muzzle" type="Marker2D" parent="Sockets" unique_id=1633145011]
 position = Vector2(475, 150)

@@ -37,7 +37,7 @@ var _dash_dir: int = 1
 # -----------------------------
 @onready var sprite: Sprite2D = get_node_or_null("Sprite2D")
 @onready var anim: AnimationTree = get_node_or_null("AnimationTree")
-@onready var muzzle: Marker2D = get_node_or_null("Muzzle")
+@onready var muzzle: Marker2D = get_node_or_null("Sockets/Muzzle")
 
 # -----------------------------
 # MAIN LOOP

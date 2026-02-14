@@ -5,7 +5,7 @@ extends Area2D
 @export var lifetime: float = 1.6
 @export var max_distance: float = 900.0
 @export var damage: int = 1
-@export var ray_length: float = 16.0
+@export var ray_length: float =100.0
 @export var pierce_count: int = 0
 @export var collide_with_players: bool = false
 @export var collide_with_enemies: bool = true
