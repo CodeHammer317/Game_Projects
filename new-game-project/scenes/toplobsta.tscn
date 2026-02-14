@@ -20,6 +20,7 @@ size = Vector2(388, 971)
 [node name="Toplobsta" type="CharacterBody2D" unique_id=737537431]
 scale = Vector2(0.04, 0.04)
 script = ExtResource("1_c162e")
+player_id = 2
 stats = SubResource("Resource_dqxff")
 abilities = SubResource("Resource_50nh4")
 bullet_scene = ExtResource("4_a8xfx")

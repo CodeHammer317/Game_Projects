@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://blqbsxq6kha6u" path="res://assets/NDS Game Files/bricktileset16x16.png" id="1_4e331"]
 [ext_resource type="PackedScene" uid="uid://uy5jppbngwcm" path="res://scenes/turret.tscn" id="2_0idui"]
 [ext_resource type="PackedScene" uid="uid://dnwy41vf8yi71" path="res://scenes/toplobsta.tscn" id="3_qnryt"]
+[ext_resource type="Script" uid="uid://b6gr3ve7fqyo0" path="res://Scripts/camera_rig.gd" id="4_q43x7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0idui"]
 texture = ExtResource("1_4e331")
@@ -77,12 +78,24 @@ tile_set = SubResource("TileSet_qnryt")
 
 [node name="Players" type="Node2D" parent="." unique_id=2037083641]
 
-[node name="Toplobsta" parent="Players" unique_id=737537431 instance=ExtResource("3_qnryt")]
+[node name="Toplobsta" parent="Players" unique_id=737537431 groups=["player"] instance=ExtResource("3_qnryt")]
 position = Vector2(69, 141)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1891995520]
 
 [node name="Turret" parent="Enemies" unique_id=805439281 instance=ExtResource("2_0idui")]
 position = Vector2(284, 160)
+
+[node name="CameraRig" type="Node2D" parent="." unique_id=81450785]
+script = ExtResource("4_q43x7")
+min_zoom = Vector2(2, 2)
+max_zoom = Vector2(1.5, 1.5)
+separation_for_max_zoom = 400.0
+
+[node name="Camera2D" type="Camera2D" parent="CameraRig" unique_id=1032608860]
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 480
 
 [editable path="Players/Toplobsta"]

@@ -18,6 +18,7 @@ colors = PackedColorArray(4.8903403, 4.8903403, 4.8903403, 1, 1, 1, 1, 0)
 [node name="DustTrail" type="CPUParticles2D" unique_id=296660013]
 emitting = false
 amount = 40
+texture = ExtResource("1_wun8q")
 lifetime = 0.24
 emission_shape = 1
 emission_sphere_radius = 0.75
