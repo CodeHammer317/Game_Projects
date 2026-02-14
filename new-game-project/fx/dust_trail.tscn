@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctrfj6ud312s6"]
 
-[ext_resource type="Texture2D" uid="uid://c3ef01wk2nreq" path="res://assets/dust_trail.png" id="1_wun8q"]
+[ext_resource type="Texture2D" uid="uid://c3ef01wk2nreq" path="res://assets/NDS Game Files/dust_trail.png" id="1_wun8q"]
 
 [sub_resource type="Curve" id="Curve_wun8q"]
 _limits = [-0.84010494, 196.67, 0.0, 92.31]

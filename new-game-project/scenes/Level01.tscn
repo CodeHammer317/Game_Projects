@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://blqbsxq6kha6u" path="res://assets/NDS Game Files/bricktileset16x16.png" id="1_4e331"]
 [ext_resource type="PackedScene" uid="uid://uy5jppbngwcm" path="res://scenes/turret.tscn" id="2_0idui"]
-[ext_resource type="PackedScene" uid="uid://xopm4nygh5re" path="res://raven.tscn" id="3_3fcoi"]
+[ext_resource type="PackedScene" uid="uid://xopm4nygh5re" path="res://scenes/raven.tscn" id="3_3fcoi"]
 [ext_resource type="PackedScene" uid="uid://dnwy41vf8yi71" path="res://scenes/toplobsta.tscn" id="3_qnryt"]
 [ext_resource type="Script" uid="uid://b6gr3ve7fqyo0" path="res://Scripts/camera_rig.gd" id="4_q43x7"]
 
