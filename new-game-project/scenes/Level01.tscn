@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://blqbsxq6kha6u" path="res://assets/NDS Game Files/bricktileset16x16.png" id="1_4e331"]
 [ext_resource type="PackedScene" uid="uid://uy5jppbngwcm" path="res://scenes/turret.tscn" id="2_0idui"]
+[ext_resource type="PackedScene" uid="uid://xopm4nygh5re" path="res://raven.tscn" id="3_3fcoi"]
 [ext_resource type="PackedScene" uid="uid://dnwy41vf8yi71" path="res://scenes/toplobsta.tscn" id="3_qnryt"]
 [ext_resource type="Script" uid="uid://b6gr3ve7fqyo0" path="res://Scripts/camera_rig.gd" id="4_q43x7"]
 
@@ -78,8 +79,11 @@ tile_set = SubResource("TileSet_qnryt")
 
 [node name="Players" type="Node2D" parent="." unique_id=2037083641]
 
-[node name="Toplobsta" parent="Players" unique_id=737537431 groups=["player"] instance=ExtResource("3_qnryt")]
-position = Vector2(69, 141)
+[node name="Toplobsta" parent="Players" unique_id=737537431 instance=ExtResource("3_qnryt")]
+position = Vector2(155, 141)
+
+[node name="Raven" parent="Players" unique_id=1435544166 instance=ExtResource("3_3fcoi")]
+position = Vector2(189, 142)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1891995520]
 
@@ -97,5 +101,3 @@ limit_left = 0
 limit_top = 0
 limit_right = 640
 limit_bottom = 480
-
-[editable path="Players/Toplobsta"]

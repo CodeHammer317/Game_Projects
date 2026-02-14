@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://xopm4nygh5re"]
+
+[ext_resource type="Script" uid="uid://b7qkv83n8e4kc" path="res://Scripts/PlayerBase.gd" id="1_mc8m7"]
+[ext_resource type="Texture2D" uid="uid://m8v2ouqqxs1a" path="res://assets/NDS Game Files/Final Raven Sprite1.png" id="1_ywkf3"]
+[ext_resource type="Script" uid="uid://dsysw4qgnrgn3" path="res://Scripts/PlayerStats.gd" id="2_l4cms"]
+[ext_resource type="Script" uid="uid://hc8dcwmjkdut" path="res://Scripts/RavenAbilities.gd" id="3_xll0h"]
+[ext_resource type="PackedScene" uid="uid://hke5iqiyg5l4" path="res://scenes/bullet.tscn" id="4_xll0h"]
+
+[sub_resource type="Resource" id="Resource_0peat"]
+script = ExtResource("2_l4cms")
+metadata/_custom_type_script = "uid://dsysw4qgnrgn3"
+
+[sub_resource type="Resource" id="Resource_7el8c"]
+script = ExtResource("3_xll0h")
+metadata/_custom_type_script = "uid://hc8dcwmjkdut"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc8m7"]
+size = Vector2(319, 930)
+
+[node name="Raven" type="CharacterBody2D" unique_id=1435544166 groups=["player"]]
+scale = Vector2(0.04, 0.04)
+collision_layer = 2
+collision_mask = 57
+script = ExtResource("1_mc8m7")
+player_id = 2
+stats = SubResource("Resource_0peat")
+abilities = SubResource("Resource_7el8c")
+bullet_scene = ExtResource("4_xll0h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=718930382]
+position = Vector2(2.5, 5)
+shape = SubResource("RectangleShape2D_mc8m7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=841402550]
+texture = ExtResource("1_ywkf3")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=630204039]
+position = Vector2(349, 124)

@@ -74,8 +74,8 @@ animations = [{
 
 [node name="Bullet" type="Area2D" unique_id=1272780790]
 scale = Vector2(0.2, 0.2)
-collision_layer = 32
-collision_mask = 201
+collision_layer = 4
+collision_mask = 25
 script = ExtResource("1_y25gk")
 lifetime = 1.0
 

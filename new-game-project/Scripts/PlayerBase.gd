@@ -267,6 +267,8 @@ func spawn_bullet() -> void:
 	var bullet := bullet_scene.instantiate()
 
 	# MUST set position BEFORE add_child
+
+
 	bullet.global_position = muzzle.global_position
 	get_tree().current_scene.add_child(bullet)
 
