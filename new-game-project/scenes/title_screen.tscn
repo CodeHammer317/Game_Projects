@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://c67a6mjvhl1p3"]
 
 [ext_resource type="Script" uid="uid://dhk5ckblsr876" path="res://Scripts/title_screen.gd" id="1_s4lrb"]
-[ext_resource type="Texture2D" uid="uid://bhtx842v7801v" path="res://assets/NDS Game Files/GhostMatttHead.png" id="2_e54dn"]
-[ext_resource type="Texture2D" uid="uid://xa8u0e01uwoy" path="res://assets/NDS Game Files/HolyHandgrenadeOfAntioch.png" id="3_3yumr"]
+[ext_resource type="Texture2D" uid="uid://cnijke4okrqu3" path="res://assets/background1-720.png" id="2_3yumr"]
+[ext_resource type="Texture2D" uid="uid://c7xaebhxtfe1i" path="res://assets/NDS Game Files/NDS Logo.png" id="2_e54dn"]
+[ext_resource type="Texture2D" uid="uid://phaxd8knr8v8" path="res://assets/NDS Logo_transparent.png" id="3_e54dn"]
 [ext_resource type="AudioStream" uid="uid://cue8hubqgpkga" path="res://audio/enemy_hit.ogg" id="4_e54dn"]
 [ext_resource type="AudioStream" uid="uid://bi2ffe1ifyuqa" path="res://audio/freepik-gamers-united.mp3" id="4_mgrm8"]
 [ext_resource type="AudioStream" uid="uid://brjxqhfxainxi" path="res://audio/levelup.ogg" id="5_3yumr"]
@@ -28,14 +29,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s4lrb")
 
-[node name="Background" type="ColorRect" parent="." unique_id=216196097]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.07970443, 0.30820757, 0.7861042, 1)
+[node name="BackGround" type="TextureRect" parent="." unique_id=544448287]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(16.04, 12.16)
+texture = ExtResource("2_3yumr")
+expand_mode = 1
 
 [node name="Logo" type="TextureRect" parent="." unique_id=1958353727]
 layout_mode = 0
@@ -55,23 +55,12 @@ offset_bottom = 346.0
 text = "Nephilim Hunters: Rise of the Fallen"
 label_settings = SubResource("LabelSettings_s4lrb")
 
-[node name="FadeLayer" type="ColorRect" parent="." unique_id=1728477682]
-visible = false
-clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.023529412, 0, 0.96862745, 1)
-
 [node name="MenuContainer" type="VBoxContainer" parent="." unique_id=2005564726]
 layout_mode = 0
-offset_left = 303.0
-offset_top = 363.0
-offset_right = 391.0
-offset_bottom = 440.0
+offset_left = 288.0
+offset_top = 362.0
+offset_right = 380.0
+offset_bottom = 439.0
 
 [node name="StartGame" type="Label" parent="MenuContainer" unique_id=126171971]
 layout_mode = 2
@@ -87,7 +76,25 @@ text = ":Exit"
 
 [node name="Selector" type="Sprite2D" parent="MenuContainer" unique_id=145821751]
 position = Vector2(118.999985, 12.000002)
-texture = ExtResource("3_3yumr")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_e54dn")
+
+[node name="FadeLayer" type="ColorRect" parent="." unique_id=1728477682]
+clip_contents = true
+layout_mode = 0
+offset_right = 645.0
+offset_bottom = 484.0
+color = Color(0.26836964, 0.30326855, 0.3800006, 1)
+
+[node name="Logo2" type="TextureRect" parent="FadeLayer" unique_id=2028630305]
+visible = false
+layout_mode = 0
+offset_left = 193.0
+offset_top = 49.0
+offset_right = 1217.0
+offset_bottom = 1073.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_e54dn")
 
 [node name="SFX_Move" type="AudioStreamPlayer" parent="." unique_id=1608847781]
 stream = ExtResource("4_e54dn")

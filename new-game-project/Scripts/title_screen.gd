@@ -85,7 +85,7 @@ func confirm_selection() -> void:
 
 func fade_out_and_execute() -> void:
 	var t := create_tween()
-	t.tween_property(fade, "modulate:a", 1.0, 0.5)
+	t.tween_property(fade, "modulate:a", 1.0,2.5)
 	t.finished.connect(_on_fade_complete)
 
 
