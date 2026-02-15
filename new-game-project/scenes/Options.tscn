@@ -1,3 +1,62 @@
 [gd_scene format=3 uid="uid://bmxpvw37hc7s1"]
 
-[node name="Options" type="Node" unique_id=597424453]
+[ext_resource type="Texture2D" uid="uid://cnijke4okrqu3" path="res://assets/background1-720.png" id="1_ckjey"]
+[ext_resource type="Script" uid="uid://dpe0ahqc1e5ju" path="res://Options.gd" id="1_nmn1p"]
+[ext_resource type="Texture2D" uid="uid://phaxd8knr8v8" path="res://assets/NDS Logo_transparent.png" id="2_nmn1p"]
+[ext_resource type="AudioStream" uid="uid://cue8hubqgpkga" path="res://audio/enemy_hit.ogg" id="4_w238l"]
+[ext_resource type="AudioStream" uid="uid://brjxqhfxainxi" path="res://audio/levelup.ogg" id="5_s26ps"]
+[ext_resource type="AudioStream" uid="uid://hgsowjf3jqpg" path="res://audio/Funky-Gameplay_Looping.ogg" id="6_s26ps"]
+
+[node name="Options" type="Control" unique_id=32522340]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nmn1p")
+
+[node name="Background" type="TextureRect" parent="." unique_id=842672346]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(16.080002, 12.159999)
+texture = ExtResource("1_ckjey")
+expand_mode = 1
+
+[node name="MenuContainer" type="VBoxContainer" parent="." unique_id=232429992]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 194.0
+offset_right = 329.0
+offset_bottom = 271.0
+
+[node name="1Player" type="Label" parent="MenuContainer" unique_id=1762904661]
+layout_mode = 2
+text = ": 1 Player"
+
+[node name="2player" type="Label" parent="MenuContainer" unique_id=2130951061]
+layout_mode = 2
+text = ": 2 Player "
+
+[node name="Back" type="Label" parent="MenuContainer" unique_id=1546852260]
+layout_mode = 2
+text = ": Back"
+
+[node name="Selector" type="Sprite2D" parent="MenuContainer" unique_id=1004763135]
+position = Vector2(-26, 9)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_nmn1p")
+
+[node name="FadeLayer" type="ColorRect" parent="." unique_id=1029004529]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0.2607793, 0.3322952, 0.41755515, 1)
+
+[node name="SFX_Move" type="AudioStreamPlayer" parent="." unique_id=168051208]
+stream = ExtResource("4_w238l")
+
+[node name="SFX_Confirm" type="AudioStreamPlayer" parent="." unique_id=688626530]
+stream = ExtResource("5_s26ps")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=204676379]
+stream = ExtResource("6_s26ps")
+autoplay = true
+parameters/looping = true

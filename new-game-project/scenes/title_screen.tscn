@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c7xaebhxtfe1i" path="res://assets/NDS Game Files/NDS Logo.png" id="2_e54dn"]
 [ext_resource type="Texture2D" uid="uid://phaxd8knr8v8" path="res://assets/NDS Logo_transparent.png" id="3_e54dn"]
 [ext_resource type="AudioStream" uid="uid://cue8hubqgpkga" path="res://audio/enemy_hit.ogg" id="4_e54dn"]
-[ext_resource type="AudioStream" uid="uid://bi2ffe1ifyuqa" path="res://audio/freepik-gamers-united.mp3" id="4_mgrm8"]
 [ext_resource type="AudioStream" uid="uid://brjxqhfxainxi" path="res://audio/levelup.ogg" id="5_3yumr"]
+[ext_resource type="AudioStream" uid="uid://hgsowjf3jqpg" path="res://audio/Funky-Gameplay_Looping.ogg" id="7_3yumr"]
 
 [sub_resource type="SystemFont" id="SystemFont_sa3yf"]
 subpixel_positioning = 0
@@ -107,6 +107,7 @@ volume_db = 5.977
 pitch_scale = 1.12
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2043104009]
-stream = ExtResource("4_mgrm8")
-pitch_scale = 1.18
+stream = ExtResource("7_3yumr")
+pitch_scale = 0.95
 autoplay = true
+parameters/looping = true
