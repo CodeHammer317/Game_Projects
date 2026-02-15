@@ -1,8 +1,3 @@
-
-
-
-
-
 # camera_rig.gd (Godot 4.x)
 extends Node2D
 
