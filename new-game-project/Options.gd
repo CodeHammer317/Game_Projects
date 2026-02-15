@@ -19,7 +19,7 @@ var tween: Tween
 
 
 func _ready() -> void:
-	# Collect menu items (StartGame, Options, Exit)
+	# Collect menu items (1 Player, 2 Player, Back)
 	for child in menu.get_children():
 		if child is Control and child.name != "Selector":
 			menu_items.append(child)
