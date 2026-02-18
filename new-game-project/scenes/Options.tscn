@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bmxpvw37hc7s1"]
 
-[ext_resource type="Texture2D" uid="uid://cnijke4okrqu3" path="res://assets/background1-720.png" id="1_ckjey"]
-[ext_resource type="Script" uid="uid://dpe0ahqc1e5ju" path="res://Options.gd" id="1_nmn1p"]
-[ext_resource type="Texture2D" uid="uid://phaxd8knr8v8" path="res://assets/NDS Logo_transparent.png" id="2_nmn1p"]
+[ext_resource type="Texture2D" uid="uid://cnijke4okrqu3" path="res://assets/Backround_Art/background1-720.png" id="1_ckjey"]
+[ext_resource type="Script" uid="uid://dpe0ahqc1e5ju" path="res://Scripts/Options.gd" id="1_nmn1p"]
+[ext_resource type="Texture2D" uid="uid://phaxd8knr8v8" path="res://assets/Misc/NDS Logo_transparent.png" id="2_nmn1p"]
 [ext_resource type="AudioStream" uid="uid://cue8hubqgpkga" path="res://audio/enemy_hit.ogg" id="4_w238l"]
 [ext_resource type="AudioStream" uid="uid://brjxqhfxainxi" path="res://audio/levelup.ogg" id="5_s26ps"]
 [ext_resource type="AudioStream" uid="uid://hgsowjf3jqpg" path="res://audio/Funky-Gameplay_Looping.ogg" id="6_s26ps"]

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dsysw4qgnrgn3" path="res://Scripts/PlayerStats.gd" id="2_l4cms"]
 [ext_resource type="Script" uid="uid://hc8dcwmjkdut" path="res://Scripts/RavenAbilities.gd" id="3_xll0h"]
 [ext_resource type="PackedScene" uid="uid://hke5iqiyg5l4" path="res://scenes/bullet.tscn" id="4_xll0h"]
+[ext_resource type="PackedScene" uid="uid://ctrfj6ud312s6" path="res://fx/dust_trail.tscn" id="6_qr5j0"]
 
 [sub_resource type="Resource" id="Resource_0peat"]
 script = ExtResource("2_l4cms")
@@ -28,7 +29,7 @@ abilities = SubResource("Resource_7el8c")
 bullet_scene = ExtResource("4_xll0h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=718930382]
-position = Vector2(2.5, 5)
+position = Vector2(2.3841858e-07, -25.000002)
 shape = SubResource("RectangleShape2D_mc8m7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=841402550]
@@ -38,3 +39,7 @@ texture = ExtResource("1_ywkf3")
 
 [node name="Muzzle" type="Marker2D" parent="Sockets" unique_id=630204039]
 position = Vector2(349, 124)
+
+[node name="DustTrail" parent="." unique_id=296660013 instance=ExtResource("6_qr5j0")]
+position = Vector2(-50, 400)
+emitting = false

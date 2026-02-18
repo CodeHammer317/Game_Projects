@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c67a6mjvhl1p3"]
 
 [ext_resource type="Script" uid="uid://dhk5ckblsr876" path="res://Scripts/title_screen.gd" id="1_s4lrb"]
-[ext_resource type="Texture2D" uid="uid://cnijke4okrqu3" path="res://assets/background1-720.png" id="2_3yumr"]
+[ext_resource type="Texture2D" uid="uid://cpdf5t0js4b0f" path="res://assets/Backround_Art/background1-720.png" id="2_3yumr"]
 [ext_resource type="Texture2D" uid="uid://c7xaebhxtfe1i" path="res://assets/NDS Game Files/NDS Logo.png" id="2_e54dn"]
-[ext_resource type="Texture2D" uid="uid://phaxd8knr8v8" path="res://assets/NDS Logo_transparent.png" id="3_e54dn"]
+[ext_resource type="Texture2D" uid="uid://phaxd8knr8v8" path="res://assets/Misc/NDS Logo_transparent.png" id="3_e54dn"]
 [ext_resource type="AudioStream" uid="uid://cue8hubqgpkga" path="res://audio/enemy_hit.ogg" id="4_e54dn"]
 [ext_resource type="AudioStream" uid="uid://brjxqhfxainxi" path="res://audio/levelup.ogg" id="5_3yumr"]
 [ext_resource type="AudioStream" uid="uid://hgsowjf3jqpg" path="res://audio/Funky-Gameplay_Looping.ogg" id="7_3yumr"]

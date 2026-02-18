@@ -1,38 +1,25 @@
 [gd_scene format=3 uid="uid://ctrfj6ud312s6"]
 
-[ext_resource type="Texture2D" uid="uid://c3ef01wk2nreq" path="res://assets/NDS Game Files/dust_trail.png" id="1_wun8q"]
+[ext_resource type="Texture2D" uid="uid://dn4nnb84oba4w" path="res://assets/Misc/a tiny 16x16 pixel-a.png" id="1_wun8q"]
 
 [sub_resource type="Curve" id="Curve_wun8q"]
-_limits = [-0.84010494, 196.67, 0.0, 92.31]
-_data = [Vector2(0.042207792, -0.84010494), 0.0, 0.0, 0, 0, Vector2(0.49025977, 1), 0.0, 0.0, 0, 0, Vector2(0.9967532, 0.7955439), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_fq4mk"]
-_limits = [0.0, 1.0, 0.0, 14.04]
-_data = [Vector2(0, 0), 0.0, 0.31980044, 0, 1, Vector2(2.7806492, 0.8892529), 0.0, 0.0, 0, 0, Vector2(14.04, 1), 0.009836012, 0.0, 1, 0]
-point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_tmx1i"]
-colors = PackedColorArray(4.8903403, 4.8903403, 4.8903403, 1, 1, 1, 1, 0)
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.35836178, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="DustTrail" type="CPUParticles2D" unique_id=296660013]
-emitting = false
 amount = 40
 texture = ExtResource("1_wun8q")
-lifetime = 0.24
-emission_shape = 1
-emission_sphere_radius = 0.75
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 12.42
-initial_velocity_max = 37.27
-angular_velocity_max = 35.78
-angular_velocity_curve = SubResource("Curve_wun8q")
-scale_amount_min = 0.25
-scale_amount_max = 1.18
-scale_amount_curve = SubResource("Curve_fq4mk")
-color = Color(1.0039686, 1.0039686, 1.0039686, 0.99215686)
-color_initial_ramp = SubResource("Gradient_tmx1i")
+lifetime = 0.36
+explosiveness = 0.19
+emission_shape = 2
+emission_sphere_radius = 10.05
+spread = 90.59
+gravity = Vector2(0, -50)
+initial_velocity_min = 52.29
+initial_velocity_max = 52.29
+linear_accel_max = 3.92
+scale_amount_min = 0.2
+scale_amount_curve = SubResource("Curve_wun8q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=191244836]
-texture = ExtResource("1_wun8q")
+use_parent_material = true
