@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bbqdbg6ckyc4f" path="res://Scripts/AbilitySet.gd" id="3_xo6mk"]
 [ext_resource type="PackedScene" uid="uid://hke5iqiyg5l4" path="res://scenes/bullet.tscn" id="4_a8xfx"]
 [ext_resource type="PackedScene" uid="uid://ctrfj6ud312s6" path="res://fx/dust_trail.tscn" id="6_swkvq"]
+[ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Health.gd" id="7_xo6mk"]
 
 [sub_resource type="Resource" id="Resource_dqxff"]
 script = ExtResource("2_swkvq")
@@ -19,6 +20,9 @@ metadata/_custom_type_script = "uid://bbqdbg6ckyc4f"
 radius = 150.0
 height = 993.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8xfx"]
+size = Vector2(250, 850)
+
 [node name="Toplobsta" type="CharacterBody2D" unique_id=737537431 groups=["player"]]
 scale = Vector2(0.04, 0.04)
 collision_layer = 2
@@ -27,7 +31,6 @@ script = ExtResource("1_c162e")
 stats = SubResource("Resource_dqxff")
 abilities = SubResource("Resource_50nh4")
 bullet_scene = ExtResource("4_a8xfx")
-max_bullets_on_screen = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=435929958]
 position = Vector2(0, -50)
@@ -44,3 +47,14 @@ position = Vector2(475, 150)
 [node name="DustTrail" parent="." unique_id=296660013 instance=ExtResource("6_swkvq")]
 position = Vector2(-25, 425)
 emitting = false
+
+[node name="Health" type="Node" parent="." unique_id=1504423349]
+script = ExtResource("7_xo6mk")
+max_health = 10
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1483849991]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1403864790]
+position = Vector2(-25, -25.000011)
+shape = SubResource("RectangleShape2D_a8xfx")
+debug_color = Color(0.9535865, 0.12307338, 0.45308828, 0.41960785)

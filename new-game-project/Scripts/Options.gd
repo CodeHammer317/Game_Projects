@@ -91,7 +91,7 @@ func fade_out_and_execute() -> void:
 func _on_fade_complete() -> void:
 	match current_index:
 		0:
-			get_tree().change_scene_to_file("")
+			get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
 		1:
 			get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
 		2:

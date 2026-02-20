@@ -39,8 +39,8 @@ func _hit(target: Node) -> void:
 	_hit_ids[iid] = true
 
 	# Simple friend/foe filter using groups (same pattern as Bullet.gd)
-	var is_enemy := target.is_in_group("Enemies")
-	var is_player := target.is_in_group("Players")
+	var is_enemy := target.is_in_group("enemies")
+	var is_player := target.is_in_group("player")
 
 	if is_enemy and not affect_enemies:
 		return

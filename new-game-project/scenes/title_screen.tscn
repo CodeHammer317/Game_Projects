@@ -62,17 +62,23 @@ offset_top = 362.0
 offset_right = 380.0
 offset_bottom = 439.0
 
-[node name="StartGame" type="Label" parent="MenuContainer" unique_id=126171971]
+[node name="1PStart" type="Label" parent="MenuContainer" unique_id=126171971]
 layout_mode = 2
-text = ":Start Game"
+text = "1P : Start Game"
 
-[node name="Options" type="Label" parent="MenuContainer" unique_id=261136163]
+[node name="2PStart" type="Label" parent="MenuContainer" unique_id=261136163]
 layout_mode = 2
-text = ":Options"
+text = "2P : Start Game"
+
+[node name="Options" type="Label" parent="MenuContainer" unique_id=314450860]
+layout_mode = 2
+text = "Options"
+horizontal_alignment = 1
 
 [node name="Exit" type="Label" parent="MenuContainer" unique_id=1365007432]
 layout_mode = 2
-text = ":Exit"
+text = "Exit"
+horizontal_alignment = 1
 
 [node name="Selector" type="Sprite2D" parent="MenuContainer" unique_id=145821751]
 position = Vector2(118.999985, 12.000002)

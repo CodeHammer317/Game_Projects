@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmxpvw37hc7s1"]
 
-[ext_resource type="Texture2D" uid="uid://cnijke4okrqu3" path="res://assets/Backround_Art/background1-720.png" id="1_ckjey"]
+[ext_resource type="Texture2D" uid="uid://cpdf5t0js4b0f" path="res://assets/Backround_Art/background1-720.png" id="1_ckjey"]
 [ext_resource type="Script" uid="uid://dpe0ahqc1e5ju" path="res://Scripts/Options.gd" id="1_nmn1p"]
 [ext_resource type="Texture2D" uid="uid://phaxd8knr8v8" path="res://assets/Misc/NDS Logo_transparent.png" id="2_nmn1p"]
 [ext_resource type="AudioStream" uid="uid://cue8hubqgpkga" path="res://audio/enemy_hit.ogg" id="4_w238l"]
@@ -27,17 +27,18 @@ offset_top = 194.0
 offset_right = 329.0
 offset_bottom = 271.0
 
-[node name="1Player" type="Label" parent="MenuContainer" unique_id=1762904661]
+[node name="Option1" type="Label" parent="MenuContainer" unique_id=1762904661]
 layout_mode = 2
-text = ": 1 Player"
+text = "Option 1"
 
-[node name="2player" type="Label" parent="MenuContainer" unique_id=2130951061]
+[node name="Option2" type="Label" parent="MenuContainer" unique_id=2130951061]
 layout_mode = 2
-text = ": 2 Player "
+text = "Option 2"
 
 [node name="Back" type="Label" parent="MenuContainer" unique_id=1546852260]
 layout_mode = 2
-text = ": Back"
+text = " Back"
+horizontal_alignment = 1
 
 [node name="Selector" type="Sprite2D" parent="MenuContainer" unique_id=1004763135]
 position = Vector2(-26, 9)

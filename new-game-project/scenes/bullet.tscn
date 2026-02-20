@@ -94,7 +94,7 @@ shape = SubResource("CircleShape2D_y25gk")
 debug_color = Color(0, 0.6, 0.69803923, 0.827451)
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=683432776]
-target_position = Vector2(0.49028397, 52.340553)
+target_position = Vector2(0, 89.99999)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=830715852]
 position = Vector2(0.56007385, 1.1338115)

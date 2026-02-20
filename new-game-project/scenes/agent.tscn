@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bhtnut782eksh" path="res://assets/Misc/Red Effect Bullet Impact Explosion 32x32.png" id="1_b2pv0"]
 [ext_resource type="Texture2D" uid="uid://6e65kwq2il0u" path="res://assets/NES Adventure Character Agent Free Files/NES_Adv_Idle_1_strip4.png" id="1_umeaf"]
+[ext_resource type="Script" uid="uid://bye242wrcass8" path="res://EnemyBase.gd" id="1_yc63n"]
+[ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Hurtbox.gd" id="4_lug0u"]
+[ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Health.gd" id="5_dg1j7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yc63n"]
 radius = 5.5
@@ -81,7 +84,13 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Agent" type="CharacterBody2D" unique_id=1989766389]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc63n"]
+size = Vector2(11, 20)
+
+[node name="Agent" type="CharacterBody2D" unique_id=1989766389 groups=["enemies"]]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_yc63n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=707900174]
 position = Vector2(-0.5, 1.5)
@@ -90,5 +99,17 @@ shape = SubResource("CapsuleShape2D_yc63n")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1217143064]
 sprite_frames = SubResource("SpriteFrames_go1c3")
 animation = &"idle"
+autoplay = "idle"
 frame_progress = 0.7133694
 flip_h = true
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1157716180]
+script = ExtResource("4_lug0u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1326547153]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_yc63n")
+debug_color = Color(0.8692373, 0.122058906, 0.8006342, 0.41960785)
+
+[node name="Health" type="Node" parent="." unique_id=875801537]
+script = ExtResource("5_dg1j7")
