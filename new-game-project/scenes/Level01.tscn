@@ -8,9 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dnwy41vf8yi71" path="res://scenes/toplobsta.tscn" id="3_qnryt"]
 [ext_resource type="Texture2D" uid="uid://b0y6cjgujyqq0" path="res://assets/City Background/City Foreground.png" id="3_y23en"]
 [ext_resource type="Script" uid="uid://dttgnjrccs7ka" path="res://Scripts/TopLobstaAbilities.gd" id="4_5wrfj"]
-[ext_resource type="Script" uid="uid://dbaqdf8v8xu4w" path="res://Scripts/bullet.gd" id="4_6l7v6"]
 [ext_resource type="Script" uid="uid://b6gr3ve7fqyo0" path="res://Scripts/camera_rig.gd" id="4_q43x7"]
-[ext_resource type="Texture2D" uid="uid://iro3dnjqext3" path="res://assets/NDS Game Files/shock.png" id="5_5wrfj"]
 [ext_resource type="PackedScene" uid="uid://dq0f47undr8pt" path="res://scenes/agent.tscn" id="5_h8xpb"]
 [ext_resource type="PackedScene" uid="uid://cw6qpdhex527x" path="res://scenes/relic_lamp.tscn" id="12_y23en"]
 
@@ -102,93 +100,9 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 254
 sources/0 = SubResource("TileSetAtlasSource_0idui")
 
-[sub_resource type="Resource" id="Resource_6kq4m"]
+[sub_resource type="Resource" id="Resource_kjmhy"]
 script = ExtResource("4_5wrfj")
 metadata/_custom_type_script = "uid://dttgnjrccs7ka"
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l5glv"]
-light_mode = 1
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
-atlas = ExtResource("5_5wrfj")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
-atlas = ExtResource("5_5wrfj")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qncy5"]
-atlas = ExtResource("5_5wrfj")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
-atlas = ExtResource("5_5wrfj")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_26lx3"]
-atlas = ExtResource("5_5wrfj")
-region = Rect2(0, 256, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1cfmv"]
-atlas = ExtResource("5_5wrfj")
-region = Rect2(64, 256, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k76ql"]
-atlas = ExtResource("5_5wrfj")
-region = Rect2(128, 256, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_in4mv"]
-atlas = ExtResource("5_5wrfj")
-region = Rect2(192, 256, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_t4vbm"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l5glv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eoqba")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qncy5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tamys")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_26lx3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1cfmv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k76ql")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_in4mv")
-}],
-"loop": true,
-"name": &"default",
-"speed": 30.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
-
-[sub_resource type="PackedScene" id="PackedScene_6kq4m"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
-"names": PackedStringArray("Bullet", "Area2D", "scale", "collision_layer", "collision_mask", "script", "lifetime", "AnimatedSprite2D", "AnimatedSprite2D", "material", "position", "sprite_frames", "autoplay", "frame_progress", "CollisionShape2D", "CollisionShape2D", "texture_filter", "position", "rotation", "shape", "debug_color", "RayCast2D", "RayCast2D", "target_position", "VisibleOnScreenNotifier2D", "VisibleOnScreenNotifier2D", "position"),
-"node_count": 5,
-"node_ids": PackedInt32Array(1272780790, 1131123819, 1228282324, 683432776, 830715852),
-"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 5, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 0, 1073741824, 0, 8, 7, -1, 5, 9, 5, 10, 6, 11, 7, 12, 8, 13, 9, 0, 1073741825, 0, 15, 14, -1, 5, 16, 10, 17, 11, 18, 12, 19, 13, 20, 14, 0, 1073741826, 0, 22, 21, -1, 1, 23, 15, 0, 1073741827, 0, 25, 24, -1, 1, 26, 16, 0),
-"variants": [Vector2(0.2, 0.2), 4, 25, ExtResource("4_6l7v6"), 1.0, SubResource("CanvasItemMaterial_l5glv"), Vector2(-5.000001, 0), SubResource("SpriteFrames_t4vbm"), "default", 0.9156794, 1, Vector2(10.000002, 1.862646e-09), 1.5753123, SubResource("CircleShape2D_y25gk"), Color(0, 0.6, 0.69803923, 0.827451), Vector2(0.49028397, 52.340553), Vector2(0.56007385, 1.1338115)],
-"version": 3
-}
 
 [node name="Level01" type="Node2D" unique_id=1606560892 groups=["world"]]
 metadata/_edit_vertical_guides_ = [2920.0]
@@ -251,10 +165,11 @@ scale = Vector2(0.75, 0.75)
 [node name="Raven" parent="Players" unique_id=1435544166 instance=ExtResource("3_3fcoi")]
 position = Vector2(28, -5)
 
+[node name="DustTrail" parent="Players/Raven" index="3" unique_id=296660013]
+one_shot = true
+
 [node name="Toplobsta" parent="Players" unique_id=737537431 instance=ExtResource("3_qnryt")]
-position = Vector2(1, -6)
-abilities = SubResource("Resource_6kq4m")
-bullet_scene = SubResource("PackedScene_6kq4m")
+abilities = SubResource("Resource_kjmhy")
 
 [node name="CameraRig" type="Node2D" parent="." unique_id=81450785]
 script = ExtResource("4_q43x7")
@@ -276,4 +191,3 @@ position = Vector2(3065, 125)
 scale = Vector2(0.5, 0.5)
 
 [editable path="Players/Raven"]
-[editable path="Players/Toplobsta"]

@@ -15,5 +15,5 @@ class_name PlayerStats
 @export var variable_jump_cut : float = 0.55
 
 @export var dash_speed : float = 450.0
-@export var dash_time : float = 0.045
+@export var dash_time : float = 0.2
 @export var dash_cooldown : float = 0.35

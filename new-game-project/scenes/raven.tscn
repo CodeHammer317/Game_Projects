@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://xopm4nygh5re"]
 
 [ext_resource type="Script" uid="uid://b7qkv83n8e4kc" path="res://Scripts/PlayerBase.gd" id="1_mc8m7"]
-[ext_resource type="Texture2D" uid="uid://m8v2ouqqxs1a" path="res://assets/NDS Game Files/Final Raven Sprite1.png" id="1_ywkf3"]
 [ext_resource type="Script" uid="uid://dsysw4qgnrgn3" path="res://Scripts/PlayerStats.gd" id="2_l4cms"]
 [ext_resource type="Script" uid="uid://hc8dcwmjkdut" path="res://Scripts/RavenAbilities.gd" id="3_xll0h"]
 [ext_resource type="PackedScene" uid="uid://hke5iqiyg5l4" path="res://scenes/bullet.tscn" id="4_xll0h"]
+[ext_resource type="Texture2D" uid="uid://b5h05c67dsy63" path="res://assets/Final Raven Sprite1 no whip.png" id="5_qr5j0"]
 [ext_resource type="PackedScene" uid="uid://ctrfj6ud312s6" path="res://fx/dust_trail.tscn" id="6_qr5j0"]
+[ext_resource type="Texture2D" uid="uid://kgt5idsj8cfg" path="res://assets/Raven-Dash_with BG2.png" id="7_wbdas"]
+[ext_resource type="Texture2D" uid="uid://dnfg8jvcvlyyf" path="res://assets/Sprite-0001.png" id="8_echwo"]
+[ext_resource type="Texture2D" uid="uid://c75lyqnuvtld2" path="res://assets/Raven_Falling_2_betterPose.png" id="8_jiyk4"]
+[ext_resource type="Texture2D" uid="uid://dk7ovu8vxpu0w" path="res://assets/Raven-Jump.png" id="10_gbmdm"]
+[ext_resource type="Texture2D" uid="uid://cdsn30e686luu" path="res://assets/Raven-Shoot.png" id="11_hm7g0"]
 
 [sub_resource type="Resource" id="Resource_0peat"]
 script = ExtResource("2_l4cms")
@@ -16,10 +21,9 @@ script = ExtResource("3_xll0h")
 metadata/_custom_type_script = "uid://hc8dcwmjkdut"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mc8m7"]
-size = Vector2(319, 930)
+size = Vector2(16, 32)
 
 [node name="Raven" type="CharacterBody2D" unique_id=1435544166 groups=["player"]]
-scale = Vector2(0.04, 0.04)
 collision_layer = 2
 collision_mask = 57
 script = ExtResource("1_mc8m7")
@@ -29,17 +33,49 @@ abilities = SubResource("Resource_7el8c")
 bullet_scene = ExtResource("4_xll0h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=718930382]
-position = Vector2(2.3841858e-07, -25.000002)
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mc8m7")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=841402550]
-texture = ExtResource("1_ywkf3")
 
 [node name="Sockets" type="Node2D" parent="." unique_id=302973653]
 
 [node name="Muzzle" type="Marker2D" parent="Sockets" unique_id=630204039]
-position = Vector2(349, 124)
+position = Vector2(30, 3)
+
+[node name="Poses" type="Node2D" parent="." unique_id=1625693292]
+
+[node name="Dash" type="Sprite2D" parent="Poses" unique_id=1598742894]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("7_wbdas")
+
+[node name="Run" type="Sprite2D" parent="Poses" unique_id=841402550]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("5_qr5j0")
+
+[node name="Idle" type="Sprite2D" parent="Poses" unique_id=766347953]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("5_qr5j0")
+
+[node name="WallSlide" type="Sprite2D" parent="Poses" unique_id=1483524168]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_echwo")
+
+[node name="WallJump" type="Sprite2D" parent="Poses" unique_id=495765881]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("8_jiyk4")
+
+[node name="Jump" type="Sprite2D" parent="Poses" unique_id=974799163]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_gbmdm")
+
+[node name="Falling" type="Sprite2D" parent="Poses" unique_id=641125064]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("8_jiyk4")
+
+[node name="Shoot" type="Sprite2D" parent="Poses" unique_id=991002223]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_hm7g0")
+
+[node name="Attack" type="Sprite2D" parent="Poses" unique_id=643053211]
 
 [node name="DustTrail" parent="." unique_id=296660013 instance=ExtResource("6_qr5j0")]
-position = Vector2(-50, 400)
-emitting = false
+position = Vector2(0, 13)

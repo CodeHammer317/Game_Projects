@@ -8,7 +8,7 @@ class_name PlayerBase
 @export var stats: PlayerStats
 @export var abilities: AbilitySet
 @export var bullet_scene: PackedScene
-@export var fire_cooldown: float = 0.1
+@export var fire_cooldown: float = 0.2
 @export var max_bullets_on_screen: int = 3
 
 # -----------------------------
@@ -38,12 +38,23 @@ var _is_wall_sliding: bool = false
 var _on_left_wall: bool = false
 var _on_right_wall: bool = false
 var _wall_jump_lock_timer: float = 0.0
+var _is_wall_jumping: bool = false
+var _shooting: bool = false
+var _attacking: bool = false
+
 
 # -----------------------------
-# NODE REFERENCES
+# POSE NODES (Sprite2D)
 # -----------------------------
-@onready var sprite: Sprite2D = get_node_or_null("Sprite2D")
-@onready var anim: AnimationTree = get_node_or_null("AnimationTree")
+@onready var pose_idle: Sprite2D        = $Poses/Idle
+@onready var pose_run: Sprite2D         = $Poses/Run
+@onready var pose_dash: Sprite2D        = $Poses/Dash
+@onready var pose_wall_slide: Sprite2D  = $Poses/WallSlide
+@onready var pose_wall_jump: Sprite2D   = $Poses/WallJump
+@onready var pose_shoot: Sprite2D       = $Poses/Shoot
+@onready var pose_attack: Sprite2D      = $Poses/Attack
+@onready var pose_jump: Sprite2D        = $Poses/Jump
+@onready var pose_falling: Sprite2D     = $Poses/Falling
 @onready var muzzle: Marker2D = get_node_or_null("Sockets/Muzzle")
 @onready var dust_trail: CPUParticles2D = get_node_or_null("DustTrail")
 
@@ -61,7 +72,7 @@ func _physics_process(delta: float) -> void:
 
 	_update_wall_state(horizontal_input)
 	_update_facing()
-	_update_animation()
+	_update_pose_visibility()
 	_cleanup_bullet_list()
 	_cooldown_shoot(delta)
 
@@ -105,6 +116,10 @@ func _update_timers(delta: float) -> void:
 		if _wall_jump_lock_timer < 0.0:
 			_wall_jump_lock_timer = 0.0
 
+	# Clear wall jump state when grounded
+	if is_on_floor():
+		_is_wall_jumping = false
+
 # -----------------------------
 # GRAVITY
 # -----------------------------
@@ -125,9 +140,11 @@ func _start_dash() -> void:
 	_dash_timer = stats.dash_time
 	_dash_cd = stats.dash_cooldown
 
+	# Emit dust trail
 	if dust_trail:
 		dust_trail.emitting = true
 
+	# Set dash direction
 	if _facing_left:
 		_dash_dir = -1
 	else:
@@ -180,15 +197,23 @@ func _read_input() -> int:
 
 	# Melee (abilities)
 	if Input.is_action_just_pressed(prefix + "attack"):
+		_attacking = true
 		if abilities != null:
 			abilities.on_attack_pressed(self)
 
+	if Input.is_action_just_released(prefix + "attack"):
+		_attacking = false
+
 	# Shooting (abilities or direct)
-	if Input.is_action_just_pressed(prefix + "shoot"):
+	if Input.is_action_pressed(prefix + "shoot"):
+		_shooting = true
 		if abilities != null:
 			abilities.on_shoot_pressed(self)
 		else:
 			spawn_bullet()
+
+	if Input.is_action_just_released(prefix + "shoot"):
+		_shooting = false
 
 	# Dash
 	if Input.is_action_just_pressed(prefix + "dash"):
@@ -292,6 +317,7 @@ func _perform_wall_jump() -> void:
 
 	_wall_jump_lock_timer = WALL_JUMP_LOCK_TIME
 	_is_wall_sliding = false
+	_is_wall_jumping = true
 
 	if dust_trail:
 		dust_trail.emitting = false
@@ -306,30 +332,73 @@ func _update_facing() -> void:
 		elif velocity.x > 0.0:
 			_facing_left = false
 
-	if sprite != null:
-		sprite.flip_h = _facing_left
+	if has_node("Poses"):
+		for pose in $Poses.get_children():
+			if pose is Sprite2D:
+				pose.flip_h = _facing_left
 
 # -----------------------------
-# ANIMATION HOOK
+# POSE VISIBILITY SYSTEM
 # -----------------------------
-func _update_animation() -> void:
-	if anim == null:
+func _hide_all_poses() -> void:
+	if not has_node("Poses"):
+		return
+	for pose in $Poses.get_children():
+		if pose is Sprite2D:
+			pose.visible = false
+
+func _update_pose_visibility() -> void:
+	_hide_all_poses()
+
+	# Priority: attack > shoot > wall_jump > wall_slide > dash > jump > fall > run > idle
+
+	if _attacking:
+		if pose_attack:
+			pose_attack.visible = true
 		return
 
-	var moving := absf(velocity.x) > 6.0 and is_on_floor()
-	var airborne := not is_on_floor()
+	if _shooting:
+		if pose_shoot:
+			pose_shoot.visible = true
+		return
 
-	# Basic three-state setup, with wall slide treated as its own case if you wire it
-	var idle_state := not moving and not airborne and not _is_wall_sliding
-	var move_state := moving and not _is_wall_sliding
-	var air_state := airborne and not _is_wall_sliding
+	if _is_wall_jumping:
+		if pose_wall_jump:
+			pose_wall_jump.visible = true
+		return
 
-	anim.set("parameters/StateMachine/conditions/idle", idle_state)
-	anim.set("parameters/StateMachine/conditions/move", move_state)
-	anim.set("parameters/StateMachine/conditions/air", air_state)
-	# If you add a "wall" condition in your AnimationTree, you can drive it with:
-	# anim.set("parameters/StateMachine/conditions/wall", _is_wall_sliding)
+	if _is_wall_sliding:
+		if pose_wall_slide:
+			pose_wall_slide.visible = true
+		return
 
+	if _dashing:
+		if pose_dash:
+			pose_dash.visible = true
+		return
+
+	# Jumping (moving upward)
+	if velocity.y < -6.0 and not is_on_floor():
+		if pose_jump:
+			pose_jump.visible = true
+		return
+
+	# Falling (moving downward)
+	if velocity.y > 6.0 and not is_on_floor():
+		if pose_falling:
+			pose_falling.visible = true
+		return
+
+	if absf(velocity.x) > 6.0 and is_on_floor():
+		if pose_run:
+			pose_run.visible = true
+		return
+
+	if pose_idle:
+		pose_idle.visible = true
+
+		
+  
 # -----------------------------
 # BULLET CLEANUP + COOLDOWN
 # -----------------------------

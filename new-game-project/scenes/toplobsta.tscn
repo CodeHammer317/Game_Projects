@@ -33,28 +33,50 @@ abilities = SubResource("Resource_50nh4")
 bullet_scene = ExtResource("4_a8xfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=435929958]
+visible = false
 position = Vector2(0, -50)
 shape = SubResource("CapsuleShape2D_swkvq")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1230913563 groups=["player"]]
-texture = ExtResource("1_7a00j")
 
 [node name="Sockets" type="Node2D" parent="." unique_id=738888009]
 
 [node name="Muzzle" type="Marker2D" parent="Sockets" unique_id=1633145011]
 position = Vector2(475, 150)
 
-[node name="DustTrail" parent="." unique_id=296660013 instance=ExtResource("6_swkvq")]
-position = Vector2(-25, 425)
-emitting = false
-
 [node name="Health" type="Node" parent="." unique_id=1504423349]
 script = ExtResource("7_xo6mk")
 max_health = 10
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1483849991]
+visible = false
+collision_layer = 2
+collision_mask = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1403864790]
 position = Vector2(-25, -25.000011)
 shape = SubResource("RectangleShape2D_a8xfx")
 debug_color = Color(0.9535865, 0.12307338, 0.45308828, 0.41960785)
+
+[node name="Poses" type="Node2D" parent="." unique_id=784324420]
+
+[node name="Idle" type="Sprite2D" parent="Poses" unique_id=1230913563]
+texture = ExtResource("1_7a00j")
+
+[node name="Run" type="Sprite2D" parent="Poses" unique_id=1845515622]
+texture = ExtResource("1_7a00j")
+
+[node name="Attack" type="Sprite2D" parent="Poses" unique_id=1334805353]
+
+[node name="WallJump" type="Sprite2D" parent="Poses" unique_id=2116985526]
+
+[node name="WallSlide" type="Sprite2D" parent="Poses" unique_id=1813181044]
+
+[node name="Jump" type="Sprite2D" parent="Poses" unique_id=2100052168]
+
+[node name="Falling" type="Sprite2D" parent="Poses" unique_id=566397356]
+
+[node name="Shoot" type="Sprite2D" parent="Poses" unique_id=1455315786]
+
+[node name="Dash" type="Sprite2D" parent="Poses" unique_id=1084265457]
+
+[node name="DustTrail" parent="." unique_id=296660013 instance=ExtResource("6_swkvq")]
+position = Vector2(-50, 375)

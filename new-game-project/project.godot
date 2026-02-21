@@ -24,7 +24,6 @@ GameManager="*uid://lxlvhd3d0a3i"
 
 window/size/viewport_width=640
 window/size/viewport_height=480
-window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/scale=0.5
 window/stretch/scale_mode="integer"

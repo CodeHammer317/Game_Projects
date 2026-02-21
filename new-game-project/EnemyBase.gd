@@ -18,7 +18,7 @@ class_name EnemyBase
 var _facing_left: bool = true
 var _start_position: Vector2
 var _patrol_direction: int = -1
-var _velocity: Vector2 = Vector2.ZERO
+#var _velocity: Vector2 = Vector2.ZERO
 
 # -----------------------------
 # NODE REFERENCES

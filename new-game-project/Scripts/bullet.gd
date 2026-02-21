@@ -73,7 +73,7 @@ func _on_area_entered(area: Area2D) -> void:
 func _on_body_entered(body: Node) -> void:
 	_process_hit(body, global_position)
 
-func _process_hit(target: Node, hit_pos: Vector2) -> void:
+func _process_hit(target: Node, _hit_pos: Vector2) -> void:
 	if target == null:
 		return
 
