@@ -5,8 +5,9 @@
 [ext_resource type="Script" uid="uid://dsysw4qgnrgn3" path="res://Scripts/PlayerStats.gd" id="2_swkvq"]
 [ext_resource type="Script" uid="uid://bbqdbg6ckyc4f" path="res://Scripts/AbilitySet.gd" id="3_xo6mk"]
 [ext_resource type="PackedScene" uid="uid://hke5iqiyg5l4" path="res://scenes/bullet.tscn" id="4_a8xfx"]
+[ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="6_a8xfx"]
 [ext_resource type="PackedScene" uid="uid://ctrfj6ud312s6" path="res://fx/dust_trail.tscn" id="6_swkvq"]
-[ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Health.gd" id="7_xo6mk"]
+[ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="7_xo6mk"]
 
 [sub_resource type="Resource" id="Resource_dqxff"]
 script = ExtResource("2_swkvq")
@@ -18,10 +19,10 @@ metadata/_custom_type_script = "uid://bbqdbg6ckyc4f"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swkvq"]
 radius = 150.0
-height = 993.0
+height = 950.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8xfx"]
-size = Vector2(250, 850)
+size = Vector2(300, 850)
 
 [node name="Toplobsta" type="CharacterBody2D" unique_id=737537431 groups=["player"]]
 scale = Vector2(0.04, 0.04)
@@ -33,8 +34,6 @@ abilities = SubResource("Resource_50nh4")
 bullet_scene = ExtResource("4_a8xfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=435929958]
-visible = false
-position = Vector2(0, -50)
 shape = SubResource("CapsuleShape2D_swkvq")
 
 [node name="Sockets" type="Node2D" parent="." unique_id=738888009]
@@ -47,12 +46,12 @@ script = ExtResource("7_xo6mk")
 max_health = 10
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1483849991]
-visible = false
 collision_layer = 2
 collision_mask = 40
+script = ExtResource("6_a8xfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1403864790]
-position = Vector2(-25, -25.000011)
+position = Vector2(0, -25.000011)
 shape = SubResource("RectangleShape2D_a8xfx")
 debug_color = Color(0.9535865, 0.12307338, 0.45308828, 0.41960785)
 

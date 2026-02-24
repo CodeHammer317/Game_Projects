@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://0fgr33l7unx4"]
+
+[ext_resource type="Texture2D" uid="uid://bhtx842v7801v" path="res://assets/NDS Game Files/GhostMatttHead.png" id="1_gjtft"]
+
+[node name="SpritMatTt" type="Node2D" unique_id=716213362]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1991781389]
+texture = ExtResource("1_gjtft")
+flip_h = true

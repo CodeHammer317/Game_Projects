@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://dbaqdf8v8xu4w" path="res://Scripts/bullet.gd" id="1_y25gk"]
 [ext_resource type="Texture2D" uid="uid://iro3dnjqext3" path="res://assets/NDS Game Files/shock.png" id="2_y25gk"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l5glv"]
-light_mode = 1
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
 atlas = ExtResource("2_y25gk")
 region = Rect2(0, 0, 64, 64)
@@ -72,16 +69,17 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
 
-[node name="Bullet" type="Area2D" unique_id=1272780790]
+[node name="Bullet" type="Area2D" unique_id=1272780790 node_paths=PackedStringArray("instigator")]
 scale = Vector2(0.2, 0.2)
 collision_layer = 4
-collision_mask = 25
+collision_mask = 9
 script = ExtResource("1_y25gk")
 lifetime = 1.0
+max_distance = 100.0
+instigator = NodePath(".")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1131123819]
-material = SubResource("CanvasItemMaterial_l5glv")
-position = Vector2(-5.000001, 0)
+position = Vector2(-19.999998, 0)
 sprite_frames = SubResource("SpriteFrames_t4vbm")
 autoplay = "default"
 frame_progress = 0.9156794
@@ -97,4 +95,4 @@ debug_color = Color(0, 0.6, 0.69803923, 0.827451)
 target_position = Vector2(0, 89.99999)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=830715852]
-position = Vector2(0.56007385, 1.1338115)
+position = Vector2(9.999999, 1.1920929e-07)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbljocvd2bxaw"
-path="res://.godot/imported/sample.png-e927139e96245ea5d425f1da42b62e4a.ctex"
+uid="uid://by2bhxmaldexi"
+path="res://.godot/imported/SubwaySign.png-0dcb4a8de59f6ca3d1ac69053a4f3db3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sample.png"
-dest_files=["res://.godot/imported/sample.png-e927139e96245ea5d425f1da42b62e4a.ctex"]
+source_file="res://assets/SubwaySign.png"
+dest_files=["res://.godot/imported/SubwaySign.png-0dcb4a8de59f6ca3d1ac69053a4f3db3.ctex"]
 
 [params]
 

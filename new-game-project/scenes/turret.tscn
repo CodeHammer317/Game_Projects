@@ -4,28 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://dfrsgq04nsxmi" path="res://scenes/enemy_missle.tscn" id="2_c5apd"]
 [ext_resource type="Texture2D" uid="uid://cw0vcaylf6n12" path="res://assets/NDS Game Files/Turretbase.png" id="3_pp6j5"]
 [ext_resource type="Texture2D" uid="uid://dipk4o0jwgwcc" path="res://assets/NDS Game Files/TurretTop.png" id="4_6fjxm"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pp6j5"]
-radius = 8.0
-height = 36.0
+[ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="6_dirdf"]
+[ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="6_mqfwu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pp6j5"]
-radius = 130.04999
+radius = 100.02
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dirdf"]
+size = Vector2(26, 11)
 
 [node name="Turret" type="Node2D" unique_id=805439281 groups=["enemies"]]
 script = ExtResource("1_3oylf")
-detection_radius = 200.0
+detection_radius = 100.0
+fire_cooldown = 2.0
 missile_scene = ExtResource("2_c5apd")
-
-[node name="Hitbox" type="Area2D" parent="." unique_id=2002189796]
-collision_layer = 8
-collision_mask = 38
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1713529406]
-position = Vector2(0, -17)
-scale = Vector2(1.2399988, 1)
-shape = SubResource("CapsuleShape2D_pp6j5")
-debug_color = Color(0.8551941, 0.27472395, 0.624104, 0.41960785)
 
 [node name="RangeArea" type="Area2D" parent="." unique_id=625933053]
 position = Vector2(-56, 0)
@@ -35,20 +27,18 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea" unique_id=460955964]
 position = Vector2(56, -25)
 shape = SubResource("CircleShape2D_pp6j5")
-
-[node name="FireTimer" type="Timer" parent="." unique_id=458282577]
-one_shot = true
+debug_color = Color(0.7372549, 0.5921569, 0.023529412, 0.05882353)
 
 [node name="Barrel" type="Node2D" parent="." unique_id=737248358]
 
 [node name="Sprite2D" type="Sprite2D" parent="Barrel" unique_id=1306649295]
-position = Vector2(0, -39)
 texture = ExtResource("4_6fjxm")
 
 [node name="Muzzle" type="Marker2D" parent="Barrel" unique_id=292190285]
-position = Vector2(0, -44)
+position = Vector2(0, -4)
 
 [node name="Base" type="Node2D" parent="." unique_id=1573810015]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Base" unique_id=1551423329]
 position = Vector2(0, -24)
@@ -56,3 +46,19 @@ rotation = 3.1415927
 scale = Vector2(0.5956632, -0.7844952)
 texture = ExtResource("3_pp6j5")
 offset = Vector2(0, -1)
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=355144172]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("6_mqfwu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1407944902]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_dirdf")
+debug_color = Color(0.8385278, 0.12239749, 0.8806734, 0.41960785)
+
+[node name="Health" type="Node" parent="." unique_id=1988061785]
+script = ExtResource("6_dirdf")
+
+[node name="FireTimer" type="Timer" parent="." unique_id=458282577]
+one_shot = true

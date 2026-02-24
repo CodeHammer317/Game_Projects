@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brpryh4fblgvk" path="res://Scripts/control.gd" id="1_brbbq"]
 [ext_resource type="FontFile" uid="uid://b5twmp4adlvry" path="res://assets/fonts/kenvector_future_thin.ttf" id="2_1w62f"]
+[ext_resource type="FontFile" uid="uid://byny4fhghvyur" path="res://assets/fonts/vt323/VT323-Regular.ttf" id="2_qf0fw"]
 [ext_resource type="AudioStream" uid="uid://cno6ae364d127" path="res://audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3" id="5_lpubu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8n18e"]
@@ -34,7 +35,7 @@ offset_top = 37.0
 offset_right = 640.0
 offset_bottom = 422.0
 theme_override_colors/default_color = Color(0.65902996, 3.6962879, 0.24510515, 1)
-theme_override_fonts/normal_font = ExtResource("2_1w62f")
+theme_override_fonts/normal_font = ExtResource("2_qf0fw")
 theme_override_font_sizes/normal_font_size = 16
 scroll_following_visible_characters = true
 threaded = true

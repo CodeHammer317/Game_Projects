@@ -1,14 +1,7 @@
 [gd_scene format=3 uid="uid://dfrsgq04nsxmi"]
 
 [ext_resource type="Script" uid="uid://du0oejsrta4e5" path="res://Scripts/enemy_missile.gd" id="1_5gt1y"]
-[ext_resource type="Texture2D" uid="uid://nmuwm8ghxck6" path="res://assets/NDS Game Files/Sprite_Oil_Lamp32x32.png" id="2_up3oe"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_up3oe"]
-light_mode = 1
-particles_animation = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
+[ext_resource type="Texture2D" uid="uid://bcqswh4gxlmw6" path="res://assets/Misc/Rocket2.png" id="2_up3oe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_va43f"]
 radius = 8.0
@@ -40,24 +33,27 @@ collision_use_scale = true
 
 [node name="EnemyMissle" type="Area2D" unique_id=1493675337]
 scale = Vector2(0.25, 0.25)
-collision_layer = 64
-collision_mask = 7
+collision_layer = 32
+collision_mask = 3
 script = ExtResource("1_5gt1y")
 speed = 200.0
 turn_rate_deg = 120.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=826385064]
-material = SubResource("CanvasItemMaterial_up3oe")
+rotation = 1.5707964
 texture = ExtResource("2_up3oe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=103337576 groups=["enemies"]]
+position = Vector2(20, 0)
 rotation = -1.5707964
 shape = SubResource("CircleShape2D_va43f")
+debug_color = Color(0.7921569, 0.9647059, 0.09803922, 0.41960785)
 
 [node name="LifeTimer" type="Timer" parent="." unique_id=955401389]
 one_shot = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=664402552]
+position = Vector2(-16, 0)
 amount = 100
 lifetime = 1.8
 trail_lifetime = 1.63

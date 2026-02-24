@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwpccwnyd6jeq"
-path="res://.godot/imported/sprite_base_32 (1).png-cda4656215c67c2542cbd367ec692e16.ctex"
+uid="uid://c43j0bdtjc0uo"
+path="res://.godot/imported/1.png-713b6d4ace481069c5bde8c003117114.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NDS Game Files/sprite_base_32 (1).png"
-dest_files=["res://.godot/imported/sprite_base_32 (1).png-cda4656215c67c2542cbd367ec692e16.ctex"]
+source_file="res://assets/fonts/pixy/1.png"
+dest_files=["res://.godot/imported/1.png-713b6d4ace481069c5bde8c003117114.ctex"]
 
 [params]
 

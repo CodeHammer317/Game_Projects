@@ -7,7 +7,7 @@ signal damaged(info: DamageInfo)
 @export var invincible: bool = false
 @export var accepted_tags: Array[String] = []   # optional filtering
 
-func receive_damage(info: DamageInfo) -> void:
+func take_damage(info: DamageInfo) -> void:
 	if invincible:
 		return
 

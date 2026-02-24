@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://c75lyqnuvtld2" path="res://assets/Raven_Falling_2_betterPose.png" id="8_jiyk4"]
 [ext_resource type="Texture2D" uid="uid://dk7ovu8vxpu0w" path="res://assets/Raven-Jump.png" id="10_gbmdm"]
 [ext_resource type="Texture2D" uid="uid://cdsn30e686luu" path="res://assets/Raven-Shoot.png" id="11_hm7g0"]
+[ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="12_orxbs"]
+[ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="13_jmfuh"]
 
 [sub_resource type="Resource" id="Resource_0peat"]
 script = ExtResource("2_l4cms")
@@ -22,6 +24,9 @@ metadata/_custom_type_script = "uid://hc8dcwmjkdut"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mc8m7"]
 size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gotn"]
+size = Vector2(20, 33)
 
 [node name="Raven" type="CharacterBody2D" unique_id=1435544166 groups=["player"]]
 collision_layer = 2
@@ -79,3 +84,14 @@ texture = ExtResource("11_hm7g0")
 
 [node name="DustTrail" parent="." unique_id=296660013 instance=ExtResource("6_qr5j0")]
 position = Vector2(0, 13)
+
+[node name="Health" type="Node" parent="." unique_id=1089786481]
+script = ExtResource("12_orxbs")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1654629623]
+script = ExtResource("13_jmfuh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=65265764]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_0gotn")
+debug_color = Color(0.9254902, 0.24313726, 0.3254902, 0.11372549)

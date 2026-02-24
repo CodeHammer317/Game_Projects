@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvs4umnv7qws7"
-path="res://.godot/imported/preview.png-a680f03a9d5180282694828f1a21451f.ctex"
+uid="uid://ccyb16piuv5qc"
+path="res://.godot/imported/Copilot_20260221_141544.png-2456c37a9a4a98b04ecad378a6725c22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/preview.png"
-dest_files=["res://.godot/imported/preview.png-a680f03a9d5180282694828f1a21451f.ctex"]
+source_file="res://assets/Backround_Art/Copilot_20260221_141544.png"
+dest_files=["res://.godot/imported/Copilot_20260221_141544.png-2456c37a9a4a98b04ecad378a6725c22.ctex"]
 
 [params]
 
