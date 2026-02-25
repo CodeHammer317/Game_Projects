@@ -79,14 +79,14 @@ max_distance = 100.0
 instigator = NodePath(".")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1131123819]
-position = Vector2(-19.999998, 0)
+position = Vector2(-1.9073486e-06, 0)
 sprite_frames = SubResource("SpriteFrames_t4vbm")
 autoplay = "default"
 frame_progress = 0.9156794
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1228282324]
 texture_filter = 1
-position = Vector2(10.000002, 1.862646e-09)
+position = Vector2(0, -5.5879372e-09)
 rotation = 1.5753123
 shape = SubResource("CircleShape2D_y25gk")
 debug_color = Color(0, 0.6, 0.69803923, 0.827451)
@@ -95,4 +95,4 @@ debug_color = Color(0, 0.6, 0.69803923, 0.827451)
 target_position = Vector2(0, 89.99999)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=830715852]
-position = Vector2(9.999999, 1.1920929e-07)
+position = Vector2(9.536743e-07, 7.1054274e-15)
