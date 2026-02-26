@@ -1,29 +1,33 @@
-# File: scripts/EnemyMissile.gd
 extends Area2D
+class_name EnemyMissile
 
 @export var speed: float = 360.0
 @export var turn_rate_deg: float = 45.0
 @export var damage: int = 1
 @export var lifetime: float = 1.0
+@export var knockback_scale: float = 0.2
 
-var target: Node2D
+var instigator: Node
 var _velocity: Vector2 = Vector2.ZERO
 var _time_left: float = 0.0
-
+var _hit_set := {}
+var _target: Node2D = null  # homing target
 
 func _ready() -> void:
 	_time_left = lifetime
+
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)
+	if not area_entered.is_connected(_on_area_entered):
+		area_entered.connect(_on_area_entered)
 
+# Unified launch signature
+func launch(direction: Vector2, target: Node2D = null) -> void:
+	if direction == Vector2.ZERO:
+		direction = Vector2.RIGHT
 
-func launch(initial_dir: Vector2, target_node: Node2D) -> void:
-	if initial_dir == Vector2.ZERO:
-		initial_dir = Vector2.RIGHT
-
-	_velocity = initial_dir.normalized() * speed
-	target = target_node
-
+	_velocity = direction.normalized() * speed
+	_target = target
 
 func _physics_process(delta: float) -> void:
 	_time_left -= delta
@@ -32,30 +36,52 @@ func _physics_process(delta: float) -> void:
 		return
 
 	# Homing
-	if target != null and is_instance_valid(target):
-		var desired_dir = (target.global_position - global_position).normalized()
+	if _target != null and is_instance_valid(_target):
+		var desired_dir = (_target.global_position - global_position).normalized()
 		var current_dir = _velocity.normalized()
-
 		var max_turn = deg_to_rad(turn_rate_deg) * delta
-		var angle_diff = current_dir.angle_to(desired_dir)
-		angle_diff = clamp(angle_diff, -max_turn, max_turn)
+		var angle_diff = clamp(current_dir.angle_to(desired_dir), -max_turn, max_turn)
+		_velocity = current_dir.rotated(angle_diff) * speed
 
-		var new_dir = current_dir.rotated(angle_diff)
-		_velocity = new_dir * speed
-
-	# Rotate visually
 	rotation = _velocity.angle()
-
-	# Move
 	global_position += _velocity * delta
 
-
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("player"):
-		if "take_damage" in body:
-			body.call("take_damage", damage)
-		queue_free()
+	_process_hit(body)
+
+func _on_area_entered(area: Area2D) -> void:
+	_process_hit(area)
+
+func _process_hit(target_node: Node) -> void:
+	if target_node == null:
 		return
 
-	if body is StaticBody2D or body is TileMap:
-		queue_free()
+	var id = target_node.get_instance_id()
+	if _hit_set.has(id):
+		return
+	_hit_set[id] = true
+
+	var hurtbox = _find_hurtbox(target_node)
+	if hurtbox == null:
+		if target_node is StaticBody2D or target_node is TileMap:
+			queue_free()
+		return
+
+	var info = DamageInfo.new(
+		damage,
+		_velocity * knockback_scale,
+		instigator,
+		["missile"]
+	)
+
+	hurtbox.take_damage(info)
+	queue_free()
+
+func _find_hurtbox(node: Node) -> Hurtbox:
+	if node is Hurtbox:
+		return node
+	for child in node.get_children():
+		var hb = _find_hurtbox(child)
+		if hb:
+			return hb
+	return null

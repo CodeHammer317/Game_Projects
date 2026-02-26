@@ -1,108 +1,59 @@
 extends CharacterBody2D
 class_name EnemyBase
 
-# -----------------------------
-# EXPORTED SETTINGS
-# -----------------------------
-@export var max_speed: float = 60.0
 @export var gravity: float = 900.0
-@export var friction: float = 600.0
-@export var accel: float = 400.0
-
 @export var patrol_speed: float = 40.0
 @export var patrol_distance: float = 80.0
+@export var accel: float = 400.0
 
-# -----------------------------
-# INTERNAL STATE
-# -----------------------------
-var _facing_left: bool = true
 var _start_position: Vector2
 var _patrol_direction: int = -1
-#var _velocity: Vector2 = Vector2.ZERO
 
-# -----------------------------
-# NODE REFERENCES
-# -----------------------------
-@onready var sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
-@onready var health: Health = get_node_or_null("Health")
-@onready var hurtbox: Hurtbox = get_node_or_null("Hurtbox")
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health: Health = $Health
+@onready var hurtbox: Hurtbox = $Hurtbox
 
-# -----------------------------
-# READY
-# -----------------------------
 func _ready() -> void:
 	_start_position = global_position
 
-	if hurtbox != null:
-		hurtbox.connect("damaged", Callable(self, "_on_damaged"))
+	hurtbox.damaged.connect(_on_hurtbox_damaged)
+	health.damaged.connect(_on_health_damaged)
+	health.died.connect(_on_died)
 
-	if health != null:
-		health.connect("died", Callable(self, "_on_died"))
-
-# -----------------------------
-# MAIN LOOP
-# -----------------------------
 func _physics_process(delta: float) -> void:
-	_apply_gravity(delta)
-	_process_ai(delta)
-	_update_facing()
-	move_and_slide()
-
-# -----------------------------
-# GRAVITY
-# -----------------------------
-func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-# -----------------------------
-# SIMPLE PATROL AI
-# -----------------------------
-func _process_ai(delta: float) -> void:
-	# Basic left-right patrol
-	var distance_from_start := absf(global_position.x - _start_position.x)
+	_process_patrol(delta)
+	move_and_slide()
 
-	if distance_from_start >= patrol_distance:
+func _process_patrol(delta: float) -> void:
+	var dist := absf(global_position.x - _start_position.x)
+	if dist >= patrol_distance:
 		_patrol_direction *= -1
 
 	var target_speed := float(_patrol_direction) * patrol_speed
-
 	velocity.x = move_toward(velocity.x, target_speed, accel * delta)
 
-# -----------------------------
-# FACING
-# -----------------------------
-func _update_facing() -> void:
-	if velocity.x < 0.0:
-		_facing_left = true
-	elif velocity.x > 0.0:
-		_facing_left = false
+	if sprite:
+		sprite.flip_h = velocity.x < 0
 
-	if sprite != null:
-		sprite.flip_h = _facing_left
+# --- Damage Flow ---
 
-# -----------------------------
-# DAMAGE REACTION
-# -----------------------------
-func _on_damaged(info: DamageInfo) -> void:
-	# Knockback
-	velocity.x = info.knockback.x
-	velocity.y = info.knockback.y
+func _on_hurtbox_damaged(info: DamageInfo) -> void:
+	health.apply_damage(info)
 
-	# Optional: flash, play animation, sound, etc.
+func _on_health_damaged(info: DamageInfo) -> void:
+	# Knockback happens AFTER health confirmed
+	velocity += info.knockback
 	_on_hit_effects()
 
-func _on_hit_effects() -> void:
-	# Override in child classes for custom behavior
-	pass
-
-# -----------------------------
-# DEATH
-# -----------------------------
 func _on_died() -> void:
 	_on_death_effects()
 	queue_free()
 
+func _on_hit_effects() -> void:
+	pass
+
 func _on_death_effects() -> void:
-	# Override in child classes for particles, sound, loot, etc.
 	pass

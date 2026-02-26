@@ -11,30 +11,6 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("2_y25gk")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qncy5"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_26lx3"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(0, 256, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1cfmv"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(64, 256, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k76ql"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(128, 256, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_in4mv"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(192, 256, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_t4vbm"]
 animations = [{
 "frames": [{
@@ -43,24 +19,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eoqba")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qncy5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tamys")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_26lx3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1cfmv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k76ql")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_in4mv")
 }],
 "loop": true,
 "name": &"default",
@@ -72,17 +30,16 @@ animations = [{
 [node name="Bullet" type="Area2D" unique_id=1272780790 node_paths=PackedStringArray("instigator")]
 scale = Vector2(0.2, 0.2)
 collision_layer = 4
-collision_mask = 9
+collision_mask = 129
 script = ExtResource("1_y25gk")
 lifetime = 1.0
-max_distance = 100.0
 instigator = NodePath(".")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1131123819]
 position = Vector2(-1.9073486e-06, 0)
 sprite_frames = SubResource("SpriteFrames_t4vbm")
 autoplay = "default"
-frame_progress = 0.9156794
+frame_progress = 0.24650733
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1228282324]
 texture_filter = 1
@@ -96,3 +53,5 @@ target_position = Vector2(0, 89.99999)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=830715852]
 position = Vector2(9.536743e-07, 7.1054274e-15)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

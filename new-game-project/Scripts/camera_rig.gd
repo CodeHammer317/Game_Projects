@@ -18,8 +18,8 @@ extends Node2D
 
 # Zoom behavior (rubber band)
 @export var zoom_enabled: bool = true
-@export var min_zoom: Vector2 = Vector2(1.0, 1.0)     # normal zoom
-@export var max_zoom: Vector2 = Vector2(0.6, 0.6)     # further out = see more
+@export var min_zoom: Vector2 = Vector2(1.1, 1.1)     # normal zoom
+@export var max_zoom: Vector2 = Vector2(0.9, 0.9)     # further out = see more
 @export var separation_for_max_zoom: float = 800.0   # distance between players for max zoom
 @export var zoom_smoothing_enabled: bool = true
 @export var zoom_smoothing_speed: float = 6.0

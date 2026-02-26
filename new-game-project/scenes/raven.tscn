@@ -88,7 +88,9 @@ position = Vector2(0, 13)
 [node name="Health" type="Node" parent="." unique_id=1089786481]
 script = ExtResource("12_orxbs")
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=1654629623]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1654629623 groups=["player"]]
+collision_layer = 64
+collision_mask = 32
 script = ExtResource("13_jmfuh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=65265764]

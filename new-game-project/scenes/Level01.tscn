@@ -131,6 +131,7 @@ font = SubResource("SystemFont_46k34")
 metadata/_edit_vertical_guides_ = [2920.0]
 
 [node name="Scenery" type="Node2D" parent="." unique_id=621493768]
+z_index = -1
 position = Vector2(240, -131)
 scale = Vector2(0.25, 0.25)
 
@@ -231,7 +232,7 @@ position = Vector2(928, -16)
 texture = ExtResource("10_me4uh")
 
 [node name="Players" type="Node2D" parent="." unique_id=2037083641]
-position = Vector2(2410, 622)
+position = Vector2(2208, 398)
 scale = Vector2(0.75, 0.75)
 
 [node name="Raven" parent="Players" unique_id=1435544166 instance=ExtResource("3_3fcoi")]
@@ -278,5 +279,9 @@ offset_right = 1973.0
 offset_bottom = 179.0
 text = "SUBWAY CATACOMBES"
 label_settings = SubResource("LabelSettings_sra1c")
+
+[node name="Brazier3" parent="." unique_id=367543256 instance=ExtResource("9_46k34")]
+z_index = -1
+position = Vector2(2755, 303)
 
 [editable path="Players/Raven"]

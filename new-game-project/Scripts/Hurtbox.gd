@@ -15,7 +15,9 @@ func take_damage(info: DamageInfo) -> void:
 		for tag in info.tags:
 			if tag in accepted_tags:
 				emit_signal("damaged", info)
+				print("enemy hit")
 				return
 		return
 
 	emit_signal("damaged", info)
+	

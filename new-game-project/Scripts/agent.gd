@@ -12,6 +12,7 @@ func _ready() -> void:
 	health.max_health = max_health
 	hurtbox.connect("damaged", Callable(self, "_on_damaged"))
 	health.connect("died", Callable(self, "_on_died"))
+	
 
 func _physics_process(_delta: float) -> void:
 	# Simple movement: drift left
@@ -23,7 +24,9 @@ func _physics_process(_delta: float) -> void:
 # DAMAGE + DEATH
 # ---------------------------------------------------------
 func _on_damaged(damage_info: DamageInfo) -> void:
+	print("enemy hit")
 	health.apply_damage(damage_info.amount)
+	
 	flash_hit()
 
 func _on_died() -> void:
