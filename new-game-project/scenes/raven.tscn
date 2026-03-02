@@ -10,15 +10,16 @@
 [ext_resource type="Texture2D" uid="uid://dnfg8jvcvlyyf" path="res://assets/Sprite-0001.png" id="8_echwo"]
 [ext_resource type="Texture2D" uid="uid://c75lyqnuvtld2" path="res://assets/Raven_Falling_2_betterPose.png" id="8_jiyk4"]
 [ext_resource type="Texture2D" uid="uid://dk7ovu8vxpu0w" path="res://assets/Raven-Jump.png" id="10_gbmdm"]
+[ext_resource type="Texture2D" uid="uid://66kvrgwgqqei" path="res://assets/Final Raven SpriteFall.png" id="10_jmfuh"]
 [ext_resource type="Texture2D" uid="uid://cdsn30e686luu" path="res://assets/Raven-Shoot.png" id="11_hm7g0"]
 [ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="12_orxbs"]
 [ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="13_jmfuh"]
 
-[sub_resource type="Resource" id="Resource_0peat"]
+[sub_resource type="Resource" id="Resource_0gotn"]
 script = ExtResource("2_l4cms")
 metadata/_custom_type_script = "uid://dsysw4qgnrgn3"
 
-[sub_resource type="Resource" id="Resource_7el8c"]
+[sub_resource type="Resource" id="Resource_jmfuh"]
 script = ExtResource("3_xll0h")
 metadata/_custom_type_script = "uid://hc8dcwmjkdut"
 
@@ -33,8 +34,8 @@ collision_layer = 2
 collision_mask = 57
 script = ExtResource("1_mc8m7")
 player_id = 2
-stats = SubResource("Resource_0peat")
-abilities = SubResource("Resource_7el8c")
+stats = SubResource("Resource_0gotn")
+abilities = SubResource("Resource_jmfuh")
 bullet_scene = ExtResource("4_xll0h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=718930382]
@@ -73,8 +74,8 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("10_gbmdm")
 
 [node name="Falling" type="Sprite2D" parent="Poses" unique_id=641125064]
-scale = Vector2(0.04, 0.04)
-texture = ExtResource("8_jiyk4")
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_jmfuh")
 
 [node name="Shoot" type="Sprite2D" parent="Poses" unique_id=991002223]
 scale = Vector2(0.1, 0.1)
@@ -90,7 +91,7 @@ script = ExtResource("12_orxbs")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1654629623 groups=["player"]]
 collision_layer = 64
-collision_mask = 32
+collision_mask = 0
 script = ExtResource("13_jmfuh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=65265764]

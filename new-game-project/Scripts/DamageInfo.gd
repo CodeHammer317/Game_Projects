@@ -1,3 +1,4 @@
+#DamageInfo.gd
 extends RefCounted
 class_name DamageInfo
 

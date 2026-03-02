@@ -1,4 +1,3 @@
-# RavenAbilities.gd
 extends AbilitySet
 class_name RavenAbilities
 
@@ -11,17 +10,25 @@ class_name RavenAbilities
 @export var dive_velocity_y: float = 720.0
 var _dive_timer: float = 0.0
 
-func tick(_player: Node, _delta: float) -> void:
+func tick(player: Node, delta: float, other_player: Node = null) -> void:
 	if _dive_timer > 0.0:
-		_dive_timer -= _delta
+		_dive_timer -= delta
 		if _dive_timer < 0.0:
 			_dive_timer = 0.0
+
+	# Optional: implement co-op synergy effects here
+	if other_player != null:
+		# Example: increase damage if close to other player
+		var dist = player.global_position.distance_to(other_player.global_position)
+		if dist < 400.0:
+			# Some effect, e.g., boost attack damage or speed
+			pass
 
 func on_attack_pressed(player: Node) -> void:
 	if not (player is CharacterBody2D):
 		return
 
-	# Airborne: Dive-kick
+	# --- AIRBORNE: Dive Kick ---
 	if not player.is_on_floor():
 		if _dive_timer > 0.0:
 			return
@@ -30,35 +37,31 @@ func on_attack_pressed(player: Node) -> void:
 		_dive_timer = dive_cooldown
 		return
 
-	# Grounded: Heavy punch
+	# --- GROUNDED: Heavy Punch ---
 	if heavy_punch_hitbox_scene == null:
 		return
 
-	var offset := punch_offset_right
 	var sprite := player.get_node_or_null("Sprite2D")
-	var is_left := false
-	if sprite != null:
-		is_left = sprite.flip_h
-	if is_left:
+	var offset := punch_offset_right
+	if sprite != null and sprite.flip_h:
 		offset = punch_offset_left
 
 	var hb := heavy_punch_hitbox_scene.instantiate()
 	var world := player.get_tree().current_scene
 	if world == null:
 		return
-
 	world.add_child(hb)
+
 	if hb is Node2D:
 		hb.global_position = player.global_position + offset
 
 	if hb.has_method("set_owner_id"):
-		var owner_id := 2
+		var owner_id := 1
 		if "player_id" in player:
 			owner_id = player.player_id
 		hb.set_owner_id(owner_id)
 
 func on_shoot_pressed(player: Node) -> void:
-	# Let PlayerBase handle muzzle, cap, cooldown
 	if player.has_method("spawn_bullet"):
 		player.spawn_bullet()
 
@@ -71,13 +74,11 @@ func _spawn_dive_hitbox(player: CharacterBody2D) -> void:
 		return
 	world.add_child(hb)
 
-	# Place slightly below player to feel like a foot/boot hit
 	if hb is Node2D:
-		var down := Vector2(0, 10)
-		hb.global_position = player.global_position + down
+		hb.global_position = player.global_position + Vector2(0, 10)
 
 	if hb.has_method("set_owner_id"):
-		var owner_id := 2
+		var owner_id := 1
 		if "player_id" in player:
 			owner_id = player.player_id
 		hb.set_owner_id(owner_id)

@@ -70,11 +70,6 @@ text = "1P : Start Game"
 layout_mode = 2
 text = "2P : Start Game"
 
-[node name="Options" type="Label" parent="MenuContainer" unique_id=314450860]
-layout_mode = 2
-text = "Options"
-horizontal_alignment = 1
-
 [node name="Exit" type="Label" parent="MenuContainer" unique_id=1365007432]
 layout_mode = 2
 text = "Exit"
@@ -93,7 +88,6 @@ offset_bottom = 484.0
 color = Color(0.26836964, 0.30326855, 0.3800006, 1)
 
 [node name="Logo2" type="TextureRect" parent="FadeLayer" unique_id=2028630305]
-visible = false
 layout_mode = 0
 offset_left = 193.0
 offset_top = 49.0

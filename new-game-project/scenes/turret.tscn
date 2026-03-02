@@ -24,7 +24,7 @@ collision_layer = 128
 collision_mask = 0
 script = ExtResource("6_mqfwu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1407944902]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1407944902 groups=["enemies"]]
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_dirdf")
 debug_color = Color(0.8385278, 0.12239749, 0.8806734, 0.41960785)

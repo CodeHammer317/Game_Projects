@@ -19,6 +19,7 @@ config/icon="uid://phaxd8knr8v8"
 
 InputBindings="*uid://cu0qy2n5qwrud"
 GameManager="*uid://lxlvhd3d0a3i"
+PlayerManager="*uid://bj4a6wfbeitu4"
 
 [display]
 

@@ -1,24 +1,13 @@
 [gd_scene format=3 uid="uid://hke5iqiyg5l4"]
 
 [ext_resource type="Script" uid="uid://dbaqdf8v8xu4w" path="res://Scripts/bullet.gd" id="1_y25gk"]
-[ext_resource type="Texture2D" uid="uid://iro3dnjqext3" path="res://assets/NDS Game Files/shock.png" id="2_y25gk"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(64, 0, 64, 64)
+[ext_resource type="Texture2D" uid="uid://dk7kel2dwh7bw" path="res://assets/Misc/laser_green.png" id="2_y25gk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t4vbm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l5glv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eoqba")
+"texture": ExtResource("2_y25gk")
 }],
 "loop": true,
 "name": &"default",
@@ -36,7 +25,7 @@ lifetime = 1.0
 instigator = NodePath(".")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1131123819]
-position = Vector2(-1.9073486e-06, 0)
+position = Vector2(-4.7683716e-07, 0)
 sprite_frames = SubResource("SpriteFrames_t4vbm")
 autoplay = "default"
 frame_progress = 0.24650733
@@ -44,7 +33,6 @@ frame_progress = 0.24650733
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1228282324]
 texture_filter = 1
 position = Vector2(0, -5.5879372e-09)
-rotation = 1.5753123
 shape = SubResource("CircleShape2D_y25gk")
 debug_color = Color(0, 0.6, 0.69803923, 0.827451)
 
