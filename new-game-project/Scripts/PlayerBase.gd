@@ -10,7 +10,7 @@ class_name PlayerBase
 @export var bullet_scene: PackedScene
 @export var fire_cooldown: float = 0.2
 @export var max_bullets_on_screen: int = 3
-@export var player_num: int = 1
+#@export var player_num: int = 1
 
 # -----------------------------
 # WALL MOVEMENT TUNING
@@ -62,6 +62,11 @@ var input_device: int = -1
 # READY
 # -----------------------------
 func _ready() -> void:
+	if PlayerManager:
+		PlayerManager.register_player(self, player_id)
+
+	input_device = player_id
+'''func _ready() -> void:
 	# Register with PlayerManager for co-op tracking
 	if Engine.has_singleton("PlayerManager"):
 		var pm := Engine.get_singleton("PlayerManager")
@@ -70,7 +75,7 @@ func _ready() -> void:
 	if InputBindings.player_devices.has(player_num):
 		input_device = InputBindings.player_devices[player_num]
 	else:
-		input_device = -1  # fallback to keyboard
+		input_device = -1  # fallback to keyboard'''
 # -----------------------------
 # MAIN LOOP
 # -----------------------------

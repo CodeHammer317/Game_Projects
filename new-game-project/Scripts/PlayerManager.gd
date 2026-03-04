@@ -24,6 +24,8 @@ func register_player(player: Node2D, device_id: int) -> void:
 
 	players.append(player)
 	player_devices[player] = device_id
+	print("Registered:", player.name)
+	print("Total players:", players.size())
 
 	emit_signal("players_changed")
 
@@ -102,5 +104,5 @@ func update_resonance() -> void:
 # -------------------------------------------------
 # Auto-update resonance each frame
 # -------------------------------------------------
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_resonance()

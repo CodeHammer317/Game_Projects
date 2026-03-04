@@ -2305,22 +2305,19 @@ tile_map_data = PackedByteArray("AAADAAIAAAABAAEAAAAEAAMAAAADAAIAAAAEAAQAAAADAAM
 tile_set = SubResource("TileSet_cd1f0")
 
 [node name="Raven" parent="." unique_id=1435544166 instance=ExtResource("4_0p8fi")]
-position = Vector2(1698, 92)
+position = Vector2(868, 75)
 
 [node name="Toplobsta" parent="." unique_id=737537431 instance=ExtResource("5_2agis")]
-position = Vector2(1758, 101)
+position = Vector2(928, 84)
 
 [node name="CameraRig2" type="Node2D" parent="." unique_id=1071464928]
+position = Vector2(893, 80)
 script = ExtResource("6_cudg7")
-player1_path = NodePath("../Toplobsta")
-player2_path = NodePath("../Raven")
 tilemap_path = NodePath("../Node2D/TileMapLayer")
-min_zoom = Vector2(2.14, 2.14)
-max_zoom = Vector2(1.5, 1.5)
 separation_for_max_zoom = 400.0
 
 [node name="Camera2D" type="Camera2D" parent="CameraRig2" unique_id=1237480012]
-position = Vector2(-592, -40)
+position = Vector2(7, 9)
 limit_enabled = false
 limit_left = 0
 limit_top = 0

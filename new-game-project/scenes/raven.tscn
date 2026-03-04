@@ -31,7 +31,7 @@ size = Vector2(20, 33)
 
 [node name="Raven" type="CharacterBody2D" unique_id=1435544166 groups=["player"]]
 collision_layer = 2
-collision_mask = 57
+collision_mask = 41
 script = ExtResource("1_mc8m7")
 player_id = 2
 stats = SubResource("Resource_0gotn")

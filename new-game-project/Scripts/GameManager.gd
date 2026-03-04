@@ -25,7 +25,7 @@ func _ready() -> void:
 # -----------------------------
 # JOYPAD CONNECT/DISCONNECT
 # -----------------------------
-func _on_joy_connection_changed(device: int, connected: bool) -> void:
+func _on_joy_connection_changed(_device: int, _connected: bool) -> void:
 	_assign_devices()
 
 # -----------------------------
