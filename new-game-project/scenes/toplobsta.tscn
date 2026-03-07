@@ -8,6 +8,11 @@
 [ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="6_a8xfx"]
 [ext_resource type="PackedScene" uid="uid://ctrfj6ud312s6" path="res://fx/dust_trail.tscn" id="6_swkvq"]
 [ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="7_xo6mk"]
+[ext_resource type="Texture2D" uid="uid://brlmudfx2meuy" path="res://assets/NDS Game Files/Dash end pose with l.png" id="8_sdore"]
+[ext_resource type="Texture2D" uid="uid://dumy5s1wv28qa" path="res://assets/NDS Game Files/TopJump.png" id="9_jg864"]
+[ext_resource type="Texture2D" uid="uid://kgt325ybupbr" path="res://assets/NDS Game Files/TopFalling.png" id="10_wjula"]
+[ext_resource type="Texture2D" uid="uid://bcfxh760krfr3" path="res://assets/NDS Game Files/Shooting pose with l.png" id="11_d0yeo"]
+[ext_resource type="Texture2D" uid="uid://ct53hrqp4rvkf" path="res://assets/NDS Game Files/Dash pose with light.png" id="12_xgpdw"]
 
 [sub_resource type="Resource" id="Resource_dqxff"]
 script = ExtResource("2_swkvq")
@@ -61,21 +66,27 @@ debug_color = Color(0.9535865, 0.12307338, 0.45308828, 0.41960785)
 texture = ExtResource("1_7a00j")
 
 [node name="Run" type="Sprite2D" parent="Poses" unique_id=1845515622]
-texture = ExtResource("1_7a00j")
+texture = ExtResource("8_sdore")
 
 [node name="Attack" type="Sprite2D" parent="Poses" unique_id=1334805353]
 
 [node name="WallJump" type="Sprite2D" parent="Poses" unique_id=2116985526]
+texture = ExtResource("9_jg864")
 
 [node name="WallSlide" type="Sprite2D" parent="Poses" unique_id=1813181044]
+texture = ExtResource("9_jg864")
 
 [node name="Jump" type="Sprite2D" parent="Poses" unique_id=2100052168]
+texture = ExtResource("9_jg864")
 
 [node name="Falling" type="Sprite2D" parent="Poses" unique_id=566397356]
+texture = ExtResource("10_wjula")
 
 [node name="Shoot" type="Sprite2D" parent="Poses" unique_id=1455315786]
+texture = ExtResource("11_d0yeo")
 
 [node name="Dash" type="Sprite2D" parent="Poses" unique_id=1084265457]
+texture = ExtResource("12_xgpdw")
 
 [node name="DustTrail" parent="." unique_id=296660013 instance=ExtResource("6_swkvq")]
 position = Vector2(-50, 375)

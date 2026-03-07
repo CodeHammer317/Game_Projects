@@ -6,12 +6,11 @@
 
 [node name="CameraRig" type="Node2D" parent="." unique_id=1405300020]
 script = ExtResource("1_8yx50")
-player1_path = NodePath("../Players/Toplobsta")
-player2_path = NodePath("../Players/Raven")
-tilemap_path = NodePath("../Tilesets/TileMapLayer")
-min_zoom = Vector2(2.5, 2.5)
-max_zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = false
+zoom_in = Vector2(1.6, 1.6)
+zoom_out = Vector2(1.2, 1.2)
 separation_for_max_zoom = 400.0
+zoom_smoothing_enabled = false
 
 [node name="Camera2D" type="Camera2D" parent="CameraRig" unique_id=2107962290]
 position = Vector2(-592, -40)
@@ -19,4 +18,3 @@ limit_enabled = false
 limit_left = 0
 limit_top = 0
 limit_bottom = 500
-position_smoothing_enabled = true
