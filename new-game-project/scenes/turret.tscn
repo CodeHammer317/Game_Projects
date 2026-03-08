@@ -4,14 +4,46 @@
 [ext_resource type="PackedScene" uid="uid://dfrsgq04nsxmi" path="res://scenes/enemy_missle.tscn" id="2_c5apd"]
 [ext_resource type="Texture2D" uid="uid://cw0vcaylf6n12" path="res://assets/NDS Game Files/Turretbase.png" id="3_pp6j5"]
 [ext_resource type="Texture2D" uid="uid://dipk4o0jwgwcc" path="res://assets/NDS Game Files/TurretTop.png" id="4_6fjxm"]
+[ext_resource type="Texture2D" uid="uid://cfr3l2g35va1c" path="res://assets/NDS Game Files/TurretTop1.png" id="5_fp1kq"]
+[ext_resource type="Texture2D" uid="uid://cummfaukcta" path="res://assets/NDS Game Files/TurretTop2.png" id="6_726tt"]
 [ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="6_dirdf"]
 [ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="6_mqfwu"]
+[ext_resource type="Texture2D" uid="uid://bc6u6siu2ardc" path="res://assets/NDS Game Files/TurretTop3.png" id="7_8c4bs"]
+[ext_resource type="Texture2D" uid="uid://cuq1n41lc5xle" path="res://assets/NDS Game Files/TurretTop4.png" id="8_0mdkh"]
+[ext_resource type="Texture2D" uid="uid://juubq5vontet" path="res://assets/NDS Game Files/TurretTop5.png" id="9_ue5km"]
+[ext_resource type="Texture2D" uid="uid://bswqqlignuf4w" path="res://assets/NDS Game Files/TurretTop6.png" id="10_mpvso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dirdf"]
 size = Vector2(26, 11)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pp6j5"]
 radius = 100.02
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_137wx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_fp1kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_726tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8c4bs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0mdkh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ue5km")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mpvso")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Turret" type="Node2D" unique_id=805439281 groups=["enemies"]]
 script = ExtResource("1_3oylf")
@@ -42,10 +74,16 @@ debug_color = Color(0.7372549, 0.5921569, 0.023529412, 0.05882353)
 [node name="Barrel" type="Node2D" parent="." unique_id=737248358]
 
 [node name="Sprite2D" type="Sprite2D" parent="Barrel" unique_id=1306649295]
+visible = false
 texture = ExtResource("4_6fjxm")
 
 [node name="Muzzle" type="Marker2D" parent="Barrel" unique_id=292190285]
 position = Vector2(0, -4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Barrel" unique_id=1146331953]
+sprite_frames = SubResource("SpriteFrames_137wx")
+autoplay = "default"
+frame_progress = 0.12162121
 
 [node name="Base" type="Node2D" parent="." unique_id=1573810015]
 visible = false

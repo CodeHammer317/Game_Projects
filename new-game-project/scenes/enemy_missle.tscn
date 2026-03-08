@@ -36,8 +36,9 @@ scale = Vector2(0.25, 0.25)
 collision_layer = 32
 collision_mask = 3
 script = ExtResource("1_5gt1y")
-speed = 200.0
-turn_rate_deg = 120.0
+speed = 100.0
+turn_rate_deg = 300.0
+lifetime = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=826385064]
 rotation = 1.5707964

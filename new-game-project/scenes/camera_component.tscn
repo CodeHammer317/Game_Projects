@@ -1,19 +1,12 @@
 [gd_scene format=3 uid="uid://vnrnaxcu6mgs"]
 
-[ext_resource type="Script" uid="uid://b6gr3ve7fqyo0" path="res://Scripts/camera_rig.gd" id="1_8yx50"]
-
 [node name="CameraComponent" type="Node" unique_id=444357545]
 
 [node name="CameraRig" type="Node2D" parent="." unique_id=1405300020]
-script = ExtResource("1_8yx50")
-position_smoothing_enabled = false
-zoom_in = Vector2(1.6, 1.6)
-zoom_out = Vector2(1.2, 1.2)
-separation_for_max_zoom = 400.0
-zoom_smoothing_enabled = false
 
 [node name="Camera2D" type="Camera2D" parent="CameraRig" unique_id=2107962290]
 position = Vector2(-592, -40)
+zoom = Vector2(1.4, 1.4)
 limit_enabled = false
 limit_left = 0
 limit_top = 0
