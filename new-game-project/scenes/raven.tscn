@@ -31,12 +31,13 @@ size = Vector2(20, 33)
 
 [node name="Raven" type="CharacterBody2D" unique_id=1435544166 groups=["player"]]
 collision_layer = 2
-collision_mask = 41
+collision_mask = 297
 script = ExtResource("1_mc8m7")
 player_id = 2
 stats = SubResource("Resource_0gotn")
 abilities = SubResource("Resource_jmfuh")
 bullet_scene = ExtResource("4_xll0h")
+max_bullets_on_screen = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=718930382]
 position = Vector2(1, 1)
@@ -45,35 +46,42 @@ shape = SubResource("RectangleShape2D_mc8m7")
 [node name="Sockets" type="Node2D" parent="." unique_id=302973653]
 
 [node name="Muzzle" type="Marker2D" parent="Sockets" unique_id=630204039]
-position = Vector2(30, 3)
+position = Vector2(-13, 3)
 
 [node name="Poses" type="Node2D" parent="." unique_id=1625693292]
 
 [node name="Dash" type="Sprite2D" parent="Poses" unique_id=1598742894]
+visible = false
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("7_wbdas")
 
 [node name="Run" type="Sprite2D" parent="Poses" unique_id=841402550]
+visible = false
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("5_qr5j0")
 
 [node name="Idle" type="Sprite2D" parent="Poses" unique_id=766347953]
+visible = false
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("5_qr5j0")
 
 [node name="WallSlide" type="Sprite2D" parent="Poses" unique_id=1483524168]
+visible = false
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("8_echwo")
 
 [node name="WallJump" type="Sprite2D" parent="Poses" unique_id=495765881]
+visible = false
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("8_jiyk4")
 
 [node name="Jump" type="Sprite2D" parent="Poses" unique_id=974799163]
+visible = false
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("10_gbmdm")
 
 [node name="Falling" type="Sprite2D" parent="Poses" unique_id=641125064]
+visible = false
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("10_jmfuh")
 
@@ -82,6 +90,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("11_hm7g0")
 
 [node name="Attack" type="Sprite2D" parent="Poses" unique_id=643053211]
+visible = false
 
 [node name="DustTrail" parent="." unique_id=296660013 instance=ExtResource("6_qr5j0")]
 position = Vector2(0, 13)

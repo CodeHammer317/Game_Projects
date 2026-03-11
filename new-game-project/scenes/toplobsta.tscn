@@ -26,17 +26,32 @@ metadata/_custom_type_script = "uid://dttgnjrccs7ka"
 radius = 150.0
 height = 950.0
 
+[sub_resource type="GDScript" id="GDScript_sdore"]
+script/source = "# MuzzleSocket.gd
+extends Marker2D
+class_name MuzzleSocket
+
+@export var right_side_offset: Vector2 = Vector2(10, -2)
+
+func set_facing_left(facing_left: bool) -> void:
+	position = Vector2(
+		-right_side_offset.x if facing_left else right_side_offset.x,
+		right_side_offset.y
+	)
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8xfx"]
 size = Vector2(300, 850)
 
 [node name="Toplobsta" type="CharacterBody2D" unique_id=737537431 groups=["player"]]
 scale = Vector2(0.04, 0.04)
 collision_layer = 2
-collision_mask = 41
+collision_mask = 297
 script = ExtResource("1_c162e")
 stats = SubResource("Resource_dqxff")
 abilities = SubResource("Resource_50nh4")
 bullet_scene = ExtResource("4_a8xfx")
+max_bullets_on_screen = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=435929958]
 shape = SubResource("CapsuleShape2D_swkvq")
@@ -44,7 +59,8 @@ shape = SubResource("CapsuleShape2D_swkvq")
 [node name="Sockets" type="Node2D" parent="." unique_id=738888009]
 
 [node name="Muzzle" type="Marker2D" parent="Sockets" unique_id=1633145011]
-position = Vector2(475, 150)
+position = Vector2(450, -100)
+script = SubResource("GDScript_sdore")
 
 [node name="Health" type="Node" parent="." unique_id=1504423349]
 script = ExtResource("7_xo6mk")
@@ -63,29 +79,56 @@ debug_color = Color(0.9535865, 0.12307338, 0.45308828, 0.41960785)
 [node name="Poses" type="Node2D" parent="." unique_id=784324420]
 
 [node name="Idle" type="Sprite2D" parent="Poses" unique_id=1230913563]
+visible = false
+position = Vector2(25, 25)
 texture = ExtResource("1_7a00j")
 
 [node name="Run" type="Sprite2D" parent="Poses" unique_id=1845515622]
+visible = false
+position = Vector2(25, 100)
+skew = -0.073303826
 texture = ExtResource("8_sdore")
 
 [node name="Attack" type="Sprite2D" parent="Poses" unique_id=1334805353]
+visible = false
+scale = Vector2(2, 2)
 
 [node name="WallJump" type="Sprite2D" parent="Poses" unique_id=2116985526]
+visible = false
+position = Vector2(50.000004, 3.8146973e-06)
+scale = Vector2(1.2, 1.2)
+skew = -0.29496065
 texture = ExtResource("9_jg864")
+flip_h = true
 
 [node name="WallSlide" type="Sprite2D" parent="Poses" unique_id=1813181044]
+visible = false
+position = Vector2(25.000002, 25)
+scale = Vector2(1.2, 1.2)
+skew = -0.2565634
 texture = ExtResource("9_jg864")
 
 [node name="Jump" type="Sprite2D" parent="Poses" unique_id=2100052168]
+visible = false
+scale = Vector2(1.2, 1.2)
+skew = 0.26703537
 texture = ExtResource("9_jg864")
 
 [node name="Falling" type="Sprite2D" parent="Poses" unique_id=566397356]
+visible = false
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("10_wjula")
 
 [node name="Shoot" type="Sprite2D" parent="Poses" unique_id=1455315786]
+position = Vector2(99.99997, 25.000006)
+scale = Vector2(1.1, 1.1)
+skew = 0.073303826
 texture = ExtResource("11_d0yeo")
 
 [node name="Dash" type="Sprite2D" parent="Poses" unique_id=1084265457]
+visible = false
+position = Vector2(75.00001, 75.00001)
+scale = Vector2(1.3, 1.3)
 texture = ExtResource("12_xgpdw")
 
 [node name="DustTrail" parent="." unique_id=296660013 instance=ExtResource("6_swkvq")]

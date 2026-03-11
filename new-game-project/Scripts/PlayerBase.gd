@@ -25,7 +25,7 @@ const WALL_JUMP_LOCK_TIME: float = 0.12
 var _fire_timer: float = 0.0
 var _active_bullets: Array = []
 
-var _facing_left: bool = false
+var _facing_left: bool = true
 
 var _coyote_timer: float = 0.0
 var _jump_buffer_timer: float = 0.0
@@ -328,7 +328,8 @@ func _update_facing() -> void:
 	for pose in $Poses.get_children():
 		if pose is Sprite2D:
 			pose.flip_h = _facing_left
-
+	if muzzle and muzzle.has_method("set_facing_left"):
+		muzzle.set_facing_left(_facing_left)
 # -----------------------------
 # POSE VISIBILITY
 # -----------------------------
@@ -387,24 +388,22 @@ func spawn_bullet() -> void:
 		return
 
 	var bullet := bullet_scene.instantiate()
+	var dir_x := -1 if _facing_left else 1
+
 	bullet.global_position = muzzle.global_position
-	get_tree().current_scene.add_child(bullet)
+	bullet.direction_x = dir_x
 
-	var dir_x := 1
-	if _facing_left:
-		dir_x = -1
-
-	if bullet.has_method("set_direction_x"):
-		bullet.set_direction_x(dir_x)
 	if bullet.has_method("set_instigator"):
 		bullet.set_instigator(self)
+
 	if bullet.has_node("Sprite2D"):
 		var bs: Sprite2D = bullet.get_node("Sprite2D")
 		bs.flip_h = _facing_left
 
+	get_tree().current_scene.add_child(bullet)
+
 	_active_bullets.append(bullet)
 	_fire_timer = fire_cooldown
-
 # -----------------------------
 # DAMAGE
 # -----------------------------

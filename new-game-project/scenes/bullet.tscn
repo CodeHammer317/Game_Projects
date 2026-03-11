@@ -1,84 +1,49 @@
 [gd_scene format=3 uid="uid://hke5iqiyg5l4"]
 
 [ext_resource type="Script" uid="uid://dbaqdf8v8xu4w" path="res://Scripts/bullet.gd" id="1_y25gk"]
-[ext_resource type="Texture2D" uid="uid://ch10yk4iqr24d" path="res://assets/NDS Game Files/blue_Bt_animation.png" id="2_y25gk"]
+[ext_resource type="Shader" uid="uid://bx38ukm0geywg" path="res://scenes/bullet.tres" id="2_l5glv"]
+[ext_resource type="Texture2D" uid="uid://crfxk200ujs6u" path="res://assets/Misc/laser.png" id="3_l5glv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5glv"]
+shader = ExtResource("2_l5glv")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qncy5"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_26lx3"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1cfmv"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_t4vbm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_l5glv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l5glv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eoqba")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qncy5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tamys")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_26lx3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1cfmv")
+"texture": ExtResource("3_l5glv")
 }],
 "loop": true,
 "name": &"default",
-"speed": 30.0
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
+radius = 1.3333334
 
 [node name="Bullet" type="Area2D" unique_id=1272780790 node_paths=PackedStringArray("instigator")]
-scale = Vector2(0.75, 0.75)
+material = SubResource("ShaderMaterial_l5glv")
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_y25gk")
-lifetime = 1.0
+lifetime = 3.0
 instigator = NodePath(".")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1131123819]
-position = Vector2(-4.7683716e-07, 0)
-sprite_frames = SubResource("SpriteFrames_t4vbm")
+position = Vector2(-1.1368684e-13, 0)
+scale = Vector2(0.13, 0.13)
+sprite_frames = SubResource("SpriteFrames_l5glv")
 autoplay = "default"
-frame_progress = 0.27689826
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1228282324]
 texture_filter = 1
-position = Vector2(0, -5.5879372e-09)
+position = Vector2(1, 7.1054274e-15)
+rotation = 1.5707964
 shape = SubResource("CircleShape2D_y25gk")
 debug_color = Color(0, 0.6, 0.69803923, 0.827451)
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=683432776]
-target_position = Vector2(0, 89.99999)
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=830715852]
-position = Vector2(9.536743e-07, 7.1054274e-15)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=93257201]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

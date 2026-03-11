@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://vnrnaxcu6mgs"]
 
+[ext_resource type="Script" uid="uid://bo26aljb3wgl" path="res://Scripts/NoZoomRig.gd" id="1_8yx50"]
+
 [node name="CameraComponent" type="Node" unique_id=444357545]
 
 [node name="CameraRig" type="Node2D" parent="." unique_id=1405300020]
+script = ExtResource("1_8yx50")
 
 [node name="Camera2D" type="Camera2D" parent="CameraRig" unique_id=2107962290]
 position = Vector2(-592, -40)

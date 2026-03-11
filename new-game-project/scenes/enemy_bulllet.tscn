@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://fh7esddlflg3"]
+
+[ext_resource type="Texture2D" uid="uid://dk7kel2dwh7bw" path="res://assets/Misc/laser_green.png" id="1_ls7vn"]
+[ext_resource type="Script" uid="uid://dbaqdf8v8xu4w" path="res://Scripts/bullet.gd" id="1_m24iv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m24iv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m24iv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ls7vn")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemyBulllet" type="Area2D" unique_id=981836422 node_paths=PackedStringArray("instigator")]
+collision_layer = 32
+collision_mask = 65
+script = ExtResource("1_m24iv")
+instigator = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1212033115]
+texture = ExtResource("1_ls7vn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1801936152]
+position = Vector2(2, 2)
+shape = SubResource("CircleShape2D_m24iv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=36606233]
+sprite_frames = SubResource("SpriteFrames_m24iv")
+autoplay = "default"

@@ -1,7 +1,7 @@
 extends Area2D
 class_name Projectile
 
-@export var speed: float = 400.0
+@export var speed: float = 450.0
 @export var damage: int = 1
 @export var pierce_count: int = 0
 @export var lifetime: float = 1.5

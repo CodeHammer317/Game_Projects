@@ -138,6 +138,7 @@ p1_attack={
 2d_physics/layer_6="enemy_bullet"
 2d_physics/layer_7="player_hit"
 2d_physics/layer_8="enemy_hit"
+2d_physics/layer_9="triggers"
 
 [physics]
 

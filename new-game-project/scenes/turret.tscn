@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bswqqlignuf4w" path="res://assets/NDS Game Files/TurretTop6.png" id="10_mpvso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dirdf"]
-size = Vector2(26, 11)
+size = Vector2(26, 19)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pp6j5"]
 radius = 100.02
@@ -57,7 +57,7 @@ collision_mask = 0
 script = ExtResource("6_mqfwu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1407944902 groups=["enemies"]]
-position = Vector2(0, -4.5)
+position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_dirdf")
 debug_color = Color(0.8385278, 0.12239749, 0.8806734, 0.41960785)
 

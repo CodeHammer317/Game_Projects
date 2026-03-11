@@ -13,7 +13,7 @@ var player_devices: Dictionary = {}   # { player_node : device_id }
 # Co-op synergy / resonance
 # -------------------------------------------------
 var resonance_strength: float = 0.0
-var max_resonance_distance: float = 800.0
+var max_resonance_distance: float = 600.0
 
 # -------------------------------------------------
 # Player registration
@@ -82,6 +82,8 @@ func get_other_player(player: Node2D) -> Node2D:
 
 
 func update_resonance() -> void:
+	_cleanup_players()
+
 	if players.size() < 2:
 		resonance_strength = 0.0
 		return
@@ -90,19 +92,17 @@ func update_resonance() -> void:
 	var p2 = players[1]
 
 	var dist = p1.global_position.distance_to(p2.global_position)
-
-	var t = 1.0 - (dist / max_resonance_distance)
-
-	if t < 0.0:
-		t = 0.0
-	elif t > 1.0:
-		t = 1.0
-
-	resonance_strength = t
-
+	resonance_strength = clamp(1.0 , 0.0, 1.0)
 
 # -------------------------------------------------
 # Auto-update resonance each frame
 # -------------------------------------------------
 func _process(_delta: float) -> void:
+	_cleanup_players()
 	update_resonance()
+func _cleanup_players() -> void:
+	var valid_players: Array[Node2D] = []
+	for p in players:
+		if is_instance_valid(p):
+			valid_players.append(p)
+	players = valid_players
