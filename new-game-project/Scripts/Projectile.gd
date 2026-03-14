@@ -85,3 +85,4 @@ func _find_hurtbox(node: Node) -> Hurtbox:
 			return hb
 
 	return null
+	
