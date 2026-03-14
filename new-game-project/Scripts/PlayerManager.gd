@@ -91,7 +91,7 @@ func update_resonance() -> void:
 	var p1 = players[0]
 	var p2 = players[1]
 
-	var dist = p1.global_position.distance_to(p2.global_position)
+	var _dist = p1.global_position.distance_to(p2.global_position)
 	resonance_strength = clamp(1.0 , 0.0, 1.0)
 
 # -------------------------------------------------

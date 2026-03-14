@@ -6,11 +6,12 @@ class_name Projectile
 @export var pierce_count: int = 0
 @export var lifetime: float = 1.5
 @export var instigator: Node = null
+@export var knockback_force: float = 90.0
 
-var _velocity: Vector2
-var _life_timer: float
+var _velocity: Vector2 = Vector2.ZERO
+var _life_timer: float = 0.0
 var _hit_set := {}
-var _target: Node2D = null  # optional, for homing projectiles
+var _target: Node2D = null
 
 func _ready() -> void:
 	_life_timer = lifetime
@@ -20,8 +21,10 @@ func _ready() -> void:
 	if not area_entered.is_connected(_on_area_entered):
 		area_entered.connect(_on_area_entered)
 
-# Unified launch: all projectiles take dir + optional target
 func launch(direction: Vector2, target: Node2D = null) -> void:
+	if direction == Vector2.ZERO:
+		direction = Vector2.RIGHT
+
 	_velocity = direction.normalized() * speed
 	_target = target
 
@@ -43,20 +46,26 @@ func _process_hit(target: Node) -> void:
 	if target == null:
 		return
 
-	var id = target.get_instance_id()
+	var id := target.get_instance_id()
 	if _hit_set.has(id):
 		return
 	_hit_set[id] = true
 
-	var hurtbox = _find_hurtbox(target)
+	var hurtbox := _find_hurtbox(target)
 	if hurtbox == null:
 		return
 
-	var info = DamageInfo.new(
+	var safe_instigator: Node = null
+	if is_instance_valid(instigator):
+		safe_instigator = instigator
+
+	var hit_tags: Array[String] = ["projectile"]
+
+	var info := DamageInfo.new(
 		damage,
-		_velocity * 0.2,
-		instigator,
-		["projectile"]
+		_velocity.normalized() * knockback_force,
+		safe_instigator,
+		hit_tags
 	)
 
 	hurtbox.take_damage(info)
@@ -68,9 +77,11 @@ func _process_hit(target: Node) -> void:
 
 func _find_hurtbox(node: Node) -> Hurtbox:
 	if node is Hurtbox:
-		return node
+		return node as Hurtbox
+
 	for child in node.get_children():
-		var hb = _find_hurtbox(child)
-		if hb:
+		var hb := _find_hurtbox(child)
+		if hb != null:
 			return hb
+
 	return null
