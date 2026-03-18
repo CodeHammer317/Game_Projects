@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn2nf120lflml"
-path="res://.godot/imported/tileset.png-0410ee5b3fefd94333daaf1ae857b108.ctex"
+uid="uid://iro3dnjqext3"
+path="res://.godot/imported/shock.png-d5af52131d9afd87b495f3c22a36633d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NDS Game Files/living-tissue-platform-files/living-tissue-platform-files/PNG/layers/tileset.png"
-dest_files=["res://.godot/imported/tileset.png-0410ee5b3fefd94333daaf1ae857b108.ctex"]
+source_file="res://assets/fx/shock.png"
+dest_files=["res://.godot/imported/shock.png-d5af52131d9afd87b495f3c22a36633d.ctex"]
 
 [params]
 

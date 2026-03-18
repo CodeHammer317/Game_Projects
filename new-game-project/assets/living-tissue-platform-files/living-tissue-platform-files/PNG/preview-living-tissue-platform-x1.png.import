@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djxdvxsj262rv"
-path="res://.godot/imported/BOLT_0.png-9eefdd009f86153cfe05bc4432ef2a30.ctex"
+uid="uid://b534syqd04k3m"
+path="res://.godot/imported/preview-living-tissue-platform-x1.png-d6694c7ce52ae6a728473d8837e8db2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Misc/BOLT_0.png"
-dest_files=["res://.godot/imported/BOLT_0.png-9eefdd009f86153cfe05bc4432ef2a30.ctex"]
+source_file="res://assets/living-tissue-platform-files/living-tissue-platform-files/PNG/preview-living-tissue-platform-x1.png"
+dest_files=["res://.godot/imported/preview-living-tissue-platform-x1.png-d6694c7ce52ae6a728473d8837e8db2d.ctex"]
 
 [params]
 

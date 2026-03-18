@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iro3dnjqext3"
-path="res://.godot/imported/shock.png-9933e24ecdb9d46e889379324f0a6df4.ctex"
+uid="uid://php1rl0yr03x"
+path="res://.godot/imported/bakground.png-93c4e3a84a44939b03442e9460a358c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NDS Game Files/shock.png"
-dest_files=["res://.godot/imported/shock.png-9933e24ecdb9d46e889379324f0a6df4.ctex"]
+source_file="res://assets/living-tissue-platform-files/living-tissue-platform-files/PNG/layers/bakground.png"
+dest_files=["res://.godot/imported/bakground.png-93c4e3a84a44939b03442e9460a358c1.ctex"]
 
 [params]
 

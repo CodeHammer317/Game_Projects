@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3ywi6rx0jq0"
-path="res://.godot/imported/electronic-part-flat-icon-design.png-0a25a6be5a148b69e2e0e1049c696fde.ctex"
+uid="uid://gxxl1mnjjyk1"
+path="res://.godot/imported/BOLT_3.png-aab642475ad6f50ad870e684dd76cbbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NDS Game Files/electronic-part-flat-icon-design.png"
-dest_files=["res://.godot/imported/electronic-part-flat-icon-design.png-0a25a6be5a148b69e2e0e1049c696fde.ctex"]
+source_file="res://assets/fx/BOLT_3.png"
+dest_files=["res://.godot/imported/BOLT_3.png-aab642475ad6f50ad870e684dd76cbbc.ctex"]
 
 [params]
 

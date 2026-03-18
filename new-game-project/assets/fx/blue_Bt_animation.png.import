@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv23he8dyqtlv"
-path="res://.godot/imported/sprite_idle_4x_32.png-4eb26e76ea28ab5e09a0a6c968921d32.ctex"
+uid="uid://ch10yk4iqr24d"
+path="res://.godot/imported/blue_Bt_animation.png-6e61b4610a017779ea832f3b18aedabf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NDS Game Files/sprite_idle_4x_32.png"
-dest_files=["res://.godot/imported/sprite_idle_4x_32.png-4eb26e76ea28ab5e09a0a6c968921d32.ctex"]
+source_file="res://assets/fx/blue_Bt_animation.png"
+dest_files=["res://.godot/imported/blue_Bt_animation.png-6e61b4610a017779ea832f3b18aedabf.ctex"]
 
 [params]
 

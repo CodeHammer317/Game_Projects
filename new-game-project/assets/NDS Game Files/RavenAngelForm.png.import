@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7une0muscune"
-path="res://.godot/imported/BOLT_6.png-45b35b016d6625ff47c23223eb9e64de.ctex"
+uid="uid://dn8hmt6kh1u3s"
+path="res://.godot/imported/RavenAngelForm.png-91c2c00fecd7e62f11cce84f290a54b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Misc/BOLT_6.png"
-dest_files=["res://.godot/imported/BOLT_6.png-45b35b016d6625ff47c23223eb9e64de.ctex"]
+source_file="res://assets/NDS Game Files/RavenAngelForm.png"
+dest_files=["res://.godot/imported/RavenAngelForm.png-91c2c00fecd7e62f11cce84f290a54b0.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gxxl1mnjjyk1"
-path="res://.godot/imported/BOLT_3.png-5d5f13f39919f63d4502980379de0368.ctex"
+uid="uid://djxdvxsj262rv"
+path="res://.godot/imported/BOLT_0.png-25efa18a66b0538c8ceddf0e4b06b83e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Misc/BOLT_3.png"
-dest_files=["res://.godot/imported/BOLT_3.png-5d5f13f39919f63d4502980379de0368.ctex"]
+source_file="res://assets/fx/BOLT_0.png"
+dest_files=["res://.godot/imported/BOLT_0.png-25efa18a66b0538c8ceddf0e4b06b83e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://php1rl0yr03x"
-path="res://.godot/imported/bakground.png-9e6353f405633974af1b6d479f4e30be.ctex"
+uid="uid://b8hfww751v6ij"
+path="res://.godot/imported/BOLT_2.png-04b298eed1172e33ababff453c5123e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NDS Game Files/living-tissue-platform-files/living-tissue-platform-files/PNG/layers/bakground.png"
-dest_files=["res://.godot/imported/bakground.png-9e6353f405633974af1b6d479f4e30be.ctex"]
+source_file="res://assets/fx/BOLT_2.png"
+dest_files=["res://.godot/imported/BOLT_2.png-04b298eed1172e33ababff453c5123e1.ctex"]
 
 [params]
 

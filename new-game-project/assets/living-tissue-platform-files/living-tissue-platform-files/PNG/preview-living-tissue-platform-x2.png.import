@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cite4ipmouvww"
-path="res://.godot/imported/sprite_base_32.png-f0c45e08bb63f34f710d8e64aaa3756a.ctex"
+uid="uid://dmxxr55x0gkcy"
+path="res://.godot/imported/preview-living-tissue-platform-x2.png-71ee43158a0a5cbdc33ff86e69da5728.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NDS Game Files/sprite_base_32.png"
-dest_files=["res://.godot/imported/sprite_base_32.png-f0c45e08bb63f34f710d8e64aaa3756a.ctex"]
+source_file="res://assets/living-tissue-platform-files/living-tissue-platform-files/PNG/preview-living-tissue-platform-x2.png"
+dest_files=["res://.godot/imported/preview-living-tissue-platform-x2.png-71ee43158a0a5cbdc33ff86e69da5728.ctex"]
 
 [params]
 

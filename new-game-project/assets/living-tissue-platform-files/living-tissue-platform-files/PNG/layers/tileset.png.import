@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8hfww751v6ij"
-path="res://.godot/imported/BOLT_2.png-046091c3c70d722d5bcc0d7aa6788e2d.ctex"
+uid="uid://dn2nf120lflml"
+path="res://.godot/imported/tileset.png-dfb8b4a590bc12e00e0a1e89f3108d28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Misc/BOLT_2.png"
-dest_files=["res://.godot/imported/BOLT_2.png-046091c3c70d722d5bcc0d7aa6788e2d.ctex"]
+source_file="res://assets/living-tissue-platform-files/living-tissue-platform-files/PNG/layers/tileset.png"
+dest_files=["res://.godot/imported/tileset.png-dfb8b4a590bc12e00e0a1e89f3108d28.ctex"]
 
 [params]
 

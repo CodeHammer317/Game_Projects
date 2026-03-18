@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn8hmt6kh1u3s"
-path="res://.godot/imported/Screenshot 2026-01-08 221024.png-0c67fbc0469e42d85bb38e8c7846b7d3.ctex"
+uid="uid://7une0muscune"
+path="res://.godot/imported/BOLT_6.png-2f08e56e5449080a0f06964d374d8688.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NDS Game Files/Screenshot 2026-01-08 221024.png"
-dest_files=["res://.godot/imported/Screenshot 2026-01-08 221024.png-0c67fbc0469e42d85bb38e8c7846b7d3.ctex"]
+source_file="res://assets/fx/BOLT_6.png"
+dest_files=["res://.godot/imported/BOLT_6.png-2f08e56e5449080a0f06964d374d8688.ctex"]
 
 [params]
 
