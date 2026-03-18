@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://dq0f47undr8pt"]
+
+[ext_resource type="Script" uid="uid://bye242wrcass8" path="res://Scripts/EnemyBase.gd" id="1_yc63n"]
+[ext_resource type="PackedScene" uid="uid://fh7esddlflg3" path="res://scenes/enemy_bulllet.tscn" id="2_nkfwj"]
+[ext_resource type="Texture2D" uid="uid://50npawkvlmnw" path="res://assets/Misc/Sprite-0001ANIMATION.png" id="2_qeyy3"]
+[ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="4_lug0u"]
+[ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="5_dg1j7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg1j7"]
+size = Vector2(20, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc63n"]
+size = Vector2(20, 76.666664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1rli"]
+atlas = ExtResource("2_qeyy3")
+region = Rect2(0, 0, 82, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltxfo"]
+atlas = ExtResource("2_qeyy3")
+region = Rect2(82, 0, 82, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_astbk"]
+atlas = ExtResource("2_qeyy3")
+region = Rect2(164, 0, 82, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uehbo"]
+atlas = ExtResource("2_qeyy3")
+region = Rect2(246, 0, 82, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr8h1"]
+atlas = ExtResource("2_qeyy3")
+region = Rect2(328, 0, 82, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oorf8"]
+atlas = ExtResource("2_qeyy3")
+region = Rect2(410, 0, 82, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3grt"]
+atlas = ExtResource("2_qeyy3")
+region = Rect2(492, 0, 82, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6xm0"]
+atlas = ExtResource("2_qeyy3")
+region = Rect2(574, 0, 82, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agv3s"]
+atlas = ExtResource("2_qeyy3")
+region = Rect2(656, 0, 82, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gb0x"]
+atlas = ExtResource("2_qeyy3")
+region = Rect2(738, 0, 82, 103)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yyojw"]
+animations = [{
+"frames": [{
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_y1rli")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_ltxfo")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_astbk")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_uehbo")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_nr8h1")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_oorf8")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_s3grt")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_g6xm0")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_agv3s")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_1gb0x")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_y1rli")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 24.0
+}]
+
+[node name="Agent" type="CharacterBody2D" unique_id=1989766389 groups=["enemies"]]
+scale = Vector2(0.48, 0.48)
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_yc63n")
+bullet_scene = ExtResource("2_nkfwj")
+fire_range = 80.0
+use_line_of_sight = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=707900174]
+position = Vector2(0, 3.3333337)
+shape = SubResource("RectangleShape2D_dg1j7")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1157716180]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("4_lug0u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1326547153 groups=["enemies"]]
+position = Vector2(1.9868214e-07, 1.6666682)
+shape = SubResource("RectangleShape2D_yc63n")
+debug_color = Color(0.8692373, 0.122058906, 0.8006342, 0.41960785)
+
+[node name="Health" type="Node" parent="." unique_id=875801537]
+script = ExtResource("5_dg1j7")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=604521794]
+position = Vector2(0, -23.333332)
+scale = Vector2(3.3333333, 3.3333333)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=564268322]
+sprite_frames = SubResource("SpriteFrames_yyojw")
+animation = &"shoot"
+autoplay = "shoot"
+frame = 10
+frame_progress = 1.0
+offset = Vector2(20, 0)

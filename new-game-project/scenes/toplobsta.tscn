@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://b7qkv83n8e4kc" path="res://Scripts/PlayerBase.gd" id="1_c162e"]
 [ext_resource type="Script" uid="uid://dsysw4qgnrgn3" path="res://Scripts/PlayerStats.gd" id="2_swkvq"]
 [ext_resource type="Script" uid="uid://dttgnjrccs7ka" path="res://Scripts/TopLobstaAbilities.gd" id="3_a8xfx"]
-[ext_resource type="PackedScene" uid="uid://hke5iqiyg5l4" path="res://scenes/bullet.tscn" id="4_a8xfx"]
+[ext_resource type="PackedScene" uid="uid://hke5iqiyg5l4" path="res://scenes/bullet.tscn" id="4_sdore"]
 [ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="6_a8xfx"]
-[ext_resource type="PackedScene" uid="uid://ctrfj6ud312s6" path="res://fx/dust_trail.tscn" id="6_swkvq"]
+[ext_resource type="PackedScene" uid="uid://ctrfj6ud312s6" path="res://scenes/dust_trail.tscn" id="6_swkvq"]
 [ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="7_xo6mk"]
 [ext_resource type="Texture2D" uid="uid://brlmudfx2meuy" path="res://assets/NDS Game Files/Dash end pose with l.png" id="8_sdore"]
 [ext_resource type="Texture2D" uid="uid://dumy5s1wv28qa" path="res://assets/NDS Game Files/TopJump.png" id="9_jg864"]
@@ -50,8 +50,8 @@ collision_mask = 809
 script = ExtResource("1_c162e")
 stats = SubResource("Resource_dqxff")
 abilities = SubResource("Resource_50nh4")
-bullet_scene = ExtResource("4_a8xfx")
-max_bullets_on_screen = 8
+bullet_scene = ExtResource("4_sdore")
+max_bullets_on_screen = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=435929958]
 shape = SubResource("CapsuleShape2D_swkvq")
@@ -79,7 +79,6 @@ debug_color = Color(0.9535865, 0.12307338, 0.45308828, 0.41960785)
 [node name="Poses" type="Node2D" parent="." unique_id=784324420]
 
 [node name="Idle" type="Sprite2D" parent="Poses" unique_id=1230913563]
-visible = false
 position = Vector2(25, 25)
 texture = ExtResource("1_7a00j")
 
@@ -120,6 +119,7 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("10_wjula")
 
 [node name="Shoot" type="Sprite2D" parent="Poses" unique_id=1455315786]
+visible = false
 position = Vector2(99.99997, 25.000006)
 scale = Vector2(1.1, 1.1)
 skew = 0.073303826

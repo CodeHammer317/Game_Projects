@@ -189,7 +189,7 @@ func _try_fire_at_target() -> void:
 	_on_fire()
 
 func _on_fire() -> void:
-	pass
+	sprite.play("shoot")
 
 # -------------------------
 # DAMAGE FLOW

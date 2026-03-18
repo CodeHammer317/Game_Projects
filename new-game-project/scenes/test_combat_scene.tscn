@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://xopm4nygh5re" path="res://scenes/raven.tscn" id="3_0wsiq"]
 [ext_resource type="PackedScene" uid="uid://dnwy41vf8yi71" path="res://scenes/toplobsta.tscn" id="4_tot2v"]
 [ext_resource type="Script" uid="uid://dttgnjrccs7ka" path="res://Scripts/TopLobstaAbilities.gd" id="5_tot2v"]
-[ext_resource type="PackedScene" uid="uid://dq0f47undr8pt" path="res://scenes/agent.tscn" id="6_axbnv"]
+[ext_resource type="PackedScene" uid="uid://dq0f47undr8pt" path="res://enemies/agent.tscn" id="6_axbnv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvrkw"]
 texture = ExtResource("1_8xr3q")

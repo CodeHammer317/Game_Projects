@@ -6,6 +6,7 @@
 
 [node name="CameraRig" type="Node2D" parent="." unique_id=1405300020]
 script = ExtResource("1_8yx50")
+lookahead_enabled = false
 
 [node name="Camera2D" type="Camera2D" parent="CameraRig" unique_id=2107962290]
 position = Vector2(-592, -40)

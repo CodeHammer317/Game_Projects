@@ -1,13 +1,64 @@
 [gd_scene format=3 uid="uid://bxsll40afg7uo"]
 
 [ext_resource type="Script" uid="uid://brpryh4fblgvk" path="res://Scripts/control.gd" id="1_brbbq"]
-[ext_resource type="FontFile" uid="uid://b5twmp4adlvry" path="res://assets/fonts/kenvector_future_thin.ttf" id="2_1w62f"]
 [ext_resource type="FontFile" uid="uid://byny4fhghvyur" path="res://assets/fonts/vt323/VT323-Regular.ttf" id="2_qf0fw"]
+[ext_resource type="Texture2D" uid="uid://vqecqeat656m" path="res://assets/level_1_assets/Crt_Overlay_Anim/CRT_Creen_Overlay-sheet.png" id="4_qf0fw"]
 [ext_resource type="AudioStream" uid="uid://cno6ae364d127" path="res://audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3" id="5_lpubu"]
+[ext_resource type="Texture2D" uid="uid://cmk881yppipvh" path="res://assets/level_1_assets/Crt_Overlay_Anim/CRT_Creen_Overlay.png" id="5_qf0fw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjtti"]
+atlas = ExtResource("4_qf0fw")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrw2e"]
+atlas = ExtResource("4_qf0fw")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px8hp"]
+atlas = ExtResource("4_qf0fw")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86hq0"]
+atlas = ExtResource("4_qf0fw")
+region = Rect2(3072, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or18x"]
+atlas = ExtResource("4_qf0fw")
+region = Rect2(4096, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oygfj"]
+atlas = ExtResource("4_qf0fw")
+region = Rect2(5120, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o8145"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjtti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrw2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_px8hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86hq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or18x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oygfj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8n18e"]
-font = ExtResource("2_1w62f")
-font_size = 10
+font = ExtResource("2_qf0fw")
+font_size = 13
 font_color = Color(0.023529412, 1, 0.03529412, 1)
 
 [node name="Level01BriefingScreen" type="Control" unique_id=448073523]
@@ -28,12 +79,24 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect" unique_id=1800319501]
+position = Vector2(318, 248)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_o8145")
+autoplay = "default"
+
+[node name="CrtCreenOverlay" type="Sprite2D" parent="ColorRect" unique_id=546743412]
+visible = false
+position = Vector2(316, 243)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_qf0fw")
+
 [node name="TextLabel" type="RichTextLabel" parent="ColorRect" unique_id=1324623682]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 37.0
-offset_right = 640.0
-offset_bottom = 422.0
+offset_left = 114.0
+offset_top = 61.0
+offset_right = 524.0
+offset_bottom = 340.0
 theme_override_colors/default_color = Color(0.65902996, 3.6962879, 0.24510515, 1)
 theme_override_fonts/normal_font = ExtResource("2_qf0fw")
 theme_override_font_sizes/normal_font_size = 16
@@ -49,10 +112,11 @@ pitch_scale = 1.38
 
 [node name="SkipLabel" type="Label" parent="." unique_id=117919404]
 layout_mode = 0
-offset_left = 191.0
-offset_top = 451.0
-offset_right = 409.0
-offset_bottom = 464.0
+offset_left = 207.0
+offset_top = 467.0
+offset_right = 425.0
+offset_bottom = 480.0
 theme_override_colors/font_color = Color(0.023529412, 1, 0.03529412, 1)
-text = "Press \"A\" or\"spacebar\" to skip ->"
+text = "Press \"A\" or\"spacebar\" to skip "
 label_settings = SubResource("LabelSettings_8n18e")
+horizontal_alignment = 1

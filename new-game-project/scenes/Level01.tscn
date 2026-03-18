@@ -1,15 +1,77 @@
-[gd_scene format=3 uid="uid://cv2u1ma4pu3au"]
+[gd_scene format=4 uid="uid://cv2u1ma4pu3au"]
 
-[ext_resource type="PackedScene" uid="uid://uy5jppbngwcm" path="res://scenes/turret.tscn" id="2_0idui"]
-[ext_resource type="Texture2D" uid="uid://ygklrt8tkt3d" path="res://assets/parallax-industrial-pack/layers/skill-desc_0002_far-buildings.png" id="2_p3ma5"]
+[ext_resource type="Texture2D" uid="uid://d4f2dej4txxkw" path="res://assets/Misc/Coffee shop pixel ar.png" id="1_kchta"]
+[ext_resource type="PackedScene" uid="uid://uy5jppbngwcm" path="res://enemies/turret.tscn" id="2_0idui"]
+[ext_resource type="Texture2D" uid="uid://blqbsxq6kha6u" path="res://assets/NDS Game Files/bricktileset16x16.png" id="2_5wrfj"]
 [ext_resource type="PackedScene" uid="uid://xopm4nygh5re" path="res://scenes/raven.tscn" id="3_3fcoi"]
-[ext_resource type="Texture2D" uid="uid://clx24gcwhl4mf" path="res://assets/parallax-industrial-pack/layers/skill-desc_0001_buildings.png" id="3_me4uh"]
-[ext_resource type="Texture2D" uid="uid://d1wec4mhb16vx" path="res://assets/parallax-industrial-pack/layers/skill-desc_0000_foreground.png" id="4_l6rsp"]
-[ext_resource type="PackedScene" uid="uid://dnwy41vf8yi71" path="res://scenes/toplobsta.tscn" id="6_46k34"]
-[ext_resource type="Texture2D" uid="uid://clbsieurppd63" path="res://assets/City Background/Sky.png" id="6_awuq0"]
+[ext_resource type="Texture2D" uid="uid://cricupsnb0k4a" path="res://assets/Backround_Art/old_district_background.png" id="3_5wrfj"]
 [ext_resource type="AudioStream" uid="uid://c1km2um66vkbp" path="res://audio/freepik-fighters-game.mp3" id="13_h8xpb"]
-[ext_resource type="PackedScene" uid="uid://dq0f47undr8pt" path="res://scenes/agent.tscn" id="16_w3try"]
+[ext_resource type="PackedScene" uid="uid://dq0f47undr8pt" path="res://enemies/agent.tscn" id="16_w3try"]
 [ext_resource type="PackedScene" uid="uid://vnrnaxcu6mgs" path="res://scenes/camera_component.tscn" id="17_awuq0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kq4m"]
+texture = ExtResource("2_5wrfj")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+0:3/size_in_atlas = Vector2i(3, 1)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20.710999, -6.0539837, 21.348259, -5.7353535, 21.029629, 5.098091, -20.710999, 5.098091)
+
+[sub_resource type="TileSet" id="TileSet_6l7v6"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 46
+sources/0 = SubResource("TileSetAtlasSource_6kq4m")
 
 [sub_resource type="GDScript" id="GDScript_p3ma5"]
 script/source = "# AreaTransition.gd
@@ -43,64 +105,34 @@ func _deferred_change_level() -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3ma5"]
-size = Vector2(64, 130)
+size = Vector2(47, 80)
 
 [node name="Level01" type="Node2D" unique_id=1606560892 groups=["world"]]
 metadata/_edit_vertical_guides_ = [2920.0]
 
-[node name="Background" type="Node2D" parent="." unique_id=621493768]
-position = Vector2(556, 460)
-scale = Vector2(0.25, 0.25)
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=2105546187]
+scale = Vector2(0.4, 0.4)
+scroll_scale = Vector2(0.5, 0)
+scroll_offset = Vector2(-289, 72)
+repeat_size = Vector2(1536, 0)
+repeat_times = 10
 
-[node name="Sky" type="Parallax2D" parent="Background" unique_id=1275298158]
-z_index = -2
-scroll_scale = Vector2(0, 0)
-scroll_offset = Vector2(-1268, -1044)
-repeat_size = Vector2(480, 0)
-autoscroll = Vector2(50, 0)
-repeat_times = 35
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Sky" unique_id=2038246974]
-position = Vector2(-1908, -816)
-scale = Vector2(4, 4)
-texture = ExtResource("6_awuq0")
-
-[node name="Far" type="Parallax2D" parent="Background" unique_id=444355071]
-scale = Vector2(10, 10)
-scroll_scale = Vector2(0.1, 0.1)
-scroll_offset = Vector2(-1903.9999, -1099.9999)
-repeat_size = Vector2(272, 0)
-repeat_times = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Far" unique_id=1728276939]
-texture = ExtResource("2_p3ma5")
-
-[node name="Middle" type="Parallax2D" parent="Background" unique_id=1160573582]
-scale = Vector2(10, 10)
-scroll_scale = Vector2(0.5, 0.5)
-scroll_offset = Vector2(-1907.9999, -1099.9999)
-repeat_size = Vector2(272, 0)
-repeat_times = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Middle" unique_id=2124050444]
-position = Vector2(-22.80001, -0.8000122)
-texture = ExtResource("3_me4uh")
-
-[node name="Near" type="Parallax2D" parent="Background" unique_id=1589395410]
-scale = Vector2(10, 10)
-scroll_offset = Vector2(-1375.9999, -367.99997)
-repeat_size = Vector2(272, 0)
-repeat_times = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Near" unique_id=392265851]
-position = Vector2(17, -51)
-texture = ExtResource("4_l6rsp")
+[node name="OldDistrictBackground" type="Sprite2D" parent="Parallax2D" unique_id=1793556040]
+texture = ExtResource("3_5wrfj")
 
 [node name="Tilesets" type="Node2D" parent="." unique_id=725275987 groups=["world"]]
 position = Vector2(-4, 4)
 
+[node name="TileMapLayer" type="TileMapLayer" parent="Tilesets" unique_id=1225244210]
+tile_map_data = PackedByteArray("AAAAAA8AAAABAAAAAAABAA8AAAABAAAAAAACAA8AAAABAAAAAAADAA8AAAABAAAAAAAEAA8AAAABAAAAAAAFAA8AAAABAAAAAAAGAA8AAAABAAAAAAAHAA8AAAABAAAAAAAIAA8AAAABAAAAAAAJAA8AAAABAAAAAAAKAA8AAAABAAAAAAALAA8AAAABAAAAAAAMAA8AAAABAAAAAAANAA8AAAABAAAAAAAOAA8AAAABAAAAAAAPAA8AAAABAAAAAAAQAA8AAAABAAAAAAAUAA8AAAABAAAAAAAVAA8AAAABAAAAAAAWAA8AAAABAAAAAAAXAA8AAAABAAAAAAAYAA8AAAABAAAAAAAZAA8AAAABAAAAAAAaAA8AAAABAAAAAAAbAA8AAAABAAAAAAAcAA8AAAABAAAAAAAdAA8AAAABAAAAAAAeAA8AAAABAAAAAAAfAA8AAAABAAAAAAAgAA8AAAABAAAAAAAhAA8AAAABAAAAAAAiAA8AAAABAAAAAAAjAA8AAAABAAAAAAAkAA8AAAABAAAAAAAlAA8AAAABAAAAAAAmAA8AAAABAAAAAAARAA8AAAABAAAAAAASAA8AAAABAAAAAAATAA8AAAABAAAAAAAnAA8AAAABAAAAAAAoAA8AAAABAAAAAAApAA8AAAABAAAAAAAqAA8AAAABAAAAAAArAA8AAAABAAAAAAAsAA8AAAABAAAAAAAtAA8AAAABAAAAAAAuAA8AAAABAAAAAAAvAA8AAAABAAAAAAAwAA8AAAABAAAAAAAxAA8AAAABAAAAAAAyAA8AAAABAAAAAAAzAA8AAAABAAAAAAA0AA8AAAABAAAAAAA1AA8AAAABAAAAAAA2AA8AAAABAAAAAAA3AA8AAAABAAAAAAA4AA8AAAABAAAAAAA5AA8AAAABAAAAAAA6AA8AAAABAAAAAAArAA4AAAADAAEAAAArAA0AAAADAAEAAAArAAwAAAADAAEAAAArAAsAAAADAAEAAAArAAoAAAADAAEAAAArAAkAAAADAAAAAAAmAA4AAAADAAEAAAAmAA0AAAADAAEAAAAmAAwAAAADAAEAAAAmAAsAAAADAAEAAAAmAAoAAAADAAEAAAAmAAkAAAADAAEAAAAmAAgAAAADAAEAAAAmAAcAAAADAAEAAAAmAAYAAAADAAAAAAATAA0AAAAAAAMAAAAWAAsAAAAAAAMAAAAaAAkAAAAAAAMAAAAfAAcAAAAAAAMAAAAjAAUAAAAAAAMAAAA=")
+tile_set = SubResource("TileSet_6l7v6")
+
+[node name="CoffeeShopPixelAr" type="Sprite2D" parent="Tilesets" unique_id=1808096037]
+position = Vector2(69, 197)
+texture = ExtResource("1_kchta")
+
 [node name="Players" type="Node2D" parent="." unique_id=2037083641]
-position = Vector2(154, 306)
+position = Vector2(130, 222)
 scale = Vector2(0.75, 0.75)
 
 [node name="Raven" parent="Players" unique_id=1435544166 instance=ExtResource("3_3fcoi")]
@@ -108,30 +140,40 @@ scale = Vector2(0.75, 0.75)
 [node name="DustTrail" parent="Players/Raven" index="3" unique_id=296660013]
 one_shot = true
 
-[node name="Toplobsta" parent="Players" unique_id=737537431 instance=ExtResource("6_46k34")]
-position = Vector2(-1.3333333, -5.333333)
-
 [node name="Enemies" type="Node2D" parent="." unique_id=1891995520]
 position = Vector2(1615, 17)
 
 [node name="Turret" parent="Enemies" unique_id=805439281 instance=ExtResource("2_0idui")]
-position = Vector2(-1185, 284)
+position = Vector2(-578, 187)
+
+[node name="Turret2" parent="Enemies" unique_id=871346976 instance=ExtResource("2_0idui")]
+position = Vector2(-329, 203)
 
 [node name="Agent" parent="Enemies" unique_id=1989766389 instance=ExtResource("16_w3try")]
-position = Vector2(-1375, 287)
+position = Vector2(-1183, 155.99998)
+
+[node name="Agent2" parent="Enemies" unique_id=1022373437 instance=ExtResource("16_w3try")]
+position = Vector2(-1276, 155)
+
+[node name="Agent3" parent="Enemies" unique_id=699511150 instance=ExtResource("16_w3try")]
+position = Vector2(-1033, 155.00002)
+
+[node name="Agent4" parent="Enemies" unique_id=1691813462 instance=ExtResource("16_w3try")]
+position = Vector2(-1218, 156)
+
+[node name="Agent5" parent="Enemies" unique_id=1742858428 instance=ExtResource("16_w3try")]
+position = Vector2(-1144, 157)
 
 [node name="CameraComponent" parent="." unique_id=444357545 instance=ExtResource("17_awuq0")]
 
 [node name="CameraRig" parent="CameraComponent" index="0" unique_id=1405300020]
 player_1_path = NodePath("../../Players/Raven")
-player_2_path = NodePath("../../Players/Toplobsta")
+lookahead_distance = 200.0
 
 [node name="Camera2D" parent="CameraComponent/CameraRig" index="0" unique_id=2107962290]
-position = Vector2(-265, 146)
+position = Vector2(0, 0)
 limit_enabled = true
-limit_left = 6
-limit_right = 1600
-limit_bottom = 450
+limit_top = -100
 limit_smoothed = true
 position_smoothing_enabled = true
 
@@ -149,7 +191,7 @@ script = SubResource("GDScript_p3ma5")
 next_level_path = "uid://bs7m31nucachl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTransition" unique_id=1467214520]
-position = Vector2(1540, 258)
+position = Vector2(739, 97)
 shape = SubResource("RectangleShape2D_p3ma5")
 debug_color = Color(0.7593132, 0.4511851, 0.11755838, 0.41960785)
 

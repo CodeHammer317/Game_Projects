@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfrsgq04nsxmi"]
 
 [ext_resource type="Script" uid="uid://du0oejsrta4e5" path="res://Scripts/enemy_missile.gd" id="1_5gt1y"]
-[ext_resource type="Texture2D" uid="uid://bcqswh4gxlmw6" path="res://assets/Misc/Rocket2.png" id="2_up3oe"]
+[ext_resource type="Texture2D" uid="uid://cmsof07lqupp7" path="res://assets/Misc/Rocket3.png" id="2_up3oe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_va43f"]
 radius = 8.0
@@ -34,7 +34,7 @@ collision_use_scale = true
 [node name="EnemyMissle" type="Area2D" unique_id=1493675337]
 scale = Vector2(0.25, 0.25)
 collision_layer = 32
-collision_mask = 3
+collision_mask = 65
 script = ExtResource("1_5gt1y")
 speed = 100.0
 turn_rate_deg = 300.0

@@ -25,7 +25,7 @@ const WALL_JUMP_LOCK_TIME: float = 0.12
 var _fire_timer: float = 0.0
 var _active_bullets: Array = []
 
-var _facing_left: bool = true
+var _facing_left: bool = false
 
 var _coyote_timer: float = 0.0
 var _jump_buffer_timer: float = 0.0

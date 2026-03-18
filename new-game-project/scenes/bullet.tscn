@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://hke5iqiyg5l4"]
 
 [ext_resource type="Script" uid="uid://dbaqdf8v8xu4w" path="res://Scripts/bullet.gd" id="1_y25gk"]
-[ext_resource type="Shader" uid="uid://bx38ukm0geywg" path="res://scenes/bullet.tres" id="2_l5glv"]
-[ext_resource type="Texture2D" uid="uid://crfxk200ujs6u" path="res://assets/Misc/laser.png" id="3_l5glv"]
+[ext_resource type="Texture2D" uid="uid://bpsddvyfs4pgr" path="res://assets/Misc/laser.png" id="3_l5glv"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5glv"]
-shader = ExtResource("2_l5glv")
+[sub_resource type="AtlasTexture" id="AtlasTexture_y25gk"]
+atlas = ExtResource("3_l5glv")
+region = Rect2(0, 0, 91, 62)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l5glv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_l5glv")
+"texture": SubResource("AtlasTexture_y25gk")
 }],
 "loop": true,
 "name": &"default",
@@ -22,7 +22,7 @@ animations = [{
 radius = 1.3333334
 
 [node name="Bullet" type="Area2D" unique_id=1272780790 node_paths=PackedStringArray("instigator")]
-material = SubResource("ShaderMaterial_l5glv")
+scale = Vector2(0.1, 0.1)
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_y25gk")
@@ -45,5 +45,8 @@ debug_color = Color(0, 0.6, 0.69803923, 0.827451)
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=830715852]
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=93257201]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2073245895]
+texture = ExtResource("3_l5glv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

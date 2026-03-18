@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ctrfj6ud312s6"]
+
+[ext_resource type="Texture2D" uid="uid://bh47axurkkcx0" path="res://assets/Misc/dust_trail.png" id="1_wun8q"]
+
+[sub_resource type="Curve" id="Curve_wun8q"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.35836178, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="DustTrail" type="CPUParticles2D" unique_id=296660013]
+emitting = false
+amount = 40
+texture = ExtResource("1_wun8q")
+lifetime = 0.1
+explosiveness = 0.19
+emission_shape = 2
+emission_sphere_radius = 5.44
+spread = 90.59
+gravity = Vector2(0, -50)
+initial_velocity_min = 16.25
+initial_velocity_max = 52.29
+scale_amount_min = 0.0
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_wun8q")
+hue_variation_max = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=191244836]
