@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://uy5jppbngwcm"]
 
-[ext_resource type="Script" uid="uid://ctnjdbsrcy4xl" path="res://Scripts/turret.gd" id="1_3oylf"]
-[ext_resource type="PackedScene" uid="uid://dfrsgq04nsxmi" path="res://scenes/enemy_missle.tscn" id="2_c5apd"]
 [ext_resource type="Texture2D" uid="uid://cw0vcaylf6n12" path="res://assets/NDS Game Files/Turretbase.png" id="3_pp6j5"]
 [ext_resource type="Texture2D" uid="uid://dipk4o0jwgwcc" path="res://assets/NDS Game Files/TurretTop.png" id="4_6fjxm"]
 [ext_resource type="Texture2D" uid="uid://cfr3l2g35va1c" path="res://assets/NDS Game Files/TurretTop1.png" id="5_fp1kq"]
@@ -46,15 +44,13 @@ animations = [{
 }]
 
 [node name="Turret" type="Node2D" unique_id=805439281 groups=["enemies"]]
-script = ExtResource("1_3oylf")
-detection_radius = 100.0
-fire_cooldown = 2.0
-missile_scene = ExtResource("2_c5apd")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=355144172]
 collision_layer = 128
-collision_mask = 0
+collision_mask = 6
 script = ExtResource("6_mqfwu")
+health_path = NodePath("../Health")
+team = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1407944902 groups=["enemies"]]
 position = Vector2(0, -6.5)

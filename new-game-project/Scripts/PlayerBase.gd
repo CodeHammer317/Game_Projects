@@ -387,20 +387,21 @@ func spawn_bullet() -> void:
 	if muzzle == null or bullet_scene == null:
 		return
 
-	var bullet := bullet_scene.instantiate()
-	var dir_x := -1 if _facing_left else 1
+	var bullet = bullet_scene.instantiate()
+	if bullet == null:
+		return
 
 	bullet.global_position = muzzle.global_position
-	bullet.direction_x = dir_x
 
-	if bullet.has_method("set_instigator"):
-		bullet.set_instigator(self)
-
-	if bullet.has_node("Sprite2D"):
-		var bs: Sprite2D = bullet.get_node("Sprite2D")
-		bs.flip_h = _facing_left
+	var dir := Vector2.LEFT if _facing_left else Vector2.RIGHT
 
 	get_tree().current_scene.add_child(bullet)
+
+	if bullet is Projectile:
+		bullet.team = 1
+		bullet.launch(dir, null, self)
+	elif bullet.has_method("launch"):
+		bullet.launch(dir)
 
 	_active_bullets.append(bullet)
 	_fire_timer = fire_cooldown

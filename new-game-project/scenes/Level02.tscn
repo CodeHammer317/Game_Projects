@@ -2294,33 +2294,32 @@ sources/2 = SubResource("TileSetAtlasSource_ctn6i")
 [node name="Far" type="Parallax2D" parent="Backgrounds" unique_id=1058487515]
 z_index = -2
 scroll_scale = Vector2(0.5, 0.5)
-scroll_offset = Vector2(-515, 5)
+scroll_offset = Vector2(-3, 5)
 repeat_size = Vector2(747, 0)
 repeat_times = 12
 
 [node name="SubwayBackground" type="Sprite2D" parent="Backgrounds/Far" unique_id=223874085]
-position = Vector2(212.00002, 165)
 texture = ExtResource("1_dlhnw")
+centered = false
 
 [node name="Mid" type="Parallax2D" parent="Backgrounds" unique_id=1782637810]
 scale = Vector2(0.395, 0.395)
 scroll_scale = Vector2(0.75, 1)
-scroll_offset = Vector2(424, 148)
 
 [node name="SubwayBackground" type="Sprite2D" parent="Backgrounds/Mid" unique_id=2028061729]
-position = Vector2(-339.24042, 346.8354)
+position = Vector2(-5.0632906, 296.2025)
 texture = ExtResource("9_ockcw")
+centered = false
 flip_h = true
 
 [node name="Near" type="Parallax2D" parent="Backgrounds" unique_id=586714539]
 z_index = -2
-scroll_scale = Vector2(0.5, 0.5)
-scroll_offset = Vector2(-510, 5)
 repeat_size = Vector2(747, 0)
 repeat_times = 12
 
 [node name="Empty" type="Sprite2D" parent="Backgrounds/Near" unique_id=865276977]
 position = Vector2(212.00002, 165)
+centered = false
 
 [node name="Tilemaps" type="Node2D" parent="." unique_id=737467527]
 position = Vector2(-37, -32)

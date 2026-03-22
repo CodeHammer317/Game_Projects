@@ -94,7 +94,7 @@ animations = [{
 }]
 
 [node name="Agent" type="CharacterBody2D" unique_id=1989766389 groups=["enemies"]]
-scale = Vector2(0.48, 0.48)
+scale = Vector2(0.5, 0.5)
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_yc63n")
@@ -110,6 +110,8 @@ shape = SubResource("RectangleShape2D_dg1j7")
 collision_layer = 128
 collision_mask = 0
 script = ExtResource("4_lug0u")
+health_path = NodePath("../Health")
+team = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1326547153 groups=["enemies"]]
 position = Vector2(1.9868214e-07, 1.6666682)

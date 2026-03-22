@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://cv2u1ma4pu3au"]
 
 [ext_resource type="Texture2D" uid="uid://d4f2dej4txxkw" path="res://assets/Misc/Coffee shop pixel ar.png" id="1_kchta"]
-[ext_resource type="PackedScene" uid="uid://uy5jppbngwcm" path="res://enemies/turret.tscn" id="2_0idui"]
 [ext_resource type="Texture2D" uid="uid://blqbsxq6kha6u" path="res://assets/NDS Game Files/bricktileset16x16.png" id="2_5wrfj"]
 [ext_resource type="PackedScene" uid="uid://xopm4nygh5re" path="res://scenes/raven.tscn" id="3_3fcoi"]
 [ext_resource type="Texture2D" uid="uid://cricupsnb0k4a" path="res://assets/Backround_Art/old_district_background.png" id="3_5wrfj"]
 [ext_resource type="Texture2D" uid="uid://dcr166n7p4o6y" path="res://assets/NDS Game Files/main_lev_buildA.png" id="3_c787t"]
 [ext_resource type="Texture2D" uid="uid://ddsojxjqrpyal" path="res://assets/NDS Game Files/main_lev_buildB.png" id="4_kjmhy"]
+[ext_resource type="PackedScene" uid="uid://dbcb2ot1xge3l" path="res://enemies/drone_enemy.tscn" id="9_kjmhy"]
 [ext_resource type="AudioStream" uid="uid://c1km2um66vkbp" path="res://audio/freepik-fighters-game.mp3" id="13_h8xpb"]
 [ext_resource type="PackedScene" uid="uid://dq0f47undr8pt" path="res://enemies/agent.tscn" id="16_w3try"]
 [ext_resource type="PackedScene" uid="uid://vnrnaxcu6mgs" path="res://scenes/camera_component.tscn" id="17_awuq0"]
@@ -2134,8 +2134,8 @@ metadata/_edit_vertical_guides_ = [2920.0]
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=2105546187]
 scale = Vector2(0.4, 0.4)
-scroll_scale = Vector2(0.5, 0)
-scroll_offset = Vector2(-289, 75)
+scroll_scale = Vector2(0.2, 0)
+scroll_offset = Vector2(23.99997, 115)
 repeat_size = Vector2(1536, 0)
 repeat_times = 10
 
@@ -2166,12 +2166,6 @@ one_shot = true
 [node name="Enemies" type="Node2D" parent="." unique_id=1891995520]
 position = Vector2(1615, 17)
 
-[node name="Turret" parent="Enemies" unique_id=805439281 instance=ExtResource("2_0idui")]
-position = Vector2(-52, 175)
-
-[node name="Turret2" parent="Enemies" unique_id=871346976 instance=ExtResource("2_0idui")]
-position = Vector2(-899, 217)
-
 [node name="Agent" parent="Enemies" unique_id=1989766389 instance=ExtResource("16_w3try")]
 position = Vector2(-706, 199.99998)
 
@@ -2186,6 +2180,18 @@ position = Vector2(-741, 200)
 
 [node name="Agent5" parent="Enemies" unique_id=1742858428 instance=ExtResource("16_w3try")]
 position = Vector2(-667, 201)
+
+[node name="DroneEnemy" parent="Enemies" unique_id=612358177 instance=ExtResource("9_kjmhy")]
+position = Vector2(-203, 194)
+
+[node name="DroneEnemy2" parent="Enemies" unique_id=1052150436 instance=ExtResource("9_kjmhy")]
+position = Vector2(-1314, 199)
+
+[node name="DroneEnemy3" parent="Enemies" unique_id=1782091227 instance=ExtResource("9_kjmhy")]
+position = Vector2(-1120, 187)
+
+[node name="DroneEnemy4" parent="Enemies" unique_id=1158280060 instance=ExtResource("9_kjmhy")]
+position = Vector2(-1013, 178)
 
 [node name="CameraComponent" parent="." unique_id=444357545 instance=ExtResource("17_awuq0")]
 
@@ -2208,7 +2214,7 @@ max_polyphony = 5
 parameters/looping = true
 
 [node name="AreaTransition" type="Area2D" parent="." unique_id=346572854]
-position = Vector2(789, -116)
+position = Vector2(999, 118)
 collision_layer = 256
 collision_mask = 2
 script = SubResource("GDScript_p3ma5")

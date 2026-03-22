@@ -2,22 +2,17 @@
 extends Area2D
 class_name Hurtbox
 
-signal damaged(info: DamageInfo)
+@export var health_path: NodePath
+@export var team: int = 0
 
-@export var invincible: bool = false
-@export var accepted_tags: Array[String] = []   # optional filtering
+@onready var health: Health = get_node(health_path)
+
 
 func take_damage(info: DamageInfo) -> void:
-	if invincible:
+	if info == null:
 		return
 
-	if accepted_tags.size() > 0:
-		for tag in info.tags:
-			if tag in accepted_tags:
-				emit_signal("damaged", info)
-				print("enemy hit")
-				return
+	if info.team == team:
 		return
 
-	emit_signal("damaged", info)
-	
+	health.apply_damage(info)

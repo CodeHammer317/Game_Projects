@@ -6,12 +6,14 @@ class_name EnemyMissile
 @export var damage: int = 1
 @export var lifetime: float = 1.0
 @export var knockback_scale: float = 0.2
+@export var team: int = 2
 
-var instigator: Node
+var instigator: Node = null
 var _velocity: Vector2 = Vector2.ZERO
 var _time_left: float = 0.0
-var _hit_set := {}
-var _target: Node2D = null  # homing target
+var _hit_set: Dictionary = {}
+var _target: Node2D = null
+
 
 func _ready() -> void:
 	_time_left = lifetime
@@ -21,13 +23,15 @@ func _ready() -> void:
 	if not area_entered.is_connected(_on_area_entered):
 		area_entered.connect(_on_area_entered)
 
-# Unified launch signature
-func launch(direction: Vector2, target: Node2D = null) -> void:
+
+func launch(direction: Vector2, target: Node2D = null, owner_node: Node = null) -> void:
 	if direction == Vector2.ZERO:
 		direction = Vector2.RIGHT
 
 	_velocity = direction.normalized() * speed
 	_target = target
+	instigator = owner_node
+
 
 func _physics_process(delta: float) -> void:
 	_time_left -= delta
@@ -35,53 +39,63 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 		return
 
-	# Homing
-	if _target != null and is_instance_valid(_target):
-		var desired_dir = (_target.global_position - global_position).normalized()
-		var current_dir = _velocity.normalized()
-		var max_turn = deg_to_rad(turn_rate_deg) * delta
+	if is_instance_valid(_target):
+		var desired_dir := (_target.global_position - global_position).normalized()
+		var current_dir := _velocity.normalized()
+		var max_turn := deg_to_rad(turn_rate_deg) * delta
 		var angle_diff = clamp(current_dir.angle_to(desired_dir), -max_turn, max_turn)
 		_velocity = current_dir.rotated(angle_diff) * speed
 
 	rotation = _velocity.angle()
 	global_position += _velocity * delta
 
+
 func _on_body_entered(body: Node) -> void:
 	_process_hit(body)
 
+
 func _on_area_entered(area: Area2D) -> void:
 	_process_hit(area)
+
 
 func _process_hit(target_node: Node) -> void:
 	if target_node == null:
 		return
 
-	var id = target_node.get_instance_id()
-	if _hit_set.has(id):
+	if target_node == instigator:
 		return
-	_hit_set[id] = true
 
-	var hurtbox = _find_hurtbox(target_node)
+	var hurtbox := _find_hurtbox(target_node)
 	if hurtbox == null:
 		if target_node is StaticBody2D or target_node is TileMap:
 			queue_free()
 		return
 
-	var info = DamageInfo.new(
+	var owner_node := hurtbox.get_parent()
+	var id := owner_node.get_instance_id()
+	if _hit_set.has(id):
+		return
+	_hit_set[id] = true
+
+	var info := DamageInfo.new(
 		damage,
 		_velocity * knockback_scale,
-		instigator,
-		["missile"]
+		instigator if is_instance_valid(instigator) else null,
+		["missile"],
+		team
 	)
 
 	hurtbox.take_damage(info)
 	queue_free()
 
+
 func _find_hurtbox(node: Node) -> Hurtbox:
 	if node is Hurtbox:
-		return node
+		return node as Hurtbox
+
 	for child in node.get_children():
-		var hb = _find_hurtbox(child)
-		if hb:
+		var hb := _find_hurtbox(child)
+		if hb != null:
 			return hb
+
 	return null

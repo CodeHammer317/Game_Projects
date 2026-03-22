@@ -30,7 +30,7 @@ size = Vector2(16, 32)
 size = Vector2(20, 33)
 
 [node name="Raven" type="CharacterBody2D" unique_id=1435544166 groups=["player"]]
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 809
 script = ExtResource("1_mc8m7")
@@ -38,7 +38,7 @@ player_id = 2
 stats = SubResource("Resource_0gotn")
 abilities = SubResource("Resource_jmfuh")
 bullet_scene = ExtResource("4_jmfuh")
-max_bullets_on_screen = 7
+max_bullets_on_screen = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=718930382]
 position = Vector2(1, 1)
@@ -101,8 +101,10 @@ script = ExtResource("12_orxbs")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1654629623 groups=["player"]]
 collision_layer = 64
-collision_mask = 0
+collision_mask = 40
 script = ExtResource("13_jmfuh")
+health_path = NodePath("../Health")
+team = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=65265764]
 position = Vector2(0, 1.5)

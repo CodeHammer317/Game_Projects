@@ -31,14 +31,13 @@ hue_variation_min = -2.2351742e-08
 hue_variation_max = 0.009999977
 collision_use_scale = true
 
-[node name="EnemyMissle" type="Area2D" unique_id=1493675337]
+[node name="EnemyMissle" type="Area2D" unique_id=1493675337 groups=["enemies"]]
 scale = Vector2(0.25, 0.25)
 collision_layer = 32
 collision_mask = 65
 script = ExtResource("1_5gt1y")
-speed = 100.0
-turn_rate_deg = 300.0
-lifetime = 2.0
+speed = 175.0
+lifetime = 2.5
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=826385064]
 rotation = 1.5707964
