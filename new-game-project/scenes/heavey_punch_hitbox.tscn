@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ja7c74lshvnp"]
+
+[ext_resource type="Script" uid="uid://nwv1qce6s8b" path="res://Scripts/heavey_punch_hitbox.gd" id="1_jb2xx"]
+[ext_resource type="PackedScene" uid="uid://bs8npcffdjtbc" path="res://scenes/yellow_hit.tscn" id="2_k1oif"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynqm8"]
+size = Vector2(20, 16)
+
+[node name="HeaveyPunchHitbox" type="Area2D" unique_id=1615730573]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_jb2xx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1177452352]
+shape = SubResource("RectangleShape2D_ynqm8")
+
+[node name="Timer" type="Timer" parent="." unique_id=468581416]
+one_shot = true
+
+[node name="YellowHit" parent="." unique_id=143815583 instance=ExtResource("2_k1oif")]

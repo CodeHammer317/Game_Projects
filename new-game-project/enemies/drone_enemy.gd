@@ -14,6 +14,7 @@ enum State {
 @export var hover_frequency: float = 2.0
 @export var projectile_scene: PackedScene
 
+@onready var muzzle_flash: AnimatedSprite2D = $YellowHit/AnimatedSprite2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var detection_area: Area2D = $DetectionArea
 @onready var attack_area: Area2D = $AttackArea
@@ -21,6 +22,7 @@ enum State {
 @onready var fire_cooldown: Timer = $FireCooldown
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var health = $Health
+
 
 var state: State = State.IDLE
 var target: Node2D = null
@@ -157,7 +159,7 @@ func _fire_projectile() -> void:
 		projectile.launch(dir, target, self)
 	elif projectile.has_method("launch"):
 		projectile.launch(dir, target)
-
+		#muzzle_flash.play("default")
 
 func _on_detection_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):

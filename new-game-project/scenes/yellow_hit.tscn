@@ -1,10 +1,6 @@
 [gd_scene format=3 uid="uid://bs8npcffdjtbc"]
 
-[ext_resource type="Texture2D" uid="uid://2x0nfc7pm2bc" path="res://assets/Misc/Hit-Yellow.png" id="1_lapl2"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e2c4v"]
-atlas = ExtResource("1_lapl2")
-region = Rect2(0, 0, 1024, 1024)
+[ext_resource type="Texture2D" uid="uid://dgeq2grles1kv" path="res://assets/Misc/Hit-Yellow.png" id="1_lapl2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ight2"]
 atlas = ExtResource("1_lapl2")
@@ -70,9 +66,6 @@ region = Rect2(3072, 3072, 1024, 1024)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e2c4v")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ight2")
 }, {
 "duration": 1.0,
@@ -117,7 +110,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fv3o4")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 24.0
 }]
@@ -128,4 +121,5 @@ animations = [{
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_k38n7")
 autoplay = "default"
-frame_progress = 0.29373035
+frame = 14
+frame_progress = 1.0

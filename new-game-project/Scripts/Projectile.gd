@@ -73,7 +73,7 @@ func _process_hit(target: Node) -> void:
 
 	var info := get_damage_info()
 	hurtbox.take_damage(info)
-
+	
 	if pierce_count > 0:
 		pierce_count -= 1
 	else:

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cw1fxtj67h8hj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvtsn"]
+size = Vector2(16, 24)
+
+[node name="DiveHitbox" type="Area2D" unique_id=2062695002]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=296548835]
+shape = SubResource("RectangleShape2D_vvtsn")
+debug_color = Color(0.81960785, 0.7529412, 0.5764706, 0.41960785)
+
+[node name="Timer" type="Timer" parent="." unique_id=694153903]
+one_shot = true

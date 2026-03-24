@@ -24,7 +24,7 @@ metadata/_custom_type_script = "uid://dttgnjrccs7ka"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swkvq"]
 radius = 150.0
-height = 950.0
+height = 1000.0
 
 [sub_resource type="GDScript" id="GDScript_sdore"]
 script/source = "# MuzzleSocket.gd
@@ -70,6 +70,7 @@ max_health = 10
 collision_layer = 2
 collision_mask = 40
 script = ExtResource("6_a8xfx")
+health_path = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1403864790]
 position = Vector2(0, -25.000011)
@@ -133,3 +134,5 @@ texture = ExtResource("12_xgpdw")
 
 [node name="DustTrail" parent="." unique_id=296660013 instance=ExtResource("6_swkvq")]
 position = Vector2(-50, 375)
+amount = 27
+lifetime = 0.11

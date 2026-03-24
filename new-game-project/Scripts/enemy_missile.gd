@@ -67,19 +67,26 @@ func _process_hit(target_node: Node) -> void:
 
 	var hurtbox := _find_hurtbox(target_node)
 	if hurtbox == null:
-		if target_node is StaticBody2D or target_node is TileMap:
+		if target_node is PhysicsBody2D or target_node is TileMap:
 			queue_free()
 		return
 
-	var owner_node := hurtbox.get_parent()
+	var owner_node: Node = hurtbox.get_parent()
+	if owner_node == null:
+		owner_node = hurtbox
+
 	var id := owner_node.get_instance_id()
 	if _hit_set.has(id):
 		return
 	_hit_set[id] = true
 
+	var knockback := Vector2.ZERO
+	if _velocity != Vector2.ZERO:
+		knockback = _velocity.normalized() * (100.0 * knockback_scale)
+
 	var info := DamageInfo.new(
 		damage,
-		_velocity * knockback_scale,
+		knockback,
 		instigator if is_instance_valid(instigator) else null,
 		["missile"],
 		team

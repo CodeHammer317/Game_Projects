@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cxwvbhtwtl6ie" path="res://assets/level_1_assets/Subway_Sprite_Floor_Tiles.png" id="8_ves0o"]
 [ext_resource type="Texture2D" uid="uid://xb78xvita4qk" path="res://assets/Misc/SubWayCar_1.png" id="9_f6c4b"]
 [ext_resource type="Texture2D" uid="uid://dfdqlmkbtj5s6" path="res://assets/Misc/ChatGPT Image Mar 10, 2026, 06_50_25 AM.png" id="9_ockcw"]
-[ext_resource type="PackedScene" uid="uid://uy5jppbngwcm" path="res://enemies/turret.tscn" id="9_uaxyi"]
 [ext_resource type="Texture2D" uid="uid://b5x3kujd13epw" path="res://assets/Misc/SubWayCar_2.png" id="10_50j75"]
 [ext_resource type="Texture2D" uid="uid://b55n0ci3vbevi" path="res://assets/Misc/SubWayCar_3.png" id="11_50j75"]
+[ext_resource type="PackedScene" uid="uid://0fgr33l7unx4" path="res://scenes/sprit_mat_tt.tscn" id="11_ves0o"]
 [ext_resource type="PackedScene" uid="uid://dq0f47undr8pt" path="res://enemies/agent.tscn" id="16_uaxyi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ockcw"]
@@ -2289,6 +2289,10 @@ sources/2 = SubResource("TileSetAtlasSource_ctn6i")
 
 [node name="Level2" type="Node2D" unique_id=1998739576]
 
+[node name="SpritMatTt" parent="." unique_id=716213362 instance=ExtResource("11_ves0o")]
+position = Vector2(2330.0002, 318)
+scale = Vector2(0.59999996, 0.59999996)
+
 [node name="Backgrounds" type="Node2D" parent="." unique_id=500014112]
 
 [node name="Far" type="Parallax2D" parent="Backgrounds" unique_id=1058487515]
@@ -2341,26 +2345,21 @@ tile_set = SubResource("TileSet_c58k4")
 position = Vector2(78, 359)
 
 [node name="Raven" parent="PLayers" unique_id=1435544166 instance=ExtResource("4_0p8fi")]
-position = Vector2(34, 14)
-scale = Vector2(1.03, 1.03)
+position = Vector2(54, 20)
 collision_mask = 777
 
 [node name="Toplobsta" parent="PLayers" unique_id=737537431 instance=ExtResource("6_0p8fi")]
 position = Vector2(2, 18)
+scale = Vector2(0.06, 0.06)
+
+[node name="DustTrail" parent="PLayers/Toplobsta" index="5" unique_id=296660013]
+lifetime = 0.13
 
 [node name="Enemies" type="Node2D" parent="." unique_id=137221751]
 
-[node name="Turret" parent="Enemies" unique_id=805439281 instance=ExtResource("9_uaxyi")]
-position = Vector2(2602, 351)
-
-[node name="Turret2" parent="Enemies" unique_id=1051772379 instance=ExtResource("9_uaxyi")]
-position = Vector2(2799, 346)
-
-[node name="Turret3" parent="Enemies" unique_id=1816525938 instance=ExtResource("9_uaxyi")]
-position = Vector2(3037, 345)
-
 [node name="Agent" parent="Enemies" unique_id=1989766389 instance=ExtResource("16_uaxyi")]
-position = Vector2(316.00006, 363)
+position = Vector2(319, 371)
+scale = Vector2(0.7, 0.7)
 
 [node name="CameraComponent" parent="." unique_id=444357545 instance=ExtResource("5_v0oef")]
 
@@ -2369,4 +2368,7 @@ zoom = Vector2(1, 1)
 limit_enabled = true
 position_smoothing_enabled = true
 
+[editable path="PLayers/Raven"]
+[editable path="PLayers/Raven/YellowHit"]
+[editable path="PLayers/Toplobsta"]
 [editable path="CameraComponent"]

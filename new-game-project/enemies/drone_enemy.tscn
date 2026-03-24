@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="3_xfcym"]
 [ext_resource type="Texture2D" uid="uid://bpxhnm84v8bdj" path="res://assets/Backround_Art/1 Drones/1/Death.png" id="4_qay0q"]
 [ext_resource type="Texture2D" uid="uid://dydr1ai5emw38" path="res://assets/Backround_Art/1 Drones/1/Walk.png" id="6_tbaop"]
+[ext_resource type="PackedScene" uid="uid://bs8npcffdjtbc" path="res://scenes/yellow_hit.tscn" id="9_rcqjx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkb83"]
 atlas = ExtResource("3_rcqjx")
@@ -253,3 +254,6 @@ debug_color = Color(0.9764706, 0.07450981, 0.03137255, 0.92156863)
 
 [node name="Health" type="Node" parent="." unique_id=1012710690]
 script = ExtResource("3_xfcym")
+
+[node name="YellowHit" parent="." unique_id=143815583 instance=ExtResource("9_rcqjx")]
+position = Vector2(2, 13)

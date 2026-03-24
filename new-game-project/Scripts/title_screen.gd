@@ -95,6 +95,6 @@ func _on_fade_complete() -> void:
 			get_tree().change_scene_to_file("res://scenes/Level01BriefingScreen.tscn")
 		1:
 			# Options screen
-			get_tree().change_scene_to_file("res://scenes/OptionsScreen.tscn")
+			get_tree().change_scene_to_file("res://scenes/Level01BriefingScreen.tscn")
 		2:
 			get_tree().quit()
