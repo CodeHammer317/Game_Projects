@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://50npawkvlmnw" path="res://assets/Misc/Sprite-0001ANIMATION.png" id="2_qeyy3"]
 [ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="4_lug0u"]
 [ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="5_dg1j7"]
+[ext_resource type="Texture2D" uid="uid://bt7nuq1eafwv5" path="res://enemies/Agent_Sprite-0001.png" id="5_ltxfo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dg1j7"]
-size = Vector2(20, 80)
+size = Vector2(26, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yc63n"]
 size = Vector2(20, 76.666664)
@@ -54,6 +55,14 @@ region = Rect2(738, 0, 82, 103)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yyojw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ltxfo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 0.3,
 "texture": SubResource("AtlasTexture_y1rli")
@@ -103,7 +112,7 @@ fire_range = 80.0
 use_line_of_sight = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=707900174]
-position = Vector2(0, 3.3333337)
+position = Vector2(-1, 8.000002)
 shape = SubResource("RectangleShape2D_dg1j7")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1157716180]
@@ -114,7 +123,7 @@ health_path = NodePath("../Health")
 team = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1326547153 groups=["enemies"]]
-position = Vector2(1.9868214e-07, 1.6666682)
+position = Vector2(-2, 8)
 shape = SubResource("RectangleShape2D_yc63n")
 debug_color = Color(0.8692373, 0.122058906, 0.8006342, 0.41960785)
 
@@ -126,9 +135,9 @@ position = Vector2(0, -23.333332)
 scale = Vector2(3.3333333, 3.3333333)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=564268322]
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_yyojw")
-animation = &"shoot"
-autoplay = "shoot"
-frame = 10
-frame_progress = 1.0
-offset = Vector2(20, 0)
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.7366881
+flip_h = true

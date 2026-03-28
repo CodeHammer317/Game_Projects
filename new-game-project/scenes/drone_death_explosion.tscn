@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://bcjmm06s3ioa"]
+
+[ext_resource type="Texture2D" uid="uid://c18m8g4euh48d" path="res://assets/New folder/Super Pixel Effects Gigapack v1.9.0/Super Pixel Effects Gigapack/spritesheet/Explosions/epic_explosion_001/epic_explosion_001_large_red/spritesheet.png" id="1_ps1ee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omh78"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8igf"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh1fm"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7hkj"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oaia"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5qfl"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d2os"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6geq"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kimtj"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otcow"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7btmq"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3piw"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i71nl"]
+atlas = ExtResource("1_ps1ee")
+region = Rect2(1536, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3axbh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omh78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8igf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh1fm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7hkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oaia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5qfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d2os")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6geq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kimtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otcow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7btmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3piw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i71nl")
+}],
+"loop": false,
+"name": &"new_animation_7",
+"speed": 16.0
+}]
+
+[node name="DroneDeathExplosion" type="Node2D" unique_id=603783491]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=305001305]
+sprite_frames = SubResource("SpriteFrames_3axbh")
+animation = &"new_animation_7"
+autoplay = "new_animation_7"

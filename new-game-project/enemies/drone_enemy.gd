@@ -14,7 +14,7 @@ enum State {
 @export var hover_frequency: float = 2.0
 @export var projectile_scene: PackedScene
 
-@onready var muzzle_flash: AnimatedSprite2D = $YellowHit/AnimatedSprite2D
+@onready var death_Explosion: AnimatedSprite2D = $AnimatedSprite2D2
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var detection_area: Area2D = $DetectionArea
 @onready var attack_area: Area2D = $AttackArea
@@ -204,7 +204,9 @@ func _on_died() -> void:
 	if sprite.sprite_frames.has_animation("death"):
 		sprite.play("death")
 		await sprite.animation_finished
-
+		death_Explosion.visible = true
+		death_Explosion.play("default")
+		await death_Explosion.animation_finished
 	queue_free()
 func _on_damaged(info: DamageInfo) -> void:
 	if info.has_tag("electric"):
@@ -213,6 +215,6 @@ func _on_damaged(info: DamageInfo) -> void:
 	if info.knockback != Vector2.ZERO:
 		velocity += info.knockback
 
-	modulate = Color(1.0, 0.7, 0.7)
+	modulate = Color(1.0, 1.0, 1.0, 1.0)
 	await get_tree().create_timer(0.06).timeout
 	modulate = Color(1.0, 1.0, 1.0)

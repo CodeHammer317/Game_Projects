@@ -33,10 +33,11 @@ collision_use_scale = true
 
 [node name="EnemyMissle" type="Area2D" unique_id=1493675337 groups=["enemies"]]
 scale = Vector2(0.25, 0.25)
-collision_layer = 32
-collision_mask = 65
+collision_layer = 0
+collision_mask = 64
 script = ExtResource("1_5gt1y")
 speed = 175.0
+damage = 3
 lifetime = 2.5
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=826385064]

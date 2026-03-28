@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="3_xfcym"]
 [ext_resource type="Texture2D" uid="uid://bpxhnm84v8bdj" path="res://assets/Backround_Art/1 Drones/1/Death.png" id="4_qay0q"]
 [ext_resource type="Texture2D" uid="uid://dydr1ai5emw38" path="res://assets/Backround_Art/1 Drones/1/Walk.png" id="6_tbaop"]
-[ext_resource type="PackedScene" uid="uid://bs8npcffdjtbc" path="res://scenes/yellow_hit.tscn" id="9_rcqjx"]
+[ext_resource type="Texture2D" uid="uid://ducns8awhfpi7" path="res://assets/New folder/Super Pixel Effects Gigapack v1.9.0/Super Pixel Effects Gigapack/spritesheet/Explosions/epic_explosion_001/epic_explosion_001_small_red/spritesheet.png" id="9_rcqjx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkb83"]
 atlas = ExtResource("3_rcqjx")
@@ -200,6 +200,105 @@ size = Vector2(117.5, 58)
 [sub_resource type="CircleShape2D" id="CircleShape2D_fgf2u"]
 radius = 11.045361
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qay0q"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbaop"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6vnn"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njxh6"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hpsi"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgpx6"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqdqm"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldb2l"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6528u"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ifnc"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydv3d"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j586c"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdrei"]
+atlas = ExtResource("9_rcqjx")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ib2ii"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qay0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbaop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6vnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njxh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hpsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgpx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqdqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldb2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6528u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ifnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydv3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j586c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdrei")
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
+
 [node name="DroneEnemy" type="CharacterBody2D" unique_id=612358177 groups=["enemies"]]
 collision_layer = 8
 collision_mask = 3
@@ -233,13 +332,6 @@ visible = false
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_rcqjx")
 
-[node name="Muzzle" type="Marker2D" parent="." unique_id=553660806]
-position = Vector2(2, 13)
-
-[node name="FireCooldown" type="Timer" parent="." unique_id=1669607222]
-
-[node name="StateTimer" type="Timer" parent="." unique_id=163248477]
-
 [node name="Hurtbox" type="Area2D" parent="." unique_id=878226734]
 collision_layer = 128
 collision_mask = 0
@@ -252,8 +344,19 @@ visible = false
 shape = SubResource("CircleShape2D_fgf2u")
 debug_color = Color(0.9764706, 0.07450981, 0.03137255, 0.92156863)
 
+[node name="Muzzle" type="Marker2D" parent="." unique_id=553660806]
+position = Vector2(2, 13)
+
+[node name="FireCooldown" type="Timer" parent="." unique_id=1669607222]
+
+[node name="StateTimer" type="Timer" parent="." unique_id=163248477]
+
 [node name="Health" type="Node" parent="." unique_id=1012710690]
 script = ExtResource("3_xfcym")
 
-[node name="YellowHit" parent="." unique_id=143815583 instance=ExtResource("9_rcqjx")]
-position = Vector2(2, 13)
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1083356556]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_ib2ii")
+autoplay = "default"
+frame = 12
+frame_progress = 1.0

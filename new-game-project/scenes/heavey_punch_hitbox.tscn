@@ -1,10 +1,67 @@
 [gd_scene format=3 uid="uid://ja7c74lshvnp"]
 
 [ext_resource type="Script" uid="uid://nwv1qce6s8b" path="res://Scripts/heavey_punch_hitbox.gd" id="1_jb2xx"]
-[ext_resource type="PackedScene" uid="uid://bs8npcffdjtbc" path="res://scenes/yellow_hit.tscn" id="2_k1oif"]
+[ext_resource type="Texture2D" uid="uid://jamyi852sck4" path="res://assets/New folder/Super Pixel Effects Gigapack v1.9.0/Super Pixel Effects Gigapack/spritesheet/Impacts/symmetrical_impact_001/symmetrical_impact_001_small_yellow/spritesheet.png" id="2_k1oif"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynqm8"]
 size = Vector2(20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a63xo"]
+atlas = ExtResource("2_k1oif")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb1ef"]
+atlas = ExtResource("2_k1oif")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa1dd"]
+atlas = ExtResource("2_k1oif")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdv8n"]
+atlas = ExtResource("2_k1oif")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gabox"]
+atlas = ExtResource("2_k1oif")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3qs6"]
+atlas = ExtResource("2_k1oif")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76ig2"]
+atlas = ExtResource("2_k1oif")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6tmmn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a63xo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb1ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa1dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdv8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gabox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3qs6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76ig2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
 
 [node name="HeaveyPunchHitbox" type="Area2D" unique_id=1615730573]
 collision_layer = 0
@@ -15,6 +72,12 @@ script = ExtResource("1_jb2xx")
 shape = SubResource("RectangleShape2D_ynqm8")
 
 [node name="Timer" type="Timer" parent="." unique_id=468581416]
+wait_time = 5.128
 one_shot = true
 
-[node name="YellowHit" parent="." unique_id=143815583 instance=ExtResource("2_k1oif")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1560437677]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_6tmmn")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0

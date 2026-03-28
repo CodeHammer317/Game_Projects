@@ -168,7 +168,9 @@ func _on_died() -> void:
 	queue_free()
 
 func _on_hit_effects(_info: DamageInfo) -> void:
-	pass
+	modulate = Color(1.0, 1.0, 1.0, 1.0)
+	await get_tree().create_timer(0.1).timeout
+	modulate = Color(1.0, 1.0, 1.0)
 
 func _on_death_effects() -> void:
 	pass

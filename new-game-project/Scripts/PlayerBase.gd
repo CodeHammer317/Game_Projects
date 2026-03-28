@@ -42,7 +42,6 @@ var _wall_jump_lock_timer: float = 0.0
 var _is_wall_jumping: bool = false
 var _shooting: bool = false
 var _attacking: bool = false
-var _is_punching: bool = false
 var input_device: int = -1
 # -----------------------------
 # POSE NODES (Sprite2D)
@@ -56,10 +55,9 @@ var input_device: int = -1
 @onready var pose_attack: Sprite2D      = $Poses/Attack
 @onready var pose_jump: Sprite2D        = $Poses/Jump
 @onready var pose_falling: Sprite2D     = $Poses/Falling
-@onready var pose_punch: Sprite2D       = $Poses/Punch
 @onready var muzzle: Marker2D           = get_node_or_null("Sockets/Muzzle")
 @onready var dust_trail: CPUParticles2D = get_node_or_null("DustTrail")
-@onready var muzzle_flash: AnimatedSprite2D = $YellowHit/AnimatedSprite2D
+
 
 # -----------------------------
 # READY
@@ -205,7 +203,7 @@ func _read_input() -> int:
 		_attacking = false
 
 	# Shoot
-	if Input.is_action_pressed(prefix + "shoot"):
+	if Input.is_action_just_pressed(prefix + "shoot"):
 		_shooting = true
 		if abilities != null:
 			abilities.on_shoot_pressed(self)
@@ -340,9 +338,7 @@ func _update_pose_visibility() -> void:
 	if _shooting and pose_shoot:
 		pose_shoot.visible = true
 		return
-	if _is_punching and pose_punch:
-		pose_punch.visible = true
-		return
+	
 	if _is_wall_jumping and pose_wall_jump:
 		pose_wall_jump.visible = true
 		return
@@ -397,10 +393,10 @@ func spawn_bullet() -> void:
 	if bullet is Projectile:
 		bullet.team = 1
 		bullet.launch(dir, null, self)
-		muzzle_flash.play("default")
+		
 	elif bullet.has_method("launch"):
 		bullet.launch(dir)
-		muzzle_flash.play("default")
+		
 	_active_bullets.append(bullet)
 	_fire_timer = fire_cooldown
 # -----------------------------

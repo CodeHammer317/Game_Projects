@@ -2159,6 +2159,7 @@ position = Vector2(130, 222)
 scale = Vector2(0.75, 0.75)
 
 [node name="Raven" parent="Players" unique_id=1435544166 instance=ExtResource("3_3fcoi")]
+fire_cooldown = null
 
 [node name="DustTrail" parent="Players/Raven" index="3" unique_id=296660013]
 one_shot = true

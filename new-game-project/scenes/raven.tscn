@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://tljl86dhj5og" path="res://assets/Misc/Raven-Shoot.png" id="11_hm7g0"]
 [ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="12_orxbs"]
 [ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="13_jmfuh"]
-[ext_resource type="PackedScene" uid="uid://bs8npcffdjtbc" path="res://scenes/yellow_hit.tscn" id="15_0gotn"]
 
 [sub_resource type="Resource" id="Resource_0gotn"]
 script = ExtResource("2_l4cms")
@@ -52,13 +51,9 @@ shape = SubResource("RectangleShape2D_mc8m7")
 [node name="Sockets" type="Node2D" parent="." unique_id=302973653]
 
 [node name="Muzzle" type="Marker2D" parent="Sockets" unique_id=630204039]
-position = Vector2(16.666668, 0.6666665)
+position = Vector2(22.666668, -1.3333334)
 
 [node name="Poses" type="Node2D" parent="." unique_id=1625693292]
-
-[node name="Punch" type="Sprite2D" parent="Poses" unique_id=18086003]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("11_hm7g0")
 
 [node name="Dash" type="Sprite2D" parent="Poses" unique_id=1598742894]
 visible = false
@@ -71,6 +66,7 @@ scale = Vector2(0.04, 0.04)
 texture = ExtResource("5_qr5j0")
 
 [node name="Idle" type="Sprite2D" parent="Poses" unique_id=766347953]
+visible = false
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("5_qr5j0")
 
@@ -100,7 +96,8 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("11_hm7g0")
 
 [node name="Attack" type="Sprite2D" parent="Poses" unique_id=643053211]
-visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_wbdas")
 
 [node name="DustTrail" parent="." unique_id=296660013 instance=ExtResource("6_qr5j0")]
 position = Vector2(0, 13)
@@ -109,8 +106,8 @@ position = Vector2(0, 13)
 script = ExtResource("12_orxbs")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1654629623 groups=["player"]]
-collision_layer = 0
-collision_mask = 32
+collision_layer = 64
+collision_mask = 0
 script = ExtResource("13_jmfuh")
 health_path = NodePath("../Health")
 team = 1
@@ -119,12 +116,3 @@ team = 1
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_0gotn")
 debug_color = Color(0.9254902, 0.24313726, 0.3254902, 0.11372549)
-
-[node name="YellowHit" parent="." unique_id=143815583 instance=ExtResource("15_0gotn")]
-visible = false
-position = Vector2(17.333334, 0)
-
-[node name="AnimatedSprite2D" parent="YellowHit" index="0" unique_id=2084896230]
-frame_progress = 0.0
-
-[editable path="YellowHit"]
