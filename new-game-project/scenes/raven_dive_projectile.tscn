@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://8ax2iu24exng"]
+
+[ext_resource type="Script" uid="uid://1vl4yj0bvlvr" path="res://scenes/raven_dive_projectile.gd" id="1_meko2"]
+[ext_resource type="Texture2D" uid="uid://dbfrv17x2725v" path="res://ravenDive.png" id="2_55feu"]
+[ext_resource type="Texture2D" uid="uid://d0tu0wlwwa1va" path="res://stone.png" id="3_g2opk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lan02"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3elc"]
+atlas = ExtResource("2_55feu")
+region = Rect2(0, 0, 112, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_716oa"]
+atlas = ExtResource("2_55feu")
+region = Rect2(112, 0, 112, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m08cp"]
+atlas = ExtResource("2_55feu")
+region = Rect2(224, 0, 112, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osaxj"]
+atlas = ExtResource("2_55feu")
+region = Rect2(336, 0, 112, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwfvl"]
+atlas = ExtResource("2_55feu")
+region = Rect2(448, 0, 112, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_caciy"]
+atlas = ExtResource("2_55feu")
+region = Rect2(560, 0, 112, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrbys"]
+atlas = ExtResource("2_55feu")
+region = Rect2(672, 0, 112, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w382t"]
+atlas = ExtResource("3_g2opk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga515"]
+atlas = ExtResource("3_g2opk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jhc3"]
+atlas = ExtResource("3_g2opk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi0os"]
+atlas = ExtResource("3_g2opk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm5yi"]
+atlas = ExtResource("3_g2opk")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vdye"]
+atlas = ExtResource("3_g2opk")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_meko2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3elc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_716oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m08cp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osaxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwfvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_caciy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrbys")
+}],
+"loop": false,
+"name": &"raven",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w382t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga515")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jhc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi0os")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm5yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vdye")
+}],
+"loop": true,
+"name": &"stone",
+"speed": 8.0
+}]
+
+[node name="RavenDiveProjectile" type="Area2D" unique_id=552368892]
+collision_layer = 4
+collision_mask = 129
+script = ExtResource("1_meko2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1101306007]
+shape = SubResource("CapsuleShape2D_lan02")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1901933175]
+rotation = -0.84221226
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_meko2")
+animation = &"stone"

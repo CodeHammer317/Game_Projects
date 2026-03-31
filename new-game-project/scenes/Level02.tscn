@@ -2369,6 +2369,5 @@ limit_enabled = true
 position_smoothing_enabled = true
 
 [editable path="PLayers/Raven"]
-[editable path="PLayers/Raven/YellowHit"]
 [editable path="PLayers/Toplobsta"]
 [editable path="CameraComponent"]

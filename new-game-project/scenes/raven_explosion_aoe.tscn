@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://dbgekh6jhdcaf"]
+
+[ext_resource type="Script" uid="uid://bmmhkqg2pywam" path="res://scenes/raven_explosion_aoe.gd" id="1_hqrcg"]
+[ext_resource type="Texture2D" uid="uid://6fotdeq2enem" path="res://assets/fx/Super Pixel Effects Gigapack v1.9.0/Super Pixel Effects Gigapack/spritesheet/Explosions/epic_explosion_002/epic_explosion_002_large_green/spritesheet.png" id="2_fx8q4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ne1r"]
+radius = 26.13
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x27by"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4dyc"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiiom"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4sgq"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57gl8"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjfgc"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc73y"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orsjl"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mtap"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(1536, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eim3w"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(1728, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfflo"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(1920, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5kue"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(2112, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afc3h"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(2304, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efiew"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(2496, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl701"]
+atlas = ExtResource("2_fx8q4")
+region = Rect2(2688, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqrcg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x27by")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4dyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iiiom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4sgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57gl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjfgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc73y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orsjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mtap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eim3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfflo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5kue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afc3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efiew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl701")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 16.0
+}]
+
+[node name="RavenExplosionAOE" type="Area2D" unique_id=1080139646]
+script = ExtResource("1_hqrcg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1136738363]
+shape = SubResource("CircleShape2D_4ne1r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1972020971]
+sprite_frames = SubResource("SpriteFrames_hqrcg")
+animation = &"explode"
+frame_progress = 0.255098
+
+[node name="Timer" type="Timer" parent="." unique_id=949770390]
+one_shot = true

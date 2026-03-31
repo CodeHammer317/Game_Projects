@@ -215,7 +215,11 @@ func _read_input() -> int:
 	# Dash
 	if Input.is_action_just_pressed(prefix + "dash"):
 		_start_dash()
-
+	#Heavy Attacks
+	# Heavy Attack (alt input)
+	if Input.is_action_just_pressed(prefix + "heavey_attack"):
+		if abilities != null:
+			abilities.on_attack_pressed(self)
 	# Horizontal input
 	var input_x := 0
 	if right_pressed:
@@ -403,4 +407,6 @@ func spawn_bullet() -> void:
 # DAMAGE
 # -----------------------------
 func apply_damage(_amount: int) -> void:
+	pass
+func _on_heavy_attack():
 	pass
