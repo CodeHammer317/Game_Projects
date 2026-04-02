@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dbcb2ot1xge3l"]
 
-[ext_resource type="Texture2D" uid="uid://bg5hh7ripmii1" path="res://assets/Backround_Art/1 Drones/1/Idle.png" id="1_jliw0"]
+[ext_resource type="Texture2D" uid="uid://bg5hh7ripmii1" path="res://assets/Misc/1 Drones/1/Idle.png" id="1_jliw0"]
 [ext_resource type="Script" uid="uid://bsm0jdenni6xn" path="res://Scripts/drone_enemy.gd" id="1_xfcym"]
 [ext_resource type="PackedScene" uid="uid://dfrsgq04nsxmi" path="res://scenes/enemy_missle.tscn" id="2_75ibf"]
 [ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="2_mrsrp"]
-[ext_resource type="Texture2D" uid="uid://brn87p5xer8oa" path="res://assets/Backround_Art/1 Drones/1/Walk_scan.png" id="3_rcqjx"]
+[ext_resource type="Texture2D" uid="uid://brn87p5xer8oa" path="res://assets/Misc/1 Drones/1/Walk_scan.png" id="3_rcqjx"]
 [ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="3_xfcym"]
-[ext_resource type="Texture2D" uid="uid://bpxhnm84v8bdj" path="res://assets/Backround_Art/1 Drones/1/Death.png" id="4_qay0q"]
-[ext_resource type="Texture2D" uid="uid://dydr1ai5emw38" path="res://assets/Backround_Art/1 Drones/1/Walk.png" id="6_tbaop"]
-[ext_resource type="Texture2D" uid="uid://ducns8awhfpi7" path="res://assets/New folder/Super Pixel Effects Gigapack v1.9.0/Super Pixel Effects Gigapack/spritesheet/Explosions/epic_explosion_001/epic_explosion_001_small_red/spritesheet.png" id="9_rcqjx"]
+[ext_resource type="Texture2D" uid="uid://bpxhnm84v8bdj" path="res://assets/Misc/1 Drones/1/Death.png" id="4_qay0q"]
+[ext_resource type="Texture2D" uid="uid://dydr1ai5emw38" path="res://assets/Misc/1 Drones/1/Walk.png" id="6_tbaop"]
+[ext_resource type="Texture2D" uid="uid://ducns8awhfpi7" path="res://assets/fx/epic_explosion_001_small_red/spritesheet.png" id="9_rcqjx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkb83"]
 atlas = ExtResource("3_rcqjx")

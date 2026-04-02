@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cw1fxtj67h8hj"]
 
-[ext_resource type="Script" uid="uid://cyvtl7exwknlc" path="res://scenes/dive_hitbox.gd" id="1_p18xb"]
-[ext_resource type="Texture2D" uid="uid://cdqbp4wciik4q" path="res://RavenHeaveyAttack-0001.png" id="1_piye3"]
+[ext_resource type="Script" uid="uid://cyvtl7exwknlc" path="res://Scripts/dive_hitbox.gd" id="1_p18xb"]
+[ext_resource type="Texture2D" uid="uid://cdqbp4wciik4q" path="res://assets/fx/RavenHeaveyAttack-0001.png" id="1_piye3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvtsn"]
 size = Vector2(16, 24)

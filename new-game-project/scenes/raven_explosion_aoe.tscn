@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dbgekh6jhdcaf"]
 
-[ext_resource type="Script" uid="uid://bmmhkqg2pywam" path="res://scenes/raven_explosion_aoe.gd" id="1_hqrcg"]
-[ext_resource type="Texture2D" uid="uid://6fotdeq2enem" path="res://assets/fx/Super Pixel Effects Gigapack v1.9.0/Super Pixel Effects Gigapack/spritesheet/Explosions/epic_explosion_002/epic_explosion_002_large_green/spritesheet.png" id="2_fx8q4"]
+[ext_resource type="Script" uid="uid://bmmhkqg2pywam" path="res://Scripts/raven_explosion_aoe.gd" id="1_hqrcg"]
+[ext_resource type="Texture2D" uid="uid://6fotdeq2enem" path="res://assets/fx/explosion-sprites/PNG/epic_explosion_002_large_green/spritesheet.png" id="2_fx8q4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ne1r"]
 radius = 26.13

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://vb8sgu41m30w"
+path="res://.godot/imported/Ice_ chest.wav-ae28664abcd8aaab3f931d6b793af9ea.sample"
+
+[deps]
+
+source_file="res://assets/audio/Sounds/Ice_ chest.wav"
+dest_files=["res://.godot/imported/Ice_ chest.wav-ae28664abcd8aaab3f931d6b793af9ea.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

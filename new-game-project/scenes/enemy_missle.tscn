@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfrsgq04nsxmi"]
 
 [ext_resource type="Script" uid="uid://du0oejsrta4e5" path="res://Scripts/enemy_missile.gd" id="1_5gt1y"]
-[ext_resource type="Texture2D" uid="uid://cmsof07lqupp7" path="res://assets/Misc/Rocket3.png" id="2_up3oe"]
+[ext_resource type="Texture2D" uid="uid://cmsof07lqupp7" path="res://assets/fx/Projectiles/Rocket3.png" id="2_up3oe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_va43f"]
 radius = 8.0

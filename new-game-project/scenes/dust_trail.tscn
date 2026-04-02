@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctrfj6ud312s6"]
 
-[ext_resource type="Texture2D" uid="uid://bh47axurkkcx0" path="res://assets/Misc/dust_trail.png" id="1_wun8q"]
+[ext_resource type="Texture2D" uid="uid://bh47axurkkcx0" path="res://assets/fx/dust_trail (2).png" id="1_wun8q"]
 
 [sub_resource type="Curve" id="Curve_wun8q"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.35836178, 1), 0.0, 0.0, 0, 0]

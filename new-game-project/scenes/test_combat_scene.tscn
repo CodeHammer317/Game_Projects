@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bqvsk5hy20p5k"]
 
-[ext_resource type="Texture2D" uid="uid://de3cux3y0vpw8" path="res://assets/NDS Game Files/Tileset__castle__.png" id="1_8xr3q"]
+[ext_resource type="Texture2D" uid="uid://de3cux3y0vpw8" path="res://assets/NDS Game Files/Tilesets/Tileset__castle__.png" id="1_8xr3q"]
 [ext_resource type="PackedScene" uid="uid://vnrnaxcu6mgs" path="res://scenes/camera_component.tscn" id="2_rvrkw"]
 [ext_resource type="PackedScene" uid="uid://xopm4nygh5re" path="res://scenes/raven.tscn" id="3_0wsiq"]
 [ext_resource type="PackedScene" uid="uid://dnwy41vf8yi71" path="res://scenes/toplobsta.tscn" id="4_tot2v"]

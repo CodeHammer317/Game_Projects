@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://5r6swvc4mros"]
 
-[ext_resource type="Texture2D" uid="uid://dqgryedhkgw2x" path="res://assets/narrow_path_logo_layers/10_text-sheet.png" id="1_bwau8"]
+[ext_resource type="Texture2D" uid="uid://dqgryedhkgw2x" path="res://assets/Misc/narrow_path_logo_layers/10_text-sheet.png" id="1_bwau8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xhu1e"]
 atlas = ExtResource("1_bwau8")
@@ -87,12 +87,17 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 60.0
+"speed": 25.0
 }]
 
 [node name="AnimatedLogo" type="Node2D" unique_id=1861141585]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1678360196]
+sprite_frames = SubResource("SpriteFrames_g1xho")
+frame = 11
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=204924350]
 sprite_frames = SubResource("SpriteFrames_g1xho")
 frame = 11
 frame_progress = 1.0

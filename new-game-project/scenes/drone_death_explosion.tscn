@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bcjmm06s3ioa"]
 
-[ext_resource type="Texture2D" uid="uid://c18m8g4euh48d" path="res://assets/New folder/Super Pixel Effects Gigapack v1.9.0/Super Pixel Effects Gigapack/spritesheet/Explosions/epic_explosion_001/epic_explosion_001_large_red/spritesheet.png" id="1_ps1ee"]
+[ext_resource type="Texture2D" uid="uid://c18m8g4euh48d" path="res://assets/fx/epic_explosion_001_large_red/spritesheet.png" id="1_ps1ee"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_omh78"]
 atlas = ExtResource("1_ps1ee")

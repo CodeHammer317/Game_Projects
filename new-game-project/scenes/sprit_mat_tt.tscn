@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://0fgr33l7unx4"]
 
-[ext_resource type="Texture2D" uid="uid://bhtx842v7801v" path="res://assets/NDS Game Files/GhostMatttHead.png" id="1_gjtft"]
-[ext_resource type="Texture2D" uid="uid://d0lmmjyvc1q8r" path="res://assets/Comic/comic-2.png" id="2_l8aqx"]
+[ext_resource type="Texture2D" uid="uid://bhtx842v7801v" path="res://assets/NDS Game Files/MatTt Sprites/GhostMatttHead.png" id="1_gjtft"]
+[ext_resource type="Texture2D" uid="uid://d0lmmjyvc1q8r" path="res://assets/Dialog&ThoughtBubbles/comic-2.png" id="2_l8aqx"]
 [ext_resource type="FontFile" uid="uid://byny4fhghvyur" path="res://assets/fonts/vt323/VT323-Regular.ttf" id="3_l8aqx"]
 
 [node name="SpritMatTt" type="Node2D" unique_id=716213362]

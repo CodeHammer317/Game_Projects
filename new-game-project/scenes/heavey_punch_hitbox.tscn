@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ja7c74lshvnp"]
 
 [ext_resource type="Script" uid="uid://nwv1qce6s8b" path="res://Scripts/heavey_punch_hitbox.gd" id="1_jb2xx"]
-[ext_resource type="Texture2D" uid="uid://jamyi852sck4" path="res://assets/New folder/Super Pixel Effects Gigapack v1.9.0/Super Pixel Effects Gigapack/spritesheet/Impacts/symmetrical_impact_001/symmetrical_impact_001_small_yellow/spritesheet.png" id="2_k1oif"]
+[ext_resource type="Texture2D" uid="uid://jamyi852sck4" path="res://assets/fx/symmetrical_impact_001_small_yellow/spritesheet.png" id="2_k1oif"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynqm8"]
 size = Vector2(20, 16)

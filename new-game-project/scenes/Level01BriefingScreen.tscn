@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bxsll40afg7uo"]
 
 [ext_resource type="Script" uid="uid://brpryh4fblgvk" path="res://Scripts/control.gd" id="1_brbbq"]
+[ext_resource type="Texture2D" uid="uid://cujr18far12ui" path="res://assets/Misc/ConsoleFrame.png" id="2_1w62f"]
 [ext_resource type="FontFile" uid="uid://byny4fhghvyur" path="res://assets/fonts/vt323/VT323-Regular.ttf" id="2_qf0fw"]
-[ext_resource type="AudioStream" uid="uid://cno6ae364d127" path="res://audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3" id="5_lpubu"]
+[ext_resource type="AudioStream" uid="uid://cno6ae364d127" path="res://assets/audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3" id="5_lpubu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8n18e"]
 font = ExtResource("2_qf0fw")
@@ -34,7 +35,8 @@ autoplay = "default"
 
 [node name="CrtCreenOverlay" type="Sprite2D" parent="ColorRect" unique_id=546743412]
 position = Vector2(316, 243)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_1w62f")
 
 [node name="TextLabel" type="RichTextLabel" parent="ColorRect" unique_id=1324623682]
 layout_mode = 0

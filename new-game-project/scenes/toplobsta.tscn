@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnwy41vf8yi71"]
 
-[ext_resource type="Texture2D" uid="uid://cinbf2b1g7fl" path="res://assets/NDS Game Files/TopLobsta-Final.png" id="1_7a00j"]
+[ext_resource type="Texture2D" uid="uid://cinbf2b1g7fl" path="res://assets/NDS Game Files/Top Sprites/TopLobsta-Final.png" id="1_7a00j"]
 [ext_resource type="Script" uid="uid://b7qkv83n8e4kc" path="res://Scripts/PlayerBase.gd" id="1_c162e"]
 [ext_resource type="Script" uid="uid://dsysw4qgnrgn3" path="res://Scripts/PlayerStats.gd" id="2_swkvq"]
 [ext_resource type="Script" uid="uid://dttgnjrccs7ka" path="res://Scripts/TopLobstaAbilities.gd" id="3_a8xfx"]
@@ -8,11 +8,11 @@
 [ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="6_a8xfx"]
 [ext_resource type="PackedScene" uid="uid://ctrfj6ud312s6" path="res://scenes/dust_trail.tscn" id="6_swkvq"]
 [ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="7_xo6mk"]
-[ext_resource type="Texture2D" uid="uid://brlmudfx2meuy" path="res://assets/NDS Game Files/Dash end pose with l.png" id="8_sdore"]
-[ext_resource type="Texture2D" uid="uid://dumy5s1wv28qa" path="res://assets/NDS Game Files/TopJump.png" id="9_jg864"]
-[ext_resource type="Texture2D" uid="uid://kgt325ybupbr" path="res://assets/NDS Game Files/TopFalling.png" id="10_wjula"]
-[ext_resource type="Texture2D" uid="uid://bcfxh760krfr3" path="res://assets/NDS Game Files/Shooting pose with l.png" id="11_d0yeo"]
-[ext_resource type="Texture2D" uid="uid://ct53hrqp4rvkf" path="res://assets/NDS Game Files/Dash pose with light.png" id="12_xgpdw"]
+[ext_resource type="Texture2D" uid="uid://brlmudfx2meuy" path="res://assets/NDS Game Files/Top Sprites/Dash end pose with l.png" id="8_sdore"]
+[ext_resource type="Texture2D" uid="uid://dumy5s1wv28qa" path="res://assets/NDS Game Files/Top Sprites/TopJump.png" id="9_jg864"]
+[ext_resource type="Texture2D" uid="uid://kgt325ybupbr" path="res://assets/NDS Game Files/Top Sprites/TopFalling.png" id="10_wjula"]
+[ext_resource type="Texture2D" uid="uid://bcfxh760krfr3" path="res://assets/NDS Game Files/Top Sprites/Shooting pose with l.png" id="11_d0yeo"]
+[ext_resource type="Texture2D" uid="uid://ct53hrqp4rvkf" path="res://assets/NDS Game Files/Top Sprites/Dash pose with light.png" id="12_xgpdw"]
 
 [sub_resource type="Resource" id="Resource_dqxff"]
 script = ExtResource("2_swkvq")
