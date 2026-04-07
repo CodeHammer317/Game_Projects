@@ -7,7 +7,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_8n18e"]
 font = ExtResource("2_qf0fw")
-font_size = 13
+font_size = 7
 font_color = Color(0.023529412, 1, 0.03529412, 1)
 
 [node name="Level01BriefingScreen" type="Control" unique_id=448073523]
@@ -24,26 +24,24 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect" unique_id=1800319501]
-position = Vector2(318, 248)
-scale = Vector2(0.6, 0.6)
-autoplay = "default"
-
 [node name="CrtCreenOverlay" type="Sprite2D" parent="ColorRect" unique_id=546743412]
-position = Vector2(316, 243)
-scale = Vector2(1.6, 1.6)
 texture = ExtResource("2_1w62f")
+centered = false
 
 [node name="TextLabel" type="RichTextLabel" parent="ColorRect" unique_id=1324623682]
 layout_mode = 0
-offset_left = 114.0
-offset_top = 61.0
-offset_right = 524.0
-offset_bottom = 340.0
+offset_left = 24.0
+offset_top = 21.0
+offset_right = 296.0
+offset_bottom = 159.0
 theme_override_colors/default_color = Color(0.65902996, 3.6962879, 0.24510515, 1)
 theme_override_fonts/normal_font = ExtResource("2_qf0fw")
 theme_override_font_sizes/normal_font_size = 16
@@ -59,10 +57,10 @@ pitch_scale = 1.38
 
 [node name="SkipLabel" type="Label" parent="." unique_id=117919404]
 layout_mode = 0
-offset_left = 207.0
-offset_top = 467.0
-offset_right = 425.0
-offset_bottom = 480.0
+offset_left = 56.0
+offset_top = 158.0
+offset_right = 274.0
+offset_bottom = 172.0
 theme_override_colors/font_color = Color(0.023529412, 1, 0.03529412, 1)
 text = "Press \"A\" or\"spacebar\" to skip "
 label_settings = SubResource("LabelSettings_8n18e")

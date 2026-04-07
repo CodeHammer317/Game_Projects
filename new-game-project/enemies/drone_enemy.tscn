@@ -192,7 +192,7 @@ radius = 9.0
 height = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75ibf"]
-radius = 118.71394
+radius = 163.63
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rcqjx"]
 size = Vector2(117.5, 58)
@@ -302,6 +302,7 @@ animations = [{
 [node name="DroneEnemy" type="CharacterBody2D" unique_id=612358177 groups=["enemies"]]
 collision_layer = 8
 collision_mask = 3
+motion_mode = 1
 script = ExtResource("1_xfcym")
 projectile_scene = ExtResource("2_75ibf")
 
@@ -319,7 +320,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=637833648]
-visible = false
 shape = SubResource("CircleShape2D_75ibf")
 debug_color = Color(0.69018966, 0.46239436, 0.5078628, 0.41960785)
 

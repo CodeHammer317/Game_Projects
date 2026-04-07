@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bye242wrcass8" path="res://Scripts/EnemyBase.gd" id="1_yc63n"]
 [ext_resource type="PackedScene" uid="uid://fh7esddlflg3" path="res://scenes/enemy_bulllet.tscn" id="2_nkfwj"]
 [ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="4_lug0u"]
+[ext_resource type="Texture2D" uid="uid://cb8w5h034c825" path="res://enemies/Agent_Sprite-IDLE-sheet.png" id="5_astbk"]
 [ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="5_dg1j7"]
 [ext_resource type="Texture2D" uid="uid://bt7nuq1eafwv5" path="res://enemies/Agent_Sprite-0001.png" id="5_ltxfo"]
 
@@ -11,6 +12,14 @@ size = Vector2(26, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yc63n"]
 size = Vector2(20, 76.666664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uehbo"]
+atlas = ExtResource("5_astbk")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr8h1"]
+atlas = ExtResource("5_astbk")
+region = Rect2(64, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y1rli"]
 atlas = ExtResource("5_ltxfo")
@@ -23,10 +32,16 @@ animations = [{
 "name": &"dead",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uehbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nr8h1")
+}],
 "loop": true,
 "name": &"idle",
-"speed": 12.0
+"speed": 4.0
 }, {
 "frames": [],
 "loop": false,
@@ -77,6 +92,7 @@ scale = Vector2(3.3333333, 3.3333333)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=564268322]
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_yyojw")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.20409332
 flip_h = true

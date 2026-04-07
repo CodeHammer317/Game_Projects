@@ -31,40 +31,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_s4lrb")
 
-[node name="BackGround" type="TextureRect" parent="." unique_id=544448287]
+[node name="Background" type="TextureRect" parent="." unique_id=544448287]
 layout_mode = 0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 29.76974
 scale = Vector2(16.04, 12.16)
 texture = ExtResource("2_3yumr")
 expand_mode = 1
 
 [node name="Logo" type="TextureRect" parent="." unique_id=1958353727]
 layout_mode = 0
-offset_left = 193.0
-offset_top = 49.0
-offset_right = 1217.0
-offset_bottom = 1073.0
+offset_left = 194.0
+offset_right = 1218.0
+offset_bottom = 1024.0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_e54dn")
 
 [node name="Title" type="Label" parent="." unique_id=575261486]
 layout_mode = 0
-offset_left = 127.0
-offset_top = 311.0
-offset_right = 544.0
-offset_bottom = 346.0
+offset_left = 114.0
+offset_top = 232.0
+offset_right = 531.0
+offset_bottom = 267.0
 text = "Nephilim Hunters: Rise of the Fallen"
 label_settings = SubResource("LabelSettings_s4lrb")
 
 [node name="MenuContainer" type="VBoxContainer" parent="." unique_id=2005564726]
 layout_mode = 0
-offset_left = 288.0
-offset_top = 362.0
-offset_right = 380.0
-offset_bottom = 439.0
+offset_left = 276.0
+offset_top = 272.0
+offset_right = 395.0
+offset_bottom = 349.0
 
 [node name="1PStart" type="Label" parent="MenuContainer" unique_id=126171971]
 layout_mode = 2
