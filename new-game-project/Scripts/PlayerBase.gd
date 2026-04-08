@@ -10,7 +10,10 @@ class_name PlayerBase
 @export var bullet_scene: PackedScene
 @export var fire_cooldown: float = 0.2
 @export var max_bullets_on_screen: int = 3
-#@export var player_num: int = 1
+
+@export var max_health: int = 5
+@export var invuln_time: float = 0.25
+@export var hurt_knockback: Vector2 = Vector2(140.0, -180.0)
 
 # -----------------------------
 # WALL MOVEMENT TUNING
@@ -43,6 +46,11 @@ var _is_wall_jumping: bool = false
 var _shooting: bool = false
 var _attacking: bool = false
 var input_device: int = -1
+
+var current_health: int = 0
+var _is_dead: bool = false
+var _invuln_timer: float = 0.0
+
 # -----------------------------
 # POSE NODES (Sprite2D)
 # -----------------------------
@@ -58,7 +66,6 @@ var input_device: int = -1
 @onready var muzzle: Marker2D           = get_node_or_null("Sockets/Muzzle")
 @onready var dust_trail: CPUParticles2D = get_node_or_null("DustTrail")
 
-
 # -----------------------------
 # READY
 # -----------------------------
@@ -67,11 +74,20 @@ func _ready() -> void:
 		PlayerManager.register_player(self, player_id)
 
 	input_device = player_id
+	current_health = max_health
 
 # -----------------------------
 # MAIN LOOP
 # -----------------------------
 func _physics_process(delta: float) -> void:
+	if _is_dead:
+		return
+
+	if _invuln_timer > 0.0:
+		_invuln_timer -= delta
+		if _invuln_timer < 0.0:
+			_invuln_timer = 0.0
+
 	_update_timers(delta)
 	_apply_gravity(delta)
 
@@ -147,29 +163,23 @@ func _start_dash() -> void:
 	if dust_trail:
 		dust_trail.emitting = true
 
-	if _facing_left:
-		_dash_dir = -1
-	else:
-		_dash_dir = 1
-
+	_dash_dir = -1 if _facing_left else 1
 	velocity.x = float(_dash_dir) * stats.dash_speed
 
 # -----------------------------
 # INPUT
 # -----------------------------
 func _read_input() -> int:
-	var prefix: String = "p1_" 
+	var prefix: String = "p1_"
 	if player_id == 2:
 		prefix = "p2_"
 
 	var left_pressed := Input.is_action_pressed(prefix + "left")
 	var right_pressed := Input.is_action_pressed(prefix + "right")
 
-	# Jump pressed
 	if Input.is_action_just_pressed(prefix + "jump"):
 		_jump_buffer_timer = stats.jump_buffer
 
-		# Wall jump check
 		var can_wall_jump := false
 		if not is_on_floor() and not _dashing and is_on_wall():
 			var wall_normal := get_wall_normal()
@@ -183,26 +193,22 @@ func _read_input() -> int:
 			_jump_buffer_timer = 0.0
 			_coyote_timer = 0.0
 
-	# Jump activation
 	if _jump_buffer_timer > 0.0:
 		if _coyote_timer > 0.0 or is_on_floor():
 			velocity.y = stats.jump_velocity
 			_jump_buffer_timer = 0.0
 			_coyote_timer = 0.0
 
-	# Variable jump height
 	if Input.is_action_just_released(prefix + "jump") and velocity.y < 0.0:
 		velocity.y *= stats.variable_jump_cut
 
-	# Attack
 	if Input.is_action_just_pressed(prefix + "attack"):
 		_attacking = true
 		if abilities != null:
 			abilities.on_attack_pressed(self)
 	if Input.is_action_just_released(prefix + "attack"):
-		_attacking = false
+		_attacking = true
 
-	# Shoot
 	if Input.is_action_just_pressed(prefix + "shoot"):
 		_shooting = true
 		if abilities != null:
@@ -212,20 +218,19 @@ func _read_input() -> int:
 	if Input.is_action_just_released(prefix + "shoot"):
 		_shooting = false
 
-	# Dash
 	if Input.is_action_just_pressed(prefix + "dash"):
 		_start_dash()
-	#Heavy Attacks
-	# Heavy Attack (alt input)
+
 	if Input.is_action_just_pressed(prefix + "heavey_attack"):
 		if abilities != null:
 			abilities.on_attack_pressed(self)
-	# Horizontal input
+
 	var input_x := 0
 	if right_pressed:
 		input_x += 1
 	if left_pressed:
 		input_x -= 1
+
 	return input_x
 
 # -----------------------------
@@ -293,6 +298,7 @@ func _update_wall_state(input_dir: int) -> void:
 func _perform_wall_jump() -> void:
 	var wall_normal := get_wall_normal()
 	var push_dir := 0
+
 	if wall_normal.x > 0.0:
 		push_dir = 1
 		_facing_left = false
@@ -308,6 +314,7 @@ func _perform_wall_jump() -> void:
 	_wall_jump_lock_timer = WALL_JUMP_LOCK_TIME
 	_is_wall_sliding = false
 	_is_wall_jumping = true
+
 	if dust_trail:
 		dust_trail.emitting = false
 
@@ -324,8 +331,10 @@ func _update_facing() -> void:
 	for pose in $Poses.get_children():
 		if pose is Sprite2D:
 			pose.flip_h = _facing_left
+
 	if muzzle and muzzle.has_method("set_facing_left"):
 		muzzle.set_facing_left(_facing_left)
+
 # -----------------------------
 # POSE VISIBILITY
 # -----------------------------
@@ -336,31 +345,39 @@ func _hide_all_poses() -> void:
 
 func _update_pose_visibility() -> void:
 	_hide_all_poses()
+
 	if _attacking and pose_attack:
 		pose_attack.visible = true
 		return
+
 	if _shooting and pose_shoot:
 		pose_shoot.visible = true
 		return
-	
+
 	if _is_wall_jumping and pose_wall_jump:
 		pose_wall_jump.visible = true
 		return
+
 	if _is_wall_sliding and pose_wall_slide:
 		pose_wall_slide.visible = true
 		return
+
 	if _dashing and pose_dash:
 		pose_dash.visible = true
 		return
+
 	if velocity.y < -6.0 and not is_on_floor() and pose_jump:
 		pose_jump.visible = true
 		return
+
 	if velocity.y > 6.0 and not is_on_floor() and pose_falling:
 		pose_falling.visible = true
 		return
+
 	if absf(velocity.x) > 6.0 and is_on_floor() and pose_run:
 		pose_run.visible = true
 		return
+
 	if pose_idle:
 		pose_idle.visible = true
 
@@ -389,7 +406,6 @@ func spawn_bullet() -> void:
 		return
 
 	bullet.global_position = muzzle.global_position
-
 	var dir := Vector2.LEFT if _facing_left else Vector2.RIGHT
 
 	get_tree().current_scene.add_child(bullet)
@@ -397,16 +413,79 @@ func spawn_bullet() -> void:
 	if bullet is Projectile:
 		bullet.team = 1
 		bullet.launch(dir, null, self)
-		
 	elif bullet.has_method("launch"):
 		bullet.launch(dir)
-		
+
 	_active_bullets.append(bullet)
 	_fire_timer = fire_cooldown
+
 # -----------------------------
 # DAMAGE
 # -----------------------------
-func apply_damage(_amount: int) -> void:
-	pass
-func _on_heavy_attack():
+func apply_damage(amount: int, knockback: Vector2 = Vector2.ZERO, instigator: Node = null) -> void:
+	if _is_dead:
+		return
+	if amount <= 0:
+		return
+	if _invuln_timer > 0.0:
+		return
+
+	current_health -= amount
+	current_health = max(current_health, 0)
+
+	_invuln_timer = invuln_time
+	_apply_damage(knockback, instigator)
+	_flash_hurt()
+
+	if current_health <= 0:
+		_die()
+
+func _apply_damage(knockback: Vector2 = Vector2.ZERO, instigator: Node = null) -> void:
+	_attacking = false
+	_shooting = false
+	_dashing = false
+	_dash_timer = 0.0
+	_is_wall_sliding = false
+	_is_wall_jumping = false
+	_wall_jump_lock_timer = 0.0
+
+	if dust_trail:
+		dust_trail.emitting = false
+
+	var final_knockback := knockback
+
+	if final_knockback == Vector2.ZERO:
+		var hit_dir := -1.0
+
+		if instigator != null and instigator is Node2D:
+			hit_dir = sign(global_position.x - instigator.global_position.x)
+			if hit_dir == 0.0:
+				hit_dir = -1.0 if _facing_left else 1.0
+		else:
+			hit_dir = -1.0 if _facing_left else 1.0
+
+		final_knockback = Vector2(hurt_knockback.x * hit_dir, hurt_knockback.y)
+
+	velocity = final_knockback
+
+func _flash_hurt() -> void:
+	modulate = Color(1.35, 0.4, 0.4, 1.0)
+
+	var timer := get_tree().create_timer(0.1)
+	timer.timeout.connect(func() -> void:
+		if is_instance_valid(self) and not _is_dead:
+			modulate = Color(1.0, 1.0, 1.0, 1.0)
+	)
+
+func _die() -> void:
+	_is_dead = true
+	_attacking = false
+	_shooting = false
+	_dashing = false
+	velocity = Vector2.ZERO
+	modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+	queue_free()
+
+func _on_heavy_attack() -> void:
 	pass

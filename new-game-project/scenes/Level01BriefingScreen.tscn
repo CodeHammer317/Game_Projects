@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cujr18far12ui" path="res://assets/Misc/ConsoleFrame.png" id="2_1w62f"]
 [ext_resource type="FontFile" uid="uid://byny4fhghvyur" path="res://assets/fonts/vt323/VT323-Regular.ttf" id="2_qf0fw"]
 [ext_resource type="AudioStream" uid="uid://cno6ae364d127" path="res://assets/audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3" id="5_lpubu"]
+[ext_resource type="AudioStream" uid="uid://dy3toemro3txx" path="res://assets/audio/Music/WAV/Stealthy_theme_loopable.wav" id="5_qf0fw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8n18e"]
 font = ExtResource("2_qf0fw")
@@ -65,3 +66,9 @@ theme_override_colors/font_color = Color(0.023529412, 1, 0.03529412, 1)
 text = "Press \"A\" or\"spacebar\" to skip "
 label_settings = SubResource("LabelSettings_8n18e")
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=2034532138]
+stream = ExtResource("5_qf0fw")
+volume_db = -4.407
+autoplay = true
+max_polyphony = 6

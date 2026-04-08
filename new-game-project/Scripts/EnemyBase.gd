@@ -13,6 +13,9 @@ class_name EnemyBase
 @export var target_group: StringName = &"player"
 @export var projectile_team: int = 2
 
+@export var death_anim_duration: float = 0.5
+@export var remove_on_death: bool = true
+
 var _start_position: Vector2
 var _patrol_direction: int = -1
 var _fire_timer: float = 0.0
@@ -23,6 +26,7 @@ var _is_dead: bool = false
 @onready var health: Health = $Health
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var muzzle: Node2D = get_node_or_null("Muzzle")
+@onready var collision: CollisionShape2D = get_node_or_null("CollisionShape2D")
 
 func _ready() -> void:
 	_start_position = global_position
@@ -32,6 +36,10 @@ func _ready() -> void:
 			health.damaged.connect(_on_health_damaged)
 		if not health.died.is_connected(_on_died):
 			health.died.connect(_on_died)
+
+	if sprite:
+		if not sprite.animation_finished.is_connected(_on_sprite_animation_finished):
+			sprite.animation_finished.connect(_on_sprite_animation_finished)
 
 	_play_if_exists("idle")
 
@@ -70,9 +78,8 @@ func _get_best_target() -> Node2D:
 			continue
 
 		var candidate := node as Node2D
-
-		# Optional: skip dead targets if they expose a Health child/node
 		var candidate_health := candidate.get_node_or_null("Health")
+
 		if candidate_health and candidate_health.has_method("get"):
 			if candidate_health.get("_is_dead"):
 				continue
@@ -169,12 +176,10 @@ func _try_fire_at_target() -> void:
 	if bullet is Node2D:
 		bullet.global_position = spawn_position
 
-	# Standardize launch handling
 	if bullet is Projectile:
 		bullet.team = projectile_team
 		bullet.launch(direction, _target, self)
 	elif bullet.has_method("launch"):
-		# Fallback for simpler projectile scripts
 		bullet.launch(direction)
 
 	_fire_timer = fire_cooldown
@@ -199,8 +204,15 @@ func _on_died() -> void:
 
 	_is_dead = true
 	velocity = Vector2.ZERO
+
+	if hurtbox:
+		hurtbox.monitoring = false
+		hurtbox.monitorable = false
+
+	if collision:
+		collision.set_deferred("disabled", true)
+
 	_on_death_effects()
-	queue_free()
 
 
 func _flash_hit() -> void:
@@ -218,11 +230,9 @@ func _update_animation() -> void:
 		return
 
 	if absf(velocity.x) > 2.0:
-		if sprite.animation != "run":
-			_play_if_exists("run")
+		_play_if_exists("run")
 	else:
-		if sprite.animation != "idle":
-			_play_if_exists("idle")
+		_play_if_exists("idle")
 
 
 func _play_if_exists(anim_name: StringName) -> void:
@@ -233,4 +243,39 @@ func _play_if_exists(anim_name: StringName) -> void:
 
 
 func _on_death_effects() -> void:
-	sprite.play("dead")
+	_play_if_exists("dead")
+
+	if not remove_on_death:
+		return
+
+	if sprite == null:
+		queue_free()
+		return
+
+	if not sprite.sprite_frames or not sprite.sprite_frames.has_animation("dead"):
+		var fallback_timer := get_tree().create_timer(death_anim_duration)
+		fallback_timer.timeout.connect(func() -> void:
+			if is_instance_valid(self):
+				queue_free()
+		)
+		return
+
+	if sprite.sprite_frames.get_animation_loop("dead"):
+		var fallback_timer := get_tree().create_timer(death_anim_duration)
+		fallback_timer.timeout.connect(func() -> void:
+			if is_instance_valid(self):
+				queue_free()
+		)
+
+
+func _on_sprite_animation_finished() -> void:
+	if not _is_dead:
+		return
+	if not remove_on_death:
+		return
+	if sprite == null:
+		return
+	if sprite.animation != "dead":
+		return
+
+	queue_free()

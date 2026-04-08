@@ -87,17 +87,16 @@ texture = ExtResource("3_e54dn")
 [node name="FadeLayer" type="ColorRect" parent="." unique_id=1728477682]
 clip_contents = true
 layout_mode = 0
-offset_right = 645.0
-offset_bottom = 484.0
+offset_right = 648.0
+offset_bottom = 374.0
 color = Color(0.26836964, 0.30326855, 0.3800006, 1)
 
 [node name="Logo2" type="TextureRect" parent="FadeLayer" unique_id=2028630305]
 material = SubResource("ShaderMaterial_mykxm")
 layout_mode = 0
-offset_left = 193.0
-offset_top = 49.0
-offset_right = 1217.0
-offset_bottom = 1073.0
+offset_left = 196.0
+offset_right = 1220.0
+offset_bottom = 1024.0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_e54dn")
 

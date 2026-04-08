@@ -107,7 +107,7 @@ script = ExtResource("12_orxbs")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1654629623 groups=["player"]]
 collision_layer = 64
-collision_mask = 0
+collision_mask = 40
 script = ExtResource("13_jmfuh")
 health_path = NodePath("../Health")
 team = 1

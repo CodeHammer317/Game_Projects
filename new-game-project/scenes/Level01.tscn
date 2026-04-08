@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dcr166n7p4o6y" path="res://assets/NDS Game Files/Tilesets/main_lev_buildA.png" id="3_c787t"]
 [ext_resource type="Texture2D" uid="uid://ddsojxjqrpyal" path="res://assets/NDS Game Files/Tilesets/main_lev_buildB.png" id="4_kjmhy"]
 [ext_resource type="PackedScene" uid="uid://dbcb2ot1xge3l" path="res://enemies/drone_enemy.tscn" id="9_kjmhy"]
-[ext_resource type="Script" uid="uid://sok34cxtp01g" path="res://scenes/camera_2d.gd" id="11_y23en"]
+[ext_resource type="PackedScene" uid="uid://bftdsloyxvh2s" path="res://enemies/wino.tscn" id="9_y23en"]
+[ext_resource type="PackedScene" uid="uid://dfrsgq04nsxmi" path="res://scenes/enemy_missle.tscn" id="10_y23en"]
+[ext_resource type="Script" uid="uid://sok34cxtp01g" path="res://Scripts/camera_2d.gd" id="11_y23en"]
 [ext_resource type="AudioStream" uid="uid://c1km2um66vkbp" path="res://assets/audio/freepik-fighters-game.mp3" id="13_h8xpb"]
 [ext_resource type="PackedScene" uid="uid://dq0f47undr8pt" path="res://enemies/agent.tscn" id="16_w3try"]
 
@@ -2193,6 +2195,11 @@ position = Vector2(96, 55)
 
 [node name="DroneEnemy6" parent="Enemies" unique_id=1246398371 instance=ExtResource("9_kjmhy")]
 position = Vector2(317, 58)
+
+[node name="Wino" parent="Enemies" unique_id=1374542903 instance=ExtResource("9_y23en")]
+position = Vector2(-954, 219)
+scale = Vector2(0.7, 0.7)
+bullet_scene = ExtResource("10_y23en")
 
 [node name="Level1BackgroundTrack" type="AudioStreamPlayer" parent="." unique_id=1128706458]
 stream = ExtResource("13_h8xpb")
