@@ -50,14 +50,6 @@ region = Rect2(0, 0, 92, 94)
 atlas = ExtResource("7_astbk")
 region = Rect2(92, 0, 92, 94)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0d0u"]
-atlas = ExtResource("7_astbk")
-region = Rect2(184, 0, 92, 94)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c50ea"]
-atlas = ExtResource("7_astbk")
-region = Rect2(276, 0, 92, 94)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gb0x"]
 atlas = ExtResource("5_astbk")
 region = Rect2(0, 0, 64, 96)
@@ -105,16 +97,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yqqe1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j0d0u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c50ea")
 }],
-"loop": false,
+"loop": true,
 "name": &"shoot",
-"speed": 24.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 2.0,
@@ -161,6 +147,7 @@ scale = Vector2(3.3333333, 3.3333333)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=564268322 groups=["enemies"]]
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_yyojw")
-animation = &"walk"
+animation = &"shoot"
 autoplay = "walk"
+frame_progress = 0.43758473
 flip_h = true

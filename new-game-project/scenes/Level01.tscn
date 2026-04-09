@@ -2134,14 +2134,18 @@ size = Vector2(47, 80)
 [node name="Level01" type="Node2D" unique_id=1606560892 groups=["world"]]
 metadata/_edit_vertical_guides_ = [2920.0]
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=2105546187]
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1487686851]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1211270260]
+
+[node name="bkgd" type="Parallax2D" parent="." unique_id=2105546187]
 scale = Vector2(0.4, 0.4)
 scroll_scale = Vector2(0.2, 0)
 scroll_offset = Vector2(23.99997, 115)
 repeat_size = Vector2(1536, 0)
 repeat_times = 10
 
-[node name="OldDistrictBackground" type="Sprite2D" parent="Parallax2D" unique_id=1793556040]
+[node name="OldDistrictBackground" type="Sprite2D" parent="bkgd" unique_id=1793556040]
 position = Vector2(12.499999, 209.99998)
 texture = ExtResource("3_5wrfj")
 

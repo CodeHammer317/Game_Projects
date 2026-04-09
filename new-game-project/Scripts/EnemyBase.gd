@@ -206,8 +206,8 @@ func _on_died() -> void:
 	velocity = Vector2.ZERO
 
 	if hurtbox:
-		hurtbox.monitoring = false
-		hurtbox.monitorable = false
+		hurtbox.set_deferred("monitored", false)
+		hurtbox.set_deferred("monitorable", false)
 
 	if collision:
 		collision.set_deferred("disabled", true)
