@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name EnemyBase
 
 signal died(enemy: Node)
+signal attacked(enemy: Node)
 
 @export var gravity: float = 900.0
 @export var max_fall_speed: float = 700.0
@@ -11,13 +12,35 @@ signal died(enemy: Node)
 @export var death_remove_delay: float = 0.0
 @export var auto_play_movement_animations: bool = true
 
+@export var player_group: StringName = &"player"
+@export var detection_range: float = 220.0
+@export var attack_range: float = 96.0
+@export var stop_distance: float = 8.0
+
+@export var attack_cooldown: float = 1.2
+@export var attack_windup: float = 0.18
+@export var random_attack_variant: bool = true
+@export var projectile_scene: PackedScene
+
+@export var flee_speed_multiplier: float = 1.6
+@export var flee_duration: float = 0.60
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health: Health = $Health
+@onready var muzzle: Node2D = get_node_or_null("Muzzle")
 
 var facing_right: bool = false
 var is_dead: bool = false
 var is_attacking: bool = false
 var current_attack_variant: int = 1
+
+var _target: Node2D = null
+var _attack_cooldown_timer: float = 0.0
+var _attack_windup_timer: float = 0.0
+var _pending_attack: bool = false
+
+var _flee_timer: float = 0.0
+var _flee_from: Node2D = null
 
 
 func _ready() -> void:
@@ -28,6 +51,10 @@ func _ready() -> void:
 		if not health.died.is_connected(_on_died):
 			health.died.connect(_on_died)
 
+	if sprite != null and not sprite.animation_finished.is_connected(_on_sprite_animation_finished):
+		sprite.animation_finished.connect(_on_sprite_animation_finished)
+
+	_find_target()
 	_play_idle()
 
 
@@ -35,12 +62,110 @@ func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
 
+	_update_timers(delta)
+	_find_target_if_needed()
+	_process_ai(delta)
+
 	_apply_gravity(delta)
 	move_and_slide()
 
 	if not is_attacking and auto_play_movement_animations:
 		_update_facing_from_velocity()
 		_update_movement_animation()
+
+
+func _update_timers(delta: float) -> void:
+	if _attack_cooldown_timer > 0.0:
+		_attack_cooldown_timer = max(_attack_cooldown_timer - delta, 0.0)
+
+	if _attack_windup_timer > 0.0:
+		_attack_windup_timer = max(_attack_windup_timer - delta, 0.0)
+		if _attack_windup_timer == 0.0 and _pending_attack:
+			_pending_attack = false
+			_do_attack()
+
+	if _flee_timer > 0.0:
+		_flee_timer = max(_flee_timer - delta, 0.0)
+		if _flee_timer == 0.0:
+			_flee_from = null
+
+
+func _find_target_if_needed() -> void:
+	if _target == null or not is_instance_valid(_target):
+		_find_target()
+
+
+func _find_target() -> void:
+	var players := get_tree().get_nodes_in_group(player_group)
+	if players.is_empty():
+		_target = null
+		return
+
+	_target = players[0] as Node2D
+
+
+func _process_ai(_delta: float) -> void:
+	if is_attacking:
+		velocity.x = 0.0
+		return
+
+	if _target == null or not is_instance_valid(_target):
+		velocity.x = 0.0
+		return
+
+	var to_target: Vector2 = _target.global_position - global_position
+	var dist: float = to_target.length()
+
+	if _flee_timer > 0.0 and _flee_from != null and is_instance_valid(_flee_from):
+		_process_flee()
+		return
+
+	if dist > detection_range:
+		velocity.x = 0.0
+		return
+
+	if dist <= attack_range:
+		velocity.x = 0.0
+		_face_toward(_target.global_position)
+
+		if _attack_cooldown_timer <= 0.0:
+			start_attack()
+		return
+
+	_move_toward_target()
+
+
+func _move_toward_target() -> void:
+	if _target == null:
+		velocity.x = 0.0
+		return
+
+	var dx: float = _target.global_position.x - global_position.x
+
+	if absf(dx) <= stop_distance:
+		velocity.x = 0.0
+		return
+
+	velocity.x = sign(dx) * move_speed
+	_face_toward(_target.global_position)
+
+
+func _process_flee() -> void:
+	if _flee_from == null or not is_instance_valid(_flee_from):
+		velocity.x = 0.0
+		return
+
+	var dx: float = global_position.x - _flee_from.global_position.x
+
+	if absf(dx) <= 1.0:
+		dx = -1.0 if facing_right else 1.0
+
+	velocity.x = sign(dx) * move_speed * flee_speed_multiplier
+	_update_facing_from_velocity()
+
+
+func _face_toward(world_pos: Vector2) -> void:
+	facing_right = world_pos.x > global_position.x
 
 
 func _apply_gravity(delta: float) -> void:
@@ -69,9 +194,8 @@ func _play_idle() -> void:
 	if sprite == null or sprite.sprite_frames == null:
 		return
 
-	if sprite.sprite_frames.has_animation("Idle"):
-		if sprite.animation != "Idle":
-			sprite.play("Idle")
+	if sprite.sprite_frames.has_animation("Idle") and sprite.animation != "Idle":
+		sprite.play("Idle")
 
 
 func _play_move() -> void:
@@ -91,18 +215,62 @@ func _play_move() -> void:
 		sprite.flip_h = not facing_right
 
 
+func start_attack() -> void:
+	if is_dead or is_attacking:
+		return
+
+	is_attacking = true
+	_attack_cooldown_timer = attack_cooldown
+	_attack_windup_timer = attack_windup
+	_pending_attack = true
+
+	if random_attack_variant:
+		current_attack_variant = randi_range(1, 3)
+	else:
+		current_attack_variant = 1
+
+	play_fire_animation(current_attack_variant)
+
+
 func play_fire_animation(variant: int = 1) -> void:
 	if is_dead:
 		return
 
 	current_attack_variant = clampi(variant, 1, 3)
-	is_attacking = true
 
 	var anim_name := "Fire%d" % current_attack_variant
 	if _has_animation(anim_name):
 		sprite.play(anim_name)
 	else:
-		_play_idle()
+		finish_attack()
+
+
+func _do_attack() -> void:
+	if is_dead:
+		return
+
+	attacked.emit(self)
+
+	if projectile_scene == null:
+		return
+
+	var projectile := projectile_scene.instantiate()
+	if projectile == null:
+		return
+
+	get_parent().add_child(projectile)
+
+	if muzzle != null:
+		projectile.global_position = muzzle.global_position
+	else:
+		projectile.global_position = global_position
+
+	var direction := Vector2.RIGHT if facing_right else Vector2.LEFT
+
+	if projectile.has_method("setup"):
+		projectile.setup(direction, self)
+	elif projectile.has_method("launch"):
+		projectile.launch(direction, _target, self)
 
 
 func finish_attack() -> void:
@@ -110,7 +278,17 @@ func finish_attack() -> void:
 		return
 
 	is_attacking = false
+	_pending_attack = false
+	_attack_windup_timer = 0.0
 	_update_movement_animation()
+
+
+func _on_sprite_animation_finished() -> void:
+	if is_dead:
+		return
+
+	if sprite.animation.begins_with("Fire"):
+		finish_attack()
 
 
 func _on_damaged(info: DamageInfo) -> void:
@@ -120,8 +298,17 @@ func _on_damaged(info: DamageInfo) -> void:
 	if info != null:
 		velocity += info.knockback
 
-	# If you add a Hurt animation later, play it here.
-	# For now, keep current anim flow simple.
+		if info.instigator is Node2D:
+			_flee_from = info.instigator as Node2D
+		else:
+			_flee_from = _target
+
+	_flee_timer = flee_duration
+	is_attacking = false
+	_pending_attack = false
+	_attack_windup_timer = 0.0
+
+	_update_facing_from_velocity()
 
 
 func _on_died() -> void:
@@ -130,11 +317,11 @@ func _on_died() -> void:
 
 	is_dead = true
 	is_attacking = false
+	_pending_attack = false
 	velocity = Vector2.ZERO
 
 	if _has_animation("Death"):
 		sprite.play("Death")
-
 		if sprite.animation_finished.is_connected(_on_death_animation_finished):
 			sprite.animation_finished.disconnect(_on_death_animation_finished)
 		sprite.animation_finished.connect(_on_death_animation_finished, CONNECT_ONE_SHOT)

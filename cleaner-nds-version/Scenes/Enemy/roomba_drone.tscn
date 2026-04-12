@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b2pmeb5bnk5me"]
 
 [ext_resource type="Script" uid="uid://bjv38u06gpxct" path="res://Scenes/Enemy/enemy_base.gd" id="1_h7awd"]
+[ext_resource type="PackedScene" uid="uid://i8mxwq1lgxp7" path="res://Scenes/FX/drone_3_bullet.tscn" id="2_1t400"]
 [ext_resource type="Texture2D" uid="uid://ko6l1eklm0am" path="res://Assets/sprites/drones/1 Drones/3/Back.png" id="2_fhked"]
 [ext_resource type="Texture2D" uid="uid://df6t0wr1cqpyv" path="res://Assets/sprites/drones/1 Drones/3/Death.png" id="3_1t400"]
 [ext_resource type="Texture2D" uid="uid://c3gxnn8be5h81" path="res://Assets/sprites/drones/1 Drones/3/Fire1.png" id="4_o5n2o"]
@@ -534,6 +535,8 @@ size = Vector2(28, 13)
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_h7awd")
+gravity = 800.0
+projectile_scene = ExtResource("2_1t400")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=776852473]
 visible = false
@@ -541,11 +544,13 @@ shape = SubResource("RectangleShape2D_yxkbp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1285878564]
 sprite_frames = SubResource("SpriteFrames_m8ac2")
-animation = &"Back"
+animation = &"Fire1"
+frame = 15
+frame_progress = 1.0
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1678371625]
 collision_layer = 64
-collision_mask = 8
+collision_mask = 0
 script = ExtResource("9_j5g4l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=10881177]
@@ -553,3 +558,6 @@ shape = SubResource("RectangleShape2D_4ht8y")
 
 [node name="Health" type="Node" parent="." unique_id=1714794119]
 script = ExtResource("10_x2ctc")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1222926845]
+position = Vector2(0, -13)

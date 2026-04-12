@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://0fgr33l7unx4"]
+
+[ext_resource type="Texture2D" uid="uid://bhtx842v7801v" path="res://assets/NDS Game Files/MatTt Sprites/GhostMatttHead.png" id="1_gjtft"]
+[ext_resource type="Texture2D" uid="uid://d0lmmjyvc1q8r" path="res://assets/Dialog&ThoughtBubbles/comic-2.png" id="2_l8aqx"]
+[ext_resource type="FontFile" uid="uid://byny4fhghvyur" path="res://assets/fonts/vt323/VT323-Regular.ttf" id="3_l8aqx"]
+
+[node name="SpritMatTt" type="Node2D" unique_id=716213362]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1991781389]
+texture = ExtResource("1_gjtft")
+flip_h = true
+
+[node name="Comic2" type="Sprite2D" parent="." unique_id=217166654]
+position = Vector2(-166, -105)
+scale = Vector2(0.52, 0.5199997)
+texture = ExtResource("2_l8aqx")
+
+[node name="Control" type="Control" parent="Comic2" unique_id=489278887]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -112.0
+offset_top = -62.0
+offset_right = -72.0
+offset_bottom = -22.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Comic2/Control" unique_id=1763329654]
+layout_mode = 0
+offset_left = -101.46155
+offset_top = -74.53854
+offset_right = 321.6154
+offset_bottom = 131.2308
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_l8aqx")
+theme_override_font_sizes/normal_font_size = 47
+text = "I sense the subway is only the beginning of your journey!"

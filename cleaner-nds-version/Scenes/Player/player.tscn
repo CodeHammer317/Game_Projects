@@ -530,7 +530,7 @@ radius = 4.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpcdj"]
 size = Vector2(5, 4)
 
-[node name="Player" type="CharacterBody2D" unique_id=1715600248]
+[node name="Player" type="CharacterBody2D" unique_id=1715600248 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_7ve27")
 bullet_scene = ExtResource("2_ldt7q")
@@ -543,13 +543,14 @@ debug_color = Color(0.9222628, 0.24629954, 0.34191763, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1113292849]
 sprite_frames = SubResource("SpriteFrames_uvnfx")
-animation = &"shoot_run"
+animation = &"death"
 autoplay = "idle"
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1986837846]
 collision_layer = 32
-collision_mask = 16
+collision_mask = 0
 script = ExtResource("99_81gu5")
+health_path = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=540761330]
 shape = SubResource("CapsuleShape2D_4rt4h")

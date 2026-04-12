@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://dnwy41vf8yi71"]
+
+[ext_resource type="Texture2D" uid="uid://cinbf2b1g7fl" path="res://assets/NDS Game Files/Top Sprites/TopLobsta-Final.png" id="1_7a00j"]
+[ext_resource type="Script" uid="uid://b7qkv83n8e4kc" path="res://Scripts/PlayerBase.gd" id="1_c162e"]
+[ext_resource type="Script" uid="uid://dsysw4qgnrgn3" path="res://Scripts/PlayerStats.gd" id="2_swkvq"]
+[ext_resource type="Script" uid="uid://dttgnjrccs7ka" path="res://Scripts/TopLobstaAbilities.gd" id="3_a8xfx"]
+[ext_resource type="PackedScene" uid="uid://hke5iqiyg5l4" path="res://scenes/bullet.tscn" id="4_sdore"]
+[ext_resource type="Script" uid="uid://bb0cvhb3bycdg" path="res://Scripts/Hurtbox.gd" id="6_a8xfx"]
+[ext_resource type="PackedScene" uid="uid://ctrfj6ud312s6" path="res://scenes/dust_trail.tscn" id="6_swkvq"]
+[ext_resource type="Script" uid="uid://tx2di6o75k37" path="res://Scripts/Health.gd" id="7_xo6mk"]
+[ext_resource type="Texture2D" uid="uid://brlmudfx2meuy" path="res://assets/NDS Game Files/Top Sprites/Dash end pose with l.png" id="8_sdore"]
+[ext_resource type="Texture2D" uid="uid://dumy5s1wv28qa" path="res://assets/NDS Game Files/Top Sprites/TopJump.png" id="9_jg864"]
+[ext_resource type="Texture2D" uid="uid://kgt325ybupbr" path="res://assets/NDS Game Files/Top Sprites/TopFalling.png" id="10_wjula"]
+[ext_resource type="Texture2D" uid="uid://bcfxh760krfr3" path="res://assets/NDS Game Files/Top Sprites/Shooting pose with l.png" id="11_d0yeo"]
+[ext_resource type="Texture2D" uid="uid://ct53hrqp4rvkf" path="res://assets/NDS Game Files/Top Sprites/Dash pose with light.png" id="12_xgpdw"]
+
+[sub_resource type="Resource" id="Resource_dqxff"]
+script = ExtResource("2_swkvq")
+metadata/_custom_type_script = "uid://dsysw4qgnrgn3"
+
+[sub_resource type="Resource" id="Resource_50nh4"]
+script = ExtResource("3_a8xfx")
+metadata/_custom_type_script = "uid://dttgnjrccs7ka"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swkvq"]
+radius = 150.0
+height = 1000.0
+
+[sub_resource type="GDScript" id="GDScript_sdore"]
+script/source = "# MuzzleSocket.gd
+extends Marker2D
+class_name MuzzleSocket
+
+@export var right_side_offset: Vector2 = Vector2(10, -2)
+
+func set_facing_left(facing_left: bool) -> void:
+	position = Vector2(
+		-right_side_offset.x if facing_left else right_side_offset.x,
+		right_side_offset.y
+	)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8xfx"]
+size = Vector2(300, 850)
+
+[node name="Toplobsta" type="CharacterBody2D" unique_id=737537431 groups=["player"]]
+scale = Vector2(0.04, 0.04)
+collision_layer = 2
+collision_mask = 809
+script = ExtResource("1_c162e")
+stats = SubResource("Resource_dqxff")
+abilities = SubResource("Resource_50nh4")
+bullet_scene = ExtResource("4_sdore")
+max_bullets_on_screen = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=435929958]
+shape = SubResource("CapsuleShape2D_swkvq")
+
+[node name="Sockets" type="Node2D" parent="." unique_id=738888009]
+
+[node name="Muzzle" type="Marker2D" parent="Sockets" unique_id=1633145011]
+position = Vector2(450, -100)
+script = SubResource("GDScript_sdore")
+
+[node name="Health" type="Node" parent="." unique_id=1504423349]
+script = ExtResource("7_xo6mk")
+max_health = 10
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1483849991]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("6_a8xfx")
+health_path = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1403864790]
+position = Vector2(0, -25.000011)
+shape = SubResource("RectangleShape2D_a8xfx")
+debug_color = Color(0.9535865, 0.12307338, 0.45308828, 0.41960785)
+
+[node name="Poses" type="Node2D" parent="." unique_id=784324420]
+
+[node name="Idle" type="Sprite2D" parent="Poses" unique_id=1230913563]
+position = Vector2(25, 25)
+texture = ExtResource("1_7a00j")
+
+[node name="Run" type="Sprite2D" parent="Poses" unique_id=1845515622]
+visible = false
+position = Vector2(25, 100)
+skew = -0.073303826
+texture = ExtResource("8_sdore")
+
+[node name="Attack" type="Sprite2D" parent="Poses" unique_id=1334805353]
+visible = false
+scale = Vector2(2, 2)
+
+[node name="WallJump" type="Sprite2D" parent="Poses" unique_id=2116985526]
+visible = false
+position = Vector2(50.000004, 3.8146973e-06)
+scale = Vector2(1.2, 1.2)
+skew = -0.29496065
+texture = ExtResource("9_jg864")
+flip_h = true
+
+[node name="WallSlide" type="Sprite2D" parent="Poses" unique_id=1813181044]
+visible = false
+position = Vector2(25.000002, 25)
+scale = Vector2(1.2, 1.2)
+skew = -0.2565634
+texture = ExtResource("9_jg864")
+
+[node name="Jump" type="Sprite2D" parent="Poses" unique_id=2100052168]
+visible = false
+scale = Vector2(1.2, 1.2)
+skew = 0.26703537
+texture = ExtResource("9_jg864")
+
+[node name="Falling" type="Sprite2D" parent="Poses" unique_id=566397356]
+visible = false
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("10_wjula")
+
+[node name="Shoot" type="Sprite2D" parent="Poses" unique_id=1455315786]
+visible = false
+position = Vector2(99.99997, 25.000006)
+scale = Vector2(1.1, 1.1)
+skew = 0.073303826
+texture = ExtResource("11_d0yeo")
+
+[node name="Dash" type="Sprite2D" parent="Poses" unique_id=1084265457]
+visible = false
+position = Vector2(75.00001, 75.00001)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("12_xgpdw")
+
+[node name="DustTrail" parent="." unique_id=296660013 instance=ExtResource("6_swkvq")]
+position = Vector2(-50, 375)
+amount = 27
+lifetime = 0.11

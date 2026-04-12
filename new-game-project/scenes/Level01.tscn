@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dfrsgq04nsxmi" path="res://scenes/enemy_missle.tscn" id="10_y23en"]
 [ext_resource type="Script" uid="uid://sok34cxtp01g" path="res://Scripts/camera_2d.gd" id="11_y23en"]
 [ext_resource type="AudioStream" uid="uid://c1km2um66vkbp" path="res://assets/audio/freepik-fighters-game.mp3" id="13_h8xpb"]
+[ext_resource type="PackedScene" uid="uid://dxwqq0pjht3dx" path="res://enemies/soldier_1.tscn" id="13_p3ma5"]
 [ext_resource type="PackedScene" uid="uid://dq0f47undr8pt" path="res://enemies/agent.tscn" id="16_w3try"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kq4m"]
@@ -2227,5 +2228,8 @@ debug_color = Color(0.7593132, 0.4511851, 0.11755838, 0.41960785)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2046871978]
 script = ExtResource("11_y23en")
 target_path = NodePath("../Players/Raven")
+
+[node name="Soldier1" parent="." unique_id=1946182687 groups=["enemies"] instance=ExtResource("13_p3ma5")]
+position = Vector2(450, 240)
 
 [editable path="Players/Raven"]
