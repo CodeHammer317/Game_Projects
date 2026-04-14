@@ -93,10 +93,10 @@
 [ext_resource type="Texture2D" uid="uid://2x78lqpau5l8" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0003.png" id="96_rgrd7"]
 [ext_resource type="Texture2D" uid="uid://e2iofd1bqxi5" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0004.png" id="97_11hxx"]
 [ext_resource type="Texture2D" uid="uid://cavbty2ocmtwb" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0005.png" id="98_whol2"]
-[ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scenes/Player/hurtbox.gd" id="99_81gu5"]
+[ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="99_81gu5"]
 [ext_resource type="Texture2D" uid="uid://oixds7p05f4h" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0006.png" id="99_urj24"]
 [ext_resource type="Texture2D" uid="uid://bkknq6yg6v1oh" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0007.png" id="100_n48cf"]
-[ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scenes/Player/health.gd" id="100_pf3rq"]
+[ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="100_pf3rq"]
 [ext_resource type="Texture2D" uid="uid://hhlc6g2dsl0y" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0008.png" id="101_82xmt"]
 [ext_resource type="Texture2D" uid="uid://da416alnkxstc" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0009.png" id="102_8wl7i"]
 [ext_resource type="Texture2D" uid="uid://b0y3un4kt28ye" path="res://Assets/sprites/classic_character/PNG/style_4/wall_cling.png" id="103_kq8xt"]
@@ -169,7 +169,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_18yym")
 }],
-"loop": true,
+"loop": false,
 "name": &"dash",
 "speed": 16.0
 }, {
@@ -543,12 +543,12 @@ debug_color = Color(0.9222628, 0.24629954, 0.34191763, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1113292849]
 sprite_frames = SubResource("SpriteFrames_uvnfx")
-animation = &"death"
+animation = &"wall_slide"
 autoplay = "idle"
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1986837846]
 collision_layer = 32
-collision_mask = 0
+collision_mask = 16
 script = ExtResource("99_81gu5")
 health_path = NodePath("../Health")
 

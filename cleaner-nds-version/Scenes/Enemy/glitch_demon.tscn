@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://4f55in72ln4w"]
+
+[ext_resource type="Script" uid="uid://bjv38u06gpxct" path="res://Scenes/Enemy/enemy_base.gd" id="1_1r4rj"]
+[ext_resource type="Texture2D" uid="uid://dt3bmypkblp8f" path="res://Assets/sprites/glitch_creature_64x64-sheet.png" id="1_74obc"]
+[ext_resource type="PackedScene" uid="uid://i8mxwq1lgxp7" path="res://Scenes/FX/drone_3_bullet.tscn" id="2_1r4rj"]
+[ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="4_nw21g"]
+[ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="5_c7vki"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjjg4"]
+size = Vector2(20, 52.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_855md"]
+atlas = ExtResource("1_74obc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r4rj"]
+atlas = ExtResource("1_74obc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c7vki"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_855md")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r4rj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74obc"]
+size = Vector2(20, 34)
+
+[node name="GlitchDemon" type="CharacterBody2D" unique_id=1562222215 groups=["enemies"]]
+scale = Vector2(0.7, 0.7)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_1r4rj")
+projectile_scene = ExtResource("2_1r4rj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1074383054]
+position = Vector2(0, 2.75)
+shape = SubResource("RectangleShape2D_fjjg4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1280155976]
+sprite_frames = SubResource("SpriteFrames_c7vki")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.58615065
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=880096687]
+collision_layer = 64
+collision_mask = 8
+script = ExtResource("5_c7vki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1414026202]
+shape = SubResource("RectangleShape2D_74obc")
+debug_color = Color(0.9568953, 0.10862193, 0.45275658, 0.41960785)
+
+[node name="Health" type="Node" parent="." unique_id=1468602150]
+script = ExtResource("4_nw21g")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=844540403]
+position = Vector2(32.857143, 0)
+scale = Vector2(0.9999998, 0.9999998)

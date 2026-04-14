@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://i8mxwq1lgxp7"]
 
 [ext_resource type="Texture2D" uid="uid://beg0k6hqi06qt" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/spritesheet/pj1_magic_missile_large_red/spritesheet.png" id="1_0tfq6"]
-[ext_resource type="Script" uid="uid://c0hxxo8hij7p8" path="res://Scenes/FX/enemy_bullet.gd" id="1_w6r3f"]
+[ext_resource type="Script" uid="uid://c0hxxo8hij7p8" path="res://Scripts/combat/enemy_bullet.gd" id="1_w6r3f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w6r3f"]
+radius = 3.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xlt13"]
 atlas = ExtResource("1_0tfq6")
@@ -41,7 +42,9 @@ animations = [{
 "speed": 16.0
 }]
 
-[node name="Drone3Bullet" type="Area2D" unique_id=1120944334]
+[node name="Drone3Bullet" type="Area2D" unique_id=1120944334 groups=["enemies"]]
+collision_layer = 16
+collision_mask = 33
 script = ExtResource("1_w6r3f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=690441148]
@@ -52,3 +55,5 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ogsn0")
 autoplay = "default"
 frame_progress = 0.9427923
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=671670464]

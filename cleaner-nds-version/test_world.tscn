@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b2pmeb5bnk5me" path="res://Scenes/Enemy/roomba_drone.tscn" id="4_dsnr4"]
 [ext_resource type="Texture2D" uid="uid://bsbpxc4jivkqp" path="res://Assets/sprites/ancient-temple-pixel-game-backgrounds/PNG/background 1/Plan 2.png" id="4_ud3vi"]
 [ext_resource type="Texture2D" uid="uid://bm4l67vqu1gin" path="res://Assets/sprites/ancient-temple-pixel-game-backgrounds/PNG/background 1/Plan 1.png" id="5_5457m"]
+[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/hud.tscn" id="10_ud3vi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dsnr4"]
 texture = ExtResource("1_gy3sr")
@@ -782,6 +783,7 @@ sources/0 = SubResource("TileSetAtlasSource_dsnr4")
 [node name="WorldLayers" type="Node" parent="." unique_id=656059620]
 
 [node name="Sky" type="Parallax2D" parent="WorldLayers" unique_id=782234487]
+visible = false
 z_index = -1
 repeat_size = Vector2(576, 0)
 repeat_times = 4
@@ -791,6 +793,7 @@ texture = ExtResource("1_cnaw2")
 centered = false
 
 [node name="Clouds" type="Parallax2D" parent="WorldLayers" unique_id=658064843]
+visible = false
 z_index = -1
 scroll_offset = Vector2(97, 120)
 repeat_size = Vector2(576, 0)
@@ -807,6 +810,7 @@ texture = ExtResource("2_kt6p6")
 flip_h = true
 
 [node name="Far" type="Parallax2D" parent="WorldLayers" unique_id=602036748]
+visible = false
 z_index = -1
 scroll_scale = Vector2(0.4, 0.4)
 scroll_offset = Vector2(305, 141)
@@ -817,6 +821,7 @@ repeat_times = 6
 texture = ExtResource("3_4tg7h")
 
 [node name="Mid" type="Parallax2D" parent="WorldLayers" unique_id=640306772]
+visible = false
 z_index = -1
 scroll_scale = Vector2(0.6, 0.6)
 scroll_offset = Vector2(309, 160)
@@ -827,6 +832,7 @@ repeat_times = 5
 texture = ExtResource("4_ud3vi")
 
 [node name="Near" type="Parallax2D" parent="WorldLayers" unique_id=2130740121]
+visible = false
 z_index = -1
 scroll_offset = Vector2(299, 153)
 repeat_size = Vector2(576, 0)
@@ -842,6 +848,9 @@ tile_set = SubResource("TileSet_lf0gk")
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("2_1lwx6")]
 position = Vector2(47, 273)
 
+[node name="RoombaDrone" parent="." unique_id=1221956425 groups=["enemies"] instance=ExtResource("4_dsnr4")]
+position = Vector2(334, 250)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=992704507]
 limit_left = 0
 limit_top = 0
@@ -852,5 +861,5 @@ position_smoothing_speed = 6.0
 script = ExtResource("3_1lwx6")
 target_path = NodePath("../Player")
 
-[node name="RoombaDrone" parent="." unique_id=1221956425 instance=ExtResource("4_dsnr4")]
-position = Vector2(334, 250)
+[node name="HUD" parent="." unique_id=354589440 instance=ExtResource("10_ud3vi")]
+player_path = NodePath("../Player")

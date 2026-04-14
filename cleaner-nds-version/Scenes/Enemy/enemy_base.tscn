@@ -1,18 +1,12 @@
 [gd_scene format=3 uid="uid://dcoqt8dyqw7je"]
 
 [ext_resource type="Script" uid="uid://bjv38u06gpxct" path="res://Scenes/Enemy/enemy_base.gd" id="1_4ffxi"]
-[ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scenes/Player/health.gd" id="5_rfg8t"]
-[ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scenes/Player/hurtbox.gd" id="6_7tn8a"]
+[ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="5_rfg8t"]
+[ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="6_7tn8a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxkbp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m8ac2"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ht8y"]
 size = Vector2(28, 13)
@@ -23,12 +17,10 @@ collision_mask = 11
 script = ExtResource("1_4ffxi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=776852473]
-visible = false
 shape = SubResource("RectangleShape2D_yxkbp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1285878564]
 sprite_frames = SubResource("SpriteFrames_m8ac2")
-animation = &"new_animation"
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1678371625]
 collision_layer = 64

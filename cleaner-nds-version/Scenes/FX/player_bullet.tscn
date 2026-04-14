@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://yxy84onu0e8"]
 
-[ext_resource type="Script" uid="uid://l8klmxvraqya" path="res://player_bullet.gd" id="1_yxr3u"]
+[ext_resource type="Script" uid="uid://l8klmxvraqya" path="res://Scripts/combat/player_bullet.gd" id="1_yxr3u"]
 [ext_resource type="Texture2D" uid="uid://135hu0xiqdtm" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0000.png" id="2_y7ds3"]
 [ext_resource type="Texture2D" uid="uid://upm8oy02hrju" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0001.png" id="3_1wmpo"]
 [ext_resource type="Texture2D" uid="uid://drdq00q0bx367" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0002.png" id="4_3g3fa"]

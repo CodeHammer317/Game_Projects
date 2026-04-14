@@ -11,6 +11,7 @@ class_name SimpleCamera
 var _target: Node2D = null
 var _look_offset_x: float = 0.0
 
+
 func _ready() -> void:
 	if target_path != NodePath():
 		_target = get_node_or_null(target_path) as Node2D
@@ -19,8 +20,10 @@ func _ready() -> void:
 	position_smoothing_speed = smoothing_speed
 	enabled = true
 
+	CombatFX.register_camera(self)
 
-func _process(delta: float) -> void:
+
+func _physics_process(delta: float) -> void:
 	if _target == null:
 		return
 
@@ -44,3 +47,4 @@ func _process(delta: float) -> void:
 		_target.global_position.x + _look_offset_x,
 		_target.global_position.y + vertical_offset
 	)
+	

@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="CleanerNDSVersion"
+run/main_scene="uid://c2jo1f6jebhab"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+CombatFx="*uid://dftahvy4iqilp"
 
 [display]
 
@@ -22,6 +27,11 @@ window/size/mode=2
 window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
+
+[global_group]
+
+enemies=""
+player=""
 
 [input]
 
