@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cormy61c2jsmw"]
+
+[ext_resource type="Script" uid="uid://kkbsiyg3ehw8" path="res://Scripts/control.gd" id="1_diqe4"]
+[ext_resource type="Texture2D" uid="uid://cujr18far12ui" path="res://Assets/Misc/ConsoleFrame.png" id="2_ajv21"]
+[ext_resource type="AudioStream" uid="uid://dyg7h7aqmmvlt" path="res://Assets/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3" id="3_ajv21"]
+
+[node name="Level01BriefingScreen" type="Control" unique_id=827862161]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_diqe4")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=169987467]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CrtCreenOverlay" type="Sprite2D" parent="ColorRect" unique_id=996017537]
+position = Vector2(158, 92)
+texture = ExtResource("2_ajv21")
+
+[node name="TextLabel" type="RichTextLabel" parent="ColorRect" unique_id=1000392433]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 28.0
+offset_right = 293.0
+offset_bottom = 156.0
+theme_override_colors/default_color = Color(0.38039216, 0.7294118, 0, 1)
+scroll_following_visible_characters = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1704835657]
+stream = ExtResource("3_ajv21")
+volume_db = -22.05
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1272386344]
+
+[node name="SkipLabel" type="Label" parent="." unique_id=400649107]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 158.0
+offset_right = 204.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 6
+text = "press \"A\" or spacebar to skip"

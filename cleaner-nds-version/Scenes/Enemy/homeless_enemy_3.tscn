@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dantf5jjkabte"]
+
+[ext_resource type="Script" uid="uid://cds1nc3ugic5b" path="res://Scenes/Enemy/homeless_enemy_1.gd" id="1_tknpg"]
+[ext_resource type="PackedScene" uid="uid://c2oj3klhemfw" path="res://Scenes/FX/flying_bottle.tscn" id="2_4yo2u"]
+[ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="12_oe52a"]
+[ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="13_uq35k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxkbp"]
+size = Vector2(20, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8ac2"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Attack1",
+"speed": 9.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"Attack2",
+"speed": 9.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"Attack_Ready",
+"speed": 9.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"Hurt",
+"speed": 9.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Idle1",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"Idle2",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Jump",
+"speed": 7.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Run",
+"speed": 15.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ht8y"]
+size = Vector2(13, 35)
+
+[node name="HomelessEnemy3" type="CharacterBody2D" unique_id=1221956425 groups=["enemies"]]
+scale = Vector2(0.65, 0.65)
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_tknpg")
+attack_cooldown = 2.0
+attack_ready_duration = 1.0
+projectile_scene = ExtResource("2_4yo2u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=776852473]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_yxkbp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1285878564]
+position = Vector2(1, -29)
+sprite_frames = SubResource("SpriteFrames_m8ac2")
+animation = &"Walk"
+autoplay = "Idle1"
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1678371625]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("12_oe52a")
+health_path = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=10881177]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_4ht8y")
+debug_color = Color(0.9617104, 0.1328403, 0.37480175, 0.41960785)
+
+[node name="Health" type="Node" parent="." unique_id=1714794119]
+script = ExtResource("13_uq35k")

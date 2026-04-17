@@ -15,7 +15,7 @@ var _damage_cooldown_timer: float = 0.0
 
 func _ready() -> void:
 	current_health = max_health
-
+	print(current_health)
 
 func _process(delta: float) -> void:
 	if _damage_cooldown_timer > 0.0:
@@ -38,7 +38,7 @@ func apply_damage(info: DamageInfo) -> void:
 	current_health -= info.damage
 	current_health = max(current_health, 0)
 	_damage_cooldown_timer = damage_cooldown
-
+	print(current_health)
 	print(name, " took damage: ", info.damage, " hp left: ", current_health)
 	damaged.emit(info)
 

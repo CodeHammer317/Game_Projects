@@ -27,7 +27,7 @@ func _ready() -> void:
 	if notifier and not notifier.screen_exited.is_connected(_on_screen_exited):
 		notifier.screen_exited.connect(_on_screen_exited)
 
-
+	print("PLAYER BULLET READY")
 func setup(direction: Vector2, owner: Node) -> void:
 	if direction == Vector2.ZERO:
 		_direction = Vector2.RIGHT
@@ -35,7 +35,7 @@ func setup(direction: Vector2, owner: Node) -> void:
 		_direction = direction.normalized()
 
 	_owner = owner
-
+	print("PLAYER BULLET SETUP CALLED. DIR = ", direction)
 	if sprite:
 		if _direction.x < 0.0:
 			sprite.scale.x = -absf(sprite.scale.x)
@@ -45,7 +45,7 @@ func setup(direction: Vector2, owner: Node) -> void:
 
 func _physics_process(delta: float) -> void:
 	global_position += _direction * speed * delta
-
+	print("PLAYER BULLET POS: ", global_position)
 	_time_left -= delta
 	if _time_left <= 0.0:
 		queue_free()
@@ -63,16 +63,20 @@ func _on_area_entered(area: Area2D) -> void:
 	if area == null:
 		return
 
+	# Ignore owner and owner's children
 	if area == _owner:
+		return
+
+	var area_parent := area.get_parent()
+	if area_parent == _owner:
 		return
 
 	if area.has_method("apply_hit"):
 		_apply_hit_area(area)
 		return
 
-	var parent := area.get_parent()
-	if parent != null and parent != _owner and parent.has_method("apply_damage"):
-		_apply_hit_to(parent)
+	if area_parent != null and area_parent != _owner and area_parent.has_method("apply_damage"):
+		_apply_hit_to(area_parent)
 
 
 func _apply_hit_area(area: Area2D) -> void:

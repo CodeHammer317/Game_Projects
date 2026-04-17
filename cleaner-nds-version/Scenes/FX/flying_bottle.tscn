@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://c2oj3klhemfw"]
+
+[ext_resource type="Script" uid="uid://8q22c7tondia" path="res://Scripts/flying_bottle.gd" id="1_3qo5t"]
+[ext_resource type="Texture2D" uid="uid://cwxkspd5p0wu5" path="res://Assets/homeless-character-sprite-sheets/Homeless_1/FlyingBottleLoop.png" id="2_ktoex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3qo5t"]
+radius = 7.071068
+
+[sub_resource type="Shader" id="Shader_3qo5t"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktoex"]
+shader = SubResource("Shader_3qo5t")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sj80"]
+atlas = ExtResource("2_ktoex")
+region = Rect2(0, 0, 21, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilqq5"]
+atlas = ExtResource("2_ktoex")
+region = Rect2(21, 0, 21, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5gmg"]
+atlas = ExtResource("2_ktoex")
+region = Rect2(42, 0, 21, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8pn1"]
+atlas = ExtResource("2_ktoex")
+region = Rect2(63, 0, 21, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnohe"]
+atlas = ExtResource("2_ktoex")
+region = Rect2(84, 0, 21, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oc4je"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sj80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilqq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5gmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8pn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnohe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="FlyingBottle" type="Area2D" unique_id=1932450722]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_3qo5t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1838807330]
+shape = SubResource("CircleShape2D_3qo5t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=532331948]
+material = SubResource("ShaderMaterial_ktoex")
+sprite_frames = SubResource("SpriteFrames_oc4je")
+autoplay = "default"
+frame_progress = 0.056082122
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1718996996]

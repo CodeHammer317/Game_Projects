@@ -532,6 +532,7 @@ size = Vector2(5, 4)
 
 [node name="Player" type="CharacterBody2D" unique_id=1715600248 groups=["player"]]
 collision_layer = 2
+collision_mask = 129
 script = ExtResource("1_7ve27")
 bullet_scene = ExtResource("2_ldt7q")
 muzzle_offset_right = Vector2(15, 3)
@@ -543,7 +544,7 @@ debug_color = Color(0.9222628, 0.24629954, 0.34191763, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1113292849]
 sprite_frames = SubResource("SpriteFrames_uvnfx")
-animation = &"wall_slide"
+animation = &"shoot_idle"
 autoplay = "idle"
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1986837846]
@@ -565,7 +566,8 @@ shape = SubResource("RectangleShape2D_xpcdj")
 debug_color = Color(0.7529412, 0.59607846, 0.03529412, 0.6156863)
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=212918987]
-position = Vector2(11, 5)
+position = Vector2(18, 3)
 
 [node name="Health" type="Node" parent="." unique_id=1695275048]
 script = ExtResource("100_pf3rq")
+max_health = 10

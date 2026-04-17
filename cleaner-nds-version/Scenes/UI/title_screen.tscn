@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://bjg0c88uhxlsh"]
+
+[ext_resource type="Script" uid="uid://8603dw216quu" path="res://Scripts/title_screen.gd" id="1_xsyet"]
+[ext_resource type="Texture2D" uid="uid://cunpfkdkylvoq" path="res://Assets/sprites/background1-720.png" id="2_dnytt"]
+[ext_resource type="Texture2D" uid="uid://c7xaebhxtfe1i" path="res://Assets/NDS Game Files/NDS Logo.png" id="3_kyvdy"]
+[ext_resource type="Texture2D" uid="uid://pf0gmce177of" path="res://Assets/NDS Game Files/NDS Logo_transparent.png" id="4_bnqst"]
+[ext_resource type="AudioStream" uid="uid://c4hjf17omf827" path="res://Assets/levelup.ogg" id="5_dsf7a"]
+[ext_resource type="AudioStream" uid="uid://cdqht4tbikj2g" path="res://Assets/pickup2.ogg" id="6_824g0"]
+[ext_resource type="AudioStream" uid="uid://dkyb3ttoc0rgq" path="res://Assets/freepik-gamers-united.mp3" id="7_tjte5"]
+
+[sub_resource type="SystemFont" id="SystemFont_dsf7a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dsf7a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_824g0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tjte5"]
+
+[node name="TitleScreen" type="Control" unique_id=380044311]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xsyet")
+
+[node name="Background" type="TextureRect" parent="." unique_id=218822866]
+layout_mode = 0
+offset_right = 325.0
+offset_bottom = 179.0
+texture = ExtResource("2_dnytt")
+expand_mode = 1
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1278079265]
+layout_mode = 0
+offset_left = 94.0
+offset_top = -3.0
+offset_right = 231.0
+offset_bottom = 118.0
+texture = ExtResource("3_kyvdy")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="." unique_id=1154930555]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MenuContainer" type="VBoxContainer" parent="." unique_id=2053710857]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 128.0
+offset_right = 214.0
+offset_bottom = 205.0
+scale = Vector2(0.6400012, 0.56)
+
+[node name="1PStart" type="Label" parent="MenuContainer" unique_id=368792001]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_dsf7a")
+theme_override_font_sizes/font_size = 6
+text = "1 Player"
+label_settings = SubResource("LabelSettings_dsf7a")
+
+[node name="2PStart" type="Label" parent="MenuContainer" unique_id=125267998]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_dsf7a")
+theme_override_font_sizes/font_size = 6
+text = "2 players"
+label_settings = SubResource("LabelSettings_824g0")
+
+[node name="Exit" type="Label" parent="MenuContainer" unique_id=1381872982]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_dsf7a")
+theme_override_font_sizes/font_size = 6
+text = "Exit"
+label_settings = SubResource("LabelSettings_tjte5")
+
+[node name="Selector" type="Sprite2D" parent="MenuContainer" unique_id=164399916]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_bnqst")
+
+[node name="FadeLayer" type="ColorRect" parent="." unique_id=1064865099]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(2.4065375e-08, 0.17289418, 0.32331944, 1)
+
+[node name="Logo2" type="TextureRect" parent="FadeLayer" unique_id=2014118866]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 56.0
+offset_right = 210.66666
+offset_bottom = 131.0
+scale = Vector2(0.36, 0.32)
+texture = ExtResource("3_kyvdy")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="SFX_Move" type="AudioStreamPlayer" parent="." unique_id=975490823]
+stream = ExtResource("5_dsf7a")
+
+[node name="SFX_Confirm" type="AudioStreamPlayer" parent="." unique_id=1801189967]
+stream = ExtResource("6_824g0")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=1219278294]
+stream = ExtResource("7_tjte5")
+autoplay = true
