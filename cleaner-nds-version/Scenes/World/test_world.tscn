@@ -786,6 +786,7 @@ sources/0 = SubResource("TileSetAtlasSource_dsnr4")
 [node name="WorldLayers" type="Node" parent="." unique_id=656059620]
 
 [node name="Sky" type="Parallax2D" parent="WorldLayers" unique_id=782234487]
+visible = false
 z_index = -1
 repeat_size = Vector2(576, 0)
 repeat_times = 4
@@ -796,7 +797,8 @@ centered = false
 
 [node name="Clouds" type="Parallax2D" parent="WorldLayers" unique_id=658064843]
 z_index = -1
-scroll_offset = Vector2(97, 120)
+scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(-112, 152)
 repeat_size = Vector2(576, 0)
 autoscroll = Vector2(15, 0)
 repeat_times = 4
@@ -811,18 +813,21 @@ texture = ExtResource("2_kt6p6")
 flip_h = true
 
 [node name="Far" type="Parallax2D" parent="WorldLayers" unique_id=602036748]
-visible = false
 z_index = -1
+scale = Vector2(0.85, 0.85)
 scroll_scale = Vector2(0.4, 0.4)
-scroll_offset = Vector2(14, 18)
+scroll_offset = Vector2(-7.9999995, -48)
+repeat_size = Vector2(375, 0)
 repeat_times = 6
 
-[node name="Sprite2D" type="Sprite2D" parent="WorldLayers/Far" unique_id=1280615543]
-scale = Vector2(0.21, 0.20898438)
+[node name="Sprite2D2" type="Sprite2D" parent="WorldLayers/Far" unique_id=1280615543]
+z_index = -1
+position = Vector2(9.411765, 112.94118)
 texture = ExtResource("3_ud3vi")
 centered = false
 
 [node name="Mid" type="Parallax2D" parent="WorldLayers" unique_id=640306772]
+visible = false
 z_index = -1
 scroll_scale = Vector2(0.6, 0.6)
 scroll_offset = Vector2(309, 160)
@@ -833,6 +838,7 @@ repeat_times = 5
 texture = ExtResource("4_ud3vi")
 
 [node name="Near" type="Parallax2D" parent="WorldLayers" unique_id=2130740121]
+visible = false
 z_index = -1
 scroll_offset = Vector2(299, 153)
 repeat_size = Vector2(576, 0)
@@ -841,18 +847,41 @@ repeat_times = 9
 [node name="Sprite2D" type="Sprite2D" parent="WorldLayers/Near" unique_id=1241527583]
 texture = ExtResource("5_5457m")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=549116201]
+[node name="TileMapLayer" type="TileMapLayer" parent="WorldLayers" unique_id=549116201]
 tile_map_data = PackedByteArray("AAAAABMAAAANABAAAAABABMAAAANABAAAAACABMAAAANABAAAAADABMAAAANABAAAAAEABMAAAANABAAAAAFABMAAAANABAAAAAGABMAAAANABAAAAAHABMAAAANABAAAAAIABMAAAANABAAAAAJABMAAAANABAAAAAKABMAAAANABAAAAALABMAAAANABAAAAAMABMAAAANABAAAAANABMAAAANABAAAAAOABMAAAANABAAAAAPABMAAAANABAAAAAQABMAAAANABAAAAARABMAAAANABAAAAASABMAAAANABAAAAATABMAAAANABAAAAAUABMAAAANABAAAAAVABMAAAANABAAAAAWABMAAAANABAAAAAXABMAAAANABAAAAAYABMAAAANABAAAAAZABMAAAANABAAAAAaABMAAAANABAAAAAbABMAAAANABAAAAAcABMAAAANABAAAAAdABMAAAANABAAAAAeABMAAAANABAAAAAfABMAAAANABAAAAAgABMAAAANABAAAAAhABMAAAANABAAAAAiABMAAAANABAAAAAjABMAAAANABAAAAAkABMAAAANABAAAAAlABMAAAANABAAAAAmABMAAAANABAAAAAnABMAAAANABAAAAAoABMAAAANABAAAAApABMAAAANABAAAAAqABMAAAANABAAAAArABMAAAANABAAAAAsABMAAAANABAAAAAtABMAAAANABAAAAAuABMAAAANABAAAAAvABMAAAANABAAAAAwABMAAAANABAAAAAxABMAAAANABAAAAAyABMAAAANABAAAAAzABMAAAANABAAAAA0ABMAAAANABAAAAA1ABMAAAANABAAAAA2ABMAAAANABAAAAA3ABMAAAANABAAAAA4ABMAAAANABAAAAA5ABMAAAANABAAAAA6ABMAAAANABAAAAA7ABMAAAANABAAAAA8ABMAAAANABAAAAA9ABMAAAANABAAAAA+ABMAAAANABAAAAA/ABMAAAANABAAAABAABMAAAANABAAAABBABMAAAANABAAAABCABMAAAANABAAAABDABMAAAANABAAAABEABMAAAANABAAAABFABMAAAANABAAAABGABMAAAANABAAAABHABMAAAANABAAAABIABMAAAANABAAAABJABMAAAANABAAAABKABMAAAANABAAAABLABMAAAANABAAAABMABMAAAANABAAAABNABMAAAANABAAAABOABMAAAANABAAAABPABMAAAANABAAAABQABMAAAANABAAAABRABMAAAANABAAAABSABMAAAANABAAAABTABMAAAANABAAAABUABMAAAANABAAAABVABMAAAANABAAAABWABMAAAANABAAAABXABMAAAANABAAAABYABMAAAANABAAAABZABMAAAANABAAAABaABMAAAANABAAAABbABMAAAANABAAAABcABMAAAANABAAAABdABMAAAANABAAAABeABMAAAANABAAAABfABMAAAANABAAAABgABMAAAANABAAAABhABMAAAANABAAAABiABMAAAANABAAAABjABMAAAANABAAAABkABMAAAANABAAAABlABMAAAANABAAAABmABMAAAANABAAAAAsABIAAAAMABIAAAAsABEAAAAMABIAAAAsABAAAAAMABIAAAAAABIAAAALABIAAAAAABEAAAALABIAAAAAABAAAAALABIAAAAAAA8AAAALABIAAAAAAA4AAAALABIAAAAAAA0AAAALABIAAAAAAAwAAAALABIAAAAAAAsAAAALABIAAAAAAAoAAAALABIAAAAAAAkAAAALABIAAAAAAAgAAAALABIAAAAAAAcAAAALABIAAAAAAAYAAAALABIAAAAAAAUAAAALABIAAAAAAAQAAAALABIAAAAAAAMAAAALABIAAAAAAAIAAAALABIAAAAAAAEAAAALABIAAAABAAEAAAALABIAAAABAAAAAAALABIAAAABAP//AAALABIAAAAAAP//AAALABIAAAAAAAAAAAALABIAAAA=")
 tile_set = SubResource("TileSet_lf0gk")
 
-[node name="RoombaDrone" parent="." unique_id=1221956425 groups=["enemies"] instance=ExtResource("4_dsnr4")]
-position = Vector2(239, 254)
+[node name="HUD" parent="." unique_id=354589440 instance=ExtResource("10_ud3vi")]
+player_path = NodePath("../Player")
 
-[node name="AnimatedSprite2D" parent="RoombaDrone" index="1" unique_id=1285878564]
+[node name="Player" parent="." unique_id=1715600248 instance=ExtResource("2_1lwx6")]
+position = Vector2(35, 284)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=2112567434]
+
+[node name="HomelessEnemy2" parent="Enemies" unique_id=1364517170 instance=ExtResource("12_ivea3")]
+position = Vector2(616, 280)
+
+[node name="HomelessEnemy1" parent="Enemies" unique_id=1643235015 instance=ExtResource("7_5457m")]
+position = Vector2(664, 280.00003)
+
+[node name="RoombaDrone2" parent="Enemies" unique_id=761965080 groups=["enemies"] instance=ExtResource("4_dsnr4")]
+position = Vector2(1063, 290)
+
+[node name="RoombaDrone" parent="Enemies" unique_id=1221956425 groups=["enemies"] instance=ExtResource("4_dsnr4")]
+position = Vector2(928, 280)
+
+[node name="AnimatedSprite2D" parent="Enemies/RoombaDrone" index="1" unique_id=1285878564]
 flip_h = true
 
-[node name="AnimatedSprite2D2" parent="RoombaDrone" index="5" unique_id=1976181757]
+[node name="AnimatedSprite2D2" parent="Enemies/RoombaDrone" index="5" unique_id=1976181757]
 visible = true
+
+[node name="AreaTransition" parent="." unique_id=1160941269 instance=ExtResource("13_jvck6")]
+position = Vector2(1240, 240)
+collision_layer = 128
+collision_mask = 2
+next_level_path = "uid://cjvhkjgxbr7ug"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=992704507]
 limit_left = 0
@@ -864,27 +893,5 @@ position_smoothing_speed = 6.0
 script = ExtResource("3_1lwx6")
 target_path = NodePath("../Player")
 
-[node name="HUD" parent="." unique_id=354589440 instance=ExtResource("10_ud3vi")]
-player_path = NodePath("../Player")
-
-[node name="Player" parent="." unique_id=1715600248 instance=ExtResource("2_1lwx6")]
-position = Vector2(35, 284)
-
-[node name="RoombaDrone2" parent="." unique_id=761965080 groups=["enemies"] instance=ExtResource("4_dsnr4")]
-position = Vector2(310, 272)
-
-[node name="HomelessEnemy1" parent="." unique_id=1643235015 instance=ExtResource("7_5457m")]
-position = Vector2(486.00006, 272)
-
-[node name="HomelessEnemy2" parent="." unique_id=1364517170 instance=ExtResource("12_ivea3")]
-position = Vector2(732, 288)
-scale = Vector2(0.5, 0.5)
-
-[node name="AreaTransition" parent="." unique_id=1160941269 instance=ExtResource("13_jvck6")]
-position = Vector2(1036, 243)
-collision_layer = 128
-collision_mask = 2
-next_level_path = "uid://cjvhkjgxbr7ug"
-
-[editable path="RoombaDrone"]
 [editable path="Player"]
+[editable path="Enemies/RoombaDrone"]

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bcrvvorfnmqkg"]
+
+[ext_resource type="Texture2D" uid="uid://gx40vqo5i15f" path="res://Assets/Misc/Hotdog.png" id="1_0fewm"]
+[ext_resource type="Script" uid="uid://dyxaxe5mjdge2" path="res://HealthPickup.gd" id="1_l7dp1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7dp1"]
+radius = 24.0
+height = 96.0
+
+[node name="Hotdog" type="Area2D" unique_id=943191707]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_l7dp1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2115345388]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_l7dp1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1108291346]
+texture = ExtResource("1_0fewm")

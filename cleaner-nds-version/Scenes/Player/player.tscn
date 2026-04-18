@@ -102,7 +102,7 @@
 [ext_resource type="Texture2D" uid="uid://b0y3un4kt28ye" path="res://Assets/sprites/classic_character/PNG/style_4/wall_cling.png" id="103_kq8xt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tugb3"]
-size = Vector2(9, 29)
+size = Vector2(9, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uvnfx"]
 animations = [{
@@ -538,7 +538,7 @@ bullet_scene = ExtResource("2_ldt7q")
 muzzle_offset_right = Vector2(15, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1032869655]
-position = Vector2(0.5, 1.5)
+position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_tugb3")
 debug_color = Color(0.9222628, 0.24629954, 0.34191763, 0.41960785)
 

@@ -3,7 +3,7 @@ extends Control
 
 @export var chars_per_second: float = 25.0
 @export var random_pitch_range: float = 0.1 # Adds variety to the typing
-@export var next_scene: String = "res://scenes/level01.tscn"
+@export var next_scene: String = "res://Scenes/World/test_world.tscn"
 #@export var auto_advance_time: float = 60.0
 
 

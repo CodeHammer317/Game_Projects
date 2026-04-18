@@ -63,3 +63,8 @@ func is_dead() -> bool:
 
 func set_temporary_invulnerable(duration: float) -> void:
 	_damage_cooldown_timer = max(_damage_cooldown_timer, duration)
+	
+func restore_full() -> void:
+	_is_dead = false
+	current_health = max_health
+	damaged.emit(null)

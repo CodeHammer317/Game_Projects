@@ -91,9 +91,9 @@ func _on_fade_complete() -> void:
 		0:
 			# Start Game (could integrate 1P/2P choice here later)
 			
-			get_tree().change_scene_to_file("res://scenes/Level01BriefingScreen.tscn")
+			get_tree().change_scene_to_file("res://Scenes/World/level_01_briefing_screen.tscn")
 		1:
 			# Options screen
-			get_tree().change_scene_to_file("res://scenes/Level01BriefingScreen.tscn")
+			get_tree().change_scene_to_file("res://Scenes/World/level_01_briefing_screen.tscn")
 		2:
 			get_tree().quit()
