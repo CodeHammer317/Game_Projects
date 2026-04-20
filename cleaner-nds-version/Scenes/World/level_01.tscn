@@ -15,7 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bcrvvorfnmqkg" path="res://Scenes/hotdog.tscn" id="13_s7dkf"]
 [ext_resource type="PackedScene" uid="uid://cbvojmykspuhx" path="res://Scenes/FX/danger_sign.tscn" id="14_ru6yh"]
 [ext_resource type="PackedScene" uid="uid://b3ibvikii0j7q" path="res://Scenes/FX/alert_sign.tscn" id="15_3a58o"]
-[ext_resource type="Texture2D" uid="uid://bhfkqx6y1j271" path="res://Assets/fx/Super Pixel Effects Gigapack/spritesheet/Magic Bursts/round_sparkle_burst_001/round_sparkle_burst_001_large_yellow/spritesheet.png" id="16_co23w"]
+[ext_resource type="AudioStream" uid="uid://ctmt15glpa3m0" path="res://Assets/Audio/freepik-fighters-game.mp3" id="17_6gtvm"]
+[ext_resource type="PackedScene" uid="uid://btohqpwknjdnp" path="res://Scenes/FX/tele_portal.tscn" id="17_e65bs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jhsub"]
 texture = ExtResource("1_66m7q")
@@ -512,112 +513,6 @@ sources/0 = SubResource("TileSetAtlasSource_jhsub")
 sources/1 = SubResource("TileSetAtlasSource_dp7f1")
 sources/2 = SubResource("TileSetAtlasSource_3l8f8")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6gtvm"]
-atlas = ExtResource("16_co23w")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e65bs"]
-atlas = ExtResource("16_co23w")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mi0n3"]
-atlas = ExtResource("16_co23w")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3u0ay"]
-atlas = ExtResource("16_co23w")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hn7uk"]
-atlas = ExtResource("16_co23w")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ntfn7"]
-atlas = ExtResource("16_co23w")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8iap"]
-atlas = ExtResource("16_co23w")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cwxwd"]
-atlas = ExtResource("16_co23w")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i2w0c"]
-atlas = ExtResource("16_co23w")
-region = Rect2(512, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_03w8e"]
-atlas = ExtResource("16_co23w")
-region = Rect2(576, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hp1s7"]
-atlas = ExtResource("16_co23w")
-region = Rect2(640, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y48r4"]
-atlas = ExtResource("16_co23w")
-region = Rect2(704, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n4mew"]
-atlas = ExtResource("16_co23w")
-region = Rect2(768, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_edppl"]
-atlas = ExtResource("16_co23w")
-region = Rect2(832, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rrecy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6gtvm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e65bs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mi0n3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3u0ay")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hn7uk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ntfn7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i8iap")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cwxwd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i2w0c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_03w8e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hp1s7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y48r4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n4mew")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_edppl")
-}],
-"loop": true,
-"name": &"default",
-"speed": 16.0
-}]
-
 [node name="Level01_A" type="Node2D" unique_id=277584245]
 
 [node name="Background" type="Node2D" parent="." unique_id=1730628088]
@@ -713,8 +608,14 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(288, -24)
 scale = Vector2(0.5, 0.5)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=452944370]
-position = Vector2(480, -40)
-sprite_frames = SubResource("SpriteFrames_rrecy")
-autoplay = "default"
-frame_progress = 0.1954982
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=243563133]
+stream = ExtResource("17_6gtvm")
+volume_db = -13.97
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1878749134]
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=235374909]
+
+[node name="TelePortal" parent="." unique_id=321547799 instance=ExtResource("17_e65bs")]
+position = Vector2(832, 144)

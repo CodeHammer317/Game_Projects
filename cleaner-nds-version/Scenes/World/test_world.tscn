@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="2_1lwx6"]
 [ext_resource type="Texture2D" uid="uid://rhu0158jbx6b" path="res://Assets/sprites/ancient-temple-pixel-game-backgrounds/PNG/background 1/Plan 4.png" id="2_kt6p6"]
 [ext_resource type="Script" uid="uid://d2rq6h2o7kapt" path="res://Scripts/camera_2d.gd" id="3_1lwx6"]
-[ext_resource type="Texture2D" uid="uid://cricupsnb0k4a" path="res://Assets/Misc/old_district_background.png" id="3_ud3vi"]
+[ext_resource type="Texture2D" uid="uid://cricupsnb0k4a" path="res://Assets/fx/old_district_background.png" id="3_ud3vi"]
 [ext_resource type="PackedScene" uid="uid://b2pmeb5bnk5me" path="res://Scenes/Enemy/roomba_drone.tscn" id="4_dsnr4"]
 [ext_resource type="Texture2D" uid="uid://bsbpxc4jivkqp" path="res://Assets/sprites/ancient-temple-pixel-game-backgrounds/PNG/background 1/Plan 2.png" id="4_ud3vi"]
 [ext_resource type="Texture2D" uid="uid://bm4l67vqu1gin" path="res://Assets/sprites/ancient-temple-pixel-game-backgrounds/PNG/background 1/Plan 1.png" id="5_5457m"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="10_ud3vi"]
 [ext_resource type="PackedScene" uid="uid://buea412s1gop8" path="res://Scenes/Enemy/homeless_enemy_2.tscn" id="12_ivea3"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="13_jvck6"]
+[ext_resource type="AudioStream" uid="uid://b3bt08pbjlto0" path="res://Assets/Audio/xtremefreddy-game-music-loop-3-144252.mp3" id="14_8y3w6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dsnr4"]
 texture = ExtResource("1_gy3sr")
@@ -892,6 +893,12 @@ position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 script = ExtResource("3_1lwx6")
 target_path = NodePath("../Player")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1556989975]
+stream = ExtResource("14_8y3w6")
+volume_db = -10.866
+autoplay = true
+parameters/looping = true
 
 [editable path="Player"]
 [editable path="Enemies/RoombaDrone"]

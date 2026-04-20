@@ -1,45 +1,32 @@
 extends Control
 
-# --- Constants ---
 const SELECTOR_OFFSET: Vector2 = Vector2(-25, 11)
 
-# --- Nodes ---
 @onready var menu: Control = $MenuContainer
 @onready var selector: Node2D = $MenuContainer/Selector
 @onready var fade: ColorRect = $FadeLayer
 
-# --- Audio ---
 @onready var sfx_move: AudioStreamPlayer = $SFX_Move
 @onready var sfx_confirm: AudioStreamPlayer = $SFX_Confirm
 
-# --- State ---
 var menu_items: Array[Control] = []
 var current_index: int = 0
 var tween: Tween = null
+var is_transitioning: bool = false
 
-# --- References ---
-var game_manager = null
 
 func _ready() -> void:
-	# Reference GameManager singleton
-	if Engine.has_singleton("GameManager"):
-		game_manager = Engine.get_singleton("GameManager")
-
-	# Collect menu items (Start, Options, Exit)
 	for child in menu.get_children():
 		if child is Control and child != selector:
 			menu_items.append(child)
 
-	# Wait a frame so layout is ready
 	await get_tree().process_frame
 	update_selector_position()
-
-	# Start fade invisible
 	fade.modulate.a = 0.0
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if menu_items.is_empty():
+	if menu_items.is_empty() or is_transitioning:
 		return
 
 	if event.is_action_pressed("menu_down"):
@@ -50,9 +37,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		confirm_selection()
 
 
-# --- Navigation ---
 func navigate(direction: int) -> void:
-	current_index = (current_index + direction) % menu_items.size()
+	current_index = posmod(current_index + direction, menu_items.size())
 	move_selector()
 	sfx_move.play()
 
@@ -74,26 +60,30 @@ func update_selector_position() -> void:
 	selector.position = menu_items[current_index].position + SELECTOR_OFFSET
 
 
-# --- Selection ---
 func confirm_selection() -> void:
+	if is_transitioning:
+		return
+
+	is_transitioning = true
 	sfx_confirm.play()
 	fade_out_and_execute()
 
 
 func fade_out_and_execute() -> void:
 	var t := create_tween()
-	t.tween_property(fade, "modulate:a", 1.0, 2.5)
-	t.finished.connect(_on_fade_complete)
+	t.tween_property(fade, "modulate:a", 1.0, 0.5)
+	await t.finished
+	_on_fade_complete()
 
 
 func _on_fade_complete() -> void:
 	match current_index:
 		0:
-			# Start Game (could integrate 1P/2P choice here later)
-			
 			get_tree().change_scene_to_file("res://Scenes/World/level_01_briefing_screen.tscn")
 		1:
-			# Options screen
 			get_tree().change_scene_to_file("res://Scenes/World/level_01_briefing_screen.tscn")
 		2:
 			get_tree().quit()
+		_:
+			push_error("Invalid current_index: %s" % current_index)
+			is_transitioning = false

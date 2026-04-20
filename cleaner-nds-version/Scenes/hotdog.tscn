@@ -1,11 +1,119 @@
 [gd_scene format=3 uid="uid://bcrvvorfnmqkg"]
 
-[ext_resource type="Texture2D" uid="uid://gx40vqo5i15f" path="res://Assets/Misc/Hotdog.png" id="1_0fewm"]
+[ext_resource type="Texture2D" uid="uid://gx40vqo5i15f" path="res://Assets/fx/Hotdog.png" id="1_0fewm"]
 [ext_resource type="Script" uid="uid://dyxaxe5mjdge2" path="res://HealthPickup.gd" id="1_l7dp1"]
+[ext_resource type="AudioStream" uid="uid://4gaob4qjqesg" path="res://Assets/Audio/freesound_community-chiptune_style_riser_fx_110bpm-89020.mp3" id="3_hh1bc"]
+[ext_resource type="Texture2D" uid="uid://bhfkqx6y1j271" path="res://Assets/fx/Super Pixel Effects Gigapack/spritesheet/Magic Bursts/round_sparkle_burst_001/round_sparkle_burst_001_large_yellow/spritesheet.png" id="4_62k0p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7dp1"]
 radius = 24.0
 height = 96.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gtvm"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e65bs"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi0n3"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u0ay"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn7uk"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntfn7"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8iap"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwxwd"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2w0c"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03w8e"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp1s7"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y48r4"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4mew"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edppl"]
+atlas = ExtResource("4_62k0p")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjltj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gtvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e65bs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mi0n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u0ay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn7uk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntfn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8iap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwxwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2w0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03w8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp1s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y48r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4mew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edppl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
 
 [node name="Hotdog" type="Area2D" unique_id=943191707]
 collision_layer = 128
@@ -18,3 +126,13 @@ shape = SubResource("CapsuleShape2D_l7dp1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1108291346]
 texture = ExtResource("1_0fewm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1923827574]
+stream = ExtResource("3_hh1bc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1938440822]
+visible = false
+position = Vector2(0, 3.0517578e-05)
+scale = Vector2(9.624999, 9.5)
+sprite_frames = SubResource("SpriteFrames_fjltj")
+autoplay = "default"

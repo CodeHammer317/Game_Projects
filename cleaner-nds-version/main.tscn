@@ -6,4 +6,10 @@
 
 [node name="TitleScreen" parent="." unique_id=380044311 instance=ExtResource("1_ig7tw")]
 
+[node name="SFX_Confirm" parent="TitleScreen" index="6" unique_id=1801189967]
+volume_db = -1.375
+
+[node name="AudioStreamPlayer3" parent="TitleScreen" index="7" unique_id=1219278294]
+volume_db = -10.499
+
 [editable path="TitleScreen"]

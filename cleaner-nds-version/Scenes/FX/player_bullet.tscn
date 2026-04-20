@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://7ielicla2pvq" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0009.png" id="11_kfn2h"]
 [ext_resource type="Texture2D" uid="uid://b4khsomcvbhkw" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0010.png" id="12_3qssn"]
 [ext_resource type="Texture2D" uid="uid://bdkmq0n0trrk8" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0011.png" id="13_mublq"]
+[ext_resource type="AudioStream" uid="uid://cmuc61imbhbwt" path="res://Assets/Audio/freesound_community-8-bit-cannon-fire-96505.mp3" id="14_1wmpo"]
+[ext_resource type="AudioStream" uid="uid://86ruwmlefc4" path="res://Assets/Audio/soundreality-explosion-8-bit-8-314694.mp3" id="15_3g3fa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bckiw"]
 animations = [{
@@ -80,3 +82,13 @@ debug_color = Color(0.9647059, 0.11764706, 0.03529412, 0.8862745)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1753932589]
 rect = Rect2(-19, -10, 39, 20)
+
+[node name="BulletFireSound" type="AudioStreamPlayer" parent="." unique_id=1706128267]
+stream = ExtResource("14_1wmpo")
+volume_db = -20.955
+autoplay = true
+
+[node name="BulletHitSound" type="AudioStreamPlayer" parent="." unique_id=1962415701]
+stream = ExtResource("15_3g3fa")
+volume_db = -10.09
+autoplay = true

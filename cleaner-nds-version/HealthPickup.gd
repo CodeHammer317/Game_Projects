@@ -3,15 +3,21 @@ class_name HealthPickup
 
 @export var target_group: StringName = &"player"
 @export var one_shot: bool = true
+@export var sparkle_anim_name: StringName = &"pickup"
 
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var sparkle: AnimatedSprite2D = $AnimatedSprite2D
 
 var _collected: bool = false
 
 func _ready() -> void:
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)
+
+	if sparkle != null:
+		sparkle.visible = false
 
 func _on_body_entered(body: Node) -> void:
 	if _collected:
@@ -39,9 +45,6 @@ func _find_health(body: Node) -> Health:
 	return null
 
 func _restore_to_max(health: Health) -> void:
-	if health == null:
-		return
-
 	health.restore_full()
 
 func _collect() -> void:
@@ -50,7 +53,23 @@ func _collect() -> void:
 	if collision != null:
 		collision.set_deferred("disabled", true)
 
-	visible = false
+	if sprite != null:
+		sprite.visible = false
 
-	if one_shot:
-		queue_free()
+	if audio != null and audio.stream != null:
+		audio.play()
+
+	if sparkle != null and sparkle.sprite_frames != null:
+		sparkle.visible = true
+
+		if sparkle.sprite_frames.has_animation(sparkle_anim_name):
+			sparkle.play(sparkle_anim_name)
+		else:
+			sparkle.play()
+
+		if one_shot:
+			await sparkle.animation_finished
+			queue_free()
+	else:
+		if one_shot:
+			queue_free()

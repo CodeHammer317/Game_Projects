@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://cunpfkdkylvoq" path="res://Assets/sprites/background1-720.png" id="2_dnytt"]
 [ext_resource type="Texture2D" uid="uid://c7xaebhxtfe1i" path="res://Assets/NDS Game Files/NDS Logo.png" id="3_kyvdy"]
 [ext_resource type="Texture2D" uid="uid://pf0gmce177of" path="res://Assets/NDS Game Files/NDS Logo_transparent.png" id="4_bnqst"]
-[ext_resource type="AudioStream" uid="uid://c4hjf17omf827" path="res://Assets/levelup.ogg" id="5_dsf7a"]
-[ext_resource type="AudioStream" uid="uid://cdqht4tbikj2g" path="res://Assets/pickup2.ogg" id="6_824g0"]
-[ext_resource type="AudioStream" uid="uid://dkyb3ttoc0rgq" path="res://Assets/freepik-gamers-united.mp3" id="7_tjte5"]
+[ext_resource type="AudioStream" uid="uid://cdqht4tbikj2g" path="res://Assets/Audio/pickup2.ogg" id="6_824g0"]
+[ext_resource type="AudioStream" uid="uid://yswk7slevwiw" path="res://Assets/Audio/freesound_community-game-start-6104 (1).mp3" id="6_dsf7a"]
+[ext_resource type="AudioStream" uid="uid://da3rx4yn78uog" path="res://Assets/Audio/idoberg-metal-bass-amp-drums-loop-413373.mp3" id="7_dsf7a"]
 
 [sub_resource type="SystemFont" id="SystemFont_dsf7a"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_dsf7a"]
 
@@ -97,11 +98,15 @@ expand_mode = 1
 stretch_mode = 3
 
 [node name="SFX_Move" type="AudioStreamPlayer" parent="." unique_id=975490823]
-stream = ExtResource("5_dsf7a")
+stream = ExtResource("6_824g0")
+volume_db = -16.298
 
 [node name="SFX_Confirm" type="AudioStreamPlayer" parent="." unique_id=1801189967]
-stream = ExtResource("6_824g0")
+stream = ExtResource("6_dsf7a")
+volume_db = -7.761
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=1219278294]
-stream = ExtResource("7_tjte5")
+stream = ExtResource("7_dsf7a")
+volume_db = -7.762
 autoplay = true
+parameters/looping = true
