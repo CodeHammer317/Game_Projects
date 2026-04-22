@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dwf68tg6mwljt"]
+
+[ext_resource type="Texture2D" uid="uid://cvkuo78hixtg3" path="res://Assets/sprites/craftpix-891167-animated-traps-and-obstacles-pixel-art/PNG/lightning/lightning1.png" id="1_h08d7"]
+[ext_resource type="Texture2D" uid="uid://cjd5ea4eyhvf0" path="res://Assets/sprites/craftpix-891167-animated-traps-and-obstacles-pixel-art/PNG/lightning/lightning2.png" id="2_fgj8r"]
+[ext_resource type="Texture2D" uid="uid://bmkvaourjd5bp" path="res://Assets/sprites/craftpix-891167-animated-traps-and-obstacles-pixel-art/PNG/lightning/lightning3.png" id="3_ofu32"]
+[ext_resource type="Texture2D" uid="uid://jve6hxvg2it0" path="res://Assets/sprites/craftpix-891167-animated-traps-and-obstacles-pixel-art/PNG/lightning/lightning4.png" id="4_rr1di"]
+[ext_resource type="Texture2D" uid="uid://ioc0hdmlfffn" path="res://Assets/sprites/craftpix-891167-animated-traps-and-obstacles-pixel-art/PNG/lightning/lightning5.png" id="5_boe3f"]
+[ext_resource type="Texture2D" uid="uid://be0n85u72h1ak" path="res://Assets/sprites/craftpix-891167-animated-traps-and-obstacles-pixel-art/PNG/lightning/lightning6.png" id="6_y23tw"]
+[ext_resource type="Texture2D" uid="uid://biwp3g5712ype" path="res://Assets/sprites/craftpix-891167-animated-traps-and-obstacles-pixel-art/PNG/lightning/lightning7.png" id="7_haq5k"]
+[ext_resource type="Texture2D" uid="uid://dcf7cfd66f8h3" path="res://Assets/sprites/craftpix-891167-animated-traps-and-obstacles-pixel-art/PNG/lightning/lightning8.png" id="8_lnn7x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vuu7a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h08d7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fgj8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ofu32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rr1di")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_boe3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y23tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_haq5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lnn7x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[node name="LightningPillar" type="Node2D" unique_id=1800845136]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1039170777]
+sprite_frames = SubResource("SpriteFrames_vuu7a")
+autoplay = "default"
+frame_progress = 0.78492033

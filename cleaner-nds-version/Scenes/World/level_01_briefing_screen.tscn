@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cormy61c2jsmw"]
 
 [ext_resource type="Script" uid="uid://kkbsiyg3ehw8" path="res://Scripts/control.gd" id="1_diqe4"]
-[ext_resource type="Texture2D" uid="uid://cujr18far12ui" path="res://Assets/Misc/ConsoleFrame.png" id="2_ajv21"]
+[ext_resource type="Texture2D" uid="uid://cujr18far12ui" path="res://Assets/sprites/ConsoleFrame.png" id="2_ajv21"]
 [ext_resource type="FontFile" uid="uid://bkqou3i2c16ku" path="res://Assets/Fonts/VT323-Regular.ttf" id="3_0dqim"]
 [ext_resource type="AudioStream" uid="uid://dyg7h7aqmmvlt" path="res://Assets/Audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3" id="3_ajv21"]
 [ext_resource type="AudioStream" uid="uid://crnk4muhsokni" path="res://Assets/Audio/BriefingMusic.mp3" id="5_0dqim"]

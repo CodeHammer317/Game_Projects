@@ -6,6 +6,11 @@
 
 [node name="TitleScreen" parent="." unique_id=380044311 instance=ExtResource("1_ig7tw")]
 
+[node name="Logo2" parent="TitleScreen/FadeLayer" parent_id_path=PackedInt32Array(380044311, 1064865099) index="0" unique_id=2014118866]
+offset_left = 127.0
+offset_right = 310.3333
+offset_bottom = 246.625
+
 [node name="SFX_Confirm" parent="TitleScreen" index="6" unique_id=1801189967]
 volume_db = -1.375
 

@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://cg4svon3025n7"]
+
+[ext_resource type="Texture2D" uid="uid://bdjevmihvumgi" path="res://Assets/sprites/Super Pixel Projectiles Pack 2/Super Pixel Projectiles Pack 2/spritesheet/pj2_lightning_orb_small_violet/spritesheet.png" id="1_qf85n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h5rvt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elk2d"]
+atlas = ExtResource("1_qf85n")
+region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxxhb"]
+atlas = ExtResource("1_qf85n")
+region = Rect2(32, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luxqj"]
+atlas = ExtResource("1_qf85n")
+region = Rect2(64, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k62i3"]
+atlas = ExtResource("1_qf85n")
+region = Rect2(96, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4e33"]
+atlas = ExtResource("1_qf85n")
+region = Rect2(128, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paq11"]
+atlas = ExtResource("1_qf85n")
+region = Rect2(160, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ghyd"]
+atlas = ExtResource("1_qf85n")
+region = Rect2(192, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8343"]
+atlas = ExtResource("1_qf85n")
+region = Rect2(224, 0, 32, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ixoj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elk2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxxhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luxqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k62i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4e33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paq11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ghyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8343")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[node name="GlitchBullet" type="Area2D" unique_id=1928382592]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152232027]
+shape = SubResource("CircleShape2D_h5rvt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1890656637]
+sprite_frames = SubResource("SpriteFrames_ixoj2")
+autoplay = "default"
+frame_progress = 0.98404956

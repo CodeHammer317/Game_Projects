@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d37vh3lu4bgbk"]
 
 [ext_resource type="Script" uid="uid://ja4ylfule3tx" path="res://Scripts/hud.gd" id="1_omqfp"]
-[ext_resource type="Texture2D" uid="uid://0rb5c4whhvgg" path="res://Assets/sprites/bar_glass_200.png" id="2_xaom8"]
-[ext_resource type="Texture2D" uid="uid://dk8jp0tsnao4a" path="res://Assets/sprites/bar_green_200.png" id="3_4bm6u"]
+[ext_resource type="Texture2D" uid="uid://0rb5c4whhvgg" path="res://Assets/Misc/HUD_assets/bar_glass_200.png" id="2_xaom8"]
+[ext_resource type="Texture2D" uid="uid://dk8jp0tsnao4a" path="res://Assets/Misc/HUD_assets/bar_green_200.png" id="3_4bm6u"]
 
 [node name="Hud" type="CanvasLayer" unique_id=795795287]
 scale = Vector2(0.25, 0.25)
