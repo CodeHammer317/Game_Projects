@@ -38,7 +38,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 16.0
+"speed": 13.0
 }]
 
 [node name="LightningPillar" type="Node2D" unique_id=1800845136]
@@ -46,4 +46,4 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1039170777]
 sprite_frames = SubResource("SpriteFrames_vuu7a")
 autoplay = "default"
-frame_progress = 0.78492033
+frame_progress = 0.3440414

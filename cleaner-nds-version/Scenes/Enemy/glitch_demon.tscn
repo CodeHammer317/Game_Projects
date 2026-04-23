@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3i5uh1red0cm" path="res://Scenes/Enemy/glitch_demon.gd" id="1_1r4rj"]
 [ext_resource type="Texture2D" uid="uid://dt3bmypkblp8f" path="res://Assets/sprites/glitch_creature_64x64-sheet.png" id="1_74obc"]
+[ext_resource type="PackedScene" uid="uid://cg4svon3025n7" path="res://Scenes/FX/glitch_bullet.tscn" id="2_nw21g"]
 [ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="4_nw21g"]
 [ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="5_c7vki"]
 [ext_resource type="Texture2D" uid="uid://dhocxnvvfyg48" path="res://Assets/sprites/Lightning/lightning_burst_003/lightning_burst_003_large_violet/spritesheet.png" id="5_nw21g"]
@@ -120,6 +121,7 @@ scale = Vector2(0.7, 0.7)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_1r4rj")
+projectile_scene = ExtResource("2_nw21g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1074383054]
 position = Vector2(0, 2.75)

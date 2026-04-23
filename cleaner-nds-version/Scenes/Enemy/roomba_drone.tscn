@@ -634,6 +634,7 @@ animation = &"Back"
 collision_layer = 64
 collision_mask = 0
 script = ExtResource("9_j5g4l")
+health_path = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=10881177]
 shape = SubResource("RectangleShape2D_4ht8y")

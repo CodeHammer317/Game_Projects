@@ -560,7 +560,7 @@ animations = [{
 [node name="HomelessEnemy2" type="CharacterBody2D" unique_id=1221956425 groups=["enemies"]]
 scale = Vector2(0.65, 0.65)
 collision_layer = 4
-collision_mask = 15
+collision_mask = 3
 script = ExtResource("1_eok0y")
 attack_cooldown = 2.0
 attack_ready_duration = 1.0
@@ -572,7 +572,7 @@ shape = SubResource("RectangleShape2D_yxkbp")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1678371625]
 collision_layer = 64
-collision_mask = 0
+collision_mask = 8
 script = ExtResource("2_iloe0")
 health_path = NodePath("../Health")
 

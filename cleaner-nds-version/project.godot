@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 CombatFx="*uid://dftahvy4iqilp"
+PlayerState="*uid://d0g06i3u8krc6"
 
 [display]
 

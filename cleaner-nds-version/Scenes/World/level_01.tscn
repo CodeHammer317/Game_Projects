@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bcrvvorfnmqkg" path="res://Scenes/hotdog.tscn" id="15_3a58o"]
 [ext_resource type="PackedScene" uid="uid://dwf68tg6mwljt" path="res://Scenes/FX/lightning_pillar.tscn" id="16_co23w"]
 [ext_resource type="AudioStream" uid="uid://ctmt15glpa3m0" path="res://Assets/Audio/freepik-fighters-game.mp3" id="17_6gtvm"]
+[ext_resource type="PackedScene" uid="uid://btohqpwknjdnp" path="res://Scenes/FX/tele_portal.tscn" id="18_e65bs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jhsub"]
 texture = ExtResource("1_66m7q")
@@ -8622,5 +8623,15 @@ frame_progress = 0.03394745
 position = Vector2(276, 4)
 rotation = 3.1415927
 
+[node name="TelePortal" parent="." unique_id=321547799 instance=ExtResource("18_e65bs")]
+position = Vector2(1144, 106)
+
+[node name="AreaTransition" parent="TelePortal" index="2" unique_id=1160941269]
+collision_layer = 128
+collision_mask = 2
+next_level_path = "uid://gio6polhbvh8"
+
 [editable path="Hotdog"]
 [editable path="Hotdog2"]
+[editable path="TelePortal"]
+[editable path="TelePortal/AreaTransition"]
