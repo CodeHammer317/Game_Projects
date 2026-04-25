@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://bp0su7scrugow"]
+
+[ext_resource type="Texture2D" uid="uid://ddffqjmh3qrnb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_B/spritesheet.png" id="1_m27af"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onl3a"]
+atlas = ExtResource("1_m27af")
+region = Rect2(312, 0, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2lfe"]
+atlas = ExtResource("1_m27af")
+region = Rect2(312, 52, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otjy8"]
+atlas = ExtResource("1_m27af")
+region = Rect2(312, 104, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awq2d"]
+atlas = ExtResource("1_m27af")
+region = Rect2(312, 156, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dydb"]
+atlas = ExtResource("1_m27af")
+region = Rect2(312, 208, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl1tn"]
+atlas = ExtResource("1_m27af")
+region = Rect2(312, 260, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3o0c"]
+atlas = ExtResource("1_m27af")
+region = Rect2(312, 312, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kebd3"]
+atlas = ExtResource("1_m27af")
+region = Rect2(312, 364, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl3pi"]
+atlas = ExtResource("1_m27af")
+region = Rect2(312, 416, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3suk"]
+atlas = ExtResource("1_m27af")
+region = Rect2(312, 468, 52, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g8xy5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onl3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2lfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otjy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awq2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dydb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl1tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3o0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kebd3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl3pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3suk")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 16.0
+}]
+
+[node name="ChargeUp" type="Node2D" unique_id=1794910564]
+scale = Vector2(0.25, 0.25)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1753756079]
+sprite_frames = SubResource("SpriteFrames_g8xy5")
+animation = &"charge"
+autoplay = "charge"
+frame_progress = 0.7533749

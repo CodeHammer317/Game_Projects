@@ -98,7 +98,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74obc"]
-size = Vector2(20, 34)
+size = Vector2(20, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilc77"]
 atlas = ExtResource("5_nw21g")

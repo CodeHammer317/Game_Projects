@@ -99,6 +99,7 @@
 [ext_resource type="Texture2D" uid="uid://bkknq6yg6v1oh" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0007.png" id="100_n48cf"]
 [ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="100_pf3rq"]
 [ext_resource type="Texture2D" uid="uid://hhlc6g2dsl0y" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0008.png" id="101_82xmt"]
+[ext_resource type="PackedScene" uid="uid://bp0su7scrugow" path="res://Scenes/FX/charge_up.tscn" id="102_5opb0"]
 [ext_resource type="Texture2D" uid="uid://da416alnkxstc" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0009.png" id="102_8wl7i"]
 [ext_resource type="Texture2D" uid="uid://b0y3un4kt28ye" path="res://Assets/sprites/classic_character/PNG/style_4/wall_cling.png" id="103_kq8xt"]
 
@@ -656,3 +657,6 @@ position = Vector2(18, 3)
 script = ExtResource("100_pf3rq")
 max_health = 10
 use_persistent_player_state = true
+
+[node name="ChargeUp" parent="." unique_id=1794910564 instance=ExtResource("102_5opb0")]
+position = Vector2(18, 3)

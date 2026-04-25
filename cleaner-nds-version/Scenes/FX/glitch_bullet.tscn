@@ -74,6 +74,8 @@ scale = Vector2(0.65, 0.65)
 collision_layer = 16
 collision_mask = 32
 script = ExtResource("1_h5rvt")
+speed = 150.0
+lifetime = 1.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152232027]
 shape = SubResource("CircleShape2D_h5rvt")
@@ -84,3 +86,9 @@ autoplay = "default"
 frame_progress = 0.98404956
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=552352435]
+
+[node name="BulletFireSound" type="AudioStreamPlayer" parent="." unique_id=899798877]
+max_polyphony = 10
+
+[node name="BulletHitSound" type="AudioStreamPlayer" parent="." unique_id=1298532908]
+max_polyphony = 10

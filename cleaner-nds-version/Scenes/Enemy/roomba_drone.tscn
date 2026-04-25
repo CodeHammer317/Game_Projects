@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="9_j5g4l"]
 [ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="10_x2ctc"]
 [ext_resource type="Texture2D" uid="uid://b5kvcqmvcalip" path="res://Assets/sprites/Explosions/symmetrical_explosion_002/symmetrical_explosion_002_large_violet/spritesheet.png" id="12_1t400"]
+[ext_resource type="AudioStream" uid="uid://bhj6upf1cxe5k" path="res://Assets/Audio/freesound_community-machine-for-a-bottles-108167.mp3" id="13_lwuvv"]
+[ext_resource type="AudioStream" uid="uid://86ruwmlefc4" path="res://Assets/Audio/soundreality-explosion-8-bit-8-314694.mp3" id="14_q8cjo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxkbp"]
 
@@ -529,9 +531,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ht8y"]
-size = Vector2(28, 13)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_o5n2o"]
 atlas = ExtResource("12_1t400")
 region = Rect2(0, 0, 64, 64)
@@ -617,6 +616,9 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ht8y"]
+size = Vector2(28, 13)
+
 [node name="RoombaDrone" type="CharacterBody2D" unique_id=1221956425]
 collision_layer = 4
 collision_mask = 15
@@ -629,6 +631,14 @@ shape = SubResource("RectangleShape2D_yxkbp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1285878564]
 sprite_frames = SubResource("SpriteFrames_m8ac2")
 animation = &"Back"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1976181757]
+visible = false
+position = Vector2(0, 4)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_crsgp")
+animation = &"eplosion"
+autoplay = "eplosion"
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1678371625]
 collision_layer = 64
@@ -645,10 +655,11 @@ script = ExtResource("10_x2ctc")
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1222926845]
 position = Vector2(2, 2)
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1976181757]
-visible = false
-position = Vector2(0, 4)
-scale = Vector2(0.7, 0.7)
-sprite_frames = SubResource("SpriteFrames_crsgp")
-animation = &"eplosion"
-autoplay = "eplosion"
+[node name="MachineSound" type="AudioStreamPlayer" parent="." unique_id=1968192211]
+stream = ExtResource("13_lwuvv")
+volume_db = -7.828
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="." unique_id=109930283]
+stream = ExtResource("14_q8cjo")
+volume_db = 16.774
+pitch_scale = 0.96
