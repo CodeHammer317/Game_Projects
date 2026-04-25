@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://buea412s1gop8" path="res://Scenes/Enemy/homeless_enemy_2.tscn" id="12_ivea3"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="13_jvck6"]
 [ext_resource type="AudioStream" uid="uid://b3bt08pbjlto0" path="res://Assets/Audio/xtremefreddy-game-music-loop-3-144252.mp3" id="14_8y3w6"]
+[ext_resource type="PackedScene" uid="uid://4f55in72ln4w" path="res://Scenes/Enemy/glitch_demon.tscn" id="15_5ysoe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dsnr4"]
 texture = ExtResource("1_gy3sr")
@@ -899,6 +900,9 @@ stream = ExtResource("14_8y3w6")
 volume_db = -10.866
 autoplay = true
 parameters/looping = true
+
+[node name="GlitchDemon" parent="." unique_id=1562222215 instance=ExtResource("15_5ysoe")]
+position = Vector2(366, 272)
 
 [editable path="Player"]
 [editable path="Enemies/RoombaDrone"]
