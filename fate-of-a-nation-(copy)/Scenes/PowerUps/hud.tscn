@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bahpjrn7intjc"]
+
+[ext_resource type="Script" uid="uid://cndia2osnpcud" path="res://Scenes/PowerUps/hud.gd" id="1_kau3j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kau3j"]
+
+[node name="HUD" type="CanvasLayer" unique_id=406706703]
+script = ExtResource("1_kau3j")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1090276310]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = -21.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_vertical = 0
+text = "Score"
+
+[node name="KillstreakLabel" type="Label" parent="." unique_id=1833852903]
+offset_left = 72.0
+offset_right = 145.0
+offset_bottom = 23.0
+text = "Killstreak"
+
+[node name="LevelLabel" type="Label" parent="." unique_id=958638965]
+offset_left = 576.0
+offset_right = 617.0
+offset_bottom = 23.0
+text = "Level"
+
+[node name="GameOverPanel" type="Panel" parent="." unique_id=1841090636]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -124.0
+offset_right = 192.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GameOverLabel" type="Label" parent="GameOverPanel" unique_id=1889171968]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_bottom = 128.0
+grow_horizontal = 2
+text = "GAME OVER !"
+label_settings = SubResource("LabelSettings_kau3j")
+autowrap_mode = 1
+
+[node name="RestartLabel" type="Label" parent="GameOverPanel" unique_id=1409872184]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 152.0
+offset_right = 400.0
+offset_bottom = 240.0
+text = "Restart"
+autowrap_mode = 1

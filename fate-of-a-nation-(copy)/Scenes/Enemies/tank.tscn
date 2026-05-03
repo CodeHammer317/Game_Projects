@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cg0ac4wfap78u"]
+
+[ext_resource type="Texture2D" uid="uid://dx8drnyeet0rh" path="res://Assets/New folder (2)/tds-pixel-art-modern-soldiers-and-vehicles-sprites/Panzer/PanzerBase.png" id="1_3kpdg"]
+[ext_resource type="Script" uid="uid://bb7leo3b2yri3" path="res://Scenes/Enemies/enemy_basic.gd" id="1_rck1q"]
+[ext_resource type="Texture2D" uid="uid://c4rmiyfsbux40" path="res://Assets/New folder (2)/tds-pixel-art-modern-soldiers-and-vehicles-sprites/Panzer/PanzerTower.png" id="2_rck1q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_koo2n"]
+size = Vector2(57, 84)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_keygy"]
+radius = 23.537205
+
+[node name="Tank" type="CharacterBody2D" unique_id=912092681 groups=["enemies"]]
+scale = Vector2(0.8, 0.8)
+collision_layer = 2
+collision_mask = 19
+script = ExtResource("1_rck1q")
+move_speed = 20.0
+max_health = 6
+point_value = 300
+contact_damage = 2
+
+[node name="BodySprite" type="Sprite2D" parent="." unique_id=1500526909]
+texture = ExtResource("1_3kpdg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1385730709]
+position = Vector2(-0.5, -26)
+shape = SubResource("RectangleShape2D_koo2n")
+debug_color = Color(0.8320515, 0.33730537, 0.524832, 0.41960785)
+
+[node name="Turret" type="Node2D" parent="." unique_id=1337325484]
+
+[node name="TurretSprite" type="Sprite2D" parent="Turret" unique_id=1992352321]
+texture = ExtResource("2_rck1q")
+
+[node name="Muzzle" type="Marker2D" parent="Turret" unique_id=1451282889]
+position = Vector2(0, 65)
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1644590674]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=2078100003]
+position = Vector2(-1, -26)
+shape = SubResource("CircleShape2D_keygy")
+
+[node name="Health" type="Node" parent="." unique_id=1394233266]
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

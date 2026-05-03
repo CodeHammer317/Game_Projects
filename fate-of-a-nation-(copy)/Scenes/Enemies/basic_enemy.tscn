@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cpgn1p5wtnaar"]
+
+[ext_resource type="Script" uid="uid://bb7leo3b2yri3" path="res://Scenes/Enemies/enemy_basic.gd" id="1_wm5yt"]
+[ext_resource type="Texture2D" uid="uid://ck0jl3o6dcan0" path="res://Assets/New folder (2)/tds-modern-soldiers-and-vehicles-sprites-2/Gunner/Die/GDS_01.png" id="2_nkmwn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wm5yt"]
+size = Vector2(17, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00oey"]
+size = Vector2(20, 58)
+
+[node name="BasicEnemy" type="CharacterBody2D" unique_id=469876117]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("1_wm5yt")
+move_speed = 20.0
+max_health = 1
+point_value = 106
+hit_flash_color = Color(2.994, 0.202, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1983404496]
+position = Vector2(-1, -3)
+shape = SubResource("RectangleShape2D_wm5yt")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=402462465 groups=["enemies"]]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1452686883]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_00oey")
+debug_color = Color(0.930275, 0.2307421, 0.33968982, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=950954203]
+texture = ExtResource("2_nkmwn")
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_contact_hitbox_body_entered"]

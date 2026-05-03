@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://b5jkm8dbnvq62"]
+
+[ext_resource type="Script" uid="uid://dyeuvt6eo8p0u" path="res://Scenes/Levels/level_01.gd" id="1_l0dwn"]
+[ext_resource type="Texture2D" uid="uid://eonbjrq111eo" path="res://Assets/New folder (2)/tds-modern-tilesets-environment/PNG/Tiles/BridgeTiles.png" id="2_66ail"]
+[ext_resource type="PackedScene" uid="uid://vnathvarrylw" path="res://Scenes/player/Player.tscn" id="2_dbq10"]
+[ext_resource type="PackedScene" uid="uid://cpgn1p5wtnaar" path="res://Scenes/Enemies/basic_enemy.tscn" id="3_dbq10"]
+[ext_resource type="PackedScene" uid="uid://bmm7jfmbwt251" path="res://Scenes/PowerUps/powerup.tscn" id="4_mb1if"]
+[ext_resource type="Script" uid="uid://d2qrujx01f0u4" path="res://Scenes/CameraShake.gd" id="6_taws2"]
+[ext_resource type="AudioStream" uid="uid://b2k4ufx7k4t5o" path="res://Audio/freepik-eclipse-of-heroes.mp3" id="7_mb1if"]
+[ext_resource type="PackedScene" uid="uid://cg0ac4wfap78u" path="res://Scenes/Enemies/tank.tscn" id="8_bmcj7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxweg"]
+size = Vector2(640, 16.5)
+
+[node name="Level_01" type="Node2D" unique_id=1932303108]
+script = ExtResource("1_l0dwn")
+player_scene = ExtResource("2_dbq10")
+enemy_basic_scene = ExtResource("3_dbq10")
+powerup_scene = ExtResource("4_mb1if")
+
+[node name="EnemySpawnArea" type="Marker2D" parent="." unique_id=1623833514]
+position = Vector2(320, 32)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=434595163]
+position = Vector2(320, 320)
+
+[node name="BridgeTiles" type="Sprite2D" parent="." unique_id=21047797]
+position = Vector2(320, 184.00002)
+scale = Vector2(6, 1.8333334)
+texture = ExtResource("2_66ail")
+
+[node name="EnemyContainer" type="Node2D" parent="." unique_id=1757514555]
+
+[node name="PowerupContainer" type="Node2D" parent="." unique_id=1041057547]
+
+[node name="LoseLine" type="Area2D" parent="." unique_id=1722138702]
+position = Vector2(320, 344)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoseLine" unique_id=2002636640]
+shape = SubResource("RectangleShape2D_kxweg")
+
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=136815409]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=452829333 groups=["camera_shake"]]
+position = Vector2(320, 184)
+limit_left = 0
+limit_top = 0
+script = ExtResource("6_taws2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=872699907]
+stream = ExtResource("7_mb1if")
+volume_db = -7.298
+pitch_scale = 1.01
+autoplay = true
+mix_target = 2
+max_polyphony = 6
+
+[node name="Water" type="Node" parent="." unique_id=660091072]
+
+[node name="Debris" type="Node" parent="." unique_id=2084260461]
+
+[node name="Tank" parent="." unique_id=912092681 instance=ExtResource("8_bmcj7")]
+position = Vector2(319.99997, 63.999996)

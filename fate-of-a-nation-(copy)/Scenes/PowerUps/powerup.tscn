@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bmm7jfmbwt251"]
+
+[ext_resource type="Script" uid="uid://ddiiouov1pnri" path="res://Scenes/PowerUps/powerup.gd" id="1_ut4t5"]
+[ext_resource type="Texture2D" uid="uid://c7vopee0tl03" path="res://Assets/New folder (2)/tds-modern-hero-weapons-and-props/Props/Ammo/Ammo.png" id="2_k2ap4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k2ap4"]
+
+[node name="Powerup" type="Area2D" unique_id=1974868078]
+script = ExtResource("1_ut4t5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1070812993]
+shape = SubResource("CircleShape2D_k2ap4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1469624069]
+texture = ExtResource("2_k2ap4")
+
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=1820100131]
