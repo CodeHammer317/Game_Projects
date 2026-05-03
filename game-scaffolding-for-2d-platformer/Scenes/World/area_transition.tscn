@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cx15rmuu0sh1u"]
+
+[ext_resource type="Script" uid="uid://eskoby3utxx2" path="res://Scripts/TestWorldTransition.gd" id="1_droc4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4m87x"]
+size = Vector2(92, 127)
+
+[node name="AreaTransition" type="Area2D" unique_id=1160941269]
+script = ExtResource("1_droc4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=881704920]
+shape = SubResource("RectangleShape2D_4m87x")
+debug_color = Color(0.96862745, 0.6431373, 0.078431375, 0.41960785)

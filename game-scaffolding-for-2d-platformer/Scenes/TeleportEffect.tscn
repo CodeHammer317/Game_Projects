@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bu1a8md6xvvb7"]
+
+[ext_resource type="Texture2D" uid="uid://b8qymhxcplngb" path="res://Assets/sprites/Sci-fi/scifi_warp_001/scifi_warp_001_large_blue/spritesheet.png" id="1_5011p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwge3"]
+size = Vector2(29, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hdcr"]
+atlas = ExtResource("1_5011p")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ur8c"]
+atlas = ExtResource("1_5011p")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1euq6"]
+atlas = ExtResource("1_5011p")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb60y"]
+atlas = ExtResource("1_5011p")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmq16"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hdcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ur8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1euq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb60y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[node name="TeleportEffect" type="Area2D" unique_id=1698797163]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=93533097]
+position = Vector2(4.5, 14)
+shape = SubResource("RectangleShape2D_qwge3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1528086052]
+sprite_frames = SubResource("SpriteFrames_mmq16")
+autoplay = "default"
+frame_progress = 0.82813865

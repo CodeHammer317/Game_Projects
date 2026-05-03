@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://baycsn2qyph0f"]
+
+[ext_resource type="Texture2D" uid="uid://cnc032h2208hp" path="res://Assets/sprites/ancient-temple-pixel-game-backgrounds/PNG/background 4/Preview 4.png" id="1_qfi0l"]
+[ext_resource type="Texture2D" uid="uid://btmngmcmuatne" path="res://Assets/sprites/ancient-temple-pixel-game-backgrounds/PNG/background 3/Preview 3.png" id="2_ylwaq"]
+[ext_resource type="Texture2D" uid="uid://cfjy5fdxh8xm3" path="res://Assets/sprites/ancient-temple-pixel-game-backgrounds/PNG/background 2/Preview 2.png" id="3_fnc0d"]
+[ext_resource type="Texture2D" uid="uid://da8ex62l8deie" path="res://Assets/sprites/ancient-temple-pixel-game-backgrounds/PNG/background 1/Preview 1.png" id="4_hka2j"]
+
+[sub_resource type="TileSet" id="TileSet_fbo5s"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 31
+
+[node name="Level2" type="Node2D" unique_id=1447077604]
+
+[node name="Background" type="Node" parent="." unique_id=1826447780]
+
+[node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=2016074694]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D" unique_id=479843534]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=428499076]
+tile_set = SubResource("TileSet_fbo5s")
+
+[node name="Preview4" type="Sprite2D" parent="." unique_id=539745634]
+position = Vector2(-12240, 304)
+texture = ExtResource("1_qfi0l")
+
+[node name="Preview3" type="Sprite2D" parent="." unique_id=75731517]
+position = Vector2(-16848, 360)
+texture = ExtResource("2_ylwaq")
+
+[node name="Preview2" type="Sprite2D" parent="." unique_id=1144415171]
+position = Vector2(-7624, 408)
+texture = ExtResource("3_fnc0d")
+
+[node name="Preview1" type="Sprite2D" parent="." unique_id=1373281013]
+position = Vector2(-3016, 168)
+texture = ExtResource("4_hka2j")
