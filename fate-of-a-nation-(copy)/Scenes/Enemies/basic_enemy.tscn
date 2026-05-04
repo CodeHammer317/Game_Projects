@@ -11,7 +11,7 @@ size = Vector2(20, 58)
 
 [node name="BasicEnemy" type="CharacterBody2D" unique_id=469876117]
 collision_layer = 2
-collision_mask = 16
+collision_mask = 18
 script = ExtResource("1_wm5yt")
 move_speed = 20.0
 max_health = 1

@@ -10,7 +10,6 @@ class_name Level01
 @export var max_lane_left: float = 160.0
 @export var max_lane_right: float = 480.0
 @export var lane_widen_amount: float = 0.0
-
 @export var spawn_interval: float = 1.1
 @export var min_spawn_interval: float = 0.35
 @export var spawn_interval_drop: float = 0.05
