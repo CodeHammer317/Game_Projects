@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bahpjrn7intjc"]
 
-[ext_resource type="Script" uid="uid://cndia2osnpcud" path="res://Scenes/PowerUps/hud.gd" id="1_kau3j"]
+[ext_resource type="Script" uid="uid://cndia2osnpcud" path="res://Scripts/hud.gd" id="1_kau3j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kau3j"]
 

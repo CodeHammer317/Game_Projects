@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://2f0nm4nqamhs"]
+
+[ext_resource type="Texture2D" uid="uid://dq2i0dh2pvxgm" path="res://Assets/Super Pixel Effects Gigapack v2.0.0/Super Pixel Effects Gigapack/spritesheet/Symbols/symbol_alert_002/symbol_alert_002_large_orange/spritesheet.png" id="1_7g5sr"]
+[ext_resource type="Script" uid="uid://ce3llkvic8uf8" path="res://Scenes/UI/tank_warning_indicator.gd" id="1_nu7ep"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu7ep"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc0vg"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmlh6"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg4yq"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnay3"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1xk1"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w26kl"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb0hk"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(560, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxhee"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(640, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pned7"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(720, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efpq4"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(800, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os778"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(880, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t42xp"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(960, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhbqj"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(1040, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymoux"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(1120, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pine2"]
+atlas = ExtResource("1_7g5sr")
+region = Rect2(1200, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndb4c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu7ep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc0vg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmlh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eg4yq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnay3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1xk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w26kl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb0hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxhee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pned7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efpq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os778")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t42xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhbqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymoux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pine2")
+}],
+"loop": true,
+"name": &"warning",
+"speed": 16.0
+}]
+
+[node name="TankWarningIndicator" type="Node2D" unique_id=128719915]
+script = ExtResource("1_nu7ep")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1753314647]
+sprite_frames = SubResource("SpriteFrames_ndb4c")
+animation = &"warning"
+autoplay = "warning"
+
+[node name="Timer" type="Timer" parent="." unique_id=1549193905]
+wait_time = 1.5
+one_shot = true

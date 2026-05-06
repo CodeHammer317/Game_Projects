@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://ccxaovnvxlsi4"]
 
-[ext_resource type="Script" uid="uid://c25c7llsbsroa" path="res://Scenes/Bullets/tank_bullet.gd" id="1_7sppd"]
-[ext_resource type="Texture2D" uid="uid://c4xf7lspcyjnp" path="res://Assets/New folder (2)/tds-modern-hero-weapons-and-props/rocket/rocket-f1.png" id="1_q28hh"]
+[ext_resource type="Script" uid="uid://c25c7llsbsroa" path="res://Scripts/tank_bullet.gd" id="1_7sppd"]
+[ext_resource type="Texture2D" uid="uid://fjcswohgnh20" path="res://Assets/PNG/fire/Cannon_fire/Cannon_fire2.png" id="2_7sppd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7sppd"]
 size = Vector2(4, 4)
 
 [node name="TankBullet" type="Area2D" unique_id=551559066]
+scale = Vector2(0.5, 0.5)
 collision_layer = 0
 script = ExtResource("1_7sppd")
 damage = 10
@@ -16,4 +17,4 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_7sppd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1730786209]
-texture = ExtResource("1_q28hh")
+texture = ExtResource("2_7sppd")

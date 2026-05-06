@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://b5jkm8dbnvq62"]
 
-[ext_resource type="Script" uid="uid://dyeuvt6eo8p0u" path="res://Scenes/Levels/level_01.gd" id="1_l0dwn"]
+[ext_resource type="Script" uid="uid://dyeuvt6eo8p0u" path="res://Scripts/level_01.gd" id="1_l0dwn"]
 [ext_resource type="Texture2D" uid="uid://eonbjrq111eo" path="res://Assets/New folder (2)/tds-modern-tilesets-environment/PNG/Tiles/BridgeTiles.png" id="2_66ail"]
 [ext_resource type="PackedScene" uid="uid://vnathvarrylw" path="res://Scenes/player/Player.tscn" id="2_dbq10"]
 [ext_resource type="PackedScene" uid="uid://cpgn1p5wtnaar" path="res://Scenes/Enemies/basic_enemy.tscn" id="3_dbq10"]
 [ext_resource type="PackedScene" uid="uid://bmm7jfmbwt251" path="res://Scenes/PowerUps/powerup.tscn" id="4_mb1if"]
-[ext_resource type="Script" uid="uid://d2qrujx01f0u4" path="res://Scenes/CameraShake.gd" id="6_taws2"]
+[ext_resource type="Script" uid="uid://d2qrujx01f0u4" path="res://Scripts/CameraShake.gd" id="6_taws2"]
 [ext_resource type="AudioStream" uid="uid://b2k4ufx7k4t5o" path="res://Audio/freepik-eclipse-of-heroes.mp3" id="7_mb1if"]
 [ext_resource type="PackedScene" uid="uid://cg0ac4wfap78u" path="res://Scenes/Enemies/tank.tscn" id="8_bmcj7"]
+[ext_resource type="PackedScene" uid="uid://2f0nm4nqamhs" path="res://Scenes/UI/tank_warning_indicator.tscn" id="9_j5tiy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxweg"]
 size = Vector2(640, 16.5)
@@ -17,6 +18,8 @@ script = ExtResource("1_l0dwn")
 player_scene = ExtResource("2_dbq10")
 enemy_basic_scene = ExtResource("3_dbq10")
 powerup_scene = ExtResource("4_mb1if")
+tank_enemy = ExtResource("8_bmcj7")
+tank_warning_scene = ExtResource("9_j5tiy")
 
 [node name="EnemySpawnArea" type="Marker2D" parent="." unique_id=1623833514]
 position = Vector2(320, 32)
@@ -45,8 +48,12 @@ shape = SubResource("RectangleShape2D_kxweg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=452829333 groups=["camera_shake"]]
 position = Vector2(320, 184)
+limit_enabled = false
 limit_left = 0
 limit_top = 0
+limit_right = 640
+limit_bottom = 360
+position_smoothing_enabled = true
 script = ExtResource("6_taws2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=872699907]
@@ -61,5 +68,5 @@ max_polyphony = 6
 
 [node name="Debris" type="Node" parent="." unique_id=2084260461]
 
-[node name="Tank" parent="." unique_id=912092681 instance=ExtResource("8_bmcj7")]
-position = Vector2(319.99997, 63.999996)
+[node name="TankWarningIndicator" parent="." unique_id=128719915 instance=ExtResource("9_j5tiy")]
+position = Vector2(584, 296)

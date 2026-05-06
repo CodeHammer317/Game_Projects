@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cpgn1p5wtnaar"]
 
-[ext_resource type="Script" uid="uid://bb7leo3b2yri3" path="res://Scenes/Enemies/enemy_basic.gd" id="1_wm5yt"]
+[ext_resource type="Script" uid="uid://bb7leo3b2yri3" path="res://Scripts/enemy_basic.gd" id="1_wm5yt"]
 [ext_resource type="Texture2D" uid="uid://ck0jl3o6dcan0" path="res://Assets/New folder (2)/tds-modern-soldiers-and-vehicles-sprites-2/Gunner/Die/GDS_01.png" id="2_nkmwn"]
+[ext_resource type="PackedScene" uid="uid://rdkh4s6ekker" path="res://Scenes/Bullets/enemy_bullet.tscn" id="2_wm5yt"]
+[ext_resource type="PackedScene" uid="uid://bmm7jfmbwt251" path="res://Scenes/PowerUps/powerup.tscn" id="3_00oey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wm5yt"]
 size = Vector2(17, 26)
@@ -9,13 +11,16 @@ size = Vector2(17, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00oey"]
 size = Vector2(20, 58)
 
-[node name="BasicEnemy" type="CharacterBody2D" unique_id=469876117]
+[node name="BasicEnemy" type="CharacterBody2D" unique_id=469876117 groups=["enemies"]]
 collision_layer = 2
 collision_mask = 18
 script = ExtResource("1_wm5yt")
 move_speed = 20.0
 max_health = 1
 point_value = 106
+bullet_scene = ExtResource("2_wm5yt")
+powerup_scene = ExtResource("3_00oey")
+powerup_drop_chance = 0.12
 hit_flash_color = Color(2.994, 0.202, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1983404496]
@@ -33,5 +38,10 @@ debug_color = Color(0.930275, 0.2307421, 0.33968982, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=950954203]
 texture = ExtResource("2_nkmwn")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1798199021]
+position = Vector2(-3, 16)
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1309610293]
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_contact_hitbox_body_entered"]
