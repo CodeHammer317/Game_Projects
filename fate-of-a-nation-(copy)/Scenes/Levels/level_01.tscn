@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b2k4ufx7k4t5o" path="res://Audio/freepik-eclipse-of-heroes.mp3" id="7_mb1if"]
 [ext_resource type="PackedScene" uid="uid://cg0ac4wfap78u" path="res://Scenes/Enemies/tank.tscn" id="8_bmcj7"]
 [ext_resource type="PackedScene" uid="uid://2f0nm4nqamhs" path="res://Scenes/UI/tank_warning_indicator.tscn" id="9_j5tiy"]
+[ext_resource type="Texture2D" uid="uid://ckhfcltg7sg5r" path="res://Assets/LastBridge.jpg" id="10_qelns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxweg"]
 size = Vector2(640, 16.5)
@@ -21,6 +22,12 @@ powerup_scene = ExtResource("4_mb1if")
 tank_enemy = ExtResource("8_bmcj7")
 tank_warning_scene = ExtResource("9_j5tiy")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=327572319]
+position = Vector2(3.0517578e-05, 1.5258789e-05)
+scale = Vector2(0.432, 0.5768025)
+texture = ExtResource("10_qelns")
+centered = false
+
 [node name="EnemySpawnArea" type="Marker2D" parent="." unique_id=1623833514]
 position = Vector2(320, 32)
 
@@ -28,8 +35,8 @@ position = Vector2(320, 32)
 position = Vector2(320, 320)
 
 [node name="BridgeTiles" type="Sprite2D" parent="." unique_id=21047797]
-position = Vector2(320, 184.00002)
-scale = Vector2(6, 1.8333334)
+position = Vector2(320, 188)
+scale = Vector2(6, 2.0416667)
 texture = ExtResource("2_66ail")
 
 [node name="EnemyContainer" type="Node2D" parent="." unique_id=1757514555]

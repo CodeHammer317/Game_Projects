@@ -364,9 +364,7 @@ size = Vector2(20, 48)
 [node name="Player" type="CharacterBody2D" unique_id=943159391 groups=["player"]]
 collision_mask = 0
 script = ExtResource("1_jnk8a")
-max_health = 10
 move_speed = 200.0
-fire_cooldown = 0.25
 bullet_scene = ExtResource("2_4ibyj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=233811365]

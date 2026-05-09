@@ -20,8 +20,8 @@ max_health = 1
 point_value = 106
 bullet_scene = ExtResource("2_wm5yt")
 powerup_scene = ExtResource("3_00oey")
-powerup_drop_chance = 0.12
-hit_flash_color = Color(2.994, 0.202, 0, 1)
+powerup_drop_chance = 0.03
+hit_flash_color = Color(2.6900449, 0, 0.07868164, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1983404496]
 position = Vector2(-1, -3)

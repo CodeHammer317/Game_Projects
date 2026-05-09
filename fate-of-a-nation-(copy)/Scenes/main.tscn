@@ -10,3 +10,36 @@ script = ExtResource("1_jjvhh")
 [node name="Level_01" parent="." unique_id=1932303108 instance=ExtResource("1_jjgbg")]
 
 [node name="HUD" parent="." unique_id=406706703 instance=ExtResource("2_bo1nx")]
+
+[node name="HealthBar" parent="HUD" index="0" unique_id=366965769]
+offset_left = 8.0000305
+offset_top = 112.0
+offset_right = 208.00003
+offset_bottom = 138.0
+
+[node name="ScoreLabel" parent="HUD" index="1" unique_id=1090276310]
+offset_left = -312.0
+offset_top = 32.0
+offset_right = -269.0
+offset_bottom = 55.0
+
+[node name="KillstreakLabel" parent="HUD" index="2" unique_id=1833852903]
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 81.0
+offset_bottom = 79.0
+
+[node name="HighScoreLabel" parent="HUD" index="3" unique_id=779955632]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 99.0
+offset_bottom = 31.0
+
+[node name="LevelLabel" parent="HUD" index="4" unique_id=958638965]
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 49.0
+offset_bottom = 103.0
+
+[editable path="Level_01"]
+[editable path="HUD"]
