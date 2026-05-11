@@ -15,7 +15,7 @@ signal died
 @export var rapid_fire_cooldown: float = 0.08
 @export var shoot_anim_duration: float = 0.10
 @export var bullet_scene: PackedScene
-
+@export var floating_text_scene: PackedScene
 @export var muzzle_offset_right: Vector2 = Vector2(10.0, -2.0)
 
 @export var hitstun_duration: float = 0.14
@@ -316,7 +316,10 @@ func apply_powerup(powerup_type: int, amount: int = 1, duration: float = 6.0) ->
 
 		Powerup.PowerupType.BOMB:
 			_activate_bomb()
-
+	_spawn_floating_text("RAPID", Color.YELLOW)
+	_spawn_floating_text("SPREAD", Color.YELLOW)
+	_spawn_floating_text("SHIELD", Color.CYAN)
+	_spawn_floating_text("BOMB", Color.ORANGE)
 
 func _heal(amount: int) -> void:
 	if _is_dead:
@@ -326,7 +329,7 @@ func _heal(amount: int) -> void:
 		return
 
 	current_health += amount
-
+	_spawn_floating_text("+" + str(amount) + " HP", Color.GREEN)
 	if current_health > max_health:
 		current_health = max_health
 	health_changed.emit(current_health, max_health)
@@ -357,6 +360,7 @@ func _activate_shield() -> void:
 	shield_active = true
 	_play_sound(shield_sound)
 	print("Shield active")
+	_spawn_floating_text("BLOCK", Color.BLUE)
 
 
 func _activate_bomb() -> void:
@@ -389,7 +393,7 @@ func take_damage(amount: int = 1, attacker: Node = null) -> void:
 		return
 
 	current_health -= amount
-	
+	_spawn_floating_text("-" + str(amount), Color.RED)
 	if current_health < 0:
 		current_health = 0
 	
@@ -534,7 +538,19 @@ func _run_death_blink() -> void:
 func _play_sound(sound: AudioStreamPlayer) -> void:
 	if sound == null:
 		return
-	sound.pitch_scale = randf_range(0.75, 1.05)
-	sound.volume_db = randf_range(-1.0, 0.5)
+	#sound.pitch_scale = randf_range(0.9, 1.0)
+	#sound.volume_db = randf_range(0.0, 0.5)
 	sound.stop()
 	sound.play()
+func _spawn_floating_text(text: String, text_color: Color = Color.WHITE) -> void:
+	if floating_text_scene == null:
+		return
+
+	var floating_text: FloatingText = floating_text_scene.instantiate() as FloatingText
+
+	if floating_text == null:
+		return
+
+	get_tree().current_scene.add_child(floating_text)
+	floating_text.global_position = global_position + Vector2(0.0, -18.0)
+	floating_text.setup(text, text_color)

@@ -11,7 +11,7 @@ enum PowerupType {
 
 @export var powerup_type: PowerupType = PowerupType.HEALTH
 @export var fall_speed: float = 30.0
-@export var amount: int = 10
+@export var amount: int = 1
 @export var duration: float = 6.0
 @export var remove_when_offscreen: bool = true
 
@@ -21,13 +21,7 @@ enum PowerupType {
 
 func _ready() -> void:
 	_update_visual()
-
-	if not body_entered.is_connected(_on_body_entered):
-		body_entered.connect(_on_body_entered)
-
-	if visible_notifier != null:
-		if not visible_notifier.screen_exited.is_connected(_on_screen_exited):
-			visible_notifier.screen_exited.connect(_on_screen_exited)
+	_connect_signals()
 
 
 func _physics_process(delta: float) -> void:
@@ -37,11 +31,25 @@ func _physics_process(delta: float) -> void:
 	global_position.y += fall_speed * delta
 
 
-func setup(new_powerup_type: int, new_amount: int = 1, new_duration: float = 6.0) -> void:
-	powerup_type = new_powerup_type
+func setup(new_powerup_type: int = -1, new_amount: int = 1, new_duration: float = 6.0) -> void:
+	if new_powerup_type < 0:
+		powerup_type = randi_range(0, PowerupType.size() - 1) as PowerupType
+	else:
+		powerup_type = new_powerup_type as PowerupType
+
 	amount = new_amount
 	duration = new_duration
+
 	_update_visual()
+
+
+func _connect_signals() -> void:
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
+
+	if visible_notifier != null:
+		if not visible_notifier.screen_exited.is_connected(_on_screen_exited):
+			visible_notifier.screen_exited.connect(_on_screen_exited)
 
 
 func _on_body_entered(body: Node) -> void:

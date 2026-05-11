@@ -9,6 +9,7 @@ signal died(enemy: Node)
 @export var contact_damage: int = 1
 
 @export var can_shoot: bool = true
+@export var floating_text_scene: PackedScene
 @export var bullet_scene: PackedScene
 @export var shoot_cooldown: float = 5.4
 @export var shoot_delay_min: float = 0.3
@@ -86,6 +87,7 @@ func take_damage(amount: int = 1, attacker: Node = null) -> void:
 		return
 
 	current_health -= amount
+	_spawn_floating_text("-" + str(amount), Color.RED)
 	_play_hit_feedback()
 
 	if current_health <= 0:
@@ -109,6 +111,8 @@ func die() -> void:
 		hit_tween = null
 
 	GameState.add_kill(point_value)
+	
+	_spawn_floating_text("+" + str(point_value), Color.YELLOW)
 	died.emit(self)
 
 	var camera: CameraShake = get_tree().get_first_node_in_group("camera_shake") as CameraShake
@@ -214,3 +218,15 @@ func _scale_and_die() -> void:
 	tween.tween_property(sprite, "modulate:a", 0.0, 0.08)
 
 	tween.finished.connect(queue_free)
+func _spawn_floating_text(text: String, text_color: Color = Color.WHITE) -> void:
+	if floating_text_scene == null:
+		return
+
+	var floating_text: FloatingText = floating_text_scene.instantiate() as FloatingText
+
+	if floating_text == null:
+		return
+
+	get_tree().current_scene.add_child(floating_text)
+	floating_text.global_position = global_position + Vector2(0.0, -12.0)
+	floating_text.setup(text, text_color)

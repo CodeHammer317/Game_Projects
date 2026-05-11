@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cpgn1p5wtnaar"]
 
 [ext_resource type="Script" uid="uid://bb7leo3b2yri3" path="res://Scripts/enemy_basic.gd" id="1_wm5yt"]
+[ext_resource type="PackedScene" uid="uid://bjpewunqlkj3m" path="res://Scenes/UI/floating_text.tscn" id="2_264qk"]
 [ext_resource type="Texture2D" uid="uid://ck0jl3o6dcan0" path="res://Assets/New folder (2)/tds-modern-soldiers-and-vehicles-sprites-2/Gunner/Die/GDS_01.png" id="2_nkmwn"]
 [ext_resource type="PackedScene" uid="uid://rdkh4s6ekker" path="res://Scenes/Bullets/enemy_bullet.tscn" id="2_wm5yt"]
 [ext_resource type="PackedScene" uid="uid://bmm7jfmbwt251" path="res://Scenes/PowerUps/powerup.tscn" id="3_00oey"]
@@ -18,6 +19,7 @@ script = ExtResource("1_wm5yt")
 move_speed = 20.0
 max_health = 1
 point_value = 106
+floating_text_scene = ExtResource("2_264qk")
 bullet_scene = ExtResource("2_wm5yt")
 powerup_scene = ExtResource("3_00oey")
 powerup_drop_chance = 0.03

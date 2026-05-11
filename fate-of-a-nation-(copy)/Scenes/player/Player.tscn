@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvm67cjwh3rcj" path="res://Scenes/Bullets/PlayerBullet.tscn" id="2_4ibyj"]
 [ext_resource type="Texture2D" uid="uid://b3q0gu510ux4q" path="res://Assets/PNG/soldiers_color1/soldier2/anti-tank_missile/anti-tank_missile1.png" id="2_5deb4"]
 [ext_resource type="Texture2D" uid="uid://16eb2y55qlnh" path="res://Assets/PNG/soldiers_color1/soldier2/anti-tank_missile/anti-tank_missile2.png" id="3_1vylk"]
+[ext_resource type="PackedScene" uid="uid://bjpewunqlkj3m" path="res://Scenes/UI/floating_text.tscn" id="3_cono2"]
 [ext_resource type="Texture2D" uid="uid://chyraho2qo640" path="res://Assets/PNG/soldiers_color1/soldier2/anti-tank_missile/anti-tank_missile3.png" id="4_xtpmp"]
 [ext_resource type="Texture2D" uid="uid://dha6puvm6ekfl" path="res://Assets/PNG/soldiers_color1/soldier2/anti-tank_missile/anti-tank_missile4.png" id="5_607a2"]
 [ext_resource type="Texture2D" uid="uid://cb0jktxl7axjb" path="res://Assets/PNG/soldiers_color1/soldier2/anti-tank_missile/anti-tank_missile5.png" id="6_cm8fr"]
@@ -84,7 +85,6 @@
 [ext_resource type="AudioStream" uid="uid://dd2xylhcfrvhe" path="res://Audio/668353__deltacode__shotgun-one-shot.wav" id="82_xtpmp"]
 [ext_resource type="AudioStream" uid="uid://drm7mknla2rx2" path="res://Audio/hurt1.ogg" id="83_cono2"]
 [ext_resource type="AudioStream" uid="uid://dnxjkgk1x363a" path="res://Audio/levelup.ogg" id="84_so752"]
-[ext_resource type="AudioStream" uid="uid://b8eohhr3vocbi" path="res://Audio/enemy_hit.ogg" id="85_m48cl"]
 [ext_resource type="AudioStream" uid="uid://bm0ovmphm0yyj" path="res://Audio/CannonAAFire.mp3" id="86_4ensc"]
 [ext_resource type="AudioStream" uid="uid://b63ba85ud441o" path="res://Audio/pickup2.ogg" id="86_d1de2"]
 
@@ -366,6 +366,7 @@ collision_mask = 0
 script = ExtResource("1_jnk8a")
 move_speed = 200.0
 bullet_scene = ExtResource("2_4ibyj")
+floating_text_scene = ExtResource("3_cono2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=233811365]
 visible = false
@@ -398,33 +399,37 @@ position = Vector2(2, -19)
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="Audio" unique_id=860235058]
 stream = ExtResource("81_1vylk")
-volume_db = -8.211
-mix_target = 2
-max_polyphony = 6
+volume_db = -9.113
+pitch_scale = 2.64
+max_polyphony = 2
 
 [node name="ShotgunSound" type="AudioStreamPlayer" parent="Audio" unique_id=738677123]
 stream = ExtResource("82_xtpmp")
 volume_db = -9.123
-pitch_scale = 0.27
+pitch_scale = 0.96
 mix_target = 2
 max_polyphony = 6
 
 [node name="HitSound" type="AudioStreamPlayer" parent="Audio" unique_id=1874521918]
 stream = ExtResource("83_cono2")
+volume_db = -14.924
 
 [node name="PowerupSound" type="AudioStreamPlayer" parent="Audio" unique_id=1736750344]
 stream = ExtResource("84_so752")
+volume_db = -8.395
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="Audio" unique_id=989886306]
-stream = ExtResource("85_m48cl")
+volume_db = 22.234
 
 [node name="HealSound" type="AudioStreamPlayer" parent="Audio" unique_id=2145143710]
 stream = ExtResource("86_d1de2")
+volume_db = -10.758
 
 [node name="BombSound" type="AudioStreamPlayer" parent="Audio" unique_id=2141984992]
 stream = ExtResource("86_4ensc")
-volume_db = 1.677
+volume_db = -0.935
 pitch_scale = 0.97
+max_polyphony = 5
 
 [node name="ShieldSound" type="AudioStreamPlayer" parent="Audio" unique_id=399361319]
-stream = ExtResource("85_m48cl")
+max_polyphony = 4

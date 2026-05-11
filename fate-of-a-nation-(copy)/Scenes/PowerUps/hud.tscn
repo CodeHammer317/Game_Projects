@@ -11,49 +11,15 @@
 script = ExtResource("1_kau3j")
 
 [node name="HealthBar" type="TextureProgressBar" parent="." unique_id=366965769]
-offset_left = 520.0
-offset_top = 56.0
-offset_right = 632.0
-offset_bottom = 80.0
-scale = Vector2(0.56, 0.48000002)
+offset_top = 108.0
+offset_right = 200.0
+offset_bottom = 136.0
+scale = Vector2(0.6399999, 0.68)
 max_value = 10.0
 value = 10.0
 texture_under = ExtResource("2_aoc27")
 texture_over = ExtResource("3_xegnw")
 texture_progress = ExtResource("4_xi8t2")
-
-[node name="ScoreLabel" type="Label" parent="." unique_id=1090276310]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -280.0
-offset_top = 16.0
-offset_right = -237.0
-offset_bottom = 39.0
-grow_horizontal = 2
-size_flags_vertical = 0
-text = "Score:"
-
-[node name="KillstreakLabel" type="Label" parent="." unique_id=1833852903]
-offset_left = 448.0
-offset_top = 16.0
-offset_right = 521.0
-offset_bottom = 39.0
-text = "Killstreak:"
-
-[node name="HighScoreLabel" type="Label" parent="." unique_id=779955632]
-offset_left = 224.0
-offset_top = 16.0
-offset_right = 315.0
-offset_bottom = 39.0
-text = "High Score: "
-
-[node name="LevelLabel" type="Label" parent="." unique_id=958638965]
-offset_left = 568.0
-offset_top = 16.0
-offset_right = 609.0
-offset_bottom = 39.0
-text = "Level:"
 
 [node name="GameOverPanel" type="Panel" parent="." unique_id=1841090636]
 anchors_preset = 8
@@ -90,3 +56,24 @@ offset_right = 400.0
 offset_bottom = 240.0
 text = "Restart"
 autowrap_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=151393411]
+offset_right = 232.0
+offset_bottom = 280.0
+
+[node name="HighScoreLabel" type="Label" parent="VBoxContainer" unique_id=779955632]
+layout_mode = 2
+text = "High Score: "
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer" unique_id=1090276310]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Score:"
+
+[node name="KillstreakLabel" type="Label" parent="VBoxContainer" unique_id=1833852903]
+layout_mode = 2
+text = "Killstreak:"
+
+[node name="LevelLabel" type="Label" parent="VBoxContainer" unique_id=958638965]
+layout_mode = 2
+text = "Level:"

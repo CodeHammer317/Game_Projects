@@ -21,6 +21,7 @@ enemy_basic_scene = ExtResource("3_dbq10")
 powerup_scene = ExtResource("4_mb1if")
 tank_enemy = ExtResource("8_bmcj7")
 tank_warning_scene = ExtResource("9_j5tiy")
+spawn_interval = 0.9
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=327572319]
 position = Vector2(3.0517578e-05, 1.5258789e-05)
@@ -65,7 +66,7 @@ script = ExtResource("6_taws2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=872699907]
 stream = ExtResource("7_mb1if")
-volume_db = -7.298
+volume_db = -6.832
 pitch_scale = 1.01
 autoplay = true
 mix_target = 2
