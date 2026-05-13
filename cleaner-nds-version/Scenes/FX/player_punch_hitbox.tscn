@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://bgk6qsvlkbjal"]
+
+[ext_resource type="Script" uid="uid://betc3alns3d4p" path="res://player_punch_hitbox.gd" id="1_l2nxl"]
+[ext_resource type="Texture2D" uid="uid://bm6p7e47wtpl3" path="res://Assets/sprites/Super Pixel Effects Pack 2/Super Pixel Effects Pack 2/spritesheet/fx2_claw_large_white/spritesheet.png" id="2_102l4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_102l4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5edp5"]
+atlas = ExtResource("2_102l4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3hff"]
+atlas = ExtResource("2_102l4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d77hc"]
+atlas = ExtResource("2_102l4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs2ko"]
+atlas = ExtResource("2_102l4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yips"]
+atlas = ExtResource("2_102l4")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruajj"]
+atlas = ExtResource("2_102l4")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7b15"]
+atlas = ExtResource("2_102l4")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xykgg"]
+atlas = ExtResource("2_102l4")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifx5j"]
+atlas = ExtResource("2_102l4")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thgyi"]
+atlas = ExtResource("2_102l4")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4d840"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5edp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3hff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d77hc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs2ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yips")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruajj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7b15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xykgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifx5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thgyi")
+}],
+"loop": false,
+"name": &"claw",
+"speed": 30.0
+}]
+
+[node name="PlayerPunchHitbox" type="Area2D" unique_id=1560678473]
+collision_layer = 8
+collision_mask = 68
+script = ExtResource("1_l2nxl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1727056499]
+shape = SubResource("CircleShape2D_102l4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2120301251]
+position = Vector2(-1.9073486e-06, -1.9073486e-06)
+scale = Vector2(0.6875, 0.6875)
+sprite_frames = SubResource("SpriteFrames_4d840")
+animation = &"claw"
+autoplay = "claw"

@@ -472,7 +472,19 @@ func _play_explosion_sound() -> void:
 
 func _has_animation(anim_name: String) -> bool:
 	return sprite != null and sprite.sprite_frames != null and sprite.sprite_frames.has_animation(anim_name)
+	
+func take_damage(amount: int, attacker: Node = null) -> void:
+	var info := DamageInfo.new(amount, Vector2.ZERO, attacker)
+	apply_damage(info)
+	
+func apply_damage(info: DamageInfo) -> void:
+	if is_dead:
+		return
 
+	if health == null:
+		return
+
+	health.apply_damage(info)
 
 func set_facing_right(value: bool) -> void:
 	facing_right = value

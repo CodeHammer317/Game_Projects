@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://cjvhkjgxbr7ug"]
 
+[ext_resource type="Script" uid="uid://bnf80d4m4v5i" path="res://Scenes/World/level_01.gd" id="1_3u0ay"]
 [ext_resource type="Texture2D" uid="uid://cbflwr7wmls4k" path="res://Assets/super_pixel_laboratory/super_pixel_laboratory/style_A/spritesheet/spritesheet.png" id="1_66m7q"]
 [ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="1_nijma"]
 [ext_resource type="Texture2D" uid="uid://cuon2gcbxjb3v" path="res://Assets/sprites/super_pixel_laboratory/super_pixel_laboratory/style_D/PNG/bg_wall.png" id="1_rbft6"]
@@ -17,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://dwf68tg6mwljt" path="res://Scenes/FX/lightning_pillar.tscn" id="16_co23w"]
 [ext_resource type="AudioStream" uid="uid://ctmt15glpa3m0" path="res://Assets/Audio/freepik-fighters-game.mp3" id="17_6gtvm"]
 [ext_resource type="PackedScene" uid="uid://btohqpwknjdnp" path="res://Scenes/FX/tele_portal.tscn" id="18_e65bs"]
+[ext_resource type="PackedScene" uid="uid://cbvojmykspuhx" path="res://Scenes/FX/danger_sign.tscn" id="18_mi0n3"]
+[ext_resource type="PackedScene" uid="uid://b3ibvikii0j7q" path="res://Scenes/FX/alert_sign.tscn" id="19_3u0ay"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jhsub"]
 texture = ExtResource("1_66m7q")
@@ -8508,6 +8511,7 @@ sources/0 = SubResource("TileSetAtlasSource_dp7f1")
 sources/1 = SubResource("TileSetAtlasSource_3l8f8")
 
 [node name="Level01_A" type="Node2D" unique_id=277584245]
+script = ExtResource("1_3u0ay")
 
 [node name="Background" type="Node2D" parent="." unique_id=1730628088]
 
@@ -8644,6 +8648,12 @@ rotation = 3.1415927
 [node name="LightningPillar2" parent="." unique_id=333083335 instance=ExtResource("16_co23w")]
 position = Vector2(190, 136)
 rotation = -1.5707964
+
+[node name="DangerSign" parent="." unique_id=491563559 instance=ExtResource("18_mi0n3")]
+position = Vector2(830, 72)
+
+[node name="AlertSign" parent="." unique_id=1163213399 instance=ExtResource("19_3u0ay")]
+position = Vector2(138, 42)
 
 [editable path="Hotdog"]
 [editable path="Hotdog2"]

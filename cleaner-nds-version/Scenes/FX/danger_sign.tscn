@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://cbvojmykspuhx"]
 
-[ext_resource type="Texture2D" uid="uid://b16ug6jo4q5pv" path="res://Assets/fx/Super Pixel Effects Gigapack/spritesheet/Symbols/symbol_danger_text_001/symbol_danger_text_001_large_red/spritesheet.png" id="1_stdib"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_stdib"]
-size = Vector2(416, 264)
+[ext_resource type="Script" uid="uid://s6wcwsjkxgfr" path="res://Scenes/FX/WarningIndicator.gd" id="1_180sq"]
+[ext_resource type="Texture2D" uid="uid://biuiirrscn387" path="res://Assets/sprites/Symbols/symbol_danger_text_001/symbol_danger_text_001_large_red/spritesheet.png" id="1_stdib"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_180sq"]
 atlas = ExtResource("1_stdib")
@@ -237,13 +235,18 @@ animations = [{
 "speed": 16.0
 }]
 
-[node name="DangerSign" type="Area2D" unique_id=491563559]
+[sub_resource type="CircleShape2D" id="CircleShape2D_180sq"]
+radius = 121.86
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=797024559]
-position = Vector2(-136, 100)
-shape = SubResource("RectangleShape2D_stdib")
+[node name="DangerSign" type="Area2D" unique_id=1671688031]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_180sq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=629314312]
 sprite_frames = SubResource("SpriteFrames_eqpe4")
 autoplay = "default"
-frame_progress = 0.66316193
+frame_progress = 0.72728026
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=985157456]
+shape = SubResource("CircleShape2D_180sq")

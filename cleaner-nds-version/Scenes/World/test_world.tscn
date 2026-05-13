@@ -897,6 +897,7 @@ target_path = NodePath("../Player")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1556989975]
 stream = ExtResource("14_8y3w6")
 volume_db = -0.801
+autoplay = true
 max_polyphony = 7
 parameters/looping = true
 

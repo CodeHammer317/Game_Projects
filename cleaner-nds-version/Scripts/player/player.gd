@@ -16,8 +16,12 @@ signal died
 @export var fire_cooldown: float = 0.18
 @export var shoot_anim_duration: float = 0.10
 @export var bullet_scene: PackedScene
-
 @export var muzzle_offset_right: Vector2 = Vector2(10.0, -2.0)
+
+@export var punch_hitbox_scene: PackedScene
+@export var punch_cooldown: float = 0.28
+@export var punch_anim_duration: float = 0.18
+@export var punch_offset_right: Vector2 = Vector2(16.0, -2.0)
 
 @export var hitstun_duration: float = 0.14
 @export var damage_invuln_duration: float = 0.30
@@ -30,22 +34,25 @@ signal died
 @export var death_blink_duration: float = 0.60
 @export var death_blink_interval: float = 0.1
 
-# --- DASH ---
 @export var dash_speed: float = 260.0
 @export var dash_time: float = 0.14
 @export var dash_cooldown: float = 0.35
 @export var allow_air_dash: bool = true
 @export var dash_stops_vertical_velocity: bool = true
 
-# --- WALL MOVEMENT ---
 @export var wall_slide_speed: float = 55.0
 @export var wall_jump_force: Vector2 = Vector2(220.0, -340.0)
 @export var wall_jump_horizontal_lock_time: float = 0.12
 
-# --- JUMP FEEL ---
 @export var coyote_time: float = 0.12
 @export var jump_buffer_time: float = 0.10
 @export var jump_cut_multiplier: float = 0.5
+
+@export_group("Dust Trail")
+@export var dust_trail_scene: PackedScene
+@export var dash_dust_offset: Vector2 = Vector2(-12.0, 12.0)
+@export var wall_slide_dust_offset: Vector2 = Vector2(8.0, -4.0)
+@export var dust_spawn_interval: float = 0.08
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Marker2D = $Muzzle
@@ -54,29 +61,32 @@ signal died
 var _facing_left: bool = false
 var _fire_timer: float = 0.0
 var _shoot_anim_timer: float = 0.0
-var _is_dead: bool = false
 var _input_dir: float = 0.0
 
-var _hitstun_timer: float = 0.0
-var _invuln_timer: float = 0.0
+var _punch_timer: float = 0.0
+var _punch_anim_timer: float = 0.0
+
+var _is_dead: bool = false
 var _is_dying: bool = false
 var _is_hit_flashing: bool = false
 
-# --- DASH STATE ---
+var _hitstun_timer: float = 0.0
+var _invuln_timer: float = 0.0
+
 var _is_dashing: bool = false
 var _dash_timer: float = 0.0
 var _dash_cooldown_timer: float = 0.0
 var _has_air_dashed: bool = false
 
-# --- WALL STATE ---
 var _is_wall_sliding: bool = false
-var _wall_dir: int = 0 # -1 = left wall, 1 = right wall
+var _wall_dir: int = 0
 var _wall_jump_lock_timer: float = 0.0
 
-# --- JUMP FEEL STATE ---
 var _coyote_timer: float = 0.0
 var _jump_buffer_timer: float = 0.0
 var _was_on_floor: bool = false
+
+var _dust_spawn_timer: float = 0.0
 
 
 func _ready() -> void:
@@ -87,32 +97,30 @@ func _ready() -> void:
 		if not health.died.is_connected(_on_health_died):
 			health.died.connect(_on_health_died)
 
+	_update_muzzle_position()
+
 
 func _physics_process(delta: float) -> void:
 	if _is_dead:
 		return
-	#print("hitstun: ", _hitstun_timer, " dead: ", _is_dead, " dying: ", _is_dying)
+
 	_capture_jump_input()
 	_update_timers(delta)
 	_refresh_floor_state()
-	_handle_dash(delta)
 
 	if _hitstun_timer > 0.0:
-		_apply_gravity(delta)
-		_handle_hitstun(delta)
+		_process_hitstun(delta)
 	else:
-		_handle_shoot()
-		_handle_wall_slide()
-		_apply_gravity(delta)
-		_handle_jump()
-		_handle_variable_jump_height()
-		_handle_horizontal_movement(delta)
-		
-		_update_facing()
+		_process_normal_movement(delta)
 
 	move_and_slide()
-	_was_on_floor = is_on_floor()
+
+	_cleanup_after_move()
+	_update_facing()
 	_update_animation()
+	_handle_dust_trail(delta)
+
+	_was_on_floor = is_on_floor()
 
 
 func _capture_jump_input() -> void:
@@ -121,65 +129,49 @@ func _capture_jump_input() -> void:
 
 
 func _update_timers(delta: float) -> void:
-	if _fire_timer > 0.0:
-		_fire_timer = max(_fire_timer - delta, 0.0)
-
-	if _shoot_anim_timer > 0.0:
-		_shoot_anim_timer = max(_shoot_anim_timer - delta, 0.0)
-
-	if _hitstun_timer > 0.0:
-		_hitstun_timer = max(_hitstun_timer - delta, 0.0)
-
-	if _invuln_timer > 0.0:
-		_invuln_timer = max(_invuln_timer - delta, 0.0)
-
-	if _dash_timer > 0.0:
-		_dash_timer = max(_dash_timer - delta, 0.0)
-
-	if _dash_cooldown_timer > 0.0:
-		_dash_cooldown_timer = max(_dash_cooldown_timer - delta, 0.0)
-
-	if _wall_jump_lock_timer > 0.0:
-		_wall_jump_lock_timer = max(_wall_jump_lock_timer - delta, 0.0)
-
-	if _coyote_timer > 0.0:
-		_coyote_timer = max(_coyote_timer - delta, 0.0)
-
-	if _jump_buffer_timer > 0.0:
-		_jump_buffer_timer = max(_jump_buffer_timer - delta, 0.0)
+	_fire_timer = max(_fire_timer - delta, 0.0)
+	_shoot_anim_timer = max(_shoot_anim_timer - delta, 0.0)
+	_hitstun_timer = max(_hitstun_timer - delta, 0.0)
+	_invuln_timer = max(_invuln_timer - delta, 0.0)
+	_dash_timer = max(_dash_timer - delta, 0.0)
+	_dash_cooldown_timer = max(_dash_cooldown_timer - delta, 0.0)
+	_wall_jump_lock_timer = max(_wall_jump_lock_timer - delta, 0.0)
+	_coyote_timer = max(_coyote_timer - delta, 0.0)
+	_jump_buffer_timer = max(_jump_buffer_timer - delta, 0.0)
+	_dust_spawn_timer = max(_dust_spawn_timer - delta, 0.0)
+	_punch_timer = max(_punch_timer - delta, 0.0)
+	_punch_anim_timer = max(_punch_anim_timer - delta, 0.0)
 
 
 func _refresh_floor_state() -> void:
 	if is_on_floor():
 		_has_air_dashed = false
 		_coyote_timer = coyote_time
-	elif _was_on_floor and not is_on_floor():
+	elif _was_on_floor:
 		_coyote_timer = coyote_time
 
 
-func _apply_gravity(delta: float) -> void:
-	if _is_dashing and dash_stops_vertical_velocity:
-		velocity.y = 0.0
-		return
-
-	if _is_wall_sliding:
-		velocity.y += gravity * delta
-		velocity.y = min(velocity.y, wall_slide_speed)
-		return
-
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		velocity.y = min(velocity.y, max_fall_speed)
-	elif velocity.y > 0.0:
-		velocity.y = 0.0
-
-
-func _handle_hitstun(delta: float) -> void:
+func _process_hitstun(delta: float) -> void:
 	_input_dir = 0.0
+	_is_dashing = false
+	_is_wall_sliding = false
+
+	_apply_gravity(delta)
 	velocity.x = move_toward(velocity.x, 0.0, hit_friction * delta)
 
 
-func _handle_dash(delta: float) -> void:
+func _process_normal_movement(delta: float) -> void:
+	_handle_dash()
+	_handle_punch()
+	_handle_shoot()
+	_handle_wall_slide()
+	_apply_gravity(delta)
+	_handle_jump()
+	_handle_variable_jump_height()
+	_handle_horizontal_movement(delta)
+
+
+func _handle_dash() -> void:
 	if _is_dashing:
 		if _dash_timer <= 0.0:
 			_end_dash()
@@ -202,7 +194,10 @@ func _can_start_dash() -> bool:
 	if is_on_floor():
 		return true
 
-	return allow_air_dash and not _has_air_dashed
+	if allow_air_dash and not _has_air_dashed:
+		return true
+
+	return false
 
 
 func _start_dash() -> void:
@@ -212,14 +207,17 @@ func _start_dash() -> void:
 	_is_wall_sliding = false
 	_wall_dir = 0
 
-	var dir: int = _get_facing_sign_from_input()
-	velocity.x = dir * dash_speed
+	var dir := _get_facing_sign_from_input()
+	velocity.x = float(dir) * dash_speed
 
 	if dash_stops_vertical_velocity:
 		velocity.y = 0.0
 
 	if not is_on_floor():
 		_has_air_dashed = true
+
+	_spawn_dust_trail(dash_dust_offset, &"dash")
+	_dust_spawn_timer = dust_spawn_interval
 
 
 func _end_dash() -> void:
@@ -241,30 +239,40 @@ func _handle_wall_slide() -> void:
 	if velocity.y < 0.0:
 		return
 
-	if not is_on_wall():
+	if not is_on_wall_only():
 		return
 
 	var wall_input := Input.get_axis("move_left", "move_right")
 	if wall_input == 0.0:
 		return
 
-	var input_sign := int(sign(wall_input))
-	if input_sign == 0:
+	_wall_dir = int(sign(wall_input))
+	_is_wall_sliding = true
+	_coyote_timer = 0.0
+
+
+func _apply_gravity(delta: float) -> void:
+	if _is_dashing and dash_stops_vertical_velocity:
+		velocity.y = 0.0
 		return
 
-	_wall_dir = input_sign
+	if _is_wall_sliding:
+		velocity.y += gravity * delta
+		velocity.y = min(velocity.y, wall_slide_speed)
+		return
 
-	if is_on_wall_only():
-		_is_wall_sliding = true
-		_coyote_timer = 0.0
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		velocity.y = min(velocity.y, max_fall_speed)
+		return
+
+	if velocity.y > 0.0:
+		velocity.y = 0.0
 
 
 func _handle_jump() -> void:
 	if _jump_buffer_timer <= 0.0:
 		return
-
-	if _is_dashing:
-		_end_dash()
 
 	if _is_wall_sliding:
 		_wall_jump()
@@ -278,6 +286,9 @@ func _handle_jump() -> void:
 
 
 func _do_jump() -> void:
+	if _is_dashing:
+		_end_dash()
+
 	velocity.y = jump_velocity
 	_is_wall_sliding = false
 	_wall_dir = 0
@@ -285,16 +296,22 @@ func _do_jump() -> void:
 
 func _wall_jump() -> void:
 	var jump_dir := -_wall_dir
-	if jump_dir == 0:
-		jump_dir = 1 if _facing_left else -1
 
-	velocity.x = jump_dir * wall_jump_force.x
+	if jump_dir == 0:
+		if _facing_left:
+			jump_dir = 1
+		else:
+			jump_dir = -1
+
+	velocity.x = float(jump_dir) * wall_jump_force.x
 	velocity.y = wall_jump_force.y
 
 	_is_wall_sliding = false
 	_wall_dir = 0
 	_wall_jump_lock_timer = wall_jump_horizontal_lock_time
 	_facing_left = jump_dir < 0
+
+	_spawn_dust_trail(wall_slide_dust_offset, &"wall_slide")
 
 
 func _handle_variable_jump_height() -> void:
@@ -312,63 +329,140 @@ func _handle_horizontal_movement(delta: float) -> void:
 		return
 
 	if _input_dir != 0.0:
-		var accel := acceleration if is_on_floor() else air_acceleration
+		var accel := acceleration
+
+		if not is_on_floor():
+			accel = air_acceleration
+
 		velocity.x = move_toward(velocity.x, _input_dir * move_speed, accel * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
 
 
 func _handle_shoot() -> void:
-	if Input.is_action_just_pressed("shoot"):
-		print("SHOOT INPUT DETECTED")
-
 	if not Input.is_action_just_pressed("shoot"):
 		return
 
-	if _fire_timer > 0.0:
-		print("SHOT BLOCKED: fire cooldown")
+	if not _can_shoot():
 		return
+
+	_spawn_bullet()
+
+
+func _can_shoot() -> bool:
+	if _is_dead or _is_dying:
+		return false
 
 	if _hitstun_timer > 0.0:
-		print("SHOT BLOCKED: hitstun")
-		return
+		return false
+
+	if _fire_timer > 0.0:
+		return false
 
 	if bullet_scene == null:
-		print("SHOT BLOCKED: bullet_scene is null")
 		push_warning("Player bullet_scene is not assigned.")
-		return
+		return false
 
 	if muzzle == null:
-		print("SHOT BLOCKED: muzzle is null")
-		return
+		push_warning("Player muzzle node is missing.")
+		return false
 
+	return true
+
+
+func _spawn_bullet() -> void:
 	var bullet := bullet_scene.instantiate()
 	if bullet == null:
-		print("SHOT BLOCKED: bullet failed to instantiate")
+		push_warning("Failed to instantiate bullet_scene.")
 		return
-
-	print("BULLET INSTANTIATED")
 
 	_fire_timer = fire_cooldown
 	_shoot_anim_timer = shoot_anim_duration
 
-	var direction := Vector2.LEFT if _facing_left else Vector2.RIGHT
+	var direction := Vector2.RIGHT
+
+	if _facing_left:
+		direction = Vector2.LEFT
 
 	get_parent().add_child(bullet)
 	bullet.global_position = muzzle.global_position
 
-	print("BULLET ADDED AT: ", bullet.global_position)
-
 	if bullet.has_method("setup"):
-		print("CALLING BULLET SETUP")
 		bullet.setup(direction, self)
-	else:
-		print("BULLET HAS NO SETUP METHOD")
 
 	fired_bullet.emit(bullet)
-	print("SHOT COMPLETE")
+
+
+func _handle_dust_trail(delta: float) -> void:
+	if dust_trail_scene == null:
+		return
+
+	if _dust_spawn_timer > 0.0:
+		return
+
+	if _is_dashing:
+		_spawn_dust_trail(dash_dust_offset, &"dash")
+		_dust_spawn_timer = dust_spawn_interval
+		return
+
+	if _is_wall_sliding:
+		_spawn_wall_slide_dust()
+		_dust_spawn_timer = dust_spawn_interval
+
+
+func _spawn_wall_slide_dust() -> void:
+	var offset := wall_slide_dust_offset
+
+	if _wall_dir < 0:
+		offset.x = -absf(wall_slide_dust_offset.x)
+	elif _wall_dir > 0:
+		offset.x = absf(wall_slide_dust_offset.x)
+
+	_spawn_dust_trail(offset, &"wall_slide")
+
+
+func _spawn_dust_trail(offset: Vector2, animation_name: StringName = &"dash") -> void:
+	if dust_trail_scene == null:
+		return
+
+	var dust := dust_trail_scene.instantiate() as Node2D
+	if dust == null:
+		return
+
+	get_parent().add_child(dust)
+
+	var facing_multiplier: float = 1.0
+	if _facing_left:
+		facing_multiplier = -1.0
+
+	var final_offset := Vector2(offset.x * facing_multiplier, offset.y)
+
+	if animation_name == &"wall_slide":
+		final_offset = offset
+
+	dust.global_position = global_position + final_offset
+
+	if dust.has_method("setup"):
+		dust.setup(not _facing_left, animation_name)
+
+
+func _cleanup_after_move() -> void:
+	if is_on_floor():
+		_is_wall_sliding = false
+		_wall_dir = 0
+		_has_air_dashed = false
+
+		if _is_dashing and _dash_timer <= 0.0:
+			_is_dashing = false
+
+	if _is_dashing and _dash_timer <= 0.0:
+		_end_dash()
+
 
 func _update_facing() -> void:
+	if sprite == null:
+		return
+
 	if _is_dashing:
 		sprite.flip_h = _facing_left
 		_update_muzzle_position()
@@ -384,14 +478,21 @@ func _update_facing() -> void:
 
 
 func _update_muzzle_position() -> void:
-	if muzzle != null:
-		muzzle.position = Vector2(
-			-muzzle_offset_right.x if _facing_left else muzzle_offset_right.x,
-			muzzle_offset_right.y
-		)
+	if muzzle == null:
+		return
+
+	var x_offset := muzzle_offset_right.x
+
+	if _facing_left:
+		x_offset = -muzzle_offset_right.x
+
+	muzzle.position = Vector2(x_offset, muzzle_offset_right.y)
 
 
 func _update_animation() -> void:
+	if sprite == null:
+		return
+
 	if _is_dead:
 		_play_animation_if_available("death")
 		return
@@ -404,9 +505,17 @@ func _update_animation() -> void:
 		_play_animation_with_fallback("wall_slide", "fall")
 		return
 
-	var is_shooting := _shoot_anim_timer > 0.0
+	var is_shooting := _shoot_anim_timer > 0.01
 	var is_running := absf(velocity.x) > 8.0
-
+	var is_punching := _punch_anim_timer > 0.01
+	
+	if is_punching:
+		if not is_on_floor():
+			_play_animation_with_fallback("punch_C", "jump")
+		else:
+			_play_animation_with_fallback("punch_C", "idle")
+		return
+	
 	if not is_on_floor():
 		if velocity.y < 0.0:
 			if is_shooting:
@@ -418,6 +527,7 @@ func _update_animation() -> void:
 				_play_animation_with_fallback("shoot_fall", "fall")
 			else:
 				_play_animation_if_available("fall")
+
 		return
 
 	if is_running:
@@ -433,21 +543,30 @@ func _update_animation() -> void:
 
 
 func _play_animation_if_available(anim_name: String) -> void:
-	if sprite == null or sprite.sprite_frames == null:
+	if sprite == null:
 		return
 
-	if sprite.sprite_frames.has_animation(anim_name) and sprite.animation != anim_name:
-		sprite.play(anim_name)
-
-
-func _play_animation_with_fallback(anim_name: String, fallback_name: String) -> void:
-	if sprite == null or sprite.sprite_frames == null:
+	if sprite.sprite_frames == null:
 		return
 
 	if sprite.sprite_frames.has_animation(anim_name):
 		if sprite.animation != anim_name:
 			sprite.play(anim_name)
-	elif sprite.sprite_frames.has_animation(fallback_name):
+
+
+func _play_animation_with_fallback(anim_name: String, fallback_name: String) -> void:
+	if sprite == null:
+		return
+
+	if sprite.sprite_frames == null:
+		return
+
+	if sprite.sprite_frames.has_animation(anim_name):
+		if sprite.animation != anim_name:
+			sprite.play(anim_name)
+		return
+
+	if sprite.sprite_frames.has_animation(fallback_name):
 		if sprite.animation != fallback_name:
 			sprite.play(fallback_name)
 
@@ -484,7 +603,9 @@ func _on_damaged(info: DamageInfo) -> void:
 	if info != null:
 		velocity += info.knockback
 
-	sprite.flip_h = _facing_left
+	if sprite != null:
+		sprite.flip_h = _facing_left
+
 	_update_muzzle_position()
 
 	CombatFX.hitstop(0.035, 0.08)
@@ -510,6 +631,7 @@ func kill() -> void:
 	_is_dying = true
 	_is_dashing = false
 	_is_wall_sliding = false
+
 	_hitstun_timer = 0.0
 	_invuln_timer = 0.0
 	_fire_timer = 0.0
@@ -518,12 +640,15 @@ func kill() -> void:
 	_dash_cooldown_timer = 0.0
 	_coyote_timer = 0.0
 	_jump_buffer_timer = 0.0
+
 	velocity = Vector2.ZERO
 
 	_play_animation_if_available("death")
 	died.emit()
+
 	CombatFX.hitstop(0.06, 0.04)
 	CombatFX.shake(6.0, 0.18, 22.0)
+
 	call_deferred("_run_death_blink")
 
 
@@ -531,37 +656,45 @@ func _run_hit_flash() -> void:
 	if _is_dead or _is_dying:
 		return
 
-	var target: CanvasItem = sprite if sprite != null else self
+	var target: CanvasItem = sprite
+
 	if target == null:
-		return
+		target = self
 
 	_is_hit_flashing = true
 	var normal := target.modulate
 
 	for i in range(hit_flash_count):
-		if not is_instance_valid(target) or _is_dead or _is_dying:
+		if not is_instance_valid(target):
+			break
+
+		if _is_dead or _is_dying:
 			break
 
 		target.modulate = hit_flash_color
 		await get_tree().create_timer(hit_flash_interval).timeout
 
-		if not is_instance_valid(target) or _is_dead or _is_dying:
+		if not is_instance_valid(target):
+			break
+
+		if _is_dead or _is_dying:
 			break
 
 		target.modulate = normal
 		await get_tree().create_timer(hit_flash_interval).timeout
 
-	if is_instance_valid(target) and not _is_dead and not _is_dying:
-		target.modulate = normal
+	if is_instance_valid(target):
+		if not _is_dead and not _is_dying:
+			target.modulate = normal
 
 	_is_hit_flashing = false
 
 
 func _run_death_blink() -> void:
-	var target: CanvasItem = sprite if sprite != null else self
+	var target: CanvasItem = sprite
+
 	if target == null:
-		queue_free()
-		return
+		target = self
 
 	var elapsed: float = 0.0
 	var visible_state: bool = false
@@ -570,7 +703,12 @@ func _run_death_blink() -> void:
 		visible_state = not visible_state
 
 		var c := target.modulate
-		c.a = 0.2 if visible_state else 1.0
+
+		if visible_state:
+			c.a = 0.2
+		else:
+			c.a = 1.0
+
 		target.modulate = c
 
 		await get_tree().create_timer(death_blink_interval).timeout
@@ -587,46 +725,57 @@ func _run_death_blink() -> void:
 func _get_facing_sign_from_input() -> int:
 	if _input_dir < 0.0:
 		return -1
+
 	if _input_dir > 0.0:
 		return 1
-	return -1 if _facing_left else 1
-func _can_shoot() -> bool:
+
+	if _facing_left:
+		return -1
+
+	return 1
+func _handle_punch() -> void:
+	if not Input.is_action_just_pressed("punch"):
+		return
+
+	if not _can_punch():
+		return
+
+	_spawn_punch_hitbox()
+
+
+func _can_punch() -> bool:
 	if _is_dead or _is_dying:
 		return false
 
 	if _hitstun_timer > 0.0:
 		return false
 
-	if _fire_timer > 0.0:
+	if _punch_timer > 0.0:
 		return false
 
-	if bullet_scene == null:
-		push_warning("Player bullet_scene is not assigned.")
-		return false
-
-	if muzzle == null:
-		push_warning("Player muzzle node is missing.")
+	if punch_hitbox_scene == null:
+		push_warning("Player punch_hitbox_scene is not assigned.")
 		return false
 
 	return true
 
 
-
-func _spawn_bullet() -> void:
-	var bullet := bullet_scene.instantiate()
-	if bullet == null:
-		push_warning("Failed to instantiate bullet_scene.")
+func _spawn_punch_hitbox() -> void:
+	var punch := punch_hitbox_scene.instantiate() as Area2D
+	if punch == null:
 		return
 
-	_fire_timer = fire_cooldown
-	_shoot_anim_timer = shoot_anim_duration
+	_punch_timer = punch_cooldown
+	_punch_anim_timer = punch_anim_duration
+	_shoot_anim_timer = 0.0
 
-	var direction := Vector2.LEFT if _facing_left else Vector2.RIGHT
+	get_parent().add_child(punch)
 
-	get_parent().add_child(bullet)
-	bullet.global_position = muzzle.global_position
+	var x_offset := punch_offset_right.x
+	if _facing_left:
+		x_offset = -punch_offset_right.x
 
-	if bullet.has_method("setup"):
-		bullet.setup(direction, self)
+	punch.global_position = global_position + Vector2(x_offset, punch_offset_right.y)
 
-	fired_bullet.emit(bullet)
+	if punch.has_method("setup"):
+		punch.setup(self, _facing_left)

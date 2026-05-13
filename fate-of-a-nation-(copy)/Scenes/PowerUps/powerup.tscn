@@ -89,9 +89,11 @@ visible = false
 texture = ExtResource("2_k2ap4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=437270869]
+position = Vector2(-2.2737368e-13, 0)
+scale = Vector2(0.78571427, 0.7352941)
 sprite_frames = SubResource("SpriteFrames_k2ap4")
 animation = &"bomb"
 autoplay = "shield"
-frame_progress = 0.16884762
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1798170157]
+rect = Rect2(-64, -32, 128, 128)

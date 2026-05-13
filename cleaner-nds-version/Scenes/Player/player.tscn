@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dw0tnpcqofe4t" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0000.png" id="1_gpqv3"]
 [ext_resource type="Texture2D" uid="uid://cypr6sjaoqaa1" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0001.png" id="2_7ve27"]
 [ext_resource type="PackedScene" uid="uid://yxy84onu0e8" path="res://Scenes/FX/player_bullet.tscn" id="2_ldt7q"]
+[ext_resource type="PackedScene" uid="uid://ctgyhfpw6awxh" path="res://Scenes/FX/dust_trail.tscn" id="3_5opb0"]
+[ext_resource type="PackedScene" uid="uid://bgk6qsvlkbjal" path="res://Scenes/FX/player_punch_hitbox.tscn" id="3_gpqv3"]
 [ext_resource type="Texture2D" uid="uid://baxefavlctli8" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0002.png" id="3_ldt7q"]
 [ext_resource type="Texture2D" uid="uid://bq5rqy0um0t4s" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0003.png" id="4_7bej3"]
 [ext_resource type="Texture2D" uid="uid://bwwdmm7l8hi40" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0004.png" id="5_8b85g"]
@@ -99,7 +101,6 @@
 [ext_resource type="Texture2D" uid="uid://bkknq6yg6v1oh" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0007.png" id="100_n48cf"]
 [ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="100_pf3rq"]
 [ext_resource type="Texture2D" uid="uid://hhlc6g2dsl0y" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0008.png" id="101_82xmt"]
-[ext_resource type="PackedScene" uid="uid://bp0su7scrugow" path="res://Scenes/FX/charge_up.tscn" id="102_5opb0"]
 [ext_resource type="Texture2D" uid="uid://da416alnkxstc" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0009.png" id="102_8wl7i"]
 [ext_resource type="Texture2D" uid="uid://b0y3un4kt28ye" path="res://Assets/sprites/classic_character/PNG/style_4/wall_cling.png" id="103_kq8xt"]
 
@@ -453,7 +454,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"punch_C",
-"speed": 16.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -610,23 +611,26 @@ animations = [{
 radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpcdj"]
-size = Vector2(5, 4)
+size = Vector2(5, 26)
 
 [node name="Player" type="CharacterBody2D" unique_id=1715600248 groups=["player"]]
 collision_layer = 2
 collision_mask = 129
 script = ExtResource("1_7ve27")
 bullet_scene = ExtResource("2_ldt7q")
-muzzle_offset_right = Vector2(15, 3)
+muzzle_offset_right = Vector2(10, 0)
+punch_hitbox_scene = ExtResource("3_gpqv3")
+punch_offset_right = Vector2(20, -1)
+dust_trail_scene = ExtResource("3_5opb0")
+dash_dust_offset = Vector2(-12, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1032869655]
-position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_tugb3")
 debug_color = Color(0.9222628, 0.24629954, 0.34191763, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1113292849]
 sprite_frames = SubResource("SpriteFrames_uvnfx")
-animation = &"super_punch"
+animation = &"punch_C"
 autoplay = "idle"
 frame = 7
 frame_progress = 1.0
@@ -646,17 +650,13 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1422810645]
-visible = false
 shape = SubResource("RectangleShape2D_xpcdj")
 debug_color = Color(0.7529412, 0.59607846, 0.03529412, 0.6156863)
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=212918987]
-position = Vector2(18, 3)
+position = Vector2(16, 3)
 
 [node name="Health" type="Node" parent="." unique_id=1695275048]
 script = ExtResource("100_pf3rq")
 max_health = 10
 use_persistent_player_state = true
-
-[node name="ChargeUp" parent="." unique_id=1794910564 instance=ExtResource("102_5opb0")]
-position = Vector2(18, 3)
