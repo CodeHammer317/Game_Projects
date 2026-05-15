@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bgk6qsvlkbjal" path="res://Scenes/FX/player_punch_hitbox.tscn" id="3_gpqv3"]
 [ext_resource type="Texture2D" uid="uid://baxefavlctli8" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0002.png" id="3_ldt7q"]
 [ext_resource type="Texture2D" uid="uid://bq5rqy0um0t4s" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0003.png" id="4_7bej3"]
+[ext_resource type="PackedScene" uid="uid://dyofdcu3tocvh" path="res://Scenes/Player/mattt_assist.tscn" id="5_6a86w"]
 [ext_resource type="Texture2D" uid="uid://bwwdmm7l8hi40" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0004.png" id="5_8b85g"]
 [ext_resource type="Texture2D" uid="uid://cb4niimg2keem" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0005.png" id="6_56b0b"]
 [ext_resource type="Texture2D" uid="uid://0harnljw6m2c" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0006.png" id="7_w6yxy"]
@@ -39,13 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://c7bwt2ygq371s" path="res://Assets/sprites/classic_character/PNG/style_4/get_hit/f0006.png" id="33_yymo2"]
 [ext_resource type="Texture2D" uid="uid://by4kva1kc054s" path="res://Assets/sprites/classic_character/PNG/style_4/get_hit/f0007.png" id="34_bwx41"]
 [ext_resource type="Texture2D" uid="uid://dqifm8n5cbp8o" path="res://Assets/sprites/classic_character/PNG/style_4/get_hit/f0008.png" id="35_osx4f"]
-[ext_resource type="Texture2D" uid="uid://d0murkysyv4y6" path="res://Assets/sprites/classic_character/PNG/style_4/idle_A/f0000.png" id="36_edegh"]
-[ext_resource type="Texture2D" uid="uid://wmova62ygccd" path="res://Assets/sprites/classic_character/PNG/style_4/idle_A/f0001.png" id="37_63fet"]
-[ext_resource type="Texture2D" uid="uid://dauk7bearrhpa" path="res://Assets/sprites/classic_character/PNG/style_4/idle_A/f0002.png" id="38_14803"]
-[ext_resource type="Texture2D" uid="uid://bqn8pcawfixj3" path="res://Assets/sprites/classic_character/PNG/style_4/idle_A/f0003.png" id="39_4pjp3"]
-[ext_resource type="Texture2D" uid="uid://0a01no401bnj" path="res://Assets/sprites/classic_character/PNG/style_4/idle_A/f0004.png" id="40_i1fur"]
-[ext_resource type="Texture2D" uid="uid://dkph23sxm50al" path="res://Assets/sprites/classic_character/PNG/style_4/idle_A/f0005.png" id="41_uqsid"]
-[ext_resource type="Texture2D" uid="uid://d3xqc4a30lmlu" path="res://Assets/sprites/classic_character/PNG/style_4/idle_A/f0006.png" id="42_omi1v"]
+[ext_resource type="Texture2D" uid="uid://bbjnwvki5dr8d" path="res://Assets/NDS Game Files/Raven Sprites/Raven Idle-sheet.png" id="40_jmbrt"]
 [ext_resource type="Texture2D" uid="uid://dpkxm46g0j5sm" path="res://Assets/sprites/classic_character/PNG/style_4/idle_B/f0000.png" id="43_diadi"]
 [ext_resource type="Texture2D" uid="uid://2vemkvvc2evm" path="res://Assets/sprites/classic_character/PNG/style_4/idle_B/f0001.png" id="44_hwgj8"]
 [ext_resource type="Texture2D" uid="uid://hf4aqxaq3a5u" path="res://Assets/sprites/classic_character/PNG/style_4/idle_B/f0002.png" id="45_e12vc"]
@@ -106,6 +101,14 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tugb3"]
 size = Vector2(9, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a86w"]
+atlas = ExtResource("40_jmbrt")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22q81"]
+atlas = ExtResource("40_jmbrt")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5opb0"]
 atlas = ExtResource("98_pf3rq")
@@ -281,29 +284,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("36_edegh")
+"texture": SubResource("AtlasTexture_6a86w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("37_63fet")
-}, {
-"duration": 1.0,
-"texture": ExtResource("38_14803")
-}, {
-"duration": 1.0,
-"texture": ExtResource("39_4pjp3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("40_i1fur")
-}, {
-"duration": 1.0,
-"texture": ExtResource("41_uqsid")
-}, {
-"duration": 1.0,
-"texture": ExtResource("42_omi1v")
+"texture": SubResource("AtlasTexture_22q81")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 16.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -623,6 +611,9 @@ punch_hitbox_scene = ExtResource("3_gpqv3")
 punch_offset_right = Vector2(20, -1)
 dust_trail_scene = ExtResource("3_5opb0")
 dash_dust_offset = Vector2(-12, 0)
+mattt_assist_scene = ExtResource("5_6a86w")
+special_meter = 100
+mattt_spawn_offset = Vector2(40, -80)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1032869655]
 shape = SubResource("RectangleShape2D_tugb3")
@@ -630,10 +621,9 @@ debug_color = Color(0.9222628, 0.24629954, 0.34191763, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1113292849]
 sprite_frames = SubResource("SpriteFrames_uvnfx")
-animation = &"punch_C"
+animation = &"idle"
 autoplay = "idle"
-frame = 7
-frame_progress = 1.0
+frame_progress = 0.90151393
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1986837846]
 collision_layer = 32

@@ -58,6 +58,13 @@ signal died
 @onready var muzzle: Marker2D = $Muzzle
 @onready var health: Health = $Health
 
+@export_group("Special Assist")
+@export var mattt_assist_scene: PackedScene
+@export var special_meter_max: int = 100
+@export var special_meter: int = 0
+@export var mattt_spawn_offset: Vector2 = Vector2(-40.0, -20.0)
+
+
 var _facing_left: bool = false
 var _fire_timer: float = 0.0
 var _shoot_anim_timer: float = 0.0
@@ -167,6 +174,7 @@ func _process_normal_movement(delta: float) -> void:
 	_handle_wall_slide()
 	_apply_gravity(delta)
 	_handle_jump()
+	_handle_special_assist()
 	_handle_variable_jump_height()
 	_handle_horizontal_movement(delta)
 
@@ -779,3 +787,30 @@ func _spawn_punch_hitbox() -> void:
 
 	if punch.has_method("setup"):
 		punch.setup(self, _facing_left)
+func _handle_special_assist() -> void:
+	if not Input.is_action_just_pressed("special"):
+		return
+
+	if special_meter < special_meter_max:
+		return
+
+	if mattt_assist_scene == null:
+		return
+
+	special_meter = 100
+
+	var assist := mattt_assist_scene.instantiate() as Node2D
+	if assist == null:
+		return
+
+	get_parent().add_child(assist)
+
+	var x_offset := mattt_spawn_offset.x
+
+	if _facing_left:
+		x_offset = -mattt_spawn_offset.x
+
+	assist.global_position = global_position + Vector2(x_offset, mattt_spawn_offset.y)
+
+	if assist.has_method("setup"):
+		assist.setup(self, _facing_left)

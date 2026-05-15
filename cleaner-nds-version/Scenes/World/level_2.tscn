@@ -10,6 +10,7 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 31
 
 [node name="Level2" type="Node2D" unique_id=1447077604]
+position = Vector2(-6112, -1144)
 
 [node name="Background" type="Node" parent="." unique_id=1826447780]
 

@@ -8608,7 +8608,7 @@ parameters/looping = true
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Audio" unique_id=235374909]
 
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("3_f0jsl")]
-position = Vector2(18, 82)
+position = Vector2(725, 98)
 
 [node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("4_jupgt")]
 zoom = Vector2(0.75, 0.75)

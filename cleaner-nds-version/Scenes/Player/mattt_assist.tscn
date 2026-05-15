@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dyofdcu3tocvh"]
+
+[ext_resource type="Script" uid="uid://bi0go6in1ypxg" path="res://Scenes/Player/mattt_assist.gd" id="1_ylryk"]
+[ext_resource type="Texture2D" uid="uid://bhtx842v7801v" path="res://Assets/NDS Game Files/MatTt Sprites/GhostMatttHead.png" id="2_ga1cm"]
+[ext_resource type="PackedScene" uid="uid://bsqrq5wj1fe3n" path="res://Scenes/FX/fire_column_aoe.tscn" id="2_uadru"]
+[ext_resource type="Texture2D" uid="uid://driklxs6ip5do" path="res://Assets/NDS Game Files/MatTt Sprites/GhostMatttHead1.png" id="4_2xg8p"]
+[ext_resource type="Texture2D" uid="uid://dwev7lntlmeay" path="res://Assets/NDS Game Files/MatTt Sprites/GhostMatttHead2.png" id="5_mh5gy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uadru"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ga1cm")
+}],
+"loop": true,
+"name": &"appear",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ga1cm")
+}],
+"loop": true,
+"name": &"disappear",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2xg8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mh5gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2xg8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mh5gy")
+}],
+"loop": true,
+"name": &"head_shake",
+"speed": 4.0
+}]
+
+[node name="MatttAssist" type="Node2D" unique_id=280849303 groups=["player"]]
+script = ExtResource("1_ylryk")
+fire_column_scene = ExtResource("2_uadru")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=741740071]
+position = Vector2(0, -3.8146973e-06)
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_uadru")
+animation = &"appear"
+frame_progress = 0.5371393
+
+[node name="FireSpawnPoint" type="Marker2D" parent="." unique_id=901470503]
+position = Vector2(0, -40)

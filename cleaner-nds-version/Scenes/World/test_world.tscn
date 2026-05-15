@@ -797,6 +797,7 @@ texture = ExtResource("1_cnaw2")
 centered = false
 
 [node name="Clouds" type="Parallax2D" parent="WorldLayers" unique_id=658064843]
+visible = false
 z_index = -1
 scale = Vector2(0.5, 0.5)
 scroll_offset = Vector2(-112, 152)
@@ -805,15 +806,18 @@ autoscroll = Vector2(15, 0)
 repeat_times = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="WorldLayers/Clouds" unique_id=991142481]
+visible = false
 position = Vector2(286, 161)
 texture = ExtResource("2_kt6p6")
 
 [node name="Sprite2D2" type="Sprite2D" parent="WorldLayers/Clouds" unique_id=1688789891]
+visible = false
 position = Vector2(447, 136)
 texture = ExtResource("2_kt6p6")
 flip_h = true
 
 [node name="Far" type="Parallax2D" parent="WorldLayers" unique_id=602036748]
+visible = false
 z_index = -1
 scale = Vector2(0.85, 0.85)
 scroll_scale = Vector2(0.4, 0.4)
@@ -856,7 +860,7 @@ tile_set = SubResource("TileSet_lf0gk")
 player_path = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("2_1lwx6")]
-position = Vector2(35, 284)
+position = Vector2(525, 280)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=2112567434]
 
@@ -897,7 +901,6 @@ target_path = NodePath("../Player")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1556989975]
 stream = ExtResource("14_8y3w6")
 volume_db = -0.801
-autoplay = true
 max_polyphony = 7
 parameters/looping = true
 
