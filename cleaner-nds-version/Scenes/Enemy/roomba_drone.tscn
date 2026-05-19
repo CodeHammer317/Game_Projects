@@ -617,7 +617,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ht8y"]
-size = Vector2(28, 13)
+size = Vector2(28, 16.5)
 
 [node name="RoombaDrone" type="CharacterBody2D" unique_id=1221956425]
 collision_layer = 4
@@ -630,7 +630,7 @@ shape = SubResource("RectangleShape2D_yxkbp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1285878564]
 sprite_frames = SubResource("SpriteFrames_m8ac2")
-animation = &"Back"
+animation = &"Fire3"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1976181757]
 visible = false
@@ -642,12 +642,14 @@ autoplay = "eplosion"
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1678371625]
 collision_layer = 64
-collision_mask = 0
+collision_mask = 8
 script = ExtResource("9_j5g4l")
 health_path = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=10881177]
+position = Vector2(0, -1.75)
 shape = SubResource("RectangleShape2D_4ht8y")
+debug_color = Color(0.9098039, 0.20784314, 0.10980392, 0.41960785)
 
 [node name="Health" type="Node" parent="." unique_id=1714794119]
 script = ExtResource("10_x2ctc")

@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://dloink8ioeskk" path="res://Scripts/player/player.gd" id="1_7ve27"]
 [ext_resource type="Texture2D" uid="uid://dw0tnpcqofe4t" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0000.png" id="1_gpqv3"]
 [ext_resource type="Texture2D" uid="uid://cypr6sjaoqaa1" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0001.png" id="2_7ve27"]
-[ext_resource type="PackedScene" uid="uid://yxy84onu0e8" path="res://Scenes/FX/player_bullet.tscn" id="2_ldt7q"]
-[ext_resource type="PackedScene" uid="uid://ctgyhfpw6awxh" path="res://Scenes/FX/dust_trail.tscn" id="3_5opb0"]
-[ext_resource type="PackedScene" uid="uid://bgk6qsvlkbjal" path="res://Scenes/FX/player_punch_hitbox.tscn" id="3_gpqv3"]
+[ext_resource type="PackedScene" uid="uid://yxy84onu0e8" path="res://Scenes/FX/player_bullet.tscn" id="2_plnq1"]
+[ext_resource type="PackedScene" uid="uid://bgk6qsvlkbjal" path="res://Scenes/FX/player_punch_hitbox.tscn" id="3_i1wx2"]
 [ext_resource type="Texture2D" uid="uid://baxefavlctli8" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0002.png" id="3_ldt7q"]
 [ext_resource type="Texture2D" uid="uid://bq5rqy0um0t4s" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0003.png" id="4_7bej3"]
+[ext_resource type="PackedScene" uid="uid://ctgyhfpw6awxh" path="res://Scenes/FX/dust_trail.tscn" id="4_jmbrt"]
 [ext_resource type="PackedScene" uid="uid://dyofdcu3tocvh" path="res://Scenes/Player/mattt_assist.tscn" id="5_6a86w"]
 [ext_resource type="Texture2D" uid="uid://bwwdmm7l8hi40" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0004.png" id="5_8b85g"]
 [ext_resource type="Texture2D" uid="uid://cb4niimg2keem" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0005.png" id="6_56b0b"]
@@ -40,7 +40,6 @@
 [ext_resource type="Texture2D" uid="uid://c7bwt2ygq371s" path="res://Assets/sprites/classic_character/PNG/style_4/get_hit/f0006.png" id="33_yymo2"]
 [ext_resource type="Texture2D" uid="uid://by4kva1kc054s" path="res://Assets/sprites/classic_character/PNG/style_4/get_hit/f0007.png" id="34_bwx41"]
 [ext_resource type="Texture2D" uid="uid://dqifm8n5cbp8o" path="res://Assets/sprites/classic_character/PNG/style_4/get_hit/f0008.png" id="35_osx4f"]
-[ext_resource type="Texture2D" uid="uid://bbjnwvki5dr8d" path="res://Assets/NDS Game Files/Raven Sprites/Raven Idle-sheet.png" id="40_jmbrt"]
 [ext_resource type="Texture2D" uid="uid://dpkxm46g0j5sm" path="res://Assets/sprites/classic_character/PNG/style_4/idle_B/f0000.png" id="43_diadi"]
 [ext_resource type="Texture2D" uid="uid://2vemkvvc2evm" path="res://Assets/sprites/classic_character/PNG/style_4/idle_B/f0001.png" id="44_hwgj8"]
 [ext_resource type="Texture2D" uid="uid://hf4aqxaq3a5u" path="res://Assets/sprites/classic_character/PNG/style_4/idle_B/f0002.png" id="45_e12vc"]
@@ -102,13 +101,33 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tugb3"]
 size = Vector2(9, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmbrt"]
+atlas = ExtResource("98_pf3rq")
+region = Rect2(0, 200, 40, 40)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6a86w"]
-atlas = ExtResource("40_jmbrt")
-region = Rect2(0, 0, 48, 48)
+atlas = ExtResource("98_pf3rq")
+region = Rect2(40, 200, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22q81"]
-atlas = ExtResource("40_jmbrt")
-region = Rect2(48, 0, 48, 48)
+atlas = ExtResource("98_pf3rq")
+region = Rect2(80, 200, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81gu5"]
+atlas = ExtResource("98_pf3rq")
+region = Rect2(120, 200, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf3rq"]
+atlas = ExtResource("98_pf3rq")
+region = Rect2(160, 200, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujqdw"]
+atlas = ExtResource("98_pf3rq")
+region = Rect2(200, 200, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddxso"]
+atlas = ExtResource("98_pf3rq")
+region = Rect2(240, 200, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5opb0"]
 atlas = ExtResource("98_pf3rq")
@@ -284,14 +303,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_jmbrt")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6a86w")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_22q81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81gu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf3rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujqdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddxso")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -602,18 +636,15 @@ radius = 4.0
 size = Vector2(5, 26)
 
 [node name="Player" type="CharacterBody2D" unique_id=1715600248 groups=["player"]]
+physics_interpolation_mode = 2
 collision_layer = 2
 collision_mask = 129
 script = ExtResource("1_7ve27")
-bullet_scene = ExtResource("2_ldt7q")
-muzzle_offset_right = Vector2(10, 0)
-punch_hitbox_scene = ExtResource("3_gpqv3")
-punch_offset_right = Vector2(20, -1)
-dust_trail_scene = ExtResource("3_5opb0")
-dash_dust_offset = Vector2(-12, 0)
+bullet_scene = ExtResource("2_plnq1")
+punch_hitbox_scene = ExtResource("3_i1wx2")
+dust_trail_scene = ExtResource("4_jmbrt")
 mattt_assist_scene = ExtResource("5_6a86w")
 special_meter = 100
-mattt_spawn_offset = Vector2(40, -80)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1032869655]
 shape = SubResource("RectangleShape2D_tugb3")
@@ -623,7 +654,7 @@ debug_color = Color(0.9222628, 0.24629954, 0.34191763, 0.41960785)
 sprite_frames = SubResource("SpriteFrames_uvnfx")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.90151393
+frame_progress = 0.39792785
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1986837846]
 collision_layer = 32
@@ -644,7 +675,7 @@ shape = SubResource("RectangleShape2D_xpcdj")
 debug_color = Color(0.7529412, 0.59607846, 0.03529412, 0.6156863)
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=212918987]
-position = Vector2(16, 3)
+position = Vector2(20, 7)
 
 [node name="Health" type="Node" parent="." unique_id=1695275048]
 script = ExtResource("100_pf3rq")

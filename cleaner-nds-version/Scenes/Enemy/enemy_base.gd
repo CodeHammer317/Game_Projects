@@ -354,8 +354,8 @@ func _on_damaged(info: DamageInfo) -> void:
 	_pending_attack = false
 	_attack_windup_timer = 0.0
 
-	CombatFX.hitstop(0.03, 0.08)
-	CombatFX.shake(2.0, 0.08, 24.0)
+	CombatFx.hitstop(0.03, 0.08)
+	CombatFx.shake(2.0, 0.08, 24.0)
 
 	_update_facing_from_velocity()
 
@@ -373,8 +373,8 @@ func _on_died() -> void:
 
 	_stop_machine_sound()
 
-	CombatFX.hitstop(0.05, 0.05)
-	CombatFX.shake(5.0, 0.16, 20.0)
+	CombatFx.hitstop(0.05, 0.05)
+	CombatFx.shake(5.0, 0.16, 20.0)
 
 	if _has_animation("Death"):
 		sprite.play("Death")

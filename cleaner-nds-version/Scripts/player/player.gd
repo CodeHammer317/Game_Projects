@@ -4,7 +4,7 @@ class_name Player
 signal fired_bullet(bullet: Node)
 signal died
 
-@export var move_speed: float = 145.0
+@export var move_speed: float = 120.0
 @export var acceleration: float = 900.0
 @export var air_acceleration: float = 700.0
 @export var friction: float = 1000.0
@@ -34,19 +34,21 @@ signal died
 @export var death_blink_duration: float = 0.60
 @export var death_blink_interval: float = 0.1
 
-@export var dash_speed: float = 260.0
+@export var dash_speed: float = 240.0
 @export var dash_time: float = 0.14
 @export var dash_cooldown: float = 0.35
 @export var allow_air_dash: bool = true
 @export var dash_stops_vertical_velocity: bool = true
 
-@export var wall_slide_speed: float = 55.0
-@export var wall_jump_force: Vector2 = Vector2(220.0, -340.0)
+@export var wall_slide_speed: float = 60.0
+@export var wall_jump_force: Vector2 = Vector2(240.0, -340.0)
 @export var wall_jump_horizontal_lock_time: float = 0.12
 
 @export var coyote_time: float = 0.12
 @export var jump_buffer_time: float = 0.10
 @export var jump_cut_multiplier: float = 0.5
+
+@export var snap_visuals_to_pixel: bool = true
 
 @export_group("Dust Trail")
 @export var dust_trail_scene: PackedScene
@@ -54,16 +56,15 @@ signal died
 @export var wall_slide_dust_offset: Vector2 = Vector2(8.0, -4.0)
 @export var dust_spawn_interval: float = 0.08
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var muzzle: Marker2D = $Muzzle
-@onready var health: Health = $Health
-
 @export_group("Special Assist")
 @export var mattt_assist_scene: PackedScene
 @export var special_meter_max: int = 100
 @export var special_meter: int = 0
 @export var mattt_spawn_offset: Vector2 = Vector2(-40.0, -20.0)
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var muzzle: Marker2D = $Muzzle
+@onready var health: Health = $Health
 
 var _facing_left: bool = false
 var _fire_timer: float = 0.0
@@ -94,9 +95,12 @@ var _jump_buffer_timer: float = 0.0
 var _was_on_floor: bool = false
 
 var _dust_spawn_timer: float = 0.0
+var _sprite_base_position: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
+	_sprite_base_position = sprite.position
+
 	if health != null:
 		if not health.damaged.is_connected(_on_damaged):
 			health.damaged.connect(_on_damaged)
@@ -105,6 +109,7 @@ func _ready() -> void:
 			health.died.connect(_on_health_died)
 
 	_update_muzzle_position()
+	_snap_visuals_to_pixel()
 
 
 func _physics_process(delta: float) -> void:
@@ -125,6 +130,7 @@ func _physics_process(delta: float) -> void:
 	_cleanup_after_move()
 	_update_facing()
 	_update_animation()
+	_snap_visuals_to_pixel()
 	_handle_dust_trail(delta)
 
 	_was_on_floor = is_on_floor()
@@ -401,6 +407,84 @@ func _spawn_bullet() -> void:
 	fired_bullet.emit(bullet)
 
 
+func _handle_punch() -> void:
+	if not Input.is_action_just_pressed("punch"):
+		return
+
+	if not _can_punch():
+		return
+
+	_spawn_punch_hitbox()
+
+
+func _can_punch() -> bool:
+	if _is_dead or _is_dying:
+		return false
+
+	if _hitstun_timer > 0.0:
+		return false
+
+	if _punch_timer > 0.0:
+		return false
+
+	if punch_hitbox_scene == null:
+		push_warning("Player punch_hitbox_scene is not assigned.")
+		return false
+
+	return true
+
+
+func _spawn_punch_hitbox() -> void:
+	var punch := punch_hitbox_scene.instantiate() as Area2D
+	if punch == null:
+		return
+
+	_punch_timer = punch_cooldown
+	_punch_anim_timer = punch_anim_duration
+	_shoot_anim_timer = 0.0
+
+	get_parent().add_child(punch)
+
+	var x_offset := punch_offset_right.x
+	if _facing_left:
+		x_offset = -punch_offset_right.x
+
+	punch.global_position = global_position + Vector2(x_offset, punch_offset_right.y)
+
+	if punch.has_method("setup"):
+		punch.setup(self, _facing_left)
+
+
+func _handle_special_assist() -> void:
+	if not Input.is_action_just_pressed("special"):
+		return
+
+	if special_meter < special_meter_max:
+		return
+
+	if mattt_assist_scene == null:
+		return
+
+	special_meter = special_meter_max
+
+	var assist := mattt_assist_scene.instantiate() as Node2D
+	if assist == null:
+		return
+
+	get_parent().add_child(assist)
+
+	var x_offset := mattt_spawn_offset.x
+
+	if _facing_left:
+		x_offset = -mattt_spawn_offset.x
+
+	assist.global_position = global_position + Vector2(x_offset, mattt_spawn_offset.y)
+
+	if assist.has_method("setup"):
+		assist.setup(self, _facing_left)
+
+
+@warning_ignore("unused_parameter")
 func _handle_dust_trail(delta: float) -> void:
 	if dust_trail_scene == null:
 		return
@@ -516,14 +600,14 @@ func _update_animation() -> void:
 	var is_shooting := _shoot_anim_timer > 0.01
 	var is_running := absf(velocity.x) > 8.0
 	var is_punching := _punch_anim_timer > 0.01
-	
+
 	if is_punching:
 		if not is_on_floor():
 			_play_animation_with_fallback("punch_C", "jump")
 		else:
 			_play_animation_with_fallback("punch_C", "idle")
 		return
-	
+
 	if not is_on_floor():
 		if velocity.y < 0.0:
 			if is_shooting:
@@ -535,7 +619,6 @@ func _update_animation() -> void:
 				_play_animation_with_fallback("shoot_fall", "fall")
 			else:
 				_play_animation_if_available("fall")
-
 		return
 
 	if is_running:
@@ -579,6 +662,16 @@ func _play_animation_with_fallback(anim_name: String, fallback_name: String) -> 
 			sprite.play(fallback_name)
 
 
+func _snap_visuals_to_pixel() -> void:
+	if not snap_visuals_to_pixel:
+		return
+
+	if sprite == null:
+		return
+
+	sprite.position = _sprite_base_position.round()
+
+
 func apply_damage(info: DamageInfo) -> void:
 	if _is_dead or _is_dying:
 		return
@@ -616,9 +709,6 @@ func _on_damaged(info: DamageInfo) -> void:
 
 	_update_muzzle_position()
 
-	CombatFX.hitstop(0.035, 0.08)
-	CombatFX.shake(3.5, 0.10, 28.0)
-
 	if not _is_hit_flashing:
 		call_deferred("_run_hit_flash")
 
@@ -653,9 +743,6 @@ func kill() -> void:
 
 	_play_animation_if_available("death")
 	died.emit()
-
-	CombatFX.hitstop(0.06, 0.04)
-	CombatFX.shake(6.0, 0.18, 22.0)
 
 	call_deferred("_run_death_blink")
 
@@ -741,76 +828,3 @@ func _get_facing_sign_from_input() -> int:
 		return -1
 
 	return 1
-func _handle_punch() -> void:
-	if not Input.is_action_just_pressed("punch"):
-		return
-
-	if not _can_punch():
-		return
-
-	_spawn_punch_hitbox()
-
-
-func _can_punch() -> bool:
-	if _is_dead or _is_dying:
-		return false
-
-	if _hitstun_timer > 0.0:
-		return false
-
-	if _punch_timer > 0.0:
-		return false
-
-	if punch_hitbox_scene == null:
-		push_warning("Player punch_hitbox_scene is not assigned.")
-		return false
-
-	return true
-
-
-func _spawn_punch_hitbox() -> void:
-	var punch := punch_hitbox_scene.instantiate() as Area2D
-	if punch == null:
-		return
-
-	_punch_timer = punch_cooldown
-	_punch_anim_timer = punch_anim_duration
-	_shoot_anim_timer = 0.0
-
-	get_parent().add_child(punch)
-
-	var x_offset := punch_offset_right.x
-	if _facing_left:
-		x_offset = -punch_offset_right.x
-
-	punch.global_position = global_position + Vector2(x_offset, punch_offset_right.y)
-
-	if punch.has_method("setup"):
-		punch.setup(self, _facing_left)
-func _handle_special_assist() -> void:
-	if not Input.is_action_just_pressed("special"):
-		return
-
-	if special_meter < special_meter_max:
-		return
-
-	if mattt_assist_scene == null:
-		return
-
-	special_meter = 100
-
-	var assist := mattt_assist_scene.instantiate() as Node2D
-	if assist == null:
-		return
-
-	get_parent().add_child(assist)
-
-	var x_offset := mattt_spawn_offset.x
-
-	if _facing_left:
-		x_offset = -mattt_spawn_offset.x
-
-	assist.global_position = global_position + Vector2(x_offset, mattt_spawn_offset.y)
-
-	if assist.has_method("setup"):
-		assist.setup(self, _facing_left)

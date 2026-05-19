@@ -60,9 +60,7 @@ animations = [{
 "speed": 45.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijwwn"]
-radius = 5.0
-height = 40.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_1wmpo"]
 
 [node name="PlayerBullet" type="Area2D" unique_id=1047190578]
 scale = Vector2(0.25, 0.25)
@@ -76,8 +74,9 @@ autoplay = "default"
 frame_progress = 0.48356813
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=757530710]
+position = Vector2(12, 0)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_ijwwn")
+shape = SubResource("CircleShape2D_1wmpo")
 debug_color = Color(0.9647059, 0.11764706, 0.03529412, 0.8862745)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1753932589]

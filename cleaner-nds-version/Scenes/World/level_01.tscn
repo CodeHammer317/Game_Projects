@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://6aws2ljmcwkh" path="res://Assets/sprites/super_pixel_laboratory/super_pixel_laboratory/style_D/PNG/bg_fog_near.png" id="5_s7dkf"]
 [ext_resource type="PackedScene" uid="uid://b2pmeb5bnk5me" path="res://Scenes/Enemy/roomba_drone.tscn" id="12_3l8f8"]
 [ext_resource type="PackedScene" uid="uid://4f55in72ln4w" path="res://Scenes/Enemy/glitch_demon.tscn" id="14_ru6yh"]
-[ext_resource type="PackedScene" uid="uid://bcrvvorfnmqkg" path="res://Scenes/hotdog.tscn" id="15_3a58o"]
+[ext_resource type="PackedScene" uid="uid://bcrvvorfnmqkg" path="res://Scenes/FX/hotdog.tscn" id="15_3a58o"]
 [ext_resource type="PackedScene" uid="uid://dwf68tg6mwljt" path="res://Scenes/FX/lightning_pillar.tscn" id="16_co23w"]
 [ext_resource type="AudioStream" uid="uid://ctmt15glpa3m0" path="res://Assets/Audio/freepik-fighters-game.mp3" id="17_6gtvm"]
 [ext_resource type="PackedScene" uid="uid://btohqpwknjdnp" path="res://Scenes/FX/tele_portal.tscn" id="18_e65bs"]
@@ -8611,10 +8611,10 @@ parameters/looping = true
 position = Vector2(725, 98)
 
 [node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("4_jupgt")]
-zoom = Vector2(0.75, 0.75)
 limit_top = -194
 limit_right = 1176
 target_path = NodePath("../Player")
+use_position_smoothing = false
 
 [node name="Hotdog" parent="." unique_id=943191707 instance=ExtResource("15_3a58o")]
 position = Vector2(892, -39)

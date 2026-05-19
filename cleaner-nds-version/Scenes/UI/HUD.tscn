@@ -15,7 +15,6 @@ offset_bottom = 28.0
 rotation = 1.5707964
 pivot_offset = Vector2(75, 76)
 max_value = 10.0
-value = 10.0
 fill_mode = 1
 texture_under = ExtResource("2_xaom8")
 texture_progress = ExtResource("3_4bm6u")

@@ -1,20 +1,20 @@
 extends Node
 class_name CombatFX
 
-static var _shake_camera: Camera2D = null
-static var _shake_time_left: float = 0.0
-static var _shake_strength: float = 0.0
-static var _shake_decay: float = 0.0
-static var _base_offset: Vector2 = Vector2.ZERO
+var _shake_camera: Camera2D = null
+var _shake_time_left: float = 0.0
+var _shake_strength: float = 0.0
+var _shake_decay: float = 0.0
+var _base_offset: Vector2 = Vector2.ZERO
 
-static var _hitstop_active: bool = false
+var _hitstop_active: bool = false
 
 
 func _process(delta: float) -> void:
 	_update_camera_shake(delta)
 
 
-static func hitstop(duration: float = 0.05, slow_scale: float = 0.05) -> void:
+func hitstop(duration: float = 0.05, slow_scale: float = 0.05) -> void:
 	if _hitstop_active:
 		return
 
@@ -22,23 +22,23 @@ static func hitstop(duration: float = 0.05, slow_scale: float = 0.05) -> void:
 	_do_hitstop(duration, slow_scale)
 
 
-static func register_camera(cam: Camera2D) -> void:
+func register_camera(cam: Camera2D) -> void:
 	_shake_camera = cam
 	if _shake_camera != null:
 		_base_offset = _shake_camera.offset
 
 
-static func shake(strength: float = 4.0, duration: float = 0.12, decay: float = 30.0) -> void:
+func shake(strength: float = 4.0, duration: float = 0.12, decay: float = 30.0) -> void:
 	_shake_strength = max(_shake_strength, strength)
 	_shake_time_left = max(_shake_time_left, duration)
 	_shake_decay = decay
 
 
-static func _do_hitstop(duration: float, slow_scale: float) -> void:
+func _do_hitstop(duration: float, slow_scale: float) -> void:
 	_run_hitstop(duration, slow_scale)
 
 
-static  func _run_hitstop(duration: float, slow_scale: float) -> void:
+func _run_hitstop(duration: float, slow_scale: float) -> void:
 	var tree := Engine.get_main_loop() as SceneTree
 	if tree == null:
 		_hitstop_active = false
@@ -65,6 +65,7 @@ func _update_camera_shake(delta: float) -> void:
 			randf_range(-_shake_strength, _shake_strength)
 		)
 
+		offset = offset.round()
 		_shake_camera.offset = _base_offset + offset
 		_shake_strength = move_toward(_shake_strength, 0.0, _shake_decay * delta)
 	else:

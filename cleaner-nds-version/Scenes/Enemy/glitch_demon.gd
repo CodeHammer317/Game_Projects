@@ -316,8 +316,8 @@ func _do_glitch_burst_sequence() -> void:
 
 	glitch_burst.emit(self)
 
-	CombatFX.hitstop(0.025, 0.04)
-	CombatFX.shake(3.5, 0.12, 26.0)
+	CombatFx.hitstop(0.025, 0.04)
+	CombatFx.shake(3.5, 0.12, 26.0)
 
 	var spawn_point := _get_glitch_burst_muzzle()
 	var base_angle_offset := 0.0
@@ -609,8 +609,8 @@ func _on_damaged(info: DamageInfo) -> void:
 	else:
 		_update_facing_from_velocity()
 
-	CombatFX.hitstop(0.03, 0.08)
-	CombatFX.shake(2.0, 0.08, 24.0)
+	CombatFx.hitstop(0.03, 0.08)
+	CombatFx.shake(2.0, 0.08, 24.0)
 
 
 func _on_died() -> void:
@@ -647,8 +647,8 @@ func _start_growth_phase() -> void:
 	if _target != null and is_instance_valid(_target):
 		_face_toward(_target.global_position)
 
-	CombatFX.hitstop(0.04, 0.08)
-	CombatFX.shake(4.0, 0.14, 22.0)
+	CombatFx.hitstop(0.04, 0.08)
+	CombatFx.shake(4.0, 0.14, 22.0)
 
 	var target_scale := base_scale * pow(growth_scale_multiplier, growth_phase - 1)
 
@@ -692,8 +692,8 @@ func _start_final_death() -> void:
 		sprite.play("Death")
 	else:
 		_death_anim_done = true
-		CombatFX.hitstop(0.05, 0.05)
-		CombatFX.shake(5.0, 0.16, 20.0)
+		CombatFx.hitstop(0.05, 0.05)
+		CombatFx.shake(5.0, 0.16, 20.0)
 
 	_start_explosion_sequence()
 
