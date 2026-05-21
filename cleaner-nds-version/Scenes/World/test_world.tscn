@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://buea412s1gop8" path="res://Scenes/Enemy/homeless_enemy_2.tscn" id="12_ivea3"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="13_jvck6"]
 [ext_resource type="AudioStream" uid="uid://b3bt08pbjlto0" path="res://Assets/Audio/xtremefreddy-game-music-loop-3-144252.mp3" id="14_8y3w6"]
+[ext_resource type="PackedScene" uid="uid://btohqpwknjdnp" path="res://Scenes/FX/tele_portal.tscn" id="15_5ysoe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dsnr4"]
 texture = ExtResource("1_gy3sr")
@@ -787,7 +788,6 @@ sources/0 = SubResource("TileSetAtlasSource_dsnr4")
 [node name="WorldLayers" type="Node" parent="." unique_id=656059620]
 
 [node name="Sky" type="Parallax2D" parent="WorldLayers" unique_id=782234487]
-visible = false
 z_index = -1
 repeat_size = Vector2(576, 0)
 repeat_times = 4
@@ -797,7 +797,6 @@ texture = ExtResource("1_cnaw2")
 centered = false
 
 [node name="Clouds" type="Parallax2D" parent="WorldLayers" unique_id=658064843]
-visible = false
 z_index = -1
 scale = Vector2(0.5, 0.5)
 scroll_offset = Vector2(-112, 152)
@@ -817,7 +816,6 @@ texture = ExtResource("2_kt6p6")
 flip_h = true
 
 [node name="Far" type="Parallax2D" parent="WorldLayers" unique_id=602036748]
-visible = false
 z_index = -1
 scale = Vector2(0.85, 0.85)
 scroll_scale = Vector2(0.4, 0.4)
@@ -832,7 +830,6 @@ texture = ExtResource("3_ud3vi")
 centered = false
 
 [node name="Mid" type="Parallax2D" parent="WorldLayers" unique_id=640306772]
-visible = false
 z_index = -1
 scroll_scale = Vector2(0.6, 0.6)
 scroll_offset = Vector2(309, 160)
@@ -843,7 +840,6 @@ repeat_times = 5
 texture = ExtResource("4_ud3vi")
 
 [node name="Near" type="Parallax2D" parent="WorldLayers" unique_id=2130740121]
-visible = false
 z_index = -1
 scroll_offset = Vector2(299, 153)
 repeat_size = Vector2(576, 0)
@@ -885,6 +881,7 @@ script = ExtResource("3_1lwx6")
 target_path = NodePath("../Player")
 
 [node name="HUD" parent="." unique_id=354589440 instance=ExtResource("10_ud3vi")]
+player_path = NodePath("../Player")
 
 [node name="AreaTransition" parent="." unique_id=1160941269 instance=ExtResource("13_jvck6")]
 position = Vector2(1240, 240)
@@ -899,6 +896,11 @@ max_polyphony = 7
 parameters/looping = true
 
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("2_1lwx6")]
-position = Vector2(121, 281)
+position = Vector2(88, 254)
+
+[node name="TelePortal" parent="." unique_id=321547799 instance=ExtResource("15_5ysoe")]
+position = Vector2(88, 281)
 
 [editable path="Enemies/RoombaDrone"]
+[editable path="TelePortal"]
+[editable path="TelePortal/AreaTransition"]

@@ -77,9 +77,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fadpv")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hfxrk"]
