@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cc76pp0csbhgc"]
 
 [ext_resource type="Texture2D" uid="uid://cgwt8shqojlwi" path="res://Assets/homeless-character-sprite-sheets/Homeless_2/FlyingKnifeLoop.png" id="1_6lm1o"]
-[ext_resource type="Script" uid="uid://d03viyhxr1y0d" path="res://Scenes/FX/flying_knife.gd" id="1_p2mqa"]
+[ext_resource type="Script" uid="uid://d03viyhxr1y0d" path="res://Scripts/flying_knife.gd" id="1_p2mqa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2mqa"]
 

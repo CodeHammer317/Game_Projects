@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Fate of a Nation"
+config/name="Last Bridge"
 run/main_scene="uid://q2iu662frubw"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"

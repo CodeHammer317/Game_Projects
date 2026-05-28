@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cg4svon3025n7"]
 
-[ext_resource type="Script" uid="uid://dvh0xh1gky2mu" path="res://Scenes/FX/glitch_bullet.gd" id="1_h5rvt"]
+[ext_resource type="Script" uid="uid://dvh0xh1gky2mu" path="res://Scripts/glitch_bullet.gd" id="1_h5rvt"]
 [ext_resource type="Texture2D" uid="uid://bdjevmihvumgi" path="res://Assets/sprites/Super Pixel Projectiles Pack 2/Super Pixel Projectiles Pack 2/spritesheet/pj2_lightning_orb_small_violet/spritesheet.png" id="1_qf85n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5rvt"]

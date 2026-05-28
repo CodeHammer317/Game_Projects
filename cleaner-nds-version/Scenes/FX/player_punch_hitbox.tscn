@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bgk6qsvlkbjal"]
 
-[ext_resource type="Script" uid="uid://betc3alns3d4p" path="res://player_punch_hitbox.gd" id="1_l2nxl"]
+[ext_resource type="Script" uid="uid://betc3alns3d4p" path="res://Scripts/player_punch_hitbox.gd" id="1_l2nxl"]
 [ext_resource type="Texture2D" uid="uid://bm6p7e47wtpl3" path="res://Assets/sprites/Super Pixel Effects Pack 2/Super Pixel Effects Pack 2/spritesheet/fx2_claw_large_white/spritesheet.png" id="2_102l4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_102l4"]

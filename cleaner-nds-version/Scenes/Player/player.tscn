@@ -202,7 +202,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_ujqdw")
 }],
-"loop": false,
+"loop": true,
 "name": &"celebrate",
 "speed": 16.0
 }, {
@@ -440,6 +440,45 @@ animations = [{
 "texture": ExtResource("74_7vj6g")
 }, {
 "duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_7vj6g")
+}, {
+"duration": 1.0,
 "texture": ExtResource("75_nagfp")
 }, {
 "duration": 1.0,
@@ -618,7 +657,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 3.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -647,15 +686,17 @@ mattt_assist_scene = ExtResource("5_6a86w")
 special_meter = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1032869655]
+visible = false
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_tugb3")
 debug_color = Color(0.9222628, 0.24629954, 0.34191763, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1113292849]
 sprite_frames = SubResource("SpriteFrames_uvnfx")
-animation = &"idle"
+animation = &"punch_A"
 autoplay = "idle"
-frame_progress = 0.39792785
+frame = 20
+frame_progress = 1.0
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1986837846]
 collision_layer = 32
@@ -664,6 +705,7 @@ script = ExtResource("99_81gu5")
 health_path = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=540761330]
+visible = false
 shape = SubResource("CapsuleShape2D_4rt4h")
 debug_color = Color(0.8364399, 0.16650367, 0.8504344, 0.41960785)
 
@@ -672,6 +714,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1422810645]
+visible = false
 shape = SubResource("RectangleShape2D_xpcdj")
 debug_color = Color(0.7529412, 0.59607846, 0.03529412, 0.6156863)
 

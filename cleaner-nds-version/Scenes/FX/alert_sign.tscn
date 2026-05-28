@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3ibvikii0j7q"]
 
-[ext_resource type="Script" uid="uid://s6wcwsjkxgfr" path="res://Scenes/FX/WarningIndicator.gd" id="1_n4mxw"]
+[ext_resource type="Script" uid="uid://s6wcwsjkxgfr" path="res://Scripts/WarningIndicator.gd" id="1_n4mxw"]
 [ext_resource type="Texture2D" uid="uid://c4yo8gp3toqvy" path="res://Assets/sprites/Symbols/Symbols/symbol_alert_text_001/symbol_alert_text_001_large_yellow/spritesheet.png" id="2_n4mxw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_misbq"]

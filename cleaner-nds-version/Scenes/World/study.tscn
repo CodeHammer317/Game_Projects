@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bvhdbjgl6c6i7"]
+
+[ext_resource type="Texture2D" uid="uid://ds6rbir4ptmqu" path="res://Assets/tilesets/Study.png" id="1_be2da"]
+[ext_resource type="Script" uid="uid://bqm2wh6rv24p5" path="res://Scenes/World/study.gd" id="1_h1fst"]
+
+[node name="Study" type="Node2D" unique_id=62157998]
+script = ExtResource("1_h1fst")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=578057719]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1531336328]
+texture = ExtResource("1_be2da")
+centered = false

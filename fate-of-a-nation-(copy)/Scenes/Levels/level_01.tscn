@@ -12,7 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://ckhfcltg7sg5r" path="res://Assets/LastBridge.jpg" id="10_qelns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxweg"]
-size = Vector2(640, 16.5)
+size = Vector2(640, 16.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qelns"]
+size = Vector2(648, 20)
 
 [node name="Level_01" type="Node2D" unique_id=1932303108]
 script = ExtResource("1_l0dwn")
@@ -50,6 +53,7 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LoseLine" unique_id=2002636640]
+position = Vector2(0, 24.125)
 shape = SubResource("RectangleShape2D_kxweg")
 
 [node name="EnemySpawnTimer" type="Timer" parent="." unique_id=136815409]
@@ -78,3 +82,11 @@ max_polyphony = 6
 
 [node name="TankWarningIndicator" parent="." unique_id=128719915 instance=ExtResource("9_j5tiy")]
 position = Vector2(584, 296)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=318800962]
+position = Vector2(328, 328)
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1422687664]
+position = Vector2(-16, 40)
+shape = SubResource("RectangleShape2D_qelns")

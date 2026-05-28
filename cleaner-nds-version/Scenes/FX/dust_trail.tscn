@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctgyhfpw6awxh"]
 
-[ext_resource type="Script" uid="uid://jtul7sr03rrg" path="res://Scenes/FX/dust_trail.gd" id="1_o6m6a"]
+[ext_resource type="Script" uid="uid://jtul7sr03rrg" path="res://Scripts/dust_trail.gd" id="1_o6m6a"]
 [ext_resource type="Texture2D" uid="uid://c7oglaej0ngch" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_dash_small_white/frame0000.png" id="10_ga6vn"]
 [ext_resource type="Texture2D" uid="uid://oqsbk5mqcpg" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_dash_small_white/frame0001.png" id="11_qxyw5"]
 [ext_resource type="Texture2D" uid="uid://b0a8w4dfpaw68" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_dash_small_white/frame0002.png" id="12_qend0"]

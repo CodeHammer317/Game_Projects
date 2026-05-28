@@ -88,8 +88,8 @@
 [ext_resource type="AudioStream" uid="uid://bm0ovmphm0yyj" path="res://Audio/CannonAAFire.mp3" id="86_4ensc"]
 [ext_resource type="AudioStream" uid="uid://b63ba85ud441o" path="res://Audio/pickup2.ogg" id="86_d1de2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jnk8a"]
-size = Vector2(19, 59)
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ibyj"]
+radius = 14.3178215
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gpg7s"]
 animations = [{
@@ -358,19 +358,18 @@ animations = [{
 "speed": 13.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5va5"]
-size = Vector2(20, 48)
+[sub_resource type="CircleShape2D" id="CircleShape2D_cono2"]
 
 [node name="Player" type="CharacterBody2D" unique_id=943159391 groups=["player"]]
-collision_mask = 0
+collision_mask = 192
 script = ExtResource("1_jnk8a")
 move_speed = 200.0
 bullet_scene = ExtResource("2_4ibyj")
 floating_text_scene = ExtResource("3_cono2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=233811365]
-visible = false
-shape = SubResource("RectangleShape2D_jnk8a")
+shape = SubResource("CircleShape2D_4ibyj")
+debug_color = Color(0.11752244, 0.6253604, 0.27200225, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=992485879]
 rotation = 3.1415927
@@ -386,9 +385,8 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=480912416]
-visible = false
-shape = SubResource("RectangleShape2D_r5va5")
-debug_color = Color(0.76551306, 0.44844455, 0.03042364, 0.41960785)
+shape = SubResource("CircleShape2D_cono2")
+debug_color = Color(0.9647059, 0.09803922, 0.03137255, 0.41960785)
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=873025756]
 position = Vector2(2, -19)

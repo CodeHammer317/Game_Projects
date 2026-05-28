@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cbvojmykspuhx"]
 
-[ext_resource type="Script" uid="uid://s6wcwsjkxgfr" path="res://Scenes/FX/WarningIndicator.gd" id="1_180sq"]
+[ext_resource type="Script" uid="uid://s6wcwsjkxgfr" path="res://Scripts/WarningIndicator.gd" id="1_180sq"]
 [ext_resource type="Texture2D" uid="uid://5mmro66hpu1l" path="res://Assets/sprites/Symbols/Symbols/symbol_danger_text_001/symbol_danger_text_001_large_red/spritesheet.png" id="2_180sq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ak6n"]

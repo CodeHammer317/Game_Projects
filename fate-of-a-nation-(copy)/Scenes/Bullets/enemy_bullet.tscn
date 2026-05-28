@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://rdkh4s6ekker"]
 
-[ext_resource type="Texture2D" uid="uid://mqn30so1r5aq" path="res://Assets/PNG/fire/Shot/Shot1.png" id="1_8ln4g"]
 [ext_resource type="Script" uid="uid://o872vurd5i3a" path="res://Scenes/Bullets/enemy_bullet.gd" id="1_b3chp"]
+[ext_resource type="Texture2D" uid="uid://dmiyr6swsil4a" path="res://Assets/PlayerBulletSprite.png" id="2_b3chp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3chp"]
-size = Vector2(4, 16)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3chp"]
+radius = 3.0
+height = 14.0
 
 [node name="EnemyBullet" type="Area2D" unique_id=792101114]
 rotation = -1.5707964
 collision_layer = 0
 script = ExtResource("1_b3chp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=260576000]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_b3chp")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=10627726]
-texture = ExtResource("1_8ln4g")
+texture = ExtResource("2_b3chp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=260576000]
+shape = SubResource("CapsuleShape2D_b3chp")
