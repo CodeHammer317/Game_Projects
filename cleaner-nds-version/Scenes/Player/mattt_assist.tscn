@@ -47,7 +47,7 @@ script = ExtResource("1_ylryk")
 fire_column_scene = ExtResource("2_uadru")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=741740071]
-position = Vector2(0, -3.8146973e-06)
+position = Vector2(0, -2.2737368e-13)
 scale = Vector2(0.33, 0.33)
 sprite_frames = SubResource("SpriteFrames_uadru")
 animation = &"appear"

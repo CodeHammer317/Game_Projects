@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cjvhkjgxbr7ug"]
 
-[ext_resource type="Script" uid="uid://bnf80d4m4v5i" path="res://Scenes/World/level_01.gd" id="1_3u0ay"]
-[ext_resource type="Texture2D" uid="uid://cbflwr7wmls4k" path="res://Assets/super_pixel_laboratory/super_pixel_laboratory/style_A/spritesheet/spritesheet.png" id="1_66m7q"]
+[ext_resource type="Script" uid="uid://bnf80d4m4v5i" path="res://Scripts/level_01.gd" id="1_3u0ay"]
+[ext_resource type="Texture2D" uid="uid://cbflwr7wmls4k" path="res://Assets/tilesets/super_pixel_laboratory/super_pixel_laboratory/style_A/spritesheet/spritesheet.png" id="1_66m7q"]
 [ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="1_nijma"]
 [ext_resource type="Texture2D" uid="uid://cuon2gcbxjb3v" path="res://Assets/sprites/super_pixel_laboratory/super_pixel_laboratory/style_D/PNG/bg_wall.png" id="1_rbft6"]
 [ext_resource type="Texture2D" uid="uid://d1lv6shkpq3vj" path="res://Assets/sprites/super_pixel_laboratory/super_pixel_laboratory/style_D/PNG/bg_fog_far.png" id="2_s7dkf"]

@@ -901,9 +901,6 @@ position = Vector2(88, 254)
 [node name="TelePortal" parent="." unique_id=321547799 instance=ExtResource("15_5ysoe")]
 position = Vector2(88, 281)
 
-[node name="AudioStreamPlayer" parent="TelePortal" index="1" unique_id=233306552]
-autoplay = false
-
 [editable path="Enemies/RoombaDrone"]
 [editable path="TelePortal"]
 [editable path="TelePortal/AreaTransition"]

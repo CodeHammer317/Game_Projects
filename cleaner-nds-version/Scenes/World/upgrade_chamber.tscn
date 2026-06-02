@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://chbkkiak8cwqv"]
 
-[ext_resource type="Script" uid="uid://bfaw25viylrsx" path="res://Scenes/World/upgrade_chamber.gd" id="1_keiq2"]
+[ext_resource type="Script" uid="uid://bfaw25viylrsx" path="res://Scripts/upgrade_chamber.gd" id="1_keiq2"]
 [ext_resource type="Texture2D" uid="uid://djh2nabu7sdqx" path="res://Assets/tilesets/Copilot_20260520_195924.png" id="1_vu3f7"]
 [ext_resource type="PackedScene" uid="uid://cuhdpfcm440hu" path="res://Scenes/World/camera_2d.tscn" id="2_nuorc"]
 [ext_resource type="Texture2D" uid="uid://bh7licej0ww7s" path="res://Assets/tilesets/Copilot_20260520_195632.png" id="3_1anyi"]
 [ext_resource type="Texture2D" uid="uid://dtyuhsl0deggl" path="res://Assets/tilesets/Upgrade_Chamber-sheet.png" id="5_11ldt"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="6_11ldt"]
+[ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="7_kds23"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3h2na"]
 atlas = ExtResource("5_11ldt")
@@ -132,13 +133,17 @@ scale = Vector2(0.95329666, 1.0722222)
 texture = ExtResource("1_vu3f7")
 centered = false
 
-[node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("2_nuorc")]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=902323379]
 position = Vector2(47, 123)
 scale = Vector2(0.32, 0.32)
 sprite_frames = SubResource("SpriteFrames_c8yuy")
 autoplay = "default"
+
+[node name="Player" parent="." unique_id=1715600248 instance=ExtResource("7_kds23")]
+position = Vector2(47, 133)
+
+[node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("2_nuorc")]
+target_path = NodePath("../Player")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2042359910]
 collision_mask = 7
