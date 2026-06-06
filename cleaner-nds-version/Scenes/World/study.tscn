@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://bvhdbjgl6c6i7"]
 
-[ext_resource type="Texture2D" uid="uid://ds6rbir4ptmqu" path="res://Assets/tilesets/Study.png" id="1_be2da"]
+[ext_resource type="Texture2D" uid="uid://ds6rbir4ptmqu" path="res://Assets/sprites/Study.png" id="1_be2da"]
 [ext_resource type="Script" uid="uid://bqm2wh6rv24p5" path="res://Scripts/study.gd" id="1_h1fst"]
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="3_ghfc6"]
 [ext_resource type="Script" uid="uid://d2rq6h2o7kapt" path="res://Scripts/camera_2d.gd" id="4_4m0bx"]
-[ext_resource type="Texture2D" uid="uid://ck0gtbiug6kta" path="res://Assets/sprites/main_lev_buildA.png" id="5_4m0bx"]
+[ext_resource type="Texture2D" uid="uid://ck0gtbiug6kta" path="res://Assets/tilesets/main_lev_buildA.png" id="5_4m0bx"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="6_t5lnl"]
 [ext_resource type="PackedScene" uid="uid://cormy61c2jsmw" path="res://Scenes/World/level_01_briefing_screen.tscn" id="7_txpg4"]
 
@@ -1751,3 +1751,4 @@ collision_mask = 2
 next_level_path = "uid://chbkkiak8cwqv"
 
 [editable path="Level01BriefingScreen"]
+[editable path="Player"]

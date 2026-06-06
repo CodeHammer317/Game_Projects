@@ -1,14 +1,14 @@
 [gd_scene format=4 uid="uid://vs7yw2qkdd3y"]
 
-[ext_resource type="Texture2D" uid="uid://npoyxfcphbps" path="res://Assets/SubwayBackground.png" id="1_24wvl"]
-[ext_resource type="Texture2D" uid="uid://djesrbwm1iwhw" path="res://Assets/SubwayFloor.png" id="2_fl1d5"]
+[ext_resource type="Texture2D" uid="uid://npoyxfcphbps" path="res://Assets/tilesets/SubwayBackground.png" id="1_24wvl"]
+[ext_resource type="Texture2D" uid="uid://djesrbwm1iwhw" path="res://Assets/tilesets/SubwayFloor.png" id="2_fl1d5"]
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="3_fl1d5"]
-[ext_resource type="Texture2D" uid="uid://0t2nrci6w4j6" path="res://Assets/WallPipes.png" id="3_rrlae"]
-[ext_resource type="Texture2D" uid="uid://dn8wcgvd6mien" path="res://Assets/OverheadPipes.png" id="4_ewi5s"]
+[ext_resource type="Texture2D" uid="uid://0t2nrci6w4j6" path="res://Assets/tilesets/WallPipes.png" id="3_rrlae"]
+[ext_resource type="Texture2D" uid="uid://dn8wcgvd6mien" path="res://Assets/tilesets/OverheadPipes.png" id="4_ewi5s"]
 [ext_resource type="PackedScene" uid="uid://cuhdpfcm440hu" path="res://Scenes/World/camera_2d.tscn" id="4_n6oji"]
-[ext_resource type="Texture2D" uid="uid://clabx45v2ml3w" path="res://Assets/SubwayColumn.png" id="5_ewi5s"]
+[ext_resource type="Texture2D" uid="uid://clabx45v2ml3w" path="res://Assets/tilesets/SubwayColumn.png" id="5_ewi5s"]
 [ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="8_dgd1k"]
-[ext_resource type="Texture2D" uid="uid://bq2afjabp0m2i" path="res://Assets/healthPU_Sprite.png" id="9_w4dtl"]
+[ext_resource type="Texture2D" uid="uid://bq2afjabp0m2i" path="res://Assets/Icons/healthPU_Sprite.png" id="9_w4dtl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n6oji"]
 texture = ExtResource("2_fl1d5")

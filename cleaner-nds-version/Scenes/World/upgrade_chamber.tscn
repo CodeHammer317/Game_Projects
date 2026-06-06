@@ -1,12 +1,64 @@
 [gd_scene format=3 uid="uid://chbkkiak8cwqv"]
 
 [ext_resource type="Script" uid="uid://bfaw25viylrsx" path="res://Scripts/upgrade_chamber.gd" id="1_keiq2"]
-[ext_resource type="Texture2D" uid="uid://djh2nabu7sdqx" path="res://Assets/tilesets/Copilot_20260520_195924.png" id="1_vu3f7"]
+[ext_resource type="Texture2D" uid="uid://djh2nabu7sdqx" path="res://Assets/sprites/Upgrade_Chamber_Background.png" id="1_vu3f7"]
 [ext_resource type="PackedScene" uid="uid://cuhdpfcm440hu" path="res://Scenes/World/camera_2d.tscn" id="2_nuorc"]
-[ext_resource type="Texture2D" uid="uid://bh7licej0ww7s" path="res://Assets/tilesets/Copilot_20260520_195632.png" id="3_1anyi"]
-[ext_resource type="Texture2D" uid="uid://dtyuhsl0deggl" path="res://Assets/tilesets/Upgrade_Chamber-sheet.png" id="5_11ldt"]
+[ext_resource type="Texture2D" uid="uid://bh7licej0ww7s" path="res://Assets/sprites/UpgradeChamberAnimation/Copilot_20260520_195632.png" id="3_1anyi"]
+[ext_resource type="Texture2D" uid="uid://dtyuhsl0deggl" path="res://Assets/sprites/UpgradeChamberAnimation/Upgrade_Chamber-sheet.png" id="5_11ldt"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="6_11ldt"]
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="7_kds23"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1anyi"]
+size = Vector2(45, 67)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1anyi"]
+texture = ExtResource("1_vu3f7")
+0:10/size_in_atlas = Vector2i(22, 1)
+0:10/0 = 0
+0:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-176, -8, 176, -8, 176, 8, -176, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j6k7p"]
+texture = ExtResource("3_1anyi")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+1:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+1:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, 8, 0, 8, 8, -4, 8)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
+2:4/0 = 0
+2:4/0/texture_origin = Vector2i(0, -6)
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 4, -8, 4, -8, 12, 8, 12)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, -8, 0, -8, 8, 4, 8)
+
+[sub_resource type="TileSet" id="TileSet_1anyi"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 7
+sources/0 = SubResource("TileSetAtlasSource_1anyi")
+sources/2 = SubResource("TileSetAtlasSource_j6k7p")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kds23"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"beam",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3h2na"]
 atlas = ExtResource("5_11ldt")
@@ -75,53 +127,9 @@ animations = [{
 "texture": SubResource("AtlasTexture_bo8k3")
 }],
 "loop": true,
-"name": &"default",
+"name": &"activate",
 "speed": 60.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1anyi"]
-size = Vector2(45, 67)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1anyi"]
-texture = ExtResource("1_vu3f7")
-0:10/size_in_atlas = Vector2i(22, 1)
-0:10/0 = 0
-0:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-176, -8, 176, -8, 176, 8, -176, 8)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j6k7p"]
-texture = ExtResource("3_1anyi")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-1:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-1:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-0:4/0 = 0
-0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, 8, 0, 8, 8, -4, 8)
-1:4/0 = 0
-1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
-2:4/0 = 0
-2:4/0/texture_origin = Vector2i(0, -6)
-2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 4, -8, 4, -8, 12, 8, 12)
-3:4/0 = 0
-3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
-4:4/0 = 0
-4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, -8, 0, -8, 8, 4, 8)
-
-[sub_resource type="TileSet" id="TileSet_1anyi"]
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 7
-sources/0 = SubResource("TileSetAtlasSource_1anyi")
-sources/2 = SubResource("TileSetAtlasSource_j6k7p")
 
 [node name="UpgradeChamber" type="Node2D" unique_id=503481107]
 script = ExtResource("1_keiq2")
@@ -133,14 +141,14 @@ scale = Vector2(0.95329666, 1.0722222)
 texture = ExtResource("1_vu3f7")
 centered = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=902323379]
-position = Vector2(47, 123)
-scale = Vector2(0.32, 0.32)
-sprite_frames = SubResource("SpriteFrames_c8yuy")
-autoplay = "default"
-
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("7_kds23")]
 position = Vector2(47, 133)
+
+[node name="AnimatedSprite2D" parent="Player" index="6" unique_id=1655699272]
+animation = &"jumping"
+autoplay = "jumping"
+frame = 0
+frame_progress = 0.0
 
 [node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("2_nuorc")]
 target_path = NodePath("../Player")
@@ -160,4 +168,27 @@ tile_set = SubResource("TileSet_1anyi")
 position = Vector2(347, 129)
 collision_layer = 128
 collision_mask = 2
-next_level_path = "uid://gio6polhbvh8"
+
+[node name="Beam" type="Node2D" parent="." unique_id=1666012602]
+position = Vector2(47, 123)
+scale = Vector2(0.32, 0.32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Beam" unique_id=711015503]
+position = Vector2(-146.875, -384.375)
+scale = Vector2(3.125, 3.125)
+sprite_frames = SubResource("SpriteFrames_kds23")
+animation = &"beam"
+autoplay = "beam"
+
+[node name="UpgradeMachine" type="Node2D" parent="." unique_id=730803477]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UpgradeMachine" unique_id=902323379]
+position = Vector2(47, 123)
+scale = Vector2(0.32, 0.32)
+sprite_frames = SubResource("SpriteFrames_c8yuy")
+animation = &"activate"
+autoplay = "activate"
+
+[node name="StopPoint" type="Node2D" parent="." unique_id=1798742526]
+
+[editable path="Player"]

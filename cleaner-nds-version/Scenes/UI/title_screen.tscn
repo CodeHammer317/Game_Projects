@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bjg0c88uhxlsh"]
 
 [ext_resource type="Script" uid="uid://8603dw216quu" path="res://Scripts/title_screen.gd" id="1_xsyet"]
-[ext_resource type="Texture2D" uid="uid://cunpfkdkylvoq" path="res://Assets/sprites/background1-720.png" id="2_dnytt"]
-[ext_resource type="Texture2D" uid="uid://c7xaebhxtfe1i" path="res://Assets/NDS Game Files/NDS Logo.png" id="3_kyvdy"]
-[ext_resource type="Texture2D" uid="uid://pf0gmce177of" path="res://Assets/NDS Game Files/NDS Logo_transparent.png" id="4_bnqst"]
+[ext_resource type="Texture2D" uid="uid://c06egp43s41lf" path="res://Assets/sprites/background1-720.png" id="2_dnytt"]
+[ext_resource type="Texture2D" uid="uid://c7xaebhxtfe1i" path="res://Assets/sprites/NDS Logo.png" id="3_kyvdy"]
+[ext_resource type="Texture2D" uid="uid://pf0gmce177of" path="res://Assets/sprites/NDS Logo_transparent.png" id="4_bnqst"]
 [ext_resource type="AudioStream" uid="uid://cdqht4tbikj2g" path="res://Assets/Audio/pickup2.ogg" id="6_824g0"]
 [ext_resource type="AudioStream" uid="uid://yswk7slevwiw" path="res://Assets/Audio/freesound_community-game-start-6104 (1).mp3" id="6_dsf7a"]
 [ext_resource type="AudioStream" uid="uid://da3rx4yn78uog" path="res://Assets/Audio/idoberg-metal-bass-amp-drums-loop-413373.mp3" id="7_dsf7a"]

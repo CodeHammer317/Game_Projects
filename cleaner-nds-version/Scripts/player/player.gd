@@ -70,7 +70,11 @@ var _facing_left: bool = false
 var _fire_timer: float = 0.0
 var _shoot_anim_timer: float = 0.0
 var _input_dir: float = 0.0
+var control_locked: bool = false
 
+var has_double_jump: bool = false
+var has_wall_slide: bool = false
+var has_charge_shot: bool = false
 var _punch_timer: float = 0.0
 var _punch_anim_timer: float = 0.0
 
@@ -113,6 +117,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if control_locked:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+		
 	if _is_dead:
 		return
 
@@ -828,3 +837,20 @@ func _get_facing_sign_from_input() -> int:
 		return -1
 
 	return 1
+func set_control_locked(value: bool) -> void:
+	control_locked = value
+	velocity = Vector2.ZERO
+
+
+func apply_upgrade(upgrade_name: StringName) -> void:
+	if upgrade_name == &"double_jump":
+		has_double_jump = true
+		print("Upgrade acquired: Double Jump")
+
+	elif upgrade_name == &"wall_slide":
+		has_wall_slide = true
+		print("Upgrade acquired: Wall Slide")
+
+	elif upgrade_name == &"charge_shot":
+		has_charge_shot = true
+		print("Upgrade acquired: Charge Shot")

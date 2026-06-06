@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bcrvvorfnmqkg"]
 
 [ext_resource type="Texture2D" uid="uid://gx40vqo5i15f" path="res://Assets/sprites/Hotdog.png" id="1_0fewm"]
-[ext_resource type="Script" uid="uid://dyxaxe5mjdge2" path="res://HealthPickup.gd" id="1_l7dp1"]
+[ext_resource type="Script" uid="uid://dyxaxe5mjdge2" path="res://Scripts/HealthPickup.gd" id="1_l7dp1"]
 [ext_resource type="AudioStream" uid="uid://4gaob4qjqesg" path="res://Assets/Audio/freesound_community-chiptune_style_riser_fx_110bpm-89020.mp3" id="3_hh1bc"]
 [ext_resource type="Texture2D" uid="uid://c7wgdljdp5m20" path="res://Assets/sprites/Magic Bursts/round_sparkle_burst_003/round_sparkle_burst_003_large_yellow/spritesheet.png" id="4_62k0p"]
 
