@@ -4,9 +4,41 @@
 [ext_resource type="Texture2D" uid="uid://djh2nabu7sdqx" path="res://Assets/sprites/Upgrade_Chamber_Background.png" id="1_vu3f7"]
 [ext_resource type="PackedScene" uid="uid://cuhdpfcm440hu" path="res://Scenes/World/camera_2d.tscn" id="2_nuorc"]
 [ext_resource type="Texture2D" uid="uid://bh7licej0ww7s" path="res://Assets/sprites/UpgradeChamberAnimation/Copilot_20260520_195632.png" id="3_1anyi"]
-[ext_resource type="Texture2D" uid="uid://dtyuhsl0deggl" path="res://Assets/sprites/UpgradeChamberAnimation/Upgrade_Chamber-sheet.png" id="5_11ldt"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="6_11ldt"]
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="7_kds23"]
+[ext_resource type="Texture2D" uid="uid://btvd222r8slcy" path="res://Assets/Cool Animations/beam animation/beamupgrade1.png" id="7_nj643"]
+[ext_resource type="Texture2D" uid="uid://ccr3cy4fykm2e" path="res://Assets/Cool Animations/beam animation/beamupgrade2.png" id="8_niw4g"]
+[ext_resource type="Texture2D" uid="uid://dom7ujbaa4sts" path="res://Assets/Cool Animations/beam animation/beamupgrade3.png" id="9_rvi4o"]
+[ext_resource type="Texture2D" uid="uid://dwltdlqu1dmfs" path="res://Assets/Cool Animations/beam animation/beamupgrade4.png" id="10_odh2o"]
+[ext_resource type="Texture2D" uid="uid://bbc11i20q6w3p" path="res://Assets/Cool Animations/beam animation/beamupgrade5.png" id="11_mj682"]
+[ext_resource type="Texture2D" uid="uid://cuhefbinlmm4o" path="res://Assets/Cool Animations/beam animation/beamupgrade6.png" id="12_540qt"]
+[ext_resource type="Texture2D" uid="uid://bto4d4traaad8" path="res://Assets/Cool Animations/beam animation/beamupgrade7.png" id="13_qeok2"]
+[ext_resource type="Texture2D" uid="uid://dfwislarq7dvv" path="res://Assets/Cool Animations/beam animation/beamupgrade8.png" id="14_mssxr"]
+[ext_resource type="Texture2D" uid="uid://12hlo3gologc" path="res://Assets/Cool Animations/beam animation/beamupgrade9.png" id="15_1rntg"]
+[ext_resource type="Texture2D" uid="uid://7y4rxf837p2d" path="res://Assets/Cool Animations/beam animation/beamupgrade10.png" id="16_u8g6j"]
+[ext_resource type="Texture2D" uid="uid://d20u56p56jgu7" path="res://Assets/Cool Animations/beam animation/beamupgrade11.png" id="17_b2avq"]
+[ext_resource type="Texture2D" uid="uid://bw0a5fqywpsyx" path="res://Assets/Cool Animations/beam animation/beamupgrade12.png" id="18_jx3jf"]
+[ext_resource type="Texture2D" uid="uid://bgt7kw7d521n0" path="res://Assets/Cool Animations/beam animation/beamupgrade13.png" id="19_j64rx"]
+[ext_resource type="Texture2D" uid="uid://3v2b5dwl7i4y" path="res://Assets/Cool Animations/beam animation/beamupgrade14.png" id="20_qyroe"]
+[ext_resource type="Texture2D" uid="uid://wkbal1tokas2" path="res://Assets/Cool Animations/beam animation/beamupgrade15.png" id="21_ejfuo"]
+[ext_resource type="Texture2D" uid="uid://c1jqdgcy8gyi1" path="res://Assets/Cool Animations/beam animation/beamupgrade16.png" id="22_swlkb"]
+[ext_resource type="Texture2D" uid="uid://stkqk4wgb6jt" path="res://Assets/Cool Animations/beam animation/beamupgrade17.png" id="23_rw5ev"]
+[ext_resource type="Texture2D" uid="uid://b4vj2t7p2obot" path="res://Assets/Cool Animations/beam animation/beamupgrade18.png" id="24_avixx"]
+[ext_resource type="Texture2D" uid="uid://cgsitc51h5xfh" path="res://Assets/Cool Animations/beam animation/beamupgrade19.png" id="25_13veb"]
+[ext_resource type="Texture2D" uid="uid://bjbyqmdll2noh" path="res://Assets/Cool Animations/beam animation/beamupgrade20.png" id="26_nt02q"]
+[ext_resource type="Texture2D" uid="uid://sfl1c0hwd15h" path="res://Assets/Cool Animations/beam animation/beamupgrade21.png" id="27_ndq3t"]
+[ext_resource type="Texture2D" uid="uid://bgsde4fhlsxuo" path="res://Assets/Cool Animations/beam animation/beamupgrade22.png" id="28_rpu4d"]
+[ext_resource type="Texture2D" uid="uid://byjx60dq615h0" path="res://Assets/Cool Animations/beam animation/beamupgrade23.png" id="29_cc1gb"]
+[ext_resource type="Texture2D" uid="uid://xat5ntqr4c34" path="res://Assets/Cool Animations/beam animation/beamupgrade24.png" id="30_8m70p"]
+[ext_resource type="Texture2D" uid="uid://ci4l2fiig1vla" path="res://Assets/Cool Animations/beam animation/beamupgrade25.png" id="31_5u5in"]
+[ext_resource type="Texture2D" uid="uid://cuibynm04252d" path="res://Assets/Cool Animations/beam animation/beamupgrade26.png" id="32_eb5p3"]
+[ext_resource type="Texture2D" uid="uid://b3a8meuw0ghmh" path="res://Assets/sprites/Copilot_20260520_203257.png" id="33_niw4g"]
+[ext_resource type="Texture2D" uid="uid://ciov2462n8h2i" path="res://Assets/Cool Animations/Smoke/Smoke1.png" id="35_mssxr"]
+[ext_resource type="Texture2D" uid="uid://d5lvw7ukd0ki" path="res://Assets/Cool Animations/Smoke/Smoke2.png" id="36_1rntg"]
+[ext_resource type="Texture2D" uid="uid://clf7unloqlfee" path="res://Assets/Cool Animations/Smoke/Smoke3.png" id="37_u8g6j"]
+[ext_resource type="Texture2D" uid="uid://ba13i8hl11r0o" path="res://Assets/Cool Animations/Smoke/Smoke4.png" id="38_b2avq"]
+[ext_resource type="Texture2D" uid="uid://cfb5g2lvb3r3c" path="res://Assets/Cool Animations/Smoke/Smoke5.png" id="39_jx3jf"]
+[ext_resource type="Texture2D" uid="uid://dhthds0llblfa" path="res://Assets/Cool Animations/Smoke/Smoke6.png" id="40_j64rx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1anyi"]
 size = Vector2(45, 67)
@@ -52,83 +84,116 @@ physics_layer_0/collision_mask = 7
 sources/0 = SubResource("TileSetAtlasSource_1anyi")
 sources/2 = SubResource("TileSetAtlasSource_j6k7p")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kds23"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"beam",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3h2na"]
-atlas = ExtResource("5_11ldt")
-region = Rect2(0, 0, 320, 352)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_evkdt"]
-atlas = ExtResource("5_11ldt")
-region = Rect2(320, 0, 320, 352)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qlmt0"]
-atlas = ExtResource("5_11ldt")
-region = Rect2(640, 0, 320, 352)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rv3c6"]
-atlas = ExtResource("5_11ldt")
-region = Rect2(960, 0, 320, 352)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qsg0i"]
-atlas = ExtResource("5_11ldt")
-region = Rect2(1280, 0, 320, 352)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_86nsj"]
-atlas = ExtResource("5_11ldt")
-region = Rect2(1600, 0, 320, 352)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lop3o"]
-atlas = ExtResource("5_11ldt")
-region = Rect2(1920, 0, 320, 352)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lwn84"]
-atlas = ExtResource("5_11ldt")
-region = Rect2(2240, 0, 320, 352)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bo8k3"]
-atlas = ExtResource("5_11ldt")
-region = Rect2(2560, 0, 320, 352)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_c8yuy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3h2na")
+"texture": ExtResource("35_mssxr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_evkdt")
+"texture": ExtResource("36_1rntg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qlmt0")
+"texture": ExtResource("37_u8g6j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rv3c6")
+"texture": ExtResource("38_b2avq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qsg0i")
+"texture": ExtResource("39_jx3jf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_86nsj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lop3o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lwn84")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bo8k3")
+"texture": ExtResource("40_j64rx")
 }],
 "loop": true,
 "name": &"activate",
-"speed": 60.0
+"speed": 14.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kds23"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_nj643")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_niw4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rvi4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_odh2o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mj682")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_540qt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qeok2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mssxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1rntg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_u8g6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_b2avq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_jx3jf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_j64rx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_qyroe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ejfuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_swlkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_rw5ev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_avixx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_13veb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_nt02q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ndq3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_rpu4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_cc1gb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_8m70p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_5u5in")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_eb5p3")
+}],
+"loop": true,
+"name": &"beam",
+"speed": 30.0
 }]
 
 [node name="UpgradeChamber" type="Node2D" unique_id=503481107]
@@ -145,10 +210,9 @@ centered = false
 position = Vector2(47, 133)
 
 [node name="AnimatedSprite2D" parent="Player" index="6" unique_id=1655699272]
+position = Vector2(0, 7)
 animation = &"jumping"
 autoplay = "jumping"
-frame = 0
-frame_progress = 0.0
 
 [node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("2_nuorc")]
 target_path = NodePath("../Player")
@@ -157,7 +221,7 @@ target_path = NodePath("../Player")
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1685637008]
-position = Vector2(46.5, 132.5)
+position = Vector2(47, 131)
 shape = SubResource("RectangleShape2D_1anyi")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=132156048]
@@ -169,26 +233,32 @@ position = Vector2(347, 129)
 collision_layer = 128
 collision_mask = 2
 
-[node name="Beam" type="Node2D" parent="." unique_id=1666012602]
-position = Vector2(47, 123)
-scale = Vector2(0.32, 0.32)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Beam" unique_id=711015503]
-position = Vector2(-146.875, -384.375)
-scale = Vector2(3.125, 3.125)
-sprite_frames = SubResource("SpriteFrames_kds23")
-animation = &"beam"
-autoplay = "beam"
-
 [node name="UpgradeMachine" type="Node2D" parent="." unique_id=730803477]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UpgradeMachine" unique_id=902323379]
 position = Vector2(47, 123)
-scale = Vector2(0.32, 0.32)
 sprite_frames = SubResource("SpriteFrames_c8yuy")
 animation = &"activate"
 autoplay = "activate"
 
 [node name="StopPoint" type="Node2D" parent="." unique_id=1798742526]
+position = Vector2(47, 133)
+
+[node name="Beam" type="Node2D" parent="." unique_id=1666012602]
+position = Vector2(47, 123)
+scale = Vector2(0.32, 0.32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Beam" unique_id=711015503]
+position = Vector2(4.7683716e-07, 56.249985)
+scale = Vector2(1.1500001, 0.95524025)
+sprite_frames = SubResource("SpriteFrames_kds23")
+animation = &"beam"
+autoplay = "beam"
+frame_progress = 0.53998005
+
+[node name="Copilot20260520203257" type="Sprite2D" parent="Beam" unique_id=1071452764]
+position = Vector2(0, 65.625)
+scale = Vector2(0.8613281, 0.7864583)
+texture = ExtResource("33_niw4g")
 
 [editable path="Player"]
