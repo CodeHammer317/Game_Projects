@@ -1895,7 +1895,7 @@ shape = SubResource("RectangleShape2D_xpcdj")
 debug_color = Color(0.7529412, 0.59607846, 0.03529412, 0.6156863)
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=212918987]
-position = Vector2(20, 7)
+position = Vector2(31, -10)
 
 [node name="Health" type="Node" parent="." unique_id=1695275048]
 script = ExtResource("100_pf3rq")

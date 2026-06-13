@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b8o5hlb2vs22m"]
+
+[ext_resource type="Script" uid="uid://dvd0tli4piev7" path="res://Scenes/FX/cat_projectile.gd" id="1_geq77"]
+[ext_resource type="Texture2D" uid="uid://g57732nu07p5" path="res://Assets/fx/OrangeCatProjectile.png" id="1_xc87w"]
+[ext_resource type="AudioStream" uid="uid://dyx3r33iwll8u" path="res://Assets/Audio/AngryCat.wav" id="3_lrsb6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jnjcr"]
+height = 64.0
+
+[node name="CatProjectile" type="Area2D" unique_id=834596997]
+scale = Vector2(0.25, 0.25)
+collision_layer = 16
+collision_mask = 33
+script = ExtResource("1_geq77")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=637239963]
+rotation = -3.1415927
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_xc87w")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=973604757]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_jnjcr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=969647298]
+
+[node name="CatMeowSound" type="AudioStreamPlayer" parent="." unique_id=1849171267]
+stream = ExtResource("3_lrsb6")
+pitch_scale = 1.31

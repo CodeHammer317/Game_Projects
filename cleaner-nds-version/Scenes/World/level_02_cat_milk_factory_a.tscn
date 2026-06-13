@@ -1,0 +1,43 @@
+[gd_scene format=4 uid="uid://joacfcmjayfy"]
+
+[ext_resource type="Texture2D" uid="uid://cbflwr7wmls4k" path="res://Assets/tilesets/super_pixel_laboratory/super_pixel_laboratory/style_A/spritesheet/spritesheet.png" id="1_wxqje"]
+[ext_resource type="Texture2D" uid="uid://dyfdcq2515vwe" path="res://Assets/tilesets/catbossarea.png" id="2_ktjua"]
+[ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="2_nu0ct"]
+[ext_resource type="PackedScene" uid="uid://dm4vf1f5nauyf" path="res://Scenes/Enemy/cat_overlord.tscn" id="3_ktjua"]
+[ext_resource type="PackedScene" uid="uid://cuhdpfcm440hu" path="res://Scenes/World/camera_2d.tscn" id="4_txywj"]
+[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="5_nu0ct"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mlc6t"]
+texture = ExtResource("1_wxqje")
+17:15/0 = 0
+17:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_v01rq"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 127
+sources/0 = SubResource("TileSetAtlasSource_mlc6t")
+
+[node name="Level_02_CatMilkFactory_A" type="Node2D" unique_id=1627675750]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1884125919]
+position = Vector2(0, -16)
+texture = ExtResource("2_ktjua")
+centered = false
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=496826875]
+tile_map_data = PackedByteArray("AAAAAAoAAAARAA8AAAABAAoAAAARAA8AAAACAAoAAAARAA8AAAADAAoAAAARAA8AAAAEAAoAAAARAA8AAAAFAAoAAAARAA8AAAAGAAoAAAARAA8AAAAHAAoAAAARAA8AAAAIAAoAAAARAA8AAAAJAAoAAAARAA8AAAAKAAoAAAARAA8AAAALAAoAAAARAA8AAAAMAAoAAAARAA8AAAANAAoAAAARAA8AAAAOAAoAAAARAA8AAAAPAAoAAAARAA8AAAAQAAoAAAARAA8AAAARAAoAAAARAA8AAAASAAoAAAARAA8AAAATAAoAAAARAA8AAAAUAAoAAAARAA8AAAAVAAoAAAARAA8AAAAWAAoAAAARAA8AAAAXAAoAAAARAA8AAAAYAAoAAAARAA8AAAAZAAoAAAARAA8AAAAaAAoAAAARAA8AAAAbAAoAAAARAA8AAAAcAAoAAAARAA8AAAAdAAoAAAARAA8AAAAeAAoAAAARAA8AAAAeAAkAAAARAA8AAAAfAAkAAAARAA8AAAAgAAkAAAARAA8AAAAhAAoAAAARAA8AAAAiAAoAAAARAA8AAAAjAAoAAAARAA8AAAAkAAoAAAARAA8AAAAlAAoAAAARAA8AAAAmAAoAAAARAA8AAAAnAAoAAAARAA8AAAAoAAoAAAARAA8AAAApAAoAAAARAA8AAAAqAAoAAAARAA8AAAArAAoAAAARAA8AAAAsAAoAAAARAA8AAAAtAAoAAAARAA8AAAAuAAoAAAARAA8AAAAvAAoAAAARAA8AAAAwAAoAAAARAA8AAAAxAAoAAAARAA8AAAAyAAoAAAARAA8AAAAzAAoAAAARAA8AAAA0AAoAAAARAA8AAAA1AAoAAAARAA8AAAA2AAoAAAARAA8AAAA3AAoAAAARAA8AAAA=")
+tile_set = SubResource("TileSet_v01rq")
+
+[node name="Player" parent="." unique_id=1715600248 instance=ExtResource("2_nu0ct")]
+position = Vector2(32, 128)
+
+[node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("4_txywj")]
+limit_right = 760
+target_path = NodePath("../Player")
+
+[node name="CatOverlord" parent="." unique_id=1571155014 instance=ExtResource("3_ktjua")]
+position = Vector2(431.99997, 127.99999)
+scale = Vector2(0.18, 0.18)
+
+[node name="Hud" parent="." unique_id=795795287 instance=ExtResource("5_nu0ct")]
+player_path = NodePath("../Player")
