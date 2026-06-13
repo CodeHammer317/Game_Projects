@@ -20,7 +20,7 @@ sources/0 = SubResource("TileSetAtlasSource_mlc6t")
 [node name="Level_02_CatMilkFactory_A" type="Node2D" unique_id=1627675750]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1884125919]
-position = Vector2(0, -16)
+position = Vector2(0, -40)
 texture = ExtResource("2_ktjua")
 centered = false
 
