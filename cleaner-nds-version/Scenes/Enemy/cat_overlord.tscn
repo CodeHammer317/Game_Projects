@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dm4vf1f5nauyf"]
 
-[ext_resource type="Script" uid="uid://c4mlxegywk76d" path="res://cat_overlord.gd" id="1_iogyu"]
+[ext_resource type="Script" uid="uid://c4mlxegywk76d" path="res://Scripts/cat_overlord.gd" id="1_iogyu"]
 [ext_resource type="PackedScene" uid="uid://b8o5hlb2vs22m" path="res://Scenes/FX/cat_projectile.tscn" id="2_xbpsx"]
 [ext_resource type="Texture2D" uid="uid://sxabqgy7lq2g" path="res://Assets/sprites/CatOverlord shooting.png" id="3_bf7dv"]
 
