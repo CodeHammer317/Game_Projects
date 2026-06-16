@@ -20,7 +20,8 @@ sources/0 = SubResource("TileSetAtlasSource_mlc6t")
 [node name="Level_02_CatMilkFactory_A" type="Node2D" unique_id=1627675750]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1884125919]
-position = Vector2(0, -40)
+position = Vector2(0, -7.6293945e-06)
+scale = Vector2(1.6491861, 1.8)
 texture = ExtResource("2_ktjua")
 centered = false
 
@@ -32,7 +33,8 @@ tile_set = SubResource("TileSet_v01rq")
 position = Vector2(32, 128)
 
 [node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("4_txywj")]
-limit_right = 760
+limit_right = 640
+limit_bottom = 360
 target_path = NodePath("../Player")
 
 [node name="CatOverlord" parent="." unique_id=1571155014 instance=ExtResource("3_ktjua")]

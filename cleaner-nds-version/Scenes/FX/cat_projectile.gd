@@ -107,9 +107,6 @@ func _on_area_entered(area: Area2D) -> void:
 func _apply_hit_area(area: Area2D) -> void:
 	if _already_hit(area):
 		return
-
-
-
 	var info := DamageInfo.new(
 		damage,
 		Vector2(_direction.x * knockback.x, knockback.y),

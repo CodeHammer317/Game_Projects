@@ -1904,6 +1904,7 @@ use_persistent_player_state = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1655699272]
 sprite_frames = SubResource("SpriteFrames_olv1t")
-animation = &"get_hit"
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.55462193
 offset = Vector2(0, -32)
