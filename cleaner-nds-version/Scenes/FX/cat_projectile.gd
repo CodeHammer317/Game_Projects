@@ -15,8 +15,9 @@ var _owner: Node = null
 var _time_left: float = 0.0
 var _hit_targets: Dictionary = {}
 
-@onready var sprite: Sprite2D = $Sprite2D
-@onready var notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
+
+@onready var sprite: Sprite2D = get_node_or_null("Sprite2D")
+@onready var notifier: VisibleOnScreenNotifier2D = get_node_or_null("VisibleOnScreenNotifier2D")
 @onready var meow_sound: AudioStreamPlayer = get_node_or_null("CatMeowSound")
 
 
@@ -46,7 +47,11 @@ func setup(direction: Vector2, owner: Node) -> void:
 	else:
 		_direction = direction.normalized()
 
-	_owner = owner
+	if is_instance_valid(owner):
+		_owner = owner
+	else:
+		_owner = null
+
 	_build_velocity()
 	_update_visual_facing()
 
@@ -72,7 +77,7 @@ func _on_body_entered(body: Node) -> void:
 	if body == null:
 		return
 
-	if body == _owner:
+	if _is_owner(body):
 		return
 
 	if body.has_method("apply_damage"):
@@ -86,7 +91,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if area == null:
 		return
 
-	if area == _owner:
+	if _is_owner(area):
 		return
 
 	if area.has_method("apply_hit"):
@@ -96,7 +101,7 @@ func _on_area_entered(area: Area2D) -> void:
 	var parent := area.get_parent()
 
 	if parent != null:
-		if parent != _owner:
+		if not _is_owner(parent):
 			if parent.has_method("apply_damage"):
 				_apply_hit_to(parent)
 				return
@@ -105,13 +110,13 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func _apply_hit_area(area: Area2D) -> void:
+	if not is_instance_valid(area):
+		return
+
 	if _already_hit(area):
 		return
-	var info := DamageInfo.new(
-		damage,
-		Vector2(_direction.x * knockback.x, knockback.y),
-		_owner
-	)
+
+	var info := _make_damage_info()
 
 	area.apply_hit(info)
 	_mark_hit(area)
@@ -119,25 +124,58 @@ func _apply_hit_area(area: Area2D) -> void:
 
 
 func _apply_hit_to(target: Node) -> void:
+	if not is_instance_valid(target):
+		return
+
 	if _already_hit(target):
 		return
 
-	var info := DamageInfo.new(
-		damage,
-		Vector2(_direction.x * knockback.x, knockback.y),
-		_owner
-	)
+	var info := _make_damage_info()
 
 	target.apply_damage(info)
 	_mark_hit(target)
 	queue_free()
 
 
+func _make_damage_info() -> DamageInfo:
+	var safe_owner: Node = null
+
+	if is_instance_valid(_owner):
+		safe_owner = _owner
+
+	var final_knockback := Vector2(
+		_direction.x * knockback.x,
+		knockback.y
+	)
+
+	return DamageInfo.new(
+		damage,
+		final_knockback,
+		safe_owner
+	)
+
+
+func _is_owner(node: Node) -> bool:
+	if node == null:
+		return false
+
+	if not is_instance_valid(_owner):
+		return false
+
+	return node == _owner
+
+
 func _already_hit(target: Object) -> bool:
+	if not is_instance_valid(target):
+		return true
+
 	return _hit_targets.has(target)
 
 
 func _mark_hit(target: Object) -> void:
+	if not is_instance_valid(target):
+		return
+
 	_hit_targets[target] = true
 
 

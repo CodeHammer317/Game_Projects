@@ -3,39 +3,47 @@ class_name Player
 
 signal fired_bullet(bullet: Node)
 signal died
+signal game_over
 
-@export var move_speed: float = 120.0
+
+@export var move_speed: float = 200.0
 @export var acceleration: float = 900.0
 @export var air_acceleration: float = 700.0
 @export var friction: float = 1000.0
 
-@export var jump_velocity: float = -300.0
+@export var jump_velocity: float = -350.0
 @export var gravity: float = 900.0
 @export var max_fall_speed: float = 700.0
 
 @export var fire_cooldown: float = 0.18
 @export var shoot_anim_duration: float = 0.10
 @export var bullet_scene: PackedScene
-@export var muzzle_offset_right: Vector2 = Vector2(10.0, -2.0)
+@export var muzzle_offset_right: Vector2 = Vector2(20.0, -4.0)
 
 @export var punch_hitbox_scene: PackedScene
 @export var punch_cooldown: float = 0.28
 @export var punch_anim_duration: float = 0.18
-@export var punch_offset_right: Vector2 = Vector2(16.0, -2.0)
+@export var punch_offset_right: Vector2 = Vector2(40.0, -6.0)
 
 @export var hitstun_duration: float = 0.14
 @export var damage_invuln_duration: float = 0.30
 @export var hit_friction: float = 700.0
 
-@export var hit_flash_color: Color = Color(1.0, 1.0, 0.031, 0.671)
+@export var hit_flash_color: Color = Color(2.181, 1.907, 1.283, 0.863)
 @export var hit_flash_count: int = 2
 @export var hit_flash_interval: float = 0.25
 
 @export var death_blink_duration: float = 0.60
 @export var death_blink_interval: float = 0.1
 
-@export var dash_speed: float = 240.0
-@export var dash_time: float = 0.14
+@export_group("Respawn")
+@export var max_deaths_before_game_over: int = 3
+@export var respawn_invuln_duration: float = 2.0
+@export var respawn_flash_interval: float = 0.12
+@export var restore_health_on_respawn: bool = true
+
+@export var dash_speed: float = 350.0
+@export var dash_time: float = 0.20
 @export var dash_cooldown: float = 0.35
 @export var allow_air_dash: bool = true
 @export var dash_stops_vertical_velocity: bool = true
@@ -75,12 +83,18 @@ var control_locked: bool = false
 var has_double_jump: bool = false
 var has_wall_slide: bool = false
 var has_charge_shot: bool = false
+
 var _punch_timer: float = 0.0
 var _punch_anim_timer: float = 0.0
 
 var _is_dead: bool = false
 var _is_dying: bool = false
+var _is_game_over: bool = false
 var _is_hit_flashing: bool = false
+var _is_respawn_flashing: bool = false
+
+var _death_count: int = 0
+var _death_position: Vector2 = Vector2.ZERO
 
 var _hitstun_timer: float = 0.0
 var _invuln_timer: float = 0.0
@@ -121,7 +135,10 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
-		
+
+	if _is_game_over:
+		return
+
 	if _is_dead:
 		return
 
@@ -205,7 +222,7 @@ func _handle_dash() -> void:
 
 
 func _can_start_dash() -> bool:
-	if _is_dead or _is_dying:
+	if _is_dead or _is_dying or _is_game_over:
 		return false
 
 	if _hitstun_timer > 0.0:
@@ -373,7 +390,7 @@ func _handle_shoot() -> void:
 
 
 func _can_shoot() -> bool:
-	if _is_dead or _is_dying:
+	if _is_dead or _is_dying or _is_game_over:
 		return false
 
 	if _hitstun_timer > 0.0:
@@ -427,7 +444,7 @@ func _handle_punch() -> void:
 
 
 func _can_punch() -> bool:
-	if _is_dead or _is_dying:
+	if _is_dead or _is_dying or _is_game_over:
 		return false
 
 	if _hitstun_timer > 0.0:
@@ -474,7 +491,7 @@ func _handle_special_assist() -> void:
 	if mattt_assist_scene == null:
 		return
 
-	special_meter = special_meter_max
+	special_meter = 0
 
 	var assist := mattt_assist_scene.instantiate() as Node2D
 	if assist == null:
@@ -612,9 +629,9 @@ func _update_animation() -> void:
 
 	if is_punching:
 		if not is_on_floor():
-			_play_animation_with_fallback("punch_C", "jump")
+			_play_animation_with_fallback("left_punch", "jump")
 		else:
-			_play_animation_with_fallback("punch_C", "idle")
+			_play_animation_with_fallback("left_punch", "idle")
 		return
 
 	if not is_on_floor():
@@ -682,7 +699,7 @@ func _snap_visuals_to_pixel() -> void:
 
 
 func apply_damage(info: DamageInfo) -> void:
-	if _is_dead or _is_dying:
+	if _is_dead or _is_dying or _is_game_over:
 		return
 
 	if _invuln_timer > 0.0:
@@ -696,7 +713,7 @@ func apply_damage(info: DamageInfo) -> void:
 
 
 func _on_damaged(info: DamageInfo) -> void:
-	if _is_dead or _is_dying:
+	if _is_dead or _is_dying or _is_game_over:
 		return
 
 	_is_dashing = false
@@ -726,23 +743,25 @@ func _on_health_died() -> void:
 	kill()
 
 
-func is_facing_left() -> bool:
-	return _facing_left
-
-
 func kill() -> void:
-	if _is_dead or _is_dying:
+	if _is_dead or _is_dying or _is_game_over:
 		return
+
+	_death_count += 1
+	_death_position = global_position
 
 	_is_dead = true
 	_is_dying = true
 	_is_dashing = false
 	_is_wall_sliding = false
+	_is_hit_flashing = false
 
 	_hitstun_timer = 0.0
 	_invuln_timer = 0.0
 	_fire_timer = 0.0
 	_shoot_anim_timer = 0.0
+	_punch_timer = 0.0
+	_punch_anim_timer = 0.0
 	_dash_timer = 0.0
 	_dash_cooldown_timer = 0.0
 	_coyote_timer = 0.0
@@ -753,11 +772,98 @@ func kill() -> void:
 	_play_animation_if_available("death")
 	died.emit()
 
-	call_deferred("_run_death_blink")
+	await _run_death_blink()
+
+	if _death_count >= max_deaths_before_game_over:
+		_is_game_over = true
+		game_over.emit()
+		print("Player game over.")
+		return
+
+	respawn()
+
+
+func respawn() -> void:
+	global_position = _death_position
+	velocity = Vector2.ZERO
+
+	_is_dead = false
+	_is_dying = false
+	_is_dashing = false
+	_is_wall_sliding = false
+	_is_hit_flashing = false
+
+	_hitstun_timer = 0.0
+	_invuln_timer = respawn_invuln_duration
+	_fire_timer = 0.0
+	_shoot_anim_timer = 0.0
+	_punch_timer = 0.0
+	_punch_anim_timer = 0.0
+	_dash_timer = 0.0
+	_dash_cooldown_timer = 0.0
+	_coyote_timer = 0.0
+	_jump_buffer_timer = 0.0
+	_wall_jump_lock_timer = 0.0
+	_dust_spawn_timer = 0.0
+
+	if restore_health_on_respawn:
+		_restore_health_for_respawn()
+
+	if sprite != null:
+		sprite.visible = true
+		sprite.modulate = Color.WHITE
+
+	_play_animation_if_available("idle")
+
+	if not _is_respawn_flashing:
+		call_deferred("_run_respawn_flash")
+
+
+func _restore_health_for_respawn() -> void:
+	if health == null:
+		return
+
+	if health.has_method("heal_to_full"):
+		health.heal_to_full()
+		return
+
+	if health.has_method("reset"):
+		health.reset()
+		return
+
+	if "current_health" in health and "max_health" in health:
+		health.current_health = health.max_health
+
+
+func _run_respawn_flash() -> void:
+	var target: CanvasItem = sprite
+
+	if target == null:
+		target = self
+
+	_is_respawn_flashing = true
+
+	var elapsed: float = 0.0
+	var visible_state: bool = true
+
+	while elapsed < respawn_invuln_duration and is_instance_valid(target):
+		if _is_dead or _is_game_over:
+			break
+
+		visible_state = not visible_state
+		target.visible = visible_state
+
+		await get_tree().create_timer(respawn_flash_interval).timeout
+		elapsed += respawn_flash_interval
+
+	if is_instance_valid(target):
+		target.visible = true
+
+	_is_respawn_flashing = false
 
 
 func _run_hit_flash() -> void:
-	if _is_dead or _is_dying:
+	if _is_dead or _is_dying or _is_game_over:
 		return
 
 	var target: CanvasItem = sprite
@@ -772,7 +878,7 @@ func _run_hit_flash() -> void:
 		if not is_instance_valid(target):
 			break
 
-		if _is_dead or _is_dying:
+		if _is_dead or _is_dying or _is_game_over:
 			break
 
 		target.modulate = hit_flash_color
@@ -781,14 +887,14 @@ func _run_hit_flash() -> void:
 		if not is_instance_valid(target):
 			break
 
-		if _is_dead or _is_dying:
+		if _is_dead or _is_dying or _is_game_over:
 			break
 
 		target.modulate = normal
 		await get_tree().create_timer(hit_flash_interval).timeout
 
 	if is_instance_valid(target):
-		if not _is_dead and not _is_dying:
+		if not _is_dead and not _is_dying and not _is_game_over:
 			target.modulate = normal
 
 	_is_hit_flashing = false
@@ -822,8 +928,24 @@ func _run_death_blink() -> void:
 		var reset_color := target.modulate
 		reset_color.a = 1.0
 		target.modulate = reset_color
+		target.visible = true
 
-	queue_free()
+
+func is_facing_left() -> bool:
+	return _facing_left
+
+
+func get_death_count() -> int:
+	return _death_count
+
+
+func get_lives_remaining() -> int:
+	return max_deaths_before_game_over - _death_count
+
+
+func reset_deaths() -> void:
+	_death_count = 0
+	_is_game_over = false
 
 
 func _get_facing_sign_from_input() -> int:
@@ -837,6 +959,8 @@ func _get_facing_sign_from_input() -> int:
 		return -1
 
 	return 1
+
+
 func set_control_locked(value: bool) -> void:
 	control_locked = value
 	velocity = Vector2.ZERO
