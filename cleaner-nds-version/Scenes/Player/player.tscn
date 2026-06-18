@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dw0tnpcqofe4t" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0000.png" id="1_gpqv3"]
 [ext_resource type="Texture2D" uid="uid://cypr6sjaoqaa1" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0001.png" id="2_7ve27"]
 [ext_resource type="PackedScene" uid="uid://yxy84onu0e8" path="res://Scenes/FX/player_bullet.tscn" id="2_plnq1"]
-[ext_resource type="PackedScene" uid="uid://bgk6qsvlkbjal" path="res://Scenes/FX/player_punch_hitbox.tscn" id="3_i1wx2"]
 [ext_resource type="Texture2D" uid="uid://baxefavlctli8" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0002.png" id="3_ldt7q"]
 [ext_resource type="Texture2D" uid="uid://bq5rqy0um0t4s" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0003.png" id="4_7bej3"]
 [ext_resource type="PackedScene" uid="uid://ctgyhfpw6awxh" path="res://Scenes/FX/dust_trail.tscn" id="4_jmbrt"]
@@ -899,6 +898,18 @@ region = Rect2(1024, 0, 128, 128)
 atlas = ExtResource("98_6a86w")
 region = Rect2(256, 128, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uay3u"]
+atlas = ExtResource("98_6a86w")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v35bi"]
+atlas = ExtResource("98_6a86w")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc3yc"]
+atlas = ExtResource("98_6a86w")
+region = Rect2(256, 128, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_oesaj"]
 atlas = ExtResource("98_6a86w")
 region = Rect2(0, 768, 128, 128)
@@ -1493,6 +1504,15 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_slg74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uay3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v35bi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc3yc")
 }],
 "loop": true,
 "name": &"jump",
@@ -1654,7 +1674,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roundhouse_kick",
-"speed": 30.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1857,12 +1877,9 @@ physics_interpolation_mode = 2
 collision_layer = 2
 collision_mask = 129
 script = ExtResource("1_7ve27")
-move_speed = 200.0
 bullet_scene = ExtResource("2_plnq1")
-punch_hitbox_scene = ExtResource("3_i1wx2")
 dust_trail_scene = ExtResource("4_jmbrt")
 mattt_assist_scene = ExtResource("5_6a86w")
-special_meter = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1032869655]
 position = Vector2(2, 4.5)
@@ -1905,8 +1922,8 @@ use_persistent_player_state = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1655699272]
 sprite_frames = SubResource("SpriteFrames_olv1t")
-animation = &"left_punch"
+animation = &"jump"
 autoplay = "idle"
-frame = 6
-frame_progress = 1.0
+frame = 3
+frame_progress = 0.7947395
 offset = Vector2(0, -32)
