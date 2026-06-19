@@ -7,15 +7,29 @@
 [ext_resource type="AudioStream" uid="uid://cdqht4tbikj2g" path="res://Assets/Audio/pickup2.ogg" id="6_824g0"]
 [ext_resource type="AudioStream" uid="uid://yswk7slevwiw" path="res://Assets/Audio/freesound_community-game-start-6104 (1).mp3" id="6_dsf7a"]
 [ext_resource type="AudioStream" uid="uid://da3rx4yn78uog" path="res://Assets/Audio/idoberg-metal-bass-amp-drums-loop-413373.mp3" id="7_dsf7a"]
+[ext_resource type="AudioStream" uid="uid://desnjgfivbu1q" path="res://Assets/Audio/hurt1.ogg" id="8_824g0"]
+
+[sub_resource type="SystemFont" id="SystemFont_824g0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uv4ns"]
+font = SubResource("SystemFont_824g0")
+font_size = 32
+font_color = Color(1, 1, 1, 0.32941177)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_dsf7a"]
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_dsf7a"]
+font_size = 26
 
 [sub_resource type="LabelSettings" id="LabelSettings_824g0"]
+font_size = 18
+font_color = Color(0.46229059, 0.46229059, 0.46229059, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tjte5"]
+font_size = 26
 
 [node name="TitleScreen" type="Control" unique_id=380044311]
 layout_mode = 3
@@ -28,17 +42,29 @@ script = ExtResource("1_xsyet")
 
 [node name="Background" type="TextureRect" parent="." unique_id=218822866]
 layout_mode = 0
-offset_right = 325.0
-offset_bottom = 179.0
+offset_right = 640.0
+offset_bottom = 360.0
 texture = ExtResource("2_dnytt")
 expand_mode = 1
 
-[node name="Logo" type="TextureRect" parent="." unique_id=1278079265]
+[node name="Label" type="Label" parent="." unique_id=811937859]
 layout_mode = 0
-offset_left = 94.0
-offset_top = -3.0
-offset_right = 231.0
-offset_bottom = 118.0
+offset_left = 261.0
+offset_top = 307.0
+offset_right = 357.0
+offset_bottom = 352.0
+text = "DEMO"
+label_settings = SubResource("LabelSettings_uv4ns")
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1278079265]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_right = 135.5
+offset_bottom = 241.0
+grow_horizontal = 2
 texture = ExtResource("3_kyvdy")
 expand_mode = 1
 
@@ -49,10 +75,10 @@ offset_bottom = 23.0
 
 [node name="MenuContainer" type="VBoxContainer" parent="." unique_id=2053710857]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 128.0
-offset_right = 214.0
-offset_bottom = 205.0
+offset_left = 253.0
+offset_top = 255.0
+offset_right = 540.0
+offset_bottom = 332.0
 scale = Vector2(0.6400012, 0.56)
 
 [node name="1PStart" type="Label" parent="MenuContainer" unique_id=368792001]
@@ -64,9 +90,9 @@ label_settings = SubResource("LabelSettings_dsf7a")
 
 [node name="2PStart" type="Label" parent="MenuContainer" unique_id=125267998]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_dsf7a")
+theme_override_colors/font_color = Color(0.45452422, 0.45452428, 0.45452422, 1)
 theme_override_font_sizes/font_size = 6
-text = "2 players"
+text = "2 players - Not available in the demo."
 label_settings = SubResource("LabelSettings_824g0")
 
 [node name="Exit" type="Label" parent="MenuContainer" unique_id=1381872982]
@@ -77,10 +103,12 @@ text = "Exit"
 label_settings = SubResource("LabelSettings_tjte5")
 
 [node name="Selector" type="Sprite2D" parent="MenuContainer" unique_id=164399916]
-scale = Vector2(0.1, 0.1)
+position = Vector2(11.418726, 13.142859)
+scale = Vector2(0.18716584, 0.20109893)
 texture = ExtResource("4_bnqst")
 
 [node name="FadeLayer" type="ColorRect" parent="." unique_id=1064865099]
+visible = false
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 180.0
@@ -105,8 +133,12 @@ volume_db = -16.298
 stream = ExtResource("6_dsf7a")
 volume_db = -7.761
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=1219278294]
+[node name="ScreenSoundtrack" type="AudioStreamPlayer" parent="." unique_id=1219278294]
 stream = ExtResource("7_dsf7a")
 volume_db = -7.762
 autoplay = true
 parameters/looping = true
+
+[node name="SFX_Unavailable" type="AudioStreamPlayer" parent="." unique_id=758782621]
+stream = ExtResource("8_824g0")
+pitch_scale = 0.27
