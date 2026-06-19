@@ -6,7 +6,7 @@ class_name MatttAssist
 
 @export var spawn_offset: Vector2 = Vector2(0.0, 0.0)
 @export var hover_offset: Vector2 = Vector2(0.0, -100.0)
-@export var hover_move_time: float = 0.35
+@export var hover_move_time: float = 0.5
 @export var head_shake_time: float = 0.75
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D

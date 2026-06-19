@@ -12,7 +12,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_ga1cm")
 }],
-"loop": true,
+"loop": false,
 "name": &"appear",
 "speed": 5.0
 }, {
@@ -20,7 +20,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_ga1cm")
 }],
-"loop": true,
+"loop": false,
 "name": &"disappear",
 "speed": 5.0
 }, {
@@ -50,8 +50,8 @@ fire_column_scene = ExtResource("2_uadru")
 position = Vector2(0, -2.2737368e-13)
 scale = Vector2(0.33, 0.33)
 sprite_frames = SubResource("SpriteFrames_uadru")
-animation = &"appear"
-frame_progress = 0.5371393
+animation = &"head_shake"
+autoplay = "appear"
 
 [node name="FireSpawnPoint" type="Marker2D" parent="." unique_id=901470503]
 position = Vector2(0, -64)

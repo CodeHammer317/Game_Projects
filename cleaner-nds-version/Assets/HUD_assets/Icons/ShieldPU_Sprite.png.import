@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpwrnhtayv21r"
-path="res://.godot/imported/BombPU_Sprite.png-921de03bd6fc9a546fab7a081afb6fb6.ctex"
+uid="uid://c8l450rjir2wi"
+path="res://.godot/imported/ShieldPU_Sprite.png-80e8d0a3fae5d416bbb80ee967997e4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/BombPU_Sprite.png"
-dest_files=["res://.godot/imported/BombPU_Sprite.png-921de03bd6fc9a546fab7a081afb6fb6.ctex"]
+source_file="res://Assets/HUD_assets/Icons/ShieldPU_Sprite.png"
+dest_files=["res://.godot/imported/ShieldPU_Sprite.png-80e8d0a3fae5d416bbb80ee967997e4a.ctex"]
 
 [params]
 

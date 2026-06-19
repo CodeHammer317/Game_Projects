@@ -7,7 +7,7 @@ extends Control
 #@export var auto_advance_time: float = 60.0
 
 
-@onready var label = $ColorRect/TextLabel
+@onready var label = $TextLabel
 @onready var audio = $AudioStreamPlayer
 @onready var skip_label = $SkipLabel
 

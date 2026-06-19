@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cuhdpfcm440hu" path="res://Scenes/World/camera_2d.tscn" id="4_n6oji"]
 [ext_resource type="Texture2D" uid="uid://clabx45v2ml3w" path="res://Assets/tilesets/SubwayColumn.png" id="5_ewi5s"]
 [ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="8_dgd1k"]
-[ext_resource type="Texture2D" uid="uid://bq2afjabp0m2i" path="res://Assets/Icons/healthPU_Sprite.png" id="9_w4dtl"]
+[ext_resource type="Texture2D" uid="uid://bq2afjabp0m2i" path="res://Assets/HUD_assets/Icons/healthPU_Sprite.png" id="9_w4dtl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n6oji"]
 texture = ExtResource("2_fl1d5")

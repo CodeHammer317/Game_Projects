@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 signal fired_bullet(bullet: Node)
+signal shot_charge_changed(ratio: float, charging: bool)
 signal died
 signal game_over
 
@@ -19,6 +20,10 @@ signal game_over
 @export var shoot_anim_duration: float = 0.10
 @export var bullet_scene: PackedScene
 @export var muzzle_offset_right: Vector2 = Vector2(20.0, -4.0)
+
+@export_group("Charged Throw")
+@export var minimum_charge_time: float = 0.0
+@export var maximum_charge_time: float = 1.0
 
 @export_group("Attack Combo")
 @export var attack_action: StringName = &"attack"
@@ -71,7 +76,7 @@ signal game_over
 @export_group("Special Assist")
 @export var mattt_assist_scene: PackedScene
 @export var special_meter_max: int = 100
-@export var special_meter: int = 0
+@export var special_meter: int = 100
 @export var mattt_spawn_offset: Vector2 = Vector2(-40.0, -20.0)
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -82,8 +87,7 @@ var ground_combo: Array[StringName] = [
 	&"left_punch",
 	&"right_punch",
 	&"roundhouse_kick",
-	&"side_kick",
-	&"spin_kick"
+	&"side_kick"
 ]
 
 var aerial_attacks: Array[StringName] = [
@@ -94,6 +98,8 @@ var aerial_attacks: Array[StringName] = [
 var _facing_left: bool = false
 var _fire_timer: float = 0.0
 var _shoot_anim_timer: float = 0.0
+var _charge_time: float = 0.0
+var _is_charging_shot: bool = false
 var _input_dir: float = 0.0
 var control_locked: bool = false
 
@@ -228,7 +234,7 @@ func _process_hitstun(delta: float) -> void:
 func _process_normal_movement(delta: float) -> void:
 	_handle_attack()
 	_handle_dash()
-	_handle_shoot()
+	_handle_shoot(delta)
 	_handle_wall_slide()
 	_apply_gravity(delta)
 	_handle_jump()
@@ -517,14 +523,22 @@ func _handle_horizontal_movement(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
 
 
-func _handle_shoot() -> void:
-	if not Input.is_action_just_pressed("shoot"):
-		return
+func _handle_shoot(delta: float) -> void:
+	if Input.is_action_just_pressed("shoot") and _can_shoot():
+		_is_charging_shot = true
+		_charge_time = 0.0
+		shot_charge_changed.emit(0.0, true)
 
-	if not _can_shoot():
-		return
+	if _is_charging_shot and Input.is_action_pressed("shoot"):
+		_charge_time = minf(_charge_time + delta, maximum_charge_time)
+		shot_charge_changed.emit(get_shot_charge_ratio(), true)
 
-	_spawn_bullet()
+	if _is_charging_shot and Input.is_action_just_released("shoot"):
+		var charge_ratio := get_shot_charge_ratio()
+		_is_charging_shot = false
+		_charge_time = 0.0
+		shot_charge_changed.emit(0.0, false)
+		_spawn_bullet(charge_ratio)
 
 
 func _can_shoot() -> bool:
@@ -548,7 +562,7 @@ func _can_shoot() -> bool:
 	return true
 
 
-func _spawn_bullet() -> void:
+func _spawn_bullet(charge_ratio: float = 0.0) -> void:
 	var bullet := bullet_scene.instantiate()
 	if bullet == null:
 		push_warning("Failed to instantiate bullet_scene.")
@@ -566,9 +580,27 @@ func _spawn_bullet() -> void:
 	bullet.global_position = muzzle.global_position
 
 	if bullet.has_method("setup"):
-		bullet.setup(direction, self)
+		bullet.setup(direction, self, charge_ratio)
 
 	fired_bullet.emit(bullet)
+
+
+func get_shot_charge_ratio() -> float:
+	if maximum_charge_time <= minimum_charge_time:
+		return 1.0
+
+	return clampf(
+		(_charge_time - minimum_charge_time)
+			/ (maximum_charge_time - minimum_charge_time),
+		0.0,
+		1.0
+	)
+
+
+func _cancel_shot_charge() -> void:
+	_is_charging_shot = false
+	_charge_time = 0.0
+	shot_charge_changed.emit(0.0, false)
 
 
 func _handle_special_assist() -> void:
@@ -581,7 +613,7 @@ func _handle_special_assist() -> void:
 	if mattt_assist_scene == null:
 		return
 
-	special_meter = 0
+	special_meter = 100
 
 	var assist := mattt_assist_scene.instantiate() as Node2D
 	if assist == null:
@@ -801,6 +833,7 @@ func _on_damaged(info: DamageInfo) -> void:
 	if _is_dead or _is_dying or _is_game_over:
 		return
 
+	_cancel_shot_charge()
 	_is_dashing = false
 	_is_wall_sliding = false
 	_dash_timer = 0.0
@@ -833,6 +866,7 @@ func kill() -> void:
 	if _is_dead or _is_dying or _is_game_over:
 		return
 
+	_cancel_shot_charge()
 	_death_count += 1
 	_death_position = global_position
 
@@ -873,6 +907,7 @@ func kill() -> void:
 
 
 func respawn() -> void:
+	_cancel_shot_charge()
 	global_position = _death_position
 	velocity = Vector2.ZERO
 
@@ -1056,6 +1091,9 @@ func _get_facing_sign_from_input() -> int:
 func set_control_locked(value: bool) -> void:
 	control_locked = value
 	velocity = Vector2.ZERO
+
+	if value:
+		_cancel_shot_charge()
 
 
 func apply_upgrade(upgrade_name: StringName) -> void:

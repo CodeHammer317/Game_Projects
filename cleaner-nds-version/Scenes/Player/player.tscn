@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dw0tnpcqofe4t" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0000.png" id="1_gpqv3"]
 [ext_resource type="Texture2D" uid="uid://cypr6sjaoqaa1" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0001.png" id="2_7ve27"]
 [ext_resource type="PackedScene" uid="uid://yxy84onu0e8" path="res://Scenes/FX/player_bullet.tscn" id="2_plnq1"]
+[ext_resource type="PackedScene" uid="uid://bgk6qsvlkbjal" path="res://Scenes/FX/player_punch_hitbox.tscn" id="3_6a86w"]
 [ext_resource type="Texture2D" uid="uid://baxefavlctli8" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0002.png" id="3_ldt7q"]
 [ext_resource type="Texture2D" uid="uid://bq5rqy0um0t4s" path="res://Assets/sprites/classic_character/PNG/style_4/celebrate/f0003.png" id="4_7bej3"]
 [ext_resource type="PackedScene" uid="uid://ctgyhfpw6awxh" path="res://Scenes/FX/dust_trail.tscn" id="4_jmbrt"]
@@ -1878,8 +1879,10 @@ collision_layer = 2
 collision_mask = 129
 script = ExtResource("1_7ve27")
 bullet_scene = ExtResource("2_plnq1")
+attack_hitbox_scene = ExtResource("3_6a86w")
 dust_trail_scene = ExtResource("4_jmbrt")
 mattt_assist_scene = ExtResource("5_6a86w")
+mattt_spawn_offset = Vector2(-40, -100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1032869655]
 position = Vector2(2, 4.5)

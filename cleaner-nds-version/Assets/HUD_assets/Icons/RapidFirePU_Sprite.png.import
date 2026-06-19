@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8l450rjir2wi"
-path="res://.godot/imported/ShieldPU_Sprite.png-9fea6951fd37f411d8cd7c6f114b31ba.ctex"
+uid="uid://bxhb4yxylkhb5"
+path="res://.godot/imported/RapidFirePU_Sprite.png-fee84cd7d908117a406a0fa8237c9c1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/ShieldPU_Sprite.png"
-dest_files=["res://.godot/imported/ShieldPU_Sprite.png-9fea6951fd37f411d8cd7c6f114b31ba.ctex"]
+source_file="res://Assets/HUD_assets/Icons/RapidFirePU_Sprite.png"
+dest_files=["res://.godot/imported/RapidFirePU_Sprite.png-fee84cd7d908117a406a0fa8237c9c1b.ctex"]
 
 [params]
 

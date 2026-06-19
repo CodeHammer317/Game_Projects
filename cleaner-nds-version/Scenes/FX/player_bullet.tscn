@@ -1,95 +1,135 @@
 [gd_scene format=3 uid="uid://yxy84onu0e8"]
 
 [ext_resource type="Script" uid="uid://l8klmxvraqya" path="res://Scripts/combat/player_bullet.gd" id="1_yxr3u"]
-[ext_resource type="Texture2D" uid="uid://135hu0xiqdtm" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0000.png" id="2_y7ds3"]
-[ext_resource type="Texture2D" uid="uid://upm8oy02hrju" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0001.png" id="3_1wmpo"]
-[ext_resource type="Texture2D" uid="uid://drdq00q0bx367" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0002.png" id="4_3g3fa"]
-[ext_resource type="Texture2D" uid="uid://c2md4ay32h8uv" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0003.png" id="5_d8h6v"]
-[ext_resource type="Texture2D" uid="uid://c1qi1ht1qprkt" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0004.png" id="6_oy307"]
-[ext_resource type="Texture2D" uid="uid://t8imc20uu45y" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0005.png" id="7_4eedx"]
-[ext_resource type="Texture2D" uid="uid://cpakqa8m073vj" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0006.png" id="8_3sf3q"]
-[ext_resource type="Texture2D" uid="uid://dafaxcs8yt73b" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0007.png" id="9_svvyr"]
-[ext_resource type="Texture2D" uid="uid://ox725y1w78n2" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0008.png" id="10_05fse"]
-[ext_resource type="Texture2D" uid="uid://7ielicla2pvq" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0009.png" id="11_kfn2h"]
-[ext_resource type="Texture2D" uid="uid://b4khsomcvbhkw" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0010.png" id="12_3qssn"]
-[ext_resource type="Texture2D" uid="uid://bdkmq0n0trrk8" path="res://Assets/sprites/Super Pixel Projectiles Pack 1/PNG/pj1_fireball_small_red/frame0011.png" id="13_mublq"]
-[ext_resource type="AudioStream" uid="uid://cmuc61imbhbwt" path="res://Assets/Audio/freesound_community-8-bit-cannon-fire-96505.mp3" id="14_1wmpo"]
-[ext_resource type="AudioStream" uid="uid://86ruwmlefc4" path="res://Assets/Audio/soundreality-explosion-8-bit-8-314694.mp3" id="15_3g3fa"]
+[ext_resource type="Texture2D" uid="uid://xa8u0e01uwoy" path="res://Assets/sprites/HolyHandgrenadeOfAntioch.png" id="2_4yaah"]
+[ext_resource type="Texture2D" uid="uid://cx1dw5ceo7t5q" path="res://Assets/sprites/Super Pixel Effects Pack 1/spritesheet/fx1_explosion_large_red/spritesheet.png" id="3_d4a1h"]
+[ext_resource type="AudioStream" uid="uid://3lb4oukuxsws" path="res://Assets/Audio/edr-8-bit-jump-001-171817.mp3" id="4_d4a1h"]
+[ext_resource type="AudioStream" uid="uid://kn7qr1df054u" path="res://Assets/Audio/BombExplosion_1.mp3" id="5_xmb44"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmb44"]
+atlas = ExtResource("3_d4a1h")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36xvs"]
+atlas = ExtResource("3_d4a1h")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4daj0"]
+atlas = ExtResource("3_d4a1h")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gt3s"]
+atlas = ExtResource("3_d4a1h")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a7vr"]
+atlas = ExtResource("3_d4a1h")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xweps"]
+atlas = ExtResource("3_d4a1h")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wc67"]
+atlas = ExtResource("3_d4a1h")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxr3u"]
+atlas = ExtResource("3_d4a1h")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7ds3"]
+atlas = ExtResource("3_d4a1h")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wmpo"]
+atlas = ExtResource("3_d4a1h")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g3fa"]
+atlas = ExtResource("3_d4a1h")
+region = Rect2(640, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bckiw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_y7ds3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_1wmpo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_3g3fa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_d8h6v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_oy307")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_4eedx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_3sf3q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_svvyr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_05fse")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_kfn2h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_3qssn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_mublq")
+"texture": ExtResource("2_4yaah")
 }],
 "loop": true,
-"name": &"default",
+"name": &"fly",
 "speed": 45.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmb44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36xvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4daj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gt3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a7vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xweps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wc67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxr3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7ds3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wmpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g3fa")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 11.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1wmpo"]
 
 [node name="PlayerBullet" type="Area2D" unique_id=1047190578]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.4, 0.4)
 collision_layer = 8
 collision_mask = 69
 script = ExtResource("1_yxr3u")
+damage = 6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=366459317]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_bckiw")
-autoplay = "default"
-frame_progress = 0.48356813
+animation = &"hit"
+autoplay = "fly"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=757530710]
-position = Vector2(12, 0)
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_1wmpo")
 debug_color = Color(0.9647059, 0.11764706, 0.03529412, 0.8862745)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1753932589]
-rect = Rect2(-19, -10, 39, 20)
+rect = Rect2(-12, -20, 24, 32)
 
 [node name="BulletFireSound" type="AudioStreamPlayer" parent="." unique_id=1706128267]
-stream = ExtResource("14_1wmpo")
+stream = ExtResource("4_d4a1h")
 volume_db = -20.955
 pitch_scale = 1.21
 max_polyphony = 8
 
 [node name="BulletHitSound" type="AudioStreamPlayer" parent="." unique_id=1962415701]
-stream = ExtResource("15_3g3fa")
+stream = ExtResource("5_xmb44")
 volume_db = 2.77
 pitch_scale = 0.78
 max_polyphony = 9

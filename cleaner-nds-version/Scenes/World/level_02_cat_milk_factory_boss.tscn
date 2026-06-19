@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://joacfcmjayfy"]
 
-[ext_resource type="Texture2D" uid="uid://dl2ardpfesx03" path="res://Assets/tilesets/catbossarea (2).png" id="1_txywj"]
 [ext_resource type="Texture2D" uid="uid://cbflwr7wmls4k" path="res://Assets/tilesets/super_pixel_laboratory/super_pixel_laboratory/style_A/spritesheet/spritesheet.png" id="1_wxqje"]
 [ext_resource type="Texture2D" uid="uid://dyfdcq2515vwe" path="res://Assets/tilesets/catbossarea.png" id="2_ktjua"]
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="2_nu0ct"]
@@ -37,6 +36,8 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_das4s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mlc6t"]
 texture = ExtResource("1_wxqje")
@@ -598,7 +599,10 @@ texture = ExtResource("2_ktjua")
 
 [sub_resource type="TileSet" id="TileSet_v01rq"]
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 127
+physics_layer_0/collision_mask = 30
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_das4s")
+physics_layer_1/collision_layer = 1
+physics_layer_1/collision_mask = 30
 sources/0 = SubResource("TileSetAtlasSource_mlc6t")
 sources/1 = SubResource("TileSetAtlasSource_ktjua")
 
@@ -610,12 +614,6 @@ autoplay = "default"
 frame_progress = 0.637638
 centered = false
 
-[node name="Catbossarea(2)" type="Sprite2D" parent="." unique_id=1883542880]
-visible = false
-position = Vector2(455.1633, 182.06091)
-scale = Vector2(1.6733944, 1.8781726)
-texture = ExtResource("1_txywj")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1884125919]
 visible = false
 position = Vector2(0, -7.6293945e-06)
@@ -624,6 +622,7 @@ texture = ExtResource("2_ktjua")
 centered = false
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=496826875]
+z_index = 1
 tile_map_data = PackedByteArray("AAA1ABEAAQAhAAkAAGA1ABIAAQAhAAkAAGA1ABMAAQAhAAkAAGA1ABQAAQAhAAkAAGA1ABUAAQAhAAkAAGADABEAAQAhAAkAAFADABIAAQAhAAkAAFADABMAAQAhAAkAAFADABQAAQAhAAkAAFADABUAAQAhAAkAAFADABAAAQAhAAkAAFA6ABQAAAAQABEAAAA6AA8AAAAQABEAAAA6AAoAAAAQABEAAAA6AAYAAAAQABEAAAD+/xMAAAAQABEAADD+/xQAAAAQABEAADD+/w4AAAAQABEAADD+/wkAAAAQABEAADD+/wQAAAAQABEAADD//xYAAAARAA8AAAAAABYAAAARAA8AAAABABYAAAARAA8AAAACABYAAAARAA8AAAADABYAAAARAA8AAAAEABYAAAARAA8AAAAFABYAAAARAA8AAAAGABYAAAARAA8AAAAHABYAAAARAA8AAAAIABYAAAARAA8AAAAJABYAAAARAA8AAAAKABYAAAARAA8AAAALABYAAAARAA8AAAAMABYAAAARAA8AAAANABYAAAARAA8AAAAOABYAAAARAA8AAAAPABYAAAARAA8AAAAQABYAAAARAA8AAAARABYAAAARAA8AAAASABYAAAARAA8AAAATABYAAAARAA8AAAAUABYAAAARAA8AAAAVABYAAAARAA8AAAAWABYAAAARAA8AAAAXABYAAAARAA8AAAAYABYAAAARAA8AAAAZABYAAAARAA8AAAAaABYAAAARAA8AAAAbABYAAAARAA8AAAAcABYAAAARAA8AAAAdABYAAAARAA8AAAAeABYAAAARAA8AAAAfABYAAAARAA8AAAAgABYAAAARAA8AAAAhABYAAAARAA8AAAAiABYAAAARAA8AAAAjABYAAAARAA8AAAAkABYAAAARAA8AAAAlABYAAAARAA8AAAAmABYAAAARAA8AAAAnABYAAAARAA8AAAAoABYAAAARAA8AAAApABYAAAARAA8AAAAqABYAAAARAA8AAAArABYAAAARAA8AAAAsABYAAAARAA8AAAAtABYAAAARAA8AAAAuABYAAAARAA8AAAAvABYAAAARAA8AAAAwABYAAAARAA8AAAAxABYAAAARAA8AAAAyABYAAAARAA8AAAAzABYAAAARAA8AAAA0ABYAAAARAA8AAAA1ABYAAAARAA8AAAA2ABYAAAARAA8AAAA3ABYAAAARAA8AAAA4ABYAAAARAA8AAAA5ABYAAAARAA8AAAA6ABYAAAARAA8AAAA7ABYAAAARAA8AAAA8ABYAAAARAA8AAAA9ABYAAAARAA8AAAA+ABYAAAARAA8AAAA/ABYAAAARAA8AAAA=")
 tile_set = SubResource("TileSet_v01rq")
 
@@ -631,7 +630,7 @@ tile_set = SubResource("TileSet_v01rq")
 position = Vector2(96, 320)
 
 [node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("4_txywj")]
-limit_right = 912
+limit_right = 923
 limit_bottom = 360
 target_path = NodePath("../Player")
 
@@ -641,3 +640,9 @@ scale = Vector2(0.18, 0.18)
 
 [node name="Hud" parent="." unique_id=795795287 instance=ExtResource("5_nu0ct")]
 player_path = NodePath("../Player")
+
+[node name="HealthBar" parent="Hud" index="0" unique_id=954981843]
+offset_left = -136.0
+offset_right = -8.0
+
+[editable path="Hud"]
