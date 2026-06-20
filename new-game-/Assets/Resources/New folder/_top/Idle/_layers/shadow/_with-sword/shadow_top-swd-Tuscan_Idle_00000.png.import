@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://51i0rj261h10"
+path="res://.godot/imported/shadow_top-swd-Tuscan_Idle_00000.png-fd4569a072e4a1c3f97be629b0f6f73c.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Assets/Resources/New folder/_top/Idle/_layers/shadow/_with-sword/shadow_top-swd-Tuscan_Idle_00000.png"
+dest_files=["res://.godot/imported/shadow_top-swd-Tuscan_Idle_00000.png-fd4569a072e4a1c3f97be629b0f6f73c.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

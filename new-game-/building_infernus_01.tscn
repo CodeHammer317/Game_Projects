@@ -1,0 +1,454 @@
+[gd_scene load_steps=91 format=3 uid="uid://bjug1mjq543nm"]
+
+[ext_resource type="Texture2D" uid="uid://df06mt0hdqcwl" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Adorn_1.png" id="1_ctcwk"]
+[ext_resource type="Texture2D" uid="uid://odvha3u6pmt6" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Adorn_2.png" id="2_gbb1q"]
+[ext_resource type="Texture2D" uid="uid://cq0rep63i0fqh" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Archway_1.png" id="3_iw8q8"]
+[ext_resource type="Texture2D" uid="uid://m72sg0pviuxw" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Archway_2.png" id="4_cdmbu"]
+[ext_resource type="Texture2D" uid="uid://buv48crj8rqqd" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Archway_3.png" id="5_lpx0o"]
+[ext_resource type="Texture2D" uid="uid://7dwwtvu03uky" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Archway_4.png" id="6_ioaxv"]
+[ext_resource type="Texture2D" uid="uid://cdqr21dfnd1ok" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Archway_5.png" id="7_3hiq6"]
+[ext_resource type="Texture2D" uid="uid://cnvmflxsajchs" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Buttress_1.png" id="8_yoph2"]
+[ext_resource type="Texture2D" uid="uid://di4hsk4ja8ons" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Buttress_2.png" id="9_fwoew"]
+[ext_resource type="Texture2D" uid="uid://bml34f6lk8gjt" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Buttress_3.png" id="10_fifjr"]
+[ext_resource type="Texture2D" uid="uid://cn61aybva7q3u" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Buttress_4.png" id="11_fyu8x"]
+[ext_resource type="Texture2D" uid="uid://biwgrpixulwet" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Buttress_5.png" id="12_ohj0r"]
+[ext_resource type="Texture2D" uid="uid://cufofsmr1miyv" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Buttress_6.png" id="13_nlqs5"]
+[ext_resource type="Texture2D" uid="uid://bvtgm8jg88puh" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Buttress_7.png" id="14_hc1u0"]
+[ext_resource type="Texture2D" uid="uid://chyk7u4314pdk" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Column_1.png" id="15_tqkqm"]
+[ext_resource type="Texture2D" uid="uid://dsl5j0wikqdlo" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Column_2.png" id="16_0cryc"]
+[ext_resource type="Texture2D" uid="uid://c1ipjj0j6i4fo" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Column_3.png" id="17_22uor"]
+[ext_resource type="Texture2D" uid="uid://dano2dcs21hj6" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Column_4.png" id="18_jgcd0"]
+[ext_resource type="Texture2D" uid="uid://bf1nrtoi7tmw0" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Column_5.png" id="19_ucspn"]
+[ext_resource type="Texture2D" uid="uid://d4f1um3o4g2rc" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Column_6.png" id="20_mvcpp"]
+[ext_resource type="Texture2D" uid="uid://c8du766tx2nye" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Column_Shadow.png" id="21_o3hmt"]
+[ext_resource type="Texture2D" uid="uid://bh6j4txfq7bnt" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Floor_Lower_1.png" id="22_327qn"]
+[ext_resource type="Texture2D" uid="uid://b1txvr75e648a" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Floor_Lower_2.png" id="23_ndvx2"]
+[ext_resource type="Texture2D" uid="uid://br076f0ndybt7" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Floor_Lower_3.png" id="24_jdgeo"]
+[ext_resource type="Texture2D" uid="uid://bpgj32wt5nrm6" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Floor_Upper_1.png" id="25_u13yq"]
+[ext_resource type="Texture2D" uid="uid://bc1twnqcrnhmo" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Floor_Upper_2.png" id="26_rby4w"]
+[ext_resource type="Texture2D" uid="uid://cip1bphqslnnh" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Floor_Upper_3.png" id="27_y5q3j"]
+[ext_resource type="Texture2D" uid="uid://bkpp82c8371ea" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Pillar_1.png" id="28_pcgh6"]
+[ext_resource type="Texture2D" uid="uid://btorkp4picg27" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Pillar_2.png" id="29_bltt1"]
+[ext_resource type="Texture2D" uid="uid://bdyi5uixvy44h" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Ramp_1.png" id="30_gobqp"]
+[ext_resource type="Texture2D" uid="uid://bfvfmwmawkyyi" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Ramp_2.png" id="31_a3g7c"]
+[ext_resource type="Texture2D" uid="uid://dqwhlc80uetqk" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Ramp_3.png" id="32_egfw6"]
+[ext_resource type="Texture2D" uid="uid://da06njmicvrc8" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Ramp_4.png" id="33_1pnoq"]
+[ext_resource type="Texture2D" uid="uid://b1sdb07soxqhq" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Ramp_5.png" id="34_5cww7"]
+[ext_resource type="Texture2D" uid="uid://dltt645cyiygj" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Ramp_6.png" id="35_jgwhb"]
+[ext_resource type="Texture2D" uid="uid://dul780uoxgtcx" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Ramp_7.png" id="36_acigb"]
+[ext_resource type="Texture2D" uid="uid://b2vii4gvpx4s4" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Ramp_8.png" id="37_xx7lt"]
+[ext_resource type="Texture2D" uid="uid://bs5f15rmmnx0m" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Stairs_1.png" id="38_b8dws"]
+[ext_resource type="Texture2D" uid="uid://c2c4glgv72mg5" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Stairs_2.png" id="39_ky2qo"]
+[ext_resource type="Texture2D" uid="uid://bpe4qlhwhg0by" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Stairs_3.png" id="40_gr6cf"]
+[ext_resource type="Texture2D" uid="uid://bqvf6jjmdsie6" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Stairs_4.png" id="41_64btg"]
+[ext_resource type="Texture2D" uid="uid://dfk2pvko1al5d" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Stairs_5.png" id="42_fm2pf"]
+[ext_resource type="Texture2D" uid="uid://q7861is7knqm" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Stairs_6.png" id="43_ttob0"]
+[ext_resource type="Texture2D" uid="uid://c8ntdhcid8fte" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Stairs_7.png" id="44_awjvi"]
+[ext_resource type="Texture2D" uid="uid://dcpp34pnr5nxd" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Stairs_8.png" id="45_2iuyx"]
+[ext_resource type="Texture2D" uid="uid://nm3c0t5fa54b" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Stairs_Inverted_1.png" id="46_vy33u"]
+[ext_resource type="Texture2D" uid="uid://caqb1v6y8ehqp" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Stairs_Inverted_2.png" id="47_fedcm"]
+[ext_resource type="Texture2D" uid="uid://0es6jqnrinm5" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Stairs_Inverted_3.png" id="48_b7g4s"]
+[ext_resource type="Texture2D" uid="uid://cce4ybp3mk1gp" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Stairs_Inverted_4.png" id="49_jj46x"]
+[ext_resource type="Texture2D" uid="uid://itsaimnu73le" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Front_Large_1.png" id="50_030qk"]
+[ext_resource type="Texture2D" uid="uid://dv0p1145fxpra" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Front_Large_2.png" id="51_r6xwl"]
+[ext_resource type="Texture2D" uid="uid://ffcxg38fc7ug" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Front_Large_3.png" id="52_mjdeo"]
+[ext_resource type="Texture2D" uid="uid://bo8oek6t1og6r" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Front_Medium_1.png" id="53_1gqtg"]
+[ext_resource type="Texture2D" uid="uid://bb5grxkk201sf" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Front_Medium_2.png" id="54_odihn"]
+[ext_resource type="Texture2D" uid="uid://d3jnbqofbpkx2" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Front_Medium_3.png" id="55_obo14"]
+[ext_resource type="Texture2D" uid="uid://xxvlt6nc5kqh" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Front_Small_1.png" id="56_of41l"]
+[ext_resource type="Texture2D" uid="uid://ckst3bs7itk8j" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Front_Small_2.png" id="57_a5n0v"]
+[ext_resource type="Texture2D" uid="uid://bdcya53qfanjv" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Front_Small_3.png" id="58_ory1k"]
+[ext_resource type="Texture2D" uid="uid://80p7jqph8ppo" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Large_1.png" id="59_4kfwo"]
+[ext_resource type="Texture2D" uid="uid://qagcnc3wlgr6" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Large_2.png" id="60_jrrxe"]
+[ext_resource type="Texture2D" uid="uid://dph3p72bkwnm5" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Large_3.png" id="61_j87mb"]
+[ext_resource type="Texture2D" uid="uid://bw61bbtf6hedf" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Large_4.png" id="62_jrsyh"]
+[ext_resource type="Texture2D" uid="uid://d2iff31ujewy3" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Large_5.png" id="63_ac7oo"]
+[ext_resource type="Texture2D" uid="uid://cs7gnj7clc0u8" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Large_6.png" id="64_oqmwe"]
+[ext_resource type="Texture2D" uid="uid://pj114aenibg4" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Large_Shadow.png" id="65_ib0n7"]
+[ext_resource type="Texture2D" uid="uid://dpep2vyihheha" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Medium_1.png" id="66_lytv0"]
+[ext_resource type="Texture2D" uid="uid://ca6si0vp24c0e" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Medium_2.png" id="67_bo6qu"]
+[ext_resource type="Texture2D" uid="uid://oaa7pfp81vkj" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Medium_3.png" id="68_colbr"]
+[ext_resource type="Texture2D" uid="uid://dbwtuoj6kt7g7" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Medium_4.png" id="69_4dsdm"]
+[ext_resource type="Texture2D" uid="uid://dsap3lmaihiv1" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Medium_Shadow.png" id="70_fkm8n"]
+[ext_resource type="Texture2D" uid="uid://iat0wbecqbua" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Side_1.png" id="71_1heii"]
+[ext_resource type="Texture2D" uid="uid://bpr770thaprmr" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Side_1_Shadow_1.png" id="72_rbxlk"]
+[ext_resource type="Texture2D" uid="uid://dq8qnhxhrdycm" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Side_1_Shadow_2.png" id="73_2hrv5"]
+[ext_resource type="Texture2D" uid="uid://o8bjn3e6838o" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Side_2.png" id="74_8dojg"]
+[ext_resource type="Texture2D" uid="uid://c7nut3h2xadqo" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Side_3.png" id="75_o1i1q"]
+[ext_resource type="Texture2D" uid="uid://dd725f6v6puyt" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Side_3_Shadow_1.png" id="76_tjwqo"]
+[ext_resource type="Texture2D" uid="uid://b01gsrggxycew" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Side_3_Shadow_2.png" id="77_2f3qw"]
+[ext_resource type="Texture2D" uid="uid://bo78f2y7jn0wh" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Side_4.png" id="78_ohhvx"]
+[ext_resource type="Texture2D" uid="uid://ctr0v387lrvmb" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Small_1.png" id="79_ll3pn"]
+[ext_resource type="Texture2D" uid="uid://0r1itouovgva" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Small_2.png" id="80_kpm56"]
+[ext_resource type="Texture2D" uid="uid://eevldjwejowc" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Small_3.png" id="81_wg6nx"]
+[ext_resource type="Texture2D" uid="uid://clave3p7w86ot" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Small_4.png" id="82_7erha"]
+[ext_resource type="Texture2D" uid="uid://gmjbqrau3xtb" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Small_Roofgap_1.png" id="83_qifmh"]
+[ext_resource type="Texture2D" uid="uid://vb8tnijcy37f" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Small_Roofgap_2.png" id="84_qqkf7"]
+[ext_resource type="Texture2D" uid="uid://dmavglr787u3h" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Small_Shadow.png" id="85_p3a8r"]
+[ext_resource type="Texture2D" uid="uid://ccov0t1m5qclx" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Wide_1.png" id="86_shr32"]
+[ext_resource type="Texture2D" uid="uid://be16vqgtfi5lu" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Wide_2.png" id="87_8gj8x"]
+[ext_resource type="Texture2D" uid="uid://cnvwfpte3cafe" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Wide_3.png" id="88_mj6o6"]
+[ext_resource type="Texture2D" uid="uid://s3yfvt5hcept" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Wide_4.png" id="89_idqgc"]
+[ext_resource type="Texture2D" uid="uid://r5m0h1g7gplm" path="res://Assets/Infernus_Tiles/Building_Infernus_1/Wall_Wide_5.png" id="90_w45xv"]
+
+[node name="BuildingInfernus01" type="Node2D"]
+
+[node name="Adorn1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("1_ctcwk")
+
+[node name="Adorn2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("2_gbb1q")
+
+[node name="Archway1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("3_iw8q8")
+
+[node name="Archway2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("4_cdmbu")
+
+[node name="Archway3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("5_lpx0o")
+
+[node name="Archway4" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("6_ioaxv")
+
+[node name="Archway5" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("7_3hiq6")
+
+[node name="Buttress1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("8_yoph2")
+
+[node name="Buttress2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("9_fwoew")
+
+[node name="Buttress3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("10_fifjr")
+
+[node name="Buttress4" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("11_fyu8x")
+
+[node name="Buttress5" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("12_ohj0r")
+
+[node name="Buttress6" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("13_nlqs5")
+
+[node name="Buttress7" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("14_hc1u0")
+
+[node name="Column1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("15_tqkqm")
+
+[node name="Column2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("16_0cryc")
+
+[node name="Column3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("17_22uor")
+
+[node name="Column4" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("18_jgcd0")
+
+[node name="Column5" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("19_ucspn")
+
+[node name="Column6" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("20_mvcpp")
+
+[node name="ColumnShadow" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("21_o3hmt")
+
+[node name="FloorLower1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("22_327qn")
+
+[node name="FloorLower2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("23_ndvx2")
+
+[node name="FloorLower3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("24_jdgeo")
+
+[node name="FloorUpper1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("25_u13yq")
+
+[node name="FloorUpper2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("26_rby4w")
+
+[node name="FloorUpper3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("27_y5q3j")
+
+[node name="Pillar1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("28_pcgh6")
+
+[node name="Pillar2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("29_bltt1")
+
+[node name="Ramp1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("30_gobqp")
+
+[node name="Ramp2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("31_a3g7c")
+
+[node name="Ramp3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("32_egfw6")
+
+[node name="Ramp4" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("33_1pnoq")
+
+[node name="Ramp5" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("34_5cww7")
+
+[node name="Ramp6" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("35_jgwhb")
+
+[node name="Ramp7" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("36_acigb")
+
+[node name="Ramp8" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("37_xx7lt")
+
+[node name="Stairs1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("38_b8dws")
+
+[node name="Stairs2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("39_ky2qo")
+
+[node name="Stairs3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("40_gr6cf")
+
+[node name="Stairs4" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("41_64btg")
+
+[node name="Stairs5" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("42_fm2pf")
+
+[node name="Stairs6" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("43_ttob0")
+
+[node name="Stairs7" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("44_awjvi")
+
+[node name="Stairs8" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("45_2iuyx")
+
+[node name="StairsInverted1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("46_vy33u")
+
+[node name="StairsInverted2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("47_fedcm")
+
+[node name="StairsInverted3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("48_b7g4s")
+
+[node name="StairsInverted4" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("49_jj46x")
+
+[node name="WallFrontLarge1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("50_030qk")
+
+[node name="WallFrontLarge2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("51_r6xwl")
+
+[node name="WallFrontLarge3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("52_mjdeo")
+
+[node name="WallFrontMedium1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("53_1gqtg")
+
+[node name="WallFrontMedium2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("54_odihn")
+
+[node name="WallFrontMedium3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("55_obo14")
+
+[node name="WallFrontSmall1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("56_of41l")
+
+[node name="WallFrontSmall2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("57_a5n0v")
+
+[node name="WallFrontSmall3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("58_ory1k")
+
+[node name="WallLarge1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("59_4kfwo")
+
+[node name="WallLarge2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("60_jrrxe")
+
+[node name="WallLarge3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("61_j87mb")
+
+[node name="WallLarge4" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("62_jrsyh")
+
+[node name="WallLarge5" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("63_ac7oo")
+
+[node name="WallLarge6" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("64_oqmwe")
+
+[node name="WallLargeShadow" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("65_ib0n7")
+
+[node name="WallMedium1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("66_lytv0")
+
+[node name="WallMedium2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("67_bo6qu")
+
+[node name="WallMedium3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("68_colbr")
+
+[node name="WallMedium4" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("69_4dsdm")
+
+[node name="WallMediumShadow" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("70_fkm8n")
+
+[node name="WallSide1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("71_1heii")
+
+[node name="WallSide1Shadow1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("72_rbxlk")
+
+[node name="WallSide1Shadow2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("73_2hrv5")
+
+[node name="WallSide2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("74_8dojg")
+
+[node name="WallSide3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("75_o1i1q")
+
+[node name="WallSide3Shadow1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("76_tjwqo")
+
+[node name="WallSide3Shadow2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("77_2f3qw")
+
+[node name="WallSide4" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("78_ohhvx")
+
+[node name="WallSmall1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("79_ll3pn")
+
+[node name="WallSmall2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("80_kpm56")
+
+[node name="WallSmall3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("81_wg6nx")
+
+[node name="WallSmall4" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("82_7erha")
+
+[node name="WallSmallRoofgap1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("83_qifmh")
+
+[node name="WallSmallRoofgap2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("84_qqkf7")
+
+[node name="WallSmallShadow" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("85_p3a8r")
+
+[node name="WallWide1" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("86_shr32")
+
+[node name="WallWide2" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("87_8gj8x")
+
+[node name="WallWide3" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("88_mj6o6")
+
+[node name="WallWide4" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("89_idqgc")
+
+[node name="WallWide5" type="Sprite2D" parent="."]
+position = Vector2(424, 196)
+texture = ExtResource("90_w45xv")

@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://06007ubybfab"]
+
+[ext_resource type="Texture2D" uid="uid://hck4cib2f8w1" path="res://Assets/Resources/Flying eye/Attack3.png" id="1_ei1e1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sasra"]
+atlas = ExtResource("1_ei1e1")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coq8p"]
+atlas = ExtResource("1_ei1e1")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nij2"]
+atlas = ExtResource("1_ei1e1")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cbxl"]
+atlas = ExtResource("1_ei1e1")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pr8v"]
+atlas = ExtResource("1_ei1e1")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buypi"]
+atlas = ExtResource("1_ei1e1")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0k8yu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sasra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_coq8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nij2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cbxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pr8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buypi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[node name="FlyingEyeballMurder" type="Node2D"]
+scale = Vector2(0.6, 0.6)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-35, 28)
+sprite_frames = SubResource("SpriteFrames_0k8yu")
+autoplay = "default"
+frame_progress = 0.881528
+offset = Vector2(0, 0.08)
+flip_h = true
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0k8yu")
+autoplay = "default"
+speed_scale = 1.05
+offset = Vector2(50, -13)
+flip_h = true
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+position = Vector2(-70, 17)
+sprite_frames = SubResource("SpriteFrames_0k8yu")
+autoplay = "default"
+frame_progress = 0.502261
+speed_scale = 1.08
+offset = Vector2(0, -9)
+flip_h = true
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
+position = Vector2(-94, -74)
+sprite_frames = SubResource("SpriteFrames_0k8yu")
+autoplay = "default"
+frame_progress = 0.502261
+speed_scale = 1.075
+flip_h = true
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
+position = Vector2(-180, -42)
+sprite_frames = SubResource("SpriteFrames_0k8yu")
+autoplay = "default"
+frame_progress = 0.502261
+speed_scale = 1.075
+flip_h = true
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="."]
+position = Vector2(-82, -134)
+sprite_frames = SubResource("SpriteFrames_0k8yu")
+autoplay = "default"
+frame_progress = 0.502261
+speed_scale = 1.2
+flip_h = true
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="."]
+position = Vector2(-150, -112)
+sprite_frames = SubResource("SpriteFrames_0k8yu")
+autoplay = "default"
+frame_progress = 0.502261
+speed_scale = 1.05
+flip_h = true

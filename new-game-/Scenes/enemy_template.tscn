@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bt3q7mx55r7kf"]
+
+[ext_resource type="Script" uid="uid://dpfggqexrpew" path="res://Scripts/skeleton_enemy.gd" id="1_7xol0"]
+[ext_resource type="PackedScene" uid="uid://bilehfv282273" path="res://Scenes/enemy_healthbar.tscn" id="2_vtipb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cx3tm"]
+size = Vector2(39, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cr58e"]
+size = Vector2(141, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq3l7"]
+size = Vector2(118, 16.6667)
+
+[node name="EnemyTemplate" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_7xol0")
+detection_range = 500
+attack_range = 50.0
+max_health = 60
+health_bar_offset = Vector2(-25, -25)
+metadata/_edit_group_ = true
+
+[node name="HealthBar" parent="." instance=ExtResource("2_vtipb")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cx3tm")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("RectangleShape2D_cr58e")
+debug_color = Color(0.510943, 0.43575, 0.969507, 0.42)
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("RectangleShape2D_vq3l7")
+debug_color = Color(0.679252, 0.49753, 0.231322, 0.42)
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://gjcjakmouj60"]
+
+[ext_resource type="Texture2D" uid="uid://cyd2bfyru6577" path="res://Assets/Medieval_Castle_Asset_Pack/PNG/Background/Bright/back_ruin_spots.png" id="1_x033f"]
+[ext_resource type="Texture2D" uid="uid://2lblbeutiphe" path="res://Assets/Medieval_Castle_Asset_Pack/PNG/Background/Bright/ruins_closer.png" id="2_rdbpf"]
+[ext_resource type="Texture2D" uid="uid://bb7bvupqhfhq" path="res://Assets/Medieval_Castle_Asset_Pack/PNG/Background/Bright/floor_ruins.png" id="3_oho3u"]
+[ext_resource type="Texture2D" uid="uid://dfbiymhsmyjjn" path="res://Assets/Medieval_Castle_Asset_Pack/PNG/Background/Bright/ruins_low1.png" id="4_d3awe"]
+[ext_resource type="Texture2D" uid="uid://d267wbvkocvsg" path="res://Assets/Medieval_Castle_Asset_Pack/PNG/Background/Bright/ruins_main.png" id="5_yglu3"]
+[ext_resource type="PackedScene" uid="uid://tgdu2w2ix5sm" path="res://Scenes/player.tscn" id="6_bwjpn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibmi3"]
+size = Vector2(956.667, 25)
+
+[node name="Node2D" type="Node2D" unique_id=605427759]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1396629814]
+
+[node name="ParallaxLayer0" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1686061183]
+motion_scale = Vector2(0.25, 1)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer0" unique_id=948463931]
+texture = ExtResource("1_x033f")
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground" unique_id=520714867]
+position = Vector2(-77, 0)
+scale = Vector2(0.6, 0.6)
+motion_scale = Vector2(0.33, 1)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1" unique_id=748448717]
+position = Vector2(-3.33333, 0)
+texture = ExtResource("2_rdbpf")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1205334123]
+position = Vector2(-77, 0)
+scale = Vector2(0.6, 0.6)
+motion_scale = Vector2(0.45, 1)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=1039817591]
+position = Vector2(13.3334, -6.66669)
+texture = ExtResource("3_oho3u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/ParallaxLayer2/Sprite2D" unique_id=7594197]
+position = Vector2(0, 225)
+shape = SubResource("RectangleShape2D_ibmi3")
+debug_color = Color(0.745467, 0.293135, 0.890203, 0.42)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=825543273]
+position = Vector2(-77, 0)
+scale = Vector2(0.6, 0.6)
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=1070037064]
+texture = ExtResource("2_rdbpf")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1064416753]
+position = Vector2(-77, 0)
+scale = Vector2(0.6, 0.6)
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" unique_id=521559766]
+texture = ExtResource("4_d3awe")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1089700756]
+position = Vector2(-77, 0)
+scale = Vector2(0.6, 0.6)
+motion_scale = Vector2(0.85, 1)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5" unique_id=1829301212]
+position = Vector2(30, 3.33333)
+texture = ExtResource("5_yglu3")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground" unique_id=352143080]
+position = Vector2(-77, 0)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6" unique_id=934757593]
+
+[node name="Player" parent="." unique_id=718480852 instance=ExtResource("6_bwjpn")]
+position = Vector2(-41, 25)

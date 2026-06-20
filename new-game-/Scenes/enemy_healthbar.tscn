@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bilehfv282273"]
+
+[ext_resource type="Texture2D" uid="uid://1qe1osh0vb8u" path="res://Assets/Resources/bar_glass_200.png" id="1_f4eyg"]
+[ext_resource type="Script" uid="uid://crqytibyepuq8" path="res://Scripts/enemy_healthbar.gd" id="1_pf3ui"]
+[ext_resource type="Texture2D" uid="uid://bjqq0eij5m1m2" path="res://Assets/Resources/bar_red_200.png" id="2_pf3ui"]
+
+[node name="EnemyHealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 311.0
+offset_top = 154.0
+offset_right = 331.0
+offset_bottom = 157.0
+script = ExtResource("1_pf3ui")
+metadata/_edit_group_ = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 26.0
+scale = Vector2(0.1, 0.1)
+texture_under = ExtResource("1_f4eyg")
+texture_progress = ExtResource("2_pf3ui")

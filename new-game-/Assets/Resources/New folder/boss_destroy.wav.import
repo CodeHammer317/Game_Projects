@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cxd0khwsie6ph"
+path="res://.godot/imported/boss_destroy.wav-44a4037141d3f8f608add8b85f2225e0.sample"
+
+[deps]
+
+source_file="res://Assets/Resources/New folder/boss_destroy.wav"
+dest_files=["res://.godot/imported/boss_destroy.wav-44a4037141d3f8f608add8b85f2225e0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

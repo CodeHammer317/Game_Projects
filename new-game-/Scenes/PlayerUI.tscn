@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxw8vy7nfi5l7"]
+
+[ext_resource type="Texture2D" uid="uid://1qe1osh0vb8u" path="res://Assets/Resources/bar_glass_200.png" id="1_pf331"]
+[ext_resource type="Texture2D" uid="uid://bogyerlepsc8h" path="res://Assets/Resources/bar_green_200.png" id="2_b1whj"]
+
+[node name="PlayerUI" type="CanvasLayer"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 31.0
+offset_top = 15.0
+offset_right = 231.0
+offset_bottom = 55.0
+texture_under = ExtResource("1_pf331")
+texture_progress = ExtResource("2_b1whj")

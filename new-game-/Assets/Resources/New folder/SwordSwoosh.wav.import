@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bk3noks4va8mf"
+path="res://.godot/imported/SwordSwoosh.wav-f0e40744da6206d5958cc30c352f9a2b.sample"
+
+[deps]
+
+source_file="res://Assets/Resources/New folder/SwordSwoosh.wav"
+dest_files=["res://.godot/imported/SwordSwoosh.wav-f0e40744da6206d5958cc30c352f9a2b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

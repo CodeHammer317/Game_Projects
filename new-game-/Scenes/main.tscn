@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://hsja3rkosorg"]
+
+[ext_resource type="PackedScene" uid="uid://cngammto2vjut" path="res://Scenes/Level_1.tscn" id="4_kry3j"]
+
+[node name="Main" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Level_1" parent="." instance=ExtResource("4_kry3j")]
+z_as_relative = false
+position = Vector2(0, -7)
+scale = Vector2(2, 2)
+
+[editable path="Level_1"]
