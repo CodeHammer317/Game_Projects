@@ -634,7 +634,7 @@ limit_right = 923
 limit_bottom = 360
 target_path = NodePath("../Player")
 
-[node name="CatOverlord" parent="." unique_id=1571155014 instance=ExtResource("3_ktjua")]
+[node name="CatOverlord" parent="." unique_id=1571155014 groups=["enemies"] instance=ExtResource("3_ktjua")]
 position = Vector2(428, 312)
 scale = Vector2(0.18, 0.18)
 

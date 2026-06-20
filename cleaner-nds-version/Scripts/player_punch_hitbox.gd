@@ -9,6 +9,7 @@ class_name PlayerPunchHitbox
 
 var owner_player: Node = null
 var hit_targets: Dictionary = {}
+var attack_name: StringName = &""
 
 
 func _ready() -> void:
@@ -32,8 +33,13 @@ func _ready() -> void:
 		queue_free()
 
 
-func setup(player: Node, facing_left: bool) -> void:
+func setup(
+	player: Node,
+	facing_left: bool,
+	new_attack_name: StringName = &""
+) -> void:
 	owner_player = player
+	set_attack_name(new_attack_name)
 
 	if facing_left:
 		knockback.x = -absf(knockback.x)
@@ -45,6 +51,10 @@ func setup(player: Node, facing_left: bool) -> void:
 
 		if sprite != null:
 			sprite.flip_h = false
+
+
+func set_attack_name(new_attack_name: StringName) -> void:
+	attack_name = new_attack_name
 
 
 func _on_body_entered(body: Node) -> void:

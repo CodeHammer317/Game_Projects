@@ -73,6 +73,7 @@ limit_right = 2000
 target_path = NodePath("../Player")
 
 [node name="Hud" parent="." unique_id=795795287 instance=ExtResource("8_dgd1k")]
+player_path = NodePath("../Player")
 
 [node name="HealthPuSprite" type="Sprite2D" parent="." unique_id=294921343]
 position = Vector2(16, 8.000001)

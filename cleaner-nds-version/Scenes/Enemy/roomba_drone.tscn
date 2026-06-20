@@ -619,7 +619,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ht8y"]
 size = Vector2(28, 16.5)
 
-[node name="RoombaDrone" type="CharacterBody2D" unique_id=1221956425]
+[node name="RoombaDrone" type="CharacterBody2D" unique_id=1221956425 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_h7awd")

@@ -3,6 +3,7 @@ class_name Player
 
 signal fired_bullet(bullet: Node)
 signal shot_charge_changed(ratio: float, charging: bool)
+signal special_meter_changed(current: int, maximum: int)
 signal died
 signal game_over
 
@@ -86,8 +87,8 @@ signal game_over
 var ground_combo: Array[StringName] = [
 	&"left_punch",
 	&"right_punch",
-	&"roundhouse_kick",
-	&"side_kick"
+	&"roundhouse_kick"
+	
 ]
 
 var aerial_attacks: Array[StringName] = [
@@ -145,6 +146,7 @@ var _sprite_base_position: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	_sprite_base_position = sprite.position
+	special_meter = clampi(special_meter, 0, special_meter_max)
 
 	if health != null:
 		if not health.damaged.is_connected(_on_damaged):
@@ -155,6 +157,7 @@ func _ready() -> void:
 
 	_update_muzzle_position()
 	_snap_visuals_to_pixel()
+	special_meter_changed.emit(special_meter, special_meter_max)
 
 
 func _physics_process(delta: float) -> void:
@@ -613,12 +616,11 @@ func _handle_special_assist() -> void:
 	if mattt_assist_scene == null:
 		return
 
-	special_meter = 100
-
 	var assist := mattt_assist_scene.instantiate() as Node2D
 	if assist == null:
 		return
 
+	set_special_meter(0)
 	get_parent().add_child(assist)
 
 	var x_offset := mattt_spawn_offset.x
@@ -630,6 +632,15 @@ func _handle_special_assist() -> void:
 
 	if assist.has_method("setup"):
 		assist.setup(self, _facing_left)
+
+
+func set_special_meter(value: int) -> void:
+	special_meter = clampi(value, 0, special_meter_max)
+	special_meter_changed.emit(special_meter, special_meter_max)
+
+
+func add_special_meter(amount: int) -> void:
+	set_special_meter(special_meter + amount)
 
 
 @warning_ignore("unused_parameter")
@@ -948,6 +959,10 @@ func respawn() -> void:
 
 func _restore_health_for_respawn() -> void:
 	if health == null:
+		return
+
+	if health.has_method("restore_full"):
+		health.restore_full()
 		return
 
 	if health.has_method("heal_to_full"):

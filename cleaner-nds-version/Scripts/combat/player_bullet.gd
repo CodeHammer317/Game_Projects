@@ -2,14 +2,14 @@ extends Area2D
 class_name PlayerBullet
 
 @export var damage: int = 1
-@export var lifetime: float = 3.0
+@export var lifetime: float = 3.5
 @export var knockback: Vector2 = Vector2(90.0, -30.0)
 
 @export_group("Arc Throw")
 @export var projectile_gravity: float = 900.0
 @export_range(1.0, 89.0, 1.0) var launch_angle_degrees: float = 45.0
 @export var tile_size: float = 16.0
-@export var minimum_range_tiles: float = 6.0
+@export var minimum_range_tiles: float = 1.0
 @export var maximum_range_tiles: float = 10.0
 @export var target_group: StringName = &"enemies"
 @export var rotate_with_velocity: bool = true
