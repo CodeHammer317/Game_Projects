@@ -6,15 +6,21 @@
 
 [node name="TitleScreen" parent="." unique_id=380044311 instance=ExtResource("1_ig7tw")]
 
+[node name="Logo" parent="TitleScreen" index="2" unique_id=1278079265]
+offset_left = 176.0
+offset_top = 9.0
+offset_right = 447.0
+offset_bottom = 250.0
+
 [node name="Logo2" parent="TitleScreen/FadeLayer" parent_id_path=PackedInt32Array(380044311, 1064865099) index="0" unique_id=2014118866]
 offset_left = 127.0
 offset_right = 310.3333
 offset_bottom = 246.625
 
-[node name="SFX_Confirm" parent="TitleScreen" index="6" unique_id=1801189967]
+[node name="SFX_Confirm" parent="TitleScreen" index="7" unique_id=1801189967]
 volume_db = -1.375
 
-[node name="AudioStreamPlayer3" parent="TitleScreen" index="7" unique_id=1219278294]
+[node name="ScreenSoundtrack" parent="TitleScreen" index="8" unique_id=1219278294]
 volume_db = -10.499
 
 [editable path="TitleScreen"]
