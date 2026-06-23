@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://chbkkiak8cwqv"]
+[gd_scene format=4 uid="uid://chbkkiak8cwqv"]
 
 [ext_resource type="Script" uid="uid://bfaw25viylrsx" path="res://Scripts/upgrade_chamber.gd" id="1_keiq2"]
-[ext_resource type="Texture2D" uid="uid://djh2nabu7sdqx" path="res://Assets/sprites/Upgrade_Chamber_Background.png" id="1_vu3f7"]
+[ext_resource type="Texture2D" uid="uid://bgrb2wti13y67" path="res://Assets/sprites/Upgrade_Chamber_Background.png" id="1_vu3f7"]
 [ext_resource type="PackedScene" uid="uid://cuhdpfcm440hu" path="res://Scenes/World/camera_2d.tscn" id="2_nuorc"]
 [ext_resource type="Texture2D" uid="uid://bh7licej0ww7s" path="res://Assets/sprites/UpgradeChamberAnimation/Copilot_20260520_195632.png" id="3_1anyi"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="6_11ldt"]
@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://xat5ntqr4c34" path="res://Assets/Cool Animations/beam animation/beamupgrade24.png" id="30_8m70p"]
 [ext_resource type="Texture2D" uid="uid://ci4l2fiig1vla" path="res://Assets/Cool Animations/beam animation/beamupgrade25.png" id="31_5u5in"]
 [ext_resource type="Texture2D" uid="uid://cuibynm04252d" path="res://Assets/Cool Animations/beam animation/beamupgrade26.png" id="32_eb5p3"]
-[ext_resource type="Texture2D" uid="uid://b3a8meuw0ghmh" path="res://Assets/sprites/Copilot_20260520_203257.png" id="33_niw4g"]
+[ext_resource type="Texture2D" uid="uid://b0k0mlvnfq7w" path="res://Assets/sprites/Copilot_20260520_203257.png" id="33_niw4g"]
 [ext_resource type="Texture2D" uid="uid://ciov2462n8h2i" path="res://Assets/Cool Animations/Smoke/Smoke1.png" id="35_mssxr"]
 [ext_resource type="Texture2D" uid="uid://d5lvw7ukd0ki" path="res://Assets/Cool Animations/Smoke/Smoke2.png" id="36_1rntg"]
 [ext_resource type="Texture2D" uid="uid://clf7unloqlfee" path="res://Assets/Cool Animations/Smoke/Smoke3.png" id="37_u8g6j"]
@@ -202,20 +202,19 @@ script = ExtResource("1_keiq2")
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1030815969]
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=901094197]
-scale = Vector2(0.95329666, 1.0722222)
+scale = Vector2(1.7637364, 1.9833333)
 texture = ExtResource("1_vu3f7")
 centered = false
 
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("7_kds23")]
-position = Vector2(47, 133)
+position = Vector2(49, 310)
 
 [node name="AnimatedSprite2D" parent="Player" index="6" unique_id=1655699272]
 position = Vector2(0, 7)
-animation = &"jumping"
-autoplay = "jumping"
-
-[node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("2_nuorc")]
-target_path = NodePath("../Player")
+animation = &"jump"
+autoplay = "idle"
+frame = 0
+frame_progress = 0.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2042359910]
 collision_mask = 7
@@ -225,15 +224,17 @@ position = Vector2(47, 131)
 shape = SubResource("RectangleShape2D_1anyi")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=132156048]
-tile_map_data = PackedByteArray(0, 0, 11, 0, 11, 0, 0, 0, 0, 0, 10, 0, 0, 0, 3, 0, 9, 0, 2, 0, 2, 0, 4, 0, 0, 0, 2, 0, 9, 0, 2, 0, 2, 0, 4, 0, 0, 0)
+tile_map_data = PackedByteArray("AAADAAkAAAAAAAoAAAACAAkAAgACAAQAAAAKABUAAAAAAAoAAAAgABUAAAAAAAoAAAACAAoAAAAAAAoAAAADAAoAAAAAAAoAAAA=")
 tile_set = SubResource("TileSet_1anyi")
 
 [node name="AreaTransition" parent="." unique_id=1160941269 instance=ExtResource("6_11ldt")]
-position = Vector2(347, 129)
+position = Vector2(629, 290)
 collision_layer = 128
 collision_mask = 2
+next_level_path = "uid://bun3a73t5kpyq"
 
 [node name="UpgradeMachine" type="Node2D" parent="." unique_id=730803477]
+position = Vector2(3, 153)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UpgradeMachine" unique_id=902323379]
 position = Vector2(47, 123)
@@ -244,12 +245,17 @@ autoplay = "activate"
 [node name="StopPoint" type="Node2D" parent="." unique_id=1798742526]
 position = Vector2(47, 133)
 
+[node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("2_nuorc")]
+limit_right = 640
+limit_bottom = 360
+target_path = NodePath("../Player")
+
 [node name="Beam" type="Node2D" parent="." unique_id=1666012602]
-position = Vector2(47, 123)
+position = Vector2(47, 122)
 scale = Vector2(0.32, 0.32)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Beam" unique_id=711015503]
-position = Vector2(4.7683716e-07, 56.249985)
+position = Vector2(4.7683716e-07, 584.375)
 scale = Vector2(1.1500001, 0.95524025)
 sprite_frames = SubResource("SpriteFrames_kds23")
 animation = &"beam"
@@ -257,7 +263,7 @@ autoplay = "beam"
 frame_progress = 0.53998005
 
 [node name="Copilot20260520203257" type="Sprite2D" parent="Beam" unique_id=1071452764]
-position = Vector2(0, 65.625)
+position = Vector2(0, 587.5)
 scale = Vector2(0.8613281, 0.7864583)
 texture = ExtResource("33_niw4g")
 
