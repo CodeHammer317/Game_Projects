@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="5_38drk"]
 [ext_resource type="Texture2D" uid="uid://csl4ra1ng4u2y" path="res://Assets/tilesets/Old_District_Background_Near.png" id="6_ce1mu"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="7_38drk"]
+[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="8_7x014"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7x014"]
 texture = ExtResource("3_ce1mu")
@@ -623,3 +624,6 @@ position = Vector2(4147, 260)
 collision_layer = 128
 collision_mask = 2
 next_level_path = "uid://vs7yw2qkdd3y"
+
+[node name="Hud" parent="." unique_id=795795287 instance=ExtResource("8_7x014")]
+player_path = NodePath("../Player")

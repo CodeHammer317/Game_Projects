@@ -78,6 +78,8 @@ signal game_over
 @export var mattt_assist_scene: PackedScene
 @export var special_meter_max: int = 100
 @export var special_meter: int = 100
+@export var special_recharge_time: float = 8.0
+@export var special_recharges_over_time: bool = true
 @export var mattt_spawn_offset: Vector2 = Vector2(-40.0, -20.0)
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -142,11 +144,13 @@ var _was_on_floor: bool = false
 
 var _dust_spawn_timer: float = 0.0
 var _sprite_base_position: Vector2 = Vector2.ZERO
+var _special_meter_charge: float = 0.0
 
 
 func _ready() -> void:
 	_sprite_base_position = sprite.position
 	special_meter = clampi(special_meter, 0, special_meter_max)
+	_special_meter_charge = float(special_meter)
 
 	if health != null:
 		if not health.damaged.is_connected(_on_damaged):
@@ -212,9 +216,28 @@ func _update_timers(delta: float) -> void:
 	_attack_anim_timer = max(_attack_anim_timer - delta, 0.0)
 	_combo_timer = max(_combo_timer - delta, 0.0)
 	_aerial_attack_timer = max(_aerial_attack_timer - delta, 0.0)
+	_recharge_special_meter(delta)
 
 	if _combo_timer <= 0.0:
 		_combo_index = 0
+
+
+func _recharge_special_meter(delta: float) -> void:
+	if not special_recharges_over_time:
+		return
+
+	if special_meter >= special_meter_max:
+		_special_meter_charge = float(special_meter_max)
+		return
+
+	var safe_recharge_time := maxf(special_recharge_time, 0.1)
+	var recharge_per_second := float(special_meter_max) / safe_recharge_time
+	_special_meter_charge = minf(_special_meter_charge + recharge_per_second * delta, float(special_meter_max))
+
+	var new_meter := floori(_special_meter_charge)
+	if new_meter != special_meter:
+		special_meter = clampi(new_meter, 0, special_meter_max)
+		special_meter_changed.emit(special_meter, special_meter_max)
 
 
 func _refresh_floor_state() -> void:
@@ -636,6 +659,7 @@ func _handle_special_assist() -> void:
 
 func set_special_meter(value: int) -> void:
 	special_meter = clampi(value, 0, special_meter_max)
+	_special_meter_charge = float(special_meter)
 	special_meter_changed.emit(special_meter, special_meter_max)
 
 

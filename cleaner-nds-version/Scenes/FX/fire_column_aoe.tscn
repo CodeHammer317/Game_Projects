@@ -102,14 +102,13 @@ animations = [{
 collision_layer = 8
 collision_mask = 68
 script = ExtResource("1_e3aw6")
-damage = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=383998431]
+position = Vector2(0, 32)
 shape = SubResource("CircleShape2D_0kblf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1235836523]
 sprite_frames = SubResource("SpriteFrames_7wkpm")
 animation = &"fire_column"
 autoplay = "fire_column"
-frame = 11
-frame_progress = 1.0
+frame = 4

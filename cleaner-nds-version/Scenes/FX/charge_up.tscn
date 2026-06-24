@@ -1,83 +1,2865 @@
 [gd_scene format=3 uid="uid://bp0su7scrugow"]
 
-[ext_resource type="Texture2D" uid="uid://ddffqjmh3qrnb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_B/spritesheet.png" id="1_m27af"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_onl3a"]
-atlas = ExtResource("1_m27af")
-region = Rect2(312, 0, 52, 52)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c2lfe"]
-atlas = ExtResource("1_m27af")
-region = Rect2(312, 52, 52, 52)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_otjy8"]
-atlas = ExtResource("1_m27af")
-region = Rect2(312, 104, 52, 52)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_awq2d"]
-atlas = ExtResource("1_m27af")
-region = Rect2(312, 156, 52, 52)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0dydb"]
-atlas = ExtResource("1_m27af")
-region = Rect2(312, 208, 52, 52)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nl1tn"]
-atlas = ExtResource("1_m27af")
-region = Rect2(312, 260, 52, 52)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e3o0c"]
-atlas = ExtResource("1_m27af")
-region = Rect2(312, 312, 52, 52)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kebd3"]
-atlas = ExtResource("1_m27af")
-region = Rect2(312, 364, 52, 52)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wl3pi"]
-atlas = ExtResource("1_m27af")
-region = Rect2(312, 416, 52, 52)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r3suk"]
-atlas = ExtResource("1_m27af")
-region = Rect2(312, 468, 52, 52)
+[ext_resource type="Texture2D" uid="uid://88ifstw7ss66" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0001.png" id="1_rtscq"]
+[ext_resource type="Texture2D" uid="uid://hnocesbxknow" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0002.png" id="2_ryhhd"]
+[ext_resource type="Texture2D" uid="uid://ddxp0uytbnvvx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0003.png" id="3_5auiw"]
+[ext_resource type="Texture2D" uid="uid://2ixt2sipffoc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0004.png" id="4_3m8ty"]
+[ext_resource type="Texture2D" uid="uid://bk8ukcvo5rmdx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0005.png" id="5_yjm3n"]
+[ext_resource type="Texture2D" uid="uid://b2u4ywk07woq6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0006.png" id="6_31m3q"]
+[ext_resource type="Texture2D" uid="uid://uxf5jrc2h4fc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0007.png" id="7_uixlw"]
+[ext_resource type="Texture2D" uid="uid://c155up8oiiiv3" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0008.png" id="8_0wq5n"]
+[ext_resource type="Texture2D" uid="uid://brtjkr1akn4y8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0009.png" id="9_ouakb"]
+[ext_resource type="Texture2D" uid="uid://dhnfnhtkjxnxd" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0010.png" id="10_3eill"]
+[ext_resource type="Texture2D" uid="uid://cfm7us1c0ebcn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0011.png" id="11_milmn"]
+[ext_resource type="Texture2D" uid="uid://bvucb6kpxwf01" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0012.png" id="12_wub2w"]
+[ext_resource type="Texture2D" uid="uid://btwi0f0djtyek" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0013.png" id="13_t6u1l"]
+[ext_resource type="Texture2D" uid="uid://bpaxb8neavqx1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0014.png" id="14_ruxun"]
+[ext_resource type="Texture2D" uid="uid://buve4ynhd3p4e" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0015.png" id="15_180t6"]
+[ext_resource type="Texture2D" uid="uid://bte7fbnmh8rep" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0016.png" id="16_udi80"]
+[ext_resource type="Texture2D" uid="uid://dkovmxbea2n6a" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0017.png" id="17_1fc2f"]
+[ext_resource type="Texture2D" uid="uid://krg8dxrkj21f" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0018.png" id="18_miip5"]
+[ext_resource type="Texture2D" uid="uid://ckha30w1h0hjl" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0019.png" id="19_lvjc0"]
+[ext_resource type="Texture2D" uid="uid://dbsk1esqds5ww" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0020.png" id="20_ewnje"]
+[ext_resource type="Texture2D" uid="uid://bpasyxcey5pj1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0021.png" id="21_380j0"]
+[ext_resource type="Texture2D" uid="uid://dlf2igo4n5k4y" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0022.png" id="22_pbbx2"]
+[ext_resource type="Texture2D" uid="uid://bb77v2arb7hjw" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0023.png" id="23_enegx"]
+[ext_resource type="Texture2D" uid="uid://dailwt625mhl" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0024.png" id="24_k47q3"]
+[ext_resource type="Texture2D" uid="uid://b2ym623wiofqu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0025.png" id="25_rwai7"]
+[ext_resource type="Texture2D" uid="uid://b15j3oejttghf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0026.png" id="26_cjch0"]
+[ext_resource type="Texture2D" uid="uid://fhqxxhaca0ud" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0027.png" id="27_n4cmj"]
+[ext_resource type="Texture2D" uid="uid://c8oirnoc0fbru" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0028.png" id="28_cjkog"]
+[ext_resource type="Texture2D" uid="uid://dm7etqnd5l460" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0029.png" id="29_nxk0d"]
+[ext_resource type="Texture2D" uid="uid://domo08j75rn3" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0030.png" id="30_n3aq3"]
+[ext_resource type="Texture2D" uid="uid://b256pxsle6612" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0031.png" id="31_up8oh"]
+[ext_resource type="Texture2D" uid="uid://dn7skwh4ibnng" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0032.png" id="32_jp5bv"]
+[ext_resource type="Texture2D" uid="uid://c1xvpj4scfb4f" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0033.png" id="33_gufex"]
+[ext_resource type="Texture2D" uid="uid://4g3034sd8m0q" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0034.png" id="34_gbs75"]
+[ext_resource type="Texture2D" uid="uid://bpr6nv8gyxey" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0035.png" id="35_hlo72"]
+[ext_resource type="Texture2D" uid="uid://bbg8a60k38fwd" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0036.png" id="36_4grmc"]
+[ext_resource type="Texture2D" uid="uid://e363wc1rhpo6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0037.png" id="37_l864r"]
+[ext_resource type="Texture2D" uid="uid://d4iyxd8ycskkm" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0038.png" id="38_wedq6"]
+[ext_resource type="Texture2D" uid="uid://8yt7uycdbefd" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0039.png" id="39_yuta1"]
+[ext_resource type="Texture2D" uid="uid://daetm7oe5sdcb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0040.png" id="40_i4vg6"]
+[ext_resource type="Texture2D" uid="uid://ixys2duubijs" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0041.png" id="41_5jfa0"]
+[ext_resource type="Texture2D" uid="uid://dqo6dd3nqsxo0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0042.png" id="42_qyagy"]
+[ext_resource type="Texture2D" uid="uid://cs4mekld5cwvb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0043.png" id="43_7lr5n"]
+[ext_resource type="Texture2D" uid="uid://c8mwputlulkat" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0044.png" id="44_aj6vo"]
+[ext_resource type="Texture2D" uid="uid://dfjcptu8cb5ax" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0045.png" id="45_bwlxx"]
+[ext_resource type="Texture2D" uid="uid://cmnmafqfgimsa" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0046.png" id="46_f22q5"]
+[ext_resource type="Texture2D" uid="uid://b8jsbxm2qtkn0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0047.png" id="47_2j0me"]
+[ext_resource type="Texture2D" uid="uid://bdc2va58f8uii" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0048.png" id="48_oox44"]
+[ext_resource type="Texture2D" uid="uid://k67ev0u833rs" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0049.png" id="49_rm0gc"]
+[ext_resource type="Texture2D" uid="uid://b87whft1u5a1b" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0050.png" id="50_5bo3a"]
+[ext_resource type="Texture2D" uid="uid://m4qteyuctqvq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0051.png" id="51_277p4"]
+[ext_resource type="Texture2D" uid="uid://7bvlpip3r4yu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0052.png" id="52_3dv2c"]
+[ext_resource type="Texture2D" uid="uid://drmfpnjvi2qa1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0053.png" id="53_3xuur"]
+[ext_resource type="Texture2D" uid="uid://wy18b7oirxax" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0054.png" id="54_rtkva"]
+[ext_resource type="Texture2D" uid="uid://cykalv11ypa1g" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0055.png" id="55_dp4yb"]
+[ext_resource type="Texture2D" uid="uid://dnud7m6ba3cex" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0056.png" id="56_cbx7x"]
+[ext_resource type="Texture2D" uid="uid://d0uku0js26r7y" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0057.png" id="57_ks8ab"]
+[ext_resource type="Texture2D" uid="uid://5luidxsokeok" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0058.png" id="58_tbyc0"]
+[ext_resource type="Texture2D" uid="uid://wodq0htg0omj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0059.png" id="59_v6107"]
+[ext_resource type="Texture2D" uid="uid://d25mhhjsiqgpr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0060.png" id="60_jbfyx"]
+[ext_resource type="Texture2D" uid="uid://ciy1bd35ucckb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0061.png" id="61_ar31t"]
+[ext_resource type="Texture2D" uid="uid://c4i2lf2iaeglp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0062.png" id="62_pdlcq"]
+[ext_resource type="Texture2D" uid="uid://ds5oncotlyo3k" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0063.png" id="63_4w4kr"]
+[ext_resource type="Texture2D" uid="uid://dbv8adw0bthi0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0064.png" id="64_r1xow"]
+[ext_resource type="Texture2D" uid="uid://rrswufigrdo6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0065.png" id="65_3ebld"]
+[ext_resource type="Texture2D" uid="uid://b5ktm87k4606p" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0066.png" id="66_1cgkg"]
+[ext_resource type="Texture2D" uid="uid://ccwqay08na6sr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0067.png" id="67_iq3n5"]
+[ext_resource type="Texture2D" uid="uid://d3575y4exqoga" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0068.png" id="68_c1d0a"]
+[ext_resource type="Texture2D" uid="uid://udn6gkafe208" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0069.png" id="69_en3bw"]
+[ext_resource type="Texture2D" uid="uid://c63xa80kqa8up" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0070.png" id="70_1ge22"]
+[ext_resource type="Texture2D" uid="uid://bcskbiujbj0xl" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0071.png" id="71_c8kvo"]
+[ext_resource type="Texture2D" uid="uid://c2wj6raedgfdt" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0072.png" id="72_yp33m"]
+[ext_resource type="Texture2D" uid="uid://b8ddakjnhpavf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0073.png" id="73_lkxci"]
+[ext_resource type="Texture2D" uid="uid://bfw8etgjporph" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0074.png" id="74_acge3"]
+[ext_resource type="Texture2D" uid="uid://cqe05ih2xjtib" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0075.png" id="75_6c81e"]
+[ext_resource type="Texture2D" uid="uid://canw8khaeq3qk" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0076.png" id="76_nof3x"]
+[ext_resource type="Texture2D" uid="uid://drq1yqlvmdl6t" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0077.png" id="77_j52xb"]
+[ext_resource type="Texture2D" uid="uid://c2ksryv4jbyon" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0078.png" id="78_wfwxw"]
+[ext_resource type="Texture2D" uid="uid://d0cnprf6j3hoi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0079.png" id="79_xnbn7"]
+[ext_resource type="Texture2D" uid="uid://cjck26dlh5ng2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0080.png" id="80_s2lv1"]
+[ext_resource type="Texture2D" uid="uid://wb5wfxcw0ldo" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0081.png" id="81_rxqmy"]
+[ext_resource type="Texture2D" uid="uid://cj10u15elj6t4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0082.png" id="82_v5bg8"]
+[ext_resource type="Texture2D" uid="uid://cuq3k0wfmmqpe" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0083.png" id="83_wm6mf"]
+[ext_resource type="Texture2D" uid="uid://71dfyywfixno" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0084.png" id="84_m2x2o"]
+[ext_resource type="Texture2D" uid="uid://b5d4ak0rdc26b" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0085.png" id="85_avsgy"]
+[ext_resource type="Texture2D" uid="uid://1a4etdnkud7i" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0086.png" id="86_43p4p"]
+[ext_resource type="Texture2D" uid="uid://cqv0s6ttjxwwj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0087.png" id="87_i0eym"]
+[ext_resource type="Texture2D" uid="uid://dud2qsq7qy5b2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0088.png" id="88_npum1"]
+[ext_resource type="Texture2D" uid="uid://xf1u4jks0mar" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0089.png" id="89_74p3s"]
+[ext_resource type="Texture2D" uid="uid://b7f4bgnhf3x5j" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0090.png" id="90_58fhs"]
+[ext_resource type="Texture2D" uid="uid://cnhrhv06id8ko" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0091.png" id="91_64y2s"]
+[ext_resource type="Texture2D" uid="uid://cd22puw2h4vsp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0092.png" id="92_5nuk5"]
+[ext_resource type="Texture2D" uid="uid://bl5cpa4r4p6h0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0093.png" id="93_xw8ow"]
+[ext_resource type="Texture2D" uid="uid://dmwa7warwssbj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0094.png" id="94_j4wih"]
+[ext_resource type="Texture2D" uid="uid://bvwhyumdht4xb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0095.png" id="95_wtyta"]
+[ext_resource type="Texture2D" uid="uid://doo8a6m7m281b" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0096.png" id="96_vteng"]
+[ext_resource type="Texture2D" uid="uid://bpi213k7mx8ae" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0097.png" id="97_0skem"]
+[ext_resource type="Texture2D" uid="uid://c22fnefhc7088" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0098.png" id="98_xpc1u"]
+[ext_resource type="Texture2D" uid="uid://hbi7xuf8jcor" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0099.png" id="99_rg3dk"]
+[ext_resource type="Texture2D" uid="uid://c1uftf5gvwykr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0100.png" id="100_1mt23"]
+[ext_resource type="Texture2D" uid="uid://c6ab2130wgwix" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0101.png" id="101_ewipr"]
+[ext_resource type="Texture2D" uid="uid://kibbtwpq3u0d" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0102.png" id="102_3d6ah"]
+[ext_resource type="Texture2D" uid="uid://2inff2otnc2v" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0103.png" id="103_w3ccx"]
+[ext_resource type="Texture2D" uid="uid://bedamilrixx8s" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0104.png" id="104_0mnlv"]
+[ext_resource type="Texture2D" uid="uid://dvu6wusqhkuy3" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0105.png" id="105_tnypm"]
+[ext_resource type="Texture2D" uid="uid://bi4fouetv2ime" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0106.png" id="106_jxsf0"]
+[ext_resource type="Texture2D" uid="uid://df8p0bqx0t1c" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/charge_A/frames/frame0107.png" id="107_sswnu"]
+[ext_resource type="Texture2D" uid="uid://dnqg51vgn4tph" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0000.png" id="108_ynw36"]
+[ext_resource type="Texture2D" uid="uid://d0hbarl3j15ka" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0001.png" id="109_hvvp5"]
+[ext_resource type="Texture2D" uid="uid://b6bxlwiqfkqlo" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0002.png" id="110_5qu4h"]
+[ext_resource type="Texture2D" uid="uid://bd0vchqk7aygk" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0003.png" id="111_i1i7d"]
+[ext_resource type="Texture2D" uid="uid://b3sy0tse7bvch" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0004.png" id="112_37j6n"]
+[ext_resource type="Texture2D" uid="uid://6gqdw7n520gm" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0005.png" id="113_bae4t"]
+[ext_resource type="Texture2D" uid="uid://bfljdsjra16tp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0006.png" id="114_cakli"]
+[ext_resource type="Texture2D" uid="uid://cmy6lan36rx3b" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0007.png" id="115_b1hfl"]
+[ext_resource type="Texture2D" uid="uid://eogb5nix3w4r" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0008.png" id="116_54nfr"]
+[ext_resource type="Texture2D" uid="uid://dnhsq8tcvcgy5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0009.png" id="117_4bcxa"]
+[ext_resource type="Texture2D" uid="uid://c76gcwdlf54xc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0010.png" id="118_1mt1q"]
+[ext_resource type="Texture2D" uid="uid://crfnk732ulkw4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0011.png" id="119_3fhy3"]
+[ext_resource type="Texture2D" uid="uid://dh6f2rpt73wxw" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0012.png" id="120_lq22r"]
+[ext_resource type="Texture2D" uid="uid://2xslm76ekk7x" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0013.png" id="121_2qf8w"]
+[ext_resource type="Texture2D" uid="uid://5h0mdwmgx4uu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0014.png" id="122_nh0xh"]
+[ext_resource type="Texture2D" uid="uid://orygxb8wdb14" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0015.png" id="123_u2687"]
+[ext_resource type="Texture2D" uid="uid://cec2rgp3wtasr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0016.png" id="124_2fcu5"]
+[ext_resource type="Texture2D" uid="uid://74xinjhjrwth" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0017.png" id="125_dtpvl"]
+[ext_resource type="Texture2D" uid="uid://dmpwdn27b1mw6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0018.png" id="126_0bojw"]
+[ext_resource type="Texture2D" uid="uid://cqeb4v3gw6m1b" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0019.png" id="127_b6mjh"]
+[ext_resource type="Texture2D" uid="uid://jn8ytyun5oda" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0020.png" id="128_jtl3v"]
+[ext_resource type="Texture2D" uid="uid://c6jnwylqqcnit" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0021.png" id="129_af320"]
+[ext_resource type="Texture2D" uid="uid://d27ta47k0c8yq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0022.png" id="130_x587p"]
+[ext_resource type="Texture2D" uid="uid://rj0j5hgw18aw" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0023.png" id="131_jbavv"]
+[ext_resource type="Texture2D" uid="uid://lxf5k4r0quph" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0024.png" id="132_yoiy3"]
+[ext_resource type="Texture2D" uid="uid://dhw5ek4giugjq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0025.png" id="133_ebxjs"]
+[ext_resource type="Texture2D" uid="uid://w4ow4dlhv8ju" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0026.png" id="134_kjls4"]
+[ext_resource type="Texture2D" uid="uid://d0nxewluf3jq8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0027.png" id="135_fc46d"]
+[ext_resource type="Texture2D" uid="uid://cqodgknvyfenl" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0028.png" id="136_frmij"]
+[ext_resource type="Texture2D" uid="uid://bdnhkvg2la2g1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0029.png" id="137_hvsla"]
+[ext_resource type="Texture2D" uid="uid://d3ijyfvfmxl45" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0030.png" id="138_04x06"]
+[ext_resource type="Texture2D" uid="uid://w4civc3wh7pg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0031.png" id="139_n8fow"]
+[ext_resource type="Texture2D" uid="uid://b2ctup0ers4tj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0032.png" id="140_ihddd"]
+[ext_resource type="Texture2D" uid="uid://ykgddnl54tsf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0033.png" id="141_f6nfx"]
+[ext_resource type="Texture2D" uid="uid://bbcsjm52yrxfg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0034.png" id="142_anjcb"]
+[ext_resource type="Texture2D" uid="uid://cafxtwybwivsf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0035.png" id="143_try57"]
+[ext_resource type="Texture2D" uid="uid://b8qi265pc6man" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0036.png" id="144_vclck"]
+[ext_resource type="Texture2D" uid="uid://b4bh42ot5vau7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0037.png" id="145_elnr1"]
+[ext_resource type="Texture2D" uid="uid://iaymyi5cm60k" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0038.png" id="146_8tgnt"]
+[ext_resource type="Texture2D" uid="uid://ckf7akmdliirj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0039.png" id="147_6t6mm"]
+[ext_resource type="Texture2D" uid="uid://db8ro4o1kae73" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0040.png" id="148_qv0fo"]
+[ext_resource type="Texture2D" uid="uid://3yyqff26kt34" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0041.png" id="149_ccj8l"]
+[ext_resource type="Texture2D" uid="uid://6l3cpn3hxb5e" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0042.png" id="150_wv4v7"]
+[ext_resource type="Texture2D" uid="uid://b7kf1nitv3xse" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0043.png" id="151_tthef"]
+[ext_resource type="Texture2D" uid="uid://da345ihfyfxyk" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0044.png" id="152_8uabj"]
+[ext_resource type="Texture2D" uid="uid://k6xcfju7gsx0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0045.png" id="153_5rjgr"]
+[ext_resource type="Texture2D" uid="uid://6dh20ihl2ccm" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0046.png" id="154_onrso"]
+[ext_resource type="Texture2D" uid="uid://cbivj12xxakku" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0047.png" id="155_w8fnr"]
+[ext_resource type="Texture2D" uid="uid://8apsh2acsrrg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0048.png" id="156_f54ov"]
+[ext_resource type="Texture2D" uid="uid://dcb7kfc2xu3p7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0049.png" id="157_c5tjq"]
+[ext_resource type="Texture2D" uid="uid://bblomt1568lna" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0050.png" id="158_qxs8a"]
+[ext_resource type="Texture2D" uid="uid://djajev77ck87s" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0051.png" id="159_tenou"]
+[ext_resource type="Texture2D" uid="uid://xdsa5p5o2sao" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0052.png" id="160_oyawy"]
+[ext_resource type="Texture2D" uid="uid://bgn53rrdphmg7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0053.png" id="161_wy3u0"]
+[ext_resource type="Texture2D" uid="uid://coyyt6pnge4rt" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0054.png" id="162_atyng"]
+[ext_resource type="Texture2D" uid="uid://8bslsjcxumgl" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0055.png" id="163_gd85b"]
+[ext_resource type="Texture2D" uid="uid://b5ekurlwpnf86" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0056.png" id="164_wkjjs"]
+[ext_resource type="Texture2D" uid="uid://cfiofyemcvms" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0057.png" id="165_4xqi0"]
+[ext_resource type="Texture2D" uid="uid://cf5l6diw1f7wb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0058.png" id="166_w7o1e"]
+[ext_resource type="Texture2D" uid="uid://3518rdswtcdr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0059.png" id="167_yp03o"]
+[ext_resource type="Texture2D" uid="uid://5ksjlqhdwpam" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0060.png" id="168_muwyx"]
+[ext_resource type="Texture2D" uid="uid://doj7xmxovlloy" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0061.png" id="169_y6xvp"]
+[ext_resource type="Texture2D" uid="uid://5uxa3ty6vt1e" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0062.png" id="170_b4a7m"]
+[ext_resource type="Texture2D" uid="uid://c6hrmrbxj6usp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0063.png" id="171_kbhih"]
+[ext_resource type="Texture2D" uid="uid://b116x782ni7ko" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0064.png" id="172_cnj4r"]
+[ext_resource type="Texture2D" uid="uid://bor48d1acisr0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0065.png" id="173_6m3rw"]
+[ext_resource type="Texture2D" uid="uid://6uqw3gfa6edb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0066.png" id="174_yvfqg"]
+[ext_resource type="Texture2D" uid="uid://dyw2os77jmhdo" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0067.png" id="175_gfyco"]
+[ext_resource type="Texture2D" uid="uid://dvsytmrx2il" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0068.png" id="176_e7s2b"]
+[ext_resource type="Texture2D" uid="uid://bmgjw4jxsf8g1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0069.png" id="177_dhlk6"]
+[ext_resource type="Texture2D" uid="uid://t8hnn5k1gmrg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0070.png" id="178_oh62c"]
+[ext_resource type="Texture2D" uid="uid://bcbohwosfknud" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0071.png" id="179_12oqs"]
+[ext_resource type="Texture2D" uid="uid://byddjgmu70ei2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0072.png" id="180_vi64f"]
+[ext_resource type="Texture2D" uid="uid://1pck3yyidcj1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0073.png" id="181_v8044"]
+[ext_resource type="Texture2D" uid="uid://cx8apmmtpp5y8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0074.png" id="182_2h8lx"]
+[ext_resource type="Texture2D" uid="uid://bj0radql1afe2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0075.png" id="183_e0jok"]
+[ext_resource type="Texture2D" uid="uid://baxw3qdcgfqmi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0076.png" id="184_2p3r0"]
+[ext_resource type="Texture2D" uid="uid://b56ye8d3nt2fu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0077.png" id="185_w701m"]
+[ext_resource type="Texture2D" uid="uid://buea5ms2fwje5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0078.png" id="186_mqfbc"]
+[ext_resource type="Texture2D" uid="uid://cdgju0isfl8vq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0079.png" id="187_shrhs"]
+[ext_resource type="Texture2D" uid="uid://21metw7gmn4a" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0080.png" id="188_b5xk0"]
+[ext_resource type="Texture2D" uid="uid://dh8jtv50l3ohx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0081.png" id="189_tfvmc"]
+[ext_resource type="Texture2D" uid="uid://u6wv35cl3r88" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0082.png" id="190_m3ure"]
+[ext_resource type="Texture2D" uid="uid://bj8rw80jdpbpf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0083.png" id="191_0hyg4"]
+[ext_resource type="Texture2D" uid="uid://dea4htgtdwn3d" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0084.png" id="192_2gva2"]
+[ext_resource type="Texture2D" uid="uid://ba5v73xh7pqgt" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0085.png" id="193_5uxqa"]
+[ext_resource type="Texture2D" uid="uid://cqkkdytxdalbo" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0086.png" id="194_b1ryi"]
+[ext_resource type="Texture2D" uid="uid://dcfi2rka6rcpi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0087.png" id="195_sdotn"]
+[ext_resource type="Texture2D" uid="uid://c1qm4qbi05t2c" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0088.png" id="196_vi1f2"]
+[ext_resource type="Texture2D" uid="uid://gkgnpdiheqo5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0089.png" id="197_vtmj4"]
+[ext_resource type="Texture2D" uid="uid://cnkgnfqasdm8s" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0090.png" id="198_eroff"]
+[ext_resource type="Texture2D" uid="uid://dqdn32nvq52jk" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0091.png" id="199_6w8rm"]
+[ext_resource type="Texture2D" uid="uid://cupwyvic22b84" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0092.png" id="200_pd1ir"]
+[ext_resource type="Texture2D" uid="uid://lamgeiaqmxn2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0093.png" id="201_hy0or"]
+[ext_resource type="Texture2D" uid="uid://dmqtijq7chr35" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0094.png" id="202_fmp7s"]
+[ext_resource type="Texture2D" uid="uid://bk3a5kfgy0b4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0095.png" id="203_y3akn"]
+[ext_resource type="Texture2D" uid="uid://d08f1cppi267b" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0096.png" id="204_36mcb"]
+[ext_resource type="Texture2D" uid="uid://b14xau8cyqu8a" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0097.png" id="205_7fcb4"]
+[ext_resource type="Texture2D" uid="uid://b2ksf2i4hnnjc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0098.png" id="206_e60rt"]
+[ext_resource type="Texture2D" uid="uid://53a2eefxrbxx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0099.png" id="207_km8lj"]
+[ext_resource type="Texture2D" uid="uid://lbqaqsygy3bu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0100.png" id="208_ukkq0"]
+[ext_resource type="Texture2D" uid="uid://rrq5b7o7gsxh" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0101.png" id="209_qmqwh"]
+[ext_resource type="Texture2D" uid="uid://dqemck6n0mo1b" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0102.png" id="210_pmuam"]
+[ext_resource type="Texture2D" uid="uid://kipgqy2rtmc5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0103.png" id="211_wc6cx"]
+[ext_resource type="Texture2D" uid="uid://b7popf3ssj04d" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0104.png" id="212_hu71l"]
+[ext_resource type="Texture2D" uid="uid://cd4384hygym45" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0105.png" id="213_1agua"]
+[ext_resource type="Texture2D" uid="uid://dhmgsqhuq2lp4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0106.png" id="214_chada"]
+[ext_resource type="Texture2D" uid="uid://b3vb00dcaw8tc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0107.png" id="215_n5gts"]
+[ext_resource type="Texture2D" uid="uid://c7njbpc0n2ba2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0108.png" id="216_htgwk"]
+[ext_resource type="Texture2D" uid="uid://baw6n8r7mvo5b" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0109.png" id="217_7lwhn"]
+[ext_resource type="Texture2D" uid="uid://cy28byamcu8y7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0110.png" id="218_5v6xq"]
+[ext_resource type="Texture2D" uid="uid://biqnxq0c3qnku" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0111.png" id="219_4jxxh"]
+[ext_resource type="Texture2D" uid="uid://bv1xebpvfc0hb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0112.png" id="220_53smj"]
+[ext_resource type="Texture2D" uid="uid://dqkhik25t778w" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0113.png" id="221_kirhw"]
+[ext_resource type="Texture2D" uid="uid://dleqy6oba1n8k" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0114.png" id="222_t8wle"]
+[ext_resource type="Texture2D" uid="uid://ipbrcp16tq3k" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0115.png" id="223_kvwjd"]
+[ext_resource type="Texture2D" uid="uid://52edlphigesj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0116.png" id="224_pajdg"]
+[ext_resource type="Texture2D" uid="uid://dvr8v0k8kyr8o" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0117.png" id="225_7hoyl"]
+[ext_resource type="Texture2D" uid="uid://b6j1am3p6glq8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0118.png" id="226_bo12j"]
+[ext_resource type="Texture2D" uid="uid://c5d0pvc05n4jo" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/fire_A/frames/frame0119.png" id="227_51cuq"]
+[ext_resource type="Texture2D" uid="uid://dqgcyc4cqwtly" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0000.png" id="228_3kpwy"]
+[ext_resource type="Texture2D" uid="uid://cgk3cuv5lbif0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0001.png" id="229_twpgu"]
+[ext_resource type="Texture2D" uid="uid://cd7a30wgujp1h" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0002.png" id="230_fpc07"]
+[ext_resource type="Texture2D" uid="uid://del81org1o6c6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0003.png" id="231_4jayi"]
+[ext_resource type="Texture2D" uid="uid://b7yll6p63r0dg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0004.png" id="232_0al7v"]
+[ext_resource type="Texture2D" uid="uid://myn1x46eg5sj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0005.png" id="233_ht224"]
+[ext_resource type="Texture2D" uid="uid://chs4lfifpjqww" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0006.png" id="234_i3of1"]
+[ext_resource type="Texture2D" uid="uid://bjpw1k8bmal32" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0007.png" id="235_ogqro"]
+[ext_resource type="Texture2D" uid="uid://dhv64l8xuh5sn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0008.png" id="236_15ccm"]
+[ext_resource type="Texture2D" uid="uid://ck5p8jyj51c5h" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0009.png" id="237_3t8f0"]
+[ext_resource type="Texture2D" uid="uid://cxr3glpci728d" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0010.png" id="238_q77ma"]
+[ext_resource type="Texture2D" uid="uid://rkv8sbjlkgrf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0011.png" id="239_kteii"]
+[ext_resource type="Texture2D" uid="uid://c3q231v0eq4bj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0012.png" id="240_h1q7w"]
+[ext_resource type="Texture2D" uid="uid://meq3l6ymmnex" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0013.png" id="241_qo6j0"]
+[ext_resource type="Texture2D" uid="uid://dspg3ms5h3amy" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0014.png" id="242_44ry0"]
+[ext_resource type="Texture2D" uid="uid://cb3ttaj6y6xa1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0015.png" id="243_38kcf"]
+[ext_resource type="Texture2D" uid="uid://c6ipykkosvjcp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0016.png" id="244_emjo3"]
+[ext_resource type="Texture2D" uid="uid://d21benvseqcyj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0017.png" id="245_b5r8t"]
+[ext_resource type="Texture2D" uid="uid://dj71ei5adxuth" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0018.png" id="246_mov7t"]
+[ext_resource type="Texture2D" uid="uid://syy1dtc03p5h" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0019.png" id="247_q5wgx"]
+[ext_resource type="Texture2D" uid="uid://b2gv5428fw2h0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0020.png" id="248_peegi"]
+[ext_resource type="Texture2D" uid="uid://ybidtj8cugj0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0021.png" id="249_y27h4"]
+[ext_resource type="Texture2D" uid="uid://df4w2yld1pbck" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0022.png" id="250_vr880"]
+[ext_resource type="Texture2D" uid="uid://bhmtgst5pbdjs" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0023.png" id="251_xwmjk"]
+[ext_resource type="Texture2D" uid="uid://0ctan6yvymv" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0024.png" id="252_01kbl"]
+[ext_resource type="Texture2D" uid="uid://bc4y1eafotlgc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0025.png" id="253_c8lr6"]
+[ext_resource type="Texture2D" uid="uid://dmpr1ulllu7ah" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0026.png" id="254_t6dn8"]
+[ext_resource type="Texture2D" uid="uid://drffcr37hmncg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0027.png" id="255_op1j2"]
+[ext_resource type="Texture2D" uid="uid://d22xwrk4dt2yn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0028.png" id="256_nx3no"]
+[ext_resource type="Texture2D" uid="uid://d4ld6wnp70xlu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0029.png" id="257_b3uah"]
+[ext_resource type="Texture2D" uid="uid://m2y8cv3gkdy0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0030.png" id="258_48tnp"]
+[ext_resource type="Texture2D" uid="uid://dtqnngmeijdgv" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0031.png" id="259_tqjls"]
+[ext_resource type="Texture2D" uid="uid://h1vafjn0n75b" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0032.png" id="260_yrexb"]
+[ext_resource type="Texture2D" uid="uid://cq52y5ab8jdrx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0033.png" id="261_nxg03"]
+[ext_resource type="Texture2D" uid="uid://csc1bgnduv0t6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0034.png" id="262_llc2s"]
+[ext_resource type="Texture2D" uid="uid://daf4brhjgfj70" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0035.png" id="263_3hgro"]
+[ext_resource type="Texture2D" uid="uid://b5aj45jdmkirg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0036.png" id="264_d3e38"]
+[ext_resource type="Texture2D" uid="uid://dx6uwig220ko4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0037.png" id="265_gj1e6"]
+[ext_resource type="Texture2D" uid="uid://cu5yiwv8o21fb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0038.png" id="266_ora18"]
+[ext_resource type="Texture2D" uid="uid://df1wwkh3jgo7x" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0039.png" id="267_s0sg0"]
+[ext_resource type="Texture2D" uid="uid://24nxhlcqse4v" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0040.png" id="268_j5f8w"]
+[ext_resource type="Texture2D" uid="uid://ph1c08oqkq0y" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0041.png" id="269_ag25l"]
+[ext_resource type="Texture2D" uid="uid://dcojoyoff3h53" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0042.png" id="270_n0bvd"]
+[ext_resource type="Texture2D" uid="uid://c5xecjx2dlhfc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0043.png" id="271_w7fft"]
+[ext_resource type="Texture2D" uid="uid://cnvg7iurt6t4j" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0044.png" id="272_oks2i"]
+[ext_resource type="Texture2D" uid="uid://b54nhgnh4seup" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0045.png" id="273_y2um5"]
+[ext_resource type="Texture2D" uid="uid://rkdamyyxfmbp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0046.png" id="274_ywldu"]
+[ext_resource type="Texture2D" uid="uid://cw5d2ldx4xwwh" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0047.png" id="275_n2nf4"]
+[ext_resource type="Texture2D" uid="uid://k1pvku3ns6iq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0048.png" id="276_yhv0g"]
+[ext_resource type="Texture2D" uid="uid://bsogspib6nvny" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0049.png" id="277_sniir"]
+[ext_resource type="Texture2D" uid="uid://dkwg6e53ewahh" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0050.png" id="278_maxv1"]
+[ext_resource type="Texture2D" uid="uid://c2ixpqqnns23f" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0051.png" id="279_h2pwm"]
+[ext_resource type="Texture2D" uid="uid://dd7nefhp3kvvn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0052.png" id="280_bqfck"]
+[ext_resource type="Texture2D" uid="uid://d2h5nbsarxy2i" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0053.png" id="281_ncrgb"]
+[ext_resource type="Texture2D" uid="uid://t3a3q7i17poi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0054.png" id="282_26ugr"]
+[ext_resource type="Texture2D" uid="uid://dk21uilxbvy2c" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0055.png" id="283_m3887"]
+[ext_resource type="Texture2D" uid="uid://kfinh5dk24tp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0056.png" id="284_wfclw"]
+[ext_resource type="Texture2D" uid="uid://cg16cx0qv1uj5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0057.png" id="285_0atr1"]
+[ext_resource type="Texture2D" uid="uid://r3kwu7wtgrv0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0058.png" id="286_uw6gk"]
+[ext_resource type="Texture2D" uid="uid://clenr4lab1prr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0059.png" id="287_rdnwk"]
+[ext_resource type="Texture2D" uid="uid://st6vkjd1pe80" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0060.png" id="288_m6q0v"]
+[ext_resource type="Texture2D" uid="uid://dm61tv0d6waut" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0061.png" id="289_x37aa"]
+[ext_resource type="Texture2D" uid="uid://c2hk28s4plsg1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0062.png" id="290_o3x8x"]
+[ext_resource type="Texture2D" uid="uid://cimhrus4phoc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0063.png" id="291_auwdq"]
+[ext_resource type="Texture2D" uid="uid://c8eug8sksoe4x" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0064.png" id="292_6ujpl"]
+[ext_resource type="Texture2D" uid="uid://ux3corkglo5r" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0065.png" id="293_hglhd"]
+[ext_resource type="Texture2D" uid="uid://cti6labwhhjc7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0066.png" id="294_vpqom"]
+[ext_resource type="Texture2D" uid="uid://dydsexy3vlv4q" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0067.png" id="295_eg2a6"]
+[ext_resource type="Texture2D" uid="uid://bw2eprrkpu8hd" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0068.png" id="296_0p0bl"]
+[ext_resource type="Texture2D" uid="uid://b7ir01ijk22ag" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0069.png" id="297_8f5og"]
+[ext_resource type="Texture2D" uid="uid://14wf11d2no0y" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0070.png" id="298_lpq3q"]
+[ext_resource type="Texture2D" uid="uid://dia0c57o8e3vd" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0071.png" id="299_bs40s"]
+[ext_resource type="Texture2D" uid="uid://licc5g8w5cqf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0072.png" id="300_j04x1"]
+[ext_resource type="Texture2D" uid="uid://b8oy42lxw1lv4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0073.png" id="301_u1ccw"]
+[ext_resource type="Texture2D" uid="uid://dbjbhidae8f1v" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0074.png" id="302_aochu"]
+[ext_resource type="Texture2D" uid="uid://bhomtdu5am8ip" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0075.png" id="303_lse4b"]
+[ext_resource type="Texture2D" uid="uid://c1jreynf561cm" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0076.png" id="304_7jwla"]
+[ext_resource type="Texture2D" uid="uid://cy7djh5vatkdx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0077.png" id="305_qy20l"]
+[ext_resource type="Texture2D" uid="uid://lh37vh0xk43q" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0078.png" id="306_npbp5"]
+[ext_resource type="Texture2D" uid="uid://c33lhaibfh6gp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0079.png" id="307_sf8sa"]
+[ext_resource type="Texture2D" uid="uid://b6vf1g7d7t1od" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0080.png" id="308_ukcxg"]
+[ext_resource type="Texture2D" uid="uid://eiy5dknq82xe" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0081.png" id="309_ctjp2"]
+[ext_resource type="Texture2D" uid="uid://bwt7chtntb2hr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0082.png" id="310_f8132"]
+[ext_resource type="Texture2D" uid="uid://c0xi84bcrtk1p" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0083.png" id="311_dcpq3"]
+[ext_resource type="Texture2D" uid="uid://dpinp4eudbhpt" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0084.png" id="312_60t72"]
+[ext_resource type="Texture2D" uid="uid://bd7i5ouk4lnmt" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0085.png" id="313_vstg6"]
+[ext_resource type="Texture2D" uid="uid://b1i87uksysdvq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0086.png" id="314_8vgon"]
+[ext_resource type="Texture2D" uid="uid://ral55hcfkkre" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0087.png" id="315_nk733"]
+[ext_resource type="Texture2D" uid="uid://qryukd71v1n6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0088.png" id="316_enqkk"]
+[ext_resource type="Texture2D" uid="uid://bcuxc7g7mo67x" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0089.png" id="317_ncon0"]
+[ext_resource type="Texture2D" uid="uid://lvadh46p838j" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0090.png" id="318_0rfdu"]
+[ext_resource type="Texture2D" uid="uid://5y123adgwyjt" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0091.png" id="319_r1o4o"]
+[ext_resource type="Texture2D" uid="uid://bsya154l3tcf1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0092.png" id="320_15m8h"]
+[ext_resource type="Texture2D" uid="uid://csasxka74onya" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0093.png" id="321_xk0x8"]
+[ext_resource type="Texture2D" uid="uid://cx04ynl7lp05m" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0094.png" id="322_2v0dy"]
+[ext_resource type="Texture2D" uid="uid://nc23dpxqkyhr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0095.png" id="323_f27dy"]
+[ext_resource type="Texture2D" uid="uid://d3fmp7h5gchqi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0096.png" id="324_cu7ka"]
+[ext_resource type="Texture2D" uid="uid://cwbfxt77gref8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0097.png" id="325_yujsr"]
+[ext_resource type="Texture2D" uid="uid://5vnjqi78kd34" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0098.png" id="326_0jgec"]
+[ext_resource type="Texture2D" uid="uid://eqhg31131pxw" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0099.png" id="327_7xptd"]
+[ext_resource type="Texture2D" uid="uid://ds63bsn0f6ghl" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0100.png" id="328_0tkbu"]
+[ext_resource type="Texture2D" uid="uid://ckriyqv63gbtn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0101.png" id="329_vhc6h"]
+[ext_resource type="Texture2D" uid="uid://cbwy2jykeitmr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0102.png" id="330_fhxvy"]
+[ext_resource type="Texture2D" uid="uid://c3oqmrr8mb62q" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0103.png" id="331_y8gxc"]
+[ext_resource type="Texture2D" uid="uid://cby0k2hddmlq4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0104.png" id="332_ad135"]
+[ext_resource type="Texture2D" uid="uid://c1yaixwfoikek" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0105.png" id="333_3pxqy"]
+[ext_resource type="Texture2D" uid="uid://tfpuq2nf7wqv" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0106.png" id="334_jsrhk"]
+[ext_resource type="Texture2D" uid="uid://ceb4j7gxvnskq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0107.png" id="335_ee7lr"]
+[ext_resource type="Texture2D" uid="uid://s56vwyqw43o1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0108.png" id="336_3m3dl"]
+[ext_resource type="Texture2D" uid="uid://6egugedsqpg4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0109.png" id="337_3ioa4"]
+[ext_resource type="Texture2D" uid="uid://v3dytuoj2ib2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0110.png" id="338_cv5s2"]
+[ext_resource type="Texture2D" uid="uid://3sno41dnwgui" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0111.png" id="339_gkvih"]
+[ext_resource type="Texture2D" uid="uid://1cjl1g8pyex5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0112.png" id="340_0bm7i"]
+[ext_resource type="Texture2D" uid="uid://bksn6cohqx2ba" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0113.png" id="341_pidrh"]
+[ext_resource type="Texture2D" uid="uid://b7hajdgtmm6c0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0114.png" id="342_exb31"]
+[ext_resource type="Texture2D" uid="uid://e3hox2r0nbqd" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0115.png" id="343_bqci7"]
+[ext_resource type="Texture2D" uid="uid://bdjvjhhu5y7ls" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0116.png" id="344_kkc1s"]
+[ext_resource type="Texture2D" uid="uid://bi5q0cak0sl17" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0117.png" id="345_33p22"]
+[ext_resource type="Texture2D" uid="uid://m7jsdp288tp5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0118.png" id="346_r5553"]
+[ext_resource type="Texture2D" uid="uid://x1d5p430r17a" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/four_trail_spellcast/frames/frame0119.png" id="347_yyv48"]
+[ext_resource type="Texture2D" uid="uid://ftcnth52k8vc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0000.png" id="348_kfbf8"]
+[ext_resource type="Texture2D" uid="uid://bfo0tn4rgekid" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0001.png" id="349_4xg43"]
+[ext_resource type="Texture2D" uid="uid://d15q2lwbfi67a" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0002.png" id="350_ds28a"]
+[ext_resource type="Texture2D" uid="uid://tg0l1me2lfbl" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0003.png" id="351_efto2"]
+[ext_resource type="Texture2D" uid="uid://c1l6wv2tffp4h" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0004.png" id="352_nyc3i"]
+[ext_resource type="Texture2D" uid="uid://u8bd7hvp3d3m" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0005.png" id="353_mi364"]
+[ext_resource type="Texture2D" uid="uid://f4b12nqhtlps" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0006.png" id="354_72yun"]
+[ext_resource type="Texture2D" uid="uid://dhjowoe16eqmt" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0007.png" id="355_yi1o0"]
+[ext_resource type="Texture2D" uid="uid://ct2hfh38aa5f3" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0008.png" id="356_dfbr0"]
+[ext_resource type="Texture2D" uid="uid://cbn7ke8nqw6xb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0009.png" id="357_v0adv"]
+[ext_resource type="Texture2D" uid="uid://b51nhm3wrcc0h" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0010.png" id="358_pp7ju"]
+[ext_resource type="Texture2D" uid="uid://wli0pxd35sfi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0011.png" id="359_jahje"]
+[ext_resource type="Texture2D" uid="uid://cjeqyfmgy3wc1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0012.png" id="360_cmlsi"]
+[ext_resource type="Texture2D" uid="uid://bu7p0gscrpcvr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0013.png" id="361_jwvdn"]
+[ext_resource type="Texture2D" uid="uid://bsdg8gyge6n06" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0014.png" id="362_8uptb"]
+[ext_resource type="Texture2D" uid="uid://d1hgxc6jx17rn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0015.png" id="363_elw5i"]
+[ext_resource type="Texture2D" uid="uid://g3ed7uf1wdlq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0016.png" id="364_ocea0"]
+[ext_resource type="Texture2D" uid="uid://1w5a5crdxsfs" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0017.png" id="365_n1iuh"]
+[ext_resource type="Texture2D" uid="uid://c6epdxgfsrrul" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0018.png" id="366_u2l27"]
+[ext_resource type="Texture2D" uid="uid://ceepviydwdb4x" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0019.png" id="367_logqr"]
+[ext_resource type="Texture2D" uid="uid://ct37e5rutncxh" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0020.png" id="368_nhqea"]
+[ext_resource type="Texture2D" uid="uid://3wuqt0ticyof" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0021.png" id="369_nqvqr"]
+[ext_resource type="Texture2D" uid="uid://dj1y72bjaxenn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0022.png" id="370_rudc1"]
+[ext_resource type="Texture2D" uid="uid://bk6spd41cxr05" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0023.png" id="371_wjqkb"]
+[ext_resource type="Texture2D" uid="uid://kw7u2e8porg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0024.png" id="372_oraeu"]
+[ext_resource type="Texture2D" uid="uid://cogrt4qq65s8c" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0025.png" id="373_kf343"]
+[ext_resource type="Texture2D" uid="uid://cc1u0v8upn0w7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0026.png" id="374_ql413"]
+[ext_resource type="Texture2D" uid="uid://dskc4wq5243h7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0027.png" id="375_6id2f"]
+[ext_resource type="Texture2D" uid="uid://cexr7jt63gsyr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0028.png" id="376_ipg61"]
+[ext_resource type="Texture2D" uid="uid://5ti3fo0wn3e8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0029.png" id="377_bd35r"]
+[ext_resource type="Texture2D" uid="uid://bgjyj2wilxjrc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0030.png" id="378_e1cd1"]
+[ext_resource type="Texture2D" uid="uid://dcj5tmu45h3fg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0031.png" id="379_qn28a"]
+[ext_resource type="Texture2D" uid="uid://b556ydfoj8i71" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0032.png" id="380_ygleu"]
+[ext_resource type="Texture2D" uid="uid://8aopcbi0ctit" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0033.png" id="381_pg42y"]
+[ext_resource type="Texture2D" uid="uid://yvoqvvgyc3du" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0034.png" id="382_uckwj"]
+[ext_resource type="Texture2D" uid="uid://c5o3bmsw6cg3v" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0035.png" id="383_ktrun"]
+[ext_resource type="Texture2D" uid="uid://b2y1i50oxmgoo" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0036.png" id="384_1ddmd"]
+[ext_resource type="Texture2D" uid="uid://dirc4cijpsteq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0037.png" id="385_8uvxa"]
+[ext_resource type="Texture2D" uid="uid://blla84sdql6xi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0038.png" id="386_abhdl"]
+[ext_resource type="Texture2D" uid="uid://cj73cotwgx3iu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0039.png" id="387_dtklm"]
+[ext_resource type="Texture2D" uid="uid://bfdjmidypbvc2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0040.png" id="388_wk8qv"]
+[ext_resource type="Texture2D" uid="uid://cfffa165krv3p" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0041.png" id="389_vjvvo"]
+[ext_resource type="Texture2D" uid="uid://bjeuha4200rhb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0042.png" id="390_r5wq8"]
+[ext_resource type="Texture2D" uid="uid://c6gta2s4t5y31" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0043.png" id="391_qonyt"]
+[ext_resource type="Texture2D" uid="uid://d2i4uk368212w" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0044.png" id="392_uv0cp"]
+[ext_resource type="Texture2D" uid="uid://6nqfqsbwtoi6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0045.png" id="393_sf2xr"]
+[ext_resource type="Texture2D" uid="uid://dn7jgughbtfs7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0046.png" id="394_g13bn"]
+[ext_resource type="Texture2D" uid="uid://tc7j811xpert" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0047.png" id="395_7e48h"]
+[ext_resource type="Texture2D" uid="uid://i64jgo5xqk8e" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0048.png" id="396_m6wed"]
+[ext_resource type="Texture2D" uid="uid://d36wa3fw12ad4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0049.png" id="397_swq7i"]
+[ext_resource type="Texture2D" uid="uid://cj8bcbutc3ndr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0050.png" id="398_4ywwa"]
+[ext_resource type="Texture2D" uid="uid://ci0v7js6prt2q" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0051.png" id="399_4dj4p"]
+[ext_resource type="Texture2D" uid="uid://buvmw8yvhn8id" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0052.png" id="400_1h3o0"]
+[ext_resource type="Texture2D" uid="uid://i2kpnp87e0kq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0053.png" id="401_3ntb8"]
+[ext_resource type="Texture2D" uid="uid://cudobairn8tel" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0054.png" id="402_2bprb"]
+[ext_resource type="Texture2D" uid="uid://ben05t3bwkoip" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0055.png" id="403_386qt"]
+[ext_resource type="Texture2D" uid="uid://jhex5ahbi1ux" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0056.png" id="404_qck5n"]
+[ext_resource type="Texture2D" uid="uid://ycp0q5gcahqt" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0057.png" id="405_u1ex2"]
+[ext_resource type="Texture2D" uid="uid://c3amqald8tvpi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0058.png" id="406_1srv3"]
+[ext_resource type="Texture2D" uid="uid://ekjwik5i6c5l" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0059.png" id="407_h83n2"]
+[ext_resource type="Texture2D" uid="uid://dyoshkqgy4xgr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0060.png" id="408_rt107"]
+[ext_resource type="Texture2D" uid="uid://cn7nftldc77o0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0061.png" id="409_50csj"]
+[ext_resource type="Texture2D" uid="uid://bo12x647jbnh7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0062.png" id="410_g8bs6"]
+[ext_resource type="Texture2D" uid="uid://d2p58nltoswtb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0063.png" id="411_ypkx8"]
+[ext_resource type="Texture2D" uid="uid://c3qqpmfvmle3d" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0064.png" id="412_2c7xr"]
+[ext_resource type="Texture2D" uid="uid://lwbfq6uwav3r" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0065.png" id="413_y887j"]
+[ext_resource type="Texture2D" uid="uid://djmq6y3r0afq3" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0066.png" id="414_gektd"]
+[ext_resource type="Texture2D" uid="uid://b0kf8oc1exyf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0067.png" id="415_q763j"]
+[ext_resource type="Texture2D" uid="uid://ck1t352s1g6by" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0068.png" id="416_sf7ps"]
+[ext_resource type="Texture2D" uid="uid://d36dhyofiicux" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0069.png" id="417_8uorb"]
+[ext_resource type="Texture2D" uid="uid://bfgxm8nlygs14" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0070.png" id="418_siug5"]
+[ext_resource type="Texture2D" uid="uid://cvvbl5081s5a" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0071.png" id="419_41v6e"]
+[ext_resource type="Texture2D" uid="uid://oi22ydegc41" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0072.png" id="420_u1nle"]
+[ext_resource type="Texture2D" uid="uid://8ubbk7ejw15r" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0073.png" id="421_b0a4t"]
+[ext_resource type="Texture2D" uid="uid://bbrq7jxyg7ssw" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0074.png" id="422_6gl55"]
+[ext_resource type="Texture2D" uid="uid://psnqusunxup5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0075.png" id="423_g5lpt"]
+[ext_resource type="Texture2D" uid="uid://gk65hh3ngpvc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0076.png" id="424_gktg5"]
+[ext_resource type="Texture2D" uid="uid://dg82wdnm18eyp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0077.png" id="425_u5imi"]
+[ext_resource type="Texture2D" uid="uid://bpx84fjn51srp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0078.png" id="426_7yi1d"]
+[ext_resource type="Texture2D" uid="uid://dcxsykv6db28y" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0079.png" id="427_qmtnp"]
+[ext_resource type="Texture2D" uid="uid://hqvhmwcus4n" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0080.png" id="428_63eab"]
+[ext_resource type="Texture2D" uid="uid://bjeh4r6mfj5qj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0081.png" id="429_gv30o"]
+[ext_resource type="Texture2D" uid="uid://rh8cyfw053go" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0082.png" id="430_tmphs"]
+[ext_resource type="Texture2D" uid="uid://b8kpxtosew2nw" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0083.png" id="431_u8oge"]
+[ext_resource type="Texture2D" uid="uid://drkq8hosjisjv" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0084.png" id="432_cywll"]
+[ext_resource type="Texture2D" uid="uid://b11b7b48q6f6w" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0085.png" id="433_y6xkr"]
+[ext_resource type="Texture2D" uid="uid://bbf0l3mg7wxvh" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0086.png" id="434_lwx6f"]
+[ext_resource type="Texture2D" uid="uid://djnk6ohdepcmv" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0087.png" id="435_aon4k"]
+[ext_resource type="Texture2D" uid="uid://dn4u3qxk8uiyc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0088.png" id="436_yepx1"]
+[ext_resource type="Texture2D" uid="uid://dkky3uxioggqe" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0089.png" id="437_ko72l"]
+[ext_resource type="Texture2D" uid="uid://crfys3ry5jg4b" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0090.png" id="438_e0l25"]
+[ext_resource type="Texture2D" uid="uid://di0lxgyn5dl72" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0091.png" id="439_v87pb"]
+[ext_resource type="Texture2D" uid="uid://ben41y365j1mi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0092.png" id="440_q84fx"]
+[ext_resource type="Texture2D" uid="uid://bdmehm4hf5pnm" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0093.png" id="441_w7ypk"]
+[ext_resource type="Texture2D" uid="uid://djvpwj5q2c6gi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0094.png" id="442_mxw3v"]
+[ext_resource type="Texture2D" uid="uid://dhrqcn87cxmae" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0095.png" id="443_m5yxq"]
+[ext_resource type="Texture2D" uid="uid://ckgn5xeujxp43" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0096.png" id="444_w5x6v"]
+[ext_resource type="Texture2D" uid="uid://btlaej5r532ps" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0097.png" id="445_ib0bp"]
+[ext_resource type="Texture2D" uid="uid://bmkhn6hbuaru5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0098.png" id="446_vkg7l"]
+[ext_resource type="Texture2D" uid="uid://c28pj3pm8hew4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0099.png" id="447_hbk3s"]
+[ext_resource type="Texture2D" uid="uid://btr0ts8iy2uko" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0100.png" id="448_ew470"]
+[ext_resource type="Texture2D" uid="uid://to8v4tx067dl" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0101.png" id="449_gv81v"]
+[ext_resource type="Texture2D" uid="uid://vulacnrqagfo" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0102.png" id="450_j83en"]
+[ext_resource type="Texture2D" uid="uid://dwvku8rs3vx6i" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0103.png" id="451_ferg3"]
+[ext_resource type="Texture2D" uid="uid://dgqmxprvhxmht" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0104.png" id="452_mewca"]
+[ext_resource type="Texture2D" uid="uid://bjrfx66uvlspd" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0105.png" id="453_oq2tc"]
+[ext_resource type="Texture2D" uid="uid://sjpwofnotucb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0106.png" id="454_k5qtw"]
+[ext_resource type="Texture2D" uid="uid://bpksk5qj3a1r6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0107.png" id="455_exs3w"]
+[ext_resource type="Texture2D" uid="uid://7bgqixhpqorg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0108.png" id="456_e5o4l"]
+[ext_resource type="Texture2D" uid="uid://d3346aptb3ool" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0109.png" id="457_o37sw"]
+[ext_resource type="Texture2D" uid="uid://c4qchajnt2glu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0110.png" id="458_n0ie4"]
+[ext_resource type="Texture2D" uid="uid://beoswe50uvwaf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0111.png" id="459_18cdc"]
+[ext_resource type="Texture2D" uid="uid://sfdr8fnkvrso" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0112.png" id="460_kybgy"]
+[ext_resource type="Texture2D" uid="uid://dexweyy3r72uu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0113.png" id="461_xgjc3"]
+[ext_resource type="Texture2D" uid="uid://dhhjrditf6xqt" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0114.png" id="462_pgva2"]
+[ext_resource type="Texture2D" uid="uid://cbrkl76klnrqj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0115.png" id="463_bd7lh"]
+[ext_resource type="Texture2D" uid="uid://dqhsxtvp5ka6d" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0116.png" id="464_xacss"]
+[ext_resource type="Texture2D" uid="uid://cvw4b2la5ovqu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0117.png" id="465_h2rd3"]
+[ext_resource type="Texture2D" uid="uid://by2s3d63pawgi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0118.png" id="466_fnsx0"]
+[ext_resource type="Texture2D" uid="uid://2bxtmtqb0w3d" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/implosion_A/frames/frame0119.png" id="467_ra8dv"]
+[ext_resource type="Texture2D" uid="uid://csndd1o08a0gm" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0000.png" id="468_wa6fw"]
+[ext_resource type="Texture2D" uid="uid://5glnbswl6t6v" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0001.png" id="469_lovky"]
+[ext_resource type="Texture2D" uid="uid://vd74c222td10" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0002.png" id="470_imdlv"]
+[ext_resource type="Texture2D" uid="uid://wosdqlyr7d23" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0003.png" id="471_65peu"]
+[ext_resource type="Texture2D" uid="uid://cfxaejx7ik3s6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0004.png" id="472_du0op"]
+[ext_resource type="Texture2D" uid="uid://b1o3mvwi3ia51" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0005.png" id="473_i7ewl"]
+[ext_resource type="Texture2D" uid="uid://cqnqpdmnhk5l7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0006.png" id="474_nbgw3"]
+[ext_resource type="Texture2D" uid="uid://csgou74cr3w05" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0007.png" id="475_s7m5h"]
+[ext_resource type="Texture2D" uid="uid://blqo4wgjphnmj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0008.png" id="476_sw1t3"]
+[ext_resource type="Texture2D" uid="uid://tgwgkmptgh1y" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0009.png" id="477_ixoa8"]
+[ext_resource type="Texture2D" uid="uid://cnqo6wq5huhwd" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0010.png" id="478_brdos"]
+[ext_resource type="Texture2D" uid="uid://d253iv7gi8yu2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0011.png" id="479_g2w61"]
+[ext_resource type="Texture2D" uid="uid://bweoqv0v256e3" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0012.png" id="480_aatyv"]
+[ext_resource type="Texture2D" uid="uid://bcstcsnhpkly4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0013.png" id="481_3x873"]
+[ext_resource type="Texture2D" uid="uid://dmtxkepgenvei" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0014.png" id="482_1ifnw"]
+[ext_resource type="Texture2D" uid="uid://c3sj6bkuntsoy" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0015.png" id="483_x51t4"]
+[ext_resource type="Texture2D" uid="uid://clas8bofp21o5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0016.png" id="484_ainqp"]
+[ext_resource type="Texture2D" uid="uid://crikmxg8lgaua" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0017.png" id="485_rob0k"]
+[ext_resource type="Texture2D" uid="uid://cmjn5eqpb26pe" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0018.png" id="486_lofl3"]
+[ext_resource type="Texture2D" uid="uid://d0x57p2vchqi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0019.png" id="487_emocd"]
+[ext_resource type="Texture2D" uid="uid://caxpvr42ccdf5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0020.png" id="488_k2bqi"]
+[ext_resource type="Texture2D" uid="uid://ba7dcp2aoohkt" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0021.png" id="489_g6y6o"]
+[ext_resource type="Texture2D" uid="uid://cwn001fp6axc0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0022.png" id="490_1s1h1"]
+[ext_resource type="Texture2D" uid="uid://ba1wje1s6k807" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0023.png" id="491_vsbw2"]
+[ext_resource type="Texture2D" uid="uid://m3qncffjwuni" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0024.png" id="492_beq55"]
+[ext_resource type="Texture2D" uid="uid://dweass8elsvha" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0025.png" id="493_7xclu"]
+[ext_resource type="Texture2D" uid="uid://cyemxt8a0jugq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0026.png" id="494_sm0mt"]
+[ext_resource type="Texture2D" uid="uid://bksfi7ejo35a5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0027.png" id="495_lws6y"]
+[ext_resource type="Texture2D" uid="uid://b8j8fxmaesl52" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0028.png" id="496_v0f38"]
+[ext_resource type="Texture2D" uid="uid://kfyn347qcob3" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0029.png" id="497_ppqq4"]
+[ext_resource type="Texture2D" uid="uid://ciyrdq010o6ol" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0030.png" id="498_i763y"]
+[ext_resource type="Texture2D" uid="uid://k0vklukv0xqp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0031.png" id="499_cut7f"]
+[ext_resource type="Texture2D" uid="uid://5r6j8ktkwrgq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0032.png" id="500_sbngl"]
+[ext_resource type="Texture2D" uid="uid://cfeq6yecxqoy" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0033.png" id="501_132vh"]
+[ext_resource type="Texture2D" uid="uid://d24ket33qunwj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0034.png" id="502_7xpbe"]
+[ext_resource type="Texture2D" uid="uid://bhphn3y6t6esb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0035.png" id="503_cexre"]
+[ext_resource type="Texture2D" uid="uid://ccn8siqdtp770" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0036.png" id="504_3tjv7"]
+[ext_resource type="Texture2D" uid="uid://c7ip332j1y83e" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0037.png" id="505_uamik"]
+[ext_resource type="Texture2D" uid="uid://bo6px14wumed8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0038.png" id="506_cbjup"]
+[ext_resource type="Texture2D" uid="uid://iaidhcbsr0d1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0039.png" id="507_dhlqg"]
+[ext_resource type="Texture2D" uid="uid://mxnxup5egqoe" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0040.png" id="508_b1tj7"]
+[ext_resource type="Texture2D" uid="uid://bn700ab1ctxlk" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0041.png" id="509_kbgne"]
+[ext_resource type="Texture2D" uid="uid://clgtxdfcpm1v1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0042.png" id="510_ogvsp"]
+[ext_resource type="Texture2D" uid="uid://clv8oj7k8atpw" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0043.png" id="511_jc42b"]
+[ext_resource type="Texture2D" uid="uid://cqg646llse8ew" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0044.png" id="512_dptqv"]
+[ext_resource type="Texture2D" uid="uid://csc3ugrjsnh8j" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0045.png" id="513_6cyye"]
+[ext_resource type="Texture2D" uid="uid://ccgrqb2jutxja" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0046.png" id="514_cyicm"]
+[ext_resource type="Texture2D" uid="uid://dn18m23v364df" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0047.png" id="515_4weqd"]
+[ext_resource type="Texture2D" uid="uid://bjyea34v8fjfe" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0048.png" id="516_0kol3"]
+[ext_resource type="Texture2D" uid="uid://c6ivaueijbttf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0049.png" id="517_re2dp"]
+[ext_resource type="Texture2D" uid="uid://cw42eeeybdfq5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0050.png" id="518_oxkwl"]
+[ext_resource type="Texture2D" uid="uid://dy4vhh48gr6os" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0051.png" id="519_nknot"]
+[ext_resource type="Texture2D" uid="uid://dcofttxkv0cyh" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0052.png" id="520_bo8p8"]
+[ext_resource type="Texture2D" uid="uid://c28ig4oucl6u1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0053.png" id="521_yr63f"]
+[ext_resource type="Texture2D" uid="uid://cpemhpgq6u7vf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0054.png" id="522_u38d3"]
+[ext_resource type="Texture2D" uid="uid://djgndck0kat7u" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0055.png" id="523_c0k3g"]
+[ext_resource type="Texture2D" uid="uid://b4gkooe6bbbkk" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0056.png" id="524_2xq01"]
+[ext_resource type="Texture2D" uid="uid://clgdevysi6md0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0057.png" id="525_4nb75"]
+[ext_resource type="Texture2D" uid="uid://dpc3kxxn2cyas" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0058.png" id="526_ddn7f"]
+[ext_resource type="Texture2D" uid="uid://bhspktq4fq0vb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0059.png" id="527_5f2sd"]
+[ext_resource type="Texture2D" uid="uid://kajn5oshf666" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0060.png" id="528_5xbv2"]
+[ext_resource type="Texture2D" uid="uid://b54nfsu4uqnkx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0061.png" id="529_uv842"]
+[ext_resource type="Texture2D" uid="uid://dqp7eok03tfak" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0062.png" id="530_4iu54"]
+[ext_resource type="Texture2D" uid="uid://vwgn5lqolp7x" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0063.png" id="531_7fqvr"]
+[ext_resource type="Texture2D" uid="uid://dg4ly5jxyxceu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0064.png" id="532_bgihr"]
+[ext_resource type="Texture2D" uid="uid://hruxqqaoh70o" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0065.png" id="533_ejse2"]
+[ext_resource type="Texture2D" uid="uid://bfpnnf55yf4k2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0066.png" id="534_n3wr2"]
+[ext_resource type="Texture2D" uid="uid://db5knngv4bvus" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0067.png" id="535_1krle"]
+[ext_resource type="Texture2D" uid="uid://djef5udcfmpdj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0068.png" id="536_yjesp"]
+[ext_resource type="Texture2D" uid="uid://brhxc0u37fxml" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0069.png" id="537_66n4s"]
+[ext_resource type="Texture2D" uid="uid://b2djl0vqvfg3u" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0070.png" id="538_pspue"]
+[ext_resource type="Texture2D" uid="uid://q8n0c72w7ugg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0071.png" id="539_kskkq"]
+[ext_resource type="Texture2D" uid="uid://nip60saostik" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0072.png" id="540_w1lqf"]
+[ext_resource type="Texture2D" uid="uid://bs7683cla4c7i" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0073.png" id="541_ychs4"]
+[ext_resource type="Texture2D" uid="uid://cya5xnr2lr6et" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0074.png" id="542_rgv1s"]
+[ext_resource type="Texture2D" uid="uid://c2ap827tm1ipk" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0075.png" id="543_evs86"]
+[ext_resource type="Texture2D" uid="uid://cog3b4umwrgto" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0076.png" id="544_ua3rx"]
+[ext_resource type="Texture2D" uid="uid://diho6elowo1qe" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0077.png" id="545_j8p8x"]
+[ext_resource type="Texture2D" uid="uid://70yvvcnv71bk" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0078.png" id="546_fm753"]
+[ext_resource type="Texture2D" uid="uid://bjv6myis81umy" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0079.png" id="547_t788x"]
+[ext_resource type="Texture2D" uid="uid://c5w8cvo0nm5r7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0080.png" id="548_2w7qd"]
+[ext_resource type="Texture2D" uid="uid://s54jyc5edfy" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0081.png" id="549_hkl2e"]
+[ext_resource type="Texture2D" uid="uid://doae7jyb1hs4o" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0082.png" id="550_vhi1y"]
+[ext_resource type="Texture2D" uid="uid://382qnype3o0q" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0083.png" id="551_uqq4u"]
+[ext_resource type="Texture2D" uid="uid://ck6f3qgt7n07f" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0084.png" id="552_mfh4q"]
+[ext_resource type="Texture2D" uid="uid://coqro7ac8jhpm" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0085.png" id="553_fgwgs"]
+[ext_resource type="Texture2D" uid="uid://b3t7b3dcxqsbo" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0086.png" id="554_caeeu"]
+[ext_resource type="Texture2D" uid="uid://dpbbd5drj4dc8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0087.png" id="555_shfog"]
+[ext_resource type="Texture2D" uid="uid://d1exg64laxofx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0088.png" id="556_bda0v"]
+[ext_resource type="Texture2D" uid="uid://cnhqlty2quqji" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0089.png" id="557_14xgn"]
+[ext_resource type="Texture2D" uid="uid://7f02tjc3d4n8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0090.png" id="558_pys38"]
+[ext_resource type="Texture2D" uid="uid://bmrrgrdwsx338" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0091.png" id="559_el8i4"]
+[ext_resource type="Texture2D" uid="uid://desp5yrli61w5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0092.png" id="560_vkcef"]
+[ext_resource type="Texture2D" uid="uid://bdijue2go2pse" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0093.png" id="561_q8xb1"]
+[ext_resource type="Texture2D" uid="uid://c5qyx6m2x8nnf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0094.png" id="562_xy67q"]
+[ext_resource type="Texture2D" uid="uid://bu8y0grxaqlfq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0095.png" id="563_aclih"]
+[ext_resource type="Texture2D" uid="uid://wv2j60h7aief" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0096.png" id="564_wcv2l"]
+[ext_resource type="Texture2D" uid="uid://cfh86no578u7m" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0097.png" id="565_lcxvx"]
+[ext_resource type="Texture2D" uid="uid://dodwldijbc10h" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0098.png" id="566_2k2to"]
+[ext_resource type="Texture2D" uid="uid://pofllk55ausx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0099.png" id="567_yu1g1"]
+[ext_resource type="Texture2D" uid="uid://digwouc1fgp7t" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0100.png" id="568_efrq5"]
+[ext_resource type="Texture2D" uid="uid://d3i2uwfosb13g" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0101.png" id="569_mi7rr"]
+[ext_resource type="Texture2D" uid="uid://c273qcsds31gh" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0102.png" id="570_fy7xm"]
+[ext_resource type="Texture2D" uid="uid://braf72faea7j4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0103.png" id="571_oytbn"]
+[ext_resource type="Texture2D" uid="uid://371dm5ybq6ub" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0104.png" id="572_mfvud"]
+[ext_resource type="Texture2D" uid="uid://dmx00uhiqktfp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0105.png" id="573_05fcu"]
+[ext_resource type="Texture2D" uid="uid://dbyijl8uukhq1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0106.png" id="574_dw6k8"]
+[ext_resource type="Texture2D" uid="uid://b8qvps3vansam" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0107.png" id="575_slmkc"]
+[ext_resource type="Texture2D" uid="uid://hcnh86aptqye" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0108.png" id="576_cctgi"]
+[ext_resource type="Texture2D" uid="uid://d0qntekfiutjp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0109.png" id="577_sjn8g"]
+[ext_resource type="Texture2D" uid="uid://cr7l71vo8nhml" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0110.png" id="578_1ge6p"]
+[ext_resource type="Texture2D" uid="uid://drted6x0v1iv2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0111.png" id="579_g7rai"]
+[ext_resource type="Texture2D" uid="uid://cnrkiqtsc66vn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0112.png" id="580_a71hk"]
+[ext_resource type="Texture2D" uid="uid://b3rdncpk60o58" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0113.png" id="581_21hs4"]
+[ext_resource type="Texture2D" uid="uid://yf4kd7r40s5x" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0114.png" id="582_fbyn3"]
+[ext_resource type="Texture2D" uid="uid://bv8l1pc67g5bb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0115.png" id="583_6nh44"]
+[ext_resource type="Texture2D" uid="uid://b02r6gvyxd10k" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0116.png" id="584_ereu5"]
+[ext_resource type="Texture2D" uid="uid://1m5dc1yxotka" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0117.png" id="585_gk71g"]
+[ext_resource type="Texture2D" uid="uid://iun4vcmu703a" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0118.png" id="586_283vr"]
+[ext_resource type="Texture2D" uid="uid://2p87xi0mkbrg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0119.png" id="587_2j6u5"]
+[ext_resource type="Texture2D" uid="uid://xwfgyp5nd1rb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0000.png" id="588_8k1ul"]
+[ext_resource type="Texture2D" uid="uid://x6tjk4toxibw" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0001.png" id="589_sqcaq"]
+[ext_resource type="Texture2D" uid="uid://jwcu87xkrm1r" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0002.png" id="590_fqxdy"]
+[ext_resource type="Texture2D" uid="uid://c53rxfepmdmwj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0003.png" id="591_8rjxw"]
+[ext_resource type="Texture2D" uid="uid://dxyxy2jwlk7l3" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0004.png" id="592_rho75"]
+[ext_resource type="Texture2D" uid="uid://byngwg73moysq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0005.png" id="593_u04dm"]
+[ext_resource type="Texture2D" uid="uid://buykvbw8ok3wn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0006.png" id="594_fl615"]
+[ext_resource type="Texture2D" uid="uid://bw7dkn23x7rgj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0007.png" id="595_w5xop"]
+[ext_resource type="Texture2D" uid="uid://p80qhn8ordux" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0008.png" id="596_y5axe"]
+[ext_resource type="Texture2D" uid="uid://cdopxwreprxq2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0009.png" id="597_5vcsf"]
+[ext_resource type="Texture2D" uid="uid://ifecip1ed1ye" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0010.png" id="598_pxv4p"]
+[ext_resource type="Texture2D" uid="uid://s15khg25nldi" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0011.png" id="599_icyrm"]
+[ext_resource type="Texture2D" uid="uid://dgalngu6rms0a" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0012.png" id="600_hnaj4"]
+[ext_resource type="Texture2D" uid="uid://cs0t1y5ocu37n" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0013.png" id="601_8iira"]
+[ext_resource type="Texture2D" uid="uid://dtir8ekft20gb" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0014.png" id="602_4b3k2"]
+[ext_resource type="Texture2D" uid="uid://bh3wu25ggw2dk" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0015.png" id="603_550tf"]
+[ext_resource type="Texture2D" uid="uid://cbommn0pbh6fq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0016.png" id="604_hidk7"]
+[ext_resource type="Texture2D" uid="uid://b1nfnb7kp68ha" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0017.png" id="605_tdwyd"]
+[ext_resource type="Texture2D" uid="uid://hn2ufvtqkcn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0018.png" id="606_kkuyf"]
+[ext_resource type="Texture2D" uid="uid://dc4vjna5jnu82" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0019.png" id="607_k2wek"]
+[ext_resource type="Texture2D" uid="uid://cayqo1dfkbdtg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0020.png" id="608_yrn6m"]
+[ext_resource type="Texture2D" uid="uid://bq0lu8n6trw46" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0021.png" id="609_ov5ki"]
+[ext_resource type="Texture2D" uid="uid://cju8il177kksn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0022.png" id="610_me822"]
+[ext_resource type="Texture2D" uid="uid://bpv2koi5xdga" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0023.png" id="611_x4kfd"]
+[ext_resource type="Texture2D" uid="uid://mdwhxqqlu2um" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0024.png" id="612_b174a"]
+[ext_resource type="Texture2D" uid="uid://nw3a857emln8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0025.png" id="613_qnjxi"]
+[ext_resource type="Texture2D" uid="uid://dsixocjkcss0g" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0026.png" id="614_o8l2j"]
+[ext_resource type="Texture2D" uid="uid://cswnhmpt5xufx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0027.png" id="615_qoq8v"]
+[ext_resource type="Texture2D" uid="uid://bvhjpf1r7d0h0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0028.png" id="616_vrrqh"]
+[ext_resource type="Texture2D" uid="uid://c54cb2b5xrhkn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0029.png" id="617_d26v7"]
+[ext_resource type="Texture2D" uid="uid://bnvc0wf041pc0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0030.png" id="618_w82vk"]
+[ext_resource type="Texture2D" uid="uid://pvi2a3amvr03" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0031.png" id="619_8w6s2"]
+[ext_resource type="Texture2D" uid="uid://bnc3ceodvlxh7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0032.png" id="620_n2mg4"]
+[ext_resource type="Texture2D" uid="uid://bm8k8oo1er5ic" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0033.png" id="621_2uneb"]
+[ext_resource type="Texture2D" uid="uid://b54in85mxi6uw" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0034.png" id="622_g24oo"]
+[ext_resource type="Texture2D" uid="uid://xpfhrs5qthyl" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0035.png" id="623_blhc4"]
+[ext_resource type="Texture2D" uid="uid://dd30prqp0cj2g" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0036.png" id="624_q8kdm"]
+[ext_resource type="Texture2D" uid="uid://cnmt10jco17qd" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0037.png" id="625_b8bs2"]
+[ext_resource type="Texture2D" uid="uid://baq4y44egn7rh" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0038.png" id="626_st0af"]
+[ext_resource type="Texture2D" uid="uid://bq50chcoyvoa2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0039.png" id="627_mnvtg"]
+[ext_resource type="Texture2D" uid="uid://c0kxlousclrg5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0040.png" id="628_7fkmv"]
+[ext_resource type="Texture2D" uid="uid://cufyjrf6t7soo" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0041.png" id="629_7fbd8"]
+[ext_resource type="Texture2D" uid="uid://d2rlq7cmu7nd2" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0042.png" id="630_xrkbl"]
+[ext_resource type="Texture2D" uid="uid://c3j7hxo2i2w1w" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0043.png" id="631_ob27j"]
+[ext_resource type="Texture2D" uid="uid://qgpsmg3x3hy7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0044.png" id="632_425l6"]
+[ext_resource type="Texture2D" uid="uid://dl8tp2ku85ttn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0045.png" id="633_4ivat"]
+[ext_resource type="Texture2D" uid="uid://xbkgo5kptlkg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0046.png" id="634_ynf0u"]
+[ext_resource type="Texture2D" uid="uid://6xy0wtskhpf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0047.png" id="635_wur1j"]
+[ext_resource type="Texture2D" uid="uid://cplg84fv1ukwh" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0048.png" id="636_ffe4i"]
+[ext_resource type="Texture2D" uid="uid://37fhv8sko15c" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0049.png" id="637_wj5qn"]
+[ext_resource type="Texture2D" uid="uid://37w3n5lyldqm" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0050.png" id="638_jayf1"]
+[ext_resource type="Texture2D" uid="uid://d05lf3f12m2yp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0051.png" id="639_ccnxb"]
+[ext_resource type="Texture2D" uid="uid://cbo8jretkqb6u" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0052.png" id="640_re24y"]
+[ext_resource type="Texture2D" uid="uid://bu2okpj0e81ob" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0053.png" id="641_2c332"]
+[ext_resource type="Texture2D" uid="uid://d3mk8y1m0l6lc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0054.png" id="642_k74wp"]
+[ext_resource type="Texture2D" uid="uid://b4yd35p2omxxm" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0055.png" id="643_exnkp"]
+[ext_resource type="Texture2D" uid="uid://bv1m6qnpnx3tx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0056.png" id="644_ryhgc"]
+[ext_resource type="Texture2D" uid="uid://7hddmk883641" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0057.png" id="645_eyruo"]
+[ext_resource type="Texture2D" uid="uid://ctgrr6q16abx8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0058.png" id="646_yec4l"]
+[ext_resource type="Texture2D" uid="uid://cbeg71qi3phuq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0059.png" id="647_w716s"]
+[ext_resource type="Texture2D" uid="uid://b2u3nndeirp8w" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0060.png" id="648_5jof6"]
+[ext_resource type="Texture2D" uid="uid://xse6qieqblhc" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0061.png" id="649_y1jdc"]
+[ext_resource type="Texture2D" uid="uid://c33waedn2y8un" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0062.png" id="650_5vhvl"]
+[ext_resource type="Texture2D" uid="uid://dynvimiv3pf4h" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0063.png" id="651_kqtds"]
+[ext_resource type="Texture2D" uid="uid://c03jpsqq8clta" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0064.png" id="652_b3rpm"]
+[ext_resource type="Texture2D" uid="uid://bavagjxkctgi5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0065.png" id="653_of47p"]
+[ext_resource type="Texture2D" uid="uid://ba0l73mr2m1wy" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0066.png" id="654_e25jq"]
+[ext_resource type="Texture2D" uid="uid://b1ok570wnf8o4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0067.png" id="655_x0y7l"]
+[ext_resource type="Texture2D" uid="uid://ci03eqg3vvr67" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0068.png" id="656_idgj3"]
+[ext_resource type="Texture2D" uid="uid://bi6gs886tt4iq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0069.png" id="657_fxnog"]
+[ext_resource type="Texture2D" uid="uid://b0wlnewolcvf7" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0070.png" id="658_alare"]
+[ext_resource type="Texture2D" uid="uid://bl8174868xqis" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0071.png" id="659_7vcqj"]
+[ext_resource type="Texture2D" uid="uid://i53ja8an25lu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0072.png" id="660_u4vwg"]
+[ext_resource type="Texture2D" uid="uid://lypxd6rksti8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0073.png" id="661_w7iie"]
+[ext_resource type="Texture2D" uid="uid://0ujdaxf324lg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0074.png" id="662_8fvg0"]
+[ext_resource type="Texture2D" uid="uid://dmqht4itvfy2o" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0075.png" id="663_15dnh"]
+[ext_resource type="Texture2D" uid="uid://dxc0kpel8frrr" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0076.png" id="664_u87cl"]
+[ext_resource type="Texture2D" uid="uid://bkyk7tsu7pe72" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0077.png" id="665_spcd7"]
+[ext_resource type="Texture2D" uid="uid://5fef8w417oi6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0078.png" id="666_tlpqp"]
+[ext_resource type="Texture2D" uid="uid://bjqgoi52alego" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0079.png" id="667_6nynq"]
+[ext_resource type="Texture2D" uid="uid://dvic6ffuu5h35" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0080.png" id="668_k13ib"]
+[ext_resource type="Texture2D" uid="uid://bv6dma1vxg2ve" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0081.png" id="669_vy23j"]
+[ext_resource type="Texture2D" uid="uid://82c6vn7dh6jj" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0082.png" id="670_s6brn"]
+[ext_resource type="Texture2D" uid="uid://cv7mes61g2m1g" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0083.png" id="671_5os16"]
+[ext_resource type="Texture2D" uid="uid://ccc0btehsoibp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0084.png" id="672_v51yl"]
+[ext_resource type="Texture2D" uid="uid://c6ur827n63cls" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0085.png" id="673_e5f4n"]
+[ext_resource type="Texture2D" uid="uid://clgm6mfb8vl62" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0086.png" id="674_ndbju"]
+[ext_resource type="Texture2D" uid="uid://60jdb0qhfw8n" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0087.png" id="675_ucniw"]
+[ext_resource type="Texture2D" uid="uid://c33wiebvb1r28" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0088.png" id="676_705t5"]
+[ext_resource type="Texture2D" uid="uid://coqw1xobe2l15" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0089.png" id="677_x4w0m"]
+[ext_resource type="Texture2D" uid="uid://b76t0yco3dfic" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0090.png" id="678_2g66h"]
+[ext_resource type="Texture2D" uid="uid://13mmr5ablxgo" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0091.png" id="679_aaell"]
+[ext_resource type="Texture2D" uid="uid://dmivblsd2kbxt" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0092.png" id="680_ilu77"]
+[ext_resource type="Texture2D" uid="uid://b5evu63p723n8" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0093.png" id="681_xv76v"]
+[ext_resource type="Texture2D" uid="uid://cfs7uj87652iy" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0094.png" id="682_6cw4h"]
+[ext_resource type="Texture2D" uid="uid://cti0xere1eiat" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0095.png" id="683_pwx1s"]
+[ext_resource type="Texture2D" uid="uid://dmciyv7s24v4k" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0096.png" id="684_gra7f"]
+[ext_resource type="Texture2D" uid="uid://cvlyqwft5dhtu" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0097.png" id="685_4s53e"]
+[ext_resource type="Texture2D" uid="uid://r0kxqjrhjawn" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0098.png" id="686_lfw48"]
+[ext_resource type="Texture2D" uid="uid://hf8i3gd8frr4" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0099.png" id="687_nk65n"]
+[ext_resource type="Texture2D" uid="uid://c8lh1b01q56e1" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0100.png" id="688_gqety"]
+[ext_resource type="Texture2D" uid="uid://cc4xtud27cnp" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0101.png" id="689_t0tal"]
+[ext_resource type="Texture2D" uid="uid://bkhn2jucnpwf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0102.png" id="690_oqo3w"]
+[ext_resource type="Texture2D" uid="uid://rwpfr0a8p7mm" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0103.png" id="691_tvfu4"]
+[ext_resource type="Texture2D" uid="uid://dkpf85d5vw76x" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0104.png" id="692_csc1p"]
+[ext_resource type="Texture2D" uid="uid://bhy1f265j1s1x" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0105.png" id="693_6i8a3"]
+[ext_resource type="Texture2D" uid="uid://bxi4n30pjyce6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0106.png" id="694_id24u"]
+[ext_resource type="Texture2D" uid="uid://dvfir228rtqgw" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0107.png" id="695_t7kay"]
+[ext_resource type="Texture2D" uid="uid://dqrytautwnsr6" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0108.png" id="696_0r7q3"]
+[ext_resource type="Texture2D" uid="uid://dgigrq7a8qh44" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0109.png" id="697_wt3ff"]
+[ext_resource type="Texture2D" uid="uid://da5brmmtuhnul" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0110.png" id="698_tcc6q"]
+[ext_resource type="Texture2D" uid="uid://bo8w2s8ebw1xs" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0111.png" id="699_mnxm2"]
+[ext_resource type="Texture2D" uid="uid://e00xdm48uy4j" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0112.png" id="700_qwjs7"]
+[ext_resource type="Texture2D" uid="uid://bjc8ha8s2odku" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0113.png" id="701_wfigw"]
+[ext_resource type="Texture2D" uid="uid://vgpcxublqg6n" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0114.png" id="702_8rhoc"]
+[ext_resource type="Texture2D" uid="uid://dqp5i35jr3nif" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0115.png" id="703_rjslu"]
+[ext_resource type="Texture2D" uid="uid://btpscglk3axkf" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0116.png" id="704_dwhm1"]
+[ext_resource type="Texture2D" uid="uid://y4ao26trrjlx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0117.png" id="705_4bx7y"]
+[ext_resource type="Texture2D" uid="uid://bq0qib2pdfrdx" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0118.png" id="706_7sn75"]
+[ext_resource type="Texture2D" uid="uid://c4vf653ci5cjy" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/two_trail_spellcast_A/frames/frame0119.png" id="707_j3gl2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g8xy5"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_onl3a")
+"duration": 0.31,
+"texture": ExtResource("1_rtscq")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c2lfe")
+"duration": 0.31,
+"texture": ExtResource("2_ryhhd")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_otjy8")
+"duration": 0.31,
+"texture": ExtResource("3_5auiw")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_awq2d")
+"duration": 0.31,
+"texture": ExtResource("4_3m8ty")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0dydb")
+"duration": 0.31,
+"texture": ExtResource("5_yjm3n")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nl1tn")
+"duration": 0.31,
+"texture": ExtResource("6_31m3q")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e3o0c")
+"duration": 0.31,
+"texture": ExtResource("7_uixlw")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kebd3")
+"duration": 0.31,
+"texture": ExtResource("8_0wq5n")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wl3pi")
+"duration": 0.31,
+"texture": ExtResource("9_ouakb")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r3suk")
+"duration": 0.31,
+"texture": ExtResource("10_3eill")
+}, {
+"duration": 0.31,
+"texture": ExtResource("11_milmn")
+}, {
+"duration": 0.31,
+"texture": ExtResource("12_wub2w")
+}, {
+"duration": 0.31,
+"texture": ExtResource("13_t6u1l")
+}, {
+"duration": 0.31,
+"texture": ExtResource("14_ruxun")
+}, {
+"duration": 0.31,
+"texture": ExtResource("15_180t6")
+}, {
+"duration": 0.31,
+"texture": ExtResource("16_udi80")
+}, {
+"duration": 0.31,
+"texture": ExtResource("17_1fc2f")
+}, {
+"duration": 0.31,
+"texture": ExtResource("18_miip5")
+}, {
+"duration": 0.31,
+"texture": ExtResource("19_lvjc0")
+}, {
+"duration": 0.31,
+"texture": ExtResource("20_ewnje")
+}, {
+"duration": 0.31,
+"texture": ExtResource("21_380j0")
+}, {
+"duration": 0.31,
+"texture": ExtResource("22_pbbx2")
+}, {
+"duration": 0.31,
+"texture": ExtResource("23_enegx")
+}, {
+"duration": 0.31,
+"texture": ExtResource("24_k47q3")
+}, {
+"duration": 0.31,
+"texture": ExtResource("25_rwai7")
+}, {
+"duration": 0.31,
+"texture": ExtResource("26_cjch0")
+}, {
+"duration": 0.31,
+"texture": ExtResource("27_n4cmj")
+}, {
+"duration": 0.31,
+"texture": ExtResource("28_cjkog")
+}, {
+"duration": 0.31,
+"texture": ExtResource("29_nxk0d")
+}, {
+"duration": 0.31,
+"texture": ExtResource("30_n3aq3")
+}, {
+"duration": 0.31,
+"texture": ExtResource("31_up8oh")
+}, {
+"duration": 0.31,
+"texture": ExtResource("32_jp5bv")
+}, {
+"duration": 0.31,
+"texture": ExtResource("33_gufex")
+}, {
+"duration": 0.31,
+"texture": ExtResource("34_gbs75")
+}, {
+"duration": 0.31,
+"texture": ExtResource("35_hlo72")
+}, {
+"duration": 0.31,
+"texture": ExtResource("36_4grmc")
+}, {
+"duration": 0.31,
+"texture": ExtResource("37_l864r")
+}, {
+"duration": 0.31,
+"texture": ExtResource("38_wedq6")
+}, {
+"duration": 0.31,
+"texture": ExtResource("39_yuta1")
+}, {
+"duration": 0.31,
+"texture": ExtResource("40_i4vg6")
+}, {
+"duration": 0.31,
+"texture": ExtResource("41_5jfa0")
+}, {
+"duration": 0.31,
+"texture": ExtResource("42_qyagy")
+}, {
+"duration": 0.31,
+"texture": ExtResource("43_7lr5n")
+}, {
+"duration": 0.31,
+"texture": ExtResource("44_aj6vo")
+}, {
+"duration": 0.31,
+"texture": ExtResource("45_bwlxx")
+}, {
+"duration": 0.31,
+"texture": ExtResource("46_f22q5")
+}, {
+"duration": 0.31,
+"texture": ExtResource("47_2j0me")
+}, {
+"duration": 0.31,
+"texture": ExtResource("48_oox44")
+}, {
+"duration": 0.31,
+"texture": ExtResource("49_rm0gc")
+}, {
+"duration": 0.31,
+"texture": ExtResource("50_5bo3a")
+}, {
+"duration": 0.31,
+"texture": ExtResource("51_277p4")
+}, {
+"duration": 0.31,
+"texture": ExtResource("52_3dv2c")
+}, {
+"duration": 0.31,
+"texture": ExtResource("53_3xuur")
+}, {
+"duration": 0.31,
+"texture": ExtResource("54_rtkva")
+}, {
+"duration": 0.31,
+"texture": ExtResource("55_dp4yb")
+}, {
+"duration": 0.31,
+"texture": ExtResource("56_cbx7x")
+}, {
+"duration": 0.31,
+"texture": ExtResource("57_ks8ab")
+}, {
+"duration": 0.31,
+"texture": ExtResource("58_tbyc0")
+}, {
+"duration": 0.31,
+"texture": ExtResource("59_v6107")
+}, {
+"duration": 0.31,
+"texture": ExtResource("60_jbfyx")
+}, {
+"duration": 0.31,
+"texture": ExtResource("61_ar31t")
+}, {
+"duration": 0.31,
+"texture": ExtResource("62_pdlcq")
+}, {
+"duration": 0.31,
+"texture": ExtResource("63_4w4kr")
+}, {
+"duration": 0.31,
+"texture": ExtResource("64_r1xow")
+}, {
+"duration": 0.31,
+"texture": ExtResource("65_3ebld")
+}, {
+"duration": 0.31,
+"texture": ExtResource("66_1cgkg")
+}, {
+"duration": 0.31,
+"texture": ExtResource("67_iq3n5")
+}, {
+"duration": 0.31,
+"texture": ExtResource("68_c1d0a")
+}, {
+"duration": 0.31,
+"texture": ExtResource("69_en3bw")
+}, {
+"duration": 0.31,
+"texture": ExtResource("70_1ge22")
+}, {
+"duration": 0.31,
+"texture": ExtResource("71_c8kvo")
+}, {
+"duration": 0.31,
+"texture": ExtResource("72_yp33m")
+}, {
+"duration": 0.31,
+"texture": ExtResource("73_lkxci")
+}, {
+"duration": 0.31,
+"texture": ExtResource("74_acge3")
+}, {
+"duration": 0.31,
+"texture": ExtResource("75_6c81e")
+}, {
+"duration": 0.31,
+"texture": ExtResource("76_nof3x")
+}, {
+"duration": 0.31,
+"texture": ExtResource("77_j52xb")
+}, {
+"duration": 0.31,
+"texture": ExtResource("78_wfwxw")
+}, {
+"duration": 0.31,
+"texture": ExtResource("79_xnbn7")
+}, {
+"duration": 0.31,
+"texture": ExtResource("80_s2lv1")
+}, {
+"duration": 0.31,
+"texture": ExtResource("81_rxqmy")
+}, {
+"duration": 0.31,
+"texture": ExtResource("82_v5bg8")
+}, {
+"duration": 0.31,
+"texture": ExtResource("83_wm6mf")
+}, {
+"duration": 0.31,
+"texture": ExtResource("84_m2x2o")
+}, {
+"duration": 0.31,
+"texture": ExtResource("85_avsgy")
+}, {
+"duration": 0.31,
+"texture": ExtResource("86_43p4p")
+}, {
+"duration": 0.31,
+"texture": ExtResource("87_i0eym")
+}, {
+"duration": 0.31,
+"texture": ExtResource("88_npum1")
+}, {
+"duration": 0.31,
+"texture": ExtResource("89_74p3s")
+}, {
+"duration": 0.31,
+"texture": ExtResource("90_58fhs")
+}, {
+"duration": 0.31,
+"texture": ExtResource("91_64y2s")
+}, {
+"duration": 0.31,
+"texture": ExtResource("92_5nuk5")
+}, {
+"duration": 0.31,
+"texture": ExtResource("93_xw8ow")
+}, {
+"duration": 0.31,
+"texture": ExtResource("94_j4wih")
+}, {
+"duration": 0.31,
+"texture": ExtResource("95_wtyta")
+}, {
+"duration": 0.31,
+"texture": ExtResource("96_vteng")
+}, {
+"duration": 0.31,
+"texture": ExtResource("97_0skem")
+}, {
+"duration": 0.31,
+"texture": ExtResource("98_xpc1u")
+}, {
+"duration": 0.31,
+"texture": ExtResource("99_rg3dk")
+}, {
+"duration": 0.31,
+"texture": ExtResource("100_1mt23")
+}, {
+"duration": 0.31,
+"texture": ExtResource("101_ewipr")
+}, {
+"duration": 0.31,
+"texture": ExtResource("102_3d6ah")
+}, {
+"duration": 0.31,
+"texture": ExtResource("103_w3ccx")
+}, {
+"duration": 0.31,
+"texture": ExtResource("104_0mnlv")
+}, {
+"duration": 0.31,
+"texture": ExtResource("105_tnypm")
+}, {
+"duration": 0.31,
+"texture": ExtResource("106_jxsf0")
+}, {
+"duration": 0.31,
+"texture": ExtResource("107_sswnu")
 }],
 "loop": true,
 "name": &"charge",
-"speed": 16.0
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("108_ynw36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_hvvp5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_5qu4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_i1i7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_37j6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_bae4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_cakli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_b1hfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_54nfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_4bcxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_1mt1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_3fhy3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_lq22r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_2qf8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_nh0xh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_u2687")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_2fcu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_dtpvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_0bojw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_b6mjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_jtl3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_af320")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_x587p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_jbavv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_yoiy3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_ebxjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_kjls4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_fc46d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_frmij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_hvsla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_04x06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_n8fow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_ihddd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_f6nfx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_anjcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_try57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_vclck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_elnr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_8tgnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_6t6mm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_qv0fo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_ccj8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_wv4v7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_tthef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_8uabj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_5rjgr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_onrso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_w8fnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_f54ov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_c5tjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_qxs8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_tenou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("160_oyawy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_wy3u0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_atyng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_gd85b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_wkjjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_4xqi0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_w7o1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_yp03o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_muwyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_y6xvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_b4a7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("171_kbhih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_cnj4r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_6m3rw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_yvfqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_gfyco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_e7s2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_dhlk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_oh62c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_12oqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_vi64f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_v8044")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_2h8lx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("183_e0jok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("184_2p3r0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("185_w701m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("186_mqfbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("187_shrhs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_b5xk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_tfvmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("190_m3ure")
+}, {
+"duration": 1.0,
+"texture": ExtResource("191_0hyg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("192_2gva2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("193_5uxqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("194_b1ryi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("195_sdotn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("196_vi1f2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("197_vtmj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("198_eroff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("199_6w8rm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("200_pd1ir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("201_hy0or")
+}, {
+"duration": 1.0,
+"texture": ExtResource("202_fmp7s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("203_y3akn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("204_36mcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("205_7fcb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("206_e60rt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("207_km8lj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("208_ukkq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("209_qmqwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("210_pmuam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("211_wc6cx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("212_hu71l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("213_1agua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("214_chada")
+}, {
+"duration": 1.0,
+"texture": ExtResource("215_n5gts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("216_htgwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("217_7lwhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("218_5v6xq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("219_4jxxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("220_53smj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("221_kirhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("222_t8wle")
+}, {
+"duration": 1.0,
+"texture": ExtResource("223_kvwjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("224_pajdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("225_7hoyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("226_bo12j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("227_51cuq")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 43.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("228_3kpwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("229_twpgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("230_fpc07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("231_4jayi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("232_0al7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("233_ht224")
+}, {
+"duration": 1.0,
+"texture": ExtResource("234_i3of1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("235_ogqro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("236_15ccm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("237_3t8f0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("238_q77ma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("239_kteii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("240_h1q7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("241_qo6j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("242_44ry0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("243_38kcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("244_emjo3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("245_b5r8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("246_mov7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("247_q5wgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("248_peegi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("249_y27h4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("250_vr880")
+}, {
+"duration": 1.0,
+"texture": ExtResource("251_xwmjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("252_01kbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("253_c8lr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("254_t6dn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("255_op1j2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("256_nx3no")
+}, {
+"duration": 1.0,
+"texture": ExtResource("257_b3uah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("258_48tnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("259_tqjls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("260_yrexb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("261_nxg03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("262_llc2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("263_3hgro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("264_d3e38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("265_gj1e6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("266_ora18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("267_s0sg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("268_j5f8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("269_ag25l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("270_n0bvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("271_w7fft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("272_oks2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("273_y2um5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("274_ywldu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("275_n2nf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("276_yhv0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("277_sniir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("278_maxv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("279_h2pwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("280_bqfck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("281_ncrgb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("282_26ugr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("283_m3887")
+}, {
+"duration": 1.0,
+"texture": ExtResource("284_wfclw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("285_0atr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("286_uw6gk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("287_rdnwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("288_m6q0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("289_x37aa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("290_o3x8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("291_auwdq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("292_6ujpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("293_hglhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("294_vpqom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("295_eg2a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("296_0p0bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("297_8f5og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("298_lpq3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("299_bs40s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("300_j04x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("301_u1ccw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("302_aochu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("303_lse4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("304_7jwla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("305_qy20l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("306_npbp5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("307_sf8sa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("308_ukcxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("309_ctjp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("310_f8132")
+}, {
+"duration": 1.0,
+"texture": ExtResource("311_dcpq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("312_60t72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("313_vstg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("314_8vgon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("315_nk733")
+}, {
+"duration": 1.0,
+"texture": ExtResource("316_enqkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("317_ncon0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("318_0rfdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("319_r1o4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("320_15m8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("321_xk0x8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("322_2v0dy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("323_f27dy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("324_cu7ka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("325_yujsr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("326_0jgec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("327_7xptd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("328_0tkbu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("329_vhc6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("330_fhxvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("331_y8gxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("332_ad135")
+}, {
+"duration": 1.0,
+"texture": ExtResource("333_3pxqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("334_jsrhk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("335_ee7lr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("336_3m3dl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("337_3ioa4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("338_cv5s2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("339_gkvih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("340_0bm7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("341_pidrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("342_exb31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("343_bqci7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("344_kkc1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("345_33p22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("346_r5553")
+}, {
+"duration": 1.0,
+"texture": ExtResource("347_yyv48")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("348_kfbf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("349_4xg43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("350_ds28a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("351_efto2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("352_nyc3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("353_mi364")
+}, {
+"duration": 1.0,
+"texture": ExtResource("354_72yun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("355_yi1o0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("356_dfbr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("357_v0adv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("358_pp7ju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("359_jahje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("360_cmlsi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("361_jwvdn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("362_8uptb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("363_elw5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("364_ocea0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("365_n1iuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("366_u2l27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("367_logqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("368_nhqea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("369_nqvqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("370_rudc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("371_wjqkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("372_oraeu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("373_kf343")
+}, {
+"duration": 1.0,
+"texture": ExtResource("374_ql413")
+}, {
+"duration": 1.0,
+"texture": ExtResource("375_6id2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("376_ipg61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("377_bd35r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("378_e1cd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("379_qn28a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("380_ygleu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("381_pg42y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("382_uckwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("383_ktrun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("384_1ddmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("385_8uvxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("386_abhdl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("387_dtklm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("388_wk8qv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("389_vjvvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("390_r5wq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("391_qonyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("392_uv0cp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("393_sf2xr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("394_g13bn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("395_7e48h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("396_m6wed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("397_swq7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("398_4ywwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("399_4dj4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("400_1h3o0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("401_3ntb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("402_2bprb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("403_386qt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("404_qck5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("405_u1ex2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("406_1srv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("407_h83n2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("408_rt107")
+}, {
+"duration": 1.0,
+"texture": ExtResource("409_50csj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("410_g8bs6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("411_ypkx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("412_2c7xr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("413_y887j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("414_gektd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("415_q763j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("416_sf7ps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("417_8uorb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("418_siug5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("419_41v6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("420_u1nle")
+}, {
+"duration": 1.0,
+"texture": ExtResource("421_b0a4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("422_6gl55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("423_g5lpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("424_gktg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("425_u5imi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("426_7yi1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("427_qmtnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("428_63eab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("429_gv30o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("430_tmphs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("431_u8oge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("432_cywll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("433_y6xkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("434_lwx6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("435_aon4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("436_yepx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("437_ko72l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("438_e0l25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("439_v87pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("440_q84fx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("441_w7ypk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("442_mxw3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("443_m5yxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("444_w5x6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("445_ib0bp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("446_vkg7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("447_hbk3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("448_ew470")
+}, {
+"duration": 1.0,
+"texture": ExtResource("449_gv81v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("450_j83en")
+}, {
+"duration": 1.0,
+"texture": ExtResource("451_ferg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("452_mewca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("453_oq2tc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("454_k5qtw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("455_exs3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("456_e5o4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("457_o37sw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("458_n0ie4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("459_18cdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("460_kybgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("461_xgjc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("462_pgva2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("463_bd7lh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("464_xacss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("465_h2rd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("466_fnsx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("467_ra8dv")
+}],
+"loop": true,
+"name": &"new_animation_2",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("468_wa6fw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("469_lovky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("470_imdlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("471_65peu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("472_du0op")
+}, {
+"duration": 1.0,
+"texture": ExtResource("473_i7ewl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("474_nbgw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("475_s7m5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("476_sw1t3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("477_ixoa8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("478_brdos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("479_g2w61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("480_aatyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("481_3x873")
+}, {
+"duration": 1.0,
+"texture": ExtResource("482_1ifnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("483_x51t4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("484_ainqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("485_rob0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("486_lofl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("487_emocd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("488_k2bqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("489_g6y6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("490_1s1h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("491_vsbw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("492_beq55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("493_7xclu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("494_sm0mt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("495_lws6y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("496_v0f38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("497_ppqq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("498_i763y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("499_cut7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("500_sbngl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("501_132vh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("502_7xpbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("503_cexre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("504_3tjv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("505_uamik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("506_cbjup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("507_dhlqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("508_b1tj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("509_kbgne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("510_ogvsp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("511_jc42b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("512_dptqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("513_6cyye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("514_cyicm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("515_4weqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("516_0kol3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("517_re2dp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("518_oxkwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("519_nknot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("520_bo8p8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("521_yr63f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("522_u38d3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("523_c0k3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("524_2xq01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("525_4nb75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("526_ddn7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("527_5f2sd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("528_5xbv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("529_uv842")
+}, {
+"duration": 1.0,
+"texture": ExtResource("530_4iu54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("531_7fqvr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("532_bgihr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("533_ejse2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("534_n3wr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("535_1krle")
+}, {
+"duration": 1.0,
+"texture": ExtResource("536_yjesp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("537_66n4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("538_pspue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("539_kskkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("540_w1lqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("541_ychs4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("542_rgv1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("543_evs86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("544_ua3rx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("545_j8p8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("546_fm753")
+}, {
+"duration": 1.0,
+"texture": ExtResource("547_t788x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("548_2w7qd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("549_hkl2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("550_vhi1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("551_uqq4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("552_mfh4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("553_fgwgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("554_caeeu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("555_shfog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("556_bda0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("557_14xgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("558_pys38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("559_el8i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("560_vkcef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("561_q8xb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("562_xy67q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("563_aclih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("564_wcv2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("565_lcxvx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("566_2k2to")
+}, {
+"duration": 1.0,
+"texture": ExtResource("567_yu1g1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("568_efrq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("569_mi7rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("570_fy7xm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("571_oytbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("572_mfvud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("573_05fcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("574_dw6k8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("575_slmkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("576_cctgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("577_sjn8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("578_1ge6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("579_g7rai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("580_a71hk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("581_21hs4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("582_fbyn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("583_6nh44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("584_ereu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("585_gk71g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("586_283vr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("587_2j6u5")
+}],
+"loop": true,
+"name": &"new_animation_3",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("588_8k1ul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("589_sqcaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("590_fqxdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("591_8rjxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("592_rho75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("593_u04dm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("594_fl615")
+}, {
+"duration": 1.0,
+"texture": ExtResource("595_w5xop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("596_y5axe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("597_5vcsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("598_pxv4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("599_icyrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("600_hnaj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("601_8iira")
+}, {
+"duration": 1.0,
+"texture": ExtResource("602_4b3k2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("603_550tf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("604_hidk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("605_tdwyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("606_kkuyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("607_k2wek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("608_yrn6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("609_ov5ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("610_me822")
+}, {
+"duration": 1.0,
+"texture": ExtResource("611_x4kfd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("612_b174a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("613_qnjxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("614_o8l2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("615_qoq8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("616_vrrqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("617_d26v7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("618_w82vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("619_8w6s2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("620_n2mg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("621_2uneb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("622_g24oo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("623_blhc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("624_q8kdm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("625_b8bs2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("626_st0af")
+}, {
+"duration": 1.0,
+"texture": ExtResource("627_mnvtg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("628_7fkmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("629_7fbd8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("630_xrkbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("631_ob27j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("632_425l6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("633_4ivat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("634_ynf0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("635_wur1j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("636_ffe4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("637_wj5qn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("638_jayf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("639_ccnxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("640_re24y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("641_2c332")
+}, {
+"duration": 1.0,
+"texture": ExtResource("642_k74wp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("643_exnkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("644_ryhgc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("645_eyruo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("646_yec4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("647_w716s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("648_5jof6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("649_y1jdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("650_5vhvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("651_kqtds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("652_b3rpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("653_of47p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("654_e25jq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("655_x0y7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("656_idgj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("657_fxnog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("658_alare")
+}, {
+"duration": 1.0,
+"texture": ExtResource("659_7vcqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("660_u4vwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("661_w7iie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("662_8fvg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("663_15dnh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("664_u87cl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("665_spcd7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("666_tlpqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("667_6nynq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("668_k13ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("669_vy23j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("670_s6brn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("671_5os16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("672_v51yl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("673_e5f4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("674_ndbju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("675_ucniw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("676_705t5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("677_x4w0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("678_2g66h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("679_aaell")
+}, {
+"duration": 1.0,
+"texture": ExtResource("680_ilu77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("681_xv76v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("682_6cw4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("683_pwx1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("684_gra7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("685_4s53e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("686_lfw48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("687_nk65n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("688_gqety")
+}, {
+"duration": 1.0,
+"texture": ExtResource("689_t0tal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("690_oqo3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("691_tvfu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("692_csc1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("693_6i8a3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("694_id24u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("695_t7kay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("696_0r7q3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("697_wt3ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("698_tcc6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("699_mnxm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("700_qwjs7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("701_wfigw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("702_8rhoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("703_rjslu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("704_dwhm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("705_4bx7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("706_7sn75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("707_j3gl2")
+}],
+"loop": true,
+"name": &"new_animation_4",
+"speed": 60.0
 }]
 
 [node name="ChargeUp" type="Node2D" unique_id=1794910564]
@@ -85,6 +2867,6 @@ scale = Vector2(0.25, 0.25)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1753756079]
 sprite_frames = SubResource("SpriteFrames_g8xy5")
-animation = &"charge"
+animation = &"new_animation_4"
 autoplay = "charge"
-frame_progress = 0.7533749
+frame_progress = 0.7719122

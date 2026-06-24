@@ -54,4 +54,4 @@ animation = &"head_shake"
 autoplay = "appear"
 
 [node name="FireSpawnPoint" type="Marker2D" parent="." unique_id=901470503]
-position = Vector2(-8, 32)
+position = Vector2(0, 78)

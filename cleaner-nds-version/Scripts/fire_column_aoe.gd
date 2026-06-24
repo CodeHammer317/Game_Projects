@@ -2,8 +2,9 @@ extends Area2D
 class_name FireColumnAOE
 
 @export var damage: int = 10
-@export var lifetime: float = 0.5
+@export var lifetime: float = 0.8
 @export var knockback: Vector2 = Vector2(80.0, -120.0)
+@export var animation_name: StringName = &"fire_column"
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -22,8 +23,15 @@ func _ready() -> void:
 		area_entered.connect(_on_area_entered)
 
 	if sprite != null:
-		if sprite.sprite_frames != null and sprite.sprite_frames.has_animation("fire_column"):
-			sprite.play("fire_column")
+		sprite.visible = true
+
+		if sprite.sprite_frames != null and sprite.sprite_frames.has_animation(animation_name):
+			sprite.frame = 0
+			sprite.frame_progress = 0.0
+			sprite.play(animation_name)
+
+	await get_tree().physics_frame
+	_hit_overlapping_targets()
 
 	await get_tree().create_timer(lifetime).timeout
 
@@ -63,6 +71,14 @@ func _try_hit(target: Node) -> void:
 
 	if damage_target.has_method("apply_damage"):
 		damage_target.apply_damage(info)
+
+
+func _hit_overlapping_targets() -> void:
+	for body in get_overlapping_bodies():
+		_try_hit(body)
+
+	for area in get_overlapping_areas():
+		_try_hit(area)
 
 
 func _get_damage_target(target: Node) -> Node:
