@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dd2qqaxowfy85"]
+
+[ext_resource type="Script" uid="uid://drurellrr7rgr" path="res://Scripts/upgrade_matrix_display.gd" id="1_5cdvn"]
+[ext_resource type="Texture2D" uid="uid://g4wa4tj0k440" path="res://Assets/HUD_assets/mechanical_pixel_art_gui/mechanical_pixel_art_gui/premade/64x64/window/orange/panel.png" id="1_qjl0l"]
+[ext_resource type="Texture2D" uid="uid://b2gs8rppirwgs" path="res://Assets/sprites/HolyHandgrenadeOfAntioch.png" id="2_kggtl"]
+[ext_resource type="Texture2D" uid="uid://c8l450rjir2wi" path="res://Assets/HUD_assets/Icons/ShieldPU_Sprite.png" id="3_si7j0"]
+[ext_resource type="Texture2D" uid="uid://cq2swi8dtiut7" path="res://Assets/Cool Animations/Explosion_5/Explosion_3 (2).png" id="4_qjl0l"]
+
+[node name="UpgradeMatrixDisplay" type="Node2D" unique_id=181610676]
+script = ExtResource("1_5cdvn")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=830672931]
+scale = Vector2(5.328125, 2.890625)
+texture = ExtResource("1_qjl0l")
+centered = false
+
+[node name="RelicSlots" type="Node2D" parent="." unique_id=1608265079]
+
+[node name="DoubleJumpSlot" type="Node2D" parent="RelicSlots" unique_id=2559385]
+
+[node name="EmptySprite" type="Sprite2D" parent="RelicSlots/DoubleJumpSlot" unique_id=149392195]
+
+[node name="RelicSprite" type="Sprite2D" parent="RelicSlots/DoubleJumpSlot" unique_id=2020097285]
+position = Vector2(77.00002, 54.000004)
+scale = Vector2(2.03125, 1.875)
+texture = ExtResource("2_kggtl")
+
+[node name="WallSlideSlot" type="Node2D" parent="RelicSlots" unique_id=324259912]
+
+[node name="EmptySprite" type="Sprite2D" parent="RelicSlots/WallSlideSlot" unique_id=1494853725]
+
+[node name="RelicSprite" type="Sprite2D" parent="RelicSlots/WallSlideSlot" unique_id=996342246]
+position = Vector2(155, 56.999996)
+scale = Vector2(0.4, 0.39375)
+texture = ExtResource("3_si7j0")
+
+[node name="ChargeShotSlot" type="Node2D" parent="RelicSlots" unique_id=1850610980]
+
+[node name="EmptySprite" type="Sprite2D" parent="RelicSlots/ChargeShotSlot" unique_id=981713534]
+
+[node name="RelicSprite" type="Sprite2D" parent="RelicSlots/ChargeShotSlot" unique_id=1291382312]
+position = Vector2(246.99998, 51)
+scale = Vector2(0.29375, 0.29140627)
+texture = ExtResource("4_qjl0l")

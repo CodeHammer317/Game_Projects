@@ -67,19 +67,17 @@ position = Vector2(16, 80)
 scale = Vector2(1.2, 1.2)
 tile_set = SubResource("TileSet_d4so2")
 
-[node name="Player" parent="." unique_id=1715600248 instance=ExtResource("3_fl1d5")]
-position = Vector2(40, 240)
-
 [node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("4_n6oji")]
 limit_right = 1872
 limit_bottom = 360
-target_path = NodePath("../Player")
 
 [node name="Hud" parent="." unique_id=795795287 instance=ExtResource("8_dgd1k")]
-player_path = NodePath("../Player")
 
 [node name="AreaTransition" parent="." unique_id=1160941269 instance=ExtResource("9_w4dtl")]
 position = Vector2(1880, 224)
 collision_layer = 128
 collision_mask = 2
 next_level_path = "uid://joacfcmjayfy"
+
+[node name="Player" parent="." unique_id=1715600248 instance=ExtResource("3_fl1d5")]
+position = Vector2(56, 232)

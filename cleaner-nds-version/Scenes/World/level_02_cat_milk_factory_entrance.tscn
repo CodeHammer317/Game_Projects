@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://dcajnodtsqb5h"]
 
 [node name="Level_02_CatMilkFactory_Entrance" type="Node2D" unique_id=1641860352]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1496956574]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1789064137]

@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://betc3alns3d4p" path="res://Scripts/player_punch_hitbox.gd" id="1_l2nxl"]
 [ext_resource type="Texture2D" uid="uid://bm6p7e47wtpl3" path="res://Assets/sprites/Super Pixel Effects Pack 2/Super Pixel Effects Pack 2/spritesheet/fx2_claw_large_white/spritesheet.png" id="2_102l4"]
+[ext_resource type="Texture2D" uid="uid://bumyt28csisij" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_impact_hit_large_red/frame0000.png" id="2_u7b15"]
+[ext_resource type="Texture2D" uid="uid://wlo70hg72bgj" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_impact_hit_large_red/frame0001.png" id="3_xykgg"]
+[ext_resource type="Texture2D" uid="uid://c6cgilmhxi7ur" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_impact_hit_large_red/frame0002.png" id="4_ifx5j"]
+[ext_resource type="Texture2D" uid="uid://bemjwcema60aq" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_impact_hit_large_red/frame0003.png" id="5_thgyi"]
+[ext_resource type="Texture2D" uid="uid://bapxcce8mnch4" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_impact_hit_large_red/frame0004.png" id="6_4d840"]
+[ext_resource type="Texture2D" uid="uid://b2wflaiwc7ijc" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_impact_hit_large_red/frame0005.png" id="7_vabn7"]
+[ext_resource type="Texture2D" uid="uid://ekfd3lho6wmk" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_impact_hit_large_red/frame0006.png" id="8_w78ab"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_102l4"]
 
@@ -49,6 +56,32 @@ region = Rect2(576, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_u7b15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xykgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ifx5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_thgyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4d840")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vabn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_w78ab")
+}],
+"loop": false,
+"name": &"claw",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5edp5")
 }, {
 "duration": 1.0,
@@ -79,7 +112,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_thgyi")
 }],
 "loop": false,
-"name": &"claw",
+"name": &"claw1",
 "speed": 30.0
 }]
 
@@ -93,7 +126,7 @@ damage = 3
 shape = SubResource("CircleShape2D_102l4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2120301251]
-position = Vector2(-1.9073486e-06, -1.9073486e-06)
+position = Vector2(-15.999999, -1.1368684e-13)
 scale = Vector2(0.6875, 0.6875)
 sprite_frames = SubResource("SpriteFrames_4d840")
 animation = &"claw"

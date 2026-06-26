@@ -133,6 +133,7 @@ var _is_dashing: bool = false
 var _dash_timer: float = 0.0
 var _dash_cooldown_timer: float = 0.0
 var _has_air_dashed: bool = false
+var _has_double_jumped: bool = false
 
 var _is_wall_sliding: bool = false
 var _wall_dir: int = 0
@@ -149,6 +150,11 @@ var _special_meter_charge: float = 0.0
 
 func _ready() -> void:
 	_sprite_base_position = sprite.position
+	_sync_upgrades_from_state()
+
+	if not PlayerState.upgrade_unlocked.is_connected(_on_upgrade_unlocked):
+		PlayerState.upgrade_unlocked.connect(_on_upgrade_unlocked)
+
 	special_meter = clampi(special_meter, 0, special_meter_max)
 	_special_meter_charge = float(special_meter)
 
@@ -167,6 +173,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if control_locked:
 		velocity = Vector2.ZERO
+		_input_dir = 0.0
+		_force_idle_pose()
 		move_and_slide()
 		return
 
@@ -243,6 +251,7 @@ func _recharge_special_meter(delta: float) -> void:
 func _refresh_floor_state() -> void:
 	if is_on_floor():
 		_has_air_dashed = false
+		_has_double_jumped = false
 		_coyote_timer = coyote_time
 	elif _was_on_floor:
 		_coyote_timer = coyote_time
@@ -440,6 +449,9 @@ func _handle_wall_slide() -> void:
 	_is_wall_sliding = false
 	_wall_dir = 0
 
+	if not has_wall_slide:
+		return
+
 	if _is_dashing:
 		return
 
@@ -493,6 +505,12 @@ func _handle_jump() -> void:
 		_do_jump()
 		_jump_buffer_timer = 0.0
 		_coyote_timer = 0.0
+		return
+
+	if has_double_jump and not _has_double_jumped:
+		_do_jump()
+		_has_double_jumped = true
+		_jump_buffer_timer = 0.0
 
 
 func _do_jump() -> void:
@@ -520,6 +538,7 @@ func _wall_jump() -> void:
 	_wall_dir = 0
 	_wall_jump_lock_timer = wall_jump_horizontal_lock_time
 	_facing_left = jump_dir < 0
+	_has_double_jumped = false
 
 	_spawn_dust_trail(wall_slide_dust_offset, &"wall_slide")
 
@@ -550,6 +569,11 @@ func _handle_horizontal_movement(delta: float) -> void:
 
 
 func _handle_shoot(delta: float) -> void:
+	if not has_charge_shot:
+		if Input.is_action_just_pressed("shoot") and _can_shoot():
+			_spawn_bullet()
+		return
+
 	if Input.is_action_just_pressed("shoot") and _can_shoot():
 		_is_charging_shot = true
 		_charge_time = 0.0
@@ -726,6 +750,7 @@ func _cleanup_after_move() -> void:
 		_is_wall_sliding = false
 		_wall_dir = 0
 		_has_air_dashed = false
+		_has_double_jumped = false
 
 		if _is_dashing and _dash_timer <= 0.0:
 			_is_dashing = false
@@ -1130,20 +1155,46 @@ func _get_facing_sign_from_input() -> int:
 func set_control_locked(value: bool) -> void:
 	control_locked = value
 	velocity = Vector2.ZERO
+	_input_dir = 0.0
 
 	if value:
 		_cancel_shot_charge()
+		_force_idle_pose()
+
+
+func play_idle_animation() -> void:
+	_force_idle_pose()
+
+
+func _force_idle_pose() -> void:
+	_shoot_anim_timer = 0.0
+	_attack_anim_timer = 0.0
+	_is_dashing = false
+	_is_wall_sliding = false
+	_wall_dir = 0
+	_play_animation_if_available("idle")
 
 
 func apply_upgrade(upgrade_name: StringName) -> void:
+	if PlayerState.unlock_upgrade(upgrade_name):
+		_apply_upgrade_flags(upgrade_name)
+		print("Upgrade acquired: ", PlayerState.get_upgrade_display_name(upgrade_name))
+
+
+func _on_upgrade_unlocked(upgrade_name: StringName) -> void:
+	_apply_upgrade_flags(upgrade_name)
+
+
+func _sync_upgrades_from_state() -> void:
+	has_double_jump = PlayerState.has_upgrade(&"double_jump")
+	has_wall_slide = PlayerState.has_upgrade(&"wall_slide")
+	has_charge_shot = PlayerState.has_upgrade(&"charge_shot")
+
+
+func _apply_upgrade_flags(upgrade_name: StringName) -> void:
 	if upgrade_name == &"double_jump":
 		has_double_jump = true
-		print("Upgrade acquired: Double Jump")
-
 	elif upgrade_name == &"wall_slide":
 		has_wall_slide = true
-		print("Upgrade acquired: Wall Slide")
-
 	elif upgrade_name == &"charge_shot":
 		has_charge_shot = true
-		print("Upgrade acquired: Charge Shot")
