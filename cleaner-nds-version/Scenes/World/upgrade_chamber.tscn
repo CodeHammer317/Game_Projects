@@ -209,12 +209,12 @@ texture = ExtResource("1_vu3f7")
 centered = false
 
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("7_kds23")]
-position = Vector2(47, 290)
+position = Vector2(47, 277)
 scale = Vector2(2, 2)
 dash_dust_offset = Vector2(-24, 30)
 
 [node name="CollisionShape2D" parent="Player" index="0" unique_id=1032869655]
-position = Vector2(0, 0)
+position = Vector2(0, 1.5)
 
 [node name="AnimatedSprite2D" parent="Player" index="6" unique_id=1655699272]
 frame = 0
