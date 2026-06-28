@@ -67,10 +67,6 @@ position = Vector2(16, 80)
 scale = Vector2(1.2, 1.2)
 tile_set = SubResource("TileSet_d4so2")
 
-[node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("4_n6oji")]
-limit_right = 1872
-limit_bottom = 360
-
 [node name="Hud" parent="." unique_id=795795287 instance=ExtResource("8_dgd1k")]
 
 [node name="AreaTransition" parent="." unique_id=1160941269 instance=ExtResource("9_w4dtl")]
@@ -81,3 +77,7 @@ next_level_path = "uid://joacfcmjayfy"
 
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("3_fl1d5")]
 position = Vector2(56, 232)
+
+[node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("4_n6oji")]
+limit_right = 1872
+limit_bottom = 360

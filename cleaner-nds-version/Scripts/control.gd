@@ -4,14 +4,19 @@ extends Control
 @export var chars_per_second: float = 25.0
 @export var random_pitch_range: float = 0.1 # Adds variety to the typing
 @export var next_scene: String = "res://Scenes/World/upgrade_chamber.tscn"
+@export_node_path("AnimatedSprite2D") var speaker_sprite_path: NodePath
+@export_range(0.01, 1.0, 0.01) var speech_frame_time_min: float = 0.08
+@export_range(0.01, 1.0, 0.01) var speech_frame_time_max: float = 0.18
 #@export var auto_advance_time: float = 60.0
 
 
 @onready var label = $TextLabel
 @onready var audio = $AudioStreamPlayer
 @onready var skip_label = $SkipLabel
+@onready var speaker_sprite: AnimatedSprite2D = get_node_or_null(speaker_sprite_path) as AnimatedSprite2D
 
 var is_typing: bool = false
+var _speech_animation_token: int = 0
 #var _timer: float = 0.0 #Used for the auto advance for first scene
 var _skipped: bool = false
 
@@ -81,6 +86,7 @@ func start_dialogue(new_text: String):
 	label.visible_characters = 0
 	skip_label.visible = true
 	is_typing = true
+	_start_speaker_animation()
 	
 	# 1. Animate the text using a Tween
 	var duration = new_text.length() / chars_per_second
@@ -112,4 +118,36 @@ func play_typing_sounds():
 
 func _on_typing_finished():
 	is_typing = false
+	_stop_speaker_animation()
 	skip_label.visible = true
+
+func _start_speaker_animation() -> void:
+	if speaker_sprite == null:
+		return
+
+	_speech_animation_token += 1
+	speaker_sprite.stop()
+	speaker_sprite.frame = 0
+	_animate_speaker(_speech_animation_token)
+
+func _animate_speaker(token: int) -> void:
+	var frame_count := speaker_sprite.sprite_frames.get_frame_count(speaker_sprite.animation)
+	if frame_count <= 1:
+		return
+
+	while is_typing and token == _speech_animation_token:
+		# Cycle all three mouth poses while varying each pose's hold time.
+		speaker_sprite.frame = (speaker_sprite.frame + 1) % frame_count
+		var hold_time := randf_range(
+			minf(speech_frame_time_min, speech_frame_time_max),
+			maxf(speech_frame_time_min, speech_frame_time_max)
+		)
+		await get_tree().create_timer(hold_time).timeout
+
+func _stop_speaker_animation() -> void:
+	_speech_animation_token += 1
+	if speaker_sprite == null:
+		return
+
+	speaker_sprite.stop()
+	speaker_sprite.frame = 0

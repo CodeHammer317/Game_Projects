@@ -100,7 +100,7 @@
 [ext_resource type="Texture2D" uid="uid://b0y3un4kt28ye" path="res://Assets/sprites/classic_character/PNG/style_4/wall_cling.png" id="103_kq8xt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tugb3"]
-size = Vector2(20, 50)
+size = Vector2(20, 48.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jmbrt"]
 atlas = ExtResource("98_pf3rq")
@@ -1675,7 +1675,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roundhouse_kick",
-"speed": 24.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1885,7 +1885,7 @@ mattt_assist_scene = ExtResource("5_6a86w")
 mattt_spawn_offset = Vector2(-40, -100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1032869655]
-position = Vector2(2, 4.5)
+position = Vector2(2, 3.75)
 shape = SubResource("RectangleShape2D_tugb3")
 debug_color = Color(0.9222628, 0.24629954, 0.34191763, 0.41960785)
 
@@ -1925,6 +1925,8 @@ use_persistent_player_state = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1655699272]
 sprite_frames = SubResource("SpriteFrames_olv1t")
-animation = &"idle"
+animation = &"roundhouse_kick"
 autoplay = "idle"
+frame = 8
+frame_progress = 1.0
 offset = Vector2(0, -32)

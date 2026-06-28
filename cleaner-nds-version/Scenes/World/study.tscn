@@ -1,13 +1,26 @@
 [gd_scene format=4 uid="uid://bvhdbjgl6c6i7"]
 
-[ext_resource type="Texture2D" uid="uid://bwylldlt1y81k" path="res://Assets/sprites/Study.png" id="1_be2da"]
 [ext_resource type="Script" uid="uid://bqm2wh6rv24p5" path="res://Scripts/study.gd" id="1_h1fst"]
-[ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="3_ghfc6"]
+[ext_resource type="Texture2D" uid="uid://bhwuadad7mq2q" path="res://Assets/sprites/Study Art/Bible_Study_Plain_Background_Far.png" id="2_221uv"]
+[ext_resource type="Texture2D" uid="uid://dy82kf5hw20w1" path="res://Assets/sprites/Study Art/Study_Near_Sprite_TablewithItems.png" id="3_5o30m"]
 [ext_resource type="Script" uid="uid://d2rq6h2o7kapt" path="res://Scripts/camera_2d.gd" id="4_4m0bx"]
+[ext_resource type="Texture2D" uid="uid://dlsv60dv5by82" path="res://Assets/sprites/Study Art/EndTable.png" id="4_5o30m"]
 [ext_resource type="Texture2D" uid="uid://ck0gtbiug6kta" path="res://Assets/tilesets/main_lev_buildA.png" id="5_4m0bx"]
+[ext_resource type="Texture2D" uid="uid://b1lngy2juti0p" path="res://Assets/HUD_assets/ProjectorScreen.png" id="6_fy78r"]
+[ext_resource type="Texture2D" uid="uid://cxnx1ar8rv62v" path="res://Assets/sprites/Study Art/ClosedBook.png" id="6_r75ra"]
 [ext_resource type="Texture2D" uid="uid://qi3wbmpbhrh3" path="res://Assets/tilesets/main_lev_buildB.png" id="6_txpg4"]
 [ext_resource type="PackedScene" uid="uid://cormy61c2jsmw" path="res://Scenes/World/level_01_briefing_screen.tscn" id="7_txpg4"]
-[ext_resource type="Texture2D" uid="uid://bpp1d53detgcx" path="res://Assets/HUD_assets/Icons/WallSlideRelic.png" id="8_221uv"]
+[ext_resource type="Texture2D" uid="uid://cr682hx8xud8q" path="res://Assets/sprites/Study Art/Sprite-0001.png" id="10_r75ra"]
+[ext_resource type="Texture2D" uid="uid://owffdwtqr5n1" path="res://Assets/sprites/Study Art/CoffeeCup_Beige.png" id="13_ty2k5"]
+[ext_resource type="Texture2D" uid="uid://ciov2462n8h2i" path="res://Assets/Cool Animations/Smoke/Smoke1.png" id="14_cfwgu"]
+[ext_resource type="Texture2D" uid="uid://d5lvw7ukd0ki" path="res://Assets/Cool Animations/Smoke/Smoke2.png" id="15_362ur"]
+[ext_resource type="Texture2D" uid="uid://clf7unloqlfee" path="res://Assets/Cool Animations/Smoke/Smoke3.png" id="16_ajmle"]
+[ext_resource type="Texture2D" uid="uid://ba13i8hl11r0o" path="res://Assets/Cool Animations/Smoke/Smoke4.png" id="17_8jq0p"]
+[ext_resource type="Texture2D" uid="uid://cfb5g2lvb3r3c" path="res://Assets/Cool Animations/Smoke/Smoke5.png" id="18_iwsa4"]
+[ext_resource type="Texture2D" uid="uid://dhthds0llblfa" path="res://Assets/Cool Animations/Smoke/Smoke6.png" id="19_dmdce"]
+[ext_resource type="Texture2D" uid="uid://duypctt7gaqhl" path="res://Assets/sprites/torch.png" id="20_362ur"]
+[ext_resource type="Texture2D" uid="uid://cyurf1e7umudx" path="res://Assets/sprites/Study Art/TopLobstaConversationHeadshot.png" id="21_8jq0p"]
+[ext_resource type="Texture2D" uid="uid://ba8iif7k0t36v" path="res://Assets/sprites/Study Art/RavenHeadshotConversation.png" id="21_ajmle"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_221uv"]
 texture = ExtResource("5_4m0bx")
@@ -325,33 +338,204 @@ physics_layer_0/collision_mask = 6
 sources/1 = SubResource("TileSetAtlasSource_221uv")
 sources/2 = SubResource("TileSetAtlasSource_5o30m")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty2k5"]
+atlas = ExtResource("10_r75ra")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8fnq"]
+atlas = ExtResource("10_r75ra")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ul70"]
+atlas = ExtResource("10_r75ra")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osg88"]
+atlas = ExtResource("10_r75ra")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j34v"]
+atlas = ExtResource("10_r75ra")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8m1q"]
+atlas = ExtResource("10_r75ra")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfwgu"]
+atlas = ExtResource("10_r75ra")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3j34v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty2k5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8fnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ul70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osg88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j34v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8m1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfwgu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fgi44"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_cfwgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_362ur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ajmle")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8jq0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_iwsa4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_dmdce")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajmle"]
+atlas = ExtResource("20_362ur")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jq0p"]
+atlas = ExtResource("20_362ur")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwsa4"]
+atlas = ExtResource("20_362ur")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmdce"]
+atlas = ExtResource("20_362ur")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo8jb"]
+atlas = ExtResource("20_362ur")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pbvoe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajmle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jq0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwsa4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmdce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo8jb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iwsa4"]
+
 [node name="Study" type="Node2D" unique_id=62157998]
 script = ExtResource("1_h1fst")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=578057719]
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1531336328]
-scale = Vector2(1.5225655, 2.0111113)
-texture = ExtResource("1_be2da")
+position = Vector2(-2.3841858e-07, -1)
+scale = Vector2(0.9467456, 0.95698917)
+texture = ExtResource("2_221uv")
 centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1845776303]
+scroll_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1233792198]
+position = Vector2(223, 318)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_5o30m")
+
+[node name="ProjectorScreen" type="Sprite2D" parent="." unique_id=1327527795]
+position = Vector2(324.00003, 135.00002)
+scale = Vector2(0.7947494, 0.82783884)
+texture = ExtResource("6_fy78r")
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=1450410922]
+scroll_scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3" unique_id=1396170850]
+position = Vector2(495, 322)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_5o30m")
+
+[node name="ClosedBook" type="Sprite2D" parent="Parallax2D3" unique_id=887114080]
+position = Vector2(486.00003, 296)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("6_r75ra")
 
 [node name="Level01BriefingScreen" parent="." unique_id=827862161 instance=ExtResource("7_txpg4")]
 offset_left = 82.0
 offset_top = -16.0
 offset_right = 82.0
 offset_bottom = -16.0
+speaker_sprite_path = NodePath("../AnimatedSprite2D")
 
 [node name="TextLabel" parent="Level01BriefingScreen" index="0" unique_id=2127807611]
-offset_left = 165.0
-offset_top = 72.0
-offset_right = 385.0
-offset_bottom = 225.0
+offset_left = 92.0
+offset_top = 74.0
+offset_right = 408.0
+offset_bottom = 247.0
 
 [node name="SkipLabel" parent="Level01BriefingScreen" index="3" unique_id=400649107]
-offset_left = 157.0
-offset_top = 18.0
-offset_right = 380.0
-offset_bottom = 41.0
+offset_left = 139.0
+offset_top = 269.0
+offset_right = 362.0
+offset_bottom = 292.0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=4208150]
+tile_map_data = PackedByteArray("AAAAABYAAgAEAAEAAAABABYAAgAEAAEAAAACABYAAgAEAAEAAAADABYAAgAEAAEAAAAEABYAAgAEAAEAAAAFABYAAgAEAAEAAAAGABYAAgAEAAEAAAAHABYAAgAEAAEAAAAIABYAAgAEAAEAAAAJABYAAgAEAAEAAAAKABYAAgAEAAEAAAALABYAAgAEAAEAAAAMABYAAgAEAAEAAAANABYAAgAEAAEAAAAOABYAAgAEAAEAAAAPABYAAgAEAAEAAAAQABYAAgAEAAEAAAARABYAAgAEAAEAAAASABYAAgAEAAEAAAATABYAAgAEAAEAAAAUABYAAgAEAAEAAAAVABYAAgAEAAEAAAAWABYAAgAEAAEAAAAXABYAAgAEAAEAAAAYABYAAgAEAAEAAAAZABYAAgAEAAEAAAAaABYAAgAEAAEAAAAbABYAAgAEAAEAAAAcABYAAgAEAAEAAAAdABYAAgAEAAEAAAAeABYAAgAEAAEAAAAfABYAAgAEAAEAAAAgABYAAgAEAAEAAAAhABYAAgAEAAEAAAAiABYAAgAEAAEAAAAjABYAAgAEAAEAAAAkABYAAgAEAAEAAAAlABYAAgAEAAEAAAAmABYAAgAEAAEAAAAnABYAAgAEAAEAAAAoABYAAgAEAAEAAAAoABUAAgAEAAEAAAAoABQAAgAEAAEAAAAoABMAAgAEAAEAAAAoABIAAgAEAAEAAAAoABEAAgAEAAEAAAAoABAAAgAEAAEAAAAoAA8AAgAEAAEAAAAoAA4AAgAEAAEAAAAoAA0AAgAEAAEAAAAoAAwAAgAEAAEAAAAoAAsAAgAEAAEAAAAoAAoAAgAEAAEAAAAoAAkAAgAEAAEAAAAoAAgAAgAEAAEAAAAoAAcAAgAEAAEAAAAoAAYAAgAEAAEAAAAoAAUAAgAEAAEAAAAoAAQAAgAEAAEAAAAoAAMAAgAEAAEAAAAoAAIAAgAEAAEAAAAoAAEAAgAEAAEAAAAoAAAAAgAEAAEAAAD//xYAAgAEAAEAAAD//xUAAgAEAAEAAAD//xQAAgAEAAEAAAD//xMAAgAEAAEAAAD//xIAAgAEAAEAAAD//xEAAgAEAAEAAAD//xAAAgAEAAEAAAD//w8AAgAEAAEAAAD//w4AAgAEAAEAAAD//w0AAgAEAAEAAAD//wwAAgAEAAEAAAD//wsAAgAEAAEAAAD//woAAgAEAAEAAAD//wkAAgAEAAEAAAD//wgAAgAEAAEAAAD//wcAAgAEAAEAAAD//wYAAgAEAAEAAAD//wUAAgAEAAEAAAD//wQAAgAEAAEAAAD//wMAAgAEAAEAAAD//wIAAgAEAAEAAAD//wEAAgAEAAEAAAD//wAAAgAEAAEAAAA=")
+tile_set = SubResource("TileSet_txpg4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=807390451]
+position = Vector2(566, 112)
+sprite_frames = SubResource("SpriteFrames_3j34v")
+frame = 6
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=724541908]
 limit_left = 0
@@ -359,20 +543,68 @@ limit_top = 0
 limit_right = 640
 limit_bottom = 360
 script = ExtResource("4_4m0bx")
-target_path = NodePath("../Player")
 use_position_smoothing = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=4208150]
-tile_map_data = PackedByteArray("AAAAABYAAgAEAAEAAAABABYAAgAEAAEAAAACABYAAgAEAAEAAAADABYAAgAEAAEAAAAEABYAAgAEAAEAAAAFABYAAgAEAAEAAAAGABYAAgAEAAEAAAAHABYAAgAEAAEAAAAIABYAAgAEAAEAAAAJABYAAgAEAAEAAAAKABYAAgAEAAEAAAALABYAAgAEAAEAAAAMABYAAgAEAAEAAAANABYAAgAEAAEAAAAOABYAAgAEAAEAAAAPABYAAgAEAAEAAAAQABYAAgAEAAEAAAARABYAAgAEAAEAAAASABYAAgAEAAEAAAATABYAAgAEAAEAAAAUABYAAgAEAAEAAAAVABYAAgAEAAEAAAAWABYAAgAEAAEAAAAXABYAAgAEAAEAAAAYABYAAgAEAAEAAAAZABYAAgAEAAEAAAAaABYAAgAEAAEAAAAbABYAAgAEAAEAAAAcABYAAgAEAAEAAAAdABYAAgAEAAEAAAAeABYAAgAEAAEAAAAfABYAAgAEAAEAAAAgABYAAgAEAAEAAAAhABYAAgAEAAEAAAAiABYAAgAEAAEAAAAjABYAAgAEAAEAAAAkABYAAgAEAAEAAAAlABYAAgAEAAEAAAAmABYAAgAEAAEAAAAnABYAAgAEAAEAAAAoABYAAgAEAAEAAAAoABUAAgAEAAEAAAAoABQAAgAEAAEAAAAoABMAAgAEAAEAAAAoABIAAgAEAAEAAAAoABEAAgAEAAEAAAAoABAAAgAEAAEAAAAoAA8AAgAEAAEAAAAoAA4AAgAEAAEAAAAoAA0AAgAEAAEAAAAoAAwAAgAEAAEAAAAoAAsAAgAEAAEAAAAoAAoAAgAEAAEAAAAoAAkAAgAEAAEAAAAoAAgAAgAEAAEAAAAoAAcAAgAEAAEAAAAoAAYAAgAEAAEAAAAoAAUAAgAEAAEAAAAoAAQAAgAEAAEAAAAoAAMAAgAEAAEAAAAoAAIAAgAEAAEAAAAoAAEAAgAEAAEAAAAoAAAAAgAEAAEAAAD//xYAAgAEAAEAAAD//xUAAgAEAAEAAAD//xQAAgAEAAEAAAD//xMAAgAEAAEAAAD//xIAAgAEAAEAAAD//xEAAgAEAAEAAAD//xAAAgAEAAEAAAD//w8AAgAEAAEAAAD//w4AAgAEAAEAAAD//w0AAgAEAAEAAAD//wwAAgAEAAEAAAD//wsAAgAEAAEAAAD//woAAgAEAAEAAAD//wkAAgAEAAEAAAD//wgAAgAEAAEAAAD//wcAAgAEAAEAAAD//wYAAgAEAAEAAAD//wUAAgAEAAEAAAD//wQAAgAEAAEAAAD//wMAAgAEAAEAAAD//wIAAgAEAAEAAAD//wEAAgAEAAEAAAD//wAAAgAEAAEAAAA=")
-tile_set = SubResource("TileSet_txpg4")
+[node name="CoffeeCupBeige" type="Sprite2D" parent="." unique_id=702736196]
+position = Vector2(518, 293)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("13_ty2k5")
 
-[node name="Player" parent="." unique_id=1715600248 instance=ExtResource("3_ghfc6")]
-position = Vector2(43, 275)
-scale = Vector2(3, 3)
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1138483321]
+position = Vector2(517, 269)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_fgi44")
+autoplay = "default"
+frame_progress = 0.6612607
 
-[node name="WallSlideRelic" type="Sprite2D" parent="." unique_id=1020877455]
-position = Vector2(311, 258)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("8_221uv")
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=1913156508]
+position = Vector2(172, 275)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_pbvoe")
+animation = &"new_animation"
+autoplay = "default"
+
+[node name="RavenHeadshotConversation" type="Sprite2D" parent="." unique_id=2018007922]
+position = Vector2(78, 69)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("21_ajmle")
+
+[node name="Label" type="Label" parent="." unique_id=2099666386]
+offset_left = 48.0
+offset_top = 99.0
+offset_right = 173.0
+offset_bottom = 148.0
+scale = Vector2(0.5, 0.5)
+text = "David L. Corbo
+Call Sign : Raven"
+label_settings = SubResource("LabelSettings_iwsa4")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=197285755]
+offset_left = 35.0
+offset_top = 187.0
+offset_right = 198.0
+offset_bottom = 236.0
+scale = Vector2(0.5, 0.5)
+text = "Daniel Lange
+Call Sign : Top Lobsta"
+label_settings = SubResource("LabelSettings_iwsa4")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=456763325]
+offset_left = 491.0
+offset_top = 171.0
+offset_right = 636.0
+offset_bottom = 220.0
+text = "Nancy
+Call Sign : Mustang"
+label_settings = SubResource("LabelSettings_iwsa4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopLobstaConversationHeadshot" type="Sprite2D" parent="." unique_id=44757166]
+position = Vector2(76, 155)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("21_8jq0p")
 
 [editable path="Level01BriefingScreen"]

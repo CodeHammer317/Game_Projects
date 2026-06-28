@@ -6,6 +6,7 @@ class_name PlayerPunchHitbox
 @export var knockback: Vector2 = Vector2(90.0, -20.0)
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var punch_sound: AudioStreamPlayer = $PunchSound
 
 var owner_player: Node = null
 var hit_targets: Dictionary = {}
@@ -27,10 +28,23 @@ func _ready() -> void:
 			if sprite.sprite_frames.has_animation("claw"):
 				sprite.play("claw")
 
+	if punch_sound != null:
+		punch_sound.play()
+
 	await get_tree().create_timer(lifetime).timeout
 
 	if is_inside_tree():
-		queue_free()
+		monitoring = false
+		monitorable = false
+
+		if sprite != null:
+			sprite.visible = false
+
+		if punch_sound != null and punch_sound.playing:
+			await punch_sound.finished
+
+		if is_inside_tree():
+			queue_free()
 
 
 func setup(
@@ -46,11 +60,13 @@ func setup(
 
 		if sprite != null:
 			sprite.flip_h = true
+			sprite.offset.x = absf(sprite.offset.x)
 	else:
 		knockback.x = absf(knockback.x)
 
 		if sprite != null:
 			sprite.flip_h = false
+			sprite.offset.x = -absf(sprite.offset.x)
 
 
 func set_attack_name(new_attack_name: StringName) -> void:

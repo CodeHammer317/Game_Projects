@@ -38,13 +38,20 @@ func _initialize_bars() -> void:
 
 
 func _find_and_bind_player() -> void:
+	if not is_inside_tree():
+		return
+
+	var tree := get_tree()
+	if tree == null:
+		return
+
 	var candidate: Node = null
 
 	if not player_path.is_empty():
 		candidate = get_node_or_null(player_path)
 
 	if candidate == null:
-		candidate = get_tree().get_first_node_in_group("player")
+		candidate = tree.get_first_node_in_group("player")
 
 	if candidate is Player:
 		set_player(candidate as Player)
@@ -138,11 +145,12 @@ func _bind_player_when_ready(new_player: Player) -> void:
 	if not new_player.is_node_ready():
 		await new_player.ready
 
-	if is_instance_valid(new_player):
+	if is_inside_tree() and is_instance_valid(new_player) and new_player.is_inside_tree():
 		set_player(new_player)
 
 
 func _on_player_tree_exiting() -> void:
 	player = null
 	health = null
-	call_deferred("_find_and_bind_player")
+	if is_inside_tree():
+		call_deferred("_find_and_bind_player")

@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bapxcce8mnch4" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_impact_hit_large_red/frame0004.png" id="6_4d840"]
 [ext_resource type="Texture2D" uid="uid://b2wflaiwc7ijc" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_impact_hit_large_red/frame0005.png" id="7_vabn7"]
 [ext_resource type="Texture2D" uid="uid://ekfd3lho6wmk" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_impact_hit_large_red/frame0006.png" id="8_w78ab"]
+[ext_resource type="AudioStream" uid="uid://1ahfsle5cv2a" path="res://Assets/Audio/Punch_Sound.ogg" id="9_punch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_102l4"]
 
@@ -126,8 +127,14 @@ damage = 3
 shape = SubResource("CircleShape2D_102l4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2120301251]
-position = Vector2(-15.999999, -1.1368684e-13)
+position = Vector2(-9.536743e-07, -6.7762636e-21)
 scale = Vector2(0.6875, 0.6875)
 sprite_frames = SubResource("SpriteFrames_4d840")
 animation = &"claw"
 autoplay = "claw"
+offset = Vector2(-15, 0)
+
+[node name="PunchSound" type="AudioStreamPlayer" parent="." unique_id=1117908833]
+stream = ExtResource("9_punch")
+volume_db = -11.375
+pitch_scale = 1.06
