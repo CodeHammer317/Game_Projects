@@ -70,10 +70,10 @@ tile_set = SubResource("TileSet_d4so2")
 [node name="Hud" parent="." unique_id=795795287 instance=ExtResource("8_dgd1k")]
 
 [node name="AreaTransition" parent="." unique_id=1160941269 instance=ExtResource("9_w4dtl")]
-position = Vector2(1880, 224)
+position = Vector2(1824, 221)
 collision_layer = 128
 collision_mask = 2
-next_level_path = "uid://joacfcmjayfy"
+next_level_path = "uid://dcajnodtsqb5h"
 
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("3_fl1d5")]
 position = Vector2(56, 232)
