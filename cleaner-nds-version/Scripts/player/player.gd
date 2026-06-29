@@ -78,7 +78,7 @@ signal game_over
 @export var mattt_assist_scene: PackedScene
 @export var special_meter_max: int = 100
 @export var special_meter: int = 100
-@export var special_recharge_time: float = 8.0
+@export var special_recharge_time: float = 30.0
 @export var special_recharges_over_time: bool = true
 @export var mattt_spawn_offset: Vector2 = Vector2(-40.0, -20.0)
 

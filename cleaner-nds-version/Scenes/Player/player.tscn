@@ -91,6 +91,7 @@
 [ext_resource type="Texture2D" uid="uid://ej1pden7fis8" path="res://Assets/sprites/Street Brawler Urban – 2D Beat 'Em Up Character Pack/Street Brawler Urban – 2D Beat 'Em Up Character Pack/Character Tile/Character (1).png" id="98_6a86w"]
 [ext_resource type="Texture2D" uid="uid://buc14ybtcuone" path="res://Assets/sprites/classic_character/spritesheet/style_4/spritesheet.png" id="98_pf3rq"]
 [ext_resource type="Texture2D" uid="uid://cavbty2ocmtwb" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0005.png" id="98_whol2"]
+[ext_resource type="Texture2D" uid="uid://d3vt221wabs37" path="res://Assets/sprites/Study Art/Double_Jump1.png" id="99_22q81"]
 [ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="99_81gu5"]
 [ext_resource type="Texture2D" uid="uid://oixds7p05f4h" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0006.png" id="99_urj24"]
 [ext_resource type="Texture2D" uid="uid://bkknq6yg6v1oh" path="res://Assets/sprites/classic_character/PNG/style_4/run/f0007.png" id="100_n48cf"]
@@ -895,6 +896,30 @@ region = Rect2(896, 0, 128, 128)
 atlas = ExtResource("98_6a86w")
 region = Rect2(1024, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk05u"]
+atlas = ExtResource("99_22q81")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syr5k"]
+atlas = ExtResource("99_22q81")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d34qd"]
+atlas = ExtResource("99_22q81")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shwaw"]
+atlas = ExtResource("99_22q81")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clih8"]
+atlas = ExtResource("99_22q81")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vt6r"]
+atlas = ExtResource("99_22q81")
+region = Rect2(640, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_slg74"]
 atlas = ExtResource("98_6a86w")
 region = Rect2(256, 128, 128, 128)
@@ -1504,6 +1529,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_fk05u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syr5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d34qd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shwaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clih8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vt6r")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_slg74")
 }, {
 "duration": 1.0,
@@ -1516,7 +1564,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_dc3yc")
 }],
 "loop": true,
-"name": &"jump",
+"name": &"jump1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1925,8 +1973,8 @@ use_persistent_player_state = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1655699272]
 sprite_frames = SubResource("SpriteFrames_olv1t")
-animation = &"roundhouse_kick"
+animation = &"jump"
 autoplay = "idle"
-frame = 8
+frame = 5
 frame_progress = 1.0
 offset = Vector2(0, -32)

@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://csl4ra1ng4u2y" path="res://Assets/tilesets/Old_District_Background_Near.png" id="6_ce1mu"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="7_38drk"]
 [ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="8_7x014"]
+[ext_resource type="PackedScene" uid="uid://cbaedji8sli4o" path="res://Scenes/Enemy/HomelessEnemy1.tscn" id="9_yttig"]
+[ext_resource type="PackedScene" uid="uid://buea412s1gop8" path="res://Scenes/Enemy/homeless_enemy_2.tscn" id="10_v41po"]
+[ext_resource type="PackedScene" uid="uid://bcrvvorfnmqkg" path="res://Scenes/FX/hotdog.tscn" id="11_7s6d5"]
+[ext_resource type="PackedScene" uid="uid://fxk8n8hd24gt" path="res://Scenes/FX/glaze_potato_chips.tscn" id="12_gmtvb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7x014"]
 texture = ExtResource("3_ce1mu")
@@ -627,3 +631,29 @@ next_level_path = "uid://vs7yw2qkdd3y"
 
 [node name="Hud" parent="." unique_id=795795287 instance=ExtResource("8_7x014")]
 player_path = NodePath("../Player")
+
+[node name="Enemies" type="Node" parent="." unique_id=920758422]
+
+[node name="HomelessEnemy1" parent="Enemies" unique_id=1221956425 instance=ExtResource("9_yttig")]
+position = Vector2(592.00006, 312)
+
+[node name="HomelessEnemy2" parent="Enemies" unique_id=965899268 instance=ExtResource("10_v41po")]
+position = Vector2(699, 313.00003)
+
+[node name="HomelessEnemy3" parent="Enemies" unique_id=787635732 instance=ExtResource("10_v41po")]
+position = Vector2(470.00006, 314)
+
+[node name="Pickups" type="Node" parent="." unique_id=1677836154]
+
+[node name="Hotdog" parent="Pickups" unique_id=943191707 instance=ExtResource("11_7s6d5")]
+position = Vector2(834.00006, 280)
+scale = Vector2(0.75, 0.75)
+
+[node name="Hotdog2" parent="Pickups" unique_id=1249231806 instance=ExtResource("11_7s6d5")]
+position = Vector2(1512, 223)
+
+[node name="GlazePotatoChips" parent="Pickups" unique_id=184645950 instance=ExtResource("12_gmtvb")]
+position = Vector2(1575.0001, 316.00003)
+
+[node name="GlazePotatoChips2" parent="Pickups" unique_id=525399276 instance=ExtResource("12_gmtvb")]
+position = Vector2(1024, 55.00003)
