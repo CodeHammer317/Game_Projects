@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://8603dw216quu" path="res://Scripts/title_screen.gd" id="1_xsyet"]
 [ext_resource type="Texture2D" uid="uid://4vwin4tr377o" path="res://Assets/Common/TitleScreen.jpg" id="2_tjte5"]
-[ext_resource type="Texture2D" path="res://Assets/sprites/NDS Logo.png" id="3_kyvdy"]
 [ext_resource type="Texture2D" uid="uid://c1sawakbhoj3e" path="res://Assets/Common/NDS_logo16bit.png" id="3_uv4ns"]
 [ext_resource type="Texture2D" uid="uid://drdhxgp8vwvgg" path="res://Assets/sprites/NDS Logo_transparent.png" id="4_bnqst"]
 [ext_resource type="AudioStream" uid="uid://cdqht4tbikj2g" path="res://Assets/Audio/pickup2.ogg" id="6_824g0"]
@@ -11,11 +10,12 @@
 [ext_resource type="AudioStream" uid="uid://w83uc53n1rmp" path="res://Assets/Audio/BGM/NDS8bitRemix.mp3" id="8_tjte5"]
 
 [sub_resource type="SystemFont" id="SystemFont_824g0"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_uv4ns"]
 font = SubResource("SystemFont_824g0")
 font_size = 32
-font_color = Color(1, 1, 1, 0.32941177)
+font_color = Color(0.8666667, 0.7294118, 0.03137255, 0.8627451)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
@@ -28,7 +28,7 @@ font_size = 26
 
 [sub_resource type="LabelSettings" id="LabelSettings_824g0"]
 font_size = 18
-font_color = Color(0.46229059, 0.46229059, 0.46229059, 1)
+font_color = Color(0.83033526, 0.83033514, 0.83033514, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tjte5"]
 font_size = 26
@@ -78,9 +78,9 @@ offset_bottom = 23.0
 [node name="MenuContainer" type="VBoxContainer" parent="." unique_id=2053710857]
 layout_mode = 0
 offset_left = 253.0
-offset_top = 255.0
-offset_right = 540.0
-offset_bottom = 332.0
+offset_top = 241.0
+offset_right = 575.0
+offset_bottom = 329.0
 scale = Vector2(0.6400012, 0.56)
 
 [node name="1PStart" type="Label" parent="MenuContainer" unique_id=368792001]
@@ -123,7 +123,6 @@ offset_top = 56.0
 offset_right = 210.66666
 offset_bottom = 131.0
 scale = Vector2(0.36, 0.32)
-texture = ExtResource("3_kyvdy")
 expand_mode = 1
 stretch_mode = 3
 
