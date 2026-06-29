@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://bjg0c88uhxlsh"]
 
 [ext_resource type="Script" uid="uid://8603dw216quu" path="res://Scripts/title_screen.gd" id="1_xsyet"]
-[ext_resource type="Texture2D" uid="uid://cunpfkdkylvoq" path="res://Assets/sprites/background1-720.png" id="2_dnytt"]
-[ext_resource type="Texture2D" uid="uid://c7xaebhxtfe1i" path="res://Assets/sprites/NDS Logo.png" id="3_kyvdy"]
-[ext_resource type="Texture2D" uid="uid://pf0gmce177of" path="res://Assets/sprites/NDS Logo_transparent.png" id="4_bnqst"]
+[ext_resource type="Texture2D" uid="uid://4vwin4tr377o" path="res://Assets/Common/TitleScreen.jpg" id="2_tjte5"]
+[ext_resource type="Texture2D" path="res://Assets/sprites/NDS Logo.png" id="3_kyvdy"]
+[ext_resource type="Texture2D" uid="uid://c1sawakbhoj3e" path="res://Assets/Common/NDS_logo16bit.png" id="3_uv4ns"]
+[ext_resource type="Texture2D" uid="uid://drdhxgp8vwvgg" path="res://Assets/sprites/NDS Logo_transparent.png" id="4_bnqst"]
 [ext_resource type="AudioStream" uid="uid://cdqht4tbikj2g" path="res://Assets/Audio/pickup2.ogg" id="6_824g0"]
 [ext_resource type="AudioStream" uid="uid://yswk7slevwiw" path="res://Assets/Audio/freesound_community-game-start-6104 (1).mp3" id="6_dsf7a"]
-[ext_resource type="AudioStream" uid="uid://da3rx4yn78uog" path="res://Assets/Audio/idoberg-metal-bass-amp-drums-loop-413373.mp3" id="7_dsf7a"]
 [ext_resource type="AudioStream" uid="uid://desnjgfivbu1q" path="res://Assets/Audio/hurt1.ogg" id="8_824g0"]
+[ext_resource type="AudioStream" uid="uid://w83uc53n1rmp" path="res://Assets/Audio/BGM/NDS8bitRemix.mp3" id="8_tjte5"]
 
 [sub_resource type="SystemFont" id="SystemFont_824g0"]
 
@@ -19,6 +20,7 @@ outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_dsf7a"]
+font_names = PackedStringArray("MS UI Gothic")
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_dsf7a"]
@@ -44,7 +46,7 @@ script = ExtResource("1_xsyet")
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
-texture = ExtResource("2_dnytt")
+texture = ExtResource("2_tjte5")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="." unique_id=811937859]
@@ -65,7 +67,7 @@ offset_left = -135.5
 offset_right = 135.5
 offset_bottom = 241.0
 grow_horizontal = 2
-texture = ExtResource("3_kyvdy")
+texture = ExtResource("3_uv4ns")
 expand_mode = 1
 
 [node name="Title" type="Label" parent="." unique_id=1154930555]
@@ -103,7 +105,7 @@ text = "Exit"
 label_settings = SubResource("LabelSettings_tjte5")
 
 [node name="Selector" type="Sprite2D" parent="MenuContainer" unique_id=164399916]
-position = Vector2(11.418726, 13.142859)
+position = Vector2(-18.749943, 12.499974)
 scale = Vector2(0.18716584, 0.20109893)
 texture = ExtResource("4_bnqst")
 
@@ -134,7 +136,7 @@ stream = ExtResource("6_dsf7a")
 volume_db = -7.761
 
 [node name="ScreenSoundtrack" type="AudioStreamPlayer" parent="." unique_id=1219278294]
-stream = ExtResource("7_dsf7a")
+stream = ExtResource("8_tjte5")
 volume_db = -7.762
 autoplay = true
 parameters/looping = true

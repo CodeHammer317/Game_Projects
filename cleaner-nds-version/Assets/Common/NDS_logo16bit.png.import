@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crame1cf1fnyl"
-path="res://.godot/imported/NDS Logo.png-e3c2b796f7e32666a0e1fc9b17eacb3a.ctex"
+uid="uid://c1sawakbhoj3e"
+path="res://.godot/imported/NDS_logo16bit.png-cef7f7205323eb94d7d4915f21e9653f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/NDS Logo.png"
-dest_files=["res://.godot/imported/NDS Logo.png-e3c2b796f7e32666a0e1fc9b17eacb3a.ctex"]
+source_file="res://Assets/Common/NDS_logo16bit.png"
+dest_files=["res://.godot/imported/NDS_logo16bit.png-cef7f7205323eb94d7d4915f21e9653f.ctex"]
 
 [params]
 
