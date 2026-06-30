@@ -20,7 +20,7 @@ const UPGRADE_DEFINITIONS := {
 var max_health: int = 10
 var current_health: int = 10
 var player_dead: bool = false
-var starting_upgrades: Array[StringName] = []
+var starting_upgrades: Array[StringName] = [&"double_jump"]
 var unlocked_upgrades: Dictionary = {}
 
 

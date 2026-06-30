@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bup28f7j0evj3"
-path="res://.godot/imported/pchips.png-8401a356f41670a3c212db7e542d756b.ctex"
+uid="uid://7vmcsf68hsg0"
+path="res://.godot/imported/RavensWingsIcon.png-f2be585408a70f5731569462385a50db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/FX/pchips.png"
-dest_files=["res://.godot/imported/pchips.png-8401a356f41670a3c212db7e542d756b.ctex"]
+source_file="res://Assets/HUD_assets/Icons/RavensWingsIcon.png"
+dest_files=["res://.godot/imported/RavensWingsIcon.png-f2be585408a70f5731569462385a50db.ctex"]
 
 [params]
 

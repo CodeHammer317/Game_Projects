@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drurellrr7rgr" path="res://Scripts/upgrade_matrix_display.gd" id="1_5cdvn"]
 [ext_resource type="Texture2D" uid="uid://g4wa4tj0k440" path="res://Assets/HUD_assets/mechanical_pixel_art_gui/mechanical_pixel_art_gui/premade/64x64/window/orange/panel.png" id="1_qjl0l"]
-[ext_resource type="Texture2D" uid="uid://dtw7qa125e75s" path="res://Assets/HUD_assets/Icons/Dbl_Jump_Icon.png" id="3_kggtl"]
+[ext_resource type="Texture2D" uid="uid://7vmcsf68hsg0" path="res://Assets/HUD_assets/Icons/RavensWingsIcon.png" id="3_kggtl"]
 [ext_resource type="Texture2D" uid="uid://pa5k6220n18" path="res://Assets/HUD_assets/Icons/Wall_Jump_Icon.png" id="4_si7j0"]
 [ext_resource type="Texture2D" uid="uid://cbxslq2hqcxi" path="res://Assets/HUD_assets/Icons/Charge_Shot.png" id="5_w55pg"]
 
@@ -19,10 +19,12 @@ centered = false
 [node name="DoubleJumpSlot" type="Node2D" parent="RelicSlots" unique_id=2559385]
 
 [node name="EmptySprite" type="Sprite2D" parent="RelicSlots/DoubleJumpSlot" unique_id=149392195]
+position = Vector2(234, 53)
+scale = Vector2(0.5, 0.5)
 
 [node name="RelicSprite" type="Sprite2D" parent="RelicSlots/DoubleJumpSlot" unique_id=2020097285]
-position = Vector2(121, 45.999996)
-scale = Vector2(0.41654265, 0.40525803)
+position = Vector2(121, 53)
+scale = Vector2(0.47017607, 0.45294273)
 texture = ExtResource("3_kggtl")
 
 [node name="WallSlideSlot" type="Node2D" parent="RelicSlots" unique_id=324259912]

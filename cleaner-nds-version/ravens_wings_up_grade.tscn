@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dvpsppuafk3gk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgsp0"]
+size = Vector2(88, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p87jo"]
+
+[node name="RavensWingsUpGrade" type="Area2D" unique_id=1253689001]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1690585584]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=429284328]
+shape = SubResource("RectangleShape2D_tgsp0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=676131722]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=207400441]
+sprite_frames = SubResource("SpriteFrames_p87jo")

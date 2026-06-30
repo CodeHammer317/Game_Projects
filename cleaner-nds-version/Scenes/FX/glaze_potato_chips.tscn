@@ -142,11 +142,9 @@ collision_mask = 2
 script = ExtResource("1_yex77")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2068481740]
-visible = false
 shape = SubResource("RectangleShape2D_yex77")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2126570827]
-visible = false
 texture = ExtResource("1_ftdyq")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1854323189]

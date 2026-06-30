@@ -7,6 +7,10 @@ signal special_meter_changed(current: int, maximum: int)
 signal died
 signal game_over
 
+const DOUBLE_JUMP_ANIMATION := &"double_jump"
+const NORMAL_JUMP_ANIMATION := &"jump"
+const FALL_ANIMATION := &"falling"
+
 
 @export var move_speed: float = 200.0
 @export var acceleration: float = 900.0
@@ -55,7 +59,6 @@ signal game_over
 @export var dash_speed: float = 350.0
 @export var dash_time: float = 0.20
 @export var dash_cooldown: float = 0.35
-@export var allow_air_dash: bool = true
 @export var dash_stops_vertical_velocity: bool = true
 
 @export var wall_slide_speed: float = 60.0
@@ -66,6 +69,11 @@ signal game_over
 @export var jump_buffer_time: float = 0.10
 @export var jump_cut_multiplier: float = 0.5
 
+@export_group("Double Jump")
+@export_range(0.0, 1.0, 0.05) var wing_glide_gravity_multiplier: float = 0.35
+@export var wing_glide_max_fall_speed: float = 180.0
+
+@export_group("")
 @export var snap_visuals_to_pixel: bool = true
 
 @export_group("Dust Trail")
@@ -132,8 +140,8 @@ var _invuln_timer: float = 0.0
 var _is_dashing: bool = false
 var _dash_timer: float = 0.0
 var _dash_cooldown_timer: float = 0.0
-var _has_air_dashed: bool = false
 var _has_double_jumped: bool = false
+var _is_double_jump_state: bool = false
 
 var _is_wall_sliding: bool = false
 var _wall_dir: int = 0
@@ -250,8 +258,8 @@ func _recharge_special_meter(delta: float) -> void:
 
 func _refresh_floor_state() -> void:
 	if is_on_floor():
-		_has_air_dashed = false
 		_has_double_jumped = false
+		_end_double_jump_state()
 		_coyote_timer = coyote_time
 	elif _was_on_floor:
 		_coyote_timer = coyote_time
@@ -409,13 +417,7 @@ func _can_start_dash() -> bool:
 	if _dash_cooldown_timer > 0.0:
 		return false
 
-	if is_on_floor():
-		return true
-
-	if allow_air_dash and not _has_air_dashed:
-		return true
-
-	return false
+	return is_on_floor()
 
 
 func _start_dash() -> void:
@@ -431,9 +433,6 @@ func _start_dash() -> void:
 
 	if dash_stops_vertical_velocity:
 		velocity.y = 0.0
-
-	if not is_on_floor():
-		_has_air_dashed = true
 
 	_spawn_dust_trail(dash_dust_offset, &"dash")
 	_dust_spawn_timer = dust_spawn_interval
@@ -470,6 +469,7 @@ func _handle_wall_slide() -> void:
 
 	_wall_dir = int(sign(wall_input))
 	_is_wall_sliding = true
+	_end_double_jump_state()
 	_coyote_timer = 0.0
 
 
@@ -484,8 +484,15 @@ func _apply_gravity(delta: float) -> void:
 		return
 
 	if not is_on_floor():
-		velocity.y += gravity * delta
-		velocity.y = min(velocity.y, max_fall_speed)
+		var active_gravity := gravity
+		var active_max_fall_speed := max_fall_speed
+
+		if _is_double_jump_state and velocity.y > 0.0:
+			active_gravity *= wing_glide_gravity_multiplier
+			active_max_fall_speed = minf(max_fall_speed, wing_glide_max_fall_speed)
+
+		velocity.y += active_gravity * delta
+		velocity.y = min(velocity.y, active_max_fall_speed)
 		return
 
 	if velocity.y > 0.0:
@@ -508,18 +515,49 @@ func _handle_jump() -> void:
 		return
 
 	if has_double_jump and not _has_double_jumped:
-		_do_jump()
+		_do_jump(true)
 		_has_double_jumped = true
 		_jump_buffer_timer = 0.0
 
 
-func _do_jump() -> void:
+func _do_jump(is_double_jump: bool = false) -> void:
 	if _is_dashing:
 		_end_dash()
 
 	velocity.y = jump_velocity
 	_is_wall_sliding = false
 	_wall_dir = 0
+	_is_double_jump_state = is_double_jump
+
+	if is_double_jump:
+		_play_double_jump_animation()
+
+
+func _end_double_jump_state() -> void:
+	_is_double_jump_state = false
+
+
+func _play_double_jump_animation() -> void:
+	_play_animation_with_fallback(str(DOUBLE_JUMP_ANIMATION), str(NORMAL_JUMP_ANIMATION))
+
+
+func _play_normal_jump_animation() -> void:
+	_play_animation_with_fallback(str(NORMAL_JUMP_ANIMATION), str(DOUBLE_JUMP_ANIMATION))
+
+
+func _play_shoot_jump_animation() -> void:
+	if sprite == null:
+		return
+
+	if sprite.sprite_frames == null:
+		return
+
+	if sprite.sprite_frames.has_animation("shoot_jump"):
+		if sprite.animation != "shoot_jump":
+			sprite.play("shoot_jump")
+		return
+
+	_play_normal_jump_animation()
 
 
 func _wall_jump() -> void:
@@ -539,6 +577,7 @@ func _wall_jump() -> void:
 	_wall_jump_lock_timer = wall_jump_horizontal_lock_time
 	_facing_left = jump_dir < 0
 	_has_double_jumped = false
+	_end_double_jump_state()
 
 	_spawn_dust_trail(wall_slide_dust_offset, &"wall_slide")
 
@@ -749,8 +788,8 @@ func _cleanup_after_move() -> void:
 	if is_on_floor():
 		_is_wall_sliding = false
 		_wall_dir = 0
-		_has_air_dashed = false
 		_has_double_jumped = false
+		_end_double_jump_state()
 
 		if _is_dashing and _dash_timer <= 0.0:
 			_is_dashing = false
@@ -800,28 +839,32 @@ func _update_animation() -> void:
 	if _attack_anim_timer > 0.0:
 		return
 
-	if _is_dashing:
+	if _is_dashing and is_on_floor():
 		_play_animation_with_fallback("dash", "run")
 		return
 
 	if _is_wall_sliding:
-		_play_animation_with_fallback("wall_slide", "fall")
+		_play_animation_with_fallback("wall_slide", str(FALL_ANIMATION))
 		return
 
 	var is_shooting := _shoot_anim_timer > 0.01
 	var is_running := absf(velocity.x) > 8.0
 
 	if not is_on_floor():
+		if _is_double_jump_state:
+			_play_double_jump_animation()
+			return
+
 		if velocity.y < 0.0:
 			if is_shooting:
-				_play_animation_with_fallback("shoot_jump", "jump")
+				_play_shoot_jump_animation()
 			else:
-				_play_animation_if_available("jump")
+				_play_normal_jump_animation()
 		else:
 			if is_shooting:
-				_play_animation_with_fallback("shoot_fall", "fall")
+				_play_animation_with_fallback("shoot_fall", str(FALL_ANIMATION))
 			else:
-				_play_animation_if_available("fall")
+				_play_animation_with_fallback(str(FALL_ANIMATION), "fall")
 		return
 
 	if is_running:
@@ -896,6 +939,7 @@ func _on_damaged(info: DamageInfo) -> void:
 	_cancel_shot_charge()
 	_is_dashing = false
 	_is_wall_sliding = false
+	_end_double_jump_state()
 	_dash_timer = 0.0
 	_wall_dir = 0
 	_coyote_timer = 0.0
@@ -935,6 +979,7 @@ func kill() -> void:
 	_is_dashing = false
 	_is_wall_sliding = false
 	_is_hit_flashing = false
+	_end_double_jump_state()
 
 	_hitstun_timer = 0.0
 	_invuln_timer = 0.0
@@ -976,6 +1021,7 @@ func respawn() -> void:
 	_is_dashing = false
 	_is_wall_sliding = false
 	_is_hit_flashing = false
+	_end_double_jump_state()
 
 	_hitstun_timer = 0.0
 	_invuln_timer = respawn_invuln_duration
@@ -1171,6 +1217,7 @@ func _force_idle_pose() -> void:
 	_attack_anim_timer = 0.0
 	_is_dashing = false
 	_is_wall_sliding = false
+	_end_double_jump_state()
 	_wall_dir = 0
 	_play_animation_if_available("idle")
 

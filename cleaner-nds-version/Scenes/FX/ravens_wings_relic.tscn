@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bmjtrso3yuqk0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wshyo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kd38p"]
+
+[node name="RavensWingsRelic" type="Area2D" unique_id=1592528128]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1180471167]
+shape = SubResource("RectangleShape2D_wshyo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1120696297]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1267655149]
+sprite_frames = SubResource("SpriteFrames_kd38p")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=1003040085]
