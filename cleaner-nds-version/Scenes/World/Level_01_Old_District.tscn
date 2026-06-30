@@ -637,8 +637,14 @@ player_path = NodePath("../Player")
 [node name="HomelessEnemy1" parent="Enemies" unique_id=1221956425 instance=ExtResource("9_yttig")]
 position = Vector2(592.00006, 312)
 
+[node name="HomelessEnemy4" parent="Enemies" unique_id=494007010 instance=ExtResource("9_yttig")]
+position = Vector2(1149, 304.00003)
+
 [node name="HomelessEnemy2" parent="Enemies" unique_id=965899268 instance=ExtResource("10_v41po")]
 position = Vector2(699, 313.00003)
+
+[node name="HomelessEnemy5" parent="Enemies" unique_id=77802274 instance=ExtResource("10_v41po")]
+position = Vector2(1480, 312)
 
 [node name="HomelessEnemy3" parent="Enemies" unique_id=787635732 instance=ExtResource("10_v41po")]
 position = Vector2(470.00006, 314)
