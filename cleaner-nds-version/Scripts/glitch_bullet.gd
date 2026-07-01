@@ -42,9 +42,9 @@ func _ready() -> void:
 		fire_sound.play()
 
 
-func setup(direction: Vector2, owner: Node) -> void:
+func setup(direction: Vector2, source_node: Node) -> void:
 	_direction = direction.normalized() if direction != Vector2.ZERO else Vector2.RIGHT
-	_owner = owner
+	_owner = source_node
 
 	if sprite:
 		if _direction.x < 0.0:

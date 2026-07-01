@@ -49,9 +49,9 @@ func _ready() -> void:
 		fire_sound.play()
 
 
-func setup(direction: Vector2, owner: Node, charge_ratio: float = 0.0) -> void:
+func setup(direction: Vector2, source_node: Node, charge_ratio: float = 0.0) -> void:
 	_direction = direction.normalized() if direction != Vector2.ZERO else Vector2.RIGHT
-	_owner = owner
+	_owner = source_node
 
 	var facing_sign := signf(_direction.x)
 	if is_zero_approx(facing_sign):

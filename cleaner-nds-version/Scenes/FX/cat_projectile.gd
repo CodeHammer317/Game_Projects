@@ -41,14 +41,14 @@ func _ready() -> void:
 	_update_visual_facing()
 
 
-func setup(direction: Vector2, owner: Node) -> void:
+func setup(direction: Vector2, source_node: Node) -> void:
 	if direction == Vector2.ZERO:
 		_direction = Vector2.LEFT
 	else:
 		_direction = direction.normalized()
 
-	if is_instance_valid(owner):
-		_owner = owner
+	if is_instance_valid(source_node):
+		_owner = source_node
 	else:
 		_owner = null
 
