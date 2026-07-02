@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 signal fired_bullet(bullet: Node)
-signal shot_charge_changed(ratio: float, charging: bool)
+signal shot_charge_changed(elapsed_time: float, charge_duration: float, charging: bool)
 signal special_meter_changed(current: int, maximum: int)
 signal died
 signal game_over
@@ -28,7 +28,7 @@ const FALL_ANIMATION := &"falling"
 
 @export_group("Charged Throw")
 @export var minimum_charge_time: float = 0.0
-@export var maximum_charge_time: float = 1.0
+@export var maximum_charge_time: float = 3.0
 
 @export_group("Attack Combo")
 @export var attack_action: StringName = &"attack"
@@ -85,7 +85,7 @@ const FALL_ANIMATION := &"falling"
 @export_group("Special Assist")
 @export var mattt_assist_scene: PackedScene
 @export var special_meter_max: int = 100
-@export var special_meter: int = 100
+@export var special_meter: int = 0
 @export var special_recharge_time: float = 30.0
 @export var special_recharges_over_time: bool = true
 @export var mattt_spawn_offset: Vector2 = Vector2(-40.0, -20.0)
@@ -614,17 +614,17 @@ func _handle_shoot(delta: float) -> void:
 	if not _is_charging_shot and shoot_started and _can_shoot():
 		_is_charging_shot = true
 		_charge_time = 0.0
-		shot_charge_changed.emit(0.0, true)
+		shot_charge_changed.emit(_charge_time, maximum_charge_time, true)
 
 	if _is_charging_shot and Input.is_action_pressed("shoot"):
 		_charge_time = minf(_charge_time + delta, maximum_charge_time)
-		shot_charge_changed.emit(get_shot_charge_ratio(), true)
+		shot_charge_changed.emit(_charge_time, maximum_charge_time, true)
 
 	if _is_charging_shot and Input.is_action_just_released("shoot"):
 		var charge_ratio := get_shot_charge_ratio()
 		_is_charging_shot = false
 		_charge_time = 0.0
-		shot_charge_changed.emit(0.0, false)
+		shot_charge_changed.emit(_charge_time, maximum_charge_time, false)
 		_spawn_bullet(charge_ratio)
 
 
@@ -687,7 +687,7 @@ func get_shot_charge_ratio() -> float:
 func _cancel_shot_charge() -> void:
 	_is_charging_shot = false
 	_charge_time = 0.0
-	shot_charge_changed.emit(0.0, false)
+	shot_charge_changed.emit(_charge_time, maximum_charge_time, false)
 
 
 func _handle_special_assist() -> void:

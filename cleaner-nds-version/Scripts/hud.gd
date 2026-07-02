@@ -39,8 +39,10 @@ func _exit_tree() -> void:
 func _initialize_bars() -> void:
 	health_bar.min_value = 0.0
 	ability_bar.min_value = 0.0
+	ability_bar.value = 0.0
 	charge_bar.min_value = 0.0
 	charge_bar.max_value = 1.0
+	charge_bar.step = 0.01
 	charge_bar.value = 0.0
 	charge_bar.visible = not hide_charge_bar_when_idle
 
@@ -114,7 +116,7 @@ func _update_all_bars() -> void:
 
 	if player != null:
 		_on_special_meter_changed(player.special_meter, player.special_meter_max)
-		_on_shot_charge_changed(player.get_shot_charge_ratio(), false)
+		_on_shot_charge_changed(0.0, player.maximum_charge_time, false)
 
 
 func _on_health_changed(current: int, maximum: int) -> void:
@@ -131,8 +133,14 @@ func _set_bar_value(bar: TextureProgressBar, current: int, maximum: int) -> void
 	bar.value = clampi(current, 0, safe_maximum)
 
 
-func _on_shot_charge_changed(ratio: float, charging: bool) -> void:
-	charge_bar.value = clampf(ratio, 0.0, 1.0)
+func _on_shot_charge_changed(
+	elapsed_time: float,
+	charge_duration: float,
+	charging: bool
+) -> void:
+	var safe_duration := maxf(charge_duration, 0.01)
+	charge_bar.max_value = safe_duration
+	charge_bar.value = clampf(elapsed_time, 0.0, safe_duration)
 
 	if hide_charge_bar_when_idle:
 		charge_bar.visible = charging

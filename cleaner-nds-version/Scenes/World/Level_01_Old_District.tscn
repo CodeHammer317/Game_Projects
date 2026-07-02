@@ -679,4 +679,11 @@ position = Vector2(283, 316)
 [node name="AlertSign" parent="." unique_id=1664267803 instance=ExtResource("15_06u8c")]
 position = Vector2(2349, 76)
 
+[node name="CollisionShape2D" parent="AlertSign" index="1" unique_id=694101335]
+scale = Vector2(1, 2.7200007)
+
 [node name="Hud" parent="." unique_id=795795287 instance=ExtResource("8_7x014")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1245473412]
+
+[editable path="AlertSign"]

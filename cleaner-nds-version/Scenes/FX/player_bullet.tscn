@@ -69,7 +69,7 @@ scale = Vector2(0.4, 0.4)
 collision_layer = 8
 collision_mask = 69
 script = ExtResource("1_yxr3u")
-damage = 6
+damage = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=366459317]
 scale = Vector2(2, 2)
