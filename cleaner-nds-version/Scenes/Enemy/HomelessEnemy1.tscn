@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cbaedji8sli4o"]
 
-[ext_resource type="Script" uid="uid://cds1nc3ugic5b" path="res://Scenes/Enemy/homeless_enemy_1.gd" id="1_pbp6t"]
+[ext_resource type="Script" uid="uid://cds1nc3ugic5b" path="res://Scripts/homeless_enemy_1.gd" id="1_pbp6t"]
 [ext_resource type="Texture2D" uid="uid://b50blw06j7mly" path="res://Assets/homeless-character-sprite-sheets/Homeless_1/Idle.png" id="2_4b8hq"]
 [ext_resource type="Texture2D" uid="uid://cwyeuaedvh7nf" path="res://Assets/homeless-character-sprite-sheets/Homeless_1/Dead.png" id="2_04iw2"]
 [ext_resource type="Texture2D" uid="uid://drcemcoq6dsfq" path="res://Assets/homeless-character-sprite-sheets/Homeless_1/Attack_1.png" id="2_jmfi0"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dantf5jjkabte"]
 
-[ext_resource type="Script" uid="uid://cds1nc3ugic5b" path="res://Scenes/Enemy/homeless_enemy_1.gd" id="1_tknpg"]
+[ext_resource type="Script" uid="uid://cds1nc3ugic5b" path="res://Scripts/homeless_enemy_1.gd" id="1_tknpg"]
 [ext_resource type="PackedScene" uid="uid://c2oj3klhemfw" path="res://Scenes/FX/flying_bottle.tscn" id="2_4yo2u"]
 [ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="12_oe52a"]
 [ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="13_uq35k"]

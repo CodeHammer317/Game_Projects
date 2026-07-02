@@ -91,6 +91,9 @@ func _fade_out() -> void:
 func _execute_selection() -> void:
 	match current_index:
 		MenuOption.ONE_PLAYER:
+			# A new run must not inherit relics from an earlier run in the
+			# same process; otherwise their pickups remove themselves.
+			PlayerState.reset_all()
 			var error := get_tree().change_scene_to_file(BRIEFING_SCENE)
 			if error != OK:
 				push_error("Failed to open briefing scene. Error: %s" % error)

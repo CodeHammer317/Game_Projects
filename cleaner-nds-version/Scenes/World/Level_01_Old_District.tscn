@@ -11,7 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://cbaedji8sli4o" path="res://Scenes/Enemy/HomelessEnemy1.tscn" id="9_yttig"]
 [ext_resource type="PackedScene" uid="uid://buea412s1gop8" path="res://Scenes/Enemy/homeless_enemy_2.tscn" id="10_v41po"]
 [ext_resource type="PackedScene" uid="uid://bcrvvorfnmqkg" path="res://Scenes/FX/hotdog.tscn" id="11_7s6d5"]
+[ext_resource type="PackedScene" uid="uid://b2pmeb5bnk5me" path="res://Scenes/Enemy/roomba_drone.tscn" id="11_bo8ru"]
 [ext_resource type="PackedScene" uid="uid://fxk8n8hd24gt" path="res://Scenes/FX/glaze_potato_chips.tscn" id="12_gmtvb"]
+[ext_resource type="PackedScene" uid="uid://bmjtrso3yuqk0" path="res://Scenes/FX/ravens_wings_relic.tscn" id="13_gmtvb"]
+[ext_resource type="PackedScene" uid="uid://b3ibvikii0j7q" path="res://Scenes/FX/alert_sign.tscn" id="15_06u8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7x014"]
 texture = ExtResource("3_ce1mu")
@@ -649,6 +652,15 @@ position = Vector2(1480, 312)
 [node name="HomelessEnemy3" parent="Enemies" unique_id=787635732 instance=ExtResource("10_v41po")]
 position = Vector2(470.00006, 314)
 
+[node name="RoombaDrone" parent="Enemies" unique_id=1506276092 instance=ExtResource("11_bo8ru")]
+position = Vector2(3142, 316)
+
+[node name="RoombaDrone2" parent="Enemies" unique_id=512941171 instance=ExtResource("11_bo8ru")]
+position = Vector2(3031, 302)
+
+[node name="RoombaDrone3" parent="Enemies" unique_id=300050780 instance=ExtResource("11_bo8ru")]
+position = Vector2(3276, 315)
+
 [node name="Pickups" type="Node" parent="." unique_id=1677836154]
 
 [node name="Hotdog" parent="Pickups" unique_id=943191707 instance=ExtResource("11_7s6d5")]
@@ -663,3 +675,9 @@ position = Vector2(1575.0001, 316.00003)
 
 [node name="GlazePotatoChips2" parent="Pickups" unique_id=525399276 instance=ExtResource("12_gmtvb")]
 position = Vector2(1024, 55.00003)
+
+[node name="RavensWingsRelic" parent="." unique_id=1592528128 instance=ExtResource("13_gmtvb")]
+position = Vector2(283, 316)
+
+[node name="AlertSign" parent="." unique_id=1664267803 instance=ExtResource("15_06u8c")]
+position = Vector2(2349, 76)

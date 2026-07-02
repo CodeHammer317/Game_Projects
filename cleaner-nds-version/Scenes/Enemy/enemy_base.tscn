@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcoqt8dyqw7je"]
 
-[ext_resource type="Script" uid="uid://bjv38u06gpxct" path="res://Scenes/Enemy/enemy_base.gd" id="1_4ffxi"]
+[ext_resource type="Script" uid="uid://bjv38u06gpxct" path="res://Scripts/enemy_base.gd" id="1_4ffxi"]
 [ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="5_rfg8t"]
 [ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="6_7tn8a"]
 

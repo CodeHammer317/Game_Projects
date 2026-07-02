@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://buea412s1gop8"]
 
-[ext_resource type="Script" uid="uid://cds1nc3ugic5b" path="res://Scenes/Enemy/homeless_enemy_1.gd" id="1_eok0y"]
+[ext_resource type="Script" uid="uid://cds1nc3ugic5b" path="res://Scripts/homeless_enemy_1.gd" id="1_eok0y"]
 [ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="2_iloe0"]
 [ext_resource type="PackedScene" uid="uid://cc76pp0csbhgc" path="res://Scenes/FX/FlyingKnife.tscn" id="2_rpi70"]
 [ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="3_rl780"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b2pmeb5bnk5me"]
 
-[ext_resource type="Script" uid="uid://bjv38u06gpxct" path="res://Scenes/Enemy/enemy_base.gd" id="1_h7awd"]
+[ext_resource type="Script" uid="uid://bjv38u06gpxct" path="res://Scripts/enemy_base.gd" id="1_h7awd"]
 [ext_resource type="PackedScene" uid="uid://i8mxwq1lgxp7" path="res://Scenes/FX/drone_3_bullet.tscn" id="2_1t400"]
 [ext_resource type="Texture2D" uid="uid://ko6l1eklm0am" path="res://Assets/sprites/drones/1 Drones/3/Back.png" id="2_fhked"]
 [ext_resource type="Texture2D" uid="uid://df6t0wr1cqpyv" path="res://Assets/sprites/drones/1 Drones/3/Death.png" id="3_1t400"]

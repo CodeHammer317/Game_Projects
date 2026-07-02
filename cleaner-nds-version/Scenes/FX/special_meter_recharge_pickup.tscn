@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://beoqa2lqcyxgs"]
 
-[ext_resource type="Script" path="res://Scripts/SpecialMeterPickup.gd" id="1_asd4f"]
+[ext_resource type="Script" uid="uid://clmmfdgsigo25" path="res://Scripts/SpecialMeterPickup.gd" id="1_asd4f"]
 [ext_resource type="Texture2D" uid="uid://ce3irimc2ex2o" path="res://Assets/sprites/Super Pixel Effects Pack 1/PNG/fx1_aura_energy_large_blue/frame0005.png" id="2_l4ykn"]
 [ext_resource type="AudioStream" uid="uid://4gaob4qjqesg" path="res://Assets/Audio/freesound_community-chiptune_style_riser_fx_110bpm-89020.mp3" id="3_vxf8c"]
 [ext_resource type="Texture2D" uid="uid://c7wgdljdp5m20" path="res://Assets/sprites/Magic Bursts/round_sparkle_burst_003/round_sparkle_burst_003_large_yellow/spritesheet.png" id="4_eph28"]
@@ -135,22 +135,22 @@ animations = [{
 "speed": 16.0
 }]
 
-[node name="SpecialMeterRechargePickup" type="Area2D"]
+[node name="SpecialMeterRechargePickup" type="Area2D" unique_id=851507163]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_asd4f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1389333887]
 shape = SubResource("CircleShape2D_ef2xm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2053953960]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_l4ykn")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1943941661]
 stream = ExtResource("3_vxf8c")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1598368511]
 visible = false
 sprite_frames = SubResource("SpriteFrames_p3pcv")
 autoplay = "default"

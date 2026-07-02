@@ -44,7 +44,7 @@ animations = [{
 
 [node name="Drone3Bullet" type="Area2D" unique_id=1120944334 groups=["enemies"]]
 collision_layer = 16
-collision_mask = 33
+collision_mask = 34
 script = ExtResource("1_w6r3f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=690441148]

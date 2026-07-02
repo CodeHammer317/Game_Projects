@@ -608,12 +608,10 @@ func _handle_horizontal_movement(delta: float) -> void:
 
 
 func _handle_shoot(delta: float) -> void:
-	if not has_charge_shot:
-		if Input.is_action_just_pressed("shoot") and _can_shoot():
-			_spawn_bullet()
-		return
-
-	if Input.is_action_just_pressed("shoot") and _can_shoot():
+	# Grenades are aimed by charge time: press to begin charging, hold to
+	# increase throw distance, then release to throw.
+	var shoot_started := Input.is_action_just_pressed("shoot") or Input.is_action_pressed("shoot")
+	if not _is_charging_shot and shoot_started and _can_shoot():
 		_is_charging_shot = true
 		_charge_time = 0.0
 		shot_charge_changed.emit(0.0, true)
