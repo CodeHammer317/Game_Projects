@@ -632,9 +632,6 @@ collision_layer = 128
 collision_mask = 2
 next_level_path = "uid://vs7yw2qkdd3y"
 
-[node name="Hud" parent="." unique_id=795795287 instance=ExtResource("8_7x014")]
-player_path = NodePath("../Player")
-
 [node name="Enemies" type="Node" parent="." unique_id=920758422]
 
 [node name="HomelessEnemy1" parent="Enemies" unique_id=1221956425 instance=ExtResource("9_yttig")]
@@ -681,3 +678,5 @@ position = Vector2(283, 316)
 
 [node name="AlertSign" parent="." unique_id=1664267803 instance=ExtResource("15_06u8c")]
 position = Vector2(2349, 76)
+
+[node name="Hud" parent="." unique_id=795795287 instance=ExtResource("8_7x014")]
