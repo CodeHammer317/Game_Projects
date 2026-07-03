@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://drdhxgp8vwvgg" path="res://Assets/sprites/NDS Logo_transparent.png" id="4_bnqst"]
 [ext_resource type="AudioStream" uid="uid://cdqht4tbikj2g" path="res://Assets/Audio/pickup2.ogg" id="6_824g0"]
 [ext_resource type="AudioStream" uid="uid://yswk7slevwiw" path="res://Assets/Audio/freesound_community-game-start-6104 (1).mp3" id="6_dsf7a"]
-[ext_resource type="AudioStream" uid="uid://desnjgfivbu1q" path="res://Assets/Audio/hurt1.ogg" id="8_824g0"]
 [ext_resource type="AudioStream" uid="uid://w83uc53n1rmp" path="res://Assets/Audio/BGM/NDS8bitRemix.mp3" id="8_tjte5"]
 
 [sub_resource type="SystemFont" id="SystemFont_824g0"]
@@ -25,10 +24,6 @@ subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_dsf7a"]
 font_size = 26
-
-[sub_resource type="LabelSettings" id="LabelSettings_824g0"]
-font_size = 18
-font_color = Color(0.83033526, 0.83033514, 0.83033514, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tjte5"]
 font_size = 26
@@ -49,12 +44,12 @@ offset_bottom = 360.0
 texture = ExtResource("2_tjte5")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="." unique_id=811937859]
+[node name="DemoLabel" type="Label" parent="." unique_id=811937859]
 layout_mode = 0
-offset_left = 261.0
-offset_top = 307.0
-offset_right = 357.0
-offset_bottom = 352.0
+offset_left = 273.0
+offset_top = 220.0
+offset_right = 369.0
+offset_bottom = 265.0
 text = "DEMO"
 label_settings = SubResource("LabelSettings_uv4ns")
 
@@ -70,32 +65,20 @@ grow_horizontal = 2
 texture = ExtResource("3_uv4ns")
 expand_mode = 1
 
-[node name="Title" type="Label" parent="." unique_id=1154930555]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="MenuContainer" type="VBoxContainer" parent="." unique_id=2053710857]
 layout_mode = 0
-offset_left = 253.0
-offset_top = 241.0
-offset_right = 575.0
-offset_bottom = 329.0
+offset_left = 292.0
+offset_top = 305.0
+offset_right = 614.0
+offset_bottom = 393.0
 scale = Vector2(0.6400012, 0.56)
 
 [node name="1PStart" type="Label" parent="MenuContainer" unique_id=368792001]
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_dsf7a")
 theme_override_font_sizes/font_size = 6
-text = "1 Player"
+text = "Start Demo"
 label_settings = SubResource("LabelSettings_dsf7a")
-
-[node name="2PStart" type="Label" parent="MenuContainer" unique_id=125267998]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.45452422, 0.45452428, 0.45452422, 1)
-theme_override_font_sizes/font_size = 6
-text = "2 players - Not available in the demo."
-label_settings = SubResource("LabelSettings_824g0")
 
 [node name="Exit" type="Label" parent="MenuContainer" unique_id=1381872982]
 layout_mode = 2
@@ -111,20 +94,14 @@ texture = ExtResource("4_bnqst")
 
 [node name="FadeLayer" type="ColorRect" parent="." unique_id=1064865099]
 visible = false
-layout_mode = 0
-offset_right = 320.0
-offset_bottom = 180.0
-color = Color(2.4065375e-08, 0.17289418, 0.32331944, 1)
-
-[node name="Logo2" type="TextureRect" parent="FadeLayer" unique_id=2014118866]
-layout_mode = 0
-offset_left = 144.0
-offset_top = 56.0
-offset_right = 210.66666
-offset_bottom = 131.0
-scale = Vector2(0.36, 0.32)
-expand_mode = 1
-stretch_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="SFX_Move" type="AudioStreamPlayer" parent="." unique_id=975490823]
 stream = ExtResource("6_824g0")
@@ -139,7 +116,3 @@ stream = ExtResource("8_tjte5")
 volume_db = -7.762
 autoplay = true
 parameters/looping = true
-
-[node name="SFX_Unavailable" type="AudioStreamPlayer" parent="." unique_id=758782621]
-stream = ExtResource("8_824g0")
-pitch_scale = 0.27

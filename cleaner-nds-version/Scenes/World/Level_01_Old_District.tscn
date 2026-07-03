@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://fxk8n8hd24gt" path="res://Scenes/FX/glaze_potato_chips.tscn" id="12_gmtvb"]
 [ext_resource type="PackedScene" uid="uid://bmjtrso3yuqk0" path="res://Scenes/FX/ravens_wings_relic.tscn" id="13_gmtvb"]
 [ext_resource type="PackedScene" uid="uid://b3ibvikii0j7q" path="res://Scenes/FX/alert_sign.tscn" id="15_06u8c"]
+[ext_resource type="AudioStream" uid="uid://t3tdqhuk0q28" path="res://Assets/Audio/freepik-fighters-game.mp3" id="16_06u8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7x014"]
 texture = ExtResource("3_ce1mu")
@@ -685,5 +686,7 @@ scale = Vector2(1, 2.7200007)
 [node name="Hud" parent="." unique_id=795795287 instance=ExtResource("8_7x014")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1245473412]
+stream = ExtResource("16_06u8c")
+autoplay = true
 
 [editable path="AlertSign"]

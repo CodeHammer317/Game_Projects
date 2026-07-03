@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://duypctt7gaqhl" path="res://Assets/sprites/torch.png" id="20_362ur"]
 [ext_resource type="Texture2D" uid="uid://cyurf1e7umudx" path="res://Assets/sprites/Study Art/TopLobstaConversationHeadshot.png" id="21_8jq0p"]
 [ext_resource type="Texture2D" uid="uid://ba8iif7k0t36v" path="res://Assets/sprites/Study Art/RavenHeadshotConversation.png" id="21_ajmle"]
+[ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="25_player"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_221uv"]
 texture = ExtResource("5_4m0bx")
@@ -472,13 +473,16 @@ animations = [{
 
 [sub_resource type="LabelSettings" id="LabelSettings_iwsa4"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_study_exit"]
+size = Vector2(32, 120)
+
 [node name="Study" type="Node2D" unique_id=62157998]
 script = ExtResource("1_h1fst")
+player_scene = ExtResource("25_player")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=578057719]
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1531336328]
-position = Vector2(-2.3841858e-07, -1)
 scale = Vector2(0.9467456, 0.95698917)
 texture = ExtResource("2_221uv")
 centered = false
@@ -514,6 +518,8 @@ offset_left = 82.0
 offset_top = -16.0
 offset_right = 82.0
 offset_bottom = -16.0
+dialogue_start_delay = 1.0
+change_scene_when_finished = false
 speaker_sprite_path = NodePath("../AnimatedSprite2D")
 
 [node name="TextLabel" parent="Level01BriefingScreen" index="0" unique_id=2127807611]
@@ -530,6 +536,7 @@ offset_left = 139.0
 offset_top = 269.0
 offset_right = 362.0
 offset_bottom = 292.0
+text = "Press \"A\" or Space bar to play"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=4208150]
 tile_map_data = PackedByteArray("AAAAABYAAgAEAAEAAAABABYAAgAEAAEAAAACABYAAgAEAAEAAAADABYAAgAEAAEAAAAEABYAAgAEAAEAAAAFABYAAgAEAAEAAAAGABYAAgAEAAEAAAAHABYAAgAEAAEAAAAIABYAAgAEAAEAAAAJABYAAgAEAAEAAAAKABYAAgAEAAEAAAALABYAAgAEAAEAAAAMABYAAgAEAAEAAAANABYAAgAEAAEAAAAOABYAAgAEAAEAAAAPABYAAgAEAAEAAAAQABYAAgAEAAEAAAARABYAAgAEAAEAAAASABYAAgAEAAEAAAATABYAAgAEAAEAAAAUABYAAgAEAAEAAAAVABYAAgAEAAEAAAAWABYAAgAEAAEAAAAXABYAAgAEAAEAAAAYABYAAgAEAAEAAAAZABYAAgAEAAEAAAAaABYAAgAEAAEAAAAbABYAAgAEAAEAAAAcABYAAgAEAAEAAAAdABYAAgAEAAEAAAAeABYAAgAEAAEAAAAfABYAAgAEAAEAAAAgABYAAgAEAAEAAAAhABYAAgAEAAEAAAAiABYAAgAEAAEAAAAjABYAAgAEAAEAAAAkABYAAgAEAAEAAAAlABYAAgAEAAEAAAAmABYAAgAEAAEAAAAnABYAAgAEAAEAAAAoABYAAgAEAAEAAAAoABUAAgAEAAEAAAAoABQAAgAEAAEAAAAoABMAAgAEAAEAAAAoABIAAgAEAAEAAAAoABEAAgAEAAEAAAAoABAAAgAEAAEAAAAoAA8AAgAEAAEAAAAoAA4AAgAEAAEAAAAoAA0AAgAEAAEAAAAoAAwAAgAEAAEAAAAoAAsAAgAEAAEAAAAoAAoAAgAEAAEAAAAoAAkAAgAEAAEAAAAoAAgAAgAEAAEAAAAoAAcAAgAEAAEAAAAoAAYAAgAEAAEAAAAoAAUAAgAEAAEAAAAoAAQAAgAEAAEAAAAoAAMAAgAEAAEAAAAoAAIAAgAEAAEAAAAoAAEAAgAEAAEAAAAoAAAAAgAEAAEAAAD//xYAAgAEAAEAAAD//xUAAgAEAAEAAAD//xQAAgAEAAEAAAD//xMAAgAEAAEAAAD//xIAAgAEAAEAAAD//xEAAgAEAAEAAAD//xAAAgAEAAEAAAD//w8AAgAEAAEAAAD//w4AAgAEAAEAAAD//w0AAgAEAAEAAAD//wwAAgAEAAEAAAD//wsAAgAEAAEAAAD//woAAgAEAAEAAAD//wkAAgAEAAEAAAD//wgAAgAEAAEAAAD//wcAAgAEAAEAAAD//wYAAgAEAAEAAAD//wUAAgAEAAEAAAD//wQAAgAEAAEAAAD//wMAAgAEAAEAAAD//wIAAgAEAAEAAAD//wEAAgAEAAEAAAD//wAAAgAEAAEAAAA=")
@@ -610,5 +617,61 @@ vertical_alignment = 1
 position = Vector2(76, 155)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("21_8jq0p")
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1771023641]
+layer = 100
+visible = false
+
+[node name="Overlay" type="ColorRect" parent="TransitionLayer" unique_id=312207822]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=427060524]
+position = Vector2(102, 240)
+
+[node name="StudyExit" type="Area2D" parent="." unique_id=510712623]
+position = Vector2(626, 297)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StudyExit" unique_id=1982561733]
+shape = SubResource("RectangleShape2D_study_exit")
+
+[node name="ExitPrompt" type="Label" parent="." unique_id=799933572]
+offset_left = 570.0
+offset_top = 289.0
+offset_right = 632.0
+offset_bottom = 312.0
+text = "EXIT  >"
+horizontal_alignment = 2
+
+[node name="InteractionLayer" type="CanvasLayer" parent="." unique_id=1451678014]
+layer = 50
+
+[node name="Prompt" type="Label" parent="InteractionLayer" unique_id=675123979]
+offset_left = 205.0
+offset_top = 320.0
+offset_right = 435.0
+offset_bottom = 344.0
+text = "Press E / Y to inspect"
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="InteractionLayer" unique_id=70228626]
+visible = false
+offset_left = 80.0
+offset_top = 276.0
+offset_right = 560.0
+offset_bottom = 314.0
+theme_override_colors/font_color = Color(1, 0.92, 0.62, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Interaction text"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [editable path="Level01BriefingScreen"]

@@ -117,6 +117,7 @@ var _charge_time: float = 0.0
 var _is_charging_shot: bool = false
 var _input_dir: float = 0.0
 var control_locked: bool = false
+var combat_enabled: bool = true
 
 var has_double_jump: bool = false
 var has_wall_slide: bool = false
@@ -298,6 +299,9 @@ func _process_normal_movement(delta: float) -> void:
 
 
 func _handle_attack() -> void:
+	if not combat_enabled:
+		return
+
 	if _is_dead or _is_dying or _is_game_over:
 		return
 
@@ -638,6 +642,11 @@ func _handle_horizontal_movement(delta: float) -> void:
 
 
 func _handle_shoot(delta: float) -> void:
+	if not combat_enabled:
+		if _is_charging_shot:
+			_cancel_shot_charge()
+		return
+
 	# Grenades are aimed by charge time: press to begin charging, hold to
 	# increase throw distance, then release to throw.
 	var shoot_started := Input.is_action_just_pressed("shoot") or Input.is_action_pressed("shoot")
@@ -721,6 +730,9 @@ func _cancel_shot_charge() -> void:
 
 
 func _handle_special_assist() -> void:
+	if not combat_enabled:
+		return
+
 	if not Input.is_action_just_pressed("special"):
 		return
 
@@ -1234,6 +1246,13 @@ func set_control_locked(value: bool) -> void:
 	if value:
 		_cancel_shot_charge()
 		_force_idle_pose()
+
+
+func set_combat_enabled(value: bool) -> void:
+	combat_enabled = value
+
+	if not combat_enabled:
+		_cancel_shot_charge()
 
 
 func play_idle_animation() -> void:

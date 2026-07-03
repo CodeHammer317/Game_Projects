@@ -1,9 +1,15 @@
 #Control.gd
 extends Control
 
+signal briefing_finished
+
 @export var chars_per_second: float = 25.0
 @export var random_pitch_range: float = 0.1 # Adds variety to the typing
 @export var next_scene: String = "res://Scenes/World/upgrade_chamber.tscn"
+@export var dialogue_start_delay: float = 0.0
+@export var change_scene_when_finished: bool = true
+@export var reveal_prompt_text: String = "Press A or Space to reveal"
+@export var continue_prompt_text: String = "Press A or Space to play"
 @export_node_path("AnimatedSprite2D") var speaker_sprite_path: NodePath
 @export_range(0.01, 1.0, 0.01) var speech_frame_time_min: float = 0.08
 @export_range(0.01, 1.0, 0.01) var speech_frame_time_max: float = 0.18
@@ -19,12 +25,17 @@ var is_typing: bool = false
 var _speech_animation_token: int = 0
 #var _timer: float = 0.0 #Used for the auto advance for first scene
 var _skipped: bool = false
+var _dialogue_started: bool = false
+var _typing_tween: Tween = null
 
 
 func _ready():
-	skip_label.visible = true
+	skip_label.visible = false
 	# Adjust polyphony so sounds don't cut each other off
 	audio.max_polyphony = 4 
+
+	if dialogue_start_delay > 0.0:
+		await get_tree().create_timer(dialogue_start_delay).timeout
 	
 	start_dialogue("NDS // Secure Channel 7  
 Clearance: Field Operative
@@ -74,25 +85,49 @@ func _process(_delta: float) -> void:
 		_go_to_next_scene()'''
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("skip"):
+	if not _dialogue_started:
+		return
+
+	if event.is_action_pressed("skip") or event.is_action_pressed("accept"):
+		if is_typing:
+			_complete_typing()
+			get_viewport().set_input_as_handled()
+			return
+
 		_skipped = true
 		_go_to_next_scene()
+		get_viewport().set_input_as_handled()
 
 func _go_to_next_scene() -> void:
+	is_typing = false
+	_stop_speaker_animation()
+
+	if _typing_tween:
+		_typing_tween.kill()
+		_typing_tween = null
+
+	if not change_scene_when_finished:
+		_dialogue_started = false
+		hide()
+		briefing_finished.emit()
+		return
+
 	get_tree().change_scene_to_file(next_scene)
 
 func start_dialogue(new_text: String):
+	_dialogue_started = true
 	label.text = new_text
 	label.visible_characters = 0
 	skip_label.visible = true
+	skip_label.text = reveal_prompt_text
 	is_typing = true
 	_start_speaker_animation()
 	
 	# 1. Animate the text using a Tween
 	var duration = new_text.length() / chars_per_second
-	var tween = create_tween()
-	tween.tween_property(label, "visible_characters", new_text.length(), duration)
-	tween.finished.connect(_on_typing_finished)
+	_typing_tween = create_tween()
+	_typing_tween.tween_property(label, "visible_characters", new_text.length(), duration)
+	_typing_tween.finished.connect(_on_typing_finished)
 	
 	# 2. Start the audio "heartbeat"
 	play_typing_sounds()
@@ -118,8 +153,19 @@ func play_typing_sounds():
 
 func _on_typing_finished():
 	is_typing = false
+	_typing_tween = null
 	_stop_speaker_animation()
 	skip_label.visible = true
+	skip_label.text = continue_prompt_text
+
+
+func _complete_typing() -> void:
+	if _typing_tween:
+		_typing_tween.kill()
+		_typing_tween = null
+
+	label.visible_characters = label.text.length()
+	_on_typing_finished()
 
 func _start_speaker_animation() -> void:
 	if speaker_sprite == null:
