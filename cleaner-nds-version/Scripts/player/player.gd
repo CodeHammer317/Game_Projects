@@ -28,7 +28,7 @@ const FALL_ANIMATION := &"falling"
 
 @export_group("Charged Throw")
 @export var minimum_charge_time: float = 0.0
-@export var maximum_charge_time: float = 3.0
+@export var maximum_charge_time: float = 2.0
 
 @export_group("Attack Combo")
 @export var attack_action: StringName = &"attack"
@@ -72,6 +72,7 @@ const FALL_ANIMATION := &"falling"
 @export_group("Double Jump")
 @export_range(0.0, 1.0, 0.05) var wing_glide_gravity_multiplier: float = 0.35
 @export var wing_glide_max_fall_speed: float = 180.0
+@export var double_jump_collision_offset: Vector2 = Vector2(0.0, -28.0)
 
 @export_group("")
 @export var snap_visuals_to_pixel: bool = true
@@ -93,6 +94,9 @@ const FALL_ANIMATION := &"falling"
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Marker2D = $Muzzle
 @onready var health: Health = $Health
+@onready var body_collision: CollisionShape2D = $CollisionShape2D
+@onready var hurtbox: Area2D = $Hurtbox
+@onready var contact_hitbox: Area2D = $Hitbox
 
 var ground_combo: Array[StringName] = [
 	&"left_punch",
@@ -154,10 +158,17 @@ var _was_on_floor: bool = false
 var _dust_spawn_timer: float = 0.0
 var _sprite_base_position: Vector2 = Vector2.ZERO
 var _special_meter_charge: float = 0.0
+var _body_collision_base_position: Vector2 = Vector2.ZERO
+var _hurtbox_base_position: Vector2 = Vector2.ZERO
+var _contact_hitbox_base_position: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
 	_sprite_base_position = sprite.position
+	_body_collision_base_position = body_collision.position
+	_hurtbox_base_position = hurtbox.position
+	_contact_hitbox_base_position = contact_hitbox.position
+	_update_collision_positions()
 	_sync_upgrades_from_state()
 
 	if not PlayerState.upgrade_unlocked.is_connected(_on_upgrade_unlocked):
@@ -387,7 +398,11 @@ func _spawn_attack_hitbox(attack_name: StringName) -> void:
 	if _facing_left:
 		x_offset = -attack_offset_right.x
 
-	hitbox.global_position = global_position + Vector2(x_offset, attack_offset_right.y)
+	var attack_offset := Vector2(x_offset, attack_offset_right.y)
+	if _is_double_jump_state:
+		attack_offset += double_jump_collision_offset
+
+	hitbox.global_position = global_position + attack_offset
 
 	if hitbox.has_method("setup"):
 		hitbox.setup(self, _facing_left, attack_name)
@@ -527,14 +542,29 @@ func _do_jump(is_double_jump: bool = false) -> void:
 	velocity.y = jump_velocity
 	_is_wall_sliding = false
 	_wall_dir = 0
-	_is_double_jump_state = is_double_jump
+	_set_double_jump_state(is_double_jump)
 
 	if is_double_jump:
 		_play_double_jump_animation()
 
 
 func _end_double_jump_state() -> void:
-	_is_double_jump_state = false
+	_set_double_jump_state(false)
+
+
+func _set_double_jump_state(active: bool) -> void:
+	if _is_double_jump_state == active:
+		return
+
+	_is_double_jump_state = active
+	_update_collision_positions()
+
+
+func _update_collision_positions() -> void:
+	var active_offset := double_jump_collision_offset if _is_double_jump_state else Vector2.ZERO
+	body_collision.position = _body_collision_base_position + active_offset
+	hurtbox.position = _hurtbox_base_position + active_offset
+	contact_hitbox.position = _contact_hitbox_base_position + active_offset
 
 
 func _play_double_jump_animation() -> void:
