@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://buj72304jetyd"]
+
+[ext_resource type="Texture2D" uid="uid://drybko5un5tko" path="res://Assets/sprites/Jesus and Coffee.png" id="1_jbrpj"]
+
+[node name="CoffeeShop" type="Node2D" unique_id=2077241956]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=889076199]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1393003365]
+texture = ExtResource("1_jbrpj")
+centered = false

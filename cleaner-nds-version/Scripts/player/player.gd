@@ -84,12 +84,11 @@ const FALL_ANIMATION := &"falling"
 @export var dust_spawn_interval: float = 0.08
 
 @export_group("Special Assist")
-@export var mattt_assist_scene: PackedScene
 @export var special_meter_max: int = 100
 @export var special_meter: int = 0
 @export var special_recharge_time: float = 30.0
 @export var special_recharges_over_time: bool = true
-@export var mattt_spawn_offset: Vector2 = Vector2(-40.0, -20.0)
+@export var helper_spawn_offset: Vector2 = Vector2(-40.0, -20.0)
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Marker2D = $Muzzle
@@ -739,22 +738,23 @@ func _handle_special_assist() -> void:
 	if special_meter < special_meter_max:
 		return
 
-	if mattt_assist_scene == null:
+	var assist_scene := PlayerState.get_selected_helper_assist_scene()
+	if assist_scene == null:
 		return
 
-	var assist := mattt_assist_scene.instantiate() as Node2D
+	var assist := assist_scene.instantiate() as Node2D
 	if assist == null:
 		return
 
 	set_special_meter(0)
 	get_parent().add_child(assist)
 
-	var x_offset := mattt_spawn_offset.x
+	var x_offset := helper_spawn_offset.x
 
 	if _facing_left:
-		x_offset = -mattt_spawn_offset.x
+		x_offset = -helper_spawn_offset.x
 
-	assist.global_position = global_position + Vector2(x_offset, mattt_spawn_offset.y)
+	assist.global_position = global_position + Vector2(x_offset, helper_spawn_offset.y)
 
 	if assist.has_method("setup"):
 		assist.setup(self, _facing_left)

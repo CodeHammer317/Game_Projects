@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://4tdx7c33dgjl"]
+
+[ext_resource type="Texture2D" uid="uid://g4wa4tj0k440" path="res://Assets/HUD_assets/mechanical_pixel_art_gui/mechanical_pixel_art_gui/premade/64x64/window/orange/panel.png" id="1_lo6dv"]
+[ext_resource type="Texture2D" uid="uid://driklxs6ip5do" path="res://Assets/NDS Game Files/MatTt Sprites/GhostMatttHead1.png" id="2_nkboh"]
+[ext_resource type="Texture2D" uid="uid://cg1yf47hv4lf8" path="res://Assets/sprites/TOAD.png" id="3_2ab62"]
+[ext_resource type="Texture2D" uid="uid://dll1kdgnf6bq7" path="res://Assets/sprites/EdMabrie.png" id="4_3jkiy"]
+
+[node name="HelperMatrix" type="Node2D" unique_id=1680877328]
+
+[node name="Panel" type="Sprite2D" parent="." unique_id=791495076]
+scale = Vector2(6.9375, 1.84375)
+texture = ExtResource("1_lo6dv")
+centered = false
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1807302701]
+
+[node name="EmptySprite" type="Sprite2D" parent="Node2D" unique_id=1510670956]
+
+[node name="MattSprite" type="Sprite2D" parent="Node2D" unique_id=786740872]
+position = Vector2(66, 18)
+scale = Vector2(0.35986102, 0.3652269)
+texture = ExtResource("2_nkboh")
+centered = false
+
+[node name="Label" type="Label" parent="Node2D" unique_id=411600908]
+offset_left = 66.0
+offset_top = 79.0
+offset_right = 115.0
+offset_bottom = 102.0
+text = "MatTt"
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=1969325393]
+
+[node name="EmptySprite" type="Sprite2D" parent="Node2D2" unique_id=299920229]
+
+[node name="ToadSprite" type="Sprite2D" parent="Node2D2" unique_id=147279903]
+position = Vector2(148, 13)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_2ab62")
+centered = false
+
+[node name="Label" type="Label" parent="Node2D2" unique_id=1800193423]
+offset_left = 148.0
+offset_top = 79.0
+offset_right = 200.0
+offset_bottom = 102.0
+text = "\"Toad\""
+
+[node name="Node2D3" type="Node2D" parent="." unique_id=793695650]
+
+[node name="EmptySprite" type="Sprite2D" parent="Node2D3" unique_id=385379755]
+
+[node name="EdMabrie" type="Sprite2D" parent="Node2D3" unique_id=274384984]
+position = Vector2(236, 13)
+scale = Vector2(0.4777108, 0.43066937)
+texture = ExtResource("4_3jkiy")
+centered = false
+
+[node name="Label" type="Label" parent="Node2D3" unique_id=1928621921]
+offset_left = 247.0
+offset_top = 80.0
+offset_right = 287.0
+offset_bottom = 103.0
+text = "Ed"
+
+[node name="Node2D4" type="Node2D" parent="." unique_id=709296651]
+
+[node name="EmptySprite" type="Sprite2D" parent="Node2D4" unique_id=261176892]
+
+[node name="EdMabrie" type="Sprite2D" parent="Node2D4" unique_id=1364436474]
+position = Vector2(236, 13)
+scale = Vector2(0.4777108, 0.43066937)
+texture = ExtResource("4_3jkiy")
+centered = false
+
+[node name="Label" type="Label" parent="Node2D4" unique_id=461295387]
+offset_left = 247.0
+offset_top = 80.0
+offset_right = 287.0
+offset_bottom = 103.0
+text = "Ed"

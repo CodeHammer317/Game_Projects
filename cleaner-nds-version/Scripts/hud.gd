@@ -6,6 +6,7 @@ class_name PlayerHUD
 @export var health_bar_path: NodePath = ^"TextureRect/HealthBar"
 @export var ability_bar_path: NodePath = ^"TextureRect/AbilityBar"
 @export var charge_bar_path: NodePath = ^"TextureRect/ChargeBar"
+@export var helper_icon_path: NodePath = ^"TextureRect/HelperIcon"
 
 @export_group("Behavior")
 @export var hide_charge_bar_when_idle: bool = true
@@ -13,6 +14,7 @@ class_name PlayerHUD
 @onready var health_bar: TextureProgressBar = get_node(health_bar_path) as TextureProgressBar
 @onready var ability_bar: TextureProgressBar = get_node(ability_bar_path) as TextureProgressBar
 @onready var charge_bar: TextureProgressBar = get_node(charge_bar_path) as TextureProgressBar
+@onready var helper_icon: Sprite2D = get_node(helper_icon_path) as Sprite2D
 
 var player: Player = null
 var health: Health = null
@@ -20,6 +22,10 @@ var health: Health = null
 
 func _ready() -> void:
 	_initialize_bars()
+	_update_helper_icon(PlayerState.selected_helper)
+
+	if not PlayerState.helper_selected.is_connected(_update_helper_icon):
+		PlayerState.helper_selected.connect(_update_helper_icon)
 
 	var tree := get_tree()
 	if not tree.node_added.is_connected(_on_node_added):
@@ -29,6 +35,9 @@ func _ready() -> void:
 
 
 func _exit_tree() -> void:
+	if PlayerState.helper_selected.is_connected(_update_helper_icon):
+		PlayerState.helper_selected.disconnect(_update_helper_icon)
+
 	var tree := get_tree()
 	if tree != null and tree.node_added.is_connected(_on_node_added):
 		tree.node_added.disconnect(_on_node_added)
@@ -144,6 +153,12 @@ func _on_shot_charge_changed(
 
 	if hide_charge_bar_when_idle:
 		charge_bar.visible = charging
+
+
+func _update_helper_icon(_helper_id: StringName) -> void:
+	var icon := PlayerState.get_selected_helper_hud_icon()
+	helper_icon.texture = icon
+	helper_icon.visible = icon != null
 
 
 func _on_node_added(node: Node) -> void:

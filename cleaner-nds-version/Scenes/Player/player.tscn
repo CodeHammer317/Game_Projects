@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://yxy84onu0e8" path="res://Scenes/FX/player_bullet.tscn" id="2_plnq1"]
 [ext_resource type="PackedScene" uid="uid://bgk6qsvlkbjal" path="res://Scenes/FX/player_punch_hitbox.tscn" id="3_6a86w"]
 [ext_resource type="PackedScene" uid="uid://ctgyhfpw6awxh" path="res://Scenes/FX/dust_trail.tscn" id="4_jmbrt"]
-[ext_resource type="PackedScene" uid="uid://dyofdcu3tocvh" path="res://Scenes/Player/mattt_assist.tscn" id="5_6a86w"]
 [ext_resource type="Texture2D" uid="uid://ej1pden7fis8" path="res://Assets/sprites/Street Brawler Urban – 2D Beat 'Em Up Character Pack/Street Brawler Urban – 2D Beat 'Em Up Character Pack/Character Tile/Character (1).png" id="98_6a86w"]
 [ext_resource type="Texture2D" uid="uid://d3vt221wabs37" path="res://Assets/sprites/Study Art/Double_Jump1.png" id="99_22q81"]
 [ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="99_81gu5"]
@@ -1272,9 +1271,9 @@ collision_mask = 129
 script = ExtResource("1_7ve27")
 bullet_scene = ExtResource("2_plnq1")
 attack_hitbox_scene = ExtResource("3_6a86w")
+attack_offset_right = Vector2(30, -6)
 dust_trail_scene = ExtResource("4_jmbrt")
-mattt_assist_scene = ExtResource("5_6a86w")
-mattt_spawn_offset = Vector2(-40, -100)
+helper_spawn_offset = Vector2(-40, -100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1032869655]
 position = Vector2(0, 4)
