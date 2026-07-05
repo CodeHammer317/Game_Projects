@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://4tdx7c33dgjl"]
 
 [ext_resource type="Texture2D" uid="uid://g4wa4tj0k440" path="res://Assets/HUD_assets/mechanical_pixel_art_gui/mechanical_pixel_art_gui/premade/64x64/window/orange/panel.png" id="1_lo6dv"]
-[ext_resource type="Texture2D" uid="uid://driklxs6ip5do" path="res://Assets/NDS Game Files/MatTt Sprites/GhostMatttHead1.png" id="2_nkboh"]
+[ext_resource type="Texture2D" uid="uid://dblgq32ave8d2" path="res://Assets/sprites/Matt.png" id="2_lo6dv"]
 [ext_resource type="Texture2D" uid="uid://cg1yf47hv4lf8" path="res://Assets/sprites/TOAD.png" id="3_2ab62"]
 [ext_resource type="Texture2D" uid="uid://dll1kdgnf6bq7" path="res://Assets/sprites/EdMabrie.png" id="4_3jkiy"]
 
 [node name="HelperMatrix" type="Node2D" unique_id=1680877328]
 
 [node name="Panel" type="Sprite2D" parent="." unique_id=791495076]
-scale = Vector2(6.9375, 1.84375)
+scale = Vector2(5.375, 1.84375)
 texture = ExtResource("1_lo6dv")
 centered = false
 
@@ -18,8 +18,8 @@ centered = false
 
 [node name="MattSprite" type="Sprite2D" parent="Node2D" unique_id=786740872]
 position = Vector2(66, 18)
-scale = Vector2(0.35986102, 0.3652269)
-texture = ExtResource("2_nkboh")
+scale = Vector2(0.36507934, 0.35185188)
+texture = ExtResource("2_lo6dv")
 centered = false
 
 [node name="Label" type="Label" parent="Node2D" unique_id=411600908]

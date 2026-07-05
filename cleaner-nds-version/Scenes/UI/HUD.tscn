@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://jgy8i6rfstrp" path="res://Assets/HUD_assets/PNG/LifeBar.png" id="4_lelo4"]
 [ext_resource type="Texture2D" uid="uid://dfxa07yjep2kw" path="res://Assets/HUD_assets/PNG/ChargeBar.png" id="5_1ree7"]
 [ext_resource type="Texture2D" uid="uid://crtgejdwvijj0" path="res://Assets/HUD_assets/PNG/SpecialBar.png" id="6_d2sja"]
-[ext_resource type="Texture2D" uid="uid://driklxs6ip5do" path="res://Assets/NDS Game Files/MatTt Sprites/GhostMatttHead1.png" id="7_1ree7"]
+[ext_resource type="Texture2D" uid="uid://dblgq32ave8d2" path="res://Assets/sprites/Matt.png" id="7_1ree7"]
 
 [node name="Hud" type="CanvasLayer" unique_id=795795287]
 script = ExtResource("1_omqfp")
@@ -49,6 +49,6 @@ scale = Vector2(0.28846154, 0.29126215)
 texture = ExtResource("4_4bm6u")
 
 [node name="HelperIcon" type="Sprite2D" parent="TextureRect" unique_id=1809520578]
-position = Vector2(50.000004, 36.000004)
+position = Vector2(49, 36.000004)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("7_1ree7")
