@@ -5,6 +5,7 @@ signal fired_bullet(bullet: Node)
 signal shot_charge_changed(elapsed_time: float, charge_duration: float, charging: bool)
 signal special_meter_changed(current: int, maximum: int)
 signal died
+signal respawn_ready(player: Player)
 signal game_over
 
 const DOUBLE_JUMP_ANIMATION := &"double_jump"
@@ -52,6 +53,7 @@ const FALL_ANIMATION := &"falling"
 
 @export_group("Respawn")
 @export var max_deaths_before_game_over: int = 3
+@export var auto_respawn_on_death: bool = true
 @export var respawn_invuln_duration: float = 2.0
 @export var respawn_flash_interval: float = 0.12
 @export var restore_health_on_respawn: bool = true
@@ -72,8 +74,6 @@ const FALL_ANIMATION := &"falling"
 @export_group("Double Jump")
 @export_range(0.0, 1.0, 0.05) var wing_glide_gravity_multiplier: float = 0.35
 @export var wing_glide_max_fall_speed: float = 180.0
-@export var jump_collision_offset: Vector2 = Vector2(0.0, -28.0)
-@export var double_jump_collision_offset: Vector2 = Vector2(0.0, -28.0)
 
 @export_group("")
 @export var snap_visuals_to_pixel: bool = true
@@ -94,9 +94,6 @@ const FALL_ANIMATION := &"falling"
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Marker2D = $Muzzle
 @onready var health: Health = $Health
-@onready var body_collision: CollisionShape2D = $CollisionShape2D
-@onready var hurtbox: Area2D = $Hurtbox
-@onready var contact_hitbox: Area2D = $Hitbox
 
 var ground_combo: Array[StringName] = [
 	&"left_punch",
@@ -146,7 +143,6 @@ var _is_dashing: bool = false
 var _dash_timer: float = 0.0
 var _dash_cooldown_timer: float = 0.0
 var _has_double_jumped: bool = false
-var _is_jump_collision_state: bool = false
 var _is_double_jump_state: bool = false
 
 var _is_wall_sliding: bool = false
@@ -160,17 +156,10 @@ var _was_on_floor: bool = false
 var _dust_spawn_timer: float = 0.0
 var _sprite_base_position: Vector2 = Vector2.ZERO
 var _special_meter_charge: float = 0.0
-var _body_collision_base_position: Vector2 = Vector2.ZERO
-var _hurtbox_base_position: Vector2 = Vector2.ZERO
-var _contact_hitbox_base_position: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
 	_sprite_base_position = sprite.position
-	_body_collision_base_position = body_collision.position
-	_hurtbox_base_position = hurtbox.position
-	_contact_hitbox_base_position = contact_hitbox.position
-	_update_collision_positions()
 	_sync_upgrades_from_state()
 
 	if not PlayerState.upgrade_unlocked.is_connected(_on_upgrade_unlocked):
@@ -272,7 +261,6 @@ func _recharge_special_meter(delta: float) -> void:
 func _refresh_floor_state() -> void:
 	if is_on_floor():
 		_has_double_jumped = false
-		_set_jump_collision_state(false)
 		_end_double_jump_state()
 		_coyote_timer = coyote_time
 	elif _was_on_floor:
@@ -404,10 +392,7 @@ func _spawn_attack_hitbox(attack_name: StringName) -> void:
 	if _facing_left:
 		x_offset = -attack_offset_right.x
 
-	var attack_offset := (
-		Vector2(x_offset, attack_offset_right.y)
-		+ _get_active_collision_offset()
-	)
+	var attack_offset := Vector2(x_offset, attack_offset_right.y)
 
 	hitbox.global_position = global_position + attack_offset
 
@@ -549,7 +534,6 @@ func _do_jump(is_double_jump: bool = false) -> void:
 	velocity.y = jump_velocity
 	_is_wall_sliding = false
 	_wall_dir = 0
-	_set_jump_collision_state(true)
 	_set_double_jump_state(is_double_jump)
 
 	if is_double_jump:
@@ -565,31 +549,6 @@ func _set_double_jump_state(active: bool) -> void:
 		return
 
 	_is_double_jump_state = active
-	_update_collision_positions()
-
-
-func _set_jump_collision_state(active: bool) -> void:
-	if _is_jump_collision_state == active:
-		return
-
-	_is_jump_collision_state = active
-	_update_collision_positions()
-
-
-func _get_active_collision_offset() -> Vector2:
-	if _is_double_jump_state:
-		return double_jump_collision_offset
-	if _is_jump_collision_state:
-		return jump_collision_offset
-
-	return Vector2.ZERO
-
-
-func _update_collision_positions() -> void:
-	var active_offset := _get_active_collision_offset()
-	body_collision.position = _body_collision_base_position + active_offset
-	hurtbox.position = _hurtbox_base_position + active_offset
-	contact_hitbox.position = _contact_hitbox_base_position + active_offset
 
 
 func _play_double_jump_animation() -> void:
@@ -626,7 +585,6 @@ func _wall_jump() -> void:
 
 	velocity.x = float(jump_dir) * wall_jump_force.x
 	velocity.y = wall_jump_force.y
-	_set_jump_collision_state(true)
 
 	_is_wall_sliding = false
 	_wall_dir = 0
@@ -1042,7 +1000,6 @@ func kill() -> void:
 	_is_dashing = false
 	_is_wall_sliding = false
 	_is_hit_flashing = false
-	_set_jump_collision_state(false)
 	_end_double_jump_state()
 
 	_hitstun_timer = 0.0
@@ -1069,23 +1026,30 @@ func kill() -> void:
 	if _death_count >= max_deaths_before_game_over:
 		_is_game_over = true
 		game_over.emit()
-		print("Player game over.")
 		return
 
-	respawn()
+	respawn_ready.emit(self)
+
+	if auto_respawn_on_death:
+		respawn()
 
 
 func respawn() -> void:
+	respawn_at(_death_position)
+
+
+func respawn_at(respawn_position: Vector2) -> void:
 	_cancel_shot_charge()
-	global_position = _death_position
+	global_position = respawn_position
 	velocity = Vector2.ZERO
+	control_locked = false
+	_input_dir = 0.0
 
 	_is_dead = false
 	_is_dying = false
 	_is_dashing = false
 	_is_wall_sliding = false
 	_is_hit_flashing = false
-	_set_jump_collision_state(false)
 	_end_double_jump_state()
 
 	_hitstun_timer = 0.0
@@ -1103,6 +1067,7 @@ func respawn() -> void:
 	_jump_buffer_timer = 0.0
 	_wall_jump_lock_timer = 0.0
 	_dust_spawn_timer = 0.0
+	_was_on_floor = false
 
 	if restore_health_on_respawn:
 		_restore_health_for_respawn()
@@ -1289,15 +1254,13 @@ func _force_idle_pose() -> void:
 	_attack_anim_timer = 0.0
 	_is_dashing = false
 	_is_wall_sliding = false
-	_set_jump_collision_state(false)
 	_end_double_jump_state()
 	_wall_dir = 0
 	_play_animation_if_available("idle")
 
 
 func apply_upgrade(upgrade_name: StringName) -> void:
-	if PlayerState.unlock_upgrade(upgrade_name):
-		print("Upgrade acquired: ", PlayerState.get_upgrade_display_name(upgrade_name))
+	PlayerState.unlock_upgrade(upgrade_name)
 
 
 func _on_upgrade_unlocked(upgrade_name: StringName) -> void:

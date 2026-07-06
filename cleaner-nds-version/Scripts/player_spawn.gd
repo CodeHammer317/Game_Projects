@@ -47,7 +47,8 @@ func spawn_player() -> void:
 	new_player.global_position = current_spawn_marker.global_position
 
 	player_instance = new_player
-	print("SPAWNED PLAYER AT: ", new_player.global_position)
+	if player_instance is Player:
+		(player_instance as Player).auto_respawn_on_death = false
 	_connect_player_signals()
 	_attach_camera_to_player()
 
@@ -98,12 +99,15 @@ func _connect_player_signals() -> void:
 	if player_instance == null:
 		return
 
-	if player_instance.has_signal("died"):
-		if not player_instance.died.is_connected(_on_player_died):
-			player_instance.died.connect(_on_player_died)
+	var player := player_instance as Player
+	if player == null:
+		return
+
+	if not player.respawn_ready.is_connected(_on_player_respawn_ready):
+		player.respawn_ready.connect(_on_player_respawn_ready)
 
 
-func _on_player_died() -> void:
+func _on_player_respawn_ready(_player: Player) -> void:
 	respawn_player()
 
 

@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://clabx45v2ml3w" path="res://Assets/tilesets/SubwayColumn.png" id="5_ewi5s"]
 [ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="8_dgd1k"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="9_w4dtl"]
+[ext_resource type="Script" path="res://Scripts/respawn_manager.gd" id="99_respawn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n6oji"]
 texture = ExtResource("2_fl1d5")
@@ -42,6 +43,9 @@ sources/1 = SubResource("TileSetAtlasSource_w4dtl")
 sources/2 = SubResource("TileSetAtlasSource_d4so2")
 
 [node name="SubwayLevel01" type="Node2D" unique_id=138297617]
+
+[node name="RespawnManager" type="Node" parent="."]
+script = ExtResource("99_respawn")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=611670494]
 scroll_scale = Vector2(0.2, 0.2)

@@ -634,8 +634,6 @@ func _start_growth_phase() -> void:
 
 	growth_phase += 1
 
-	print("GlitchDemon grew to phase: ", growth_phase)
-
 	if health != null:
 		health.invulnerable = true
 		health._is_dead = false

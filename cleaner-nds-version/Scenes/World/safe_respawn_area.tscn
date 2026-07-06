@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/safe_respawn_area.gd" id="1_safe_respawn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_safe_respawn"]
+size = Vector2(128, 64)
+
+[node name="SafeRespawnArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_safe_respawn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_safe_respawn")
+debug_color = Color(0.2, 0.45, 1, 0.35)

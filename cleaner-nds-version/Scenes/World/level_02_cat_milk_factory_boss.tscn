@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cuhdpfcm440hu" path="res://Scenes/World/camera_2d.tscn" id="4_txywj"]
 [ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="5_nu0ct"]
 [ext_resource type="Texture2D" uid="uid://61ofj15co28b" path="res://Assets/tilesets/catbossarea-sheet.png" id="8_3t5s2"]
+[ext_resource type="Script" path="res://Scripts/respawn_manager.gd" id="99_respawn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_up624"]
 atlas = ExtResource("8_3t5s2")
@@ -607,6 +608,9 @@ sources/0 = SubResource("TileSetAtlasSource_mlc6t")
 sources/1 = SubResource("TileSetAtlasSource_ktjua")
 
 [node name="Level_02_CatMilkFactory_Boss" type="Node2D" unique_id=1627675750]
+
+[node name="RespawnManager" type="Node" parent="."]
+script = ExtResource("99_respawn")
 
 [node name="Hud" parent="." unique_id=795795287 instance=ExtResource("5_nu0ct")]
 

@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bmjtrso3yuqk0" path="res://Scenes/FX/ravens_wings_relic.tscn" id="13_gmtvb"]
 [ext_resource type="PackedScene" uid="uid://b3ibvikii0j7q" path="res://Scenes/FX/alert_sign.tscn" id="15_06u8c"]
 [ext_resource type="AudioStream" uid="uid://t3tdqhuk0q28" path="res://Assets/Audio/freepik-fighters-game.mp3" id="16_06u8c"]
+[ext_resource type="Script" path="res://Scripts/respawn_manager.gd" id="99_respawn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7x014"]
 texture = ExtResource("3_ce1mu")
@@ -566,6 +567,9 @@ texture = ExtResource("3_ce1mu")
 sources/0 = SubResource("TileSetAtlasSource_ce1mu")
 
 [node name="Level01OldDistrict" type="Node2D" unique_id=1673315039]
+
+[node name="RespawnManager" type="Node" parent="."]
+script = ExtResource("99_respawn")
 
 [node name="Parallax2DFar" type="Parallax2D" parent="." unique_id=458161927]
 scroll_scale = Vector2(0.2, 0.2)

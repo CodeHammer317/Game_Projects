@@ -53,3 +53,12 @@ func _resolve_target() -> void:
 		return
 
 	target = players[0] as Node2D
+
+
+func set_target(new_target: Node2D) -> void:
+	target = new_target
+	target_path = NodePath()
+
+
+func clear_target() -> void:
+	target = null

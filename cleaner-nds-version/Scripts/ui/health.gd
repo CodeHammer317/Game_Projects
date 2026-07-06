@@ -28,7 +28,6 @@ func _ready() -> void:
 	else:
 		current_health = max_health
 
-	print("Health ready:", get_path(), " -> ", current_health, "/", max_health)
 	health_changed.emit(current_health, max_health)
 
 
@@ -55,8 +54,6 @@ func apply_damage(info: DamageInfo) -> void:
 		_is_dead = true
 
 	_sync_state()
-
-	print(get_path(), " took damage: ", info.damage, " hp left: ", current_health)
 
 	damaged.emit(info)
 	health_changed.emit(current_health, max_health)
