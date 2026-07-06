@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://d2rq6h2o7kapt" path="res://Scripts/camera_2d.gd" id="4_4m0bx"]
 [ext_resource type="Texture2D" uid="uid://dlsv60dv5by82" path="res://Assets/sprites/Study Art/EndTable.png" id="4_5o30m"]
 [ext_resource type="Texture2D" uid="uid://ck0gtbiug6kta" path="res://Assets/tilesets/main_lev_buildA.png" id="5_4m0bx"]
-[ext_resource type="Texture2D" uid="uid://b1lngy2juti0p" path="res://Assets/HUD_assets/ProjectorScreen.png" id="6_fy78r"]
+[ext_resource type="Texture2D" uid="uid://b1lngy2juti0p" path="res://Assets/HUD_assets/HUD_Overlay/ProjectorScreen.png" id="6_fy78r"]
 [ext_resource type="Texture2D" uid="uid://cxnx1ar8rv62v" path="res://Assets/sprites/Study Art/ClosedBook.png" id="6_r75ra"]
 [ext_resource type="Texture2D" uid="uid://qi3wbmpbhrh3" path="res://Assets/tilesets/main_lev_buildB.png" id="6_txpg4"]
 [ext_resource type="PackedScene" uid="uid://cormy61c2jsmw" path="res://Scenes/World/level_01_briefing_screen.tscn" id="7_txpg4"]

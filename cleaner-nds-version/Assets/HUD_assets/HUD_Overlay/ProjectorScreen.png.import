@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1lngy2juti0p"
-path="res://.godot/imported/ProjectorScreen.png-b92fd3ef0d80f99a31c0d8deae6677b6.ctex"
+path="res://.godot/imported/ProjectorScreen.png-a435f583e092bbca9d0717352d50da08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HUD_assets/ProjectorScreen.png"
-dest_files=["res://.godot/imported/ProjectorScreen.png-b92fd3ef0d80f99a31c0d8deae6677b6.ctex"]
+source_file="res://Assets/HUD_assets/HUD_Overlay/ProjectorScreen.png"
+dest_files=["res://.godot/imported/ProjectorScreen.png-a435f583e092bbca9d0717352d50da08.ctex"]
 
 [params]
 

@@ -72,6 +72,7 @@ const FALL_ANIMATION := &"falling"
 @export_group("Double Jump")
 @export_range(0.0, 1.0, 0.05) var wing_glide_gravity_multiplier: float = 0.35
 @export var wing_glide_max_fall_speed: float = 180.0
+@export var jump_collision_offset: Vector2 = Vector2(0.0, -28.0)
 @export var double_jump_collision_offset: Vector2 = Vector2(0.0, -28.0)
 
 @export_group("")
@@ -145,6 +146,7 @@ var _is_dashing: bool = false
 var _dash_timer: float = 0.0
 var _dash_cooldown_timer: float = 0.0
 var _has_double_jumped: bool = false
+var _is_jump_collision_state: bool = false
 var _is_double_jump_state: bool = false
 
 var _is_wall_sliding: bool = false
@@ -270,6 +272,7 @@ func _recharge_special_meter(delta: float) -> void:
 func _refresh_floor_state() -> void:
 	if is_on_floor():
 		_has_double_jumped = false
+		_set_jump_collision_state(false)
 		_end_double_jump_state()
 		_coyote_timer = coyote_time
 	elif _was_on_floor:
@@ -401,9 +404,10 @@ func _spawn_attack_hitbox(attack_name: StringName) -> void:
 	if _facing_left:
 		x_offset = -attack_offset_right.x
 
-	var attack_offset := Vector2(x_offset, attack_offset_right.y)
-	if _is_double_jump_state:
-		attack_offset += double_jump_collision_offset
+	var attack_offset := (
+		Vector2(x_offset, attack_offset_right.y)
+		+ _get_active_collision_offset()
+	)
 
 	hitbox.global_position = global_position + attack_offset
 
@@ -545,6 +549,7 @@ func _do_jump(is_double_jump: bool = false) -> void:
 	velocity.y = jump_velocity
 	_is_wall_sliding = false
 	_wall_dir = 0
+	_set_jump_collision_state(true)
 	_set_double_jump_state(is_double_jump)
 
 	if is_double_jump:
@@ -563,8 +568,25 @@ func _set_double_jump_state(active: bool) -> void:
 	_update_collision_positions()
 
 
+func _set_jump_collision_state(active: bool) -> void:
+	if _is_jump_collision_state == active:
+		return
+
+	_is_jump_collision_state = active
+	_update_collision_positions()
+
+
+func _get_active_collision_offset() -> Vector2:
+	if _is_double_jump_state:
+		return double_jump_collision_offset
+	if _is_jump_collision_state:
+		return jump_collision_offset
+
+	return Vector2.ZERO
+
+
 func _update_collision_positions() -> void:
-	var active_offset := double_jump_collision_offset if _is_double_jump_state else Vector2.ZERO
+	var active_offset := _get_active_collision_offset()
 	body_collision.position = _body_collision_base_position + active_offset
 	hurtbox.position = _hurtbox_base_position + active_offset
 	contact_hitbox.position = _contact_hitbox_base_position + active_offset
@@ -604,6 +626,7 @@ func _wall_jump() -> void:
 
 	velocity.x = float(jump_dir) * wall_jump_force.x
 	velocity.y = wall_jump_force.y
+	_set_jump_collision_state(true)
 
 	_is_wall_sliding = false
 	_wall_dir = 0
@@ -1019,6 +1042,7 @@ func kill() -> void:
 	_is_dashing = false
 	_is_wall_sliding = false
 	_is_hit_flashing = false
+	_set_jump_collision_state(false)
 	_end_double_jump_state()
 
 	_hitstun_timer = 0.0
@@ -1061,6 +1085,7 @@ func respawn() -> void:
 	_is_dashing = false
 	_is_wall_sliding = false
 	_is_hit_flashing = false
+	_set_jump_collision_state(false)
 	_end_double_jump_state()
 
 	_hitstun_timer = 0.0
@@ -1264,6 +1289,7 @@ func _force_idle_pose() -> void:
 	_attack_anim_timer = 0.0
 	_is_dashing = false
 	_is_wall_sliding = false
+	_set_jump_collision_state(false)
 	_end_double_jump_state()
 	_wall_dir = 0
 	_play_animation_if_available("idle")
@@ -1271,7 +1297,6 @@ func _force_idle_pose() -> void:
 
 func apply_upgrade(upgrade_name: StringName) -> void:
 	if PlayerState.unlock_upgrade(upgrade_name):
-		_apply_upgrade_flags(upgrade_name)
 		print("Upgrade acquired: ", PlayerState.get_upgrade_display_name(upgrade_name))
 
 

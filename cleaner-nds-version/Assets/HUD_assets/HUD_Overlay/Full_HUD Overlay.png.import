@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dblgq32ave8d2"
-path="res://.godot/imported/Matt.png-725c715d130222559bd1a71a4b82f502.ctex"
+uid="uid://cvuf8yaolnktc"
+path="res://.godot/imported/Full_HUD Overlay.png-cb0ce9d94f689c3d53be959f9f5e6450.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/Matt.png"
-dest_files=["res://.godot/imported/Matt.png-725c715d130222559bd1a71a4b82f502.ctex"]
+source_file="res://Assets/HUD_assets/HUD_Overlay/Full_HUD Overlay.png"
+dest_files=["res://.godot/imported/Full_HUD Overlay.png-cb0ce9d94f689c3d53be959f9f5e6450.ctex"]
 
 [params]
 

@@ -1,6 +1,8 @@
 extends Node2D
 class_name UpgradeChamber
 
+signal matrix_browse_closed
+
 @export var upgrade_name: StringName = &"double_jump"
 @export var move_player_to_stop: bool = true
 @export var player_move_speed: float = 120.0
@@ -12,11 +14,14 @@ class_name UpgradeChamber
 @export_range(1, 6, 1) var animation_repeat_count: int = 3
 @export var player_scene: PackedScene
 @export var player_scale: Vector2 = Vector2(1.5, 1.5)
-@export_file("*.tscn") var next_scene: String = "res://Scenes/World/Level_01_Old_District.tscn"
+@export_file("*.tscn") var next_scene: String = "res://Scenes/World/coffee_shop.tscn"
 @export var fade_in_duration: float = 0.75
 @export var fade_out_duration: float = 0.75
+@export var wait_for_matrix_reveal: bool = true
+@export_range(0.5, 5.0, 0.1) var matrix_reveal_timeout: float = 2.0
 
 @onready var area: Area2D = $Area2D
+@onready var upgrade_matrix: UpgradeMatrixDisplay = $UpgradeMatrixDisplay
 @onready var stop_point: Node2D = $StopPoint
 @onready var beam_sprite: AnimatedSprite2D = $Beam/AnimatedSprite2D
 @onready var machine_sprite: AnimatedSprite2D = $UpgradeMachine/AnimatedSprite2D
@@ -28,6 +33,9 @@ class_name UpgradeChamber
 @onready var exit_area: Area2D = $TutorialExit
 @onready var transition_layer: CanvasLayer = $TransitionLayer
 @onready var transition_overlay: ColorRect = $TransitionLayer/Overlay
+@onready var text_panel: Sprite2D = $TextPanel
+@onready var acquisition_label: Label = $TextLabel
+@onready var matrix_selector: Line2D = $MatrixSelector
 
 var is_active: bool = false
 var has_been_used: bool = false
@@ -35,6 +43,10 @@ var player: Node2D = null
 var _is_leaving: bool = false
 var _beam_base_speed_scale: float = 1.0
 var _machine_base_speed_scale: float = 1.0
+var _matrix_reveal_complete: bool = false
+var _matrix_browse_active: bool = false
+var _matrix_selection_index: int = 0
+var _matrix_items: Array[Dictionary] = []
 
 
 func _ready() -> void:
@@ -50,11 +62,20 @@ func _ready() -> void:
 	tutorial_prompt.visible = false
 	exit_prompt.visible = false
 	exit_area.monitoring = false
+	text_panel.visible = false
+	acquisition_label.visible = false
+	matrix_selector.visible = false
+
+	if not _validate_configuration():
+		area.set_deferred("monitoring", false)
+		return
 
 	if not area.body_entered.is_connected(_on_body_entered):
 		area.body_entered.connect(_on_body_entered)
 	if not exit_area.body_entered.is_connected(_on_exit_body_entered):
 		exit_area.body_entered.connect(_on_exit_body_entered)
+	if not upgrade_matrix.upgrade_reveal_finished.is_connected(_on_matrix_reveal_finished):
+		upgrade_matrix.upgrade_reveal_finished.connect(_on_matrix_reveal_finished)
 
 	if has_been_used:
 		area.set_deferred("monitoring", false)
@@ -63,6 +84,9 @@ func _ready() -> void:
 	await _fade_in()
 
 	if has_been_used:
+		_show_upgrade_message(
+			PlayerState.get_upgrade_display_name(upgrade_name).to_upper() + " ONLINE"
+		)
 		_enable_tutorial_exit()
 
 
@@ -103,8 +127,31 @@ func start_upgrade_sequence(player: Node) -> void:
 
 	await _play_upgrade_animation()
 
+	var should_wait_for_reveal := (
+		wait_for_matrix_reveal
+		and upgrade_matrix != null
+		and upgrade_matrix.will_animate_upgrade(upgrade_name)
+	)
+	_matrix_reveal_complete = not should_wait_for_reveal
+
+	var upgrade_was_applied := false
 	if player.has_method("apply_upgrade"):
 		player.apply_upgrade(upgrade_name)
+		upgrade_was_applied = PlayerState.has_upgrade(upgrade_name)
+	else:
+		push_warning("UpgradeChamber: player cannot apply upgrades.")
+
+	if upgrade_was_applied:
+		_show_upgrade_message(
+			PlayerState.get_upgrade_display_name(upgrade_name).to_upper() + " ACQUIRED"
+		)
+
+	if should_wait_for_reveal and upgrade_was_applied:
+		await _wait_for_matrix_reveal()
+
+	if upgrade_was_applied:
+		await _begin_matrix_browse(upgrade_name)
+		await _wait_for_action_release(&"shoot")
 
 	if player.has_method("set_control_locked"):
 		player.set_control_locked(false)
@@ -113,6 +160,268 @@ func start_upgrade_sequence(player: Node) -> void:
 		area.set_deferred("monitoring", false)
 	is_active = false
 	_enable_tutorial_exit()
+
+
+func _show_upgrade_message(message: String) -> void:
+	acquisition_label.text = message
+	text_panel.visible = true
+	acquisition_label.visible = true
+
+
+func _on_matrix_reveal_finished(revealed_upgrade: StringName) -> void:
+	if revealed_upgrade == upgrade_name:
+		_matrix_reveal_complete = true
+
+
+func _wait_for_matrix_reveal() -> void:
+	var timeout_at := Time.get_ticks_msec() + int(matrix_reveal_timeout * 1000.0)
+
+	while not _matrix_reveal_complete and Time.get_ticks_msec() < timeout_at:
+		await get_tree().process_frame
+
+	if not _matrix_reveal_complete:
+		push_warning("UpgradeChamber: matrix reveal timed out for: " + str(upgrade_name))
+
+
+func _wait_for_action_release(action: StringName) -> void:
+	while Input.is_action_pressed(action):
+		await get_tree().process_frame
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not _matrix_browse_active:
+		return
+
+	var direction := Vector2.ZERO
+	if event.is_action_pressed("menu_left"):
+		direction = Vector2.LEFT
+	elif event.is_action_pressed("menu_right"):
+		direction = Vector2.RIGHT
+	elif event.is_action_pressed("menu_up"):
+		direction = Vector2.UP
+	elif event.is_action_pressed("menu_down"):
+		direction = Vector2.DOWN
+	elif event.is_action_pressed("accept"):
+		_show_selected_matrix_details()
+		get_viewport().set_input_as_handled()
+		return
+	elif event.is_action_pressed("shoot"):
+		_end_matrix_browse()
+		get_viewport().set_input_as_handled()
+		return
+
+	if direction != Vector2.ZERO:
+		_move_matrix_selection(direction)
+		get_viewport().set_input_as_handled()
+
+
+func _begin_matrix_browse(initial_upgrade: StringName) -> void:
+	_build_matrix_items()
+	if _matrix_items.is_empty():
+		return
+
+	_matrix_selection_index = _find_upgrade_item(initial_upgrade)
+	_matrix_browse_active = true
+	matrix_selector.visible = true
+	_update_matrix_selector()
+	await matrix_browse_closed
+
+
+func _end_matrix_browse() -> void:
+	if not _matrix_browse_active:
+		return
+
+	_matrix_browse_active = false
+	matrix_selector.visible = false
+	_show_upgrade_message(
+		PlayerState.get_upgrade_display_name(upgrade_name).to_upper() + " ACQUIRED"
+	)
+	matrix_browse_closed.emit()
+
+
+func _build_matrix_items() -> void:
+	_matrix_items = [
+		_matrix_item(
+			$HelperMatrix/MatttSlot/MattSprite,
+			"MATTT",
+			"Active helper. Calls down a fire column on the nearest enemy.",
+			&"helper",
+			&"mattt"
+		),
+		_matrix_item(
+			$HelperMatrix/ToadSlot/ToadSprite,
+			"TOAD",
+			"Full-game operative. Field profile remains classified.",
+			&"helper",
+			&"toad"
+		),
+		_matrix_item(
+			$HelperMatrix/EdSlot/EdMabrie,
+			"ED",
+			"Full-game operative. Combat specialty remains classified.",
+			&"helper",
+			&"ed"
+		),
+		_upgrade_item(
+			&"wall_slide",
+			$UpgradeMatrixDisplay/RelicSlots/WallSlideSlot/RelicSprite
+		),
+		_upgrade_item(
+			&"double_jump",
+			$UpgradeMatrixDisplay/RelicSlots/DoubleJumpSlot/RelicSprite
+		),
+		_upgrade_item(
+			&"charge_shot",
+			$UpgradeMatrixDisplay/RelicSlots/ChargeShotSlot/RelicSprite
+		),
+		_matrix_item(
+			$UpgradeMatrixDisplay/FutureSlots/FutureSlot1,
+			"UNKNOWN RELIC",
+			"Signal encrypted. Discoverable in the full campaign.",
+			&"future",
+			&"future_1"
+		),
+		_matrix_item(
+			$UpgradeMatrixDisplay/FutureSlots/FutureSlot2,
+			"UNKNOWN RELIC",
+			"Signal encrypted. Discoverable in the full campaign.",
+			&"future",
+			&"future_2"
+		),
+		_matrix_item(
+			$UpgradeMatrixDisplay/FutureSlots/FutureSlot3,
+			"UNKNOWN RELIC",
+			"Signal encrypted. Discoverable in the full campaign.",
+			&"future",
+			&"future_3"
+		),
+	]
+
+
+func _matrix_item(
+	target: CanvasItem,
+	title: String,
+	description: String,
+	kind: StringName,
+	item_id: StringName
+) -> Dictionary:
+	return {
+		"target": target,
+		"title": title,
+		"description": description,
+		"kind": kind,
+		"id": item_id,
+	}
+
+
+func _upgrade_item(item_upgrade: StringName, target: CanvasItem) -> Dictionary:
+	var definition: Dictionary = PlayerState.UPGRADE_DEFINITIONS.get(item_upgrade, {})
+	return _matrix_item(
+		target,
+		PlayerState.get_upgrade_display_name(item_upgrade).to_upper(),
+		definition.get("description", "Upgrade data unavailable."),
+		&"upgrade",
+		item_upgrade
+	)
+
+
+func _find_upgrade_item(item_upgrade: StringName) -> int:
+	for index in _matrix_items.size():
+		var item := _matrix_items[index]
+		if item.get("kind") == &"upgrade" and item.get("id") == item_upgrade:
+			return index
+
+	return 0
+
+
+func _move_matrix_selection(direction: Vector2) -> void:
+	var current_position := _get_item_position(_matrix_items[_matrix_selection_index])
+	var best_index := _matrix_selection_index
+	var best_score := INF
+
+	for index in _matrix_items.size():
+		if index == _matrix_selection_index:
+			continue
+
+		var offset := _get_item_position(_matrix_items[index]) - current_position
+		if offset.length_squared() <= 0.01:
+			continue
+
+		var directional_alignment := offset.normalized().dot(direction)
+		if directional_alignment < 0.45:
+			continue
+
+		var cross_distance := absf(offset.cross(direction))
+		var score := offset.length() + cross_distance * 1.5
+		if score < best_score:
+			best_score = score
+			best_index = index
+
+	if best_index != _matrix_selection_index:
+		_matrix_selection_index = best_index
+		_update_matrix_selector()
+
+
+func _update_matrix_selector() -> void:
+	var item := _matrix_items[_matrix_selection_index]
+	matrix_selector.global_position = _get_item_position(item)
+	_show_upgrade_message(
+		str(item.get("title", "UNKNOWN")) + "\nA: DETAILS   B: EXIT"
+	)
+
+
+func _show_selected_matrix_details() -> void:
+	var item := _matrix_items[_matrix_selection_index]
+	var status := _get_matrix_item_status(item)
+	_show_upgrade_message(
+		str(item.get("title", "UNKNOWN"))
+		+ " ["
+		+ status
+		+ "]\n"
+		+ str(item.get("description", "No data available."))
+	)
+
+
+func _get_matrix_item_status(item: Dictionary) -> String:
+	var kind: StringName = item.get("kind", &"")
+	var item_id: StringName = item.get("id", &"")
+
+	if kind == &"upgrade":
+		return "ACQUIRED" if PlayerState.has_upgrade(item_id) else "LOCKED"
+	if kind == &"helper":
+		return "ACTIVE" if PlayerState.has_helper(item_id) else "FULL GAME"
+
+	return "ENCRYPTED"
+
+
+func _get_item_position(item: Dictionary) -> Vector2:
+	var target := item.get("target") as CanvasItem
+	if target == null:
+		return global_position
+
+	if target is Sprite2D:
+		var sprite := target as Sprite2D
+		if not sprite.centered and sprite.texture != null:
+			return sprite.to_global(Vector2(sprite.texture.get_size()) * 0.5)
+
+	var target_node := target as Node2D
+	return target_node.global_position if target_node != null else global_position
+
+
+func _validate_configuration() -> bool:
+	if not PlayerState.UPGRADE_DEFINITIONS.has(upgrade_name):
+		push_error("UpgradeChamber: unknown upgrade_name: " + str(upgrade_name))
+		return false
+
+	if upgrade_matrix == null:
+		push_error("UpgradeChamber: UpgradeMatrixDisplay node is missing.")
+		return false
+
+	if not upgrade_matrix.has_upgrade_slot(upgrade_name):
+		push_error("UpgradeChamber: matrix has no slot for: " + str(upgrade_name))
+		return false
+
+	return true
 
 
 func _spawn_player() -> void:
@@ -128,6 +437,8 @@ func _spawn_player() -> void:
 	add_child(player)
 	player.scale = player_scale
 	player.global_position = player_spawn.global_position
+	if player.has_method("set_combat_enabled"):
+		player.call("set_combat_enabled", false)
 	camera.target = player
 
 

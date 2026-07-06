@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://d37vh3lu4bgbk"]
 
 [ext_resource type="Script" uid="uid://ja4ylfule3tx" path="res://Scripts/hud.gd" id="1_omqfp"]
-[ext_resource type="Texture2D" uid="uid://cvuf8yaolnktc" path="res://Assets/HUD_assets/Full_HUD Overlay.png" id="3_xaom8"]
+[ext_resource type="Texture2D" uid="uid://cvuf8yaolnktc" path="res://Assets/HUD_assets/HUD_Overlay/Full_HUD Overlay.png" id="3_xaom8"]
 [ext_resource type="Texture2D" uid="uid://e0khco1ng20x" path="res://Assets/sprites/Study Art/RavenHeadshotConversationHUD.png" id="4_4bm6u"]
 [ext_resource type="Texture2D" uid="uid://jgy8i6rfstrp" path="res://Assets/HUD_assets/PNG/LifeBar.png" id="4_lelo4"]
 [ext_resource type="Texture2D" uid="uid://dfxa07yjep2kw" path="res://Assets/HUD_assets/PNG/ChargeBar.png" id="5_1ree7"]
 [ext_resource type="Texture2D" uid="uid://crtgejdwvijj0" path="res://Assets/HUD_assets/PNG/SpecialBar.png" id="6_d2sja"]
-[ext_resource type="Texture2D" uid="uid://dblgq32ave8d2" path="res://Assets/sprites/Matt.png" id="7_1ree7"]
+[ext_resource type="Texture2D" uid="uid://dblgq32ave8d2" path="res://Assets/NDS Game Files/MatTt Sprites/Matt.png" id="7_1ree7"]
 
 [node name="Hud" type="CanvasLayer" unique_id=795795287]
 script = ExtResource("1_omqfp")

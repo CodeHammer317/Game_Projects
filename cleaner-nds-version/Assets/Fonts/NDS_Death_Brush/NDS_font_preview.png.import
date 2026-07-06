@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvuf8yaolnktc"
-path="res://.godot/imported/Full_HUD Overlay.png-8a5f8b92c36d8c8928501d5a26e14e47.ctex"
+uid="uid://dtj5vdq2u1mtw"
+path="res://.godot/imported/NDS_font_preview.png-9106b95a67de1910e14948a49a0c7736.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HUD_assets/Full_HUD Overlay.png"
-dest_files=["res://.godot/imported/Full_HUD Overlay.png-8a5f8b92c36d8c8928501d5a26e14e47.ctex"]
+source_file="res://Assets/Fonts/NDS_Death_Brush/NDS_font_preview.png"
+dest_files=["res://.godot/imported/NDS_font_preview.png-9106b95a67de1910e14948a49a0c7736.ctex"]
 
 [params]
 

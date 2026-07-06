@@ -9,9 +9,8 @@
 [ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="99_81gu5"]
 [ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="100_pf3rq"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gk6dx"]
-radius = 7.0
-height = 48.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlvik"]
+size = Vector2(12, 56.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yylel"]
 atlas = ExtResource("98_6a86w")
@@ -1276,13 +1275,12 @@ dust_trail_scene = ExtResource("4_jmbrt")
 helper_spawn_offset = Vector2(-40, -100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1032869655]
-position = Vector2(0, 4)
-shape = SubResource("CapsuleShape2D_gk6dx")
+shape = SubResource("RectangleShape2D_jlvik")
 debug_color = Color(0.9222628, 0.24629954, 0.34191763, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1655699272]
 sprite_frames = SubResource("SpriteFrames_olv1t")
-animation = &"double_jump"
+animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -32)
 

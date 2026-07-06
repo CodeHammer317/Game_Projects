@@ -5,12 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://7vmcsf68hsg0" path="res://Assets/HUD_assets/Icons/RavensWingsIcon.png" id="3_kggtl"]
 [ext_resource type="Texture2D" uid="uid://pa5k6220n18" path="res://Assets/HUD_assets/Icons/Wall_Jump_Icon.png" id="4_si7j0"]
 [ext_resource type="Texture2D" uid="uid://cbxslq2hqcxi" path="res://Assets/HUD_assets/Icons/Charge_Shot.png" id="5_w55pg"]
+[ext_resource type="Texture2D" uid="uid://b16iuacs8ak0k" path="res://Assets/HUD_assets/Icons/Blank_Upgrade_Slot.png" id="6_future"]
 
 [node name="UpgradeMatrixDisplay" type="Node2D" unique_id=181610676]
 script = ExtResource("1_5cdvn")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=830672931]
-scale = Vector2(5.328125, 2.890625)
+scale = Vector2(3.8125, 2.34375)
 texture = ExtResource("1_qjl0l")
 centered = false
 
@@ -19,17 +20,23 @@ centered = false
 [node name="DoubleJumpSlot" type="Node2D" parent="RelicSlots" unique_id=2559385]
 
 [node name="EmptySprite" type="Sprite2D" parent="RelicSlots/DoubleJumpSlot" unique_id=149392195]
-position = Vector2(234, 53)
-scale = Vector2(0.5, 0.5)
+modulate = Color(0.12, 0.18, 0.22, 0.65)
+position = Vector2(119.99999, 47)
+scale = Vector2(0.47017607, 0.45294273)
+texture = ExtResource("3_kggtl")
 
 [node name="RelicSprite" type="Sprite2D" parent="RelicSlots/DoubleJumpSlot" unique_id=2020097285]
-position = Vector2(121, 53)
+position = Vector2(119.99999, 47)
 scale = Vector2(0.47017607, 0.45294273)
 texture = ExtResource("3_kggtl")
 
 [node name="WallSlideSlot" type="Node2D" parent="RelicSlots" unique_id=324259912]
 
 [node name="EmptySprite" type="Sprite2D" parent="RelicSlots/WallSlideSlot" unique_id=1494853725]
+modulate = Color(0.12, 0.18, 0.22, 0.65)
+position = Vector2(63, 51)
+scale = Vector2(0.4, 0.39375)
+texture = ExtResource("4_si7j0")
 
 [node name="RelicSprite" type="Sprite2D" parent="RelicSlots/WallSlideSlot" unique_id=996342246]
 position = Vector2(63, 51)
@@ -39,8 +46,33 @@ texture = ExtResource("4_si7j0")
 [node name="ChargeShotSlot" type="Node2D" parent="RelicSlots" unique_id=1850610980]
 
 [node name="EmptySprite" type="Sprite2D" parent="RelicSlots/ChargeShotSlot" unique_id=981713534]
+modulate = Color(0.12, 0.18, 0.22, 0.65)
+position = Vector2(178.29999, 47)
+scale = Vector2(0.4015627, 0.3800781)
+texture = ExtResource("5_w55pg")
 
 [node name="RelicSprite" type="Sprite2D" parent="RelicSlots/ChargeShotSlot" unique_id=1291382312]
 position = Vector2(178.29999, 47)
 scale = Vector2(0.4015627, 0.3800781)
 texture = ExtResource("5_w55pg")
+
+[node name="FutureSlots" type="Node2D" parent="." unique_id=922148093]
+position = Vector2(0, -8)
+
+[node name="FutureSlot1" type="Sprite2D" parent="FutureSlots" unique_id=131194225]
+modulate = Color(0.12, 0.18, 0.22, 0.65)
+position = Vector2(63, 111)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_future")
+
+[node name="FutureSlot2" type="Sprite2D" parent="FutureSlots" unique_id=700789531]
+modulate = Color(0.12, 0.18, 0.22, 0.65)
+position = Vector2(120, 111)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_future")
+
+[node name="FutureSlot3" type="Sprite2D" parent="FutureSlots" unique_id=343932198]
+modulate = Color(0.12, 0.18, 0.22, 0.65)
+position = Vector2(178, 111)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_future")
