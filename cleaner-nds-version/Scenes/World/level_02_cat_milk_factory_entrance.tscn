@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://buo4ikh85uvqb" path="res://Assets/tilesets/Factory entrance cat milk Factory-Atlas.png" id="2_yapm6"]
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="3_un4ry"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="5_un4ry"]
+[ext_resource type="PackedScene" path="res://Scenes/World/checkpoint.tscn" id="20_checkpoint"]
 [ext_resource type="Script" path="res://Scripts/respawn_manager.gd" id="99_respawn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2qdu"]
@@ -6910,6 +6911,12 @@ target_path = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("3_un4ry")]
 position = Vector2(130, 241)
+
+[node name="CheckpointMid" parent="." instance=ExtResource("20_checkpoint")]
+position = Vector2(800, 241)
+
+[node name="CheckpointExitRun" parent="." instance=ExtResource("20_checkpoint")]
+position = Vector2(1500, 241)
 
 [node name="AreaTransition" parent="." unique_id=1160941269 instance=ExtResource("5_un4ry")]
 position = Vector2(2093, 326)

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cuhdpfcm440hu" path="res://Scenes/World/camera_2d.tscn" id="4_txywj"]
 [ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="5_nu0ct"]
 [ext_resource type="Texture2D" uid="uid://61ofj15co28b" path="res://Assets/tilesets/catbossarea-sheet.png" id="8_3t5s2"]
+[ext_resource type="PackedScene" path="res://Scenes/World/checkpoint.tscn" id="20_checkpoint"]
 [ext_resource type="Script" path="res://Scripts/respawn_manager.gd" id="99_respawn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_up624"]
@@ -634,6 +635,9 @@ tile_set = SubResource("TileSet_v01rq")
 
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("2_nu0ct")]
 position = Vector2(96, 320)
+
+[node name="CheckpointBossDoor" parent="." instance=ExtResource("20_checkpoint")]
+position = Vector2(250, 320)
 
 [node name="Camera2D" parent="." unique_id=1131454127 instance=ExtResource("4_txywj")]
 limit_right = 923

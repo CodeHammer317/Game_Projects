@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://covfsy7bci2kb"]
+
+[ext_resource type="Texture2D" uid="uid://c6fuln0sggmu4" path="res://Assets/sprites/ScanRay.png" id="1_v2kvx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukvmb"]
+atlas = ExtResource("1_v2kvx")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jvgd"]
+atlas = ExtResource("1_v2kvx")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7dd3"]
+atlas = ExtResource("1_v2kvx")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih2m7"]
+atlas = ExtResource("1_v2kvx")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ce42p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukvmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jvgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7dd3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih2m7")
+}],
+"loop": true,
+"name": &"Scan",
+"speed": 30.0
+}]
+
+[node name="ScanRay" type="Node2D" unique_id=1123958244]
+
+[node name="ScanRayAnimation" type="AnimatedSprite2D" parent="." unique_id=679621691]
+position = Vector2(129, 138)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ce42p")
+animation = &"Scan"
+autoplay = "Scan"

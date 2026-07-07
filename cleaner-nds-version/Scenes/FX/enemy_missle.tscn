@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://p5r4s224bf2a"]
+
+[ext_resource type="Texture2D" uid="uid://cy3g4m0tjjijk" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0000.png" id="1_ks76o"]
+[ext_resource type="Texture2D" uid="uid://didysj2616x3u" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0001.png" id="2_6d4rb"]
+[ext_resource type="Texture2D" uid="uid://dhvs6fbhc8281" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0002.png" id="3_0q868"]
+[ext_resource type="Texture2D" uid="uid://djieq0ji0vc0f" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0003.png" id="4_wrsxe"]
+[ext_resource type="Texture2D" uid="uid://ctwkg06is0bji" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0004.png" id="5_5tn27"]
+[ext_resource type="Texture2D" uid="uid://cmw4lyqdvyx8v" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0005.png" id="6_4wrxf"]
+[ext_resource type="Texture2D" uid="uid://bby2v2ffjqir0" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0006.png" id="7_am8wp"]
+[ext_resource type="Texture2D" uid="uid://dnyqoa5dchev" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0007.png" id="8_k61xx"]
+[ext_resource type="Texture2D" uid="uid://bt5w6rqgqjcxq" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0008.png" id="9_s0gqj"]
+[ext_resource type="Texture2D" uid="uid://dgns7cqhcsovv" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0009.png" id="10_yp53r"]
+[ext_resource type="Script" path="res://Scenes/FX/enemy_missle.gd" id="11_missle_script"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ws70x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ks76o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6d4rb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0q868")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wrsxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5tn27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4wrxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_am8wp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_k61xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s0gqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yp53r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 40.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75mh0"]
+radius = 5.0
+height = 28.0
+
+[node name="EnemyMissle" type="Area2D" unique_id=1209101709 groups=["enemies"]]
+collision_layer = 16
+collision_mask = 34
+script = ExtResource("11_missle_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1365049141]
+sprite_frames = SubResource("SpriteFrames_ws70x")
+autoplay = "default"
+frame_progress = 0.285316
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1314856738]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_75mh0")

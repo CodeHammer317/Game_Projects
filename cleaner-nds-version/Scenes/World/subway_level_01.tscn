@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://clabx45v2ml3w" path="res://Assets/tilesets/SubwayColumn.png" id="5_ewi5s"]
 [ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="8_dgd1k"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="9_w4dtl"]
+[ext_resource type="PackedScene" path="res://Scenes/World/checkpoint.tscn" id="20_checkpoint"]
 [ext_resource type="Script" path="res://Scripts/respawn_manager.gd" id="99_respawn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n6oji"]
@@ -78,6 +79,12 @@ position = Vector2(1824, 221)
 collision_layer = 128
 collision_mask = 2
 next_level_path = "uid://dcajnodtsqb5h"
+
+[node name="CheckpointMid" parent="." instance=ExtResource("20_checkpoint")]
+position = Vector2(700, 232)
+
+[node name="CheckpointExitRun" parent="." instance=ExtResource("20_checkpoint")]
+position = Vector2(1350, 232)
 
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("3_fl1d5")]
 position = Vector2(56, 232)
