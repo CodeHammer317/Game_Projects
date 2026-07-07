@@ -11,6 +11,7 @@ signal game_over
 const DOUBLE_JUMP_ANIMATION := &"double_jump"
 const NORMAL_JUMP_ANIMATION := &"jump"
 const FALL_ANIMATION := &"falling"
+const PlayerStateMachineScript := preload("res://Scripts/player/state_machine/player_state_machine.gd")
 
 
 @export var move_speed: float = 200.0
@@ -156,11 +157,13 @@ var _was_on_floor: bool = false
 var _dust_spawn_timer: float = 0.0
 var _sprite_base_position: Vector2 = Vector2.ZERO
 var _special_meter_charge: float = 0.0
+var _state_machine = null
 
 
 func _ready() -> void:
 	_sprite_base_position = sprite.position
 	_sync_upgrades_from_state()
+	_state_machine = PlayerStateMachineScript.new().setup(self)
 
 	if not PlayerState.upgrade_unlocked.is_connected(_on_upgrade_unlocked):
 		PlayerState.upgrade_unlocked.connect(_on_upgrade_unlocked)
@@ -181,24 +184,18 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if control_locked:
-		velocity = Vector2.ZERO
-		_input_dir = 0.0
-		_force_idle_pose()
-		move_and_slide()
-		return
+	if _state_machine == null:
+		_state_machine = PlayerStateMachineScript.new().setup(self)
 
-	if _is_game_over:
-		return
+	_state_machine.physics_process(delta)
 
-	if _is_dead:
-		return
 
+func _run_active_frame(delta: float, use_hitstun_movement: bool) -> void:
 	_capture_jump_input()
 	_update_timers(delta)
 	_refresh_floor_state()
 
-	if _hitstun_timer > 0.0:
+	if use_hitstun_movement:
 		_process_hitstun(delta)
 	else:
 		_process_normal_movement(delta)

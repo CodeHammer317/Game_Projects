@@ -643,7 +643,7 @@ position = Vector2(3031, 302)
 position = Vector2(3276, 315)
 
 [node name="FlyingDroneRecon" parent="Enemies" unique_id=2056188260 instance=ExtResource("9_01r5l")]
-position = Vector2(2771, 60)
+position = Vector2(2828, 142)
 
 [node name="Ground" type="Node2D" parent="." unique_id=1155179640]
 
