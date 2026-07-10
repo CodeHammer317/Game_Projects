@@ -6,7 +6,7 @@
 
 [node name="TitleScreen" parent="." unique_id=380044311 instance=ExtResource("1_ig7tw")]
 
-[node name="Label" parent="TitleScreen" index="1" unique_id=811937859]
+[node name="DemoLabel" parent="TitleScreen" index="1" unique_id=811937859]
 theme_override_colors/font_color = Color(1, 1, 1, 0.93333334)
 
 [node name="Logo" parent="TitleScreen" index="2" unique_id=1278079265]
@@ -14,12 +14,6 @@ offset_left = 176.0
 offset_top = 9.0
 offset_right = 447.0
 offset_bottom = 250.0
-
-[node name="Logo2" parent="TitleScreen/FadeLayer" parent_id_path=PackedInt32Array(380044311, 1064865099) index="0" unique_id=2014118866]
-offset_left = 127.0
-offset_right = 310.3333
-offset_bottom = 246.625
-texture = null
 
 [node name="SFX_Confirm" parent="TitleScreen" index="7" unique_id=1801189967]
 volume_db = -1.375

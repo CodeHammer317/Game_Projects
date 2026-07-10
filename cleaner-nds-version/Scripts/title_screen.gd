@@ -21,9 +21,12 @@ enum MenuOption {
 
 @onready var sfx_move: AudioStreamPlayer = $SFX_Move
 @onready var sfx_confirm: AudioStreamPlayer = $SFX_Confirm
+@onready var soundtrack: AudioStreamPlayer = $ScreenSoundtrack
 
 var menu_items: Array[Control] = []
 var current_index: int = 0
+var intro_tween: Tween = null
+var fade_tween: Tween = null
 var selector_tween: Tween = null
 var selector_pulse_tween: Tween = null
 var is_transitioning: bool = true
@@ -40,14 +43,43 @@ func _ready() -> void:
 		menu_item.mouse_entered.connect(_on_menu_item_mouse_entered.bind(item_index))
 		menu_item.gui_input.connect(_on_menu_item_gui_input.bind(item_index))
 
-	await get_tree().process_frame
+	call_deferred("_begin_intro")
+
+
+func _exit_tree() -> void:
+	_kill_tween(intro_tween)
+	_kill_tween(fade_tween)
+	_kill_tween(selector_tween)
+	_kill_tween(selector_pulse_tween)
+
+	if soundtrack != null:
+		soundtrack.stop()
+		soundtrack.stream = null
+	if sfx_move != null:
+		sfx_move.stop()
+		sfx_move.stream = null
+	if sfx_confirm != null:
+		sfx_confirm.stop()
+		sfx_confirm.stream = null
+
+
+func _begin_intro() -> void:
+	if not is_inside_tree():
+		return
 
 	if menu_items.is_empty():
 		push_error("Title screen has no menu items.")
 		return
 
 	_update_selector_position()
-	await _play_intro()
+	_play_intro()
+
+
+func _finish_intro() -> void:
+	intro_tween = null
+	if not is_inside_tree():
+		return
+
 	is_transitioning = false
 	_start_selector_pulse()
 
@@ -94,8 +126,7 @@ func _confirm_selection() -> void:
 	is_transitioning = true
 	_stop_selector_pulse()
 	sfx_confirm.play()
-	await _fade_out()
-	_execute_selection()
+	_start_fade_out()
 
 
 func _play_intro() -> void:
@@ -104,12 +135,13 @@ func _play_intro() -> void:
 	demo_label.modulate.a = 0.0
 	menu.modulate.a = 0.0
 
-	var intro_tween := create_tween().set_parallel(true)
+	_kill_tween(intro_tween)
+	intro_tween = create_tween().set_parallel(true)
 	intro_tween.tween_property(fade, "modulate:a", 0.0, intro_duration)
 	intro_tween.tween_property(logo, "modulate:a", 1.0, intro_duration)
 	intro_tween.tween_property(demo_label, "modulate:a", 1.0, intro_duration)
 	intro_tween.tween_property(menu, "modulate:a", 1.0, intro_duration)
-	await intro_tween.finished
+	intro_tween.finished.connect(_finish_intro, CONNECT_ONE_SHOT)
 
 
 func _start_selector_pulse() -> void:
@@ -135,10 +167,19 @@ func _stop_selector_pulse() -> void:
 		selector_pulse_tween = null
 
 
-func _fade_out() -> void:
-	var fade_tween := create_tween()
+func _start_fade_out() -> void:
+	_kill_tween(fade_tween)
+	fade_tween = create_tween()
 	fade_tween.tween_property(fade, "modulate:a", 1.0, fade_out_duration)
-	await fade_tween.finished
+	fade_tween.finished.connect(_finish_fade_out, CONNECT_ONE_SHOT)
+
+
+func _finish_fade_out() -> void:
+	fade_tween = null
+	if not is_inside_tree():
+		return
+
+	_execute_selection()
 
 
 func _execute_selection() -> void:
@@ -162,6 +203,11 @@ func _reset_transition() -> void:
 	is_transitioning = false
 	fade.modulate.a = 0.0
 	_start_selector_pulse()
+
+
+func _kill_tween(tween: Tween) -> void:
+	if tween != null and tween.is_valid():
+		tween.kill()
 
 
 func _on_menu_item_mouse_entered(item_index: int) -> void:
