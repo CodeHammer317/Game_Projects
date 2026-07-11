@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dnyqoa5dchev" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0007.png" id="8_k61xx"]
 [ext_resource type="Texture2D" uid="uid://bt5w6rqgqjcxq" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0008.png" id="9_s0gqj"]
 [ext_resource type="Texture2D" uid="uid://dgns7cqhcsovv" path="res://Assets/sprites/pj2_scifi_missile_small_red/frame0009.png" id="10_yp53r"]
-[ext_resource type="Script" path="res://Scenes/FX/enemy_missle.gd" id="11_missle_script"]
+[ext_resource type="Script" uid="uid://d6tmtv1b1ocq" path="res://Scenes/FX/enemy_missle.gd" id="11_missle_script"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ws70x"]
 animations = [{
@@ -58,6 +58,9 @@ height = 28.0
 collision_layer = 16
 collision_mask = 34
 script = ExtResource("11_missle_script")
+turn_speed = 1.0
+damage = 3
+lifetime = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1365049141]
 sprite_frames = SubResource("SpriteFrames_ws70x")

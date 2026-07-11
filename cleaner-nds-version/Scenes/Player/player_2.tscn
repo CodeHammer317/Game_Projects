@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d2ki17hpifc2o" path="res://Assets/sprites/TopLobsta/top_lobsta_nasty_claw_attack_192x128.png" id="1_fy55f"]
 [ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="1_ktnsh"]
-[ext_resource type="Script" path="res://Scripts/player/player_2.gd" id="1_p2top"]
+[ext_resource type="Script" uid="uid://b83c3tygopnh4" path="res://Scripts/player/player_2.gd" id="1_p2top"]
 [ext_resource type="Texture2D" uid="uid://dq7a4e5jxnb6i" path="res://Assets/sprites/TopLobsta/top_lobsta_first_pass_128_grid_normalized.png" id="2_3wjba"]
 [ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="2_4cgqj"]
 [ext_resource type="Texture2D" uid="uid://bo3krknjbraj1" path="res://Assets/sprites/TopLobsta/top_lobsta_nasty_air_set_128x128.png" id="2_ui3cn"]
@@ -736,14 +736,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyora"]
-size = Vector2(26, 42)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4j5n"]
+radius = 22.0
+height = 115.25
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fy55f"]
-radius = 4.0
+radius = 11.42857
+height = 59.99999
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ui3cn"]
-size = Vector2(5, 26)
+size = Vector2(18.520695, 63.28736)
 
 [node name="Player2" type="CharacterBody2D" unique_id=1346688008]
 collision_layer = 2
@@ -758,10 +760,10 @@ frame_progress = 0.41740617
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1504707401]
 visible = false
-shape = SubResource("RectangleShape2D_jyora")
+position = Vector2(0, 1.375)
+shape = SubResource("CapsuleShape2D_g4j5n")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1144291992]
-visible = false
 scale = Vector2(1.4000003, 1.6000004)
 collision_layer = 32
 collision_mask = 16
@@ -769,21 +771,23 @@ script = ExtResource("1_ktnsh")
 health_path = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=2129118107]
+visible = false
 shape = SubResource("CapsuleShape2D_fy55f")
 debug_color = Color(0.8364399, 0.16650367, 0.8504344, 0.41960785)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=900769555]
-visible = false
 scale = Vector2(1.7277969, -1.5168905)
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=938201123]
+visible = false
+position = Vector2(0, -1.2574069e-06)
 shape = SubResource("RectangleShape2D_ui3cn")
 debug_color = Color(0.7529412, 0.59607846, 0.03529412, 0.6156863)
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=744522625]
-position = Vector2(26, -11)
+position = Vector2(55, -22)
 
 [node name="Health" type="Node" parent="." unique_id=293453933]
 script = ExtResource("2_4cgqj")

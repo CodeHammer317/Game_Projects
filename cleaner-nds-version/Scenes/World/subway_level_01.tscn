@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://clabx45v2ml3w" path="res://Assets/tilesets/SubwayColumn.png" id="5_ewi5s"]
 [ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="8_dgd1k"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="9_w4dtl"]
-[ext_resource type="PackedScene" uid="uid://c7iyof5wn7i65" path="res://Scenes/Player/player_2.tscn" id="10_a2kea"]
 [ext_resource type="PackedScene" path="res://Scenes/World/checkpoint.tscn" id="20_checkpoint"]
 [ext_resource type="Script" uid="uid://b1w2a28gwfgfd" path="res://Scripts/respawn_manager.gd" id="99_respawn"]
 
@@ -86,10 +85,6 @@ position = Vector2(700, 232)
 
 [node name="CheckpointExitRun" parent="." unique_id=1655694181 instance=ExtResource("20_checkpoint")]
 position = Vector2(1350, 232)
-
-[node name="Player2" parent="." unique_id=1346688008 instance=ExtResource("10_a2kea")]
-position = Vector2(144, 240)
-scale = Vector2(0.46, 0.46)
 
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("3_fl1d5")]
 position = Vector2(56, 232)

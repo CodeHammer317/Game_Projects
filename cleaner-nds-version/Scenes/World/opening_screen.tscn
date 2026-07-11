@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4aefhlnwo5i0"]
+
+[ext_resource type="Script" path="res://Scripts/opening_screen.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://burdcrbskjo7h" path="res://Assets/sprites/OpeningImage_1.png" id="2_image1"]
+[ext_resource type="Texture2D" uid="uid://di7v2tdfwiqof" path="res://Assets/sprites/OpeningImage_2.png" id="3_image2"]
+[ext_resource type="Texture2D" uid="uid://bvxqwcr4h8afx" path="res://Assets/sprites/OpeningImage_3.png" id="4_image3"]
+[ext_resource type="AudioStream" uid="uid://dxjt2277hv5an" path="res://Assets/Audio/freepik-gamers-united.mp3" id="5_music"]
+[ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/pixy/PIXY.ttf" id="6_font"]
+
+[node name="OpeningScreen" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_music")
+volume_db = -8.0
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="OpeningImages" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="OpeningImage1" type="TextureRect" parent="CanvasLayer/OpeningImages"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_image1")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="OpeningImage2" type="TextureRect" parent="CanvasLayer/OpeningImages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_image2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="OpeningImage3" type="TextureRect" parent="CanvasLayer/OpeningImages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_image3")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="NarrationPanel" type="ColorRect" parent="CanvasLayer"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 22.0
+offset_right = 344.0
+offset_bottom = 112.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.72)
+
+[node name="Narration" type="RichTextLabel" parent="CanvasLayer/NarrationPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = -12.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.94, 0.86, 0.67, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/normal_font = ExtResource("6_font")
+theme_override_font_sizes/normal_font_size = 15
+fit_content = true
+
+[node name="ContinueLabel" type="Label" parent="CanvasLayer"]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 332.0
+offset_right = 630.0
+offset_bottom = 352.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.94, 0.86, 0.67, 0.9)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 8
+text = "A / Space: continue"
+horizontal_alignment = 2
+
+[node name="Fade" type="ColorRect" parent="CanvasLayer"]
+z_index = 10
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

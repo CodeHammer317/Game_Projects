@@ -1,7 +1,7 @@
 extends Control
 
 const SELECTOR_OFFSET: Vector2 = Vector2(-25, 11)
-const BRIEFING_SCENE: String = "res://Scenes/World/study.tscn"
+const BRIEFING_SCENE: String = "res://Scenes/World/opening_screen.tscn"
 
 enum MenuOption {
 	START_DEMO,

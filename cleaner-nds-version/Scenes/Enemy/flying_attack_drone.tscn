@@ -197,6 +197,7 @@ fire_cooldown = 7.0
 projectile_scene = ExtResource("9_missle")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=776852473]
+visible = false
 shape = SubResource("RectangleShape2D_yxkbp")
 debug_color = Color(0.6652465, 0.41295, 0.7853119, 0.41960785)
 
@@ -223,6 +224,7 @@ script = ExtResource("7_ekaqm")
 health_path = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=10881177]
+visible = false
 shape = SubResource("RectangleShape2D_4ht8y")
 
 [node name="Health" type="Node" parent="." unique_id=1714794119]
