@@ -24,7 +24,6 @@ PlayerState="*uid://d0g06i3u8krc6"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/always_on_top=true
 window/size/sharp_corners=true
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
