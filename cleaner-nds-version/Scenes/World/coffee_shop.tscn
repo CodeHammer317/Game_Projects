@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://qi3wbmpbhrh3" path="res://Assets/tilesets/main_lev_buildB.png" id="3_ncgo7"]
 [ext_resource type="PackedScene" uid="uid://cuhdpfcm440hu" path="res://Scenes/World/camera_2d.tscn" id="5_ncgo7"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="6_o0402"]
-[ext_resource type="Script" path="res://Scripts/respawn_manager.gd" id="99_respawn"]
+[ext_resource type="Script" uid="uid://b1w2a28gwfgfd" path="res://Scripts/respawn_manager.gd" id="99_respawn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0402"]
 texture = ExtResource("2_dikdy")
@@ -2030,8 +2030,9 @@ sources/0 = SubResource("TileSetAtlasSource_o0402")
 sources/1 = SubResource("TileSetAtlasSource_lyixy")
 
 [node name="CoffeeShop" type="Node2D" unique_id=2077241956]
+texture_filter = 2
 
-[node name="RespawnManager" type="Node" parent="."]
+[node name="RespawnManager" type="Node" parent="." unique_id=1006288972]
 script = ExtResource("99_respawn")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=889076199]

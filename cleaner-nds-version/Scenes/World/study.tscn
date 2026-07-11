@@ -477,6 +477,7 @@ animations = [{
 size = Vector2(32, 120)
 
 [node name="Study" type="Node2D" unique_id=62157998]
+texture_filter = 2
 script = ExtResource("1_h1fst")
 player_scene = ExtResource("25_player")
 
