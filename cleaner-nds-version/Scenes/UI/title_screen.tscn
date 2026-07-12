@@ -125,6 +125,6 @@ volume_db = -7.761
 
 [node name="ScreenSoundtrack" type="AudioStreamPlayer" parent="." unique_id=1219278294]
 stream = ExtResource("8_tjte5")
-volume_db = -7.762
+volume_db = 4.875
 autoplay = true
 parameters/looping = true
