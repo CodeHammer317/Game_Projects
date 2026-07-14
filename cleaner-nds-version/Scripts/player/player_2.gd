@@ -10,6 +10,8 @@ signal nasty_state_changed(active: bool)
 
 @export_group("Top Lobsta Animations")
 @export var normal_idle_animation: StringName = &"idle_normal"
+@export var normal_walk_animation: StringName = &"walk_normal"
+@export var normal_run_animation: StringName = &"run_normal"
 @export var normal_jump_start_animation: StringName = &"jump_start_normal"
 @export var normal_jump_loop_animation: StringName = &"jump_loop_normal"
 @export var normal_fall_animation: StringName = &"fall_normal"
@@ -18,6 +20,8 @@ signal nasty_state_changed(active: bool)
 @export var transform_animation: StringName = &"transform"
 
 @export var nasty_idle_animation: StringName = &"claw_idle"
+@export var nasty_walk_animation: StringName = &"claw_walk"
+@export var nasty_run_animation: StringName = &"claw_run"
 @export var nasty_jump_start_animation: StringName = &"claw_jump_start"
 @export var nasty_jump_loop_animation: StringName = &"claw_jump_loop"
 @export var nasty_fall_animation: StringName = &"claw_fall"
@@ -214,7 +218,15 @@ func _update_normal_animation() -> void:
 
 	_was_airborne = false
 	_played_landing = false
-	_play_animation_if_available(normal_idle_animation)
+	if absf(velocity.x) > walk_velocity_threshold:
+		var movement_animation := normal_walk_animation if _should_play_walk_animation() else normal_run_animation
+		var movement_fallback := normal_run_animation if _should_play_walk_animation() else normal_walk_animation
+		if sprite.sprite_frames.has_animation(movement_fallback):
+			_play_animation_with_fallback(str(movement_animation), str(movement_fallback))
+		else:
+			_play_animation_with_fallback(str(movement_animation), str(normal_idle_animation))
+	else:
+		_play_animation_if_available(normal_idle_animation)
 
 
 func _update_nasty_animation() -> void:
@@ -230,7 +242,15 @@ func _update_nasty_animation() -> void:
 
 	_was_airborne = false
 	_played_landing = false
-	_play_animation_if_available(nasty_idle_animation)
+	if absf(velocity.x) > walk_velocity_threshold:
+		var movement_animation := nasty_walk_animation if _should_play_walk_animation() else nasty_run_animation
+		var movement_fallback := nasty_run_animation if _should_play_walk_animation() else nasty_walk_animation
+		if sprite.sprite_frames.has_animation(movement_fallback):
+			_play_animation_with_fallback(str(movement_animation), str(movement_fallback))
+		else:
+			_play_animation_with_fallback(str(movement_animation), str(nasty_idle_animation))
+	else:
+		_play_animation_if_available(nasty_idle_animation)
 
 
 func _do_jump(is_double_jump: bool = false) -> void:

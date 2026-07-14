@@ -28,11 +28,11 @@ scroll_following_visible_characters = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1704835657]
 stream = ExtResource("3_ajv21")
-volume_db = -22.05
+volume_db = -32.342
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1272386344]
 stream = ExtResource("5_0dqim")
-volume_db = -7.03
+volume_db = -11.905
 autoplay = true
 parameters/looping = true
 
@@ -45,5 +45,3 @@ offset_bottom = 335.0
 theme_override_font_sizes/font_size = 6
 text = "Press \"B\" or spacebar to play"
 label_settings = SubResource("LabelSettings_0dqim")
-
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=1455540780]

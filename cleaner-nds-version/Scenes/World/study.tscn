@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cxnx1ar8rv62v" path="res://Assets/sprites/Study Art/ClosedBook.png" id="6_r75ra"]
 [ext_resource type="Texture2D" uid="uid://qi3wbmpbhrh3" path="res://Assets/tilesets/main_lev_buildB.png" id="6_txpg4"]
 [ext_resource type="PackedScene" uid="uid://cormy61c2jsmw" path="res://Scenes/World/level_01_briefing_screen.tscn" id="7_txpg4"]
-[ext_resource type="AudioStream" uid="uid://dfgaf4fpgmgpv" path="res://Assets/Audio/brvhrtz-action-loop-e-90-bpm-brvhrtz-233462.mp3" id="8_8jq0p"]
 [ext_resource type="Texture2D" uid="uid://cr682hx8xud8q" path="res://Assets/sprites/Study Art/Sprite-0001.png" id="10_r75ra"]
 [ext_resource type="Texture2D" uid="uid://owffdwtqr5n1" path="res://Assets/sprites/Study Art/CoffeeCup_Beige.png" id="13_ty2k5"]
 [ext_resource type="Texture2D" uid="uid://ciov2462n8h2i" path="res://Assets/Cool Animations/Smoke/Smoke1.png" id="14_cfwgu"]
@@ -477,6 +476,7 @@ animations = [{
 size = Vector2(32, 120)
 
 [node name="Study" type="Node2D" unique_id=62157998]
+texture_filter = 2
 script = ExtResource("1_h1fst")
 player_scene = ExtResource("25_player")
 
@@ -529,7 +529,7 @@ offset_right = 408.0
 offset_bottom = 247.0
 
 [node name="AudioStreamPlayer2" parent="Level01BriefingScreen" index="2" unique_id=1272386344]
-stream = ExtResource("8_8jq0p")
+volume_db = -16.238
 
 [node name="SkipLabel" parent="Level01BriefingScreen" index="3" unique_id=400649107]
 offset_left = 139.0
