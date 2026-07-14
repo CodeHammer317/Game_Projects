@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dku0j0f5xrw5x"
-path="res://.godot/imported/old_district_subway_stairs_matched_chroma.png-51350663a44b0e9415f657c00fa4b718.ctex"
+uid="uid://bcnkr8n2gk1dv"
+path="res://.godot/imported/coffee_library_interior_stenciled_640x360.png-a481830efeeb5dbfeecee6ff54b895bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/Subway/old_district_subway_stairs_matched_chroma.png"
-dest_files=["res://.godot/imported/old_district_subway_stairs_matched_chroma.png-51350663a44b0e9415f657c00fa4b718.ctex"]
+source_file="res://Assets/sprites/OldDistrictIntro/coffee_library_interior_stenciled_640x360.png"
+dest_files=["res://.godot/imported/coffee_library_interior_stenciled_640x360.png-a481830efeeb5dbfeecee6ff54b895bf.ctex"]
 
 [params]
 

@@ -19,6 +19,16 @@ const PlayerStateMachineScript := preload("res://Scripts/player/state_machine/pl
 @export var air_acceleration: float = 700.0
 @export var friction: float = 1000.0
 
+@export_group("Movement Animations")
+@export var idle_animation: StringName = &"idle"
+@export var walk_animation: StringName = &"walk"
+@export var run_fallback_animation: StringName = &"run"
+@export var walk_velocity_threshold: float = 8.0
+@export_range(0.25, 0.95, 0.05) var joystick_run_threshold: float = 0.7
+@export_range(0.1, 0.9, 0.05) var keyboard_walk_speed_multiplier: float = 0.5
+@export var walk_modifier_action: StringName = &"walk_modifier"
+
+@export_group("")
 @export var jump_velocity: float = -350.0
 @export var gravity: float = 900.0
 @export var max_fall_speed: float = 700.0
@@ -114,6 +124,7 @@ var _shoot_anim_timer: float = 0.0
 var _charge_time: float = 0.0
 var _is_charging_shot: bool = false
 var _input_dir: float = 0.0
+var _walk_input_active: bool = false
 var control_locked: bool = false
 var combat_enabled: bool = true
 
@@ -603,19 +614,39 @@ func _handle_horizontal_movement(delta: float) -> void:
 		return
 
 	_input_dir = Input.get_axis("move_left", "move_right")
+	var input_strength := absf(_input_dir)
+	var modifier_pressed := Input.is_action_pressed(walk_modifier_action)
+	_walk_input_active = input_strength > 0.0 and (
+		modifier_pressed or input_strength < joystick_run_threshold
+	)
 
 	if _wall_jump_lock_timer > 0.0:
 		return
 
 	if _input_dir != 0.0:
 		var accel := acceleration
+		var target_input_strength := input_strength
+
+		if modifier_pressed:
+			target_input_strength = minf(target_input_strength, keyboard_walk_speed_multiplier)
 
 		if not is_on_floor():
 			accel = air_acceleration
 
-		velocity.x = move_toward(velocity.x, _input_dir * move_speed, accel * delta)
+		var target_velocity := signf(_input_dir) * target_input_strength * move_speed
+		velocity.x = move_toward(velocity.x, target_velocity, accel * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
+
+
+func _should_play_walk_animation() -> bool:
+	if absf(velocity.x) <= walk_velocity_threshold:
+		return false
+
+	if absf(_input_dir) > 0.0:
+		return _walk_input_active
+
+	return absf(velocity.x) < move_speed * joystick_run_threshold
 
 
 func _handle_shoot(delta: float) -> void:
@@ -866,7 +897,8 @@ func _update_animation() -> void:
 		return
 
 	var is_shooting := _shoot_anim_timer > 0.01
-	var is_running := absf(velocity.x) > 8.0
+	var is_moving := absf(velocity.x) > walk_velocity_threshold
+	var use_walk_cycle := _should_play_walk_animation()
 
 	if not is_on_floor():
 		if _is_double_jump_state:
@@ -885,16 +917,18 @@ func _update_animation() -> void:
 				_play_animation_with_fallback(str(FALL_ANIMATION), "fall")
 		return
 
-	if is_running:
+	if is_moving:
+		var movement_animation := walk_animation if use_walk_cycle else run_fallback_animation
+		var movement_fallback := run_fallback_animation if use_walk_cycle else walk_animation
 		if is_shooting:
-			_play_animation_with_fallback("shoot_run", "run")
+			_play_animation_with_fallback("shoot_run", str(movement_animation))
 		else:
-			_play_animation_if_available("run")
+			_play_animation_with_fallback(str(movement_animation), str(movement_fallback))
 	else:
 		if is_shooting:
-			_play_animation_with_fallback("shoot_idle", "idle")
+			_play_animation_with_fallback("shoot_idle", str(idle_animation))
 		else:
-			_play_animation_if_available("idle")
+			_play_animation_if_available(str(idle_animation))
 
 
 func _play_animation_if_available(anim_name: String) -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1a0tsw27ijuu"
-path="res://.godot/imported/old_district_subway_stairs_chroma.png-ebbbb8cb0bdf197c2276c6e85beae9aa.ctex"
+uid="uid://dosuu6rw30e32"
+path="res://.godot/imported/coffee_library_exterior_640x360.png-38789066d31cfb565fbee9dda0097651.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/Subway/old_district_subway_stairs_chroma.png"
-dest_files=["res://.godot/imported/old_district_subway_stairs_chroma.png-ebbbb8cb0bdf197c2276c6e85beae9aa.ctex"]
+source_file="res://Assets/sprites/OldDistrictIntro/coffee_library_exterior_640x360.png"
+dest_files=["res://.godot/imported/coffee_library_exterior_640x360.png-38789066d31cfb565fbee9dda0097651.ctex"]
 
 [params]
 
