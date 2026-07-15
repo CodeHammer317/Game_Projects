@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqr4h2xvq0di3"
-path="res://.godot/imported/subway tileset.png-3353c77c9378fdaba662eae1df6c3c9a.ctex"
+uid="uid://3h0adspfesft"
+path="res://.godot/imported/SubWayCar_1.png-3a179ac9a7cc350eac26c9734ba4163b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/subway_assets/subway tileset.png"
-dest_files=["res://.godot/imported/subway tileset.png-3353c77c9378fdaba662eae1df6c3c9a.ctex"]
+source_file="res://Assets/sprites/Subway/SubWayCar_1.png"
+dest_files=["res://.godot/imported/SubWayCar_1.png-3a179ac9a7cc350eac26c9734ba4163b.ctex"]
 
 [params]
 

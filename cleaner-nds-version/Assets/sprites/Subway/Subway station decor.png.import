@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq6iy5gasrih3"
-path="res://.godot/imported/Subway car 3x longer.png-05845463b10045d47aedfc2fc687b265.ctex"
+uid="uid://cwan0877pwoo2"
+path="res://.godot/imported/Subway station decor.png-dac4dcc1b6ea49cb98eaca6901bc7c56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/subway_assets/Subway car 3x longer.png"
-dest_files=["res://.godot/imported/Subway car 3x longer.png-05845463b10045d47aedfc2fc687b265.ctex"]
+source_file="res://Assets/sprites/Subway/Subway station decor.png"
+dest_files=["res://.godot/imported/Subway station decor.png-dac4dcc1b6ea49cb98eaca6901bc7c56.ctex"]
 
 [params]
 

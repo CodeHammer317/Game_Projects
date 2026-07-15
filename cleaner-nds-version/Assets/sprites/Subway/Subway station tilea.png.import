@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7hr7yoaagnqf"
-path="res://.godot/imported/ChatGPT Image Mar 10, 2026, 06_50_25 AM.png-f312f0673ef017f864d50c74f1d53de0.ctex"
+uid="uid://bcygcg0vi5xd4"
+path="res://.godot/imported/Subway station tilea.png-46ce7b6296f93e4ea461bb6726c3ff7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/subway_assets/ChatGPT Image Mar 10, 2026, 06_50_25 AM.png"
-dest_files=["res://.godot/imported/ChatGPT Image Mar 10, 2026, 06_50_25 AM.png-f312f0673ef017f864d50c74f1d53de0.ctex"]
+source_file="res://Assets/sprites/Subway/Subway station tilea.png"
+dest_files=["res://.godot/imported/Subway station tilea.png-46ce7b6296f93e4ea461bb6726c3ff7c.ctex"]
 
 [params]
 

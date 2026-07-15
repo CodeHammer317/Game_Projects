@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0c4uxjxdoolu"
-path="res://.godot/imported/ChatGPT Image Mar 10, 2026, 06_52_40 AM.png-6d75c923424d11e3f4a337ebd1a14d52.ctex"
+uid="uid://clabx45v2ml3w"
+path="res://.godot/imported/SubwayColumn.png-b2180fc259f5a4634922d597d77922b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/subway_assets/ChatGPT Image Mar 10, 2026, 06_52_40 AM.png"
-dest_files=["res://.godot/imported/ChatGPT Image Mar 10, 2026, 06_52_40 AM.png-6d75c923424d11e3f4a337ebd1a14d52.ctex"]
+source_file="res://Assets/sprites/Subway/SubwayColumn.png"
+dest_files=["res://.godot/imported/SubwayColumn.png-b2180fc259f5a4634922d597d77922b6.ctex"]
 
 [params]
 

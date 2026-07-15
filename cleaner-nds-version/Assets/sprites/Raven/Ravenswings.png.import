@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t5nimnnks0ig"
-path="res://.godot/imported/SubwaySign.png-dc9b8b949c5c18aaa5ebfcfa4bc093f1.ctex"
+uid="uid://dp38mdhpmo2q6"
+path="res://.godot/imported/Ravenswings.png-5afaa92d485ba77fdb4b4386c0c24aba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/subway_assets/SubwaySign.png"
-dest_files=["res://.godot/imported/SubwaySign.png-dc9b8b949c5c18aaa5ebfcfa4bc093f1.ctex"]
+source_file="res://Assets/sprites/Raven/Ravenswings.png"
+dest_files=["res://.godot/imported/Ravenswings.png-5afaa92d485ba77fdb4b4386c0c24aba.ctex"]
 
 [params]
 

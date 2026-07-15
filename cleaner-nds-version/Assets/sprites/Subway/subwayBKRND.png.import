@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cap0jkcrbubly"
-path="res://.godot/imported/SubwayDecorations.png-cff61fd6c9023b83f63f11bbb74f52f6.ctex"
+uid="uid://5rui0jj2e2vf"
+path="res://.godot/imported/subwayBKRND.png-034116a0f2df44810d5abb8249658c0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/subway_assets/SubwayDecorations.png"
-dest_files=["res://.godot/imported/SubwayDecorations.png-cff61fd6c9023b83f63f11bbb74f52f6.ctex"]
+source_file="res://Assets/sprites/Subway/subwayBKRND.png"
+dest_files=["res://.godot/imported/subwayBKRND.png-034116a0f2df44810d5abb8249658c0e.ctex"]
 
 [params]
 

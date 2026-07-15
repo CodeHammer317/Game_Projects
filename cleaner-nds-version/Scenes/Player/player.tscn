@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://yxy84onu0e8" path="res://Scenes/FX/player_bullet.tscn" id="2_plnq1"]
 [ext_resource type="PackedScene" uid="uid://bgk6qsvlkbjal" path="res://Scenes/FX/player_punch_hitbox.tscn" id="3_6a86w"]
 [ext_resource type="PackedScene" uid="uid://ctgyhfpw6awxh" path="res://Scenes/FX/dust_trail.tscn" id="4_jmbrt"]
+[ext_resource type="Texture2D" uid="uid://dp38mdhpmo2q6" path="res://Assets/sprites/Raven/Ravenswings.png" id="6_jlvik"]
 [ext_resource type="Texture2D" uid="uid://ej1pden7fis8" path="res://Assets/sprites/Street Brawler Urban – 2D Beat 'Em Up Character Pack/Street Brawler Urban – 2D Beat 'Em Up Character Pack/Character Tile/Character (1).png" id="98_6a86w"]
-[ext_resource type="Texture2D" uid="uid://d3vt221wabs37" path="res://Assets/sprites/Study Art/Double_Jump1.png" id="99_22q81"]
 [ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="99_81gu5"]
 [ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="100_pf3rq"]
 
@@ -104,28 +104,28 @@ region = Rect2(640, 768, 128, 128)
 atlas = ExtResource("98_6a86w")
 region = Rect2(768, 768, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fk05u"]
-atlas = ExtResource("99_22q81")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk6dx"]
+atlas = ExtResource("6_jlvik")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_syr5k"]
-atlas = ExtResource("99_22q81")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhyir"]
+atlas = ExtResource("6_jlvik")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d34qd"]
-atlas = ExtResource("99_22q81")
+[sub_resource type="AtlasTexture" id="AtlasTexture_74mp2"]
+atlas = ExtResource("6_jlvik")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_shwaw"]
-atlas = ExtResource("99_22q81")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oikmp"]
+atlas = ExtResource("6_jlvik")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_clih8"]
-atlas = ExtResource("99_22q81")
+[sub_resource type="AtlasTexture" id="AtlasTexture_06tpx"]
+atlas = ExtResource("6_jlvik")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8vt6r"]
-atlas = ExtResource("99_22q81")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g0yx"]
+atlas = ExtResource("6_jlvik")
 region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkeid"]
@@ -744,22 +744,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fk05u")
+"texture": SubResource("AtlasTexture_gk6dx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_syr5k")
+"texture": SubResource("AtlasTexture_jhyir")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d34qd")
+"texture": SubResource("AtlasTexture_74mp2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_shwaw")
+"texture": SubResource("AtlasTexture_oikmp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_clih8")
+"texture": SubResource("AtlasTexture_06tpx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8vt6r")
+"texture": SubResource("AtlasTexture_7g0yx")
 }],
 "loop": false,
 "name": &"double_jump",
@@ -1280,7 +1280,7 @@ debug_color = Color(0.9222628, 0.24629954, 0.34191763, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1655699272]
 sprite_frames = SubResource("SpriteFrames_olv1t")
-animation = &"idle"
+animation = &"double_jump"
 autoplay = "idle"
 offset = Vector2(0, -32)
 
