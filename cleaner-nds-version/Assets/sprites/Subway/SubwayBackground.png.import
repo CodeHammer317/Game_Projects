@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0hooqrhmr77p"
-path="res://.godot/imported/Subway_Sprite_Floor_Tiles.png-96058559fd54c1b832e5fbd1cd81dc10.ctex"
+uid="uid://npoyxfcphbps"
+path="res://.godot/imported/SubwayBackground.png-074ac23537004f539c83c2df1d7df1a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/subway_assets/Subway_Sprite_Floor_Tiles.png"
-dest_files=["res://.godot/imported/Subway_Sprite_Floor_Tiles.png-96058559fd54c1b832e5fbd1cd81dc10.ctex"]
+source_file="res://Assets/sprites/Subway/SubwayBackground.png"
+dest_files=["res://.godot/imported/SubwayBackground.png-074ac23537004f539c83c2df1d7df1a9.ctex"]
 
 [params]
 

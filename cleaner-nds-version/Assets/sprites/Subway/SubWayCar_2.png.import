@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://umrhewt37biw"
-path="res://.godot/imported/SubwayStructuralTiles.png-9b34a60e1b609577fe6b40fc1641af15.ctex"
+uid="uid://drjpr7l31twki"
+path="res://.godot/imported/SubWayCar_2.png-af628c33099105885a05082263b2f251.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/subway_assets/SubwayStructuralTiles.png"
-dest_files=["res://.godot/imported/SubwayStructuralTiles.png-9b34a60e1b609577fe6b40fc1641af15.ctex"]
+source_file="res://Assets/sprites/Subway/SubWayCar_2.png"
+dest_files=["res://.godot/imported/SubWayCar_2.png-af628c33099105885a05082263b2f251.ctex"]
 
 [params]
 

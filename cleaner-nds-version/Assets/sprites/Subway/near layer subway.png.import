@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxh5pqjwtud3o"
-path="res://.godot/imported/substairs.png-7b9ab7d04cd757c081af82b9bf30274c.ctex"
+uid="uid://c6k3ukj6fckwa"
+path="res://.godot/imported/near layer subway.png-4600a3ef0aff18ed76812cb3613d582f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/subway_assets/substairs.png"
-dest_files=["res://.godot/imported/substairs.png-7b9ab7d04cd757c081af82b9bf30274c.ctex"]
+source_file="res://Assets/sprites/Subway/near layer subway.png"
+dest_files=["res://.godot/imported/near layer subway.png-4600a3ef0aff18ed76812cb3613d582f.ctex"]
 
 [params]
 

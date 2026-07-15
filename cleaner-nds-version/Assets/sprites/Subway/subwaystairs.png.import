@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl2ler1if4lxd"
-path="res://.godot/imported/Mar 10, 2026, 06_54_02 AM.png-63cd4d3f911c917b8538d8f06ec7bcd0.ctex"
+uid="uid://dnuqtglmysrla"
+path="res://.godot/imported/subwaystairs.png-8c922dd5c5b016ecbd795b286ebfee23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesets/subway_assets/Mar 10, 2026, 06_54_02 AM.png"
-dest_files=["res://.godot/imported/Mar 10, 2026, 06_54_02 AM.png-63cd4d3f911c917b8538d8f06ec7bcd0.ctex"]
+source_file="res://Assets/sprites/Subway/subwaystairs.png"
+dest_files=["res://.godot/imported/subwaystairs.png-8c922dd5c5b016ecbd795b286ebfee23.ctex"]
 
 [params]
 
