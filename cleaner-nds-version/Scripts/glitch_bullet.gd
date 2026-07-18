@@ -8,6 +8,10 @@ class_name GlitchBullet
 
 @export var fly_anim_name: StringName = &"fly"
 @export var hit_anim_name: StringName = &"hit"
+@export var rotate_visual_to_trajectory: bool = true
+# Treat the bright leading edge as facing right; trajectory rotation handles
+# every other firing angle from this authored orientation.
+@export var sprite_forward_direction: Vector2 = Vector2.RIGHT
 
 var _direction: Vector2 = Vector2.RIGHT
 var _owner: Node = null
@@ -45,12 +49,25 @@ func _ready() -> void:
 func setup(direction: Vector2, source_node: Node) -> void:
 	_direction = direction.normalized() if direction != Vector2.ZERO else Vector2.RIGHT
 	_owner = source_node
+	_align_visual_to_trajectory()
 
-	if sprite:
-		if _direction.x < 0.0:
-			sprite.scale.x = -absf(sprite.scale.x)
-		else:
-			sprite.scale.x = absf(sprite.scale.x)
+
+func _align_visual_to_trajectory() -> void:
+	if sprite == null:
+		return
+
+	# Keep the animation's native scale. Rotating from its authored forward
+	# vector makes every spread/radial shot visually follow its velocity.
+	sprite.scale.x = absf(sprite.scale.x)
+	if rotate_visual_to_trajectory:
+		sprite.flip_h = false
+		var authored_forward := sprite_forward_direction.normalized()
+		if authored_forward == Vector2.ZERO:
+			authored_forward = Vector2.RIGHT
+		sprite.rotation = _direction.angle() - authored_forward.angle()
+	else:
+		sprite.rotation = 0.0
+		sprite.flip_h = _direction.x > 0.0
 
 
 func _physics_process(delta: float) -> void:

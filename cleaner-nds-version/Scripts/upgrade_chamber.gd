@@ -372,6 +372,12 @@ func _update_matrix_selector() -> void:
 
 func _show_selected_matrix_details() -> void:
 	var item := _matrix_items[_matrix_selection_index]
+	var kind: StringName = item.get("kind", &"")
+	var item_id: StringName = item.get("id", &"")
+
+	if kind == &"helper" and PlayerState.has_helper(item_id):
+		PlayerState.select_helper(item_id)
+
 	var status := _get_matrix_item_status(item)
 	_show_upgrade_message(
 		str(item.get("title", "UNKNOWN"))
@@ -389,7 +395,9 @@ func _get_matrix_item_status(item: Dictionary) -> String:
 	if kind == &"upgrade":
 		return "ACQUIRED" if PlayerState.has_upgrade(item_id) else "LOCKED"
 	if kind == &"helper":
-		return "ACTIVE" if PlayerState.has_helper(item_id) else "FULL GAME"
+		if PlayerState.selected_helper == item_id:
+			return "SELECTED"
+		return "AVAILABLE" if PlayerState.has_helper(item_id) else "FULL GAME"
 
 	return "ENCRYPTED"
 

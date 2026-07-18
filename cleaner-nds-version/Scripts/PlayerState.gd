@@ -142,7 +142,12 @@ func get_selected_helper_assist_scene() -> PackedScene:
 
 
 func get_selected_helper_hud_icon() -> Texture2D:
-	return get_selected_helper_definition().get("hud_icon") as Texture2D
+	return get_helper_hud_icon(selected_helper)
+
+
+func get_helper_hud_icon(helper_id: StringName) -> Texture2D:
+	var definition: Dictionary = HELPER_DEFINITIONS.get(helper_id, {})
+	return definition.get("hud_icon") as Texture2D
 
 
 func get_helper_display_name(helper_id: StringName) -> String:

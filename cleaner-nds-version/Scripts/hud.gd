@@ -10,11 +10,12 @@ class_name PlayerHUD
 
 @export_group("Behavior")
 @export var hide_charge_bar_when_idle: bool = true
+@export var helper_icon_slot_size: Vector2 = Vector2(24.0, 24.0)
 
 @onready var health_bar: TextureProgressBar = get_node(health_bar_path) as TextureProgressBar
 @onready var ability_bar: TextureProgressBar = get_node(ability_bar_path) as TextureProgressBar
 @onready var charge_bar: TextureProgressBar = get_node(charge_bar_path) as TextureProgressBar
-@onready var helper_icon: Sprite2D = get_node(helper_icon_path) as Sprite2D
+@onready var helper_icon: Sprite2D = _resolve_helper_icon()
 
 var player: Player = null
 var health: Health = null
@@ -32,6 +33,15 @@ func _ready() -> void:
 		tree.node_added.connect(_on_node_added)
 
 	call_deferred("_find_and_bind_player")
+
+
+func _resolve_helper_icon() -> Sprite2D:
+	if not helper_icon_path.is_empty():
+		var configured_icon := get_node_or_null(helper_icon_path) as Sprite2D
+		if configured_icon != null:
+			return configured_icon
+
+	return get_node_or_null("TextureRect/HelperIcon") as Sprite2D
 
 
 func _exit_tree() -> void:
@@ -155,10 +165,27 @@ func _on_shot_charge_changed(
 		charge_bar.visible = charging
 
 
-func _update_helper_icon(_helper_id: StringName) -> void:
-	var icon := PlayerState.get_selected_helper_hud_icon()
+func _update_helper_icon(helper_id: StringName) -> void:
+	if helper_icon == null:
+		push_warning("HUD: HelperIcon node is missing.")
+		return
+
+	var icon := PlayerState.get_helper_hud_icon(helper_id)
 	helper_icon.texture = icon
 	helper_icon.visible = icon != null
+
+	if icon == null:
+		return
+
+	var texture_size := Vector2(icon.get_size())
+	if texture_size.x <= 0.0 or texture_size.y <= 0.0:
+		return
+
+	var fit_scale := minf(
+		helper_icon_slot_size.x / texture_size.x,
+		helper_icon_slot_size.y / texture_size.y
+	)
+	helper_icon.scale = Vector2.ONE * fit_scale
 
 
 func _on_node_added(node: Node) -> void:

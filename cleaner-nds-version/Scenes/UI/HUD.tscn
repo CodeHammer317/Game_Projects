@@ -10,6 +10,7 @@
 
 [node name="Hud" type="CanvasLayer" unique_id=795795287]
 script = ExtResource("1_omqfp")
+helper_icon_path = NodePath("TextureRect/HelperIcon")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2117205763]
 offset_right = 171.0
@@ -43,12 +44,12 @@ offset_right = 96.0
 offset_bottom = 29.0
 texture_progress = ExtResource("6_d2sja")
 
-[node name="Sprite2D" type="Sprite2D" parent="TextureRect" unique_id=110129782]
+[node name="PlayerIcon" type="Sprite2D" parent="TextureRect" unique_id=110129782]
 position = Vector2(26, 26)
 scale = Vector2(0.28846154, 0.29126215)
 texture = ExtResource("4_4bm6u")
 
-[node name="HelperIcon" type="Sprite2D" parent="TextureRect" unique_id=1809520578]
-position = Vector2(49, 36.000004)
-scale = Vector2(0.06, 0.06)
+[node name="HelperIcon" type="Sprite2D" parent="TextureRect" unique_id=1896197581]
+position = Vector2(47.999996, 36.000004)
+scale = Vector2(0.07936517, 0.06790123)
 texture = ExtResource("7_1ree7")

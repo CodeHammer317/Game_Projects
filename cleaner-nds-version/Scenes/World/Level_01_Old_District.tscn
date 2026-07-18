@@ -1,14 +1,19 @@
 [gd_scene format=4 uid="uid://bun3a73t5kpyq"]
 
-[ext_resource type="Texture2D" uid="uid://dxic7t1ijx5bb" path="res://Assets/tilesets/OD_Far.png" id="1_08drm"]
 [ext_resource type="Texture2D" uid="uid://d36xgdj2kde72" path="res://Assets/tilesets/Old_District_Backround_Mid.png" id="2_ce1mu"]
+[ext_resource type="Texture2D" uid="uid://daffae6rshmy1" path="res://Assets/tilesets/OD_Far_no_clouds.png" id="2_ts8jl"]
 [ext_resource type="PackedScene" uid="uid://cuhdpfcm440hu" path="res://Scenes/World/camera_2d.tscn" id="3_08drm"]
 [ext_resource type="Texture2D" uid="uid://cnle2k8c8ybea" path="res://Assets/tilesets/Old district shritesheet to atlas.png" id="3_ce1mu"]
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="5_38drk"]
+[ext_resource type="Texture2D" uid="uid://w2fsgfuck8vt" path="res://Assets/tilesets/clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape8/clouds_shape8_1.png" id="5_vwqkn"]
+[ext_resource type="Texture2D" uid="uid://cfnk5nkyijfth" path="res://Assets/tilesets/clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape8/clouds_shape8_2.png" id="6_67mkg"]
 [ext_resource type="Texture2D" uid="uid://csl4ra1ng4u2y" path="res://Assets/tilesets/Old_District_Background_Near.png" id="6_ce1mu"]
+[ext_resource type="Texture2D" uid="uid://bg8dhehhu6g4x" path="res://Assets/tilesets/clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape8/clouds_shape8_3.png" id="7_5vrvd"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="7_38drk"]
 [ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="8_7x014"]
+[ext_resource type="Texture2D" uid="uid://phhroppsaonw" path="res://Assets/tilesets/clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape8/clouds_shape8_4.png" id="8_dqs3l"]
 [ext_resource type="PackedScene" uid="uid://boen48vb65uw0" path="res://Scenes/Enemy/flying_drone_recon.tscn" id="9_01r5l"]
+[ext_resource type="Texture2D" uid="uid://cw4sjim8k2omb" path="res://Assets/tilesets/clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape8/clouds_shape8_5.png" id="9_fug35"]
 [ext_resource type="PackedScene" uid="uid://cbaedji8sli4o" path="res://Scenes/Enemy/HomelessEnemy1.tscn" id="9_yttig"]
 [ext_resource type="PackedScene" uid="uid://buea412s1gop8" path="res://Scenes/Enemy/homeless_enemy_2.tscn" id="10_v41po"]
 [ext_resource type="PackedScene" uid="uid://bcrvvorfnmqkg" path="res://Scenes/FX/hotdog.tscn" id="11_7s6d5"]
@@ -3264,44 +3269,86 @@ script = ExtResource("99_respawn")
 [node name="Background" type="Node2D" parent="." unique_id=1298896062]
 
 [node name="Parallax2DFar" type="Parallax2D" parent="Background" unique_id=458161927]
-scroll_scale = Vector2(0.2, 0.2)
-repeat_size = Vector2(2000, 0)
+z_index = -30
+scroll_scale = Vector2(0.15, 0.05)
+repeat_size = Vector2(2309, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2DFar" unique_id=674234723]
 scale = Vector2(0.9453303, 1.0027778)
-texture = ExtResource("1_08drm")
+texture = ExtResource("2_ts8jl")
 centered = false
 flip_h = true
 
-[node name="Parallax2D2Mid" type="Parallax2D" parent="Background" unique_id=1535156896]
-scale = Vector2(0.6115365, 0.4483188)
-scroll_scale = Vector2(0.4, 0.4)
-scroll_offset = Vector2(0, 55)
-repeat_size = Vector2(540, 0)
-repeat_times = 6
+[node name="ParallaxMid" type="Parallax2D" parent="Background" unique_id=1535156896]
+z_index = -20
+scroll_scale = Vector2(0.38, 0.1)
+repeat_size = Vector2(2349, 0)
+repeat_times = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D2Mid" unique_id=703489352]
-position = Vector2(0, 194.05835)
-scale = Vector2(2.595511, 2.2472684)
+[node name="MidDistrict" type="Sprite2D" parent="Background/ParallaxMid" unique_id=703489352]
+position = Vector2(0, 87)
+scale = Vector2(1.587, 1.007)
 texture = ExtResource("2_ce1mu")
 centered = false
 
-[node name="Parallax2D3Near" type="Parallax2D" parent="Background" unique_id=1557637284]
-scroll_scale = Vector2(0.6, 0.6)
+[node name="ParallaxNear" type="Parallax2D" parent="Background" unique_id=1557637284]
+z_index = -10
+scroll_scale = Vector2(0.68, 0.18)
 scroll_offset = Vector2(2, -33)
-repeat_size = Vector2(1000, 0)
-repeat_times = 7
+repeat_size = Vector2(1502, 0)
+repeat_times = 3
 
-[node name="Sprite2D2" type="Sprite2D" parent="Background/Parallax2D3Near" unique_id=1781403414]
+[node name="NearDistrict" type="Sprite2D" parent="Background/ParallaxNear" unique_id=1781403414]
 position = Vector2(-116, 189)
 texture = ExtResource("6_ce1mu")
 centered = false
 
-[node name="Parallax2D4" type="Parallax2D" parent="Background" unique_id=652923196]
-visible = false
+[node name="CloudsFar" type="Parallax2D" parent="Background" unique_id=652923196]
+z_index = -28
+scroll_scale = Vector2(0.08, 0.03)
+scroll_offset = Vector2(-640, -8)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(6, 0)
+repeat_times = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D4" unique_id=2081638075]
+[node name="CloudsShape84" type="Sprite2D" parent="Background/CloudsFar" unique_id=1139252924]
+position = Vector2(536, 72)
+texture = ExtResource("8_dqs3l")
+
+[node name="CloudsShape85" type="Sprite2D" parent="Background/CloudsFar" unique_id=860554062]
+position = Vector2(416, 32)
+texture = ExtResource("9_fug35")
+
+[node name="CloudsMid" type="Parallax2D" parent="Background" unique_id=755775789]
+z_index = -25
+scroll_scale = Vector2(0.28, 0.07)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(12, 0)
+repeat_times = 3
+
+[node name="CloudsShape82" type="Sprite2D" parent="Background/CloudsMid" unique_id=1949792376]
+position = Vector2(296, 88)
+texture = ExtResource("6_67mkg")
+
+[node name="CloudsShape83" type="Sprite2D" parent="Background/CloudsMid" unique_id=2016650787]
+position = Vector2(408, 136)
+texture = ExtResource("7_5vrvd")
+
+[node name="CloudsNear" type="Parallax2D" parent="Background" unique_id=1593892474]
+z_index = -15
+scroll_scale = Vector2(0.52, 0.12)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(20, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/CloudsNear" unique_id=647959750]
+position = Vector2(-40, 64)
+texture = ExtResource("5_vwqkn")
+
+[node name="CloudsShape82" type="Sprite2D" parent="Background/CloudsNear" unique_id=1899956746]
+position = Vector2(296, 88)
+texture = ExtResource("6_67mkg")
 
 [node name="Actors" type="Node2D" parent="." unique_id=1960428599]
 
@@ -3339,7 +3386,7 @@ position = Vector2(2828, 142)
 collision_mask = 10
 
 [node name="Player" parent="Actors" unique_id=1715600248 instance=ExtResource("5_38drk")]
-position = Vector2(3592, 96)
+position = Vector2(43, 261)
 
 [node name="Environment" type="Node2D" parent="." unique_id=638069078]
 
@@ -3361,7 +3408,7 @@ tile_set = SubResource("TileSet_38drk")
 
 [node name="Camera2D" parent="LevelFlow" unique_id=1131454127 instance=ExtResource("3_08drm")]
 limit_right = 4384
-limit_bottom = 360
+limit_bottom = 352
 target_path = NodePath("../../Actors/Player")
 
 [node name="AreaTransition" parent="LevelFlow" unique_id=1160941269 instance=ExtResource("7_38drk")]
@@ -3423,7 +3470,6 @@ scale = Vector2(1, 2.7200007)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldFX" unique_id=1245473412]
 stream = ExtResource("16_06u8c")
 volume_db = -20.583
-pitch_scale = 1.12
 autoplay = true
 parameters/looping = true
 

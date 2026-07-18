@@ -613,6 +613,15 @@ func _on_damaged(info: DamageInfo) -> void:
 	CombatFx.shake(2.0, 0.08, 24.0)
 
 
+# Player projectiles can contact the CharacterBody2D before its Hurtbox Area2D.
+# Forward body hits to the same Health node so collision signal order cannot
+# swallow a valid attack without damaging the demon.
+func apply_damage(info: DamageInfo) -> void:
+	if health == null or info == null or is_dead:
+		return
+	health.apply_damage(info)
+
+
 func _on_died() -> void:
 	if is_dead or _is_growing:
 		return
