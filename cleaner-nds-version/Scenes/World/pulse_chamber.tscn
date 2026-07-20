@@ -119,6 +119,8 @@
 [ext_resource type="Texture2D" uid="uid://1m5dc1yxotka" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0117.png" id="108_sg60a"]
 [ext_resource type="Texture2D" uid="uid://iun4vcmu703a" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0118.png" id="109_0tkfj"]
 [ext_resource type="Texture2D" uid="uid://2p87xi0mkbrg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0119.png" id="110_57l5y"]
+[ext_resource type="AudioStream" uid="uid://bncacjrvcpipw" path="res://Assets/Audio/freesound_community-lifebar-101709.mp3" id="120_vabxp"]
+[ext_resource type="AudioStream" uid="uid://bb76cvqrkm4x3" path="res://Assets/Audio/freesound_community-075792_glitchscreamwav-85145.mp3" id="121_wu35v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f4mdd"]
 texture = ExtResource("2_wtaay")
@@ -3761,5 +3763,21 @@ texture = SubResource("GradientTexture2D_lightning_flash")
 texture_scale = 1.45
 
 [node name="Hud" parent="." unique_id=795795287 instance=ExtResource("14_puh3y")]
+
+[node name="PulseSound" type="AudioStreamPlayer" parent="." unique_id=1541168184]
+stream = ExtResource("120_vabxp")
+volume_db = -26.542
+autoplay = true
+max_polyphony = 6
+parameters/looping = true
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=719959742]
+max_polyphony = 6
+
+[node name="BossSpawnSound" type="AudioStreamPlayer" parent="." unique_id=2043173569]
+stream = ExtResource("121_wu35v")
+volume_db = -36.833
+autoplay = true
+max_polyphony = 6
 
 [editable path="GlitchDemon"]

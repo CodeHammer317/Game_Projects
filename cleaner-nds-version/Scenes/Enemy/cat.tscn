@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://crf1d0vkk8o5h"]
 
 [ext_resource type="Script" uid="uid://dct6y8a4c8v58" path="res://Scripts/cat.gd" id="1_3nd8e"]
-[ext_resource type="Texture2D" uid="uid://hc0yo6md865d" path="res://Assets/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Attack.png" id="1_54o77"]
-[ext_resource type="Texture2D" uid="uid://cfpgpntr2g8xb" path="res://Assets/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Special.png" id="2_3nd8e"]
-[ext_resource type="Texture2D" uid="uid://6xp6faj4ggas" path="res://Assets/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Idle.png" id="3_jpkpn"]
-[ext_resource type="Texture2D" uid="uid://b2wq31teiihoc" path="res://Assets/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Jamp.png" id="4_qaub3"]
-[ext_resource type="Texture2D" uid="uid://de1fs21oqutqc" path="res://Assets/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Walk.png" id="5_otoed"]
+[ext_resource type="Texture2D" uid="uid://hc0yo6md865d" path="res://Assets/sprites/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Attack.png" id="1_54o77"]
+[ext_resource type="Texture2D" uid="uid://cfpgpntr2g8xb" path="res://Assets/sprites/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Special.png" id="2_3nd8e"]
+[ext_resource type="Texture2D" uid="uid://6xp6faj4ggas" path="res://Assets/sprites/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Idle.png" id="3_jpkpn"]
+[ext_resource type="Texture2D" uid="uid://b2wq31teiihoc" path="res://Assets/sprites/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Jamp.png" id="4_qaub3"]
+[ext_resource type="Texture2D" uid="uid://de1fs21oqutqc" path="res://Assets/sprites/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Walk.png" id="5_otoed"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uvql"]
 atlas = ExtResource("1_54o77")
@@ -284,6 +284,7 @@ animations = [{
 size = Vector2(41, 21)
 
 [node name="Cat" type="CharacterBody2D" unique_id=43974992 groups=["enemies"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_3nd8e")

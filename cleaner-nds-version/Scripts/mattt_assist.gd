@@ -5,6 +5,7 @@ class_name MatttAssist
 @export var enemy_group: StringName = &"enemies"
 
 @export var spawn_offset: Vector2 = Vector2(0.0, 0.0)
+@export_range(0.0, 1.0, 0.01) var spawn_screen_height_ratio: float = 1.0 / 3.0
 @export var hover_offset: Vector2 = Vector2(0.0, -100.0)
 @export var fallback_strike_distance: float = 96.0
 @export var hover_move_time: float = 0.5
@@ -31,11 +32,22 @@ var _base_sprite_modulate: Color = Color.WHITE
 func setup(player: Node2D, player_facing_left: bool) -> void:
 	owner_player = player
 	facing_left = player_facing_left
+	_place_at_screen_height_ratio()
 
 	if facing_left:
 		sprite_flip(true)
 	else:
 		sprite_flip(false)
+
+
+func _place_at_screen_height_ratio() -> void:
+	var viewport := get_viewport()
+	if viewport == null:
+		return
+
+	var screen_position := viewport.get_canvas_transform() * global_position
+	screen_position.y = viewport.get_visible_rect().size.y * spawn_screen_height_ratio
+	global_position = viewport.get_canvas_transform().affine_inverse() * screen_position
 
 
 func _ready() -> void:
@@ -44,6 +56,9 @@ func _ready() -> void:
 		_base_sprite_modulate = sprite.modulate
 
 	await get_tree().process_frame
+	# Reapply once the active camera has updated so the summon point is truly
+	# one-third down the visible screen, regardless of the player's world Y.
+	_place_at_screen_height_ratio()
 
 	target_enemy = _find_closest_enemy()
 
@@ -51,6 +66,7 @@ func _ready() -> void:
 		if sprite.sprite_frames != null and sprite.sprite_frames.has_animation("appear"):
 			sprite.frame = 0
 			sprite.play("appear")
+			await sprite.animation_finished
 
 	if target_enemy != null:
 		fire_target_position = target_enemy.global_position + spawn_offset

@@ -7,9 +7,12 @@ class_name FireColumnAOE
 @export var animation_name: StringName = &"fire_column"
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var fire_blast_sound: AudioStreamPlayer2D = $FireBlastSound
+@onready var fire_impact_sound: AudioStreamPlayer2D = $FireImpactSound
 
 var owner_player: Node = null
 var hit_targets: Dictionary = {}
+var _impact_sound_played: bool = false
 
 
 func _ready() -> void:
@@ -30,6 +33,9 @@ func _ready() -> void:
 			sprite.frame_progress = 0.0
 			sprite.play(animation_name)
 
+	if fire_blast_sound != null and fire_blast_sound.stream != null:
+		fire_blast_sound.play()
+
 	await get_tree().physics_frame
 	_hit_overlapping_targets()
 
@@ -49,11 +55,27 @@ func setup(player: Node, facing_left: bool) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	_try_hit(body)
+	_handle_collision(body)
 
 
 func _on_area_entered(area: Area2D) -> void:
-	_try_hit(area)
+	_handle_collision(area)
+
+
+func _handle_collision(target: Node) -> void:
+	_play_impact_sound_once()
+	_try_hit(target)
+
+
+func _play_impact_sound_once() -> void:
+	if _impact_sound_played:
+		return
+
+	if fire_impact_sound == null or fire_impact_sound.stream == null:
+		return
+
+	_impact_sound_played = true
+	fire_impact_sound.play()
 
 
 func _try_hit(target: Node) -> void:
@@ -75,10 +97,10 @@ func _try_hit(target: Node) -> void:
 
 func _hit_overlapping_targets() -> void:
 	for body in get_overlapping_bodies():
-		_try_hit(body)
+		_handle_collision(body)
 
 	for area in get_overlapping_areas():
-		_try_hit(area)
+		_handle_collision(area)
 
 
 func _get_damage_target(target: Node) -> Node:

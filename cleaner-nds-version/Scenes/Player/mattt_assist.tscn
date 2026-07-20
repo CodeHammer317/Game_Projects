@@ -43,8 +43,12 @@ animations = [{
 }]
 
 [node name="MatttAssist" type="Node2D" unique_id=280849303]
+z_index = 14
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ylryk")
 fire_column_scene = ExtResource("2_uadru")
+hover_offset = Vector2(0, -200)
+windup_flash_color = Color(1.5999829, 0.6630204, 0.4722119, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=741740071]
 position = Vector2(0, -2.2737368e-13)
@@ -54,4 +58,4 @@ animation = &"head_shake"
 autoplay = "appear"
 
 [node name="FireSpawnPoint" type="Marker2D" parent="." unique_id=901470503]
-position = Vector2(0, 78)
+position = Vector2(-20, 15.333332)

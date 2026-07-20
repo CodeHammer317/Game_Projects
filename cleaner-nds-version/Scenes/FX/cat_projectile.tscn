@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b8o5hlb2vs22m"]
 
-[ext_resource type="Script" uid="uid://dvd0tli4piev7" path="res://Scenes/FX/cat_projectile.gd" id="1_geq77"]
+[ext_resource type="Script" uid="uid://dvd0tli4piev7" path="res://Scripts/cat_projectile.gd" id="1_geq77"]
 [ext_resource type="Texture2D" uid="uid://g57732nu07p5" path="res://Assets/fx/OrangeCatProjectile.png" id="1_xc87w"]
 [ext_resource type="AudioStream" uid="uid://dyx3r33iwll8u" path="res://Assets/Audio/AngryCat.wav" id="3_lrsb6"]
 
