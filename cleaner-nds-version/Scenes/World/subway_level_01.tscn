@@ -11881,7 +11881,7 @@ position = Vector2(3104, 232)
 scale = Vector2(1, 4)
 collision_layer = 128
 collision_mask = 2
-next_level_path = "uid://dcajnodtsqb5h"
+next_level_path = "uid://c8qi3rwoa7qsp"
 
 [node name="CheckpointMid" parent="." unique_id=1312789618 instance=ExtResource("20_checkpoint")]
 position = Vector2(1480, 289)

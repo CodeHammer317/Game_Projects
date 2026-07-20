@@ -7,20 +7,28 @@ class_name PlayerHUD
 @export var ability_bar_path: NodePath = ^"TextureRect/AbilityBar"
 @export var charge_bar_path: NodePath = ^"TextureRect/ChargeBar"
 @export var helper_icon_path: NodePath = ^"TextureRect/HelperIcon"
+@export var pause_menu_path: NodePath = ^"PauseMenu"
 
 @export_group("Behavior")
 @export var hide_charge_bar_when_idle: bool = true
+@export var helper_icon_slot_size: Vector2 = Vector2(24.0, 24.0)
 
 @onready var health_bar: TextureProgressBar = get_node(health_bar_path) as TextureProgressBar
 @onready var ability_bar: TextureProgressBar = get_node(ability_bar_path) as TextureProgressBar
 @onready var charge_bar: TextureProgressBar = get_node(charge_bar_path) as TextureProgressBar
-@onready var helper_icon: Sprite2D = get_node(helper_icon_path) as Sprite2D
+@onready var helper_icon: Sprite2D = _resolve_helper_icon()
+@onready var pause_menu: Control = get_node_or_null(pause_menu_path) as Control
+@onready var resume_button: Button = get_node_or_null("PauseMenu/CenterContainer/PausePanel/Menu/ResumeButton") as Button
+@onready var restart_button: Button = get_node_or_null("PauseMenu/CenterContainer/PausePanel/Menu/RestartButton") as Button
+@onready var main_menu_button: Button = get_node_or_null("PauseMenu/CenterContainer/PausePanel/Menu/MainMenuButton") as Button
 
 var player: Player = null
 var health: Health = null
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	_setup_pause_menu()
 	_initialize_bars()
 	_update_helper_icon(PlayerState.selected_helper)
 
@@ -34,7 +42,67 @@ func _ready() -> void:
 	call_deferred("_find_and_bind_player")
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause") and not event.is_echo():
+		_toggle_pause()
+		get_viewport().set_input_as_handled()
+
+
+func _setup_pause_menu() -> void:
+	if pause_menu != null:
+		pause_menu.visible = false
+
+	if resume_button != null and not resume_button.pressed.is_connected(_resume_game):
+		resume_button.pressed.connect(_resume_game)
+
+	if restart_button != null and not restart_button.pressed.is_connected(_restart_level):
+		restart_button.pressed.connect(_restart_level)
+
+	if main_menu_button != null and not main_menu_button.pressed.is_connected(_return_to_main_menu):
+		main_menu_button.pressed.connect(_return_to_main_menu)
+
+
+func _toggle_pause() -> void:
+	_set_game_paused(not get_tree().paused)
+
+
+func _set_game_paused(paused: bool) -> void:
+	get_tree().paused = paused
+
+	if pause_menu != null:
+		pause_menu.visible = paused
+
+	if paused and resume_button != null:
+		resume_button.grab_focus()
+
+
+func _resume_game() -> void:
+	_set_game_paused(false)
+
+
+func _restart_level() -> void:
+	_set_game_paused(false)
+	get_tree().reload_current_scene()
+
+
+func _return_to_main_menu() -> void:
+	_set_game_paused(false)
+	get_tree().change_scene_to_file("res://Scenes/UI/title_screen.tscn")
+
+
+func _resolve_helper_icon() -> Sprite2D:
+	if not helper_icon_path.is_empty():
+		var configured_icon := get_node_or_null(helper_icon_path) as Sprite2D
+		if configured_icon != null:
+			return configured_icon
+
+	return get_node_or_null("TextureRect/HelperIcon") as Sprite2D
+
+
 func _exit_tree() -> void:
+	if get_tree() != null and get_tree().paused:
+		get_tree().paused = false
+
 	if PlayerState.helper_selected.is_connected(_update_helper_icon):
 		PlayerState.helper_selected.disconnect(_update_helper_icon)
 
@@ -155,10 +223,27 @@ func _on_shot_charge_changed(
 		charge_bar.visible = charging
 
 
-func _update_helper_icon(_helper_id: StringName) -> void:
-	var icon := PlayerState.get_selected_helper_hud_icon()
+func _update_helper_icon(helper_id: StringName) -> void:
+	if helper_icon == null:
+		push_warning("HUD: HelperIcon node is missing.")
+		return
+
+	var icon := PlayerState.get_helper_hud_icon(helper_id)
 	helper_icon.texture = icon
 	helper_icon.visible = icon != null
+
+	if icon == null:
+		return
+
+	var texture_size := Vector2(icon.get_size())
+	if texture_size.x <= 0.0 or texture_size.y <= 0.0:
+		return
+
+	var fit_scale := minf(
+		helper_icon_slot_size.x / texture_size.x,
+		helper_icon_slot_size.y / texture_size.y
+	)
+	helper_icon.scale = Vector2.ONE * fit_scale
 
 
 func _on_node_added(node: Node) -> void:

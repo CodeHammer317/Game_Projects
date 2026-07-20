@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2oj3klhemfw"]
 
 [ext_resource type="Script" uid="uid://8q22c7tondia" path="res://Scripts/flying_bottle.gd" id="1_3qo5t"]
-[ext_resource type="Texture2D" uid="uid://cwxkspd5p0wu5" path="res://Assets/homeless-character-sprite-sheets/Homeless_1/FlyingBottleLoop.png" id="2_ktoex"]
+[ext_resource type="Texture2D" uid="uid://cwxkspd5p0wu5" path="res://Assets/sprites/homeless-character-sprite-sheets/Homeless_1/FlyingBottleLoop.png" id="2_ktoex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3qo5t"]
 radius = 7.071068

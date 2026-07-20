@@ -1272,7 +1272,8 @@ bullet_scene = ExtResource("2_plnq1")
 attack_hitbox_scene = ExtResource("3_6a86w")
 attack_offset_right = Vector2(30, -6)
 dust_trail_scene = ExtResource("4_jmbrt")
-helper_spawn_offset = Vector2(-40, -100)
+special_recharge_time = 20.0
+helper_spawn_offset = Vector2(-40, 200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1032869655]
 shape = SubResource("RectangleShape2D_jlvik")

@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dblgq32ave8d2" path="res://Assets/NDS Game Files/MatTt Sprites/Matt.png" id="7_1ree7"]
 
 [node name="Hud" type="CanvasLayer" unique_id=795795287]
+process_mode = 3
 script = ExtResource("1_omqfp")
+helper_icon_path = NodePath("TextureRect/HelperIcon")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2117205763]
 offset_right = 171.0
@@ -43,12 +45,80 @@ offset_right = 96.0
 offset_bottom = 29.0
 texture_progress = ExtResource("6_d2sja")
 
-[node name="Sprite2D" type="Sprite2D" parent="TextureRect" unique_id=110129782]
+[node name="PlayerIcon" type="Sprite2D" parent="TextureRect" unique_id=110129782]
 position = Vector2(26, 26)
 scale = Vector2(0.28846154, 0.29126215)
 texture = ExtResource("4_4bm6u")
 
-[node name="HelperIcon" type="Sprite2D" parent="TextureRect" unique_id=1809520578]
-position = Vector2(49, 36.000004)
-scale = Vector2(0.06, 0.06)
+[node name="HelperIcon" type="Sprite2D" parent="TextureRect" unique_id=1896197581]
+position = Vector2(47.999996, 36.000004)
+scale = Vector2(0.07936517, 0.06790123)
 texture = ExtResource("7_1ree7")
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dimmer" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.025, 0.035, 0.055, 0.82)
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PausePanel" type="PanelContainer" parent="PauseMenu/CenterContainer"]
+custom_minimum_size = Vector2(250, 230)
+layout_mode = 2
+
+[node name="Menu" type="VBoxContainer" parent="PauseMenu/CenterContainer/PausePanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="PauseMenu/CenterContainer/PausePanel/Menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="PauseMenu/CenterContainer/PausePanel/Menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.86, 1)
+text = "Choose an option to continue"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/CenterContainer/PausePanel/Menu"]
+custom_minimum_size = Vector2(210, 38)
+layout_mode = 2
+text = "RESUME GAME"
+
+[node name="RestartButton" type="Button" parent="PauseMenu/CenterContainer/PausePanel/Menu"]
+custom_minimum_size = Vector2(210, 38)
+layout_mode = 2
+text = "RESTART LEVEL"
+
+[node name="MainMenuButton" type="Button" parent="PauseMenu/CenterContainer/PausePanel/Menu"]
+custom_minimum_size = Vector2(210, 38)
+layout_mode = 2
+text = "RETURN TO MAIN MENU"
+
+[node name="Controls" type="Label" parent="PauseMenu/CenterContainer/PausePanel/Menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.65, 0.74, 1)
+text = "ESC / SELECT: Resume"
+horizontal_alignment = 1
