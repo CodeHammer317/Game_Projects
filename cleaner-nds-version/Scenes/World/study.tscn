@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://cyurf1e7umudx" path="res://Assets/sprites/Study Art/TopLobstaConversationHeadshot.png" id="21_8jq0p"]
 [ext_resource type="Texture2D" uid="uid://ba8iif7k0t36v" path="res://Assets/sprites/Study Art/RavenHeadshotConversation.png" id="21_ajmle"]
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="25_player"]
+[ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/pixy/PIXY.ttf" id="26_finale_font"]
+[ext_resource type="AudioStream" uid="uid://w83uc53n1rmp" path="res://Assets/Audio/BGM/NDS8bitRemix.mp3" id="27_finale_music"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_221uv"]
 texture = ExtResource("5_4m0bx")
@@ -632,7 +634,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=427060524]
-position = Vector2(102, 240)
+position = Vector2(88, 296)
 
 [node name="StudyExit" type="Area2D" parent="." unique_id=510712623]
 position = Vector2(626, 297)
@@ -673,5 +675,105 @@ theme_override_constants/outline_size = 4
 text = "Interaction text"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="FinaleLayer" type="CanvasLayer" parent="." unique_id=381327613]
+layer = 90
+visible = false
+
+[node name="FinaleRoot" type="Control" parent="FinaleLayer" unique_id=1782254853]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Backdrop" type="ColorRect" parent="FinaleLayer/FinaleRoot" unique_id=1485872509]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.005, 0.008, 0.015, 1)
+
+[node name="EndLabel" type="Label" parent="FinaleLayer/FinaleRoot" unique_id=269023171]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.94, 0.78, 0.25, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("26_finale_font")
+theme_override_font_sizes/font_size = 42
+text = "THE END"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsClip" type="Control" parent="FinaleLayer/FinaleRoot" unique_id=1654451212]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CreditsText" type="Label" parent="FinaleLayer/FinaleRoot/CreditsClip" unique_id=2046794167]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 360.0
+offset_right = 570.0
+offset_bottom = 1010.0
+theme_override_colors/font_color = Color(0.88, 0.9, 0.92, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 8
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("26_finale_font")
+theme_override_font_sizes/font_size = 16
+text = "NEPHILIM DEATH SQUAD
+
+THE AWAKENING OF SHADOWS
+
+A VERTICAL SLICE
+
+
+STARRING
+
+RAVEN
+TOP LOBSTA
+MUSTANG
+MATTT
+
+
+THE ARCHIVIST
+
+
+SPECIAL THANKS
+
+THE NDS COMMUNITY
+AND YOU, THE PLAYER
+
+
+THE SIGNAL HAS BEEN CUT.
+
+THE WAR HAS JUST BEGUN.
+
+
+END OF DEMO"
+horizontal_alignment = 1
+
+[node name="FinaleMusic" type="AudioStreamPlayer" parent="." unique_id=1559303909]
+stream = ExtResource("27_finale_music")
+volume_db = -2.0
+parameters/looping = false
 
 [editable path="Level01BriefingScreen"]

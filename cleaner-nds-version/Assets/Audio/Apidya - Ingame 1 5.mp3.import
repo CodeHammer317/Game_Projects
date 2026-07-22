@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://jxisw2xav3uk"
+path="res://.godot/imported/Apidya - Ingame 1 5.mp3-01a4560bce88a615e715036dfbaa8917.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Apidya - Ingame 1 5.mp3"
+dest_files=["res://.godot/imported/Apidya - Ingame 1 5.mp3-01a4560bce88a615e715036dfbaa8917.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

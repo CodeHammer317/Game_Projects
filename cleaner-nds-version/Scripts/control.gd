@@ -1,7 +1,9 @@
 #Control.gd
 extends Control
+class_name BriefingScreen
 
 signal briefing_finished
+signal dialogue_revealed
 
 @export var chars_per_second: float = 25.0
 @export var random_pitch_range: float = 0.1
@@ -24,6 +26,8 @@ var _speech_animation_token: int = 0
 var _skipped: bool = false
 var _dialogue_started: bool = false
 var _typing_tween: Tween = null
+var _auto_start_cancelled: bool = false
+var _input_enabled: bool = true
 
 
 func _ready():
@@ -32,6 +36,8 @@ func _ready():
 
 	if dialogue_start_delay > 0.0:
 		await get_tree().create_timer(dialogue_start_delay).timeout
+	if _auto_start_cancelled:
+		return
 
 	start_dialogue("NDS // Secure Channel 7
 Clearance: Field Operative
@@ -80,7 +86,7 @@ func _process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if not _dialogue_started:
+	if not _dialogue_started or not _input_enabled:
 		return
 
 	if event.is_action_pressed("skip") or event.is_action_pressed("accept"):
@@ -111,11 +117,14 @@ func _go_to_next_scene() -> void:
 	get_tree().change_scene_to_file(next_scene)
 
 
-func start_dialogue(new_text: String):
+func start_dialogue(new_text: String, allow_input: bool = true):
+	_skipped = false
+	_input_enabled = allow_input
+	show()
 	_dialogue_started = true
 	label.text = new_text
 	label.visible_characters = 0
-	skip_label.visible = true
+	skip_label.visible = _input_enabled
 	skip_label.text = reveal_prompt_text
 	is_typing = true
 	_start_speaker_animation()
@@ -126,6 +135,21 @@ func start_dialogue(new_text: String):
 	_typing_tween.finished.connect(_on_typing_finished)
 
 	play_typing_sounds()
+
+
+func cancel_auto_start() -> void:
+	_auto_start_cancelled = true
+	_dialogue_started = false
+	if _typing_tween:
+		_typing_tween.kill()
+		_typing_tween = null
+	_stop_speaker_animation()
+	hide()
+
+
+func dismiss_dialogue() -> void:
+	if _dialogue_started:
+		_go_to_next_scene()
 
 
 func play_typing_sounds():
@@ -147,8 +171,10 @@ func _on_typing_finished():
 	is_typing = false
 	_typing_tween = null
 	_stop_speaker_animation()
-	skip_label.visible = true
-	skip_label.text = continue_prompt_text
+	skip_label.visible = _input_enabled
+	if _input_enabled:
+		skip_label.text = continue_prompt_text
+	dialogue_revealed.emit()
 
 
 func _complete_typing() -> void:

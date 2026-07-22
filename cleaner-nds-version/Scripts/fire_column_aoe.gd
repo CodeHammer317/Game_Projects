@@ -13,6 +13,7 @@ class_name FireColumnAOE
 var owner_player: Node = null
 var hit_targets: Dictionary = {}
 var _impact_sound_played: bool = false
+var _impact_sound_sequence_started: bool = false
 
 
 func _ready() -> void:
@@ -68,10 +69,21 @@ func _handle_collision(target: Node) -> void:
 
 
 func _play_impact_sound_once() -> void:
-	if _impact_sound_played:
+	if _impact_sound_played or _impact_sound_sequence_started:
 		return
 
 	if fire_impact_sound == null or fire_impact_sound.stream == null:
+		return
+
+	_impact_sound_sequence_started = true
+	_play_impact_after_fire_sound()
+
+
+func _play_impact_after_fire_sound() -> void:
+	if fire_blast_sound != null and fire_blast_sound.playing:
+		await fire_blast_sound.finished
+
+	if not is_inside_tree():
 		return
 
 	_impact_sound_played = true

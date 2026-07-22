@@ -1,0 +1,195 @@
+[gd_scene format=3 uid="uid://br7vthru5cwmy"]
+
+[ext_resource type="Script" path="res://Scripts/archivist_document_pickup.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cxnx1ar8rv62v" path="res://Assets/sprites/Study Art/ClosedBook.png" id="2_book"]
+[ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/pixy/PIXY.ttf" id="3_font"]
+[ext_resource type="AudioStream" uid="uid://cl31e3x1s08fc" path="res://Assets/Audio/cartoon-music-soundtrack-arcade-game-achievement-bling-489759.mp3" id="4_pickup_sound"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interaction"]
+size = Vector2(52, 44)
+
+[sub_resource type="Gradient" id="Gradient_glow"]
+offsets = PackedFloat32Array(0, 0.45, 1)
+colors = PackedColorArray(1, 0.72, 0.24, 1, 1, 0.55, 0.12, 0.42, 1, 0.35, 0.05, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_glow"]
+gradient = SubResource("Gradient_glow")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prompt"]
+bg_color = Color(0.015, 0.025, 0.04, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.82, 0.9, 0.9)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_reader"]
+bg_color = Color(0.025, 0.035, 0.055, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28, 0.78, 0.86, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.65)
+shadow_size = 8
+
+[sub_resource type="SystemFont" id="SystemFont_5304k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nwtmc"]
+font = SubResource("SystemFont_5304k")
+
+[node name="ArchivistDocumentPickup" type="Area2D" unique_id=994571012]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="DocumentSprite" type="Sprite2D" parent="." unique_id=1499155676]
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_book")
+
+[node name="InteractionCollision" type="CollisionShape2D" parent="." unique_id=817830374]
+shape = SubResource("RectangleShape2D_interaction")
+
+[node name="DocumentGlow" type="PointLight2D" parent="." unique_id=1460735845]
+position = Vector2(0, 2)
+color = Color(1, 0.62, 0.2, 1)
+energy = 0.72
+texture = SubResource("GradientTexture2D_glow")
+texture_scale = 1.35
+
+[node name="InteractionPrompt" type="Node2D" parent="." unique_id=501808896]
+z_index = 10
+position = Vector2(0, -28)
+
+[node name="PromptPanel" type="PanelContainer" parent="InteractionPrompt" unique_id=175461552]
+offset_left = -73.0
+offset_top = -14.0
+offset_right = 73.0
+offset_bottom = 14.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_prompt")
+
+[node name="PromptMargin" type="MarginContainer" parent="InteractionPrompt/PromptPanel" unique_id=2088653279]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 3
+
+[node name="PromptRow" type="HBoxContainer" parent="InteractionPrompt/PromptPanel/PromptMargin" unique_id=171476531]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="InputLabel" type="Label" parent="InteractionPrompt/PromptPanel/PromptMargin/PromptRow" unique_id=1954238753]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.32, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 9
+text = "[E / Y]"
+
+[node name="ActionLabel" type="Label" parent="InteractionPrompt/PromptPanel/PromptMargin/PromptRow" unique_id=711777638]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.94, 0.96, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 9
+text = "ACCESS FILE"
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=544768089]
+stream = ExtResource("4_pickup_sound")
+volume_db = -8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=397407309]
+
+[node name="ReaderLayer" type="CanvasLayer" parent="." unique_id=1369588438]
+layer = 30
+
+[node name="ReaderRoot" type="Control" parent="ReaderLayer" unique_id=846593009]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dimmer" type="ColorRect" parent="ReaderLayer/ReaderRoot" unique_id=2017106830]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.005, 0.008, 0.015, 0.88)
+
+[node name="CenterContainer" type="CenterContainer" parent="ReaderLayer/ReaderRoot" unique_id=2131270637]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ReaderPanel" type="PanelContainer" parent="ReaderLayer/ReaderRoot/CenterContainer" unique_id=629888483]
+custom_minimum_size = Vector2(560, 292)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_reader")
+
+[node name="ReaderMargin" type="MarginContainer" parent="ReaderLayer/ReaderRoot/CenterContainer/ReaderPanel" unique_id=713232661]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 12
+
+[node name="ReaderContent" type="VBoxContainer" parent="ReaderLayer/ReaderRoot/CenterContainer/ReaderPanel/ReaderMargin" unique_id=850458155]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="SourceLabel" type="Label" parent="ReaderLayer/ReaderRoot/CenterContainer/ReaderPanel/ReaderMargin/ReaderContent" unique_id=894178267]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.86, 0.94, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 10
+text = "ARCHIVIST LOG 7C"
+
+[node name="DocumentTitle" type="Label" parent="ReaderLayer/ReaderRoot/CenterContainer/ReaderPanel/ReaderMargin/ReaderContent" unique_id=1481430679]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.32, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 18
+text = "VESSEL SELECTION"
+
+[node name="Separator" type="HSeparator" parent="ReaderLayer/ReaderRoot/CenterContainer/ReaderPanel/ReaderMargin/ReaderContent" unique_id=2109262710]
+layout_mode = 2
+
+[node name="Transcript" type="RichTextLabel" parent="ReaderLayer/ReaderRoot/CenterContainer/ReaderPanel/ReaderMargin/ReaderContent" unique_id=1790966243]
+custom_minimum_size = Vector2(520, 172)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.86, 0.89, 0.9, 1)
+theme_override_fonts/normal_font = ExtResource("3_font")
+theme_override_font_sizes/normal_font_size = 12
+text = "The excavation team is not searching for relics. They are searching for candidates."
+
+[node name="CloseHint" type="Label" parent="ReaderLayer/ReaderRoot/CenterContainer/ReaderPanel/ReaderMargin/ReaderContent" unique_id=336487009]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.65, 0.7, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 9
+text = "A / SPACE / E / ESC: CLOSE"
+label_settings = SubResource("LabelSettings_nwtmc")
+horizontal_alignment = 2

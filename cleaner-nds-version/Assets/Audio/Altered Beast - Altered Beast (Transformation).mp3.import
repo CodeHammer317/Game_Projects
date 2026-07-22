@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://df47mycsrmcxs"
+path="res://.godot/imported/Altered Beast - Altered Beast (Transformation).mp3-675c5b7fb9c205cf6c14e3a839c3d6ec.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Altered Beast - Altered Beast (Transformation).mp3"
+dest_files=["res://.godot/imported/Altered Beast - Altered Beast (Transformation).mp3-675c5b7fb9c205cf6c14e3a839c3d6ec.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

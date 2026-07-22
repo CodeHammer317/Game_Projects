@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://t3tdqhuk0q28" path="res://Assets/Audio/freepik-fighters-game.mp3" id="16_06u8c"]
 [ext_resource type="PackedScene" path="res://Scenes/World/checkpoint.tscn" id="20_checkpoint"]
 [ext_resource type="PackedScene" uid="uid://crf1d0vkk8o5h" path="res://Scenes/Enemy/cat.tscn" id="26_67mkg"]
+[ext_resource type="PackedScene" uid="uid://br7vthru5cwmy" path="res://Scenes/FX/archivist_document_pickup.tscn" id="27_5vrvd"]
 [ext_resource type="Script" uid="uid://b1w2a28gwfgfd" path="res://Scripts/respawn_manager.gd" id="99_respawn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7x014"]
@@ -3479,6 +3480,9 @@ position = Vector2(1045, 313)
 
 [node name="Cat2" parent="." unique_id=572663908 instance=ExtResource("26_67mkg")]
 position = Vector2(1240, 326)
+
+[node name="ArchivistDocumentPickup" parent="." unique_id=994571012 instance=ExtResource("27_5vrvd")]
+position = Vector2(2192, 326)
 
 [editable path="Actors/Enemies/RoombaDrone"]
 [editable path="Gameplay/AlertSign"]

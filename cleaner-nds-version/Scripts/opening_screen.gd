@@ -14,14 +14,28 @@ extends Node2D
 	$CanvasLayer/OpeningImages/OpeningImage3,
 ]
 @onready var narration: RichTextLabel = $CanvasLayer/NarrationPanel/Narration
+@onready var source_label: Label = $CanvasLayer/NarrationPanel/SourceLabel
+@onready var signal_status: Label = $CanvasLayer/SignalStatus
 @onready var continue_label: Label = $CanvasLayer/ContinueLabel
 @onready var fade: ColorRect = $CanvasLayer/Fade
 @onready var background_music: AudioStreamPlayer = $BackgroundMusic
 
 var panel_texts: Array[String] = [
-	"The Nephilim were never truly gone.\nTheir corruption survived beneath the world.",
-	"Now, hidden powers combine forbidden knowledge\nwith modern technology to awaken them.",
-	"The Nephilim Death Squad stands against the darkness.\nTonight, a signal is rising beneath the city.",
+	"NDS, if this reaches you, the Vatican archive has been compromised. I found the source of the tremors.",
+	"Excavation records. Pre-Flood remains. Artificial vessels. An intelligence they call DEMON PROTOCOL is choosing compatible hosts.",
+	"They know I'm transmitting. The same sigil is active beneath your city, near the abandoned subway. Do not trust the official quarantine—\n\n[TRANSMISSION TERMINATED]",
+]
+
+var panel_sources: Array[String] = [
+	"ROGUE ARCHIVIST // ENCRYPTED CHANNEL",
+	"ARCHIVIST FILE UPLOAD // FRAGMENT 01",
+	"ROGUE ARCHIVIST // SIGNAL BREAKING",
+]
+
+var panel_statuses: Array[String] = [
+	"INTERCEPT ACTIVE",
+	"DOWNLOADING EVIDENCE",
+	"SIGNAL UNSTABLE",
 ]
 
 var _panel_index: int = 0
@@ -39,6 +53,7 @@ func _ready() -> void:
 
 	continue_label.text = "A / Space: continue"
 	continue_label.visible = false
+	signal_status.text = panel_statuses[0]
 	fade.modulate.a = 1.0
 	_show_panel(0, true)
 
@@ -78,6 +93,9 @@ func _show_panel(index: int, first_panel: bool = false) -> void:
 
 	narration.text = panel_texts[index]
 	narration.visible_characters = 0
+	source_label.text = panel_sources[index]
+	signal_status.text = panel_statuses[index]
+	signal_status.modulate = Color(1.0, 0.78, 0.32) if index < panels.size() - 1 else Color(1.0, 0.25, 0.22)
 
 	_kill_tween(_transition_tween)
 	_transition_tween = create_tween().set_parallel(true)
@@ -112,6 +130,8 @@ func _complete_text_reveal() -> void:
 func _on_text_revealed() -> void:
 	_typing_tween = null
 	_is_typing = false
+	if _panel_index == panels.size() - 1:
+		signal_status.text = "SIGNAL LOST // LOCAL MATCH CONFIRMED"
 	continue_label.visible = true
 
 

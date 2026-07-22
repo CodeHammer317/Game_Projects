@@ -2,10 +2,16 @@
 
 [ext_resource type="Script" uid="uid://dsi5fnux7e3fo" path="res://Scripts/opening_screen.gd" id="1_script"]
 [ext_resource type="AudioStream" uid="uid://c20s6lumx01u5" path="res://Assets/Audio/submority-pulse-red-hydra-120bpm-d-cinematic-trailer-sound-effects-125406.mp3" id="2_5c4in"]
-[ext_resource type="Texture2D" uid="uid://burdcrbskjo7h" path="res://Assets/sprites/OpeningImage_1.png" id="2_image1"]
-[ext_resource type="Texture2D" uid="uid://di7v2tdfwiqof" path="res://Assets/sprites/OpeningImage_2.png" id="3_image2"]
-[ext_resource type="Texture2D" uid="uid://bvxqwcr4h8afx" path="res://Assets/sprites/OpeningImage_3.png" id="4_image3"]
+[ext_resource type="Texture2D" path="res://Assets/Comic/archivist-transmission-01.png" id="2_image1"]
+[ext_resource type="Texture2D" path="res://Assets/Comic/archivist-transmission-02.png" id="3_image2"]
+[ext_resource type="Texture2D" path="res://Assets/Comic/archivist-transmission-03.png" id="4_image3"]
 [ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/pixy/PIXY.ttf" id="6_font"]
+
+[sub_resource type="Shader" id="Shader_signal_interference"]
+code = "shader_type canvas_item;\n\nvoid fragment() {\n\tfloat scanline = step(0.94, fract(UV.y * 180.0));\n\tfloat pulse = 0.65 + 0.35 * sin(TIME * 7.0);\n\tCOLOR = vec4(0.04, 0.65, 0.78, scanline * 0.055 * pulse);\n}\n"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_signal_interference"]
+shader = SubResource("Shader_signal_interference")
 
 [node name="OpeningScreen" type="Node2D" unique_id=290070971]
 script = ExtResource("1_script")
@@ -69,11 +75,25 @@ stretch_mode = 6
 
 [node name="NarrationPanel" type="ColorRect" parent="CanvasLayer" unique_id=1734534865]
 offset_left = 16.0
-offset_top = 22.0
-offset_right = 344.0
-offset_bottom = 112.0
+offset_top = 20.0
+offset_right = 390.0
+offset_bottom = 142.0
 mouse_filter = 2
-color = Color(0, 0, 0, 0.72)
+color = Color(0, 0, 0, 0.82)
+
+[node name="SourceLabel" type="Label" parent="CanvasLayer/NarrationPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 360.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.25, 0.86, 0.94, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 8
+text = "ROGUE ARCHIVIST // ENCRYPTED CHANNEL"
 
 [node name="Narration" type="RichTextLabel" parent="CanvasLayer/NarrationPanel" unique_id=1576198027]
 layout_mode = 1
@@ -81,7 +101,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 12.0
-offset_top = 10.0
+offset_top = 31.0
 offset_right = -12.0
 offset_bottom = -10.0
 grow_horizontal = 2
@@ -92,8 +112,32 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/normal_font = ExtResource("6_font")
-theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/normal_font_size = 12
 fit_content = true
+
+[node name="SignalStatus" type="Label" parent="CanvasLayer"]
+offset_left = 420.0
+offset_top = 10.0
+offset_right = 630.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(1, 0.78, 0.32, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 7
+text = "INTERCEPT ACTIVE"
+horizontal_alignment = 2
+
+[node name="SignalInterference" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_signal_interference")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 1)
 
 [node name="ContinueLabel" type="Label" parent="CanvasLayer" unique_id=222042511]
 offset_left = 478.0
