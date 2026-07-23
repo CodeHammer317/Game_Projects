@@ -163,5 +163,5 @@ frame_progress = 1.0
 
 [node name="WhooshSound" type="AudioStreamPlayer2D" parent="." unique_id=285500401]
 stream = ExtResource("31_wi8wh")
-volume_db = -8.0
+volume_db = -7.08
 max_distance = 700.0

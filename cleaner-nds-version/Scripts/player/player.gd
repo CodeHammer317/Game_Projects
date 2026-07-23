@@ -105,6 +105,8 @@ const PlayerStateMachineScript := preload("res://Scripts/player/state_machine/pl
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Marker2D = $Muzzle
 @onready var health: Health = $Health
+@onready var jump_sound: AudioStreamPlayer = $JumpSound
+@onready var hurt_sound: AudioStreamPlayer = $HurtSound
 
 var ground_combo: Array[StringName] = [
 	&"left_punch",
@@ -540,6 +542,7 @@ func _do_jump(is_double_jump: bool = false) -> void:
 		_end_dash()
 
 	velocity.y = jump_velocity
+	jump_sound.play()
 	_is_wall_sliding = false
 	_wall_dir = 0
 	_set_double_jump_state(is_double_jump)
@@ -988,6 +991,7 @@ func _on_damaged(info: DamageInfo) -> void:
 	if _is_dead or _is_dying or _is_game_over:
 		return
 
+	hurt_sound.play()
 	_cancel_shot_charge()
 	_is_dashing = false
 	_is_wall_sliding = false

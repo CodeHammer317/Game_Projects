@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://csl4ra1ng4u2y" path="res://Assets/tilesets/Old_District_Background_Near.png" id="6_ce1mu"]
 [ext_resource type="Texture2D" uid="uid://bg8dhehhu6g4x" path="res://Assets/tilesets/clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape8/clouds_shape8_3.png" id="7_5vrvd"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="7_38drk"]
-[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="8_7x014"]
+[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/HUD/HUD.tscn" id="8_7x014"]
 [ext_resource type="Texture2D" uid="uid://phhroppsaonw" path="res://Assets/tilesets/clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape8/clouds_shape8_4.png" id="8_dqs3l"]
 [ext_resource type="PackedScene" uid="uid://boen48vb65uw0" path="res://Scenes/Enemy/flying_drone_recon.tscn" id="9_01r5l"]
 [ext_resource type="Texture2D" uid="uid://cw4sjim8k2omb" path="res://Assets/tilesets/clouds-pixel-art-asset-pack/PNG/Clouds_gray/Shape8/clouds_shape8_5.png" id="9_fug35"]
@@ -3286,7 +3286,7 @@ flip_h = true
 z_index = -20
 scroll_scale = Vector2(0.38, 0.1)
 repeat_size = Vector2(2349, 0)
-repeat_times = 3
+repeat_times = 4
 
 [node name="MidDistrict" type="Sprite2D" parent="Background/ParallaxMid" unique_id=703489352]
 position = Vector2(0, 87)
@@ -3298,8 +3298,8 @@ centered = false
 z_index = -10
 scroll_scale = Vector2(0.68, 0.18)
 scroll_offset = Vector2(2, -33)
-repeat_size = Vector2(1502, 0)
-repeat_times = 3
+repeat_size = Vector2(1350, 0)
+repeat_times = 8
 
 [node name="NearDistrict" type="Sprite2D" parent="Background/ParallaxNear" unique_id=1781403414]
 position = Vector2(-116, 189)

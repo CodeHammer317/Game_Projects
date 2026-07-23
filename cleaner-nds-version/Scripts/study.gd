@@ -12,7 +12,7 @@ The other anchors are not.
 Azazel has a name.
 The NDS has a war."""
 
-const NANCY_FINAL_LINE: String = """NANCY // MUSTANG
+const NANCY_FINAL_LINE: String = """NANCY:MUSTANG//
 
 Did you remember to pickup my catfood?"""
 
@@ -249,9 +249,10 @@ func _play_demo_finale() -> void:
 		credits_scroll_duration
 	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	await credits_tween.finished
+	finale_music.stop()
 	await get_tree().create_timer(2.0).timeout
 
 	PlayerState.finish_demo_finale()
-	var error := get_tree().change_scene_to_file("res://Scenes/UI/title_screen.tscn")
+	var error := get_tree().change_scene_to_file("res://Scenes/HUD/title_screen.tscn")
 	if error != OK:
 		push_error("Study: failed to return to title screen after credits. Error: %s" % error)

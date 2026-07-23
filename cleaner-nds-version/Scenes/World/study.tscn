@@ -739,34 +739,49 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("26_finale_font")
 theme_override_font_sizes/font_size = 16
-text = "NEPHILIM DEATH SQUAD
+text = "NARROW PATH STUDIOS 
+In association with
+The NEPHILIM DEATH SQUAD
+PRESENT:
+
+NEPHILIM DEATH SQUAD:
 
 THE AWAKENING OF SHADOWS
 
-A VERTICAL SLICE
+A DEMO
 
 
-STARRING
 
-RAVEN
+STARRING:
+
 TOP LOBSTA
-MUSTANG
-MATTT
+RAVEN
+NANCY
+MATTTTTTTTTT
 
-
+WITH INDY DAVE
+AS
 THE ARCHIVIST
 
 
-SPECIAL THANKS
+SPECIAL CREDIT:
+THEME MUSIC BY DALLAS SPITFIRE
+
+SPECIAL THANKS:
 
 THE NDS COMMUNITY
-AND YOU, THE PLAYER
+AND YOU, THE PLAYER.
+
+EXCEPT TOAD.
+
+BAD TOAD,BAD!
 
 
 THE SIGNAL HAS BEEN CUT.
 
-THE WAR HAS JUST BEGUN.
+THE WAR HAS JUST BEGUN.............
 
+AND REMEMBER;      NEVER GOON!
 
 END OF DEMO"
 horizontal_alignment = 1

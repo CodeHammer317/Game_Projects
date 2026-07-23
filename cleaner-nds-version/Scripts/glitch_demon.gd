@@ -59,6 +59,7 @@ signal glitch_burst(enemy: Node)
 # --- Hit reaction ---
 @export var flee_speed_multiplier: float = 1.6
 @export var flee_duration: float = 0.60
+@export var hit_animation_name: StringName = &"Hit"
 
 # --- Death / explosion ---
 @export var explosion_animation_name: StringName = &"Explosion"
@@ -92,6 +93,7 @@ var _pending_attack: bool = false
 
 var _flee_timer: float = 0.0
 var _flee_from: Node2D = null
+var _is_playing_hit_animation: bool = false
 
 var _phase_3_attack_count: int = 0
 var _doing_glitch_burst: bool = false
@@ -146,7 +148,7 @@ func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
 	move_and_slide()
 
-	if not is_attacking and auto_play_movement_animations:
+	if not is_attacking and not _is_playing_hit_animation and auto_play_movement_animations:
 		_update_facing_from_velocity()
 		_update_movement_animation()
 
@@ -582,6 +584,11 @@ func _on_sprite_animation_finished() -> void:
 	if _doing_glitch_burst:
 		return
 
+	if _is_playing_hit_animation and sprite.animation == hit_animation_name:
+		_is_playing_hit_animation = false
+		_update_movement_animation()
+		return
+
 	if sprite.animation.begins_with("Fire"):
 		finish_attack()
 
@@ -603,6 +610,10 @@ func _on_damaged(info: DamageInfo) -> void:
 	_pending_attack = false
 	_doing_glitch_burst = false
 	_attack_windup_timer = 0.0
+	_is_playing_hit_animation = _has_animation(String(hit_animation_name))
+
+	if _is_playing_hit_animation:
+		sprite.play(hit_animation_name)
 
 	if _target != null and is_instance_valid(_target):
 		_face_toward(_target.global_position)
@@ -636,6 +647,7 @@ func _on_died() -> void:
 func _start_growth_phase() -> void:
 	_is_growing = true
 	is_attacking = false
+	_is_playing_hit_animation = false
 	_pending_attack = false
 	_doing_glitch_burst = false
 	_attack_windup_timer = 0.0
@@ -689,6 +701,7 @@ func _start_final_death() -> void:
 
 	is_dead = true
 	is_attacking = false
+	_is_playing_hit_animation = false
 	_pending_attack = false
 	_doing_glitch_burst = false
 	velocity = Vector2.ZERO

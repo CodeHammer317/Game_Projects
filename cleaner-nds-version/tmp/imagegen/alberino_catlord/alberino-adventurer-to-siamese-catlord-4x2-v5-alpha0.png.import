@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crea4hj1fyey7"
-path="res://.godot/imported/AlberinoConversationHeadshot.png-a2da1a1a72c3aa28b9404e59cfbd81aa.ctex"
+uid="uid://drei87b7582g4"
+path="res://.godot/imported/alberino-adventurer-to-siamese-catlord-4x2-v5-alpha0.png-6f89074c612e9555cbc5b9f0d53a52d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/Study Art/AlberinoConversationHeadshot.png"
-dest_files=["res://.godot/imported/AlberinoConversationHeadshot.png-a2da1a1a72c3aa28b9404e59cfbd81aa.ctex"]
+source_file="res://tmp/imagegen/alberino_catlord/alberino-adventurer-to-siamese-catlord-4x2-v5-alpha0.png"
+dest_files=["res://.godot/imported/alberino-adventurer-to-siamese-catlord-4x2-v5-alpha0.png-6f89074c612e9555cbc5b9f0d53a52d8.ctex"]
 
 [params]
 

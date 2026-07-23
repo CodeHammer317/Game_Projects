@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+signal demon_spawned
+
 @export var demon_path: NodePath = NodePath("../GlitchDemon")
 @export var player_path: NodePath = NodePath("../Player")
 @export var spawn_delay: float = 4.0
@@ -89,6 +91,7 @@ func _activate_demon() -> void:
 	demon.modulate.a = 1.0
 	demon.process_mode = Node.PROCESS_MODE_INHERIT
 	_set_demon_collisions_disabled(false)
+	demon_spawned.emit()
 
 
 func _on_pulse_finished() -> void:

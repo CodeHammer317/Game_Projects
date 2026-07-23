@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://qi3wbmpbhrh3" path="res://Assets/tilesets/main_lev_buildB.png" id="7_mssxr"]
 [ext_resource type="Texture2D" uid="uid://btvd222r8slcy" path="res://Assets/Cool Animations/beam animation/beamupgrade1.png" id="7_nj643"]
 [ext_resource type="Texture2D" uid="uid://ccr3cy4fykm2e" path="res://Assets/Cool Animations/beam animation/beamupgrade2.png" id="8_niw4g"]
-[ext_resource type="AudioStream" uid="uid://cabm87uu1irpl" path="res://Assets/Audio/alexzavesa-woosh-game-glitch-3-463019.mp3" id="9_1rntg"]
 [ext_resource type="Texture2D" uid="uid://dom7ujbaa4sts" path="res://Assets/Cool Animations/beam animation/beamupgrade3.png" id="9_rvi4o"]
 [ext_resource type="Texture2D" uid="uid://dwltdlqu1dmfs" path="res://Assets/Cool Animations/beam animation/beamupgrade4.png" id="10_odh2o"]
+[ext_resource type="AudioStream" uid="uid://b6fs2h5876l4n" path="res://Assets/Audio/alexis_gaming_cam-anime-shine-sound-effect-346114.mp3" id="10_u8g6j"]
 [ext_resource type="Texture2D" uid="uid://bbc11i20q6w3p" path="res://Assets/Cool Animations/beam animation/beamupgrade5.png" id="11_mj682"]
 [ext_resource type="Texture2D" uid="uid://cuhefbinlmm4o" path="res://Assets/Cool Animations/beam animation/beamupgrade6.png" id="12_540qt"]
 [ext_resource type="Texture2D" uid="uid://bto4d4traaad8" path="res://Assets/Cool Animations/beam animation/beamupgrade7.png" id="13_qeok2"]
@@ -38,7 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://b0k0mlvnfq7w" path="res://Assets/sprites/Copilot_20260520_203257.png" id="33_niw4g"]
 [ext_resource type="Texture2D" uid="uid://g4wa4tj0k440" path="res://Assets/HUD_assets/mechanical_pixel_art_gui/mechanical_pixel_art_gui/premade/64x64/window/orange/panel.png" id="36_mj682"]
 [ext_resource type="PackedScene" uid="uid://4tdx7c33dgjl" path="res://Scenes/FX/helper_matrix.tscn" id="39_qeok2"]
-[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="40_1rntg"]
+[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/HUD/HUD.tscn" id="40_1rntg"]
 [ext_resource type="PackedScene" uid="uid://dd2qqaxowfy85" path="res://Scenes/FX/upgrade_matrix_display.tscn" id="40_mssxr"]
 [ext_resource type="AudioStream" uid="uid://cflwmlmi1gt44" path="res://Assets/Audio/freesound_community-2018-08-01-30015.mp3" id="41_1rntg"]
 
@@ -2368,6 +2368,7 @@ font_size = 7
 script = ExtResource("1_keiq2")
 upgrade_name = &"wall_slide"
 player_scene = ExtResource("6_player")
+next_scene = "uid://b3oa4b2yeraiq"
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1030815969]
 
@@ -2405,10 +2406,11 @@ autoplay = "activate"
 frame_progress = 0.992323
 
 [node name="FlashSound" type="AudioStreamPlayer" parent="UpgradeMachine" unique_id=915718602]
-stream = ExtResource("9_1rntg")
+stream = ExtResource("10_u8g6j")
 volume_db = -16.792
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UpgradeMachine" unique_id=710597352]
+volume_db = -14.733
 
 [node name="StopPoint" type="Node2D" parent="." unique_id=1798742526]
 position = Vector2(318, 294)
@@ -2540,6 +2542,6 @@ default_color = Color(1, 0.82, 0.2, 1)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=166546121]
 stream = ExtResource("41_1rntg")
-volume_db = -22.958
+volume_db = -27.291
 autoplay = true
 parameters/looping = true

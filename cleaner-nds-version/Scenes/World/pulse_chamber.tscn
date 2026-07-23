@@ -19,12 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://dkmqvukvq80eo" path="res://Assets/Cool Animations/Explosion_7/3/Explosion_2_5.png" id="12_ybcu7"]
 [ext_resource type="Texture2D" uid="uid://cwn001fp6axc0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0022.png" id="13_gx0q0"]
 [ext_resource type="Texture2D" uid="uid://cilpuvkx46pmm" path="res://Assets/Cool Animations/Explosion_7/3/Explosion_2_6.png" id="13_x35tf"]
-[ext_resource type="Script" uid="uid://c034v2aqgcvul" path="res://Scenes/World/pulse_chamber_lightning_flash.gd" id="14_lightning_flash"]
+[ext_resource type="Script" uid="uid://c034v2aqgcvul" path="res://Scripts/pulse_chamber_lightning_flash.gd" id="14_lightning_flash"]
 [ext_resource type="Texture2D" uid="uid://ba1wje1s6k807" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0023.png" id="14_powgt"]
-[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="14_puh3y"]
+[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/HUD/HUD.tscn" id="14_puh3y"]
 [ext_resource type="Texture2D" uid="uid://m3qncffjwuni" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0024.png" id="15_3xycp"]
-[ext_resource type="Script" uid="uid://cm5erabisk3fx" path="res://Scenes/World/pulse_chamber_demon_spawn.gd" id="15_demon_spawn"]
-[ext_resource type="Script" uid="uid://qemqjqfg833f" path="res://Scenes/World/pulse_chamber.gd" id="16_chamber_sequence"]
+[ext_resource type="Script" uid="uid://cm5erabisk3fx" path="res://Scripts/pulse_chamber_demon_spawn.gd" id="15_demon_spawn"]
+[ext_resource type="Script" uid="uid://qemqjqfg833f" path="res://Scripts/pulse_chamber.gd" id="16_chamber_sequence"]
 [ext_resource type="Texture2D" uid="uid://dweass8elsvha" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0025.png" id="16_k3vyj"]
 [ext_resource type="Texture2D" uid="uid://cyemxt8a0jugq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0026.png" id="17_1ehek"]
 [ext_resource type="Texture2D" uid="uid://bksfi7ejo35a5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0027.png" id="18_e3upe"]
@@ -124,6 +124,7 @@
 [ext_resource type="AudioStream" uid="uid://bncacjrvcpipw" path="res://Assets/Audio/freesound_community-lifebar-101709.mp3" id="120_vabxp"]
 [ext_resource type="AudioStream" uid="uid://bb76cvqrkm4x3" path="res://Assets/Audio/freesound_community-075792_glitchscreamwav-85145.mp3" id="121_wu35v"]
 [ext_resource type="AudioStream" uid="uid://kn7qr1df054u" path="res://Assets/Audio/BombExplosion_1.mp3" id="122_ckejx"]
+[ext_resource type="AudioStream" uid="uid://d23cpexsh5isf" path="res://Assets/Audio/csongimuzsikal-techno-loop-273137.mp3" id="123_3xycp"]
 [ext_resource type="Texture2D" uid="uid://ba8iif7k0t36v" path="res://Assets/sprites/Study Art/RavenHeadshotConversation.png" id="124_a2wc7"]
 [ext_resource type="PackedScene" uid="uid://br7vthru5cwmy" path="res://Scenes/FX/archivist_document_pickup.tscn" id="126_powgt"]
 
@@ -3899,13 +3900,14 @@ max_polyphony = 6
 parameters/looping = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=719959742]
+stream = ExtResource("123_3xycp")
+volume_db = -25.0
+autoplay = true
 max_polyphony = 6
 
 [node name="BossSpawnSound" type="AudioStreamPlayer" parent="." unique_id=2043173569]
 stream = ExtResource("121_wu35v")
-volume_db = -21.125
-autoplay = true
-max_polyphony = 6
+volume_db = -17.658
 
 [node name="ExplosionSound" type="AudioStreamPlayer" parent="." unique_id=1256188326]
 stream = ExtResource("122_ckejx")

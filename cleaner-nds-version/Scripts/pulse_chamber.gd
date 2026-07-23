@@ -11,12 +11,16 @@ const DIALOGUE_PANEL_LOW_BOTTOM: float = 0.95
 @export var dialogue_hold_time: float = 2.5
 @export var fade_out_time: float = 1.5
 @export_file("*.tscn") var next_scene: String = "res://Scenes/World/study.tscn"
+@export_range(0.5, 30.0, 0.1) var boss_sound_min_delay: float = 3.0
+@export_range(0.5, 30.0, 0.1) var boss_sound_max_delay: float = 7.0
 
 @onready var boss: Node = $GlitchDemon
+@onready var demon_spawn: AnimatedSprite2D = $Pulse
 @onready var player: Node = $Player
 @onready var lightning: AnimatedSprite2D = $Lightning
 @onready var room_explosion: AnimatedSprite2D = $RoomExplosion
 @onready var pulse_sound: AudioStreamPlayer = $PulseSound
+@onready var boss_spawn_sound: AudioStreamPlayer = $BossSpawnSound
 @onready var explosion_sound: AudioStreamPlayer = $ExplosionSound
 @onready var dialogue_layer: CanvasLayer = $PostBossDialogue
 @onready var dialogue_panel: ColorRect = $PostBossDialogue/DialogueRoot/DialoguePanel
@@ -28,19 +32,59 @@ const DIALOGUE_PANEL_LOW_BOTTOM: float = 0.95
 @onready var archivist_document: ArchivistDocumentPickup = $ArchivistDocumentPickup
 
 var _ending_sequence_started: bool = false
+var _boss_sound_loop_active: bool = false
 
 
 func _ready() -> void:
 	dialogue_layer.visible = false
 	fade_layer.visible = false
+	boss_spawn_sound.stop()
 
 	if boss != null and boss.has_signal("died"):
 		boss.connect("died", _on_boss_defeated)
 	else:
 		push_warning("PulseChamber: GlitchDemon death signal is unavailable.")
 
+	if demon_spawn != null and demon_spawn.has_signal("demon_spawned"):
+		demon_spawn.connect("demon_spawned", _on_demon_spawned)
+	else:
+		push_warning("PulseChamber: demon spawn signal is unavailable.")
+
+
+func _on_demon_spawned() -> void:
+	if _boss_sound_loop_active:
+		return
+
+	_boss_sound_loop_active = true
+	_run_boss_sound_loop()
+
+
+func _run_boss_sound_loop() -> void:
+	while _boss_sound_loop_active and is_instance_valid(boss):
+		var minimum_delay := minf(boss_sound_min_delay, boss_sound_max_delay)
+		var maximum_delay := maxf(boss_sound_min_delay, boss_sound_max_delay)
+		await get_tree().create_timer(randf_range(minimum_delay, maximum_delay)).timeout
+
+		if not _boss_sound_loop_active or not is_instance_valid(boss):
+			break
+
+		if "is_dead" in boss and boss.is_dead:
+			_stop_boss_sound_loop()
+			continue
+
+		if _boss_sound_loop_active and boss_spawn_sound != null and boss_spawn_sound.stream != null:
+			boss_spawn_sound.play()
+
+
+func _stop_boss_sound_loop() -> void:
+	_boss_sound_loop_active = false
+	if boss_spawn_sound != null:
+		boss_spawn_sound.stop()
+
 
 func _on_boss_defeated(_defeated_boss: Node) -> void:
+	_stop_boss_sound_loop()
+
 	if _ending_sequence_started:
 		return
 
