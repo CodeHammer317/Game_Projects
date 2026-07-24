@@ -70,7 +70,6 @@ func heal(amount: int) -> void:
 
 	current_health = min(current_health + amount, max_health)
 	_sync_state()
-	damaged.emit(null)
 	health_changed.emit(current_health, max_health)
 
 
@@ -78,7 +77,6 @@ func restore_full() -> void:
 	_is_dead = false
 	current_health = max_health
 	_sync_state()
-	damaged.emit(null)
 	health_changed.emit(current_health, max_health)
 
 

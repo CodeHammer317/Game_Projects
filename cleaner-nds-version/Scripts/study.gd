@@ -25,6 +25,7 @@ Did you remember to pickup my catfood?"""
 @export var end_card_duration: float = 3.0
 @export var finale_fade_duration: float = 1.5
 @export var credits_scroll_duration: float = 34.0
+@export_file("*.tscn") var epilog_scene: String = "res://Scenes/World/epilog.tscn"
 
 @onready var briefing: BriefingScreen = $Level01BriefingScreen
 @onready var player_spawn: Marker2D = $PlayerSpawn
@@ -252,7 +253,8 @@ func _play_demo_finale() -> void:
 	finale_music.stop()
 	await get_tree().create_timer(2.0).timeout
 
-	PlayerState.finish_demo_finale()
-	var error := get_tree().change_scene_to_file("res://Scenes/HUD/title_screen.tscn")
+	var error := get_tree().change_scene_to_file(epilog_scene)
 	if error != OK:
-		push_error("Study: failed to return to title screen after credits. Error: %s" % error)
+		push_error("Study: failed to open epilog after credits. Error: %s" % error)
+		PlayerState.finish_demo_finale()
+		get_tree().change_scene_to_file("res://Scenes/HUD/title_screen.tscn")

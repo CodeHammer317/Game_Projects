@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cyurf1e7umudx" path="res://Assets/sprites/Study Art/TopLobstaConversationHeadshot.png" id="21_8jq0p"]
 [ext_resource type="Texture2D" uid="uid://ba8iif7k0t36v" path="res://Assets/sprites/Study Art/RavenHeadshotConversation.png" id="21_ajmle"]
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="25_player"]
-[ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/pixy/PIXY.ttf" id="26_finale_font"]
+[ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/Fonts/pixy/PIXY.ttf" id="26_finale_font"]
 [ext_resource type="AudioStream" uid="uid://w83uc53n1rmp" path="res://Assets/Audio/BGM/NDS8bitRemix.mp3" id="27_finale_music"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_221uv"]

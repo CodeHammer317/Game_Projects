@@ -151,7 +151,7 @@ texture = ExtResource("1_0fewm")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1923827574]
 stream = ExtResource("3_hh1bc")
-volume_db = -5.958
+volume_db = -12.261
 max_polyphony = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1938440822]

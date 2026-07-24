@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://bwbi3dimbvvij"]
+
+[ext_resource type="Texture2D" uid="uid://d4n32fytpri1w" path="res://Assets/sprites/640×360 cat-lord throne laboratory asset.png" id="1_background"]
+[ext_resource type="Script" uid="uid://bfw8b3sngy1i1" path="res://Scripts/epilog.gd" id="2_script"]
+[ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/Fonts/pixy/PIXY.ttf" id="3_font"]
+[ext_resource type="AudioStream" uid="uid://dyg7h7aqmmvlt" path="res://Assets/Audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3" id="4_typing"]
+[ext_resource type="AudioStream" uid="uid://wngvbh7slix8" path="res://Assets/Audio/arctsound-epic-tactical-opener-background-music-448850.mp3" id="5_l3bcd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_dialogue"]
+bg_color = Color(0.015, 0.012, 0.008, 0.91)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94, 0.61, 0.04, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_speaker"]
+font = ExtResource("3_font")
+font_size = 11
+font_color = Color(1, 0.76, 0.12, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_prompt"]
+bg_color = Color(0.015, 0.012, 0.008, 0.78)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.94, 0.61, 0.04, 0.8)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_prompt"]
+font = ExtResource("3_font")
+font_size = 8
+font_color = Color(1, 0.76, 0.12, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Epilog" type="Node2D" unique_id=1986332430]
+texture_filter = 2
+script = ExtResource("2_script")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=905319670]
+texture = ExtResource("1_background")
+centered = false
+
+[node name="DialogueLayer" type="CanvasLayer" parent="." unique_id=122245300]
+layer = 10
+
+[node name="DialogueRoot" type="Control" parent="DialogueLayer" unique_id=768159387]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ServantTailOuter" type="Polygon2D" parent="DialogueLayer/DialogueRoot" unique_id=491023546]
+color = Color(0.94, 0.61, 0.04, 1)
+polygon = PackedVector2Array(148, 72, 169, 72, 177, 143)
+
+[node name="ServantTailInner" type="Polygon2D" parent="DialogueLayer/DialogueRoot" unique_id=295528835]
+color = Color(0.015, 0.012, 0.008, 0.96)
+polygon = PackedVector2Array(152, 72, 165, 72, 175, 132)
+
+[node name="ServantBubble" type="PanelContainer" parent="DialogueLayer/DialogueRoot" unique_id=1152773082]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 213.0
+offset_bottom = 73.0
+theme_override_styles/panel = SubResource("StyleBox_dialogue")
+
+[node name="Margin" type="MarginContainer" parent="DialogueLayer/DialogueRoot/ServantBubble" unique_id=132459019]
+layout_mode = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 5
+
+[node name="Content" type="VBoxContainer" parent="DialogueLayer/DialogueRoot/ServantBubble/Margin" unique_id=1229985652]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Speaker" type="Label" parent="DialogueLayer/DialogueRoot/ServantBubble/Margin/Content" unique_id=1279563776]
+layout_mode = 2
+text = "SERVANT"
+label_settings = SubResource("LabelSettings_speaker")
+
+[node name="Text" type="RichTextLabel" parent="DialogueLayer/DialogueRoot/ServantBubble/Margin/Content" unique_id=938986569]
+custom_minimum_size = Vector2(175, 34)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.98, 0.9, 1)
+theme_override_fonts/normal_font = ExtResource("3_font")
+theme_override_font_sizes/normal_font_size = 12
+text = "Should we neutralize
+the Nephilim Death Squad,
+My Lord?"
+fit_content = true
+scroll_active = false
+
+[node name="CatlordTailOuter" type="Polygon2D" parent="DialogueLayer/DialogueRoot" unique_id=1063080597]
+color = Color(0.94, 0.61, 0.04, 1)
+polygon = PackedVector2Array(497, 57, 497, 68, 356, 111)
+
+[node name="CatlordTailInner" type="Polygon2D" parent="DialogueLayer/DialogueRoot" unique_id=487827354]
+color = Color(0.015, 0.012, 0.008, 0.96)
+polygon = PackedVector2Array(497, 60, 497, 65, 369, 104)
+
+[node name="CatlordBubble" type="PanelContainer" parent="DialogueLayer/DialogueRoot" unique_id=494727332]
+layout_mode = 0
+offset_left = 497.0
+offset_top = 13.0
+offset_right = 629.0
+offset_bottom = 59.0
+theme_override_styles/panel = SubResource("StyleBox_dialogue")
+
+[node name="Margin" type="MarginContainer" parent="DialogueLayer/DialogueRoot/CatlordBubble" unique_id=1691117322]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Content" type="VBoxContainer" parent="DialogueLayer/DialogueRoot/CatlordBubble/Margin" unique_id=270729623]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Speaker" type="Label" parent="DialogueLayer/DialogueRoot/CatlordBubble/Margin/Content" unique_id=778529234]
+layout_mode = 2
+text = "CATLORD"
+label_settings = SubResource("LabelSettings_speaker")
+
+[node name="Text" type="RichTextLabel" parent="DialogueLayer/DialogueRoot/CatlordBubble/Margin/Content" unique_id=2095942476]
+custom_minimum_size = Vector2(110, 18)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.98, 0.9, 1)
+theme_override_fonts/normal_font = ExtResource("3_font")
+theme_override_font_sizes/normal_font_size = 12
+text = "Perhaps."
+fit_content = true
+scroll_active = false
+
+[node name="Prompt" type="Label" parent="DialogueLayer/DialogueRoot" unique_id=1575468793]
+visible = false
+layout_mode = 0
+offset_left = 250.0
+offset_top = 337.0
+offset_right = 390.0
+offset_bottom = 356.0
+theme_override_styles/normal = SubResource("StyleBox_prompt")
+text = "A / SPACE: REVEAL"
+label_settings = SubResource("LabelSettings_prompt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TypingAudio" type="AudioStreamPlayer" parent="." unique_id=404205354]
+stream = ExtResource("4_typing")
+volume_db = -30.0
+max_polyphony = 4
+
+[node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1739261801]
+layer = 100
+
+[node name="FadeOverlay" type="ColorRect" parent="FadeLayer" unique_id=1914163033]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=154279666]
+stream = ExtResource("5_l3bcd")
+volume_db = -23.72
+autoplay = true
