@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://ej1pden7fis8" path="res://Assets/sprites/Street Brawler Urban – 2D Beat 'Em Up Character Pack/Street Brawler Urban – 2D Beat 'Em Up Character Pack/Character Tile/Character (1).png" id="98_6a86w"]
 [ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="99_81gu5"]
 [ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="100_pf3rq"]
+[ext_resource type="AudioStream" uid="uid://3lb4oukuxsws" path="res://Assets/Audio/edr-8-bit-jump-001-171817.mp3" id="101_jump_sound"]
+[ext_resource type="AudioStream" uid="uid://desnjgfivbu1q" path="res://Assets/Audio/hurt1.ogg" id="102_hurt_sound"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlvik"]
 size = Vector2(12, 56.5)
@@ -1314,3 +1316,12 @@ position = Vector2(26, -11)
 script = ExtResource("100_pf3rq")
 max_health = 10
 use_persistent_player_state = true
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=173076346]
+stream = ExtResource("101_jump_sound")
+volume_db = -34.0
+pitch_scale = 1.33
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=846793001]
+stream = ExtResource("102_hurt_sound")
+volume_db = -8.0

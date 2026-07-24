@@ -25,6 +25,7 @@ signal matrix_browse_closed
 @onready var stop_point: Node2D = $StopPoint
 @onready var beam_sprite: AnimatedSprite2D = $Beam/AnimatedSprite2D
 @onready var machine_sprite: AnimatedSprite2D = $UpgradeMachine/AnimatedSprite2D
+@onready var flash_sound: AudioStreamPlayer = $UpgradeMachine/FlashSound
 @onready var player_spawn: Marker2D = $PlayerSpawn
 @onready var camera: SimpleCamera = $Camera2D
 @onready var tutorial_ui: CanvasLayer = $TutorialUI
@@ -550,6 +551,9 @@ func _play_upgrade_animation() -> void:
 	for cycle in repeat_count:
 		var machine_duration := fallback_animation_time * safe_duration_multiplier
 		var beam_duration := fallback_animation_time * safe_duration_multiplier
+
+		if cycle == repeat_count - 1:
+			flash_sound.play()
 
 		if machine_sprite.sprite_frames != null:
 			if machine_sprite.sprite_frames.has_animation(machine_animation):

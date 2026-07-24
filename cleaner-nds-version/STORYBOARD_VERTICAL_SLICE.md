@@ -1,214 +1,318 @@
 # Nephilim Death Squad — Vertical Slice Storyboard
 
-## Slice premise
+## Canonical slice premise
 
-A routine tremor beneath the Old District exposes a hidden supply line feeding an AI-assisted Nephilim resurrection project. The player follows the signal from an NDS safehouse, through the streets and abandoned subway, into the front operation of a corrupted laboratory. Defeating its guardian reveals that the incident is part of Azazel's larger plan.
+A rogue Vatican archivist intercepts evidence of an AI-assisted Nephilim resurrection project. Before the archivist can finish the transmission, the same occult signal appears beneath the Old District. NDS deploys through the quarantined streets and abandoned subway, destroys the Glitch Demon anchoring the signal, and recovers proof that the incident is one node in Azazel's global plan.
 
-The slice adapts the opening of **The Awakening of Shadows** to the scenes and mechanics already present in the project. It should feel like one complete episode while ending with a clear hook for the wider campaign.
+The slice adapts the opening of **The Awakening of Shadows** into one compact episode using the project's connected scenes. It should answer the local mystery, establish the Archivist as an endangered ally, and end with a clear campaign-scale threat.
+
+## Canonical player route
+
+`Title → Archivist Transmission → Study Briefing → Upgrade Chamber → Coffee Shop → Old District → Subway → Pulse Chamber → Debrief/Epilogue`
+
+The Cat Milk Factory and Cat Overlord are not part of the vertical-slice canon. Their existing scenes may remain in the project as archived prototype material, but no required story beat, collectible, or transition may depend on them.
 
 ## Player-facing level flow
 
 ### 0. Cold Open — “The Leak”
 
-**Format:** Short comic-panel intro  
-**Existing assets:** `Assets/Comic/`
+**Scene:** `Scenes/World/opening_screen.tscn`  
+**Format:** Three-panel intercepted transmission  
+**Target length:** 30–45 seconds
 
-- A rogue Vatican archivist transmits fragments of a classified file.
-- Images flash by: pre-Flood symbols, an excavation, genetic tanks, and an AI diagram labeled **DEMON PROTOCOL**.
-- The transmission is interrupted before the archivist can identify the project leader.
-- Final panel: NDS detects the same symbol beneath the player's city.
+#### Panel 1 — The unauthorized upload
 
-**Story job:** Establish the ancient/modern conspiracy quickly and give the mission urgency.
+**Visual:** A lone archivist works at a hidden terminal beneath the Vatican. Security agents enter the archive behind him.
 
-**Target length:** 30–45 seconds.
+**Source label:** `ROGUE ARCHIVIST // ENCRYPTED CHANNEL`
+
+**Archivist:**
+
+> NDS, if this reaches you, the Vatican archive has been compromised. I found the source of the tremors.
+
+**Story job:** Establish that the Archivist chose to contact NDS and is already in danger.
+
+#### Panel 2 — Demon Protocol
+
+**Visual:** A colossal pre-Flood skeleton, an artificial vessel, occult machinery, and an AI analysis system share the same sigil.
+
+**Source label:** `ARCHIVIST FILE UPLOAD // FRAGMENT 01`
+
+**Archivist:**
+
+> Excavation records. Pre-Flood remains. Artificial vessels. An intelligence they call DEMON PROTOCOL is choosing compatible hosts.
+
+**Story job:** State the central conspiracy in plain language without identifying its architect.
+
+#### Panel 3 — The local match
+
+**Visual:** The transmission collapses as agents reach the Archivist. NDS detects the matching sigil beneath the Old District subway.
+
+**Source label:** `ROGUE ARCHIVIST // SIGNAL BREAKING`
+
+**Archivist:**
+
+> They know I'm transmitting. The same sigil is active beneath your city, near the abandoned subway. Do not trust the official quarantine—
+
+**System:**
+
+> TRANSMISSION TERMINATED  
+> NDS TRACE: LOCAL MATCH CONFIRMED
+
+**Story job:** Convert exposition into an immediate field objective and leave the Archivist's fate unresolved.
+
+**Reveal limit:** The cold open may name **Demon Protocol**, but it must not name Azazel or fully explain the resurrection network.
 
 ---
 
 ### 1. NDS Safehouse — “First Field Deployment”
 
 **Scene:** `Scenes/World/study.tscn`  
-**Briefing UI:** `Scenes/World/level_01_briefing_screen.tscn`
+**Briefing UI:** `Scenes/World/level_01_briefing_screen.tscn`  
+**Target length:** 2–3 minutes
 
-- The player begins in the Study, which serves as the NDS safehouse.
-- Optional interactions establish tone:
-  - Teammate banter introduces the squad's podcast-like personality.
-  - The cold coffee and tremors suggest the disturbance is already close.
-  - A shelf or terminal contains the first conspiracy-lore collectible.
-- The mission briefing identifies a Nephilim signature beneath the abandoned subway near the Standard Coffee Shop.
-- Objective: enter the Old District, trace the signal, recover evidence, and neutralize anything guarding it.
+- NDS authenticates the transmission by matching its sigil to the seismic pulse beneath the city.
+- The official quarantine claims a gas leak; the Archivist explicitly warned NDS not to trust it.
+- Mission objective: cross the Old District, enter the abandoned subway, trace the signal, recover the Archivist's evidence, and neutralize its guardian.
+- Optional teammate banter introduces the squad's personality.
+- The cold coffee and continuing tremors keep the threat physically present.
 
-**Gameplay job:** Let the player move, interact, and absorb the premise before combat.
+**Briefing anchor:**
 
-**Story reveal:** The symbols from the Vatican leak match the local seismic signal.
+> TOP LOBSTA: At 02:13 we caught an unauthorized transmission from beneath the Vatican Archive. Thirty seconds later, the same sigil lit up under our Old District. We are treating that as a distress call and a target lock.
 
-**Target length:** 2–3 minutes.
+**Gameplay job:** Let the player move, interact, and understand the mission before combat.
+
+**Story reveal:** The Archivist's leak and the local tremors are parts of the same event.
 
 ---
 
 ### 2. Upgrade Chamber — “Field Baptism”
 
 **Scene:** `Scenes/World/upgrade_chamber.tscn`  
-**Reward:** Double Jump
+**Reward:** Wall Slide
+**Target length:** 2–3 minutes
 
-- The player enters the NDS relic chamber before deployment.
-- A recovered artifact activates and grants Double Jump.
-- The upgrade is framed as a **faith resonance** rather than ordinary technology: the relic responds to conviction and reveals movement paths that should be impossible.
-- A short tutorial requires the new ability to exit.
+- A recovered relic responds to the incoming signal and grants Wall Slide.
+- NDS describes the response as **faith resonance**, not ordinary technology.
+- The relic briefly displays the Archivist's sigil, suggesting both systems draw from the same ancient source.
+- A short traversal challenge requires wall sliding and a wall jump to exit.
 
 **Gameplay job:** Teach traversal and establish the upgrade/relic loop.
 
-**Story reveal:** NDS combines ancient relic knowledge with modern field equipment, but does not fully understand either.
-
-**Target length:** 2–3 minutes.
+**Story reveal:** NDS can resist and repurpose the same ancient forces that Demon Protocol is exploiting.
 
 ---
 
-### 3. Level 1A: Old District — “Tremors and Static”
+### 3. Coffee Shop — “Last Stop Above Ground”
 
-**Scene:** `Scenes/World/Level_01_Old_District.tscn`
+**Scene:** `Scenes/World/coffee_shop.tscn`  
+**Target length:** 30–60 seconds
 
-- The player crosses streets under a quiet quarantine.
-- Early enemies appear human or mundane, then show signs of digital corruption.
-- Environmental storytelling:
-  - Government barricades blame a gas leak.
-  - Screens flicker with a repeated sigil.
-  - Missing-person posters lead toward the subway.
-- Mattt's assist ability is introduced during a controlled encounter.
-- A mini-arena ends when a corrupted machine broadcasts a distorted Gregorian phrase.
-- The subway entrance opens after the signal is traced.
+- The route passes the Standard Coffee Shop at the edge of the quarantine.
+- Broadcast audio repeats the official gas-leak story.
+- A cup rattles with each underground pulse.
+- Squad banter gets one short joke before the tone darkens.
+
+**Suggested banter:**
+
+> MATTT: If this really is a gas leak, I want it noted that I heroically volunteered from outside the blast radius.
+
+**Gameplay job:** Provide a short tonal bridge from safehouse preparation to hostile streets.
+
+**Story reveal:** The cover story is active before NDS reaches the barricades.
+
+---
+
+### 4. Old District — “Tremors and Static”
+
+**Scene:** `Scenes/World/Level_01_Old_District.tscn`  
+**Target length:** 6–8 minutes
+
+- Government barricades blame a gas leak while digital signs repeat the leaked sigil.
+- Early enemies appear mundane, then reveal visible digital corruption.
+- Missing-person posters and dragged footprints point toward the subway.
+- Mattt's assist is introduced during a controlled encounter.
+- Raven's Wings are recovered late in the district and grant Double Jump before the subway descent.
+- A corrupted municipal terminal contains **Archivist File 01**.
+- A mini-arena ends when a damaged machine broadcasts a distorted Gregorian phrase and unlocks the subway route.
 
 **Gameplay job:** Teach basic combat, ranged threats, assist use, pickups, and enemy tells.
 
-**Story reveal:** The “Nephilim signature” is traveling through both the ground and the city's electronic network.
+**Story reveal:** The signal travels through both the ground and the city's electronic network.
 
-**Collectible:** Archivist File 01 — a redacted reference to “AI-guided vessel selection.”
+#### Archivist File 01 — “Vessel Selection”
 
-**Target length:** 6–8 minutes.
+> ARCHIVIST LOG 7C. The excavation team is not searching for relics. They are searching for candidates. Demon Protocol compares living subjects against something recovered from the pre-Flood remains. The rejected names are transferred to local holding sites. I cannot find records of their release.
 
----
-
-### 4. Level 1B: Abandoned Subway — “The Signal Below”
-
-**Scene:** `Scenes/World/subway_level_01.tscn`
-
-- The subway shifts the tone from street investigation to underground horror.
-- The player follows pulsing lights, chanting speakers, and biological residue.
-- Traversal uses Double Jump over collapsed platforms, electrified rails, and ruptured pipes.
-- Enemy encounters mix physical ambushes with the first clearly supernatural or glitched foe.
-- Mid-level discovery: supply crates bear both a corporate dairy logo and the Vatican archive symbol.
-- At the exit, the player sees freight tracks leading directly to the Cat Milk Factory.
-
-**Gameplay job:** Test traversal under pressure and combine enemy types.
-
-**Story reveal:** A ridiculous local company is functioning as a front for a serious occult logistics network.
-
-**Collectible:** Archivist File 02 — the phrase **Gilgamesh Chamber** and a partial image of a giant skeleton.
-
-**Target length:** 5–7 minutes.
+**Collectible job:** Reframe the missing persons as test subjects without explaining the final resurrection process.
 
 ---
 
-### 5. Level 2A: Cat Milk Factory — “Demon Protocol”
+### 5. Abandoned Subway — “The Signal Below”
 
-**Scene:** `Scenes/World/level_02_cat_milk_factory_entrance.tscn`
+**Scene:** `Scenes/World/subway_level_01.tscn`  
+**Target length:** 6–8 minutes
 
-- The factory begins as corporate satire and becomes an AI demon lab.
-- Production machinery processes an unidentified luminous substance rather than milk.
-- Roomba drones and automated defenses behave as if possessed.
-- Loudspeakers alternate between cheerful advertising and corrupted liturgy.
-- The player disables three production relays to unlock the executive core.
-- Each relay reveals part of the operation:
-  1. Biological material arrives from excavation sites.
-  2. AI identifies compatible hosts.
-  3. The finished product stabilizes Nephilim tissue.
+- The tone shifts from street investigation to underground horror.
+- Pulsing lights, chanting speakers, biological residue, and corrupted infrastructure guide the player downward.
+- Double Jump traversal crosses collapsed platforms, electrified rails, and ruptured pipes.
+- Encounters combine physical ambushes, ranged enemies, and clearly glitched foes.
+- An abandoned Vatican transport case contains **Archivist File 02**.
+- Freight tracks do not lead to a factory; they terminate at a sealed excavation door feeding the Pulse Chamber.
 
-**Gameplay job:** Deliver the slice's most complete combat/traversal level and escalate enemy combinations.
+**Gameplay job:** Test traversal under pressure and combine the enemy types taught above ground.
 
-**Story reveal:** The conspiracy uses ordinary consumer infrastructure to hide an AI-driven resurrection supply chain.
+**Story reveal:** The subway was used to move excavation equipment and human candidates into a chamber beneath the city.
 
-**Collectible:** Archivist File 03 — authorization signed only with the sigil of **Azazel**.
+#### Archivist File 02 — “The Gilgamesh Reference”
 
-**Target length:** 8–10 minutes.
+> ARCHIVIST LOG 9A. The local chamber is only a signal anchor. The primary remains are held elsewhere under the designation GILGAMESH. Every anchor is teaching the same intelligence how to cross from corrupted data into living tissue. If the anchors synchronize, containment becomes resurrection.
 
----
-
-### 6. Level 2B: Factory Core — “The Cat Overlord”
-
-**Scene:** `Scenes/World/level_02_cat_milk_factory_boss.tscn`  
-**Boss:** Cat Overlord
-
-- The Cat Overlord is the factory's mascot, executive guardian, and corrupted AI vessel.
-- Phase 1 emphasizes comic corporate attacks: product projectiles, drones, and arena hazards.
-- Phase 2 reveals the infernal machine beneath the mascot shell.
-- A prophecy vision briefly highlights the boss's weak point, introducing the faith-power concept without requiring a full new system.
-- Mattt's assist and the player's core combat abilities create the finishing opening.
-- On defeat, the boss transmits its final data packet to an unknown receiver.
-
-**Gameplay job:** Test mastery of movement, shooting/melee, dodging, assist timing, and hazard awareness.
-
-**Story reveal:** The Cat Overlord was not the mastermind. It was one node in Azazel's Demon Protocol.
-
-**Target length:** 4–6 minutes.
+**Collectible job:** Explain the function of the local site and foreshadow the full campaign's scale.
 
 ---
 
-### 7. Epilogue — “We Are Already Behind”
+### 6. Pulse Chamber — “Cut the Signal”
 
-**Format:** Short in-engine scene or comic-panel outro
+**Scene:** `Scenes/World/pulse_chamber.tscn`  
+**Boss:** Glitch Demon  
+**Target length:** 4–6 minutes
 
-- NDS recovers the factory database.
-- A map shows linked sites in Vatican City, Mesopotamia, and Babel.
-- The rogue archivist's final recovered message identifies Azazel as “the architect.”
-- Deep beneath the Gilgamesh Chamber, an enormous eye opens.
-- End card: **THE AWAKENING OF SHADOWS**
+- The chamber is an occult signal anchor built from excavation machinery and corrupted city infrastructure.
+- The Glitch Demon is the signal given a temporary body, not the mastermind behind it.
+- Its attacks combine physical danger with visual corruption and electronic interference.
+- Mattt's assist and the player's movement/combat kit create the finishing opening.
+- On defeat, Raven plants charges while NDS extracts the chamber's final data fragment.
+- The fragment is **Archivist File 03** and contains the first explicit identification of Azazel.
 
-**Story job:** Resolve the local mission, name the larger antagonist, and promise the giant-scale campaign.
+**Gameplay job:** Test mastery of movement, shooting, melee, dodging, assist timing, and hazard awareness.
 
-**Target length:** 45–60 seconds.
+**Story reveal:** Destroying the demon closes the local anchor, but other anchors remain active.
+
+#### Archivist File 03 — “The Architect”
+
+> ARCHIVIST DEAD-DROP. I found the authorization chain. There is no department, council, or human director at its end. Only one name, repeated in every era of the archive: AZAZEL. Demon Protocol is not creating his army. It is rebuilding one that remembers him.
+
+**Collectible job:** Name the campaign antagonist only after the player earns the local victory.
+
+---
+
+### 7. Debrief/Epilogue — “We Are Already Behind”
+
+**Scene:** `Scenes/World/study.tscn`  
+**Format:** Locked in-engine debrief, final character beat, end card, and credits
+
+- The Pulse Chamber collapses and the Old District signal goes dark.
+- The player returns to the Study and remains control-locked throughout the finale.
+- NDS confirms that the local anchor and Glitch Demon were destroyed.
+- The recovered Archivist files establish that other anchors remain active and that Azazel is their architect.
+
+**Debrief screen:**
+
+> LOCAL ANCHOR: DESTROYED  
+> GLITCH DEMON: NEUTRALIZED  
+> ARCHIVIST FILES: RECOVERED
+
+**Nancy:**
+
+> Did you remember to pickup my catfood?
+
+- Cut to black and display **THE END**.
+- Roll credits while the title-screen theme plays without looping.
+- Return to the title screen after the credits.
+
+**Story job:** Confirm the local victory, preserve the wider threat, and release the tension with one final squad-character joke before ending the demo.
+
+## The Archivist — scripting guide
+
+### Identity in the slice
+
+- Refer to the character only as **the Archivist**.
+- Do not reveal a civilian name, rank, face, or exact allegiance in the vertical slice.
+- The Archivist has access to forbidden records but is not omniscient.
+- The Archivist contacted NDS deliberately after discovering that official channels were compromised.
+- Whether the Archivist escaped, was captured, or died remains unanswered.
+
+### Voice
+
+- Precise, educated, restrained, and urgently practical.
+- Speaks in evidence and consequences rather than mystical riddles.
+- Fear appears through shortened sentences and missing context, not panic or melodrama.
+- Treats faith as an act of resistance and moral choice, not as decorative occult vocabulary.
+- Never dumps lore that the current scene does not need.
+
+### Information ladder
+
+1. **Cold open:** Demon Protocol selects hosts; a matching signal exists locally.
+2. **File 01:** Missing people are being screened as vessels.
+3. **File 02:** Local chambers are synchronized resurrection anchors; Gilgamesh exists.
+4. **File 03:** Azazel is the architect behind the network.
+5. **Epilogue:** Multiple anchors are already active and beginning to communicate.
+
+### Formatting rules
+
+- Live transmissions use `ROGUE ARCHIVIST // ENCRYPTED CHANNEL`.
+- Recovered logs use `ARCHIVIST LOG` followed by a short fragment code.
+- The final recovery uses `ARCHIVIST DEAD-DROP`.
+- System messages are uppercase and contain no character voice.
+- Keep every spoken or displayed block readable in five to twelve seconds.
 
 ## Slice arc at a glance
 
-1. **Question:** Why is a Nephilim signal appearing beneath an ordinary city?
-2. **Investigation:** The signal connects street corruption, the subway, and a corporate factory.
-3. **Answer:** The factory is part of an AI-assisted resurrection network.
-4. **Victory:** The player destroys the local guardian and recovers proof.
-5. **Hook:** Azazel controls a global network, and something beneath Mesopotamia has awakened.
+1. **Question:** Why did a Vatican Archivist warn NDS about a signal beneath an ordinary city?
+2. **Investigation:** Street corruption, missing persons, and subway shipments lead to a buried anchor.
+3. **Answer:** Demon Protocol is using AI to select vessels and teach ancient corruption to inhabit living tissue.
+4. **Victory:** NDS destroys the Glitch Demon and shuts down the local anchor.
+5. **Hook:** Azazel controls a global network, and the remaining anchors are beginning to synchronize.
 
-## Recommended slice scope
+## Production scope
 
 ### Must ship
 
+- Archivist transmission cold open
 - Study briefing and optional interactions
-- Upgrade Chamber and Double Jump tutorial
+- Upgrade Chamber and Wall Slide tutorial
+- Old District Raven's Wings relic and Double Jump acquisition
+- Coffee Shop transition beat
 - Old District combat tutorial
 - Subway traversal level
-- Cat Milk Factory main level
-- Cat Overlord boss
-- Three lore collectibles
-- Cold open and epilogue using existing comic-panel presentation
-- Short squad banter in every gameplay level
+- Pulse Chamber and Glitch Demon finale
+- Archivist Files 01–03
+- Short squad banter in each gameplay level
+- Debrief/epilogue and campaign end card
 
 ### Nice to have
 
-- Prophecy-vision visual effect during the boss
-- Relay shutdown objectives in the factory
 - Environmental screens that become increasingly corrupted
 - One optional hidden room requiring Double Jump
+- A brief prophecy/weak-point effect during the Glitch Demon fight
 - End-of-slice mission-results screen
+- Unique voice processing for live, recovered, and damaged Archivist recordings
+
+### Explicitly cut from the vertical slice
+
+- Cat Milk Factory level
+- Relay shutdown objectives
+- Cat Overlord boss
+- Corporate dairy conspiracy beats
+- Factory-specific collectibles and dialogue
 
 ### Save for the full campaign
 
+- Playable Vatican Archives
 - Playable Mesopotamia/Gilgamesh Chamber
-- Vatican Archives level
 - Multiple selectable faith powers
 - Giant boss battles
 - Physical/spiritual plane switching
+- The Archivist's true identity and fate
 - Full Azazel confrontation
 
 ## Narrative guardrails
 
-- Keep the conspiracy fun, heightened, and fictional; the humor should come from the squad and absurd cover operations, not from undermining the threat.
-- Every level should contain one joke, one unsettling image, and one meaningful clue.
-- Faith powers should represent resilience, discernment, and resistance to corruption—not generic spellcasting.
-- Azazel should remain mostly unseen in the slice. A name, sigil, voice fragment, and final consequence will make the reveal stronger.
-- Collectibles should deepen the mystery without carrying information required to understand the main objective.
+- Keep the conspiracy heightened and fictional; humor should come from squad chemistry, not from undermining the threat.
+- Every gameplay level should contain one joke, one unsettling image, and one meaningful clue.
+- Faith powers represent resilience, discernment, and resistance to corruption—not generic spellcasting.
+- Azazel remains unseen in the slice. A name, sigil, recovered authorization, and final consequence are enough.
+- The three Archivist files deepen the mystery, but the main mission must remain understandable if a player misses them.
+- Never imply that the Glitch Demon is the ultimate villain; it is a dangerous local manifestation of a larger system.

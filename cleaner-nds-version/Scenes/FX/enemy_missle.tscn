@@ -55,6 +55,7 @@ radius = 5.0
 height = 28.0
 
 [node name="EnemyMissle" type="Area2D" unique_id=1209101709 groups=["enemies"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 16
 collision_mask = 34
 script = ExtResource("11_missle_script")
@@ -68,5 +69,6 @@ autoplay = "default"
 frame_progress = 0.285316
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1314856738]
+position = Vector2(4, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_75mh0")

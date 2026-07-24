@@ -2,51 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cnkbrikjlydpe" path="res://Scripts/fire_column_aoe.gd" id="1_e3aw6"]
 [ext_resource type="Texture2D" uid="uid://df144b2n2oojm" path="res://Assets/sprites/Fire/directional_fire_burst_001/directional_fire_burst_001_large_orange/spritesheet.png" id="2_n7cd6"]
-[ext_resource type="Texture2D" uid="uid://ckl3b5ewnqm40" path="res://Assets/sprites/craftpix-671189-10-magic-sprite-sheet-effects-pixel-art/2 Lightning bolt/Lightning-bolt.png" id="2_u7rsv"]
-[ext_resource type="AudioStream" uid="uid://c75iwt8o3nbmm" path="res://Assets/Audio/virtual_vibes-electric-spark-404229.mp3" id="4_cxt2x"]
+[ext_resource type="AudioStream" uid="uid://daxkfydt3ss2p" path="res://Assets/Audio/biww-big-fire-blast-whoosh-sound-effect-561961.mp3" id="3_cxt2x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kblf"]
 radius = 81.58431
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gs44p"]
-atlas = ExtResource("2_u7rsv")
-region = Rect2(0, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1tps"]
-atlas = ExtResource("2_u7rsv")
-region = Rect2(72, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eqj54"]
-atlas = ExtResource("2_u7rsv")
-region = Rect2(144, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aok6p"]
-atlas = ExtResource("2_u7rsv")
-region = Rect2(216, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p3gtq"]
-atlas = ExtResource("2_u7rsv")
-region = Rect2(288, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yy7l3"]
-atlas = ExtResource("2_u7rsv")
-region = Rect2(360, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_24ufn"]
-atlas = ExtResource("2_u7rsv")
-region = Rect2(432, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m47f6"]
-atlas = ExtResource("2_u7rsv")
-region = Rect2(504, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o8sjl"]
-atlas = ExtResource("2_u7rsv")
-region = Rect2(576, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_shapq"]
-atlas = ExtResource("2_u7rsv")
-region = Rect2(648, 0, 72, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u7rsv"]
 atlas = ExtResource("2_n7cd6")
@@ -100,41 +59,6 @@ region = Rect2(528, 0, 48, 96)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gs44p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f1tps")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eqj54")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aok6p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p3gtq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yy7l3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_24ufn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m47f6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o8sjl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_shapq")
-}],
-"loop": false,
-"name": &"fire_column",
-"speed": 16.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_u7rsv")
 }, {
 "duration": 1.0,
@@ -171,7 +95,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_hfjsu")
 }],
 "loop": false,
-"name": &"fire_column1",
+"name": &"fire_column",
 "speed": 16.0
 }]
 
@@ -182,23 +106,28 @@ collision_mask = 69
 script = ExtResource("1_e3aw6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=383998431]
-position = Vector2(32, 176)
+position = Vector2(32, 208)
 shape = SubResource("CircleShape2D_0kblf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1235836523]
-scale = Vector2(1, 2.639999)
+scale = Vector2(1.2000008, 2.319998)
 sprite_frames = SubResource("SpriteFrames_7wkpm")
 animation = &"fire_column"
 autoplay = "fire_column"
-frame = 4
+frame = 11
 centered = false
+flip_v = true
 
 [node name="FireBlastSound" type="AudioStreamPlayer2D" parent="." unique_id=2019163171]
-stream = ExtResource("4_cxt2x")
-volume_db = -19.303
+stream = ExtResource("3_cxt2x")
+volume_db = -4.124
+pitch_scale = 1.13
 max_distance = 900.0
+max_polyphony = 5
 
 [node name="FireImpactSound" type="AudioStreamPlayer2D" parent="." unique_id=1040253679]
+stream = ExtResource("3_cxt2x")
 volume_db = -19.616
 pitch_scale = 0.98
 max_distance = 900.0
+max_polyphony = 5

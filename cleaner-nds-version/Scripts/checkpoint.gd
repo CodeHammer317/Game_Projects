@@ -25,7 +25,13 @@ func _on_body_entered(body: Node) -> void:
 
 	var manager := _get_respawn_manager()
 	if manager == null:
-		push_warning("Checkpoint: no RespawnManager found.")
+		if body.has_method("set_fallback_respawn_position"):
+			var target := spawn_point if spawn_point != null else self
+			body.set_fallback_respawn_position(target.global_position)
+			_is_active = true
+			return
+
+		push_warning("Checkpoint: no RespawnManager or compatible player fallback found.")
 		return
 
 	var target := spawn_point if spawn_point != null else self

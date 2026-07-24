@@ -73,12 +73,27 @@ animations = [{
 "frames": [{"duration": 1.0, "texture": SubResource("Clean_20")}, {"duration": 1.0, "texture": SubResource("Clean_21")}, {"duration": 1.0, "texture": SubResource("Clean_22")}, {"duration": 1.0, "texture": SubResource("Clean_23")}],
 "loop": false,
 "name": &"Fire2",
-"speed": 12.0
+"speed": 14.0
 }, {
-"frames": [{"duration": 1.0, "texture": SubResource("Clean_20")}, {"duration": 1.0, "texture": SubResource("Clean_21")}, {"duration": 1.0, "texture": SubResource("Clean_22")}, {"duration": 1.0, "texture": SubResource("Clean_23")}],
+"frames": [{"duration": 1.0, "texture": SubResource("Clean_20")}, {"duration": 1.0, "texture": SubResource("Clean_21")}, {"duration": 1.0, "texture": SubResource("Clean_22")}, {"duration": 0.65, "texture": SubResource("Clean_21")}, {"duration": 0.65, "texture": SubResource("Clean_22")}, {"duration": 1.0, "texture": SubResource("Clean_23")}],
 "loop": false,
 "name": &"Fire3",
-"speed": 12.0
+"speed": 15.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("Clean_20")}, {"duration": 1.35, "texture": SubResource("Clean_21")}, {"duration": 1.0, "texture": SubResource("Clean_22")}, {"duration": 0.65, "texture": SubResource("Clean_21")}, {"duration": 1.0, "texture": SubResource("Clean_22")}, {"duration": 0.65, "texture": SubResource("Clean_21")}, {"duration": 1.0, "texture": SubResource("Clean_22")}, {"duration": 1.0, "texture": SubResource("Clean_23")}],
+"loop": false,
+"name": &"GlitchBurst",
+"speed": 14.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("Clean_20")}, {"duration": 1.0, "texture": SubResource("Clean_21")}, {"duration": 1.0, "texture": SubResource("Clean_20")}, {"duration": 1.0, "texture": SubResource("Clean_21")}],
+"loop": true,
+"name": &"Grow",
+"speed": 7.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("Clean_30")}, {"duration": 1.0, "texture": SubResource("Clean_31")}, {"duration": 1.0, "texture": SubResource("Clean_30")}],
+"loop": false,
+"name": &"Hit",
+"speed": 14.0
 }, {
 "frames": [{"duration": 1.0, "texture": SubResource("Clean_10")}, {"duration": 1.0, "texture": SubResource("Clean_11")}, {"duration": 1.0, "texture": SubResource("Clean_12")}, {"duration": 1.0, "texture": SubResource("Clean_13")}],
 "loop": true,

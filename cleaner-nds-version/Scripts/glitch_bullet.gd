@@ -49,6 +49,9 @@ func _ready() -> void:
 func setup(direction: Vector2, source_node: Node) -> void:
 	_direction = direction.normalized() if direction != Vector2.ZERO else Vector2.RIGHT
 	_owner = source_node
+	if _owner != null and is_instance_valid(_owner):
+		if not _owner.tree_exiting.is_connected(_on_owner_tree_exiting):
+			_owner.tree_exiting.connect(_on_owner_tree_exiting, CONNECT_ONE_SHOT)
 	_align_visual_to_trajectory()
 
 
@@ -82,7 +85,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	if _has_hit or body == _owner:
+	if _has_hit or body == _get_valid_owner():
 		return
 
 	if body.has_method("apply_damage"):
@@ -90,12 +93,13 @@ func _on_body_entered(body: Node) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if _has_hit or area == null or area == _owner:
+	var source := _get_valid_owner()
+	if _has_hit or area == null or area == source:
 		return
 
 	var parent := area.get_parent()
 
-	if parent == _owner:
+	if parent == source:
 		return
 
 	if area.has_method("apply_hit"):
@@ -111,7 +115,7 @@ func _apply_hit_area(area: Area2D) -> void:
 	var info := DamageInfo.new(
 		damage,
 		Vector2(_direction.x * knockback.x, knockback.y),
-		_owner
+		_get_valid_owner()
 	)
 
 	area.apply_hit(info)
@@ -126,7 +130,7 @@ func _apply_hit_to(target: Node) -> void:
 	var info := DamageInfo.new(
 		damage,
 		Vector2(_direction.x * knockback.x, knockback.y),
-		_owner
+		_get_valid_owner()
 	)
 
 	target.apply_damage(info)
@@ -183,4 +187,19 @@ func _mark_hit(target: Object) -> void:
 
 
 func _on_screen_exited() -> void:
+	queue_free()
+
+
+func _get_valid_owner() -> Node:
+	if _owner != null and is_instance_valid(_owner):
+		return _owner
+
+	_owner = null
+	return null
+
+
+func _on_owner_tree_exiting() -> void:
+	# Enemy projectiles live under the room, not under their source. Remove them
+	# before a freed source can be passed into typed DamageInfo construction.
+	_owner = null
 	queue_free()

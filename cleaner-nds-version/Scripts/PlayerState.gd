@@ -3,6 +3,7 @@ extends Node
 signal upgrade_unlocked(upgrade_name: StringName)
 signal helper_unlocked(helper_id: StringName)
 signal helper_selected(helper_id: StringName)
+signal document_collected(document_id: StringName)
 
 const DEFAULT_HELPER: StringName = &"mattt"
 const MATTT_ASSIST_SCENE: PackedScene = preload("res://Scenes/Player/mattt_assist.tscn")
@@ -40,11 +41,14 @@ var unlocked_upgrades: Dictionary = {}
 var starting_helpers: Array[StringName] = [DEFAULT_HELPER]
 var unlocked_helpers: Dictionary = {}
 var selected_helper: StringName = DEFAULT_HELPER
+var collected_documents: Dictionary = {}
+var demo_finale_pending: bool = false
 
 
 func _ready() -> void:
 	reset_upgrades()
 	reset_helpers()
+	reset_documents()
 
 
 func reset_all() -> void:
@@ -52,6 +56,37 @@ func reset_all() -> void:
 	player_dead = false
 	reset_upgrades()
 	reset_helpers()
+	reset_documents()
+	demo_finale_pending = false
+
+
+func begin_demo_finale() -> void:
+	demo_finale_pending = true
+
+
+func finish_demo_finale() -> void:
+	demo_finale_pending = false
+
+
+func has_document(document_id: StringName) -> bool:
+	return collected_documents.get(document_id, false)
+
+
+func collect_document(document_id: StringName) -> bool:
+	if document_id.is_empty():
+		push_warning("Cannot collect a document without an ID.")
+		return false
+
+	if has_document(document_id):
+		return false
+
+	collected_documents[document_id] = true
+	document_collected.emit(document_id)
+	return true
+
+
+func reset_documents() -> void:
+	collected_documents.clear()
 
 
 func has_upgrade(upgrade_name: StringName) -> bool:

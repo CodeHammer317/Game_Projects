@@ -19,11 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://dkmqvukvq80eo" path="res://Assets/Cool Animations/Explosion_7/3/Explosion_2_5.png" id="12_ybcu7"]
 [ext_resource type="Texture2D" uid="uid://cwn001fp6axc0" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0022.png" id="13_gx0q0"]
 [ext_resource type="Texture2D" uid="uid://cilpuvkx46pmm" path="res://Assets/Cool Animations/Explosion_7/3/Explosion_2_6.png" id="13_x35tf"]
-[ext_resource type="Script" uid="uid://c034v2aqgcvul" path="res://Scenes/World/pulse_chamber_lightning_flash.gd" id="14_lightning_flash"]
+[ext_resource type="Script" uid="uid://c034v2aqgcvul" path="res://Scripts/pulse_chamber_lightning_flash.gd" id="14_lightning_flash"]
 [ext_resource type="Texture2D" uid="uid://ba1wje1s6k807" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0023.png" id="14_powgt"]
-[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="14_puh3y"]
+[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/HUD/HUD.tscn" id="14_puh3y"]
 [ext_resource type="Texture2D" uid="uid://m3qncffjwuni" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0024.png" id="15_3xycp"]
-[ext_resource type="Script" uid="uid://cm5erabisk3fx" path="res://Scenes/World/pulse_chamber_demon_spawn.gd" id="15_demon_spawn"]
+[ext_resource type="Script" uid="uid://cm5erabisk3fx" path="res://Scripts/pulse_chamber_demon_spawn.gd" id="15_demon_spawn"]
+[ext_resource type="Script" uid="uid://qemqjqfg833f" path="res://Scripts/pulse_chamber.gd" id="16_chamber_sequence"]
 [ext_resource type="Texture2D" uid="uid://dweass8elsvha" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0025.png" id="16_k3vyj"]
 [ext_resource type="Texture2D" uid="uid://cyemxt8a0jugq" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0026.png" id="17_1ehek"]
 [ext_resource type="Texture2D" uid="uid://bksfi7ejo35a5" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0027.png" id="18_e3upe"]
@@ -119,8 +120,13 @@
 [ext_resource type="Texture2D" uid="uid://1m5dc1yxotka" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0117.png" id="108_sg60a"]
 [ext_resource type="Texture2D" uid="uid://iun4vcmu703a" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0118.png" id="109_0tkfj"]
 [ext_resource type="Texture2D" uid="uid://2p87xi0mkbrg" path="res://Assets/sprites/wills_magic_pixel_particle_effects/wills_magic_pixel_particle_effects/vortex/frames/frame0119.png" id="110_57l5y"]
+[ext_resource type="Texture2D" uid="uid://by31keq86pemb" path="res://Assets/sprites/FullGigaPak2.5_spritesheetS/Explosions/epic_explosion_002/epic_explosion_002_large_green/spritesheet.png" id="120_gx0q0"]
 [ext_resource type="AudioStream" uid="uid://bncacjrvcpipw" path="res://Assets/Audio/freesound_community-lifebar-101709.mp3" id="120_vabxp"]
 [ext_resource type="AudioStream" uid="uid://bb76cvqrkm4x3" path="res://Assets/Audio/freesound_community-075792_glitchscreamwav-85145.mp3" id="121_wu35v"]
+[ext_resource type="AudioStream" uid="uid://kn7qr1df054u" path="res://Assets/Audio/BombExplosion_1.mp3" id="122_ckejx"]
+[ext_resource type="AudioStream" uid="uid://d23cpexsh5isf" path="res://Assets/Audio/csongimuzsikal-techno-loop-273137.mp3" id="123_3xycp"]
+[ext_resource type="Texture2D" uid="uid://ba8iif7k0t36v" path="res://Assets/sprites/Study Art/RavenHeadshotConversation.png" id="124_a2wc7"]
+[ext_resource type="PackedScene" uid="uid://br7vthru5cwmy" path="res://Scenes/FX/archivist_document_pickup.tscn" id="126_powgt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f4mdd"]
 texture = ExtResource("2_wtaay")
@@ -3688,6 +3694,119 @@ animations = [{
 "speed": 25.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_powgt"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xycp"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3vyj"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ehek"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3upe"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vyx3"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20mqq"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08lx4"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovcrh"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(1536, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc8it"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(1728, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af7fl"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(1920, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwvqa"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(2112, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88te2"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(2304, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52j3e"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(2496, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ymb3"]
+atlas = ExtResource("120_gx0q0")
+region = Rect2(2688, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_room_explosion"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_powgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xycp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3vyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ehek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3upe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vyx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20mqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08lx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovcrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc8it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af7fl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwvqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88te2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52j3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ymb3")
+}],
+"loop": false,
+"name": &"detonate",
+"speed": 10.0
+}]
+
 [sub_resource type="Gradient" id="Gradient_lightning_flash"]
 offsets = PackedFloat32Array(0, 0.18, 0.55, 1)
 colors = PackedColorArray(0.92, 0.82, 1, 1, 0.68, 0.35, 1, 0.82, 0.35, 0.08, 0.85, 0.28, 0.12, 0.01, 0.25, 0)
@@ -3701,6 +3820,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
 [node name="PulseChamber" type="Node2D" unique_id=1767634040]
+script = ExtResource("16_chamber_sequence")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=520251993]
 texture = ExtResource("4_de0du")
@@ -3755,6 +3875,14 @@ autoplay = "default"
 frame_progress = 0.5460419
 script = ExtResource("14_lightning_flash")
 
+[node name="RoomExplosion" type="AnimatedSprite2D" parent="." unique_id=888992301]
+visible = false
+z_index = 40
+position = Vector2(320, 180)
+scale = Vector2(5.8, 0.6)
+sprite_frames = SubResource("SpriteFrames_room_explosion")
+animation = &"detonate"
+
 [node name="LightningFlashLight" type="PointLight2D" parent="." unique_id=1111970966]
 position = Vector2(333, 166)
 color = Color(0.72, 0.42, 1, 1)
@@ -3772,12 +3900,94 @@ max_polyphony = 6
 parameters/looping = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=719959742]
+stream = ExtResource("123_3xycp")
+volume_db = -25.0
+autoplay = true
 max_polyphony = 6
 
 [node name="BossSpawnSound" type="AudioStreamPlayer" parent="." unique_id=2043173569]
 stream = ExtResource("121_wu35v")
-volume_db = -36.833
-autoplay = true
-max_polyphony = 6
+volume_db = -17.658
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="." unique_id=1256188326]
+stream = ExtResource("122_ckejx")
+
+[node name="PostBossDialogue" type="CanvasLayer" parent="." unique_id=2066883145]
+layer = 50
+
+[node name="DialogueRoot" type="Control" parent="PostBossDialogue" unique_id=1719565462]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DialoguePanel" type="ColorRect" parent="PostBossDialogue/DialogueRoot" unique_id=1305328570]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.68
+anchor_right = 0.94
+anchor_bottom = 0.95
+offset_left = -0.3999977
+offset_top = 0.19999695
+offset_right = -0.4000244
+offset_bottom = 0.2000122
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.023529412, 0.03529412, 0.05490196, 0.3137255)
+
+[node name="Portrait" type="TextureRect" parent="PostBossDialogue/DialogueRoot/DialoguePanel" unique_id=2128422899]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 88.0
+offset_bottom = 88.0
+texture = ExtResource("124_a2wc7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Speaker" type="Label" parent="PostBossDialogue/DialogueRoot/DialoguePanel" unique_id=527165116]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 10.0
+offset_right = 540.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 0.7, 0.24, 1)
+theme_override_font_sizes/font_size = 18
+text = "RAVEN // COMMS"
+
+[node name="DialogueText" type="Label" parent="PostBossDialogue/DialogueRoot/DialoguePanel" unique_id=20939460]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 38.0
+offset_right = 548.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 16
+text = "RAVEN: Planting explosives."
+autowrap_mode = 2
+
+[node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1644066879]
+layer = 100
+visible = false
+
+[node name="FadeOverlay" type="ColorRect" parent="FadeLayer" unique_id=109737611]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ArchivistDocumentPickup" parent="." unique_id=994571012 instance=ExtResource("126_powgt")]
+position = Vector2(588, 281)
+document_id = &"archivist_file_03"
+source_label = "ARCHIVIST DEAD-DROP"
+document_title = "THE ARCHITECT"
+transcript = "I found the authorization chain. There is no department, council, or human director at its end. Only one name, repeated in every era of the archive: AZAZEL. Demon Protocol is not creating his army. It is rebuilding one that remembers him."
+available_on_ready = false
 
 [editable path="GlitchDemon"]

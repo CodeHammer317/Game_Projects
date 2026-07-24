@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://c0hxxo8hij7p8" path="res://Scripts/combat/enemy_bullet.gd" id="1_bullet"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bullet"]
+size = Vector2(10, 3)
+
+[node name="PoliceBullet" type="Area2D" groups=["enemies"]]
+collision_layer = 16
+collision_mask = 34
+script = ExtResource("1_bullet")
+speed = 360.0
+damage = 1
+lifetime = 2.5
+knockback = Vector2(95, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bullet")
+
+[node name="AnimatedSprite2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-6, -1.5, 6, -1.5, 6, 1.5, -6, 1.5)
+color = Color(1, 0.835294, 0.341176, 1)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-8, -4, 16, 8)

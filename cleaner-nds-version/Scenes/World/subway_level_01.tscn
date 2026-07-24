@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://vs7yw2qkdd3y"]
 
-[ext_resource type="Script" uid="uid://pwac4fw6dcjs" path="res://Scenes/World/entrance_light.gd" id="2_3ih1q"]
+[ext_resource type="Script" uid="uid://pwac4fw6dcjs" path="res://Scripts/entrance_light.gd" id="2_3ih1q"]
 [ext_resource type="Texture2D" uid="uid://djesrbwm1iwhw" path="res://Assets/sprites/Subway/SubwayFloor.png" id="2_fl1d5"]
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="3_fl1d5"]
 [ext_resource type="Texture2D" uid="uid://chicvhdjhwvf7" path="res://Assets/sprites/Subway/NewSubwayBackground.png" id="4_3ih1q"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dt57j8q0svdc4" path="res://Assets/sprites/Subway/old_district_subway_stairs_matched.png" id="6_jeuqq"]
 [ext_resource type="Texture2D" uid="uid://cap0jkcrbubly" path="res://Assets/sprites/Subway/SubwayDecorations.png" id="7_m11i2"]
 [ext_resource type="Texture2D" uid="uid://t5nimnnks0ig" path="res://Assets/sprites/Subway/SubwaySign.png" id="8_66l10"]
-[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/UI/HUD.tscn" id="8_dgd1k"]
+[ext_resource type="PackedScene" uid="uid://d37vh3lu4bgbk" path="res://Scenes/HUD/HUD.tscn" id="8_dgd1k"]
 [ext_resource type="Texture2D" uid="uid://umrhewt37biw" path="res://Assets/sprites/Subway/SubwayStructuralTiles.png" id="9_qodyp"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="9_w4dtl"]
 [ext_resource type="Texture2D" uid="uid://boe2qj8jvnn01" path="res://Assets/sprites/Subway/SubwayTileableBG.png" id="10_3ih1q"]
@@ -24,7 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://srip5to8idlc" path="res://Assets/backgrounds/pulse_chamber_door/door-01-unlocking.png" id="23_door_unlock"]
 [ext_resource type="Texture2D" uid="uid://cby6yfime83jw" path="res://Assets/backgrounds/pulse_chamber_door/door-02-partial.png" id="24_door_partial"]
 [ext_resource type="Texture2D" uid="uid://c442jy2a2g04f" path="res://Assets/backgrounds/pulse_chamber_door/door-03-open.png" id="25_door_open"]
-[ext_resource type="Script" uid="uid://dmaci0xaiqgjy" path="res://Scenes/World/pulse_chamber_door.gd" id="26_door_script"]
+[ext_resource type="Script" uid="uid://dmaci0xaiqgjy" path="res://Scripts/pulse_chamber_door.gd" id="26_door_script"]
+[ext_resource type="AudioStream" uid="uid://df47mycsrmcxs" path="res://Assets/Audio/Altered Beast - Altered Beast (Transformation).mp3" id="27_2mxxd"]
+[ext_resource type="PackedScene" uid="uid://br7vthru5cwmy" path="res://Scenes/FX/archivist_document_pickup.tscn" id="28_sxhhu"]
 [ext_resource type="Script" uid="uid://b1w2a28gwfgfd" path="res://Scripts/respawn_manager.gd" id="99_respawn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pulse_door"]
@@ -11895,6 +11897,14 @@ scale = Vector2(1, 4)
 limit_right = 3200
 limit_bottom = 496
 
+[node name="ArchivistDocumentPickup" parent="." unique_id=994571012 instance=ExtResource("28_sxhhu")]
+z_index = 40
+position = Vector2(768, 372)
+document_id = &"archivist_file_02"
+source_label = "ARCHIVIST LOG 9A"
+document_title = "THE GILGAMESH REFERENCE"
+transcript = "The local chamber is only a signal anchor. The primary remains are held elsewhere under the designation GILGAMESH. Every anchor is teaching the same intelligence how to cross from corrupted data into living tissue. If the anchors synchronize, containment becomes resurrection."
+
 [node name="Player" parent="." unique_id=1715600248 instance=ExtResource("3_fl1d5")]
 position = Vector2(72, 176)
 
@@ -11931,5 +11941,13 @@ position = Vector2(2272, 251.00003)
 
 [node name="HomelessEnemy7" parent="Enemies" unique_id=1343596072 instance=ExtResource("21_3ih1q")]
 position = Vector2(1936.0002, 256)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=350223542]
+stream = ExtResource("27_2mxxd")
+volume_db = -18.201
+pitch_scale = 0.95
+autoplay = true
+max_polyphony = 4
+parameters/looping = true
 
 [editable path="Player"]

@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://d16vwf4roe3t4" path="res://Assets/sprites/Super Pixel Effects Pack 2/Super Pixel Effects Pack 2/PNG/fx2_claw_large_white/frame0000.png" id="29_tqjim"]
 [ext_resource type="Texture2D" uid="uid://ctjc0irh0ua3p" path="res://Assets/sprites/Super Pixel Effects Pack 2/Super Pixel Effects Pack 2/PNG/fx2_claw_large_white/frame0001.png" id="30_fs3fp"]
 [ext_resource type="Texture2D" uid="uid://dmqdv1stw6eo" path="res://Assets/sprites/Super Pixel Effects Pack 2/Super Pixel Effects Pack 2/PNG/fx2_claw_large_white/frame0002.png" id="31_33o7n"]
+[ext_resource type="AudioStream" uid="uid://7ivcdwnsmh6" path="res://Assets/Audio/BGM/whoosh.wav" id="31_wi8wh"]
 [ext_resource type="Texture2D" uid="uid://3m7i3fmc2k1h" path="res://Assets/sprites/Super Pixel Effects Pack 2/Super Pixel Effects Pack 2/PNG/fx2_claw_large_white/frame0003.png" id="32_y1g25"]
 [ext_resource type="Texture2D" uid="uid://bwq2t77idghsh" path="res://Assets/sprites/Super Pixel Effects Pack 2/Super Pixel Effects Pack 2/PNG/fx2_claw_large_white/frame0004.png" id="33_3sl7x"]
 [ext_resource type="Texture2D" uid="uid://bnk0o4of0i3c4" path="res://Assets/sprites/Super Pixel Effects Pack 2/Super Pixel Effects Pack 2/PNG/fx2_claw_large_white/frame0005.png" id="34_usmia"]
@@ -159,3 +160,8 @@ animation = &"wall_slide"
 autoplay = "dash"
 frame = 2
 frame_progress = 1.0
+
+[node name="WhooshSound" type="AudioStreamPlayer2D" parent="." unique_id=285500401]
+stream = ExtResource("31_wi8wh")
+volume_db = -7.08
+max_distance = 700.0
