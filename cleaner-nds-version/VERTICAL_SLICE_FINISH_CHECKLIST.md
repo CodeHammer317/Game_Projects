@@ -17,7 +17,8 @@ Use this list for the final push toward a shareable demo. Check an item only aft
 
 - [ ] Verify movement, jump, dodge, melee, shooting, assist, and special-meter controls with both keyboard and a controller.
 - [ ] Confirm every on-screen control prompt matches the actual input action.
-- [ ] Confirm Double Jump is awarded exactly once, remains available for the rest of the run, and is clearly taught in the Upgrade Chamber.
+- [ ] Confirm Wall Slide is awarded exactly once, remains available for the rest of the run, and is clearly taught in the Upgrade Chamber.
+- [ ] Confirm Double Jump is awarded exactly once by Raven's Wings in the Old District and remains available through the Subway and Pulse Chamber.
 - [ ] Confirm enemy attacks, stage hazards, and projectiles damage the player consistently and provide readable warning/impact feedback.
 - [ ] Confirm health, lives, special meter, relics, and helper status update correctly in the HUD.
 - [ ] Confirm pickups cannot be collected twice or remain visible after collection.

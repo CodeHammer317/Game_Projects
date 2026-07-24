@@ -69,6 +69,12 @@ const PlayerStateMachineScript := preload("res://Scripts/player/state_machine/pl
 @export var respawn_flash_interval: float = 0.12
 @export var restore_health_on_respawn: bool = true
 
+@export_group("Fall Safety")
+@export var fall_death_enabled: bool = true
+@export var fall_death_viewport_margin: float = 64.0
+@export var fall_death_grace_duration: float = 0.5
+
+@export_group("")
 @export var dash_speed: float = 350.0
 @export var dash_time: float = 0.20
 @export var dash_cooldown: float = 0.35
@@ -77,6 +83,7 @@ const PlayerStateMachineScript := preload("res://Scripts/player/state_machine/pl
 @export var wall_slide_speed: float = 60.0
 @export var wall_jump_force: Vector2 = Vector2(240.0, -340.0)
 @export var wall_jump_horizontal_lock_time: float = 0.12
+@export_range(0.0, 1.0, 0.05) var wall_slide_input_threshold: float = 0.45
 
 @export var coyote_time: float = 0.12
 @export var jump_buffer_time: float = 0.10
@@ -149,6 +156,8 @@ var _is_respawn_flashing: bool = false
 
 var _death_count: int = 0
 var _death_position: Vector2 = Vector2.ZERO
+var _fallback_respawn_position: Vector2 = Vector2.ZERO
+var _fall_death_grace_timer: float = 0.0
 
 var _hitstun_timer: float = 0.0
 var _invuln_timer: float = 0.0
@@ -175,6 +184,8 @@ var _state_machine = null
 
 func _ready() -> void:
 	_sprite_base_position = sprite.position
+	_fallback_respawn_position = global_position
+	_fall_death_grace_timer = fall_death_grace_duration
 	_sync_upgrades_from_state()
 	_state_machine = PlayerStateMachineScript.new().setup(self)
 
@@ -201,6 +212,44 @@ func _physics_process(delta: float) -> void:
 		_state_machine = PlayerStateMachineScript.new().setup(self)
 
 	_state_machine.physics_process(delta)
+	_update_fall_death(delta)
+
+
+func _update_fall_death(delta: float) -> void:
+	if not fall_death_enabled or _is_dead or _is_dying or _is_game_over:
+		return
+
+	if _fall_death_grace_timer > 0.0:
+		_fall_death_grace_timer = maxf(_fall_death_grace_timer - delta, 0.0)
+		return
+
+	if velocity.y <= 0.0:
+		return
+
+	var viewport_bottom := _get_viewport_world_bottom()
+	if is_inf(viewport_bottom):
+		return
+
+	if global_position.y > viewport_bottom + fall_death_viewport_margin:
+		kill()
+
+
+func _get_viewport_world_bottom() -> float:
+	var viewport := get_viewport()
+	if viewport == null:
+		return INF
+
+	var camera := viewport.get_camera_2d()
+	if camera != null:
+		var zoom_y := maxf(absf(camera.zoom.y), 0.001)
+		var visible_height := viewport.get_visible_rect().size.y / zoom_y
+		return camera.get_screen_center_position().y + visible_height * 0.5
+
+	var visible_rect := viewport.get_visible_rect()
+	var screen_to_world := viewport.get_canvas_transform().affine_inverse()
+	var bottom_left := screen_to_world * Vector2(visible_rect.position.x, visible_rect.end.y)
+	var bottom_right := screen_to_world * visible_rect.end
+	return maxf(bottom_left.y, bottom_right.y)
 
 
 func _run_active_frame(delta: float, use_hitstun_movement: bool) -> void:
@@ -481,10 +530,14 @@ func _handle_wall_slide() -> void:
 		return
 
 	var wall_input := Input.get_axis("move_left", "move_right")
-	if wall_input == 0.0:
+	if absf(wall_input) < wall_slide_input_threshold:
 		return
 
-	_wall_dir = int(sign(wall_input))
+	var wall_direction := -signf(get_wall_normal().x)
+	if is_zero_approx(wall_direction) or signf(wall_input) != wall_direction:
+		return
+
+	_wall_dir = int(wall_direction)
 	_is_wall_sliding = true
 	_end_double_jump_state()
 	_coyote_timer = 0.0
@@ -1070,13 +1123,14 @@ func kill() -> void:
 
 
 func respawn() -> void:
-	respawn_at(_death_position)
+	respawn_at(_fallback_respawn_position)
 
 
 func respawn_at(respawn_position: Vector2) -> void:
 	_cancel_shot_charge()
 	global_position = respawn_position
 	velocity = Vector2.ZERO
+	_fall_death_grace_timer = fall_death_grace_duration
 	control_locked = false
 	_input_dir = 0.0
 
@@ -1115,6 +1169,10 @@ func respawn_at(respawn_position: Vector2) -> void:
 
 	if not _is_respawn_flashing:
 		call_deferred("_run_respawn_flash")
+
+
+func set_fallback_respawn_position(respawn_position: Vector2) -> void:
+	_fallback_respawn_position = respawn_position
 
 
 func _restore_health_for_respawn() -> void:

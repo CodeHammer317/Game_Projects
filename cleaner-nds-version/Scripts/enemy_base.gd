@@ -11,6 +11,8 @@ signal attacked(enemy: Node)
 @export var use_separate_directional_animations: bool = true
 @export var death_remove_delay: float = 0.0
 @export var auto_play_movement_animations: bool = true
+@export var hurt_animation_name: StringName = &"Hurt"
+@export var hurt_animation_lock_time: float = 0.20
 
 @export var player_group: StringName = &"player"
 @export var detection_range: float = 220.0
@@ -21,6 +23,11 @@ signal attacked(enemy: Node)
 @export var attack_windup: float = 0.18
 @export var random_attack_variant: bool = true
 @export var projectile_scene: PackedScene
+@export var mirror_muzzle_with_facing: bool = false
+@export var melee_attack_variants: Array[int] = []
+@export var melee_range: float = 52.0
+@export var melee_damage: int = 1
+@export var melee_knockback: Vector2 = Vector2(110.0, -25.0)
 
 @export var flee_speed_multiplier: float = 1.6
 @export var flee_duration: float = 0.60
@@ -33,7 +40,7 @@ signal attacked(enemy: Node)
 @export var use_machine_sound_on_attack: bool = true
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var explosion_sprite: AnimatedSprite2D = $AnimatedSprite2D2
+@onready var explosion_sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D2") as AnimatedSprite2D
 @onready var health: Health = $Health
 @onready var muzzle: Node2D = get_node_or_null("Muzzle")
 
@@ -52,16 +59,17 @@ var _pending_attack: bool = false
 
 var _flee_timer: float = 0.0
 var _flee_from: Node2D = null
+var _hurt_animation_timer: float = 0.0
 
 var _death_anim_done: bool = false
 var _explosion_anim_done: bool = false
 
 
 func _ready() -> void:
-	if machine_sound == null:
+	if machine_sound == null and (use_machine_sound_while_moving or use_machine_sound_on_attack):
 		push_warning("%s: MachineSound node not found." % name)
 
-	if explosion_sound == null:
+	if explosion_sound == null and explosion_sprite != null:
 		push_warning("%s: ExplosionSound node not found." % name)
 
 	if health != null:
@@ -95,7 +103,7 @@ func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
 	move_and_slide()
 
-	if not is_attacking and auto_play_movement_animations:
+	if not is_attacking and _hurt_animation_timer <= 0.0 and auto_play_movement_animations:
 		_update_facing_from_velocity()
 		_update_movement_animation()
 
@@ -114,6 +122,9 @@ func _update_timers(delta: float) -> void:
 		_flee_timer = max(_flee_timer - delta, 0.0)
 		if _flee_timer == 0.0:
 			_flee_from = null
+
+	if _hurt_animation_timer > 0.0:
+		_hurt_animation_timer = max(_hurt_animation_timer - delta, 0.0)
 
 
 func _find_target_if_needed() -> void:
@@ -199,6 +210,10 @@ func _process_flee() -> void:
 
 func _face_toward(world_pos: Vector2) -> void:
 	facing_right = world_pos.x > global_position.x
+	if not use_separate_directional_animations and sprite != null:
+		sprite.flip_h = not facing_right
+	if mirror_muzzle_with_facing and muzzle != null:
+		muzzle.position.x = absf(muzzle.position.x) if facing_right else -absf(muzzle.position.x)
 
 
 func _apply_gravity(delta: float) -> void:
@@ -264,10 +279,30 @@ func start_attack() -> void:
 
 	_stop_machine_sound()
 
+	var available_variants: Array[int] = []
+	var use_melee := (
+		not melee_attack_variants.is_empty()
+		and _target != null
+		and is_instance_valid(_target)
+		and global_position.distance_to(_target.global_position) <= melee_range
+	)
+
+	for variant in range(1, 4):
+		if not _has_animation("Fire%d" % variant):
+			continue
+
+		var is_melee_variant := melee_attack_variants.has(variant)
+		if melee_attack_variants.is_empty() or is_melee_variant == use_melee:
+			available_variants.append(variant)
+
+	if available_variants.is_empty():
+		finish_attack()
+		return
+
 	if random_attack_variant:
-		current_attack_variant = randi_range(1, 3)
+		current_attack_variant = available_variants.pick_random()
 	else:
-		current_attack_variant = 1
+		current_attack_variant = available_variants[0]
 
 	play_fire_animation(current_attack_variant)
 
@@ -292,7 +327,12 @@ func _do_attack() -> void:
 	attacked.emit(self)
 
 	if use_machine_sound_on_attack:
-		_play_machine_sound(true)
+		if not melee_attack_variants.has(current_attack_variant):
+			_play_machine_sound(true)
+
+	if melee_attack_variants.has(current_attack_variant):
+		_do_melee_attack()
+		return
 
 	if projectile_scene == null:
 		return
@@ -314,6 +354,25 @@ func _do_attack() -> void:
 		projectile.setup(direction, self)
 	elif projectile.has_method("launch"):
 		projectile.launch(direction, _target, self)
+
+
+func _do_melee_attack() -> void:
+	if _target == null or not is_instance_valid(_target):
+		return
+
+	if global_position.distance_to(_target.global_position) > melee_range:
+		return
+
+	if not _target.has_method("apply_damage"):
+		return
+
+	var direction := 1.0 if facing_right else -1.0
+	var info := DamageInfo.new(
+		melee_damage,
+		Vector2(direction * melee_knockback.x, melee_knockback.y),
+		self
+	)
+	_target.apply_damage(info)
 
 
 func finish_attack() -> void:
@@ -353,6 +412,10 @@ func _on_damaged(info: DamageInfo) -> void:
 	is_attacking = false
 	_pending_attack = false
 	_attack_windup_timer = 0.0
+
+	if _has_animation(hurt_animation_name):
+		_hurt_animation_timer = hurt_animation_lock_time
+		sprite.play(hurt_animation_name)
 
 	CombatFx.hitstop(0.03, 0.08)
 	CombatFx.shake(2.0, 0.08, 24.0)
@@ -488,5 +551,9 @@ func apply_damage(info: DamageInfo) -> void:
 
 func set_facing_right(value: bool) -> void:
 	facing_right = value
+	if not use_separate_directional_animations and sprite != null:
+		sprite.flip_h = not facing_right
+	if mirror_muzzle_with_facing and muzzle != null:
+		muzzle.position.x = absf(muzzle.position.x) if facing_right else -absf(muzzle.position.x)
 	if not is_attacking and not is_dead:
 		_update_movement_animation()

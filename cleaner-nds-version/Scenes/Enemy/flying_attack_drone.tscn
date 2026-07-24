@@ -190,6 +190,7 @@ animations = [{
 size = Vector2(80, 26)
 
 [node name="FlyingAttackDrone" type="CharacterBody2D" unique_id=1221956425 groups=["enemies"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 9
 script = ExtResource("1_attack_script")

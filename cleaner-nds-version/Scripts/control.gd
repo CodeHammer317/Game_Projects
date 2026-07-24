@@ -7,7 +7,7 @@ signal dialogue_revealed
 
 @export var chars_per_second: float = 25.0
 @export var random_pitch_range: float = 0.1
-@export var next_scene: String = "res://Scenes/UI/title_screen.tscn"
+@export var next_scene: String = "res://Scenes/HUD/title_screen.tscn"
 @export var dialogue_start_delay: float = 0.0
 @export var change_scene_when_finished: bool = true
 @export var reveal_prompt_text: String = "Press A or Space to reveal"

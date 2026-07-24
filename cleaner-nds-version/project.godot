@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 CombatFx="*uid://dftahvy4iqilp"
 PlayerState="*uid://d0g06i3u8krc6"
+GlobalPauseMenu="*res://Scenes/HUD/global_pause_menu.tscn"
 
 [display]
 

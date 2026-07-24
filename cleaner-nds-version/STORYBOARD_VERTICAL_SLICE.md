@@ -90,13 +90,13 @@ The Cat Milk Factory and Cat Overlord are not part of the vertical-slice canon. 
 ### 2. Upgrade Chamber — “Field Baptism”
 
 **Scene:** `Scenes/World/upgrade_chamber.tscn`  
-**Reward:** Double Jump  
+**Reward:** Wall Slide
 **Target length:** 2–3 minutes
 
-- A recovered relic responds to the incoming signal and grants Double Jump.
+- A recovered relic responds to the incoming signal and grants Wall Slide.
 - NDS describes the response as **faith resonance**, not ordinary technology.
 - The relic briefly displays the Archivist's sigil, suggesting both systems draw from the same ancient source.
-- A short traversal challenge requires Double Jump to exit.
+- A short traversal challenge requires wall sliding and a wall jump to exit.
 
 **Gameplay job:** Teach traversal and establish the upgrade/relic loop.
 
@@ -133,6 +133,7 @@ The Cat Milk Factory and Cat Overlord are not part of the vertical-slice canon. 
 - Early enemies appear mundane, then reveal visible digital corruption.
 - Missing-person posters and dragged footprints point toward the subway.
 - Mattt's assist is introduced during a controlled encounter.
+- Raven's Wings are recovered late in the district and grant Double Jump before the subway descent.
 - A corrupted municipal terminal contains **Archivist File 01**.
 - A mini-arena ends when a damaged machine broadcasts a distorted Gregorian phrase and unlocks the subway route.
 
@@ -271,7 +272,8 @@ The Cat Milk Factory and Cat Overlord are not part of the vertical-slice canon. 
 
 - Archivist transmission cold open
 - Study briefing and optional interactions
-- Upgrade Chamber and Double Jump tutorial
+- Upgrade Chamber and Wall Slide tutorial
+- Old District Raven's Wings relic and Double Jump acquisition
 - Coffee Shop transition beat
 - Old District combat tutorial
 - Subway traversal level
