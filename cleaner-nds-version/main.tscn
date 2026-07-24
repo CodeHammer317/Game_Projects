@@ -1,15 +1,19 @@
 [gd_scene format=3 uid="uid://c2jo1f6jebhab"]
 
 [ext_resource type="PackedScene" uid="uid://bjg0c88uhxlsh" path="res://Scenes/HUD/title_screen.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://b10p50l1yve07" path="res://Assets/Common/TitleScreenGameplay-v3-bright.png" id="2_0xm2m"]
 
 [node name="Main" type="Node2D" unique_id=1037128100]
 
 [node name="TitleScreen" parent="." unique_id=380044311 instance=ExtResource("1_ig7tw")]
 
+[node name="Background" parent="TitleScreen" index="0" unique_id=218822866]
+texture = ExtResource("2_0xm2m")
+
 [node name="DemoLabel" parent="TitleScreen" index="1" unique_id=811937859]
 theme_override_colors/font_color = Color(1, 1, 1, 0.93333334)
 
-[node name="Logo" parent="TitleScreen" index="2" unique_id=1278079265]
+[node name="Logo" parent="TitleScreen" index="3" unique_id=1278079265]
 offset_left = 176.0
 offset_top = 9.0
 offset_right = 447.0

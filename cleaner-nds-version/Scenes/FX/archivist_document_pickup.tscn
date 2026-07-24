@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://br7vthru5cwmy"]
 
-[ext_resource type="Script" path="res://Scripts/archivist_document_pickup.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dmcyabh43lwuj" path="res://Scripts/archivist_document_pickup.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://cxnx1ar8rv62v" path="res://Assets/sprites/Study Art/ClosedBook.png" id="2_book"]
-[ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/pixy/PIXY.ttf" id="3_font"]
+[ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/Fonts/pixy/PIXY.ttf" id="3_font"]
 [ext_resource type="AudioStream" uid="uid://cl31e3x1s08fc" path="res://Assets/Audio/cartoon-music-soundtrack-arcade-game-achievement-bling-489759.mp3" id="4_pickup_sound"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_interaction"]

@@ -13,7 +13,7 @@ config_version=5
 config/name="CleanerNDSVersion"
 run/main_scene="uid://c2jo1f6jebhab"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Common/NDS_logo16bit.png"
 
 [autoload]
 

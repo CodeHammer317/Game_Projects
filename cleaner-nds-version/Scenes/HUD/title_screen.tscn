@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bjg0c88uhxlsh"]
 
 [ext_resource type="Script" uid="uid://8603dw216quu" path="res://Scripts/title_screen.gd" id="1_xsyet"]
-[ext_resource type="Texture2D" uid="uid://4vwin4tr377o" path="res://Assets/Common/TitleScreen.jpg" id="2_tjte5"]
+[ext_resource type="Texture2D" uid="uid://b10p50l1yve07" path="res://Assets/Common/TitleScreenGameplay-v3-bright.png" id="2_tjte5"]
 [ext_resource type="FontFile" uid="uid://bgrmkm0xlbcix" path="res://Assets/Fonts/NDS_Death_Brush/Knewave-Regular.ttf" id="3_824g0"]
 [ext_resource type="Texture2D" uid="uid://c1sawakbhoj3e" path="res://Assets/Common/NDS_logo16bit.png" id="3_uv4ns"]
 [ext_resource type="Texture2D" uid="uid://drdhxgp8vwvgg" path="res://Assets/sprites/NDS Logo_transparent.png" id="4_bnqst"]
@@ -11,8 +11,8 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_uv4ns"]
 font = ExtResource("3_824g0")
-font_size = 32
-font_color = Color(0.8666667, 0.7294118, 0.03137255, 0.8627451)
+font_size = 39
+font_color = Color(0.95686275, 0.8666667, 0.32941177, 0.8627451)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
@@ -49,10 +49,10 @@ expand_mode = 1
 
 [node name="DemoLabel" type="Label" parent="." unique_id=811937859]
 layout_mode = 0
-offset_left = 283.0
-offset_top = 242.0
-offset_right = 379.0
-offset_bottom = 287.0
+offset_left = 269.0
+offset_top = 237.0
+offset_right = 365.0
+offset_bottom = 299.0
 text = "DEMO"
 label_settings = SubResource("LabelSettings_uv4ns")
 

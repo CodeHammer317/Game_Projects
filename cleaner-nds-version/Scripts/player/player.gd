@@ -68,6 +68,8 @@ const PlayerStateMachineScript := preload("res://Scripts/player/state_machine/pl
 @export var respawn_invuln_duration: float = 2.0
 @export var respawn_flash_interval: float = 0.12
 @export var restore_health_on_respawn: bool = true
+@export var restart_scene_after_game_over: bool = true
+@export var game_over_restart_delay: float = 10.0
 
 @export_group("Fall Safety")
 @export var fall_death_enabled: bool = true
@@ -1044,6 +1046,9 @@ func _on_damaged(info: DamageInfo) -> void:
 	if _is_dead or _is_dying or _is_game_over:
 		return
 
+	if info == null:
+		return
+
 	hurt_sound.play()
 	_cancel_shot_charge()
 	_is_dashing = false
@@ -1114,12 +1119,35 @@ func kill() -> void:
 	if _death_count >= max_deaths_before_game_over:
 		_is_game_over = true
 		game_over.emit()
+		if restart_scene_after_game_over:
+			await _restart_after_game_over()
 		return
 
 	respawn_ready.emit(self)
 
 	if auto_respawn_on_death:
 		respawn()
+
+
+func _restart_after_game_over() -> void:
+	if game_over_restart_delay > 0.0:
+		await get_tree().create_timer(game_over_restart_delay, true).timeout
+
+	if not is_inside_tree():
+		return
+
+	PlayerState.current_health = PlayerState.max_health
+	PlayerState.player_dead = false
+
+	var pause_menu := get_node_or_null("/root/GlobalPauseMenu")
+	if pause_menu != null and pause_menu.has_method("set_game_paused"):
+		pause_menu.call("set_game_paused", false)
+	else:
+		get_tree().paused = false
+
+	var error := get_tree().reload_current_scene()
+	if error != OK:
+		push_error("Player: failed to restart after game over. Error: %s" % error)
 
 
 func respawn() -> void:

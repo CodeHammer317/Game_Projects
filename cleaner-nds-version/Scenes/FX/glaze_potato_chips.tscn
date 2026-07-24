@@ -149,8 +149,10 @@ texture = ExtResource("1_ftdyq")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1854323189]
 stream = ExtResource("1_rl2tp")
+volume_db = -16.808
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=352181165]
+visible = false
 position = Vector2(1.9073486e-06, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_jms4h")
