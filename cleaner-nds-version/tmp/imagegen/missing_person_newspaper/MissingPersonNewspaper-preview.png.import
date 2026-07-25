@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da8ex62l8deie"
-path="res://.godot/imported/Preview 1.png-c67bfb0a70a1167d698ccd7a8c51e4ff.ctex"
+uid="uid://cngv4266x2snl"
+path="res://.godot/imported/MissingPersonNewspaper-preview.png-064c27bf312fe154a8d96c232baba104.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/ancient-temple-pixel-game-backgrounds/PNG/background 1/Preview 1.png"
-dest_files=["res://.godot/imported/Preview 1.png-c67bfb0a70a1167d698ccd7a8c51e4ff.ctex"]
+source_file="res://tmp/imagegen/missing_person_newspaper/MissingPersonNewspaper-preview.png"
+dest_files=["res://.godot/imported/MissingPersonNewspaper-preview.png-064c27bf312fe154a8d96c232baba104.ctex"]
 
 [params]
 

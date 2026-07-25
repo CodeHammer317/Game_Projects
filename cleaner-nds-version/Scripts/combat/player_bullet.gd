@@ -27,6 +27,7 @@ var _has_hit: bool = false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var damage_radius: Area2D = $DamageRadius
 @onready var notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var fire_sound: AudioStreamPlayer = $BulletFireSound
 @onready var hit_sound: AudioStreamPlayer = $BulletHitSound
@@ -52,6 +53,8 @@ func _ready() -> void:
 func setup(direction: Vector2, source_node: Node, charge_ratio: float = 0.0) -> void:
 	_direction = direction.normalized() if direction != Vector2.ZERO else Vector2.RIGHT
 	_owner = source_node
+	if _owner != null and not _owner.tree_exiting.is_connected(_on_owner_tree_exiting):
+		_owner.tree_exiting.connect(_on_owner_tree_exiting, CONNECT_ONE_SHOT)
 
 	var facing_sign := signf(_direction.x)
 	if is_zero_approx(facing_sign):
@@ -160,10 +163,7 @@ func _on_body_entered(body: Node) -> void:
 	if _has_hit or body == _owner:
 		return
 
-	if body.has_method("apply_damage"):
-		_apply_hit_to(body)
-	else:
-		_enter_hit_state()
+	_detonate()
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -174,40 +174,66 @@ func _on_area_entered(area: Area2D) -> void:
 	if parent == _owner:
 		return
 
-	if area.has_method("apply_hit"):
-		_apply_hit_area(area)
-	elif parent and parent.has_method("apply_damage"):
-		_apply_hit_to(parent)
+	_detonate()
 
 
-func _apply_hit_area(area: Area2D) -> void:
-	if _already_hit(area):
+func _detonate() -> void:
+	if _has_hit:
 		return
 
-	var info := DamageInfo.new(
-		damage,
-		Vector2(_direction.x * knockback.x, knockback.y),
-		_owner
-	)
-
-	area.apply_hit(info)
-	_mark_hit(area)
+	# The small parent collision shape decides when the projectile makes
+	# contact. Damage is sourced exclusively from DamageRadius overlaps.
+	_apply_radius_damage()
 	_enter_hit_state()
 
 
-func _apply_hit_to(target: Node) -> void:
-	if _already_hit(target):
+func _apply_radius_damage() -> void:
+	if damage_radius == null:
+		push_warning("PlayerBullet: DamageRadius is unavailable.")
+		return
+
+	for area in damage_radius.get_overlapping_areas():
+		_try_damage_radius_target(area)
+
+	for body in damage_radius.get_overlapping_bodies():
+		_try_damage_radius_target(body)
+
+
+func _try_damage_radius_target(overlap: Node) -> void:
+	var target := _resolve_damage_target(overlap)
+	if target == null or target == _owner or _already_hit(target):
 		return
 
 	var info := DamageInfo.new(
 		damage,
 		Vector2(_direction.x * knockback.x, knockback.y),
-		_owner
+		_get_valid_owner()
 	)
 
-	target.apply_damage(info)
+	if target.has_method("apply_damage"):
+		target.apply_damage(info)
+	elif target.has_method("apply_hit"):
+		target.apply_hit(info)
+
 	_mark_hit(target)
-	_enter_hit_state()
+
+
+func _resolve_damage_target(overlap: Node) -> Node:
+	if overlap == null or overlap == _owner:
+		return null
+
+	var candidate := overlap
+	while candidate != null and candidate != self:
+		if candidate == _owner:
+			return null
+		if candidate.has_method("apply_damage"):
+			return candidate
+		candidate = candidate.get_parent()
+
+	if overlap.has_method("apply_hit"):
+		return overlap
+
+	return null
 
 
 func _enter_hit_state() -> void:
@@ -224,6 +250,10 @@ func _enter_hit_state() -> void:
 
 	if collision:
 		collision.set_deferred("disabled", true)
+
+	if damage_radius:
+		damage_radius.set_deferred("monitoring", false)
+		damage_radius.set_deferred("monitorable", false)
 
 	if sprite and sprite.sprite_frames:
 		if sprite.sprite_frames.has_animation(hit_anim_name):
@@ -252,6 +282,18 @@ func _already_hit(target: Object) -> bool:
 
 func _mark_hit(target: Object) -> void:
 	_hit_targets[target] = true
+
+
+func _get_valid_owner() -> Node:
+	if _owner != null and is_instance_valid(_owner):
+		return _owner
+
+	_owner = null
+	return null
+
+
+func _on_owner_tree_exiting() -> void:
+	_owner = null
 
 
 func _on_screen_exited() -> void:

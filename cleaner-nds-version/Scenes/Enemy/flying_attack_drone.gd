@@ -6,6 +6,7 @@ class_name FlyingAttackDrone
 @export var preferred_attack_range: float = 210.0
 @export var move_speed: float = 80.0
 @export var fire_cooldown: float = 1.4
+@export var score_value: int = 200
 @export var projectile_scene: PackedScene
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -133,6 +134,7 @@ func _on_died() -> void:
 		return
 
 	_is_dead = true
+	ScoreManager.award_enemy(self, score_value)
 	velocity = Vector2.ZERO
 	_play_animation(&"drop")
 

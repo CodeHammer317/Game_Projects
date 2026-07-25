@@ -52,6 +52,7 @@ func _ready() -> void:
 
 
 func reset_all() -> void:
+	ScoreManager.start_new_run()
 	current_health = max_health
 	player_dead = false
 	reset_upgrades()
@@ -119,6 +120,16 @@ func get_upgrade_display_name(upgrade_name: StringName) -> String:
 		return str(upgrade_name).capitalize()
 
 	return UPGRADE_DEFINITIONS[upgrade_name].get("display_name", str(upgrade_name).capitalize())
+
+
+func get_upgrade_description(upgrade_name: StringName) -> String:
+	if not UPGRADE_DEFINITIONS.has(upgrade_name):
+		return "Recovered relic. Specifications unavailable."
+
+	return UPGRADE_DEFINITIONS[upgrade_name].get(
+		"description",
+		"Recovered relic. Specifications unavailable."
+	)
 
 
 func has_helper(helper_id: StringName) -> bool:

@@ -7,6 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://dfxa07yjep2kw" path="res://Assets/HUD_assets/PNG/ChargeBar.png" id="5_1ree7"]
 [ext_resource type="Texture2D" uid="uid://crtgejdwvijj0" path="res://Assets/HUD_assets/PNG/SpecialBar.png" id="6_d2sja"]
 [ext_resource type="Texture2D" uid="uid://dblgq32ave8d2" path="res://Assets/NDS Game Files/MatTt Sprites/Matt.png" id="7_1ree7"]
+[ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/Fonts/pixy/PIXY.ttf" id="8_score_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_score"]
+bg_color = Color(0.025, 0.035, 0.045, 0.88)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.58, 0.08, 0.95)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="Hud" type="CanvasLayer" unique_id=795795287]
 process_mode = 3
@@ -54,3 +67,64 @@ texture = ExtResource("4_4bm6u")
 position = Vector2(47.999996, 36.000004)
 scale = Vector2(0.07936517, 0.06790123)
 texture = ExtResource("7_1ree7")
+
+[node name="ScorePanel" type="Panel" parent="."]
+offset_left = 466.0
+offset_top = 8.0
+offset_right = 632.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_score")
+
+[node name="ScoreTitle" type="Label" parent="ScorePanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 70.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(1, 0.76, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("8_score_font")
+theme_override_font_sizes/font_size = 9
+text = "SCORE"
+
+[node name="ScoreValue" type="Label" parent="ScorePanel"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 4.0
+offset_right = 158.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("8_score_font")
+theme_override_font_sizes/font_size = 9
+text = "00000000"
+horizontal_alignment = 2
+
+[node name="HighScoreTitle" type="Label" parent="ScorePanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 25.0
+offset_right = 76.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.4, 0.94, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("8_score_font")
+theme_override_font_sizes/font_size = 8
+text = "HI-SCORE"
+
+[node name="HighScoreValue" type="Label" parent="ScorePanel"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 25.0
+offset_right = 158.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.4, 0.94, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("8_score_font")
+theme_override_font_sizes/font_size = 8
+text = "00000000"
+horizontal_alignment = 2

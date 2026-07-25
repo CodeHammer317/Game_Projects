@@ -14,6 +14,7 @@ signal spawned_attack_drones(drones: Array[Node])
 @export var scan_flip_delay: float = 0.25
 
 @export var patrol_speed: float = 70.0
+@export var score_value: int = 300
 @export var patrol_width: float = 360.0
 @export var hover_amplitude: float = 14.0
 @export var hover_frequency: float = 2.0
@@ -266,6 +267,7 @@ func _on_died() -> void:
 		return
 
 	_is_dead = true
+	ScoreManager.award_enemy(self, score_value)
 	_is_scanning = false
 	velocity = Vector2.ZERO
 	_hide_scan_ray()

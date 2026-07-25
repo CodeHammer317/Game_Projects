@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnc032h2208hp"
-path="res://.godot/imported/Preview 4.png-2f15077d26dad9b575674c44d2245e5c.ctex"
+uid="uid://2aya1wdc0wj4"
+path="res://.godot/imported/GoldenApple16x16-preview.png-056ce71262f37e405451ad1e55e75246.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/ancient-temple-pixel-game-backgrounds/PNG/background 4/Preview 4.png"
-dest_files=["res://.godot/imported/Preview 4.png-2f15077d26dad9b575674c44d2245e5c.ctex"]
+source_file="res://tmp/imagegen/golden_apple/GoldenApple16x16-preview.png"
+dest_files=["res://.godot/imported/GoldenApple16x16-preview.png-056ce71262f37e405451ad1e55e75246.ctex"]
 
 [params]
 

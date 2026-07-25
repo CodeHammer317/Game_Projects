@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://duypctt7gaqhl" path="res://Assets/sprites/torch.png" id="20_362ur"]
 [ext_resource type="Texture2D" uid="uid://cyurf1e7umudx" path="res://Assets/sprites/Study Art/TopLobstaConversationHeadshot.png" id="21_8jq0p"]
 [ext_resource type="Texture2D" uid="uid://ba8iif7k0t36v" path="res://Assets/sprites/Study Art/RavenHeadshotConversation.png" id="21_ajmle"]
+[ext_resource type="Texture2D" uid="uid://dbd1hbnevw5xg" path="res://Assets/sprites/Items/GoldenMetalApple64x64.png" id="25_eo8jb"]
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="25_player"]
 [ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/Fonts/pixy/PIXY.ttf" id="26_finale_font"]
 [ext_resource type="AudioStream" uid="uid://w83uc53n1rmp" path="res://Assets/Audio/BGM/NDS8bitRemix.mp3" id="27_finale_music"]
@@ -774,14 +775,14 @@ AND YOU, THE PLAYER.
 
 EXCEPT TOAD.
 
-BAD TOAD,BAD!
+BAD TOAD,,,,BAD!
 
 
 THE SIGNAL HAS BEEN CUT.
 
 THE WAR HAS JUST BEGUN.............
 
-AND REMEMBER;      NEVER GOON!
+AND REMEMBER...NEVER GOON!
 
 END OF DEMO"
 horizontal_alignment = 1
@@ -790,5 +791,10 @@ horizontal_alignment = 1
 stream = ExtResource("27_finale_music")
 volume_db = -2.0
 parameters/looping = false
+
+[node name="GoldenMetalApple64x64" type="Sprite2D" parent="." unique_id=1570378904]
+position = Vector2(504, 299)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("25_eo8jb")
 
 [editable path="Level01BriefingScreen"]

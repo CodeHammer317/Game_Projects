@@ -7,6 +7,8 @@ class_name PlayerHUD
 @export var ability_bar_path: NodePath = ^"TextureRect/AbilityBar"
 @export var charge_bar_path: NodePath = ^"TextureRect/ChargeBar"
 @export var helper_icon_path: NodePath = ^"TextureRect/HelperIcon"
+@export var score_label_path: NodePath = ^"ScorePanel/ScoreValue"
+@export var high_score_label_path: NodePath = ^"ScorePanel/HighScoreValue"
 
 @export_group("Behavior")
 @export var hide_charge_bar_when_idle: bool = true
@@ -16,6 +18,8 @@ class_name PlayerHUD
 @onready var ability_bar: TextureProgressBar = get_node(ability_bar_path) as TextureProgressBar
 @onready var charge_bar: TextureProgressBar = get_node(charge_bar_path) as TextureProgressBar
 @onready var helper_icon: Sprite2D = _resolve_helper_icon()
+@onready var score_label: Label = get_node_or_null(score_label_path) as Label
+@onready var high_score_label: Label = get_node_or_null(high_score_label_path) as Label
 
 var player: Player = null
 var health: Health = null
@@ -25,9 +29,15 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_initialize_bars()
 	_update_helper_icon(PlayerState.selected_helper)
+	_update_score(ScoreManager.score)
+	_update_high_score(ScoreManager.high_score)
 
 	if not PlayerState.helper_selected.is_connected(_update_helper_icon):
 		PlayerState.helper_selected.connect(_update_helper_icon)
+	if not ScoreManager.score_changed.is_connected(_update_score):
+		ScoreManager.score_changed.connect(_update_score)
+	if not ScoreManager.high_score_changed.is_connected(_update_high_score):
+		ScoreManager.high_score_changed.connect(_update_high_score)
 
 	var tree := get_tree()
 	if not tree.node_added.is_connected(_on_node_added):
@@ -48,6 +58,10 @@ func _resolve_helper_icon() -> Sprite2D:
 func _exit_tree() -> void:
 	if PlayerState.helper_selected.is_connected(_update_helper_icon):
 		PlayerState.helper_selected.disconnect(_update_helper_icon)
+	if ScoreManager.score_changed.is_connected(_update_score):
+		ScoreManager.score_changed.disconnect(_update_score)
+	if ScoreManager.high_score_changed.is_connected(_update_high_score):
+		ScoreManager.high_score_changed.disconnect(_update_high_score)
 
 	var tree := get_tree()
 	if tree != null and tree.node_added.is_connected(_on_node_added):
@@ -187,6 +201,16 @@ func _update_helper_icon(helper_id: StringName) -> void:
 		helper_icon_slot_size.y / texture_size.y
 	)
 	helper_icon.scale = Vector2.ONE * fit_scale
+
+
+func _update_score(value: int) -> void:
+	if score_label != null:
+		score_label.text = ScoreManager.format_score(value)
+
+
+func _update_high_score(value: int) -> void:
+	if high_score_label != null:
+		high_score_label.text = ScoreManager.format_score(value)
 
 
 func _on_node_added(node: Node) -> void:
