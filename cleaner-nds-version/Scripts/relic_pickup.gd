@@ -3,17 +3,51 @@ class_name RelicPickup
 
 signal collected(upgrade_name: StringName)
 
+@export_group("Relic Data")
 @export var upgrade_name: StringName = &"double_jump"
+@export var relic_title: String = "RAVEN'S WINGS"
+@export var relic_classification: String = "MOVEMENT RELIC // NEPHILIM ORIGIN"
+@export_multiline var relic_specs: String = """ABILITY // DOUBLE JUMP
+TRIGGER // JUMP WHILE AIRBORNE
+BOND STATUS // STABLE"""
+
+@export_group("Interaction")
 @export var target_group: StringName = &"player"
 @export var pickup_animation: StringName = &"default"
 @export var remove_if_already_collected: bool = true
+@export var close_actions: Array[StringName] = [&"accept", &"attack", &"pause"]
+@export var score_value: int = 1000
+
+@export_group("Presentation")
+@export var glow_energy: float = 1.15
+@export var glow_pulse_amount: float = 0.22
+@export var glow_pulse_speed: float = 2.6
 
 @onready var relic_sprite: Sprite2D = get_node_or_null("Sprite2D")
+@onready var relic_glow: PointLight2D = get_node_or_null("RelicGlow")
 @onready var pickup_effect: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 @onready var collision: CollisionShape2D = get_node_or_null("CollisionShape2D")
 @onready var audio: AudioStreamPlayer = get_node_or_null("AudioStreamPlayer")
+@onready var card_root: Control = get_node_or_null("RelicCardLayer/RelicCardRoot")
+@onready var card_icon: TextureRect = get_node_or_null(
+	"RelicCardLayer/RelicCardRoot/CenterContainer/CardPanel/CardMargin/CardContent/Body/Icon"
+)
+@onready var card_classification: Label = get_node_or_null(
+	"RelicCardLayer/RelicCardRoot/CenterContainer/CardPanel/CardMargin/CardContent/Classification"
+)
+@onready var card_title: Label = get_node_or_null(
+	"RelicCardLayer/RelicCardRoot/CenterContainer/CardPanel/CardMargin/CardContent/Title"
+)
+@onready var card_effect: Label = get_node_or_null(
+	"RelicCardLayer/RelicCardRoot/CenterContainer/CardPanel/CardMargin/CardContent/Body/Specs/Effect"
+)
+@onready var card_specs: Label = get_node_or_null(
+	"RelicCardLayer/RelicCardRoot/CenterContainer/CardPanel/CardMargin/CardContent/Body/Specs/Details"
+)
 
 var _collected: bool = false
+var _card_open: bool = false
+var _collecting_player: Node = null
 
 
 func _ready() -> void:
@@ -26,10 +60,36 @@ func _ready() -> void:
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)
 
+	if relic_sprite != null:
+		relic_sprite.visible = false
+	if relic_glow != null:
+		relic_glow.visible = true
+		relic_glow.energy = glow_energy
 	if pickup_effect != null:
 		pickup_effect.stop()
 		pickup_effect.set_frame_and_progress(0, 0.0)
 		pickup_effect.visible = false
+	if card_root != null:
+		card_root.visible = false
+
+
+func _process(_delta: float) -> void:
+	if relic_glow == null or not relic_glow.visible:
+		return
+
+	var seconds := Time.get_ticks_msec() / 1000.0
+	relic_glow.energy = glow_energy + sin(seconds * glow_pulse_speed) * glow_pulse_amount
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not _card_open:
+		return
+
+	for action in close_actions:
+		if event.is_action_pressed(action):
+			_close_relic_card()
+			get_viewport().set_input_as_handled()
+			return
 
 
 func _on_body_entered(body: Node) -> void:
@@ -44,7 +104,71 @@ func _on_body_entered(body: Node) -> void:
 		return
 
 	_collected = true
+	ScoreManager.award_pickup(self, score_value)
 	collected.emit(upgrade_name)
+	_reveal_relic(body)
+
+
+func _reveal_relic(player: Node) -> void:
+	set_deferred("monitoring", false)
+	if collision != null:
+		collision.set_deferred("disabled", true)
+
+	_collecting_player = player
+	_card_open = true
+
+	if relic_sprite != null:
+		relic_sprite.visible = true
+		relic_sprite.modulate.a = 0.0
+		var reveal_tween := create_tween()
+		reveal_tween.tween_property(relic_sprite, "modulate:a", 1.0, 0.35)
+
+	if relic_glow != null:
+		relic_glow.energy = glow_energy + glow_pulse_amount * 2.0
+
+	_populate_relic_card()
+	if card_root != null:
+		card_root.visible = true
+		card_root.modulate.a = 0.0
+		var card_tween := create_tween()
+		card_tween.tween_property(card_root, "modulate:a", 1.0, 0.25)
+
+	if player.has_method("set_control_locked"):
+		player.call("set_control_locked", true)
+
+	if audio != null and audio.stream != null:
+		audio.play()
+
+
+func _populate_relic_card() -> void:
+	var display_name := PlayerState.get_upgrade_display_name(upgrade_name)
+	var description := PlayerState.get_upgrade_description(upgrade_name)
+
+	if card_icon != null and relic_sprite != null:
+		card_icon.texture = relic_sprite.texture
+	if card_classification != null:
+		card_classification.text = relic_classification
+	if card_title != null:
+		card_title.text = relic_title if not relic_title.is_empty() else display_name.to_upper()
+	if card_effect != null:
+		card_effect.text = "UNLOCKED // " + display_name.to_upper()
+	if card_specs != null:
+		card_specs.text = description + "\n\n" + relic_specs
+
+
+func _close_relic_card() -> void:
+	if not _card_open:
+		return
+
+	_card_open = false
+	if card_root != null:
+		card_root.visible = false
+
+	if _collecting_player != null and is_instance_valid(_collecting_player):
+		if _collecting_player.has_method("set_control_locked"):
+			_collecting_player.call("set_control_locked", false)
+
+	_collecting_player = null
 	_play_collection_effect()
 
 
@@ -54,6 +178,8 @@ func _play_collection_effect() -> void:
 		collision.set_deferred("disabled", true)
 	if relic_sprite != null:
 		relic_sprite.visible = false
+	if relic_glow != null:
+		relic_glow.visible = false
 
 	var effect_duration := 0.0
 
@@ -76,6 +202,12 @@ func _play_collection_effect() -> void:
 		await get_tree().create_timer(effect_duration).timeout
 
 	queue_free()
+
+
+func _exit_tree() -> void:
+	if _card_open and _collecting_player != null and is_instance_valid(_collecting_player):
+		if _collecting_player.has_method("set_control_locked"):
+			_collecting_player.call("set_control_locked", false)
 
 
 func _get_animation_duration(sprite: AnimatedSprite2D, animation: StringName) -> float:

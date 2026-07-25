@@ -18,6 +18,7 @@ config/icon="res://Assets/Common/NDS_logo16bit.png"
 [autoload]
 
 CombatFx="*uid://dftahvy4iqilp"
+ScoreManager="*res://Scripts/score_manager.gd"
 PlayerState="*uid://d0g06i3u8krc6"
 GlobalPauseMenu="*res://Scenes/HUD/global_pause_menu.tscn"
 

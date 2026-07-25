@@ -11,6 +11,7 @@ signal glitch_burst(enemy: Node)
 
 @export var use_separate_directional_animations: bool = true
 @export var death_remove_delay: float = 0.0
+@export var score_value: int = 5000
 @export var auto_play_movement_animations: bool = true
 
 @export var player_group: StringName = &"player"
@@ -766,6 +767,7 @@ func _try_finalize_death() -> void:
 
 
 func _finalize_death() -> void:
+	ScoreManager.award_enemy(self, score_value)
 	died.emit(self)
 	queue_free()
 

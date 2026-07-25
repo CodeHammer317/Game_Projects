@@ -14,6 +14,7 @@ signal document_closed(document_id: StringName)
 @export var available_on_ready: bool = true
 @export var interaction_action: StringName = &"attack"
 @export var close_actions: Array[StringName] = [&"accept", &"attack", &"pause"]
+@export var score_value: int = 500
 
 @export_group("Presentation")
 @export var bob_height: float = 3.0
@@ -120,6 +121,7 @@ func _open_document(player: Node) -> void:
 		return
 
 	_reader_open = true
+	ScoreManager.award_pickup(self, score_value)
 	_player_in_range = player
 	monitoring = false
 	interaction_collision.set_deferred("disabled", true)

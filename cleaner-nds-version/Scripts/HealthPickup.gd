@@ -4,6 +4,7 @@ class_name HealthPickup
 @export var target_group: StringName = &"player"
 @export var one_shot: bool = true
 @export var sparkle_anim_name: StringName = &"pickup"
+@export var score_value: int = 50
 
 @onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 @onready var collision: CollisionShape2D = $CollisionShape2D
@@ -49,6 +50,7 @@ func _restore_to_max(health: Health) -> void:
 
 func _collect() -> void:
 	_collected = true
+	ScoreManager.award_pickup(self, score_value)
 
 	if collision != null:
 		collision.set_deferred("disabled", true)

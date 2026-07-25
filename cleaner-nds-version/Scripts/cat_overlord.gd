@@ -11,6 +11,7 @@ class_name CatOverlord
 @export var projectile_speed: float = 300.0
 
 @export var max_health: int = 12
+@export var score_value: int = 5000
 @export var damage_flash_time: float = 0.12
 
 var current_health: int = 0
@@ -159,4 +160,5 @@ func _flash_damage() -> void:
 func _die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
+	ScoreManager.award_enemy(self, score_value)
 	queue_free()

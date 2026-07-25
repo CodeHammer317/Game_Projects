@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://yxy84onu0e8"]
 
 [ext_resource type="Script" uid="uid://l8klmxvraqya" path="res://Scripts/combat/player_bullet.gd" id="1_yxr3u"]
-[ext_resource type="Texture2D" uid="uid://b2gs8rppirwgs" path="res://Assets/sprites/HolyHandgrenadeOfAntioch.png" id="2_4yaah"]
+[ext_resource type="Texture2D" uid="uid://dbd1hbnevw5xg" path="res://Assets/sprites/Items/GoldenMetalApple64x64.png" id="2_y7ds3"]
 [ext_resource type="Texture2D" uid="uid://7u6bwe1b58pl" path="res://Assets/Cool Animations/Circle_explosion/Circle_explosion1.png" id="3_y7ds3"]
 [ext_resource type="Texture2D" uid="uid://c4imn5grim2xg" path="res://Assets/Cool Animations/Circle_explosion/Circle_explosion2.png" id="4_1wmpo"]
 [ext_resource type="AudioStream" uid="uid://3lb4oukuxsws" path="res://Assets/Audio/edr-8-bit-jump-001-171817.mp3" id="4_d4a1h"]
@@ -19,7 +19,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_4yaah")
+"texture": ExtResource("2_y7ds3")
 }],
 "loop": true,
 "name": &"fly",
@@ -62,7 +62,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1wmpo"]
-radius = 52.737553
+radius = 17.677668
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y7ds3"]
+radius = 18.872122
 
 [node name="PlayerBullet" type="Area2D" unique_id=1047190578]
 scale = Vector2(0.4, 0.4)
@@ -70,9 +73,11 @@ collision_layer = 8
 collision_mask = 69
 script = ExtResource("1_yxr3u")
 damage = 5
+projectile_gravity = 700.0
+launch_angle_degrees = 60.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=366459317]
-scale = Vector2(2, 2)
+scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_bckiw")
 animation = &"fly"
 autoplay = "fly"
@@ -81,10 +86,10 @@ autoplay = "fly"
 position = Vector2(3.8146973e-06, 0)
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_1wmpo")
-debug_color = Color(0.9647059, 0.11764706, 0.03529412, 0.8862745)
+debug_color = Color(0.9647059, 0.11764706, 0.03529412, 0.09019608)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1753932589]
-rect = Rect2(-12, -20, 24, 32)
+rect = Rect2(-9.999999, -7.499999, 22, 19.5)
 
 [node name="BulletFireSound" type="AudioStreamPlayer" parent="." unique_id=1706128267]
 stream = ExtResource("4_d4a1h")
@@ -97,3 +102,12 @@ stream = ExtResource("5_xmb44")
 volume_db = 2.77
 pitch_scale = 0.78
 max_polyphony = 9
+
+[node name="DamageRadius" type="Area2D" parent="." unique_id=1794823686]
+collision_layer = 0
+collision_mask = 68
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageRadius" unique_id=68594252]
+position = Vector2(-2.3841858e-07, -32.5)
+scale = Vector2(12.099997, 5.299996)
+shape = SubResource("CircleShape2D_y7ds3")

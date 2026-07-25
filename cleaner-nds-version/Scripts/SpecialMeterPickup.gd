@@ -5,6 +5,7 @@ class_name SpecialMeterPickup
 @export_range(0.0, 1.0, 0.01) var recharge_ratio: float = 0.25
 @export var one_shot: bool = true
 @export var sparkle_anim_name: StringName = &"default"
+@export var score_value: int = 50
 
 @onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 @onready var collision: CollisionShape2D = $CollisionShape2D
@@ -54,6 +55,7 @@ func _get_recharge_amount(body: Node) -> int:
 
 func _collect() -> void:
 	_collected = true
+	ScoreManager.award_pickup(self, score_value)
 
 	if collision != null:
 		collision.set_deferred("disabled", true)

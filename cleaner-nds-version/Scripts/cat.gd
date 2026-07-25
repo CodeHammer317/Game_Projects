@@ -14,6 +14,7 @@ signal died(enemy: Node)
 
 @export_group("Combat")
 @export var max_health: int = 4
+@export var score_value: int = 75
 @export var contact_damage: int = 1
 @export var attack_cooldown: float = 1.0
 @export var damage_invulnerability: float = 0.2
@@ -188,6 +189,7 @@ func _die() -> void:
 	velocity = Vector2.ZERO
 	collision_layer = 0
 	collision_mask = 0
+	ScoreManager.award_enemy(self, score_value)
 	died.emit(self)
 	var death_tween := create_tween()
 	death_tween.tween_property(self, "modulate:a", 0.0, 0.25)

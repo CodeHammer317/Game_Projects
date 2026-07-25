@@ -7,6 +7,7 @@ signal attacked(enemy: Node)
 @export var gravity: float = 900.0
 @export var max_fall_speed: float = 700.0
 @export var move_speed: float = 40.0
+@export var score_value: int = 100
 @export var run_speed_multiplier: float = 1.35
 
 @export var death_remove_delay: float = 0.0
@@ -506,6 +507,7 @@ func _try_finalize_death() -> void:
 
 
 func _finalize_death() -> void:
+	ScoreManager.award_enemy(self, score_value)
 	died.emit(self)
 	queue_free()
 
