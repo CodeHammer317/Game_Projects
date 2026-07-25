@@ -10,27 +10,44 @@
 [ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/Fonts/pixy/PIXY.ttf" id="8_score_font"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_score"]
-bg_color = Color(0.025, 0.035, 0.045, 0.88)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.95, 0.58, 0.08, 0.95)
+bg_color = Color(0.023529412, 0.03529412, 0.043137256, 0)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="SystemFont" id="SystemFont_mlcim"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oflr6"]
+font = SubResource("SystemFont_mlcim")
+
+[sub_resource type="SystemFont" id="SystemFont_f3h51"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mlcim"]
+font = SubResource("SystemFont_f3h51")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mlcim"]
+
+[sub_resource type="SystemFont" id="SystemFont_mattb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mw35l"]
+font = SubResource("SystemFont_mattb")
+font_size = 13
+
+[sub_resource type="SystemFont" id="SystemFont_7pulb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sx5r0"]
+font = SubResource("SystemFont_7pulb")
+
 [node name="Hud" type="CanvasLayer" unique_id=795795287]
 process_mode = 3
 script = ExtResource("1_omqfp")
-helper_icon_path = NodePath("TextureRect/HelperIcon")
+high_score_label_path = NodePath("")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2117205763]
 offset_right = 171.0
 offset_bottom = 48.0
 texture = ExtResource("3_xaom8")
-metadata/_edit_group_ = true
 
 [node name="HealthBar" type="TextureProgressBar" parent="TextureRect" unique_id=954981843]
 layout_mode = 0
@@ -68,63 +85,74 @@ position = Vector2(47.999996, 36.000004)
 scale = Vector2(0.07936517, 0.06790123)
 texture = ExtResource("7_1ree7")
 
-[node name="ScorePanel" type="Panel" parent="."]
-offset_left = 466.0
-offset_top = 8.0
-offset_right = 632.0
-offset_bottom = 56.0
+[node name="ScorePanel" type="Panel" parent="." unique_id=1704699645]
+offset_left = 279.0
+offset_top = -10.0
+offset_right = 445.0
+offset_bottom = 38.0
+scale = Vector2(1.2800001, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_score")
 
-[node name="ScoreTitle" type="Label" parent="ScorePanel"]
+[node name="ScoreTitle" type="Label" parent="ScorePanel" unique_id=1261651719]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 4.0
-offset_right = 70.0
-offset_bottom = 20.0
+offset_left = 8.593758
+offset_top = 9.0
+offset_right = 70.59376
+offset_bottom = 32.0
 theme_override_colors/font_color = Color(1, 0.76, 0.2, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("8_score_font")
 theme_override_font_sizes/font_size = 9
-text = "SCORE"
+text = "SCORE:"
+label_settings = SubResource("LabelSettings_oflr6")
 
-[node name="ScoreValue" type="Label" parent="ScorePanel"]
+[node name="ScoreValue" type="Label" parent="ScorePanel" unique_id=1464236027]
 layout_mode = 0
-offset_left = 70.0
-offset_top = 4.0
-offset_right = 158.0
-offset_bottom = 20.0
+offset_left = -14.84375
+offset_top = 27.0
+offset_right = 73.15625
+offset_bottom = 50.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("8_score_font")
 theme_override_font_sizes/font_size = 9
 text = "00000000"
+label_settings = SubResource("LabelSettings_mlcim")
 horizontal_alignment = 2
 
-[node name="HighScoreTitle" type="Label" parent="ScorePanel"]
+[node name="HighScorePanel" type="Panel" parent="." unique_id=705526165]
+offset_left = 534.0
+offset_right = 640.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mlcim")
+
+[node name="HighScoreTitle" type="Label" parent="HighScorePanel" unique_id=742586745]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 25.0
-offset_right = 76.0
-offset_bottom = 41.0
+offset_left = 11.0
+offset_top = 1.0
+offset_right = 99.0
+offset_bottom = 24.0
 theme_override_colors/font_color = Color(0.4, 0.94, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("8_score_font")
 theme_override_font_sizes/font_size = 8
-text = "HI-SCORE"
+text = "HIGH SCORE:"
+label_settings = SubResource("LabelSettings_mw35l")
 
-[node name="HighScoreValue" type="Label" parent="ScorePanel"]
+[node name="HighScoreValue" type="Label" parent="HighScorePanel" unique_id=966886007]
 layout_mode = 0
-offset_left = 76.0
-offset_top = 25.0
-offset_right = 158.0
-offset_bottom = 41.0
+offset_left = 8.0
+offset_top = 14.0
+offset_right = 90.0
+offset_bottom = 37.0
 theme_override_colors/font_color = Color(0.4, 0.94, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("8_score_font")
 theme_override_font_sizes/font_size = 8
 text = "00000000"
+label_settings = SubResource("LabelSettings_sx5r0")
 horizontal_alignment = 2

@@ -3653,6 +3653,10 @@ position = Vector2(1024, 55.00003)
 z_index = 2
 position = Vector2(3625, 312)
 
+[node name="RelicGlow" parent="Gameplay/RavensWingsRelic" index="1" unique_id=1220662476]
+position = Vector2(-2, -36)
+texture_scale = 7.42
+
 [node name="AlertSign" parent="Gameplay" unique_id=1664267803 instance=ExtResource("15_06u8c")]
 position = Vector2(2349, 76)
 
@@ -3746,4 +3750,5 @@ position = Vector2(1240, 326)
 position = Vector2(2192, 326)
 
 [editable path="Actors/Enemies/RoombaDrone"]
+[editable path="Gameplay/RavensWingsRelic"]
 [editable path="Gameplay/AlertSign"]
