@@ -22,9 +22,16 @@ BOND STATUS // STABLE"""
 @export var glow_energy: float = 1.15
 @export var glow_pulse_amount: float = 0.22
 @export var glow_pulse_speed: float = 2.6
+@export var beacon_interval: float = 2.4
+@export var beacon_flash_energy: float = 3.4
+@export var beacon_scale_amount: float = 0.35
+@export var marker_fps: float = 18.0
+@export var marker_bob_amount: float = 5.0
+@export var marker_bob_speed: float = 2.4
 
 @onready var relic_sprite: Sprite2D = get_node_or_null("Sprite2D")
 @onready var relic_glow: PointLight2D = get_node_or_null("RelicGlow")
+@onready var question_marker: Sprite2D = get_node_or_null("QuestionMarker")
 @onready var pickup_effect: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 @onready var collision: CollisionShape2D = get_node_or_null("CollisionShape2D")
 @onready var audio: AudioStreamPlayer = get_node_or_null("AudioStreamPlayer")
@@ -48,6 +55,10 @@ BOND STATUS // STABLE"""
 var _collected: bool = false
 var _card_open: bool = false
 var _collecting_player: Node = null
+var _beacon_elapsed: float = 0.0
+var _glow_base_texture_scale: float = 1.0
+var _marker_elapsed: float = 0.0
+var _marker_base_position: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
@@ -65,6 +76,13 @@ func _ready() -> void:
 	if relic_glow != null:
 		relic_glow.visible = true
 		relic_glow.energy = glow_energy
+		_glow_base_texture_scale = relic_glow.texture_scale
+		# Start with a quick beacon so the relic is noticeable on room entry.
+		_beacon_elapsed = maxf(beacon_interval - 0.45, 0.0)
+	if question_marker != null:
+		question_marker.visible = true
+		_marker_base_position = question_marker.position
+		_update_question_marker_frame(0)
 	if pickup_effect != null:
 		pickup_effect.stop()
 		pickup_effect.set_frame_and_progress(0, 0.0)
@@ -73,12 +91,49 @@ func _ready() -> void:
 		card_root.visible = false
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	if question_marker != null and question_marker.visible:
+		_marker_elapsed += delta
+		var marker_frame := int(_marker_elapsed * marker_fps) % 30
+		_update_question_marker_frame(marker_frame)
+		question_marker.position.y = (
+			_marker_base_position.y
+			+ sin(_marker_elapsed * marker_bob_speed) * marker_bob_amount
+		)
+
 	if relic_glow == null or not relic_glow.visible:
 		return
 
 	var seconds := Time.get_ticks_msec() / 1000.0
-	relic_glow.energy = glow_energy + sin(seconds * glow_pulse_speed) * glow_pulse_amount
+	var ambient_pulse := sin(seconds * glow_pulse_speed) * glow_pulse_amount
+	var beacon_strength := 0.0
+
+	if beacon_interval > 0.0:
+		_beacon_elapsed = fmod(_beacon_elapsed + delta, beacon_interval)
+		# A sharp primary flash followed by a softer echo makes the pickup read
+		# like a deliberate beacon instead of another ambient room light.
+		beacon_strength += _flash_pulse(_beacon_elapsed, 0.00, 0.18)
+		beacon_strength += _flash_pulse(_beacon_elapsed, 0.28, 0.14) * 0.55
+
+	relic_glow.energy = glow_energy + ambient_pulse + beacon_strength * beacon_flash_energy
+	relic_glow.texture_scale = _glow_base_texture_scale + beacon_strength * beacon_scale_amount
+
+
+func _flash_pulse(elapsed: float, start_time: float, duration: float) -> float:
+	if duration <= 0.0 or elapsed < start_time or elapsed > start_time + duration:
+		return 0.0
+
+	var progress := (elapsed - start_time) / duration
+	return sin(progress * PI)
+
+
+func _update_question_marker_frame(frame_index: int) -> void:
+	if question_marker == null:
+		return
+
+	var frame_x := frame_index % 10
+	var frame_y := frame_index / 10
+	question_marker.region_rect = Rect2(frame_x * 48, frame_y * 48, 48, 48)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -125,6 +180,8 @@ func _reveal_relic(player: Node) -> void:
 
 	if relic_glow != null:
 		relic_glow.energy = glow_energy + glow_pulse_amount * 2.0
+	if question_marker != null:
+		question_marker.visible = false
 
 	_populate_relic_card()
 	if card_root != null:
@@ -180,6 +237,8 @@ func _play_collection_effect() -> void:
 		relic_sprite.visible = false
 	if relic_glow != null:
 		relic_glow.visible = false
+	if question_marker != null:
+		question_marker.visible = false
 
 	var effect_duration := 0.0
 
