@@ -1,7 +1,7 @@
 extends Node2D
 
 const SERVANT_LINE: String = "Should we neutralize\nthe Death Squad,\nMy Lord?"
-const CATLORD_LINE: String = "Perhaps,,,,,,,,,,"
+const CATLORD_LINE: String = "Puuurhaps,,,,,,,,,,"
 
 @export var chars_per_second: float = 25.0
 @export var line_hold_duration: float = 2.0

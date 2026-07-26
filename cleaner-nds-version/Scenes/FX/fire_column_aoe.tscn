@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://daxkfydt3ss2p" path="res://Assets/Audio/biww-big-fire-blast-whoosh-sound-effect-561961.mp3" id="3_cxt2x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kblf"]
-radius = 80.47532
+radius = 63.474598
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gs44p"]
 atlas = ExtResource("2_cxt2x")

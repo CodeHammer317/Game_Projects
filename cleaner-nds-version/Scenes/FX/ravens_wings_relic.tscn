@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b6fs2h5876l4n" path="res://Assets/Audio/alexis_gaming_cam-anime-shine-sound-effect-346114.mp3" id="4_8vvpc"]
 [ext_resource type="Script" uid="uid://b0ii2mhul74q0" path="res://Scripts/relic_pickup.gd" id="4_relic"]
 [ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/Fonts/pixy/PIXY.ttf" id="5_font"]
+[ext_resource type="Texture2D" uid="uid://b3xnyr3myo2ng" path="res://Assets/sprites/FullGigaPak2.5_spritesheetS/Symbols/symbol_question_001/symbol_question_001_small_yellow/spritesheet.png" id="6_question"]
 
 [sub_resource type="Gradient" id="Gradient_relic_glow"]
 offsets = PackedFloat32Array(0, 0.38, 1)
@@ -181,6 +182,15 @@ energy = 6.53
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_relic_glow")
 texture_scale = 1.35
+
+[node name="QuestionMarker" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(0, -72)
+scale = Vector2(1.35, 1.35)
+texture_filter = 1
+texture = ExtResource("6_question")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 48)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1267655149]
 visible = false
