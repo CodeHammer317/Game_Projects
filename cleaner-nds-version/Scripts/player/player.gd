@@ -12,6 +12,8 @@ const DOUBLE_JUMP_ANIMATION := &"double_jump"
 const NORMAL_JUMP_ANIMATION := &"jump"
 const FALL_ANIMATION := &"falling"
 const PlayerStateMachineScript := preload("res://Scripts/player/state_machine/player_state_machine.gd")
+const GAME_OVER_SCREEN_SCENE := preload("res://Scenes/HUD/game_over_screen.tscn")
+const TITLE_SCREEN_PATH: String = "res://Scenes/HUD/title_screen.tscn"
 
 
 @export var move_speed: float = 200.0
@@ -68,8 +70,7 @@ const PlayerStateMachineScript := preload("res://Scripts/player/state_machine/pl
 @export var respawn_invuln_duration: float = 2.0
 @export var respawn_flash_interval: float = 0.12
 @export var restore_health_on_respawn: bool = true
-@export var restart_scene_after_game_over: bool = true
-@export var game_over_restart_delay: float = 10.0
+@export var show_game_over_segment: bool = true
 
 @export_group("Fall Safety")
 @export var fall_death_enabled: bool = true
@@ -156,7 +157,6 @@ var _is_game_over: bool = false
 var _is_hit_flashing: bool = false
 var _is_respawn_flashing: bool = false
 
-var _death_count: int = 0
 var _death_position: Vector2 = Vector2.ZERO
 var _fallback_respawn_position: Vector2 = Vector2.ZERO
 var _fall_death_grace_timer: float = 0.0
@@ -188,6 +188,7 @@ func _ready() -> void:
 	_sprite_base_position = sprite.position
 	_fallback_respawn_position = global_position
 	_fall_death_grace_timer = fall_death_grace_duration
+	PlayerState.configure_lives(max_deaths_before_game_over)
 	_sync_upgrades_from_state()
 	_state_machine = PlayerStateMachineScript.new().setup(self)
 
@@ -1085,7 +1086,7 @@ func kill() -> void:
 		return
 
 	_cancel_shot_charge()
-	_death_count += 1
+	var run_death_count := PlayerState.record_death(max_deaths_before_game_over)
 	_death_position = global_position
 
 	_is_dead = true
@@ -1116,11 +1117,11 @@ func kill() -> void:
 
 	await _run_death_blink()
 
-	if _death_count >= max_deaths_before_game_over:
+	if run_death_count >= max_deaths_before_game_over:
 		_is_game_over = true
 		game_over.emit()
-		if restart_scene_after_game_over:
-			await _restart_after_game_over()
+		if show_game_over_segment:
+			await _run_game_over_segment()
 		return
 
 	respawn_ready.emit(self)
@@ -1129,13 +1130,22 @@ func kill() -> void:
 		respawn()
 
 
-func _restart_after_game_over() -> void:
-	if game_over_restart_delay > 0.0:
-		await get_tree().create_timer(game_over_restart_delay, true).timeout
+func _run_game_over_segment() -> void:
+	if not is_inside_tree():
+		return
+
+	var game_over_screen := GAME_OVER_SCREEN_SCENE.instantiate() as GameOverScreen
+	if game_over_screen == null:
+		push_error("Player: failed to create the game over screen.")
+		return
+
+	get_tree().root.add_child(game_over_screen)
+	var action: StringName = await game_over_screen.action_selected
 
 	if not is_inside_tree():
 		return
 
+	PlayerState.reset_lives(max_deaths_before_game_over)
 	PlayerState.current_health = PlayerState.max_health
 	PlayerState.player_dead = false
 
@@ -1145,9 +1155,13 @@ func _restart_after_game_over() -> void:
 	else:
 		get_tree().paused = false
 
-	var error := get_tree().reload_current_scene()
+	var error := OK
+	if action == &"title":
+		error = get_tree().change_scene_to_file(TITLE_SCREEN_PATH)
+	else:
+		error = get_tree().reload_current_scene()
 	if error != OK:
-		push_error("Player: failed to restart after game over. Error: %s" % error)
+		push_error("Player: failed to leave the game over screen. Error: %s" % error)
 
 
 func respawn() -> void:
@@ -1324,15 +1338,15 @@ func is_facing_left() -> bool:
 
 
 func get_death_count() -> int:
-	return _death_count
+	return PlayerState.get_death_count()
 
 
 func get_lives_remaining() -> int:
-	return max_deaths_before_game_over - _death_count
+	return PlayerState.get_lives_remaining()
 
 
 func reset_deaths() -> void:
-	_death_count = 0
+	PlayerState.reset_lives(max_deaths_before_game_over)
 	_is_game_over = false
 
 

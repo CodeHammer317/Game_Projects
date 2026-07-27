@@ -29,6 +29,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_echo():
 		return
 
+	if get_tree().get_first_node_in_group("game_over_screen") != null:
+		return
+
 	if event.is_action_pressed("pause"):
 		toggle_pause()
 		get_viewport().set_input_as_handled()
