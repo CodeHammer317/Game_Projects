@@ -4,8 +4,10 @@ signal upgrade_unlocked(upgrade_name: StringName)
 signal helper_unlocked(helper_id: StringName)
 signal helper_selected(helper_id: StringName)
 signal document_collected(document_id: StringName)
+signal lives_changed(remaining: int, maximum: int)
 
 const DEFAULT_HELPER: StringName = &"mattt"
+const DEFAULT_MAX_LIVES: int = 3
 const MATTT_ASSIST_SCENE: PackedScene = preload("res://Scenes/Player/mattt_assist.tscn")
 const MATTT_HUD_ICON: Texture2D = preload("res://Assets/NDS Game Files/MatTt Sprites/GhostMatttHead1.png")
 
@@ -19,8 +21,8 @@ const UPGRADE_DEFINITIONS := {
 		"description": "Slide down walls and wall jump."
 	},
 	&"charge_shot": {
-		"display_name": "Charge Shot",
-		"description": "Hold shoot to charge a stronger projectile."
+		"display_name": "The Apple Of Bonking",
+		"description": "Hold shoot to charge its throw range, then release to launch."
 	}
 }
 
@@ -36,19 +38,22 @@ const HELPER_DEFINITIONS := {
 var max_health: int = 10
 var current_health: int = 10
 var player_dead: bool = false
-var starting_upgrades: Array[StringName] = []
+var starting_upgrades: Array[StringName] = [&"charge_shot"]
 var unlocked_upgrades: Dictionary = {}
 var starting_helpers: Array[StringName] = [DEFAULT_HELPER]
 var unlocked_helpers: Dictionary = {}
 var selected_helper: StringName = DEFAULT_HELPER
 var collected_documents: Dictionary = {}
 var demo_finale_pending: bool = false
+var death_count: int = 0
+var lives_maximum: int = DEFAULT_MAX_LIVES
 
 
 func _ready() -> void:
 	reset_upgrades()
 	reset_helpers()
 	reset_documents()
+	reset_lives()
 
 
 func reset_all() -> void:
@@ -58,7 +63,36 @@ func reset_all() -> void:
 	reset_upgrades()
 	reset_helpers()
 	reset_documents()
+	reset_lives(DEFAULT_MAX_LIVES)
 	demo_finale_pending = false
+
+
+func configure_lives(maximum: int) -> void:
+	lives_maximum = maxi(maximum, 1)
+	death_count = mini(death_count, lives_maximum)
+	lives_changed.emit(get_lives_remaining(), lives_maximum)
+
+
+func record_death(maximum: int = DEFAULT_MAX_LIVES) -> int:
+	lives_maximum = maxi(maximum, 1)
+	death_count = mini(death_count + 1, lives_maximum)
+	lives_changed.emit(get_lives_remaining(), lives_maximum)
+	return death_count
+
+
+func get_death_count() -> int:
+	return death_count
+
+
+func get_lives_remaining() -> int:
+	return maxi(lives_maximum - death_count, 0)
+
+
+func reset_lives(maximum: int = -1) -> void:
+	if maximum > 0:
+		lives_maximum = maximum
+	death_count = 0
+	lives_changed.emit(lives_maximum, lives_maximum)
 
 
 func begin_demo_finale() -> void:

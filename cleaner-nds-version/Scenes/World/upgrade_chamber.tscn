@@ -2352,6 +2352,7 @@ size = Vector2(100, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1rntg"]
 font = SubResource("SystemFont_qeok2")
+font_size = 12
 
 [sub_resource type="SystemFont" id="SystemFont_1rntg"]
 
@@ -2478,16 +2479,19 @@ shape = SubResource("RectangleShape2D_tutorial_exit")
 layer = 50
 
 [node name="TutorialPrompt" type="Label" parent="TutorialUI" unique_id=1233037357]
-offset_left = 142.0
-offset_top = 35.0
-offset_right = 513.0
-offset_bottom = 59.0
+offset_left = 171.0
+offset_top = 186.0
+offset_right = 486.0
+offset_bottom = 251.0
 theme_override_colors/font_color = Color(1, 0.92, 0.62, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-text = "WALL JUMP: Press toward a wall + A / SPACE"
+text = "THE APPLE OF BONKING: Hold ENTER / B to charge.
+Release to throw farther.
+WALL JUMP: Press toward a wall + SPACE / A"
 label_settings = SubResource("LabelSettings_1rntg")
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="ExitPrompt" type="Label" parent="TutorialUI" unique_id=1739789886]
 offset_left = 513.0

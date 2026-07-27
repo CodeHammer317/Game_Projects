@@ -452,6 +452,11 @@ func _spawn_player() -> void:
 
 
 func _enable_tutorial_exit() -> void:
+	# Combat is disabled while the chamber sequence is running. Re-enable it
+	# here so the player can practice charging the Apple before leaving.
+	if player != null and player.has_method("set_combat_enabled"):
+		player.call("set_combat_enabled", true)
+
 	tutorial_ui.visible = true
 	tutorial_prompt.visible = true
 	exit_prompt.visible = true
