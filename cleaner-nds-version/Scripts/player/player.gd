@@ -3,6 +3,7 @@ class_name Player
 
 signal fired_bullet(bullet: Node)
 signal shot_charge_changed(elapsed_time: float, charge_duration: float, charging: bool)
+signal apple_ammo_changed(current: int, maximum: int)
 signal special_meter_changed(current: int, maximum: int)
 signal died
 signal respawn_ready(player: Player)
@@ -43,6 +44,8 @@ const TITLE_SCREEN_PATH: String = "res://Scenes/HUD/title_screen.tscn"
 @export_group("Charged Throw")
 @export var minimum_charge_time: float = 0.0
 @export var maximum_charge_time: float = 2.0
+@export_range(0, 99, 1) var max_apple_ammo: int = 10
+@export var refill_apples_on_respawn: bool = true
 
 @export_group("Attack Combo")
 @export var attack_action: StringName = &"attack"
@@ -135,6 +138,7 @@ var _fire_timer: float = 0.0
 var _shoot_anim_timer: float = 0.0
 var _charge_time: float = 0.0
 var _is_charging_shot: bool = false
+var apple_ammo: int = 0
 var _input_dir: float = 0.0
 var _walk_input_active: bool = false
 var control_locked: bool = false
@@ -188,6 +192,7 @@ func _ready() -> void:
 	_sprite_base_position = sprite.position
 	_fallback_respawn_position = global_position
 	_fall_death_grace_timer = fall_death_grace_duration
+	_set_apple_ammo(max_apple_ammo)
 	PlayerState.configure_lives(max_deaths_before_game_over)
 	_sync_upgrades_from_state()
 	_state_machine = PlayerStateMachineScript.new().setup(self)
@@ -207,6 +212,7 @@ func _ready() -> void:
 
 	_update_muzzle_position()
 	_snap_visuals_to_pixel()
+	apple_ammo_changed.emit(apple_ammo, max_apple_ammo)
 	special_meter_changed.emit(special_meter, special_meter_max)
 
 
@@ -738,6 +744,9 @@ func _can_shoot() -> bool:
 	if _is_dead or _is_dying or _is_game_over:
 		return false
 
+	if apple_ammo <= 0:
+		return false
+
 	if _hitstun_timer > 0.0:
 		return false
 
@@ -756,6 +765,9 @@ func _can_shoot() -> bool:
 
 
 func _spawn_bullet(charge_ratio: float = 0.0) -> void:
+	if apple_ammo <= 0:
+		return
+
 	var bullet := bullet_scene.instantiate()
 	if bullet == null:
 		push_warning("Failed to instantiate bullet_scene.")
@@ -775,7 +787,30 @@ func _spawn_bullet(charge_ratio: float = 0.0) -> void:
 	if bullet.has_method("setup"):
 		bullet.setup(direction, self, charge_ratio)
 
+	_set_apple_ammo(apple_ammo - 1)
 	fired_bullet.emit(bullet)
+
+
+func get_apple_ammo() -> int:
+	return apple_ammo
+
+
+func add_apple_ammo(amount: int) -> void:
+	_set_apple_ammo(apple_ammo + amount)
+
+
+func set_apple_ammo(amount: int) -> void:
+	_set_apple_ammo(amount)
+
+
+func _set_apple_ammo(amount: int) -> void:
+	var safe_maximum := maxi(max_apple_ammo, 0)
+	var next_ammo := clampi(amount, 0, safe_maximum)
+	if apple_ammo == next_ammo:
+		return
+
+	apple_ammo = next_ammo
+	apple_ammo_changed.emit(apple_ammo, safe_maximum)
 
 
 func get_shot_charge_ratio() -> float:
@@ -1170,6 +1205,8 @@ func respawn() -> void:
 
 func respawn_at(respawn_position: Vector2) -> void:
 	_cancel_shot_charge()
+	if refill_apples_on_respawn:
+		_set_apple_ammo(max_apple_ammo)
 	global_position = respawn_position
 	velocity = Vector2.ZERO
 	_fall_death_grace_timer = fall_death_grace_duration

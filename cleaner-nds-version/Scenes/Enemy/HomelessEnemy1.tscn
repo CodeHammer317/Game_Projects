@@ -589,7 +589,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ht8y"]
-size = Vector2(13, 35)
+size = Vector2(24.615387, 64.615395)
 
 [node name="HomelessEnemy1" type="CharacterBody2D" unique_id=1221956425 groups=["enemies"]]
 scale = Vector2(0.65, 0.65)
@@ -607,7 +607,7 @@ shape = SubResource("RectangleShape2D_yxkbp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1285878564]
 position = Vector2(1, -29)
 sprite_frames = SubResource("SpriteFrames_m8ac2")
-animation = &"Run"
+animation = &"Idle1"
 autoplay = "Idle1"
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1678371625]
@@ -617,7 +617,7 @@ script = ExtResource("2_pbp6t")
 health_path = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=10881177]
-position = Vector2(-0.5, 1.5)
+position = Vector2(-1.5384617, 3.0769248)
 shape = SubResource("RectangleShape2D_4ht8y")
 debug_color = Color(0.9617104, 0.1328403, 0.37480175, 0.41960785)
 

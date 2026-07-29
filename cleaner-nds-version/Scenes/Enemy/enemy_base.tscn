@@ -5,11 +5,18 @@
 [ext_resource type="Script" uid="uid://si78mlk0u1cm" path="res://Scripts/ui/hurtbox.gd" id="6_7tn8a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxkbp"]
+size = Vector2(23, 57)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m8ac2"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ht8y"]
-size = Vector2(28, 13)
+size = Vector2(30, 58)
 
 [node name="EnemyBase" type="CharacterBody2D" unique_id=1221956425]
 collision_layer = 4

@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://crtgejdwvijj0" path="res://Assets/HUD_assets/PNG/SpecialBar.png" id="6_d2sja"]
 [ext_resource type="Texture2D" uid="uid://dblgq32ave8d2" path="res://Assets/NDS Game Files/MatTt Sprites/Matt.png" id="7_1ree7"]
 [ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/Fonts/pixy/PIXY.ttf" id="8_score_font"]
+[ext_resource type="Texture2D" uid="uid://drdhxgp8vwvgg" path="res://Assets/sprites/NDS Logo_transparent.png" id="9_lives"]
+[ext_resource type="Texture2D" uid="uid://cn2b75wq0g0b1" path="res://Assets/sprites/Items/GoldenApple16x16.png" id="10_apple"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_score"]
 bg_color = Color(0.023529412, 0.03529412, 0.043137256, 0)
@@ -17,11 +19,13 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="SystemFont" id="SystemFont_mlcim"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_oflr6"]
 font = SubResource("SystemFont_mlcim")
 
 [sub_resource type="SystemFont" id="SystemFont_f3h51"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_mlcim"]
 font = SubResource("SystemFont_f3h51")
@@ -29,12 +33,14 @@ font = SubResource("SystemFont_f3h51")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mlcim"]
 
 [sub_resource type="SystemFont" id="SystemFont_mattb"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_mw35l"]
 font = SubResource("SystemFont_mattb")
 font_size = 13
 
 [sub_resource type="SystemFont" id="SystemFont_7pulb"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_sx5r0"]
 font = SubResource("SystemFont_7pulb")
@@ -84,6 +90,62 @@ texture = ExtResource("4_4bm6u")
 position = Vector2(47.999996, 36.000004)
 scale = Vector2(0.07936517, 0.06790123)
 texture = ExtResource("7_1ree7")
+
+[node name="LivesCounter" type="HBoxContainer" parent="TextureRect" unique_id=2032364777]
+texture_filter = 1
+layout_mode = 0
+offset_left = 77.0
+offset_top = 29.0
+offset_right = 117.0
+offset_bottom = 41.0
+theme_override_constants/separation = 2
+
+[node name="Life1" type="TextureRect" parent="TextureRect/LivesCounter" unique_id=354139905]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("9_lives")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Life2" type="TextureRect" parent="TextureRect/LivesCounter" unique_id=1003048125]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("9_lives")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Life3" type="TextureRect" parent="TextureRect/LivesCounter" unique_id=620511625]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("9_lives")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AppleCounter" type="HBoxContainer" parent="TextureRect"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 120.0
+offset_top = 29.0
+offset_right = 169.0
+offset_bottom = 45.0
+theme_override_constants/separation = 1
+
+[node name="Icon" type="TextureRect" parent="TextureRect/AppleCounter"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("10_apple")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Count" type="Label" parent="TextureRect/AppleCounter"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.28, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("8_score_font")
+theme_override_font_sizes/font_size = 9
+text = "x10"
+vertical_alignment = 1
 
 [node name="ScorePanel" type="Panel" parent="." unique_id=1704699645]
 offset_left = 279.0

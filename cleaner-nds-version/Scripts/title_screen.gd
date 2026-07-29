@@ -2,6 +2,8 @@ extends Control
 
 const SELECTOR_OFFSET: Vector2 = Vector2(-25, 11)
 const BRIEFING_SCENE: String = "res://Scenes/World/opening_screen.tscn"
+const JOYSTICK_NAVIGATION_THRESHOLD: float = 0.65
+const JOYSTICK_RESET_THRESHOLD: float = 0.30
 
 enum MenuOption {
 	START_DEMO,
@@ -30,6 +32,7 @@ var fade_tween: Tween = null
 var selector_tween: Tween = null
 var selector_pulse_tween: Tween = null
 var is_transitioning: bool = true
+var joystick_navigation_armed: bool = true
 
 
 func _ready() -> void:
@@ -85,15 +88,39 @@ func _finish_intro() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_echo():
+		return
+
 	if menu_items.is_empty() or is_transitioning:
+		return
+
+	var joystick_motion := event as InputEventJoypadMotion
+	if joystick_motion != null and joystick_motion.axis == JOY_AXIS_LEFT_Y:
+		_handle_joystick_navigation(joystick_motion.axis_value)
+		get_viewport().set_input_as_handled()
 		return
 
 	if event.is_action_pressed("menu_down"):
 		_navigate(1)
+		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("menu_up"):
 		_navigate(-1)
+		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("accept"):
 		_confirm_selection()
+		get_viewport().set_input_as_handled()
+
+
+func _handle_joystick_navigation(axis_value: float) -> void:
+	if absf(axis_value) <= JOYSTICK_RESET_THRESHOLD:
+		joystick_navigation_armed = true
+		return
+
+	if not joystick_navigation_armed or absf(axis_value) < JOYSTICK_NAVIGATION_THRESHOLD:
+		return
+
+	joystick_navigation_armed = false
+	_navigate(1 if axis_value > 0.0 else -1)
 
 
 func _navigate(direction: int) -> void:

@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://cg1yf47hv4lf8" path="res://Assets/sprites/TOAD.png" id="23_sobry"]
 [ext_resource type="PackedScene" uid="uid://crf1d0vkk8o5h" path="res://Scenes/Enemy/cat.tscn" id="26_67mkg"]
 [ext_resource type="PackedScene" uid="uid://br7vthru5cwmy" path="res://Scenes/FX/archivist_document_pickup.tscn" id="27_5vrvd"]
+[ext_resource type="PackedScene" uid="uid://iqmbqmobllt3" path="res://soldier_1.tscn" id="28_soldier"]
 [ext_resource type="AudioStream" uid="uid://bd5jastnkanua" path="res://Assets/Audio/11325622-police-siren-sound-effect-240674.mp3" id="30_h6cko"]
 [ext_resource type="Script" uid="uid://b1w2a28gwfgfd" path="res://Scripts/respawn_manager.gd" id="99_respawn"]
 [ext_resource type="Script" uid="uid://bnf80d4m4v5i" path="res://Scripts/level_01.gd" id="100_level"]
@@ -3642,6 +3643,12 @@ size = Vector2(24, 160)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_level_trigger"]
 size = Vector2(112, 280)
 
+[sub_resource type="SystemFont" id="SystemFont_7llri"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1qkjn"]
+font = SubResource("SystemFont_7llri")
+font_size = 8
+
 [sub_resource type="LabelSettings" id="LabelSettings_dnc84"]
 font_size = 7
 font_color = Color(0, 0, 0, 1)
@@ -3798,6 +3805,9 @@ position = Vector2(3190, 321)
 position = Vector2(2828, 142)
 collision_mask = 10
 
+[node name="Soldier1" parent="Actors/Enemies" instance=ExtResource("28_soldier")]
+position = Vector2(2472, 304)
+
 [node name="Policeman1" parent="Actors/Enemies" unique_id=1153508227 groups=["old_district_final_enemy"] instance=ExtResource("14_dqs3l")]
 position = Vector2(4192, 308)
 
@@ -3826,7 +3836,7 @@ tile_map_data = PackedByteArray("AAAQABEAAAAvABgAAAAQABIAAAAvABkAAABMADkAAAAxABY
 tile_set = SubResource("TileSet_38drk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Environment" unique_id=248400018]
-position = Vector2(-10, 25)
+position = Vector2(1, 1)
 
 [node name="LevelFlow" type="Node2D" parent="." unique_id=755146334]
 
@@ -3850,14 +3860,15 @@ color = Color(1, 0.52, 0.04, 0.72)
 polygon = PackedVector2Array(-10, -80, 10, -80, 10, 80, -10, 80)
 
 [node name="Core" type="Polygon2D" parent="LevelFlow/SubwayGate" unique_id=787497493]
+z_index = 1
 color = Color(1, 0.94, 0.38, 0.95)
 polygon = PackedVector2Array(-3, -80, 3, -80, 3, 80, -3, 80)
 
 [node name="SealLabel" type="Label" parent="LevelFlow/SubwayGate" unique_id=7470226]
-offset_left = -34.0
-offset_top = -12.0
-offset_right = 34.0
-offset_bottom = 12.0
+offset_left = -42.0
+offset_top = 15.0
+offset_right = 26.0
+offset_bottom = 39.0
 rotation = -1.5707964
 theme_override_colors/font_color = Color(1, 0.86, 0.26, 1)
 theme_override_colors/font_outline_color = Color(0.12, 0.02, 0, 1)
@@ -3867,6 +3878,7 @@ text = "ACCESS SEALED"
 horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelFlow/SubwayGate" unique_id=35306669]
+position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_subway_gate")
 
 [node name="Gameplay" type="Node2D" parent="." unique_id=2034222046]
@@ -3879,6 +3891,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gameplay/Triggers/MatttTutorial" unique_id=737039913]
+position = Vector2(-168, -11)
 shape = SubResource("RectangleShape2D_level_trigger")
 
 [node name="MatttBanter" type="Area2D" parent="Gameplay/Triggers" unique_id=1517975500]
@@ -3895,6 +3908,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gameplay/Triggers/PoliceAudioZone" unique_id=1060468538]
+position = Vector2(-217, -13)
 shape = SubResource("RectangleShape2D_level_trigger")
 
 [node name="StoryProps" type="Node2D" parent="Gameplay" unique_id=1413232804]
@@ -3920,6 +3934,7 @@ theme_override_fonts/font = ExtResource("101_font")
 theme_override_font_sizes/font_size = 9
 text = "CITY QUARANTINE
 GAS LEAK // KEEP OUT"
+label_settings = SubResource("LabelSettings_1qkjn")
 horizontal_alignment = 1
 
 [node name="MissingPoster" type="Node2D" parent="Gameplay/StoryProps" unique_id=329907204]
@@ -4127,6 +4142,12 @@ position = Vector2(1045, 313)
 
 [node name="Cat2" parent="." unique_id=572663908 instance=ExtResource("26_67mkg")]
 position = Vector2(1240, 326)
+
+[node name="Cat3" parent="." unique_id=694223700 instance=ExtResource("26_67mkg")]
+position = Vector2(1884, 216)
+
+[node name="Cat4" parent="." unique_id=1549606927 instance=ExtResource("26_67mkg")]
+position = Vector2(2080, 214)
 
 [node name="ArchivistDocumentPickup" parent="." unique_id=994571012 instance=ExtResource("27_5vrvd")]
 position = Vector2(2192, 326)

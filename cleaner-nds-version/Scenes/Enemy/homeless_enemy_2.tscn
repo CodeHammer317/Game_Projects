@@ -16,10 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://d144kgmxfrpvc" path="res://Assets/sprites/homeless-character-sprite-sheets/Homeless_2/Walk.png" id="13_gxnxa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxkbp"]
-size = Vector2(20, 60)
+size = Vector2(21.538464, 63.38462)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ht8y"]
-size = Vector2(13, 35)
+size = Vector2(21.538464, 60.000008)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsb3n"]
 atlas = ExtResource("4_ccp5p")
@@ -423,7 +423,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle1",
-"speed": 7.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -567,7 +567,7 @@ attack_ready_duration = 1.0
 projectile_scene = ExtResource("2_rpi70")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=776852473]
-position = Vector2(0, 2)
+position = Vector2(9.169946e-08, 1.5384617)
 shape = SubResource("RectangleShape2D_yxkbp")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1678371625]
@@ -577,7 +577,7 @@ script = ExtResource("2_iloe0")
 health_path = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=10881177]
-position = Vector2(-0.5, 1.5)
+position = Vector2(4.7683716e-07, 0)
 shape = SubResource("RectangleShape2D_4ht8y")
 debug_color = Color(0.9617104, 0.1328403, 0.37480175, 0.41960785)
 
@@ -587,4 +587,7 @@ script = ExtResource("3_rl780")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=257989045]
 position = Vector2(-4.615385, -30.76923)
 sprite_frames = SubResource("SpriteFrames_1a5f7")
-animation = &"Run"
+animation = &"Idle1"
+autoplay = "Idle1"
+frame_progress = 0.6500666
+offset = Vector2(8, 0)
