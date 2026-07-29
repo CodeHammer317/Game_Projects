@@ -65,7 +65,7 @@ animations = [{
 radius = 17.677668
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y7ds3"]
-radius = 13.851013
+radius = 25.37285
 
 [node name="PlayerBullet" type="Area2D" unique_id=1047190578]
 scale = Vector2(0.4, 0.4)
@@ -108,6 +108,6 @@ collision_layer = 0
 collision_mask = 68
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageRadius" unique_id=68594252]
-position = Vector2(-2.3841858e-07, -32.5)
-scale = Vector2(12.099997, 5.299996)
+position = Vector2(-1.4210855e-14, -3.8146973e-06)
+scale = Vector2(4.378441, 4.2238436)
 shape = SubResource("CircleShape2D_y7ds3")

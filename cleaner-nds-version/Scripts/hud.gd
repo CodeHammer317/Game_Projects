@@ -7,6 +7,8 @@ class_name PlayerHUD
 @export var ability_bar_path: NodePath = ^"TextureRect/AbilityBar"
 @export var charge_bar_path: NodePath = ^"TextureRect/ChargeBar"
 @export var helper_icon_path: NodePath = ^"TextureRect/HelperIcon"
+@export var lives_counter_path: NodePath = ^"TextureRect/LivesCounter"
+@export var apple_count_label_path: NodePath = ^"TextureRect/AppleCounter/Count"
 @export var score_label_path: NodePath = ^"ScorePanel/ScoreValue"
 @export var high_score_label_path: NodePath = ^"ScorePanel/HighScoreValue"
 
@@ -18,22 +20,31 @@ class_name PlayerHUD
 @onready var ability_bar: TextureProgressBar = get_node(ability_bar_path) as TextureProgressBar
 @onready var charge_bar: TextureProgressBar = get_node(charge_bar_path) as TextureProgressBar
 @onready var helper_icon: Sprite2D = _resolve_helper_icon()
+@onready var lives_counter: HBoxContainer = get_node_or_null(lives_counter_path) as HBoxContainer
+@onready var apple_count_label: Label = get_node_or_null(apple_count_label_path) as Label
 @onready var score_label: Label = get_node_or_null(score_label_path) as Label
 @onready var high_score_label: Label = get_node_or_null(high_score_label_path) as Label
 
 var player: Player = null
 var health: Health = null
+var life_icons: Array[TextureRect] = []
+var scene_helper_icon: Texture2D = null
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_initialize_bars()
+	_initialize_lives_counter()
+	if helper_icon != null:
+		scene_helper_icon = helper_icon.texture
 	_update_helper_icon(PlayerState.selected_helper)
 	_update_score(ScoreManager.score)
 	_update_high_score(ScoreManager.high_score)
 
 	if not PlayerState.helper_selected.is_connected(_update_helper_icon):
 		PlayerState.helper_selected.connect(_update_helper_icon)
+	if not PlayerState.lives_changed.is_connected(_update_lives_counter):
+		PlayerState.lives_changed.connect(_update_lives_counter)
 	if not ScoreManager.score_changed.is_connected(_update_score):
 		ScoreManager.score_changed.connect(_update_score)
 	if not ScoreManager.high_score_changed.is_connected(_update_high_score):
@@ -58,6 +69,8 @@ func _resolve_helper_icon() -> Sprite2D:
 func _exit_tree() -> void:
 	if PlayerState.helper_selected.is_connected(_update_helper_icon):
 		PlayerState.helper_selected.disconnect(_update_helper_icon)
+	if PlayerState.lives_changed.is_connected(_update_lives_counter):
+		PlayerState.lives_changed.disconnect(_update_lives_counter)
 	if ScoreManager.score_changed.is_connected(_update_score):
 		ScoreManager.score_changed.disconnect(_update_score)
 	if ScoreManager.high_score_changed.is_connected(_update_high_score):
@@ -79,6 +92,38 @@ func _initialize_bars() -> void:
 	charge_bar.step = 0.01
 	charge_bar.value = 0.0
 	charge_bar.visible = not hide_charge_bar_when_idle
+
+
+func _initialize_lives_counter() -> void:
+	life_icons.clear()
+
+	if lives_counter == null:
+		push_warning("HUD: LivesCounter node is missing.")
+		return
+
+	for child in lives_counter.get_children():
+		var icon := child as TextureRect
+		if icon != null:
+			life_icons.append(icon)
+
+	_update_lives_counter(
+		PlayerState.get_lives_remaining(),
+		PlayerState.lives_maximum
+	)
+
+
+func _update_lives_counter(remaining: int, maximum: int) -> void:
+	var available_slots := mini(maximum, life_icons.size())
+	var visible_lives := clampi(remaining, 0, available_slots)
+
+	for index in life_icons.size():
+		var icon := life_icons[index]
+		icon.visible = index < available_slots
+
+		if index < visible_lives:
+			icon.modulate = Color.WHITE
+		else:
+			icon.modulate = Color(0.25, 0.25, 0.25, 0.35)
 
 
 func _find_and_bind_player() -> void:
@@ -122,6 +167,8 @@ func set_player(new_player: Player) -> void:
 		player.shot_charge_changed.connect(_on_shot_charge_changed)
 	if not player.special_meter_changed.is_connected(_on_special_meter_changed):
 		player.special_meter_changed.connect(_on_special_meter_changed)
+	if not player.apple_ammo_changed.is_connected(_on_apple_ammo_changed):
+		player.apple_ammo_changed.connect(_on_apple_ammo_changed)
 	if health != null and not health.health_changed.is_connected(_on_health_changed):
 		health.health_changed.connect(_on_health_changed)
 
@@ -139,6 +186,8 @@ func _disconnect_player() -> void:
 			player.shot_charge_changed.disconnect(_on_shot_charge_changed)
 		if player.special_meter_changed.is_connected(_on_special_meter_changed):
 			player.special_meter_changed.disconnect(_on_special_meter_changed)
+		if player.apple_ammo_changed.is_connected(_on_apple_ammo_changed):
+			player.apple_ammo_changed.disconnect(_on_apple_ammo_changed)
 
 	player = null
 	health = null
@@ -150,6 +199,7 @@ func _update_all_bars() -> void:
 
 	if player != null:
 		_on_special_meter_changed(player.special_meter, player.special_meter_max)
+		_on_apple_ammo_changed(player.apple_ammo, player.max_apple_ammo)
 		_on_shot_charge_changed(0.0, player.maximum_charge_time, false)
 
 
@@ -159,6 +209,11 @@ func _on_health_changed(current: int, maximum: int) -> void:
 
 func _on_special_meter_changed(current: int, maximum: int) -> void:
 	_set_bar_value(ability_bar, current, maximum)
+
+
+func _on_apple_ammo_changed(current: int, _maximum: int) -> void:
+	if apple_count_label != null:
+		apple_count_label.text = "x%d" % maxi(current, 0)
 
 
 func _set_bar_value(bar: TextureProgressBar, current: int, maximum: int) -> void:
@@ -185,7 +240,10 @@ func _update_helper_icon(helper_id: StringName) -> void:
 		push_warning("HUD: HelperIcon node is missing.")
 		return
 
-	var icon := PlayerState.get_helper_hud_icon(helper_id)
+	var icon: Texture2D = scene_helper_icon
+	if icon == null:
+		icon = PlayerState.get_helper_hud_icon(helper_id)
+
 	helper_icon.texture = icon
 	helper_icon.visible = icon != null
 

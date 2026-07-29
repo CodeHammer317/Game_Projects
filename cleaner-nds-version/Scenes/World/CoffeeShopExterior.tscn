@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://b3oa4b2yeraiq"]
 
 [ext_resource type="Texture2D" uid="uid://dmqr8rgmvfbyj" path="res://Assets/sprites/OldDistrictIntro/coffee_library_interior_source.png" id="1_dwiyq"]
+[ext_resource type="PackedScene" uid="uid://c7iyof5wn7i65" path="res://Scenes/Player/player_2.tscn" id="2_8rkgm"]
 [ext_resource type="Texture2D" uid="uid://dosuu6rw30e32" path="res://Assets/sprites/OldDistrictIntro/coffee_library_exterior_640x360.png" id="2_exterior"]
 [ext_resource type="PackedScene" uid="uid://vuoe7nq2xc6s" path="res://Scenes/Player/player.tscn" id="3_player"]
 [ext_resource type="PackedScene" uid="uid://cuhdpfcm440hu" path="res://Scenes/World/camera_2d.tscn" id="4_camera"]
+[ext_resource type="Texture2D" uid="uid://ce6urer07mmkd" path="res://Assets/NDS Game Files/MatTt Sprites/Matt_Seated_Sideview.png" id="4_k5t68"]
 [ext_resource type="PackedScene" uid="uid://cx15rmuu0sh1u" path="res://Scenes/World/area_transition.tscn" id="5_transition"]
 [ext_resource type="AudioStream" uid="uid://d23cpexsh5isf" path="res://Assets/Audio/csongimuzsikal-techno-loop-273137.mp3" id="6_se304"]
+[ext_resource type="Script" uid="uid://ui64nky155qk" path="res://Scripts/coffee_shop_exterior.gd" id="7_comment_script"]
+[ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/Fonts/pixy/PIXY.ttf" id="8_comment_font"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(640, 16)
@@ -13,7 +17,37 @@ size = Vector2(640, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3kry"]
 size = Vector2(18, 298)
 
+[sub_resource type="StyleBoxFlat" id="StyleBox_comment"]
+bg_color = Color(0.015, 0.012, 0.008, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94, 0.61, 0.04, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="SystemFont" id="SystemFont_ote8k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hcwgx"]
+font = SubResource("SystemFont_ote8k")
+font_size = 11
+
+[sub_resource type="SystemFont" id="SystemFont_pes2k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ote8k"]
+font = SubResource("SystemFont_pes2k")
+font_size = 10
+
+[sub_resource type="SystemFont" id="SystemFont_hcwgx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_or7qv"]
+font = SubResource("SystemFont_hcwgx")
+
 [node name="Node2D" type="Node2D" unique_id=1036683458]
+script = ExtResource("7_comment_script")
 metadata/_edit_horizontal_guides_ = [520.0]
 
 [node name="CoffeeShopLayers" type="Node" parent="." unique_id=2138944717]
@@ -23,6 +57,17 @@ position = Vector2(-5.722046e-06, 1.1368684e-13)
 scale = Vector2(1, 1.2)
 texture = ExtResource("1_dwiyq")
 centered = false
+
+[node name="Player2" parent="CoffeeShopLayers" unique_id=1346688008 instance=ExtResource("2_8rkgm")]
+position = Vector2(140, 245)
+scale = Vector2(0.55, 0.55)
+script = null
+
+[node name="MattSeatedSideview" type="Sprite2D" parent="CoffeeShopLayers" unique_id=139666872]
+position = Vector2(255, 232.00002)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("4_k5t68")
+flip_h = true
 
 [node name="Player" parent="CoffeeShopLayers" unique_id=1715600248 instance=ExtResource("3_player")]
 position = Vector2(208, 232)
@@ -62,3 +107,56 @@ shape = SubResource("RectangleShape2D_c3kry")
 stream = ExtResource("6_se304")
 volume_db = -21.667
 autoplay = true
+parameters/looping = true
+
+[node name="CommentLayer" type="CanvasLayer" parent="." unique_id=333522263]
+layer = 20
+
+[node name="CommentPanel" type="PanelContainer" parent="CommentLayer" unique_id=199404609]
+offset_left = 70.0
+offset_top = 56.0
+offset_right = 352.0
+offset_bottom = 111.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_comment")
+
+[node name="Margin" type="MarginContainer" parent="CommentLayer/CommentPanel" unique_id=1633188521]
+layout_mode = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 6
+
+[node name="Content" type="VBoxContainer" parent="CommentLayer/CommentPanel/Margin" unique_id=951045674]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Speaker" type="Label" parent="CommentLayer/CommentPanel/Margin/Content" unique_id=144165684]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.76, 0.12, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("8_comment_font")
+theme_override_font_sizes/font_size = 8
+text = "TOP LOBSTA //"
+label_settings = SubResource("LabelSettings_hcwgx")
+
+[node name="Comment" type="Label" parent="CommentLayer/CommentPanel/Margin/Content" unique_id=1271962123]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.98, 0.9, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("8_comment_font")
+theme_override_font_sizes/font_size = 9
+text = "Coffee's cold, street's cursed. Standard deployment."
+label_settings = SubResource("LabelSettings_ote8k")
+autowrap_mode = 2
+
+[node name="ExitSign" type="Label" parent="." unique_id=1710419536]
+z_index = 1
+offset_left = 594.0
+offset_top = 229.0
+offset_right = 634.0
+offset_bottom = 252.0
+text = "EXIT >"
+label_settings = SubResource("LabelSettings_or7qv")

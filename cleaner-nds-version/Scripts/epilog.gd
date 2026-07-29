@@ -19,6 +19,7 @@ const CATLORD_LINE: String = "Puuurhaps,,,,,,,,,,"
 @onready var prompt: Label = $DialogueLayer/DialogueRoot/Prompt
 @onready var typing_audio: AudioStreamPlayer = $TypingAudio
 @onready var fade_overlay: ColorRect = $FadeLayer/FadeOverlay
+@onready var ta_sprite: Sprite2D = $Ta
 
 var _is_typing: bool = false
 var _is_finishing: bool = false
@@ -27,12 +28,18 @@ var _typing_token: int = 0
 
 
 func _ready() -> void:
+	servant_text.text = SERVANT_LINE
+	servant_text.visible_characters = 0
+	catlord_text.text = CATLORD_LINE
+	catlord_text.visible_characters = 0
 	catlord_bubble.visible = false
 	catlord_tail_outer.visible = false
 	catlord_tail_inner.visible = false
 	prompt.visible = false
 	fade_overlay.visible = true
 	fade_overlay.modulate.a = 1.0
+	ta_sprite.visible = true
+	ta_sprite.modulate.a = 1.0
 
 	var fade_in := create_tween()
 	fade_in.tween_property(
@@ -44,8 +51,21 @@ func _ready() -> void:
 	await fade_in.finished
 	fade_overlay.visible = false
 
+	var servant_sequence_duration := (
+		SERVANT_LINE.length() / maxf(chars_per_second, 1.0)
+		+ line_hold_duration
+	)
+	var ta_fade := create_tween()
+	ta_fade.tween_property(
+		ta_sprite,
+		"modulate:a",
+		0.0,
+		servant_sequence_duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
 	await _start_line(servant_text, SERVANT_LINE)
 	await get_tree().create_timer(line_hold_duration).timeout
+	ta_sprite.modulate.a = 0.0
 
 	catlord_bubble.visible = true
 	catlord_tail_outer.visible = true

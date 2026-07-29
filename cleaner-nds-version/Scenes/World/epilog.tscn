@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/Fonts/pixy/PIXY.ttf" id="3_font"]
 [ext_resource type="AudioStream" uid="uid://dyg7h7aqmmvlt" path="res://Assets/Audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3" id="4_typing"]
 [ext_resource type="AudioStream" uid="uid://wngvbh7slix8" path="res://Assets/Audio/arctsound-epic-tactical-opener-background-music-448850.mp3" id="5_l3bcd"]
+[ext_resource type="Texture2D" uid="uid://dxbkt1bvhu2m7" path="res://Assets/sprites/TA.png" id="6_biuh3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_dialogue"]
 bg_color = Color(0.015, 0.012, 0.008, 0.91)
@@ -108,10 +109,12 @@ theme_override_colors/default_color = Color(1, 0.98, 0.9, 1)
 theme_override_fonts/normal_font = SubResource("SystemFont_biuh3")
 theme_override_font_sizes/normal_font_size = 12
 text = "Should we neutralize
-the Nephilim Death Squad,
+the Death Squad,
 My Lord?"
 fit_content = true
 scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="CatlordTailOuter" type="Polygon2D" parent="DialogueLayer/DialogueRoot" unique_id=1063080597]
 color = Color(0.94, 0.61, 0.04, 1)
@@ -152,9 +155,11 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0.98, 0.9, 1)
 theme_override_fonts/normal_font = SubResource("SystemFont_05bai")
 theme_override_font_sizes/normal_font_size = 12
-text = "Puuurhaps."
+text = "Puuurhaps,,,,,,,,,,"
 fit_content = true
 scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Prompt" type="Label" parent="DialogueLayer/DialogueRoot" unique_id=1575468793]
 visible = false
@@ -190,3 +195,9 @@ color = Color(0, 0, 0, 1)
 stream = ExtResource("5_l3bcd")
 volume_db = -16.422
 autoplay = true
+
+[node name="Ta" type="Sprite2D" parent="." unique_id=2054978422]
+modulate = Color(1, 1, 1, 0.99607843)
+position = Vector2(322, 80)
+scale = Vector2(0.7388952, 0.693314)
+texture = ExtResource("6_biuh3")
