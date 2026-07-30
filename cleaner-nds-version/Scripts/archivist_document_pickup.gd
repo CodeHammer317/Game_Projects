@@ -117,7 +117,14 @@ func _on_body_exited(body: Node) -> void:
 
 
 func _open_document(player: Node) -> void:
-	if _reader_open or not PlayerState.collect_document(document_id):
+	if _reader_open:
+		return
+
+	var close_callback := Callable(self, "_close_reader")
+	if not GlobalPauseMenu.begin_reading(close_callback, close_actions):
+		return
+	if not PlayerState.collect_document(document_id):
+		GlobalPauseMenu.end_reading(close_callback)
 		return
 
 	_reader_open = true
@@ -147,6 +154,7 @@ func _close_reader() -> void:
 	if not _reader_open:
 		return
 
+	GlobalPauseMenu.end_reading(Callable(self, "_close_reader"))
 	reader_root.visible = false
 	_reader_open = false
 
@@ -159,6 +167,7 @@ func _close_reader() -> void:
 
 
 func _exit_tree() -> void:
+	GlobalPauseMenu.end_reading(Callable(self, "_close_reader"))
 	if _reader_open and _player_in_range != null and is_instance_valid(_player_in_range):
 		if _player_in_range.has_method("set_control_locked"):
 			_player_in_range.call("set_control_locked", false)

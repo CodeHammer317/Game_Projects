@@ -43,6 +43,7 @@ Did you remember to pickup my catfood?"""
 @onready var finale_backdrop: ColorRect = $FinaleLayer/FinaleRoot/Backdrop
 @onready var end_label: Label = $FinaleLayer/FinaleRoot/EndLabel
 @onready var credits_text: Label = $FinaleLayer/FinaleRoot/CreditsClip/CreditsText
+@onready var study_music: AudioStreamPlayer = $Level01BriefingScreen/AudioStreamPlayer2
 @onready var finale_music: AudioStreamPlayer = $FinaleMusic
 
 var player: Node2D = null
@@ -239,7 +240,7 @@ func _play_demo_finale() -> void:
 
 	credits_text.visible = true
 	credits_text.position.y = 360.0
-	finale_music.play()
+	_start_credits_music()
 	await get_tree().process_frame
 
 	var credits_tween := create_tween()
@@ -258,3 +259,8 @@ func _play_demo_finale() -> void:
 		push_error("Study: failed to open epilog after credits. Error: %s" % error)
 		PlayerState.finish_demo_finale()
 		get_tree().change_scene_to_file("res://Scenes/HUD/title_screen.tscn")
+
+
+func _start_credits_music() -> void:
+	study_music.stop()
+	finale_music.play()

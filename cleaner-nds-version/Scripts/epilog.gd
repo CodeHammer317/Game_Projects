@@ -37,7 +37,7 @@ func _ready() -> void:
 	catlord_tail_inner.visible = false
 	prompt.visible = false
 	fade_overlay.visible = true
-	fade_overlay.modulate.a = 1.0
+	fade_overlay.modulate.a = 1.25
 	ta_sprite.visible = true
 	ta_sprite.modulate.a = 1.0
 

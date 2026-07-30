@@ -4,6 +4,8 @@ class_name PlayerPunchHitbox
 @export var damage: int = 1
 @export var lifetime: float = 0.10
 @export var knockback: Vector2 = Vector2(90.0, -20.0)
+@export var punch_effect_animation: StringName = &"claw1"
+@export var kick_effect_animation: StringName = &"claw"
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var punch_sound: AudioStreamPlayer = $PunchSound
@@ -23,10 +25,7 @@ func _ready() -> void:
 	if not area_entered.is_connected(_on_area_entered):
 		area_entered.connect(_on_area_entered)
 
-	if sprite != null:
-		if sprite.sprite_frames != null:
-			if sprite.sprite_frames.has_animation("claw"):
-				sprite.play("claw")
+	_play_attack_effect()
 
 	if punch_sound != null:
 		punch_sound.play()
@@ -71,6 +70,22 @@ func setup(
 
 func set_attack_name(new_attack_name: StringName) -> void:
 	attack_name = new_attack_name
+	_play_attack_effect()
+
+
+func _play_attack_effect() -> void:
+	if sprite == null or sprite.sprite_frames == null:
+		return
+
+	var effect_animation := kick_effect_animation
+	if "punch" in String(attack_name).to_lower():
+		effect_animation = punch_effect_animation
+
+	if sprite.sprite_frames.has_animation(effect_animation):
+		sprite.play(effect_animation)
+		return
+
+	push_warning("Missing player attack effect animation: " + str(effect_animation))
 
 
 func _on_body_entered(body: Node) -> void:

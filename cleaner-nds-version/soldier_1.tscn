@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://gf0uvx22wju2" path="res://Assets/sprites/soldier-sprite-sheets-pixel-art/Soldier_1/Dead.png" id="3_0d6vy"]
 [ext_resource type="Script" uid="uid://i5nm4scw151e" path="res://Scripts/ui/health.gd" id="3_health"]
 [ext_resource type="Texture2D" uid="uid://qd6hm2ddobjp" path="res://Assets/sprites/soldier-sprite-sheets-pixel-art/Soldier_1/Idle.png" id="4_8ph2b"]
-[ext_resource type="PackedScene" path="res://Scenes/FX/police_bullet.tscn" id="4_bullet"]
+[ext_resource type="PackedScene" uid="uid://e06wj7vndvum" path="res://Scenes/FX/police_bullet.tscn" id="4_bullet"]
 [ext_resource type="AudioStream" uid="uid://db0fg0m4lpkqg" path="res://Assets/Audio/gun-shot.ogg" id="5_gunshot"]
 [ext_resource type="Texture2D" uid="uid://mc8l3fl0uce7" path="res://Assets/sprites/soldier-sprite-sheets-pixel-art/Soldier_1/Run.png" id="5_nehwv"]
 [ext_resource type="AudioStream" uid="uid://boatt3aj2yel" path="res://Assets/Audio/freesound_community-8-bit-explosion-low-resonant-45659.mp3" id="6_explosion"]
@@ -140,7 +140,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -229,7 +229,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"shot_2",
-"speed": 12.0
+"speed": 16.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hurtbox"]
@@ -258,8 +258,9 @@ shape = SubResource("RectangleShape2D_body")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1755590714]
 sprite_frames = SubResource("SpriteFrames_soldier")
-animation = &"shot_2"
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.9370829
 offset = Vector2(0, -32)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1959595953]

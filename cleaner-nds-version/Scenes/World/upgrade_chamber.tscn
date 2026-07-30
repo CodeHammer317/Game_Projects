@@ -2546,6 +2546,6 @@ default_color = Color(1, 0.82, 0.2, 1)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=166546121]
 stream = ExtResource("41_1rntg")
-volume_db = -27.291
+volume_db = -19.993
 autoplay = true
 parameters/looping = true

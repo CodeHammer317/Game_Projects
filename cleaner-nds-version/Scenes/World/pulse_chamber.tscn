@@ -3855,6 +3855,7 @@ process_mode = 4
 visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(434, 215)
+use_separate_directional_animations = false
 
 [node name="Hurtbox" parent="GlitchDemon" index="2" unique_id=880096687]
 collision_mask = 42
@@ -3983,7 +3984,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ArchivistDocumentPickup" parent="." unique_id=994571012 instance=ExtResource("126_powgt")]
-position = Vector2(588, 281)
+position = Vector2(532, 280)
 document_id = &"archivist_file_03"
 source_label = "ARCHIVIST DEAD-DROP"
 document_title = "THE ARCHITECT"
