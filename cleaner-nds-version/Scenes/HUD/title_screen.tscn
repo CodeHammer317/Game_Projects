@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cdqht4tbikj2g" path="res://Assets/Audio/pickup2.ogg" id="6_824g0"]
 [ext_resource type="AudioStream" uid="uid://yswk7slevwiw" path="res://Assets/Audio/freesound_community-game-start-6104 (1).mp3" id="6_dsf7a"]
 [ext_resource type="AudioStream" uid="uid://w83uc53n1rmp" path="res://Assets/Audio/BGM/NDS8bitRemix.mp3" id="8_tjte5"]
+[ext_resource type="PackedScene" path="res://Scenes/HUD/controller_description_screen.tscn" id="9_controls"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uv4ns"]
 font = ExtResource("3_824g0")
@@ -49,19 +50,19 @@ expand_mode = 1
 
 [node name="DemoLabel" type="Label" parent="." unique_id=811937859]
 layout_mode = 0
-offset_left = 269.0
-offset_top = 237.0
-offset_right = 365.0
-offset_bottom = 299.0
+offset_left = 270.0
+offset_top = 213.0
+offset_right = 366.0
+offset_bottom = 275.0
 text = "DEMO"
 label_settings = SubResource("LabelSettings_uv4ns")
 
 [node name="SubTitleLabel" type="Label" parent="." unique_id=2031876483]
 layout_mode = 0
-offset_left = 223.0
-offset_top = 216.0
-offset_right = 438.0
-offset_bottom = 242.0
+offset_left = 218.0
+offset_top = 191.0
+offset_right = 433.0
+offset_bottom = 217.0
 text = "The Awakening of Shadows"
 label_settings = SubResource("LabelSettings_nd20k")
 
@@ -70,19 +71,20 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -135.5
-offset_right = 135.5
-offset_bottom = 241.0
+offset_left = -112.0
+offset_top = -6.0
+offset_right = 100.0
+offset_bottom = 185.0
 grow_horizontal = 2
 texture = ExtResource("3_uv4ns")
 expand_mode = 1
 
 [node name="MenuContainer" type="VBoxContainer" parent="." unique_id=2053710857]
 layout_mode = 0
-offset_left = 287.0
-offset_top = 297.00003
-offset_right = 609.0
-offset_bottom = 385.00003
+offset_left = 289.0
+offset_top = 272.0
+offset_right = 611.0
+offset_bottom = 406.0
 scale = Vector2(0.6400012, 0.56)
 
 [node name="1PStart" type="Label" parent="MenuContainer" unique_id=368792001]
@@ -91,6 +93,13 @@ theme_override_fonts/font = SubResource("SystemFont_dsf7a")
 theme_override_font_sizes/font_size = 6
 text = "Start Demo"
 label_settings = SubResource("LabelSettings_dsf7a")
+
+[node name="Controls" type="Label" parent="MenuContainer" unique_id=400641606]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_dsf7a")
+theme_override_font_sizes/font_size = 6
+text = "Controls"
+label_settings = SubResource("LabelSettings_tjte5")
 
 [node name="Exit" type="Label" parent="MenuContainer" unique_id=1381872982]
 layout_mode = 2
@@ -105,7 +114,6 @@ scale = Vector2(0.18716584, 0.20109893)
 texture = ExtResource("4_bnqst")
 
 [node name="FadeLayer" type="ColorRect" parent="." unique_id=1064865099]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,10 +129,13 @@ volume_db = -16.298
 
 [node name="SFX_Confirm" type="AudioStreamPlayer" parent="." unique_id=1801189967]
 stream = ExtResource("6_dsf7a")
-volume_db = -7.761
+volume_db = -10.498
 
 [node name="ScreenSoundtrack" type="AudioStreamPlayer" parent="." unique_id=1219278294]
 stream = ExtResource("8_tjte5")
-volume_db = 4.875
+volume_db = -13.684
 autoplay = true
 parameters/looping = true
+
+[node name="ControllerDescriptionScreen" parent="." unique_id=1559008739 instance=ExtResource("9_controls")]
+layout_mode = 1

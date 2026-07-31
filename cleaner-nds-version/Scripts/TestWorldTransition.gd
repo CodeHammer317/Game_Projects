@@ -24,4 +24,7 @@ func _on_body_entered(body: Node) -> void:
 	call_deferred("_deferred_change_level")
 
 func _deferred_change_level() -> void:
-	get_tree().change_scene_to_file(next_level_path)
+	var error := get_tree().change_scene_to_file(next_level_path)
+	if error != OK:
+		push_error("AreaTransition: failed to open next level. Error: %s" % error)
+		_is_transitioning = false

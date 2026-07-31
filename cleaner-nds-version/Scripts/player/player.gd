@@ -45,7 +45,6 @@ const TITLE_SCREEN_PATH: String = "res://Scenes/HUD/title_screen.tscn"
 @export var minimum_charge_time: float = 0.0
 @export var maximum_charge_time: float = 2.0
 @export_range(0, 99, 1) var max_apple_ammo: int = 10
-@export var refill_apples_on_respawn: bool = true
 
 @export_group("Attack Combo")
 @export var attack_action: StringName = &"attack"
@@ -192,7 +191,9 @@ func _ready() -> void:
 	_sprite_base_position = sprite.position
 	_fallback_respawn_position = global_position
 	_fall_death_grace_timer = fall_death_grace_duration
-	_set_apple_ammo(max_apple_ammo)
+	if not PlayerState.apple_ammo_changed.is_connected(_on_persistent_apple_ammo_changed):
+		PlayerState.apple_ammo_changed.connect(_on_persistent_apple_ammo_changed)
+	PlayerState.configure_apple_ammo(max_apple_ammo)
 	PlayerState.configure_lives(max_deaths_before_game_over)
 	_sync_upgrades_from_state()
 	_state_machine = PlayerStateMachineScript.new().setup(self)
@@ -212,7 +213,6 @@ func _ready() -> void:
 
 	_update_muzzle_position()
 	_snap_visuals_to_pixel()
-	apple_ammo_changed.emit(apple_ammo, max_apple_ammo)
 	special_meter_changed.emit(special_meter, special_meter_max)
 
 
@@ -804,13 +804,13 @@ func set_apple_ammo(amount: int) -> void:
 
 
 func _set_apple_ammo(amount: int) -> void:
-	var safe_maximum := maxi(max_apple_ammo, 0)
-	var next_ammo := clampi(amount, 0, safe_maximum)
-	if apple_ammo == next_ammo:
-		return
+	PlayerState.set_apple_ammo(amount)
 
-	apple_ammo = next_ammo
-	apple_ammo_changed.emit(apple_ammo, safe_maximum)
+
+func _on_persistent_apple_ammo_changed(current: int, maximum: int) -> void:
+	max_apple_ammo = maximum
+	apple_ammo = current
+	apple_ammo_changed.emit(apple_ammo, max_apple_ammo)
 
 
 func get_shot_charge_ratio() -> float:
@@ -1205,8 +1205,6 @@ func respawn() -> void:
 
 func respawn_at(respawn_position: Vector2) -> void:
 	_cancel_shot_charge()
-	if refill_apples_on_respawn:
-		_set_apple_ammo(max_apple_ammo)
 	global_position = respawn_position
 	velocity = Vector2.ZERO
 	_fall_death_grace_timer = fall_death_grace_duration

@@ -7,6 +7,7 @@ const JOYSTICK_RESET_THRESHOLD: float = 0.30
 
 enum MenuOption {
 	START_DEMO,
+	CONTROLS,
 	EXIT,
 }
 
@@ -20,6 +21,7 @@ enum MenuOption {
 @onready var menu: Control = $MenuContainer
 @onready var selector: Node2D = $MenuContainer/Selector
 @onready var fade: ColorRect = $FadeLayer
+@onready var controls_screen: Control = $ControllerDescriptionScreen
 
 @onready var sfx_move: AudioStreamPlayer = $SFX_Move
 @onready var sfx_confirm: AudioStreamPlayer = $SFX_Confirm
@@ -46,6 +48,7 @@ func _ready() -> void:
 		menu_item.mouse_entered.connect(_on_menu_item_mouse_entered.bind(item_index))
 		menu_item.gui_input.connect(_on_menu_item_gui_input.bind(item_index))
 
+	controls_screen.closed.connect(_on_controls_screen_closed)
 	call_deferred("_begin_intro")
 
 
@@ -89,6 +92,16 @@ func _finish_intro() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_echo():
+		return
+
+	if controls_screen.visible:
+		if (
+			event.is_action_pressed("shoot")
+			or event.is_action_pressed("pause")
+			or event.is_action_pressed("accept")
+		):
+			controls_screen.close()
+			get_viewport().set_input_as_handled()
 		return
 
 	if menu_items.is_empty() or is_transitioning:
@@ -148,6 +161,13 @@ func _update_selector_position() -> void:
 
 func _confirm_selection() -> void:
 	if is_transitioning:
+		return
+
+	if current_index == MenuOption.CONTROLS:
+		is_transitioning = true
+		_stop_selector_pulse()
+		sfx_confirm.play()
+		controls_screen.open()
 		return
 
 	is_transitioning = true
@@ -219,6 +239,8 @@ func _execute_selection() -> void:
 			if error != OK:
 				push_error("Failed to open briefing scene. Error: %s" % error)
 				_reset_transition()
+		MenuOption.CONTROLS:
+			controls_screen.open()
 		MenuOption.EXIT:
 			get_tree().quit()
 		_:
@@ -258,3 +280,8 @@ func _on_menu_item_gui_input(event: InputEvent, item_index: int) -> void:
 	_move_selector()
 	_confirm_selection()
 	accept_event()
+
+
+func _on_controls_screen_closed() -> void:
+	is_transitioning = false
+	_start_selector_pulse()

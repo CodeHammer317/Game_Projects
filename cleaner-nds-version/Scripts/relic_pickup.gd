@@ -151,9 +151,14 @@ func _on_body_entered(body: Node) -> void:
 	if _collected or not body.is_in_group(target_group):
 		return
 
+	var close_callback := Callable(self, "_close_relic_card")
+	if not GlobalPauseMenu.begin_reading(close_callback, close_actions):
+		return
+
 	# PlayerState is the source of truth. Its signal immediately gives the
 	# power to the player and refreshes any collection displays.
 	if not PlayerState.unlock_upgrade(upgrade_name):
+		GlobalPauseMenu.end_reading(close_callback)
 		if PlayerState.has_upgrade(upgrade_name):
 			queue_free()
 		return
@@ -175,7 +180,7 @@ func _reveal_relic(player: Node) -> void:
 	if relic_sprite != null:
 		relic_sprite.visible = true
 		relic_sprite.modulate.a = 0.0
-		var reveal_tween := create_tween()
+		var reveal_tween := create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 		reveal_tween.tween_property(relic_sprite, "modulate:a", 1.0, 0.35)
 
 	if relic_glow != null:
@@ -187,7 +192,7 @@ func _reveal_relic(player: Node) -> void:
 	if card_root != null:
 		card_root.visible = true
 		card_root.modulate.a = 0.0
-		var card_tween := create_tween()
+		var card_tween := create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 		card_tween.tween_property(card_root, "modulate:a", 1.0, 0.25)
 
 	if player.has_method("set_control_locked"):
@@ -217,6 +222,7 @@ func _close_relic_card() -> void:
 	if not _card_open:
 		return
 
+	GlobalPauseMenu.end_reading(Callable(self, "_close_relic_card"))
 	_card_open = false
 	if card_root != null:
 		card_root.visible = false
@@ -264,6 +270,7 @@ func _play_collection_effect() -> void:
 
 
 func _exit_tree() -> void:
+	GlobalPauseMenu.end_reading(Callable(self, "_close_relic_card"))
 	if _card_open and _collecting_player != null and is_instance_valid(_collecting_player):
 		if _collecting_player.has_method("set_control_locked"):
 			_collecting_player.call("set_control_locked", false)

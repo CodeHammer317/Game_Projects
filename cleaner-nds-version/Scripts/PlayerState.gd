@@ -5,9 +5,11 @@ signal helper_unlocked(helper_id: StringName)
 signal helper_selected(helper_id: StringName)
 signal document_collected(document_id: StringName)
 signal lives_changed(remaining: int, maximum: int)
+signal apple_ammo_changed(current: int, maximum: int)
 
 const DEFAULT_HELPER: StringName = &"mattt"
 const DEFAULT_MAX_LIVES: int = 3
+const DEFAULT_MAX_APPLE_AMMO: int = 10
 const MATTT_ASSIST_SCENE: PackedScene = preload("res://Scenes/Player/mattt_assist.tscn")
 const MATTT_HUD_ICON: Texture2D = preload("res://Assets/NDS Game Files/MatTt Sprites/GhostMatttHead1.png")
 
@@ -47,6 +49,8 @@ var collected_documents: Dictionary = {}
 var demo_finale_pending: bool = false
 var death_count: int = 0
 var lives_maximum: int = DEFAULT_MAX_LIVES
+var apple_ammo: int = DEFAULT_MAX_APPLE_AMMO
+var apple_ammo_maximum: int = DEFAULT_MAX_APPLE_AMMO
 
 
 func _ready() -> void:
@@ -54,6 +58,11 @@ func _ready() -> void:
 	reset_helpers()
 	reset_documents()
 	reset_lives()
+	reset_apple_ammo()
+
+	var tree := get_tree()
+	if not tree.scene_changed.is_connected(_on_scene_changed):
+		tree.scene_changed.connect(_on_scene_changed)
 
 
 func reset_all() -> void:
@@ -64,6 +73,7 @@ func reset_all() -> void:
 	reset_helpers()
 	reset_documents()
 	reset_lives(DEFAULT_MAX_LIVES)
+	reset_apple_ammo(DEFAULT_MAX_APPLE_AMMO)
 	demo_finale_pending = false
 
 
@@ -93,6 +103,36 @@ func reset_lives(maximum: int = -1) -> void:
 		lives_maximum = maximum
 	death_count = 0
 	lives_changed.emit(lives_maximum, lives_maximum)
+
+
+func configure_apple_ammo(maximum: int) -> void:
+	apple_ammo_maximum = maxi(maximum, 0)
+	apple_ammo = clampi(apple_ammo, 0, apple_ammo_maximum)
+	apple_ammo_changed.emit(apple_ammo, apple_ammo_maximum)
+
+
+func set_apple_ammo(amount: int) -> void:
+	var next_ammo := clampi(amount, 0, apple_ammo_maximum)
+	if apple_ammo == next_ammo:
+		return
+
+	apple_ammo = next_ammo
+	apple_ammo_changed.emit(apple_ammo, apple_ammo_maximum)
+
+
+func add_apple_ammo(amount: int) -> void:
+	set_apple_ammo(apple_ammo + amount)
+
+
+func reset_apple_ammo(maximum: int = -1) -> void:
+	if maximum >= 0:
+		apple_ammo_maximum = maximum
+	apple_ammo = apple_ammo_maximum
+	apple_ammo_changed.emit(apple_ammo, apple_ammo_maximum)
+
+
+func _on_scene_changed() -> void:
+	reset_apple_ammo()
 
 
 func begin_demo_finale() -> void:

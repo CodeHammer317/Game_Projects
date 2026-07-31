@@ -789,7 +789,7 @@ horizontal_alignment = 1
 
 [node name="FinaleMusic" type="AudioStreamPlayer" parent="." unique_id=1559303909]
 stream = ExtResource("27_finale_music")
-volume_db = -2.0
+volume_db = -19.333
 parameters/looping = false
 
 [node name="GoldenMetalApple64x64" type="Sprite2D" parent="." unique_id=1570378904]

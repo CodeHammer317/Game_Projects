@@ -10,6 +10,10 @@ const TITLE_SCREEN_PATH: String = "res://Scenes/HUD/title_screen.tscn"
 var _buttons: Array[Button] = []
 var _selected_index: int = 0
 var _action_in_progress: bool = false
+var _reading_active: bool = false
+var _reading_close_callback: Callable = Callable()
+var _reading_close_actions: Array[StringName] = []
+var _was_paused_before_reading: bool = false
 
 
 func _ready() -> void:
@@ -27,6 +31,18 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_echo():
+		return
+
+	if _reading_active:
+		for action in _reading_close_actions:
+			if event.is_action_pressed(action):
+				var close_callback := _reading_close_callback
+				if close_callback.is_valid():
+					close_callback.call()
+				else:
+					end_reading()
+				get_viewport().set_input_as_handled()
+				return
 		return
 
 	if get_tree().get_first_node_in_group("game_over_screen") != null:
@@ -69,6 +85,40 @@ func set_game_paused(paused: bool) -> void:
 		var viewport := get_viewport()
 		if viewport != null:
 			viewport.gui_release_focus()
+
+
+func begin_reading(
+	close_callback: Callable,
+	close_actions: Array[StringName]
+) -> bool:
+	if _reading_active or not close_callback.is_valid():
+		return false
+
+	_reading_active = true
+	_reading_close_callback = close_callback
+	_reading_close_actions = close_actions.duplicate()
+	_was_paused_before_reading = get_tree().paused
+	get_tree().paused = true
+	pause_menu.visible = false
+	return true
+
+
+func end_reading(close_callback: Callable = Callable()) -> void:
+	if not _reading_active:
+		return
+	if close_callback.is_valid() and close_callback != _reading_close_callback:
+		return
+
+	_reading_active = false
+	_reading_close_callback = Callable()
+	_reading_close_actions.clear()
+	get_tree().paused = _was_paused_before_reading
+	pause_menu.visible = _was_paused_before_reading
+	_was_paused_before_reading = false
+
+
+func is_reading_active() -> bool:
+	return _reading_active
 
 
 func resume_game() -> void:

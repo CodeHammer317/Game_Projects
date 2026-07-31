@@ -1,6 +1,8 @@
 extends Node2D
 class_name OldDistrictLevel
 
+const NEWSPAPER_CLOSE_ACTIONS: Array[StringName] = [&"accept", &"attack", &"pause"]
+
 @export_group("Progression")
 @export var final_enemy_group: StringName = &"old_district_final_enemy"
 @export_node_path("Area2D") var exit_area_path: NodePath = ^"LevelFlow/AreaTransition"
@@ -174,6 +176,10 @@ func _on_newspaper_text_entered(body: Node) -> void:
 	if not body.is_in_group(&"player"):
 		return
 
+	var close_callback := Callable(self, "_close_newspaper")
+	if not GlobalPauseMenu.begin_reading(close_callback, NEWSPAPER_CLOSE_ACTIONS):
+		return
+
 	_newspaper_reader = body
 	_show_persistent_message(newspaper_headline, newspaper_details, &"newspaper")
 
@@ -182,8 +188,19 @@ func _on_newspaper_text_exited(body: Node) -> void:
 	if body != _newspaper_reader:
 		return
 
+	GlobalPauseMenu.end_reading(Callable(self, "_close_newspaper"))
 	_newspaper_reader = null
 	_hide_message(&"newspaper")
+
+
+func _close_newspaper() -> void:
+	GlobalPauseMenu.end_reading(Callable(self, "_close_newspaper"))
+	_newspaper_reader = null
+	_hide_message(&"newspaper")
+
+
+func _exit_tree() -> void:
+	GlobalPauseMenu.end_reading(Callable(self, "_close_newspaper"))
 
 
 func _disable_trigger(trigger: Area2D) -> void:
@@ -238,7 +255,7 @@ func _show_persistent_message(
 	message_panel.visible = true
 	message_panel.modulate.a = 0.0
 
-	var reveal := create_tween()
+	var reveal := create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	reveal.tween_property(message_panel, "modulate:a", 1.0, 0.18)
 
 
