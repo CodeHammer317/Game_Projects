@@ -10,7 +10,7 @@ size = Vector2(124, 361)
 [node name="CatOverlord" type="CharacterBody2D" unique_id=1571155014]
 scale = Vector2(0.25, 0.25)
 collision_layer = 4
-collision_mask = 11
+collision_mask = 257
 script = ExtResource("1_iogyu")
 cat_projectile_scene = ExtResource("2_xbpsx")
 

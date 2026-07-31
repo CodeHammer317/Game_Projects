@@ -256,7 +256,7 @@ size = Vector2(28, 24)
 
 [node name="FlyingDroneRecon" type="CharacterBody2D" unique_id=1221956425 groups=["enemies"]]
 collision_layer = 4
-collision_mask = 11
+collision_mask = 257
 script = ExtResource("1_1ku5o")
 scan_delay = 0.25
 attack_drone_scene = ExtResource("10_attack_drone")

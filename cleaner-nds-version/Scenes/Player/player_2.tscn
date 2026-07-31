@@ -749,7 +749,7 @@ size = Vector2(18.520695, 63.28736)
 
 [node name="Player2" type="CharacterBody2D" unique_id=1346688008]
 collision_layer = 2
-collision_mask = 129
+collision_mask = 385
 script = ExtResource("1_p2top")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=442652175]

@@ -594,7 +594,7 @@ size = Vector2(24.615387, 64.615395)
 [node name="HomelessEnemy1" type="CharacterBody2D" unique_id=1221956425 groups=["enemies"]]
 scale = Vector2(0.65, 0.65)
 collision_layer = 4
-collision_mask = 15
+collision_mask = 257
 script = ExtResource("1_pbp6t")
 attack_cooldown = 2.0
 attack_ready_duration = 1.0
