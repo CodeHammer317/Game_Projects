@@ -1,0 +1,374 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://Scripts/controller_description_screen.gd" id="1_controls"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_frame"]
+bg_color = Color(0.025, 0.035, 0.055, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24, 0.78, 0.88, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+shadow_color = Color(0, 0, 0, 0.75)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_card"]
+bg_color = Color(0.045, 0.07, 0.095, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.16, 0.34, 0.42, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_controller"]
+bg_color = Color(0.13, 0.17, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.43, 0.5, 0.54, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_stick"]
+bg_color = Color(0.035, 0.045, 0.055, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.78, 0.82, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button"]
+bg_color = Color(0.08, 0.1, 0.12, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.78, 0.82, 0.84, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_back"]
+bg_color = Color(0.07, 0.18, 0.22, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24, 0.78, 0.88, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="ControllerDescriptionScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_controls")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.005, 0.01, 0.018, 0.93)
+
+[node name="Frame" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 14.0
+offset_right = 622.0
+offset_bottom = 346.0
+theme_override_styles/panel = SubResource("StyleBox_frame")
+
+[node name="Margin" type="MarginContainer" parent="Frame"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="Layout" type="VBoxContainer" parent="Frame/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Title" type="Label" parent="Frame/Margin/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.85, 0.32, 1)
+theme_override_font_sizes/font_size = 24
+text = "CONTROLLER // FIELD GUIDE"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Frame/Margin/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.72, 0.77, 1)
+theme_override_font_sizes/font_size = 11
+text = "STANDARD GAMEPAD"
+horizontal_alignment = 1
+
+[node name="Content" type="HBoxContainer" parent="Frame/Margin/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="DiagramCard" type="PanelContainer" parent="Frame/Margin/Layout/Content"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBox_card")
+
+[node name="Controller" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 251.0
+offset_bottom = 179.0
+theme_override_styles/panel = SubResource("StyleBox_controller")
+
+[node name="LeftBumper" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -25.0
+offset_right = 88.0
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(0.58, 0.65, 0.69, 1)
+theme_override_font_sizes/font_size = 10
+text = "LB"
+horizontal_alignment = 1
+
+[node name="RightBumper" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = -25.0
+offset_right = 203.0
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(0.24, 0.78, 0.88, 1)
+theme_override_font_sizes/font_size = 10
+text = "RB  SPECIAL"
+horizontal_alignment = 1
+
+[node name="MoveStick" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 46.0
+offset_right = 76.0
+offset_bottom = 88.0
+theme_override_styles/panel = SubResource("StyleBox_stick")
+
+[node name="Arrows" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/MoveStick"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.72, 0.93, 0.95, 1)
+theme_override_font_sizes/font_size = 14
+text = "↔"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoveLabel" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 91.0
+offset_right = 94.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0.55, 0.72, 0.77, 1)
+theme_override_font_sizes/font_size = 10
+text = "MOVE"
+horizontal_alignment = 1
+
+[node name="YButton" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 30.0
+offset_right = 190.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBox_button")
+
+[node name="Text" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/YButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.96, 0.85, 0.32, 1)
+text = "Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XButton" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 57.0
+offset_right = 163.0
+offset_bottom = 83.0
+theme_override_styles/panel = SubResource("StyleBox_button")
+
+[node name="Text" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/XButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.34, 0.66, 0.95, 1)
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BButton" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 57.0
+offset_right = 217.0
+offset_bottom = 83.0
+theme_override_styles/panel = SubResource("StyleBox_button")
+
+[node name="Text" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/BButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.96, 0.3, 0.3, 1)
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AButton" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 84.0
+offset_right = 190.0
+offset_bottom = 110.0
+theme_override_styles/panel = SubResource("StyleBox_button")
+
+[node name="Text" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/AButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.35, 0.9, 0.55, 1)
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButtonDiagram" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 57.0
+offset_right = 137.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0.72, 0.76, 0.78, 1)
+theme_override_font_sizes/font_size = 9
+text = "▰  BACK"
+horizontal_alignment = 1
+
+[node name="KeyboardHint" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 187.0
+offset_right = 261.0
+offset_bottom = 211.0
+theme_override_colors/font_color = Color(0.47, 0.55, 0.6, 1)
+theme_override_font_sizes/font_size = 8
+text = "KEYBOARD: A/D  SPACE  BACKSPACE  Q  E  1  ESC"
+horizontal_alignment = 1
+
+[node name="MappingCard" type="PanelContainer" parent="Frame/Margin/Layout/Content"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBox_card")
+
+[node name="Margin" type="MarginContainer" parent="Frame/Margin/Layout/Content/MappingCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="Mappings" type="VBoxContainer" parent="Frame/Margin/Layout/Content/MappingCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Header" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.78, 0.88, 1)
+theme_override_font_sizes/font_size = 13
+text = "BUTTON MAP"
+
+[node name="Move" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+layout_mode = 2
+text = "LEFT STICK     MOVE"
+
+[node name="Jump" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+layout_mode = 2
+text = "A                    JUMP / SELECT"
+
+[node name="Shoot" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+layout_mode = 2
+text = "B                    SHOOT"
+
+[node name="Dash" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+layout_mode = 2
+text = "X                    DASH"
+
+[node name="Attack" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+layout_mode = 2
+text = "Y                    MELEE ATTACK"
+
+[node name="Special" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+layout_mode = 2
+text = "RB                  SPECIAL"
+
+[node name="Pause" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+layout_mode = 2
+text = "BACK              PAUSE"
+
+[node name="Menu" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.72, 0.77, 1)
+theme_override_font_sizes/font_size = 10
+text = "D-PAD / STICK: NAVIGATE MENUS"
+
+[node name="BackButton" type="Button" parent="Frame/Margin/Layout"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.94, 0.96, 1)
+theme_override_styles/normal = SubResource("StyleBox_back")
+theme_override_styles/hover = SubResource("StyleBox_back")
+theme_override_styles/pressed = SubResource("StyleBox_back")
+theme_override_styles/focus = SubResource("StyleBox_back")
+text = "B / BACK / ESC   —   RETURN"
