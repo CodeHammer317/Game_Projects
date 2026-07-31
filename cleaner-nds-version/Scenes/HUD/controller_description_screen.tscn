@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene format=3 uid="uid://cjt0em5npk1j6"]
 
-[ext_resource type="Script" path="res://Scripts/controller_description_screen.gd" id="1_controls"]
+[ext_resource type="Script" uid="uid://26od0f5cila4" path="res://Scripts/controller_description_screen.gd" id="1_controls"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_frame"]
 bg_color = Color(0.025, 0.035, 0.055, 0.98)
@@ -76,80 +76,84 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="ControllerDescriptionScreen" type="Control"]
+[node name="ControllerDescriptionScreen" type="Control" unique_id=417042259]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 81.0
+offset_top = 21.0
+offset_right = 81.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.9, 0.9)
 mouse_filter = 1
 script = ExtResource("1_controls")
 
-[node name="Dimmer" type="ColorRect" parent="."]
+[node name="Dimmer" type="ColorRect" parent="." unique_id=580540219]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -47.77778
+offset_top = 7.777778
+offset_right = -47.77777
+offset_bottom = 7.777771
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.005, 0.01, 0.018, 0.93)
 
-[node name="Frame" type="PanelContainer" parent="."]
+[node name="Frame" type="PanelContainer" parent="." unique_id=1441281706]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 14.0
-offset_right = 622.0
-offset_bottom = 346.0
+offset_left = -27.777779
+offset_right = 576.2222
+offset_bottom = 382.0
 theme_override_styles/panel = SubResource("StyleBox_frame")
 
-[node name="Margin" type="MarginContainer" parent="Frame"]
+[node name="Margin" type="MarginContainer" parent="Frame" unique_id=258673253]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 10
 
-[node name="Layout" type="VBoxContainer" parent="Frame/Margin"]
+[node name="Layout" type="VBoxContainer" parent="Frame/Margin" unique_id=498915837]
 layout_mode = 2
 theme_override_constants/separation = 7
 
-[node name="Title" type="Label" parent="Frame/Margin/Layout"]
+[node name="Title" type="Label" parent="Frame/Margin/Layout" unique_id=153999459]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.96, 0.85, 0.32, 1)
 theme_override_font_sizes/font_size = 24
 text = "CONTROLLER // FIELD GUIDE"
 horizontal_alignment = 1
 
-[node name="Subtitle" type="Label" parent="Frame/Margin/Layout"]
+[node name="Subtitle" type="Label" parent="Frame/Margin/Layout" unique_id=386643325]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.55, 0.72, 0.77, 1)
 theme_override_font_sizes/font_size = 11
 text = "STANDARD GAMEPAD"
 horizontal_alignment = 1
 
-[node name="Content" type="HBoxContainer" parent="Frame/Margin/Layout"]
+[node name="Content" type="HBoxContainer" parent="Frame/Margin/Layout" unique_id=395224258]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="DiagramCard" type="PanelContainer" parent="Frame/Margin/Layout/Content"]
+[node name="DiagramCard" type="PanelContainer" parent="Frame/Margin/Layout/Content" unique_id=514961369]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBox_card")
 
-[node name="Controller" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 32.0
-offset_right = 251.0
-offset_bottom = 179.0
+[node name="Controller" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard" unique_id=1492946629]
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBox_controller")
 
-[node name="LeftBumper" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+[node name="LeftBumper" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller" unique_id=1652113642]
 layout_mode = 0
 offset_left = 24.0
 offset_top = -25.0
@@ -160,7 +164,7 @@ theme_override_font_sizes/font_size = 10
 text = "LB"
 horizontal_alignment = 1
 
-[node name="RightBumper" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+[node name="RightBumper" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller" unique_id=289994239]
 layout_mode = 0
 offset_left = 139.0
 offset_top = -25.0
@@ -171,7 +175,7 @@ theme_override_font_sizes/font_size = 10
 text = "RB  SPECIAL"
 horizontal_alignment = 1
 
-[node name="MoveStick" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+[node name="MoveStick" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller" unique_id=1391674619]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 46.0
@@ -179,7 +183,7 @@ offset_right = 76.0
 offset_bottom = 88.0
 theme_override_styles/panel = SubResource("StyleBox_stick")
 
-[node name="Arrows" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/MoveStick"]
+[node name="Arrows" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/MoveStick" unique_id=1952610605]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,7 +196,7 @@ text = "↔"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MoveLabel" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+[node name="MoveLabel" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller" unique_id=1777494635]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 91.0
@@ -203,7 +207,7 @@ theme_override_font_sizes/font_size = 10
 text = "MOVE"
 horizontal_alignment = 1
 
-[node name="YButton" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+[node name="YButton" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller" unique_id=1253372342]
 layout_mode = 0
 offset_left = 164.0
 offset_top = 30.0
@@ -211,7 +215,7 @@ offset_right = 190.0
 offset_bottom = 56.0
 theme_override_styles/panel = SubResource("StyleBox_button")
 
-[node name="Text" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/YButton"]
+[node name="Text" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/YButton" unique_id=1741087705]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -223,7 +227,7 @@ text = "Y"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="XButton" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+[node name="XButton" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller" unique_id=330360570]
 layout_mode = 0
 offset_left = 137.0
 offset_top = 57.0
@@ -231,7 +235,7 @@ offset_right = 163.0
 offset_bottom = 83.0
 theme_override_styles/panel = SubResource("StyleBox_button")
 
-[node name="Text" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/XButton"]
+[node name="Text" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/XButton" unique_id=620248613]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -243,7 +247,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BButton" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+[node name="BButton" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller" unique_id=1763503409]
 layout_mode = 0
 offset_left = 191.0
 offset_top = 57.0
@@ -251,7 +255,7 @@ offset_right = 217.0
 offset_bottom = 83.0
 theme_override_styles/panel = SubResource("StyleBox_button")
 
-[node name="Text" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/BButton"]
+[node name="Text" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/BButton" unique_id=1324701660]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -263,7 +267,7 @@ text = "B"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AButton" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+[node name="AButton" type="Panel" parent="Frame/Margin/Layout/Content/DiagramCard/Controller" unique_id=430132039]
 layout_mode = 0
 offset_left = 164.0
 offset_top = 84.0
@@ -271,7 +275,7 @@ offset_right = 190.0
 offset_bottom = 110.0
 theme_override_styles/panel = SubResource("StyleBox_button")
 
-[node name="Text" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/AButton"]
+[node name="Text" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller/AButton" unique_id=2135475698]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -283,7 +287,7 @@ text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackButtonDiagram" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller"]
+[node name="BackButtonDiagram" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard/Controller" unique_id=98378686]
 layout_mode = 0
 offset_left = 81.0
 offset_top = 57.0
@@ -294,81 +298,76 @@ theme_override_font_sizes/font_size = 9
 text = "▰  BACK"
 horizontal_alignment = 1
 
-[node name="KeyboardHint" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 187.0
-offset_right = 261.0
-offset_bottom = 211.0
+[node name="KeyboardHint" type="Label" parent="Frame/Margin/Layout/Content/DiagramCard" unique_id=1035958085]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.47, 0.55, 0.6, 1)
 theme_override_font_sizes/font_size = 8
 text = "KEYBOARD: A/D  SPACE  BACKSPACE  Q  E  1  ESC"
 horizontal_alignment = 1
 
-[node name="MappingCard" type="PanelContainer" parent="Frame/Margin/Layout/Content"]
+[node name="MappingCard" type="PanelContainer" parent="Frame/Margin/Layout/Content" unique_id=278881375]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBox_card")
 
-[node name="Margin" type="MarginContainer" parent="Frame/Margin/Layout/Content/MappingCard"]
+[node name="Margin" type="MarginContainer" parent="Frame/Margin/Layout/Content/MappingCard" unique_id=311418608]
 layout_mode = 2
 theme_override_constants/margin_left = 14
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 14
 theme_override_constants/margin_bottom = 10
 
-[node name="Mappings" type="VBoxContainer" parent="Frame/Margin/Layout/Content/MappingCard/Margin"]
+[node name="Mappings" type="VBoxContainer" parent="Frame/Margin/Layout/Content/MappingCard/Margin" unique_id=644813837]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="Header" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+[node name="Header" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings" unique_id=1155572889]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.24, 0.78, 0.88, 1)
 theme_override_font_sizes/font_size = 13
 text = "BUTTON MAP"
 
-[node name="Move" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+[node name="Move" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings" unique_id=1270078998]
 layout_mode = 2
 text = "LEFT STICK     MOVE"
 
-[node name="Jump" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+[node name="Jump" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings" unique_id=1342812450]
 layout_mode = 2
 text = "A                    JUMP / SELECT"
 
-[node name="Shoot" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+[node name="Shoot" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings" unique_id=1808909313]
 layout_mode = 2
 text = "B                    SHOOT"
 
-[node name="Dash" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+[node name="Dash" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings" unique_id=151715196]
 layout_mode = 2
 text = "X                    DASH"
 
-[node name="Attack" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+[node name="Attack" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings" unique_id=738142777]
 layout_mode = 2
 text = "Y                    MELEE ATTACK"
 
-[node name="Special" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+[node name="Special" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings" unique_id=1895644509]
 layout_mode = 2
 text = "RB                  SPECIAL"
 
-[node name="Pause" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+[node name="Pause" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings" unique_id=1193915821]
 layout_mode = 2
 text = "BACK              PAUSE"
 
-[node name="Menu" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings"]
+[node name="Menu" type="Label" parent="Frame/Margin/Layout/Content/MappingCard/Margin/Mappings" unique_id=1332371875]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.55, 0.72, 0.77, 1)
 theme_override_font_sizes/font_size = 10
 text = "D-PAD / STICK: NAVIGATE MENUS"
 
-[node name="BackButton" type="Button" parent="Frame/Margin/Layout"]
+[node name="BackButton" type="Button" parent="Frame/Margin/Layout" unique_id=209504260]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-focus_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.94, 0.96, 1)
 theme_override_styles/normal = SubResource("StyleBox_back")
-theme_override_styles/hover = SubResource("StyleBox_back")
 theme_override_styles/pressed = SubResource("StyleBox_back")
+theme_override_styles/hover = SubResource("StyleBox_back")
 theme_override_styles/focus = SubResource("StyleBox_back")
 text = "B / BACK / ESC   —   RETURN"

@@ -139,3 +139,18 @@ parameters/looping = true
 
 [node name="ControllerDescriptionScreen" parent="." unique_id=1559008739 instance=ExtResource("9_controls")]
 layout_mode = 1
+offset_right = -6.0
+offset_bottom = 42.0
+
+[node name="Frame" parent="ControllerDescriptionScreen" index="1"]
+offset_top = -14.0
+offset_right = 633.0
+offset_bottom = 368.0
+
+[node name="Controller" parent="ControllerDescriptionScreen/Frame/Margin/Layout/Content/DiagramCard" index="0"]
+layout_mode = 2
+
+[node name="KeyboardHint" parent="ControllerDescriptionScreen/Frame/Margin/Layout/Content/DiagramCard" index="1"]
+layout_mode = 2
+
+[editable path="ControllerDescriptionScreen"]
