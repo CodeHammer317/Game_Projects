@@ -353,7 +353,7 @@ size = Vector2(28, 65)
 [node name="Policewoman" type="CharacterBody2D" unique_id=1221956425 groups=["enemies"]]
 position = Vector2(4024, 304)
 collision_layer = 4
-collision_mask = 11
+collision_mask = 257
 script = ExtResource("1_klbek")
 move_speed = 46.0
 use_separate_directional_animations = false

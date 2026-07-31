@@ -622,7 +622,7 @@ size = Vector2(28, 16.5)
 
 [node name="RoombaDrone" type="CharacterBody2D" unique_id=1221956425 groups=["enemies"]]
 collision_layer = 4
-collision_mask = 15
+collision_mask = 257
 script = ExtResource("1_h7awd")
 projectile_scene = ExtResource("2_1t400")
 

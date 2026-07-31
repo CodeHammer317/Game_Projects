@@ -451,7 +451,7 @@ size = Vector2(28, 65)
 [node name="Policeman1" type="CharacterBody2D" unique_id=1221956425 groups=["enemies"]]
 scale = Vector2(0.8, 0.8)
 collision_layer = 4
-collision_mask = 11
+collision_mask = 257
 script = ExtResource("1_a1qgl")
 use_separate_directional_animations = false
 attack_range = 180.0

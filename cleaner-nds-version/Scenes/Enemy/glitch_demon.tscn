@@ -328,7 +328,7 @@ animations = [{
 
 [node name="GlitchDemon" type="CharacterBody2D" unique_id=1562222215 groups=["enemies"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 257
 script = ExtResource("1_1r4rj")
 detection_range = 400.0
 attack_range = 150.0
