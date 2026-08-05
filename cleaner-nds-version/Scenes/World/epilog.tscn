@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bwbi3dimbvvij"]
 
-[ext_resource type="Texture2D" uid="uid://d4n32fytpri1w" path="res://Assets/sprites/640×360 cat-lord throne laboratory asset.png" id="1_background"]
+[ext_resource type="Texture2D" uid="uid://bsrjgfb0qki1g" path="res://Assets/sprites/Brightened 640×360 cat throne image.png" id="2_biuh3"]
 [ext_resource type="Script" uid="uid://bfw8b3sngy1i1" path="res://Scripts/epilog.gd" id="2_script"]
 [ext_resource type="FontFile" uid="uid://cm7sfq7khpxul" path="res://Assets/Fonts/pixy/PIXY.ttf" id="3_font"]
 [ext_resource type="AudioStream" uid="uid://dyg7h7aqmmvlt" path="res://Assets/Audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3" id="4_typing"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dxbkt1bvhu2m7" path="res://Assets/sprites/TA.png" id="6_biuh3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_dialogue"]
-bg_color = Color(0.015, 0.012, 0.008, 0.91)
+bg_color = Color(0.015686275, 0.011764706, 0.007843138, 0.08627451)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -54,7 +54,7 @@ texture_filter = 2
 script = ExtResource("2_script")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=905319670]
-texture = ExtResource("1_background")
+texture = ExtResource("2_biuh3")
 centered = false
 
 [node name="DialogueLayer" type="CanvasLayer" parent="." unique_id=122245300]
@@ -68,14 +68,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="ServantTailOuter" type="Polygon2D" parent="DialogueLayer/DialogueRoot" unique_id=491023546]
-color = Color(0.94, 0.61, 0.04, 1)
-polygon = PackedVector2Array(148, 72, 169, 72, 177, 143)
-
-[node name="ServantTailInner" type="Polygon2D" parent="DialogueLayer/DialogueRoot" unique_id=295528835]
-color = Color(0.015, 0.012, 0.008, 0.96)
-polygon = PackedVector2Array(152, 72, 165, 72, 175, 132)
 
 [node name="ServantBubble" type="PanelContainer" parent="DialogueLayer/DialogueRoot" unique_id=1152773082]
 layout_mode = 0
@@ -115,14 +107,6 @@ fit_content = true
 scroll_active = false
 visible_characters = 0
 visible_ratio = 0.0
-
-[node name="CatlordTailOuter" type="Polygon2D" parent="DialogueLayer/DialogueRoot" unique_id=1063080597]
-color = Color(0.94, 0.61, 0.04, 1)
-polygon = PackedVector2Array(497, 57, 497, 68, 356, 111)
-
-[node name="CatlordTailInner" type="Polygon2D" parent="DialogueLayer/DialogueRoot" unique_id=487827354]
-color = Color(0.015, 0.012, 0.008, 0.96)
-polygon = PackedVector2Array(497, 60, 497, 65, 369, 104)
 
 [node name="CatlordBubble" type="PanelContainer" parent="DialogueLayer/DialogueRoot" unique_id=494727332]
 layout_mode = 0
@@ -181,6 +165,7 @@ max_polyphony = 4
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1739261801]
 layer = 100
+visible = false
 
 [node name="FadeOverlay" type="ColorRect" parent="FadeLayer" unique_id=1914163033]
 anchors_preset = 15

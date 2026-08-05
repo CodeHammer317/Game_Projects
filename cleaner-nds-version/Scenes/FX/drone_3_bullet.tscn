@@ -57,3 +57,5 @@ autoplay = "default"
 frame_progress = 0.9427923
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=671670464]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1846719558]

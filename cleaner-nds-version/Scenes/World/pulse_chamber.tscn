@@ -124,7 +124,7 @@
 [ext_resource type="AudioStream" uid="uid://bncacjrvcpipw" path="res://Assets/Audio/freesound_community-lifebar-101709.mp3" id="120_vabxp"]
 [ext_resource type="AudioStream" uid="uid://bb76cvqrkm4x3" path="res://Assets/Audio/freesound_community-075792_glitchscreamwav-85145.mp3" id="121_wu35v"]
 [ext_resource type="AudioStream" uid="uid://kn7qr1df054u" path="res://Assets/Audio/BombExplosion_1.mp3" id="122_ckejx"]
-[ext_resource type="AudioStream" uid="uid://d23cpexsh5isf" path="res://Assets/Audio/csongimuzsikal-techno-loop-273137.mp3" id="123_3xycp"]
+[ext_resource type="AudioStream" uid="uid://jxisw2xav3uk" path="res://Assets/Audio/Apidya - Ingame 1 5.mp3" id="123_3xycp"]
 [ext_resource type="Texture2D" uid="uid://ba8iif7k0t36v" path="res://Assets/sprites/Study Art/RavenHeadshotConversation.png" id="124_a2wc7"]
 [ext_resource type="PackedScene" uid="uid://br7vthru5cwmy" path="res://Scenes/FX/archivist_document_pickup.tscn" id="126_powgt"]
 
@@ -3895,16 +3895,17 @@ texture_scale = 1.45
 
 [node name="PulseSound" type="AudioStreamPlayer" parent="." unique_id=1541168184]
 stream = ExtResource("120_vabxp")
-volume_db = -26.542
+volume_db = -12.793
 autoplay = true
 max_polyphony = 6
 parameters/looping = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=719959742]
 stream = ExtResource("123_3xycp")
-volume_db = -25.0
+volume_db = -11.794
 autoplay = true
 max_polyphony = 6
+parameters/looping = true
 
 [node name="BossSpawnSound" type="AudioStreamPlayer" parent="." unique_id=2043173569]
 stream = ExtResource("121_wu35v")
