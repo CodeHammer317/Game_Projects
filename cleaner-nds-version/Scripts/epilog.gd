@@ -12,8 +12,8 @@ const CATLORD_LINE: String = "Puuurhaps,,,,,,,,,,"
 
 @onready var servant_bubble: Control = $DialogueLayer/DialogueRoot/ServantBubble
 @onready var servant_text: RichTextLabel = $DialogueLayer/DialogueRoot/ServantBubble/Margin/Content/Text
-@onready var catlord_tail_outer: Polygon2D = $DialogueLayer/DialogueRoot/CatlordTailOuter
-@onready var catlord_tail_inner: Polygon2D = $DialogueLayer/DialogueRoot/CatlordTailInner
+#@onready var catlord_tail_outer: Polygon2D = $DialogueLayer/DialogueRoot/CatlordTailOuter
+#@onready var catlord_tail_inner: Polygon2D = $DialogueLayer/DialogueRoot/CatlordTailInner
 @onready var catlord_bubble: Control = $DialogueLayer/DialogueRoot/CatlordBubble
 @onready var catlord_text: RichTextLabel = $DialogueLayer/DialogueRoot/CatlordBubble/Margin/Content/Text
 @onready var prompt: Label = $DialogueLayer/DialogueRoot/Prompt
@@ -33,8 +33,8 @@ func _ready() -> void:
 	catlord_text.text = CATLORD_LINE
 	catlord_text.visible_characters = 0
 	catlord_bubble.visible = false
-	catlord_tail_outer.visible = false
-	catlord_tail_inner.visible = false
+	#catlord_tail_outer.visible = false
+	#catlord_tail_inner.visible = false
 	prompt.visible = false
 	fade_overlay.visible = true
 	fade_overlay.modulate.a = 1.25
@@ -68,8 +68,8 @@ func _ready() -> void:
 	ta_sprite.modulate.a = 0.0
 
 	catlord_bubble.visible = true
-	catlord_tail_outer.visible = true
-	catlord_tail_inner.visible = true
+	#catlord_tail_outer.visible = true
+	#catlord_tail_inner.visible = true
 	await _start_line(catlord_text, CATLORD_LINE)
 	await get_tree().create_timer(final_hold_duration).timeout
 

@@ -165,9 +165,6 @@ func _shutdown_lightning() -> void:
 			lightning.stop()
 			lightning.visible = false
 
-	if pulse_sound != null:
-		pulse_sound.stop()
-
 
 func _play_room_explosion() -> void:
 	if room_explosion == null:
@@ -186,6 +183,9 @@ func _play_room_explosion() -> void:
 func _on_room_explosion_finished() -> void:
 	if room_explosion != null:
 		room_explosion.visible = false
+
+	if pulse_sound != null:
+		pulse_sound.stop()
 
 
 func _fade_out() -> void:
