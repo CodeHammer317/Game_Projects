@@ -8,9 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dhocxnvvfyg48" path="res://Assets/sprites/Lightning/lightning_burst_003/lightning_burst_003_large_violet/spritesheet.png" id="5_nw21g"]
 [ext_resource type="Texture2D" uid="uid://cagxt7dq83evv" path="res://Assets/sprites/GlitchDemon/glitch-demon-clean-4x4.png" id="6_clean"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjjg4"]
-size = Vector2(20, 52.5)
-
 [sub_resource type="AtlasTexture" id="Clean_30"]
 atlas = ExtResource("6_clean")
 region = Rect2(0, 192, 64, 64)
@@ -31,97 +28,13 @@ region = Rect2(192, 192, 64, 64)
 atlas = ExtResource("4_ilc77")
 region = Rect2(768, 768, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_haarq"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(1024, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n81be"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(1280, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fs40b"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(1536, 768, 256, 256)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_iqeah"]
 atlas = ExtResource("4_ilc77")
 region = Rect2(1792, 768, 256, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6vxt5"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(2048, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wflt5"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(2304, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gkbi5"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(2560, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ijmxp"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(2816, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kw3n4"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(3072, 768, 256, 256)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ik8et"]
 atlas = ExtResource("4_ilc77")
 region = Rect2(3328, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lfkwh"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(1024, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4ye7"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(1280, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b71lr"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(1536, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6caw8"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(1792, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_078bh"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(2048, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xcttq"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(2304, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eou1j"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(2560, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sieh6"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(1024, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iwinv"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(1280, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_blrst"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(1536, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_csw5k"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(1792, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kxn4e"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(2048, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c5b82"]
-atlas = ExtResource("4_ilc77")
-region = Rect2(2304, 768, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_feca0"]
 atlas = ExtResource("4_ilc77")
@@ -291,31 +204,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_dprr3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_haarq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n81be")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fs40b")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_iqeah")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6vxt5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wflt5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gkbi5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ijmxp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kw3n4")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ik8et")
@@ -326,52 +215,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lfkwh")
+"texture": SubResource("AtlasTexture_dprr3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c4ye7")
+"texture": SubResource("AtlasTexture_iqeah")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b71lr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6caw8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_078bh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xcttq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eou1j")
+"texture": SubResource("AtlasTexture_ik8et")
 }],
 "loop": false,
 "name": &"Fire2",
-"speed": 14.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sieh6")
+"texture": SubResource("AtlasTexture_dprr3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iwinv")
+"texture": SubResource("AtlasTexture_iqeah")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_blrst")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_csw5k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kxn4e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c5b82")
+"texture": SubResource("AtlasTexture_ik8et")
 }],
 "loop": false,
 "name": &"Fire3",
-"speed": 15.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -540,8 +408,11 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjjg4"]
+size = Vector2(42, 94)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74obc"]
-size = Vector2(20, 46)
+size = Vector2(42, 93.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilc77"]
 atlas = ExtResource("5_nw21g")
@@ -622,6 +493,7 @@ animations = [{
 }]
 
 [node name="GlitchDemon" type="CharacterBody2D" unique_id=1562222215 groups=["enemies"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 257
 script = ExtResource("1_1r4rj")
@@ -630,15 +502,16 @@ attack_range = 150.0
 stop_distance = 3.0
 projectile_scene = ExtResource("2_nw21g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1074383054]
-position = Vector2(0, 2.75)
-shape = SubResource("RectangleShape2D_fjjg4")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1280155976]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_clean")
-animation = &"Fire3"
+animation = &"Fire2"
 autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1074383054]
+visible = false
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_fjjg4")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=880096687]
 collision_layer = 64
@@ -647,6 +520,8 @@ script = ExtResource("5_c7vki")
 health_path = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1414026202]
+visible = false
+position = Vector2(-5, -3.25)
 shape = SubResource("RectangleShape2D_74obc")
 debug_color = Color(0.9568953, 0.10862193, 0.45275658, 0.41960785)
 
@@ -654,14 +529,14 @@ debug_color = Color(0.9568953, 0.10862193, 0.45275658, 0.41960785)
 script = ExtResource("4_nw21g")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=844540403]
-position = Vector2(3.8146973e-06, 0)
+position = Vector2(-0.9999961, -17.999998)
 scale = Vector2(0.9999998, 0.9999998)
 
 [node name="Muzzle2" type="Marker2D" parent="." unique_id=294212815]
-position = Vector2(0, 11)
+position = Vector2(-1, -7)
 
 [node name="Muzzle3" type="Marker2D" parent="." unique_id=1458504458]
-position = Vector2(0, -12)
+position = Vector2(-1, -30)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=55992649]
 visible = false
