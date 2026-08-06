@@ -14,7 +14,7 @@ signal matrix_browse_closed
 @export_range(1, 6, 1) var animation_repeat_count: int = 3
 @export var player_scene: PackedScene
 @export var player_scale: Vector2 = Vector2(1.5, 1.5)
-@export_file("*.tscn") var next_scene: String = "res://Scenes/World/coffee_shop.tscn"
+@export_file("*.tscn") var next_scene: String = "res://Scenes/World/CoffeeShopExterior.tscn"
 @export var fade_in_duration: float = 0.75
 @export var fade_out_duration: float = 0.75
 @export var wait_for_matrix_reveal: bool = true
