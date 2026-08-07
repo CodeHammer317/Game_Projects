@@ -1,6 +1,11 @@
 extends Node2D
 class_name UpgradeChamber
 
+const MATRIX_MOVE_SOUND: AudioStream = preload("res://Assets/Audio/pickup2.ogg")
+const MATRIX_CONFIRM_SOUND: AudioStream = preload(
+	"res://Assets/Audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3"
+)
+
 signal matrix_browse_closed
 
 @export var upgrade_name: StringName = &"double_jump"
@@ -19,6 +24,8 @@ signal matrix_browse_closed
 @export var fade_out_duration: float = 0.75
 @export var wait_for_matrix_reveal: bool = true
 @export_range(0.5, 5.0, 0.1) var matrix_reveal_timeout: float = 2.0
+@export_range(0.1, 1.0, 0.05) var matrix_stick_press_threshold: float = 0.65
+@export_range(0.0, 0.9, 0.05) var matrix_stick_release_threshold: float = 0.3
 
 @onready var area: Area2D = $Area2D
 @onready var upgrade_matrix: UpgradeMatrixDisplay = $UpgradeMatrixDisplay
@@ -48,6 +55,8 @@ var _matrix_reveal_complete: bool = false
 var _matrix_browse_active: bool = false
 var _matrix_selection_index: int = 0
 var _matrix_items: Array[Dictionary] = []
+var _matrix_stick_value := Vector2.ZERO
+var _matrix_stick_latched: bool = false
 
 
 func _ready() -> void:
@@ -193,6 +202,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not _matrix_browse_active:
 		return
 
+	if event is InputEventJoypadMotion:
+		if _handle_matrix_stick_motion(event as InputEventJoypadMotion):
+			get_viewport().set_input_as_handled()
+		return
+
 	var direction := Vector2.ZERO
 	if event.is_action_pressed("menu_left"):
 		direction = Vector2.LEFT
@@ -207,6 +221,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	elif event.is_action_pressed("shoot"):
+		CombatFx.play_sfx(MATRIX_CONFIRM_SOUND, -10.0, 0.78, &"UI")
 		_end_matrix_browse()
 		get_viewport().set_input_as_handled()
 		return
@@ -216,12 +231,41 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
+func _handle_matrix_stick_motion(event: InputEventJoypadMotion) -> bool:
+	if event.axis == JOY_AXIS_LEFT_X:
+		_matrix_stick_value.x = event.axis_value
+	elif event.axis == JOY_AXIS_LEFT_Y:
+		_matrix_stick_value.y = event.axis_value
+	else:
+		return false
+
+	if _matrix_stick_latched:
+		if _matrix_stick_value.length() <= matrix_stick_release_threshold:
+			_matrix_stick_latched = false
+		return true
+
+	if _matrix_stick_value.length() < matrix_stick_press_threshold:
+		return true
+
+	var direction := Vector2.ZERO
+	if absf(_matrix_stick_value.x) > absf(_matrix_stick_value.y):
+		direction = Vector2.RIGHT if _matrix_stick_value.x > 0.0 else Vector2.LEFT
+	else:
+		direction = Vector2.DOWN if _matrix_stick_value.y > 0.0 else Vector2.UP
+
+	_matrix_stick_latched = true
+	_move_matrix_selection(direction)
+	return true
+
+
 func _begin_matrix_browse(initial_upgrade: StringName) -> void:
 	_build_matrix_items()
 	if _matrix_items.is_empty():
 		return
 
 	_matrix_selection_index = _find_upgrade_item(initial_upgrade)
+	_matrix_stick_value = Vector2.ZERO
+	_matrix_stick_latched = false
 	_matrix_browse_active = true
 	matrix_selector.visible = true
 	_update_matrix_selector()
@@ -233,6 +277,8 @@ func _end_matrix_browse() -> void:
 		return
 
 	_matrix_browse_active = false
+	_matrix_stick_value = Vector2.ZERO
+	_matrix_stick_latched = false
 	matrix_selector.visible = false
 	_show_upgrade_message(
 		PlayerState.get_upgrade_display_name(upgrade_name).to_upper() + " ACQUIRED"
@@ -360,6 +406,7 @@ func _move_matrix_selection(direction: Vector2) -> void:
 
 	if best_index != _matrix_selection_index:
 		_matrix_selection_index = best_index
+		CombatFx.play_sfx(MATRIX_MOVE_SOUND, -12.0, 1.1)
 		_update_matrix_selector()
 
 
@@ -372,6 +419,7 @@ func _update_matrix_selector() -> void:
 
 
 func _show_selected_matrix_details() -> void:
+	CombatFx.play_sfx(MATRIX_CONFIRM_SOUND, -9.0, 1.0, &"UI")
 	var item := _matrix_items[_matrix_selection_index]
 	var kind: StringName = item.get("kind", &"")
 	var item_id: StringName = item.get("id", &"")
@@ -559,6 +607,7 @@ func _play_upgrade_animation() -> void:
 
 		if cycle == repeat_count - 1:
 			flash_sound.play()
+			CombatFx.shake(6.0, 0.28, 24.0)
 
 		if machine_sprite.sprite_frames != null:
 			if machine_sprite.sprite_frames.has_animation(machine_animation):

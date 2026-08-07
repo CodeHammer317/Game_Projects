@@ -14,6 +14,7 @@ var owner_player: Node = null
 var hit_targets: Dictionary = {}
 var _impact_sound_played: bool = false
 var _impact_sound_sequence_started: bool = false
+var _impact_feedback_played: bool = false
 
 
 func _ready() -> void:
@@ -36,6 +37,7 @@ func _ready() -> void:
 
 	if fire_blast_sound != null and fire_blast_sound.stream != null:
 		fire_blast_sound.play()
+	CombatFx.shake(3.5, 0.14, 28.0)
 
 	await get_tree().physics_frame
 	_hit_overlapping_targets()
@@ -100,6 +102,10 @@ func _try_hit(target: Node) -> void:
 		return
 
 	hit_targets[damage_target] = true
+	if not _impact_feedback_played:
+		_impact_feedback_played = true
+		CombatFx.hitstop(0.045, 0.08)
+		CombatFx.shake(6.0, 0.18, 26.0)
 
 	var info := DamageInfo.new(damage, knockback, owner_player)
 

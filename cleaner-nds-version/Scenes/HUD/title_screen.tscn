@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cdqht4tbikj2g" path="res://Assets/Audio/pickup2.ogg" id="6_824g0"]
 [ext_resource type="AudioStream" uid="uid://yswk7slevwiw" path="res://Assets/Audio/freesound_community-game-start-6104 (1).mp3" id="6_dsf7a"]
 [ext_resource type="AudioStream" uid="uid://w83uc53n1rmp" path="res://Assets/Audio/BGM/NDS8bitRemix.mp3" id="8_tjte5"]
-[ext_resource type="PackedScene" path="res://Scenes/HUD/controller_description_screen.tscn" id="9_controls"]
+[ext_resource type="PackedScene" uid="uid://cjt0em5npk1j6" path="res://Scenes/HUD/controller_description_screen.tscn" id="9_controls"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uv4ns"]
 font = ExtResource("3_824g0")
@@ -50,19 +50,19 @@ expand_mode = 1
 
 [node name="DemoLabel" type="Label" parent="." unique_id=811937859]
 layout_mode = 0
-offset_left = 270.0
-offset_top = 213.0
-offset_right = 366.0
-offset_bottom = 275.0
+offset_left = 508.0
+offset_top = 7.0
+offset_right = 604.0
+offset_bottom = 69.0
 text = "DEMO"
 label_settings = SubResource("LabelSettings_uv4ns")
 
 [node name="SubTitleLabel" type="Label" parent="." unique_id=2031876483]
 layout_mode = 0
-offset_left = 218.0
-offset_top = 191.0
-offset_right = 433.0
-offset_bottom = 217.0
+offset_left = 219.0
+offset_top = 229.0
+offset_right = 434.0
+offset_bottom = 255.0
 text = "The Awakening of Shadows"
 label_settings = SubResource("LabelSettings_nd20k")
 
@@ -114,6 +114,7 @@ scale = Vector2(0.18716584, 0.20109893)
 texture = ExtResource("4_bnqst")
 
 [node name="FadeLayer" type="ColorRect" parent="." unique_id=1064865099]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -125,32 +126,30 @@ color = Color(0, 0, 0, 1)
 
 [node name="SFX_Move" type="AudioStreamPlayer" parent="." unique_id=975490823]
 stream = ExtResource("6_824g0")
-volume_db = -16.298
+volume_db = -15.0
+bus = &"UI"
 
 [node name="SFX_Confirm" type="AudioStreamPlayer" parent="." unique_id=1801189967]
 stream = ExtResource("6_dsf7a")
-volume_db = -10.498
+volume_db = 4.0
+bus = &"UI"
 
 [node name="ScreenSoundtrack" type="AudioStreamPlayer" parent="." unique_id=1219278294]
 stream = ExtResource("8_tjte5")
-volume_db = -13.684
+volume_db = -6.6
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="ControllerDescriptionScreen" parent="." unique_id=1559008739 instance=ExtResource("9_controls")]
+visible = false
 layout_mode = 1
 offset_right = -6.0
 offset_bottom = 42.0
 
-[node name="Frame" parent="ControllerDescriptionScreen" index="1"]
+[node name="Frame" parent="ControllerDescriptionScreen" index="1" unique_id=1441281706]
 offset_top = -14.0
 offset_right = 633.0
 offset_bottom = 368.0
-
-[node name="Controller" parent="ControllerDescriptionScreen/Frame/Margin/Layout/Content/DiagramCard" index="0"]
-layout_mode = 2
-
-[node name="KeyboardHint" parent="ControllerDescriptionScreen/Frame/Margin/Layout/Content/DiagramCard" index="1"]
-layout_mode = 2
 
 [editable path="ControllerDescriptionScreen"]

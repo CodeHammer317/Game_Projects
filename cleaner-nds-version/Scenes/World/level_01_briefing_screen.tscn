@@ -28,11 +28,13 @@ scroll_following_visible_characters = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1704835657]
 stream = ExtResource("3_ajv21")
-volume_db = -32.342
+volume_db = -8.0
+bus = &"UI"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1272386344]
 stream = ExtResource("5_0dqim")
-volume_db = -11.905
+volume_db = -8.4
+bus = &"Music"
 autoplay = true
 parameters/looping = true
 

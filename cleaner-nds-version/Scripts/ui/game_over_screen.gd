@@ -6,6 +6,10 @@ signal action_selected(action: StringName)
 const FRAME_SIZE := Vector2i(416, 128)
 const FRAME_COLUMNS: int = 4
 const FRAME_COUNT: int = 44
+const UI_MOVE_SOUND: AudioStream = preload("res://Assets/Audio/pickup2.ogg")
+const UI_CONFIRM_SOUND: AudioStream = preload(
+	"res://Assets/Audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3"
+)
 
 @export var animation_fps: float = 20.0
 @export var options_reveal_delay: float = 1.15
@@ -118,6 +122,7 @@ func _move_selection(direction: int) -> void:
 		return
 
 	_selected_index = posmod(_selected_index + direction, _buttons.size())
+	CombatFx.play_sfx(UI_MOVE_SOUND, -13.0, 0.92, &"UI")
 	_focus_selected_button()
 
 
@@ -144,6 +149,7 @@ func _select_action(action: StringName) -> void:
 	if _action_in_progress:
 		return
 
+	CombatFx.play_sfx(UI_CONFIRM_SOUND, -8.0, 0.85, &"UI")
 	_action_in_progress = true
 	for button in _buttons:
 		button.disabled = true

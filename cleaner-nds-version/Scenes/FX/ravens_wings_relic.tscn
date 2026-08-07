@@ -205,7 +205,8 @@ shape = SubResource("RectangleShape2D_wshyo")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1003040085]
 stream = ExtResource("4_8vvpc")
-volume_db = -8.211
+volume_db = 1.5
+bus = &"SFX"
 
 [node name="RelicCardLayer" type="CanvasLayer" parent="." unique_id=1840267483]
 layer = 40

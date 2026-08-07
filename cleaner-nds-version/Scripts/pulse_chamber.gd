@@ -44,6 +44,8 @@ func _ready() -> void:
 		boss.connect("died", _on_boss_defeated)
 	else:
 		push_warning("PulseChamber: GlitchDemon death signal is unavailable.")
+	if boss != null and boss.has_signal("death_sequence_started"):
+		boss.connect("death_sequence_started", _on_boss_death_sequence_started)
 
 	if demon_spawn != null and demon_spawn.has_signal("demon_spawned"):
 		demon_spawn.connect("demon_spawned", _on_demon_spawned)
@@ -55,6 +57,9 @@ func _on_demon_spawned() -> void:
 	if _boss_sound_loop_active:
 		return
 
+	if boss_spawn_sound != null and boss_spawn_sound.stream != null:
+		boss_spawn_sound.play()
+	CombatFx.shake(8.0, 0.38, 24.0)
 	_boss_sound_loop_active = true
 	_run_boss_sound_loop()
 
@@ -80,6 +85,10 @@ func _stop_boss_sound_loop() -> void:
 	_boss_sound_loop_active = false
 	if boss_spawn_sound != null:
 		boss_spawn_sound.stop()
+
+
+func _on_boss_death_sequence_started(_defeated_boss: Node) -> void:
+	_stop_boss_sound_loop()
 
 
 func _on_boss_defeated(_defeated_boss: Node) -> void:

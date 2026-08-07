@@ -394,4 +394,5 @@ scale = Vector2(0.5, 0.5)
 
 [node name="MachineSound" type="AudioStreamPlayer" parent="." unique_id=1158753993]
 stream = ExtResource("13_gunshot")
-volume_db = -5.0
+volume_db = -3.0
+bus = &"SFX"

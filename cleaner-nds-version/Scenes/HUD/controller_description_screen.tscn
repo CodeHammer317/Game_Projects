@@ -360,7 +360,7 @@ text = "BACK              PAUSE"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.55, 0.72, 0.77, 1)
 theme_override_font_sizes/font_size = 10
-text = "D-PAD / STICK: NAVIGATE MENUS"
+text = "STICK: NAVIGATE MENUS"
 
 [node name="BackButton" type="Button" parent="Frame/Margin/Layout" unique_id=209504260]
 custom_minimum_size = Vector2(0, 30)

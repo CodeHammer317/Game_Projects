@@ -1,5 +1,9 @@
 extends Node2D
 
+const DOOR_SOUND: AudioStream = preload(
+	"res://Assets/Audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3"
+)
+
 signal opened
 
 @export var auto_open_on_player_approach: bool = true
@@ -20,6 +24,8 @@ func open_door() -> void:
 		return
 
 	is_opening = true
+	CombatFx.play_sfx(DOOR_SOUND, -7.0, 0.72)
+	CombatFx.shake(2.5, 0.24, 16.0)
 	door_sprite.play(&"open")
 	await door_sprite.animation_finished
 	is_opening = false

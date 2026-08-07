@@ -149,6 +149,8 @@ texture = ExtResource("2_l4ykn")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1943941661]
 stream = ExtResource("3_vxf8c")
+volume_db = 3.0
+bus = &"SFX"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1598368511]
 visible = false

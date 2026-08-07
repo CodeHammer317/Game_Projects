@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name CatEnemy
 
+const HURT_SOUND: AudioStream = preload("res://Assets/Audio/hurt1.ogg")
+
 signal damaged(info: DamageInfo, health_remaining: int)
 signal died(enemy: Node)
 
@@ -11,6 +13,7 @@ signal died(enemy: Node)
 @export var detection_range: float = 190.0
 @export var attack_range: float = 34.0
 @export var sprite_faces_left: bool = false
+@export_range(0.0, 32.0, 1.0) var facing_deadzone: float = 6.0
 
 @export_group("Combat")
 @export var max_health: int = 4
@@ -25,6 +28,8 @@ signal died(enemy: Node)
 @export var hiss_interval_max: float = 6.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_sound: AudioStreamPlayer2D = $AngryCatSound
+@onready var cat_sound: AudioStreamPlayer2D = $AngryCatSound
 
 var target: Node2D = null
 var current_health: int = 0
@@ -86,8 +91,12 @@ func _process_behavior() -> void:
 	var distance := offset.length()
 	_update_facing(offset.x)
 
-	if distance <= attack_range and attack_timer <= 0.0:
-		_start_attack()
+	if absf(offset.x) <= attack_range:
+		velocity.x = 0.0
+		if distance <= attack_range and attack_timer <= 0.0:
+			_start_attack()
+		else:
+			_play_animation(&"idle")
 		return
 
 	if distance <= detection_range:
@@ -108,6 +117,8 @@ func _start_attack() -> void:
 	attack_timer = attack_cooldown
 	velocity.x = 0.0
 	_play_animation(&"attack", true)
+	if attack_sound != null:
+		attack_sound.play()
 
 
 func _apply_attack_frame() -> void:
@@ -128,6 +139,7 @@ func _start_hiss() -> void:
 	hiss_timer = randf_range(hiss_interval_min, hiss_interval_max)
 	velocity.x = 0.0
 	_play_animation(&"hiss", true)
+	cat_sound.play()
 
 
 func _on_animation_finished() -> void:
@@ -144,7 +156,7 @@ func _find_target() -> void:
 
 
 func _update_facing(horizontal_offset: float) -> void:
-	if not is_zero_approx(horizontal_offset):
+	if absf(horizontal_offset) > facing_deadzone:
 		facing_direction = 1 if horizontal_offset > 0.0 else -1
 	sprite.flip_h = (facing_direction > 0) if sprite_faces_left else (facing_direction < 0)
 
@@ -171,13 +183,21 @@ func apply_damage(info: DamageInfo) -> void:
 	invulnerability_timer = damage_invulnerability
 	velocity += info.knockback
 	damaged.emit(info, maxi(current_health, 0))
-
 	var flash := create_tween()
 	sprite.modulate = Color(1.0, 0.35, 0.45, 1.0)
 	flash.tween_property(sprite, "modulate", Color.WHITE, damage_invulnerability)
 
 	if current_health <= 0:
 		_die()
+	else:
+		CombatFx.play_sfx_at(
+			HURT_SOUND,
+			global_position,
+			-12.0,
+			randf_range(1.15, 1.35),
+			126.0
+		)
+		CombatFx.shake(2.0, 0.08, 26.0)
 
 
 func take_damage(amount: int, attacker: Node = null) -> void:
@@ -190,6 +210,8 @@ func _die() -> void:
 	collision_layer = 0
 	collision_mask = 0
 	ScoreManager.award_enemy(self, score_value)
+	CombatFx.play_sfx_at(HURT_SOUND, global_position, -9.0, 0.72, 126.0)
+	CombatFx.shake(4.5, 0.16, 24.0)
 	died.emit(self)
 	var death_tween := create_tween()
 	death_tween.tween_property(self, "modulate:a", 0.0, 0.25)

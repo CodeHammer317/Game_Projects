@@ -1,9 +1,18 @@
 extends CharacterBody2D
 class_name GlitchDemon
 
+const ATTACK_SOUND: AudioStream = preload("res://Assets/Audio/edr-8-bit-jump-001-171817.mp3")
+const BURST_SOUND: AudioStream = preload(
+	"res://Assets/Audio/freesound_community-8-bit-explosion-low-resonant-45659.mp3"
+)
+const GROWTH_SOUND: AudioStream = preload(
+	"res://Assets/Audio/freesound_community-chiptune_style_riser_fx_110bpm-89020.mp3"
+)
+
 signal died(enemy: Node)
 signal attacked(enemy: Node)
 signal glitch_burst(enemy: Node)
+signal death_sequence_started(enemy: Node)
 
 @export var gravity: float = 900.0
 @export var max_fall_speed: float = 700.0
@@ -66,10 +75,17 @@ signal glitch_burst(enemy: Node)
 @export var explosion_animation_name: StringName = &"Explosion"
 @export var explosion_delay: float = 0.08
 @export var wait_for_explosion_before_free: bool = true
+@export var shrink_on_death: bool = false
+@export_range(0.1, 3.0, 0.05) var death_shrink_duration: float = 1.2
+@export_range(0.01, 0.5, 0.01) var death_shrink_factor: float = 0.05
+@export_range(0.1, 2.0, 0.05) var death_glitch_start_pitch: float = 1.25
+@export_range(0.1, 2.0, 0.05) var death_glitch_end_pitch: float = 0.45
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var explosion_sprite: AnimatedSprite2D = $AnimatedSprite2D2
 @onready var health: Health = $Health
+@onready var death_glitch_sound: AudioStreamPlayer = get_node_or_null("DeathGlitchSound") as AudioStreamPlayer
+@onready var explosion_sound: AudioStreamPlayer = get_node_or_null("ExplosionSound") as AudioStreamPlayer
 
 @onready var muzzle: Node2D = get_node_or_null("Muzzle")
 @onready var muzzle_2: Node2D = get_node_or_null("Muzzle2")
@@ -319,6 +335,7 @@ func _do_glitch_burst_sequence() -> void:
 
 	glitch_burst.emit(self)
 
+	CombatFx.play_sfx_at(BURST_SOUND, global_position, -13.0, 1.15, 480.0)
 	CombatFx.hitstop(0.025, 0.04)
 	CombatFx.shake(3.5, 0.12, 26.0)
 
@@ -370,6 +387,13 @@ func _do_attack() -> void:
 		return
 
 	attacked.emit(self)
+	CombatFx.play_sfx_at(
+		ATTACK_SOUND,
+		global_position,
+		-13.0,
+		randf_range(0.48, 0.62),
+		420.0
+	)
 
 	if projectile_scene == null:
 		push_warning("GlitchDemon: projectile_scene is not assigned.")
@@ -668,6 +692,7 @@ func _start_growth_phase() -> void:
 		_face_toward(_target.global_position)
 
 	CombatFx.hitstop(0.04, 0.08)
+	CombatFx.play_sfx_at(GROWTH_SOUND, global_position, -11.0, 1.0, 480.0)
 	CombatFx.shake(4.0, 0.14, 22.0)
 
 	var target_scale := base_scale * pow(growth_scale_multiplier, growth_phase - 1)
@@ -701,11 +726,14 @@ func _start_final_death() -> void:
 		return
 
 	is_dead = true
+	death_sequence_started.emit(self)
 	is_attacking = false
 	_is_playing_hit_animation = false
 	_pending_attack = false
 	_doing_glitch_burst = false
 	velocity = Vector2.ZERO
+	collision_layer = 0
+	collision_mask = 0
 	_death_anim_done = false
 	_explosion_anim_done = false
 
@@ -716,6 +744,44 @@ func _start_final_death() -> void:
 		CombatFx.hitstop(0.05, 0.05)
 		CombatFx.shake(5.0, 0.16, 20.0)
 
+	if shrink_on_death:
+		_run_shrink_death_sequence()
+	else:
+		_start_explosion_sequence()
+
+
+func _run_shrink_death_sequence() -> void:
+	var full_scale := scale
+	if death_glitch_sound != null and death_glitch_sound.stream != null:
+		death_glitch_sound.stop()
+		death_glitch_sound.pitch_scale = death_glitch_start_pitch
+		death_glitch_sound.play()
+
+	var shrink_tween := create_tween().set_parallel(true)
+	shrink_tween.tween_property(
+		self,
+		"scale",
+		full_scale * death_shrink_factor,
+		death_shrink_duration
+	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+
+	if death_glitch_sound != null:
+		shrink_tween.tween_property(
+			death_glitch_sound,
+			"pitch_scale",
+			death_glitch_end_pitch,
+			death_shrink_duration
+		).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+
+	await shrink_tween.finished
+
+	if death_glitch_sound != null:
+		death_glitch_sound.stop()
+
+	# Restore the parent transform so the child explosion retains its intended size.
+	scale = full_scale
+	sprite.visible = false
+	_death_anim_done = true
 	_start_explosion_sequence()
 
 
@@ -732,6 +798,10 @@ func _start_explosion_sequence() -> void:
 		_explosion_anim_done = true
 		_try_finalize_death()
 		return
+
+	if explosion_sound != null and explosion_sound.stream != null:
+		explosion_sound.stop()
+		explosion_sound.play()
 
 	explosion_sprite.visible = true
 

@@ -114,10 +114,17 @@ func _try_hit(target: Node) -> void:
 
 	if damage_target.has_method("apply_damage"):
 		damage_target.apply_damage(info)
+		_play_confirmed_hit_feedback()
 		return
 
 	if damage_target.has_method("take_damage"):
 		damage_target.take_damage(damage, owner_player)
+		_play_confirmed_hit_feedback()
+
+
+func _play_confirmed_hit_feedback() -> void:
+	CombatFx.hitstop(0.035, 0.08)
+	CombatFx.shake(2.5, 0.09, 28.0)
 
 
 func _get_damage_target(target: Node) -> Node:

@@ -4125,13 +4125,15 @@ color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldFX" unique_id=1245473412]
 stream = ExtResource("16_06u8c")
-volume_db = -23.291
+volume_db = -7.1
+bus = &"Music"
 autoplay = true
 parameters/looping = true
 
 [node name="PoliceSiren" type="AudioStreamPlayer" parent="WorldFX" unique_id=486269548]
 stream = ExtResource("30_h6cko")
 volume_db = -80.0
+bus = &"Ambience"
 parameters/looping = true
 
 [node name="Cat" parent="." unique_id=43974992 instance=ExtResource("26_67mkg")]

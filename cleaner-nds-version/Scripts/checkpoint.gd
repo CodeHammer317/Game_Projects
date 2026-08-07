@@ -1,6 +1,8 @@
 extends Area2D
 class_name Checkpoint
 
+const CHECKPOINT_SOUND: AudioStream = preload("res://Assets/Audio/pickup2.ogg")
+
 @export var target_group: StringName = &"player"
 @export var respawn_manager_path: NodePath
 @export var spawn_point_path: NodePath
@@ -28,6 +30,7 @@ func _on_body_entered(body: Node) -> void:
 		if body.has_method("set_fallback_respawn_position"):
 			var target := spawn_point if spawn_point != null else self
 			body.set_fallback_respawn_position(target.global_position)
+			_play_activation_feedback()
 			_is_active = true
 			return
 
@@ -36,7 +39,14 @@ func _on_body_entered(body: Node) -> void:
 
 	var target := spawn_point if spawn_point != null else self
 	manager.set_checkpoint(target)
+	_play_activation_feedback()
 	_is_active = true
+
+
+func _play_activation_feedback() -> void:
+	if _is_active:
+		return
+	CombatFx.play_sfx(CHECKPOINT_SOUND, -10.0, 0.82)
 
 
 func _get_respawn_manager() -> RespawnManager:

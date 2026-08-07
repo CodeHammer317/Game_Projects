@@ -160,7 +160,8 @@ vertical_alignment = 1
 
 [node name="TypingAudio" type="AudioStreamPlayer" parent="." unique_id=404205354]
 stream = ExtResource("4_typing")
-volume_db = -30.0
+volume_db = -10.0
+bus = &"UI"
 max_polyphony = 4
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1739261801]
@@ -178,7 +179,8 @@ color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=154279666]
 stream = ExtResource("5_l3bcd")
-volume_db = -16.422
+volume_db = -9.8
+bus = &"Music"
 autoplay = true
 
 [node name="Ta" type="Sprite2D" parent="." unique_id=2054978422]
