@@ -95,7 +95,8 @@ frame_progress = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=233306552]
 stream = ExtResource("6_521e1")
-volume_db = 3.104
+volume_db = -7.0
+bus = &"Ambience"
 pitch_scale = 0.39
 autoplay = true
 max_polyphony = 6

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://6xp6faj4ggas" path="res://Assets/sprites/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Idle.png" id="3_jpkpn"]
 [ext_resource type="Texture2D" uid="uid://b2wq31teiihoc" path="res://Assets/sprites/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Jamp.png" id="4_qaub3"]
 [ext_resource type="Texture2D" uid="uid://de1fs21oqutqc" path="res://Assets/sprites/urban-animals-sprite-sheet-pixel-art-pack/Animal_1/Walk.png" id="5_otoed"]
+[ext_resource type="AudioStream" uid="uid://dyx3r33iwll8u" path="res://Assets/Audio/AngryCat.wav" id="7_jpkpn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uvql"]
 atlas = ExtResource("1_54o77")
@@ -296,7 +297,11 @@ autoplay = "idle"
 frame_progress = 0.20199509
 offset = Vector2(10, -50)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=540219133]
+[node name="AngryCatSound" type="AudioStreamPlayer2D" parent="." unique_id=540219133]
+stream = ExtResource("7_jpkpn")
+volume_db = -5.0
+max_distance = 483.0
+attenuation = 0.7578583
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=819206057]
 position = Vector2(0, 2.5)

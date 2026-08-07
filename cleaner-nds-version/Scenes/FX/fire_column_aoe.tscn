@@ -202,14 +202,16 @@ flip_v = true
 
 [node name="FireBlastSound" type="AudioStreamPlayer2D" parent="." unique_id=2019163171]
 stream = ExtResource("3_cxt2x")
-volume_db = -4.124
+volume_db = -4.0
+bus = &"SFX"
 pitch_scale = 1.13
 max_distance = 900.0
 max_polyphony = 5
 
 [node name="FireImpactSound" type="AudioStreamPlayer2D" parent="." unique_id=1040253679]
 stream = ExtResource("3_cxt2x")
-volume_db = -19.616
+volume_db = -7.0
+bus = &"SFX"
 pitch_scale = 0.98
 max_distance = 900.0
 max_polyphony = 5

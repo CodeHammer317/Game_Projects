@@ -1,6 +1,10 @@
 extends CanvasLayer
 
 const TITLE_SCREEN_PATH: String = "res://Scenes/HUD/title_screen.tscn"
+const UI_MOVE_SOUND: AudioStream = preload("res://Assets/Audio/pickup2.ogg")
+const UI_CONFIRM_SOUND: AudioStream = preload(
+	"res://Assets/Audio/switch-mechanical-switch-gamemaster-audio-lower-tone-2-00-00.mp3"
+)
 
 @onready var pause_menu: Control = $PauseMenu
 @onready var resume_button: Button = $PauseMenu/CenterContainer/PausePanel/Menu/ResumeButton
@@ -77,6 +81,7 @@ func toggle_pause() -> void:
 func set_game_paused(paused: bool) -> void:
 	get_tree().paused = paused
 	pause_menu.visible = paused
+	CombatFx.play_sfx(UI_CONFIRM_SOUND, -10.0, 0.9 if paused else 1.1, &"UI")
 
 	if paused:
 		_selected_index = 0
@@ -161,6 +166,7 @@ func _move_selection(direction: int) -> void:
 		return
 
 	_selected_index = posmod(_selected_index + direction, _buttons.size())
+	CombatFx.play_sfx(UI_MOVE_SOUND, -13.0, 1.1, &"UI")
 	_focus_selected_button()
 
 

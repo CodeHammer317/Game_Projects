@@ -3856,9 +3856,20 @@ visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(434, 215)
 use_separate_directional_animations = false
+shrink_on_death = true
 
 [node name="Hurtbox" parent="GlitchDemon" index="2" unique_id=880096687]
 collision_mask = 42
+
+[node name="DeathGlitchSound" type="AudioStreamPlayer" parent="GlitchDemon" unique_id=1181526267]
+stream = ExtResource("121_wu35v")
+volume_db = 6.0
+bus = &"SFX"
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="GlitchDemon" unique_id=1474222433]
+stream = ExtResource("122_ckejx")
+volume_db = -4.0
+bus = &"SFX"
 
 [node name="Pulse" type="AnimatedSprite2D" parent="." unique_id=1415546283]
 z_index = 5
@@ -3895,24 +3906,29 @@ texture_scale = 1.45
 
 [node name="PulseSound" type="AudioStreamPlayer" parent="." unique_id=1541168184]
 stream = ExtResource("120_vabxp")
-volume_db = -12.793
+volume_db = -5.0
 autoplay = true
 max_polyphony = 6
+bus = &"Ambience"
 parameters/looping = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=719959742]
 stream = ExtResource("123_3xycp")
-volume_db = -11.794
+volume_db = -5.2
 autoplay = true
 max_polyphony = 6
+bus = &"Music"
 parameters/looping = true
 
 [node name="BossSpawnSound" type="AudioStreamPlayer" parent="." unique_id=2043173569]
 stream = ExtResource("121_wu35v")
-volume_db = -17.658
+volume_db = 6.0
+bus = &"SFX"
 
 [node name="ExplosionSound" type="AudioStreamPlayer" parent="." unique_id=1256188326]
 stream = ExtResource("122_ckejx")
+volume_db = -4.0
+bus = &"SFX"
 
 [node name="PostBossDialogue" type="CanvasLayer" parent="." unique_id=2066883145]
 layer = 50

@@ -12088,7 +12088,8 @@ position = Vector2(2753, 356)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=350223542]
 stream = ExtResource("27_2mxxd")
-volume_db = -18.201
+volume_db = -5.7
+bus = &"Music"
 pitch_scale = 0.95
 autoplay = true
 max_polyphony = 4

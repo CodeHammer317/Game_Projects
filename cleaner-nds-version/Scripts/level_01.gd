@@ -123,8 +123,8 @@ func _on_final_enemy_died(enemy: Node) -> void:
 		"PORTA SUBTERRANEA APERTA.\nSubway access unlocked.",
 		4.5
 	)
-	_fade_audio(music, -28.0, 1.2)
-	_fade_audio(police_siren, -34.0, 1.2)
+	_fade_audio(music, -12.0, 1.2)
+	_fade_audio(police_siren, -24.0, 1.2)
 
 
 func _on_mattt_tutorial_entered(body: Node) -> void:
@@ -163,8 +163,8 @@ func _on_police_audio_zone_entered(body: Node) -> void:
 	_disable_trigger(police_audio_zone)
 	if police_siren != null and not police_siren.playing:
 		police_siren.play()
-	_fade_audio(police_siren, -19.0, 1.5)
-	_fade_audio(music, -29.0, 1.5)
+	_fade_audio(police_siren, -14.0, 1.5)
+	_fade_audio(music, -15.0, 1.5)
 	_show_message(
 		"NDS // WARNING",
 		"Armed quarantine detail ahead. Subway access is still sealed.",

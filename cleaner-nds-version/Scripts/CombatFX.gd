@@ -34,6 +34,50 @@ func shake(strength: float = 4.0, duration: float = 0.12, decay: float = 30.0) -
 	_shake_decay = decay
 
 
+func play_sfx(
+	stream: AudioStream,
+	volume_db: float = -6.0,
+	pitch_scale: float = 1.0,
+	bus: StringName = &"SFX"
+) -> void:
+	if stream == null:
+		return
+
+	var player := AudioStreamPlayer.new()
+	player.stream = stream
+	player.volume_db = volume_db
+	player.pitch_scale = clampf(pitch_scale, 0.01, 4.0)
+	player.bus = bus
+	player.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(player)
+	player.finished.connect(player.queue_free, CONNECT_ONE_SHOT)
+	player.play()
+
+
+func play_sfx_at(
+	stream: AudioStream,
+	world_position: Vector2,
+	volume_db: float = -6.0,
+	pitch_scale: float = 1.0,
+	max_distance: float = 256.0,
+	bus: StringName = &"SFX"
+) -> void:
+	if stream == null:
+		return
+
+	var player := AudioStreamPlayer2D.new()
+	player.stream = stream
+	player.volume_db = volume_db
+	player.pitch_scale = clampf(pitch_scale, 0.01, 4.0)
+	player.max_distance = maxf(max_distance, 1.0)
+	player.bus = bus
+	player.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(player)
+	player.global_position = world_position
+	player.finished.connect(player.queue_free, CONNECT_ONE_SHOT)
+	player.play()
+
+
 func _do_hitstop(duration: float, slow_scale: float) -> void:
 	_run_hitstop(duration, slow_scale)
 

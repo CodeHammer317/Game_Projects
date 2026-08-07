@@ -136,5 +136,6 @@ offset = Vector2(-15, 0)
 
 [node name="PunchSound" type="AudioStreamPlayer" parent="." unique_id=1117908833]
 stream = ExtResource("9_punch")
-volume_db = -19.329
+volume_db = -7.5
+bus = &"SFX"
 pitch_scale = 1.06

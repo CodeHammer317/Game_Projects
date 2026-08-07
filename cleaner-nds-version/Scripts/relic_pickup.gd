@@ -200,6 +200,7 @@ func _reveal_relic(player: Node) -> void:
 
 	if audio != null and audio.stream != null:
 		audio.play()
+	CombatFx.shake(3.5, 0.18, 24.0)
 
 
 func _populate_relic_card() -> void:
@@ -245,6 +246,7 @@ func _play_collection_effect() -> void:
 		relic_glow.visible = false
 	if question_marker != null:
 		question_marker.visible = false
+	CombatFx.shake(5.5, 0.24, 24.0)
 
 	var effect_duration := 0.0
 

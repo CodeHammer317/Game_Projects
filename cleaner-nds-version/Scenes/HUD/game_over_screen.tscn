@@ -191,10 +191,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.37, 0.37, 1)
 theme_override_fonts/font = ExtResource("4_pixel_font")
 theme_override_font_sizes/font_size = 11
-text = "D-PAD / ARROWS: SELECT     A / SPACE: CONFIRM"
+text = "STICK / ARROWS: SELECT     A / SPACE: CONFIRM"
 horizontal_alignment = 1
 
 [node name="GameOverAudio" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("3_audio")
-volume_db = -5.0
+volume_db = -1.0
+bus = &"UI"

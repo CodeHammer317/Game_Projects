@@ -93,13 +93,15 @@ rect = Rect2(-9.999999, -7.499999, 22, 19.5)
 
 [node name="BulletFireSound" type="AudioStreamPlayer" parent="." unique_id=1706128267]
 stream = ExtResource("4_d4a1h")
-volume_db = -20.955
+volume_db = -13.0
+bus = &"SFX"
 pitch_scale = 1.21
 max_polyphony = 8
 
 [node name="BulletHitSound" type="AudioStreamPlayer" parent="." unique_id=1962415701]
 stream = ExtResource("5_xmb44")
-volume_db = 2.77
+volume_db = -6.0
+bus = &"SFX"
 pitch_scale = 0.78
 max_polyphony = 9
 

@@ -1320,9 +1320,11 @@ use_persistent_player_state = true
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=173076346]
 stream = ExtResource("101_jump_sound")
-volume_db = -34.0
+volume_db = -11.0
+bus = &"SFX"
 pitch_scale = 1.33
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=846793001]
 stream = ExtResource("102_hurt_sound")
-volume_db = -8.0
+volume_db = -4.0
+bus = &"SFX"

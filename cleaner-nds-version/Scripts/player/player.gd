@@ -36,6 +36,13 @@ const TITLE_SCREEN_PATH: String = "res://Scenes/HUD/title_screen.tscn"
 @export var gravity: float = 900.0
 @export var max_fall_speed: float = 700.0
 
+@export_group("Landing Feedback")
+@export var landing_feedback_min_speed: float = 260.0
+@export var hard_landing_speed: float = 520.0
+@export var landing_shake_strength: float = 2.0
+
+@export_group("")
+
 @export var fire_cooldown: float = 0.18
 @export var shoot_anim_duration: float = 0.10
 @export var bullet_scene: PackedScene
@@ -271,7 +278,9 @@ func _run_active_frame(delta: float, use_hitstun_movement: bool) -> void:
 	else:
 		_process_normal_movement(delta)
 
+	var impact_speed := maxf(velocity.y, 0.0)
 	move_and_slide()
+	_play_landing_feedback(impact_speed)
 
 	_cleanup_after_move()
 	_update_facing()
@@ -280,6 +289,18 @@ func _run_active_frame(delta: float, use_hitstun_movement: bool) -> void:
 	_handle_dust_trail(delta)
 
 	_was_on_floor = is_on_floor()
+
+
+func _play_landing_feedback(impact_speed: float) -> void:
+	if _was_on_floor or not is_on_floor() or impact_speed < landing_feedback_min_speed:
+		return
+
+	var hard_landing := impact_speed >= hard_landing_speed
+	var strength := landing_shake_strength * (1.75 if hard_landing else 1.0)
+	var pitch := 0.62 if hard_landing else 0.78
+	var volume := -11.0 if hard_landing else -15.0
+	CombatFx.play_sfx(jump_sound.stream, volume, pitch)
+	CombatFx.shake(strength, 0.12 if hard_landing else 0.08, 26.0)
 
 
 func _capture_jump_input() -> void:
@@ -921,7 +942,9 @@ func _spawn_dust_trail(offset: Vector2, animation_name: StringName = &"dash") ->
 	if animation_name == &"wall_slide":
 		final_offset = offset
 
-	dust.global_position = global_position + final_offset
+	# Keep the spawn point attached to the same place on the player's body when
+	# scenes resize the player (for example, the study and upgrade chamber).
+	dust.global_position = to_global(final_offset)
 
 	if dust.has_method("setup"):
 		dust.setup(not _facing_left, animation_name)
@@ -1086,6 +1109,7 @@ func _on_damaged(info: DamageInfo) -> void:
 		return
 
 	hurt_sound.play()
+	CombatFx.shake(3.5, 0.14, 26.0)
 	_cancel_shot_charge()
 	_is_dashing = false
 	_is_wall_sliding = false
@@ -1146,6 +1170,7 @@ func kill() -> void:
 	_jump_buffer_timer = 0.0
 
 	velocity = Vector2.ZERO
+	CombatFx.shake(7.0, 0.28, 24.0)
 
 	_play_animation_if_available("death")
 	died.emit()

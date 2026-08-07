@@ -2408,7 +2408,8 @@ frame_progress = 0.992323
 
 [node name="FlashSound" type="AudioStreamPlayer" parent="UpgradeMachine" unique_id=915718602]
 stream = ExtResource("10_u8g6j")
-volume_db = -16.792
+volume_db = 1.5
+bus = &"SFX"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UpgradeMachine" unique_id=710597352]
 volume_db = -14.733
@@ -2546,6 +2547,7 @@ default_color = Color(1, 0.82, 0.2, 1)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=166546121]
 stream = ExtResource("41_1rntg")
-volume_db = -19.993
+volume_db = -8.6
+bus = &"Music"
 autoplay = true
 parameters/looping = true

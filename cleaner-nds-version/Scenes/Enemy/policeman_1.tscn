@@ -489,4 +489,5 @@ position = Vector2(22.666666, -6.666664)
 
 [node name="MachineSound" type="AudioStreamPlayer" parent="." unique_id=1057019898]
 stream = ExtResource("11_gunshot")
-volume_db = -5.0
+volume_db = -3.0
+bus = &"SFX"

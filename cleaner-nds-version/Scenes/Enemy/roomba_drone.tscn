@@ -659,11 +659,13 @@ position = Vector2(2, 2)
 
 [node name="MachineSound" type="AudioStreamPlayer" parent="." unique_id=1968192211]
 stream = ExtResource("13_lwuvv")
-volume_db = -19.688
+volume_db = -13.887
 max_polyphony = 7
+bus = &"Ambience"
 
 [node name="ExplosionSound" type="AudioStreamPlayer" parent="." unique_id=109930283]
 stream = ExtResource("14_q8cjo")
-volume_db = 16.774
+volume_db = -6.887
 pitch_scale = 0.96
 max_polyphony = 6
+bus = &"SFX"

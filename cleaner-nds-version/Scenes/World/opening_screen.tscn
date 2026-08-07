@@ -25,7 +25,8 @@ script = ExtResource("1_script")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1974910565]
 stream = ExtResource("2_5c4in")
-volume_db = -13.541
+volume_db = -9.5
+bus = &"Music"
 pitch_scale = 1.01
 autoplay = true
 max_polyphony = 4
